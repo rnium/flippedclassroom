@@ -14,14 +14,15 @@
             <div class="heading">
                 <div class="site-title">OpenClassroom</div>
             </div>
+            {% csrf_token %}
             <div class="field-container inset-float-textinput email">
                 <input class="inp_input" type="email" id="email" placeholder=" ">
                 <label class="inp_label" for="email">Email</label>
             </div>
             <div class="field-container inset-float-textinput password">
-                <input class="inp_input" type="password" id="password1" placeholder=" ">
-                <label class="inp_label" for="password1">Password</label>
-                <i class='bx bx-hide password-toggle' id="p1-toggle" data-inp="password1"></i>
+                <input class="inp_input" type="password" id="password" placeholder=" ">
+                <label class="inp_label" for="password">Password</label>
+                <i class='bx bx-hide password-toggle' id="p1-toggle" data-inp="password"></i>
             </div>
             <div class="field-container submit">
                 <div class="error-info" id="error-info-container" style="display: none;">
