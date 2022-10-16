@@ -1,0 +1,45 @@
+<!DOCTYPE html> {% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="{% static 'auth.css' %}">
+    <title>OpenClassroom Login</title>
+</head>
+<body>
+    <div class="container">
+        <div class="form login-form">
+            <div class="heading">
+                <div class="site-title">OpenClassroom</div>
+            </div>
+            <div class="field-container inset-float-textinput email">
+                <input class="inp_input" type="email" id="email" placeholder=" ">
+                <label class="inp_label" for="email">Email</label>
+            </div>
+            <div class="field-container inset-float-textinput password">
+                <input class="inp_input" type="password" id="password1" placeholder=" ">
+                <label class="inp_label" for="password1">Password</label>
+                <i class='bx bx-hide password-toggle' id="p1-toggle" data-inp="password1"></i>
+            </div>
+            <div class="field-container submit">
+                <div class="error-info" id="error-info-container" style="display: none;">
+                    <i class='bx bx-info-circle'></i><span id="error-info-text">poocdfdfd</span>
+                </div>
+                <button class="btn-1" id="submit">Login</button>
+            </div>
+            <div class="login-info">
+                <span>Don't have an account?</span><a href="">Sign up here</a>
+            </div>
+        </div>
+    </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script> 
+<script src="{% static 'login.js' %}"></script>
+<script>
+    $(document).ready(
+        $("#email").focus()
+    )
+</script>
+</body>
+</html>

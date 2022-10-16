@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'exam.apps.ExamConfig',
     'classroom.apps.ClassroomConfig',
+    'accounts.apps.AccountsConfig',
     'rest_framework'
 ]
 

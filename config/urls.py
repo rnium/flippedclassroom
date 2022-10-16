@@ -16,18 +16,17 @@ Including another URLconf
 from unicodedata import name
 from django.contrib import admin
 from django.urls import path, include
-from django.contrib.auth.views import LoginView, LogoutView
 from django.conf.urls.static import static
 from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),
+    path('', include('classroom.urls')),
     path('exam/', include('exam.urls')),
     path('exam/api/', include('exam.api.urls')),
     # auth
-    path('login/', LoginView.as_view(), name="user_login"),
-    path('logout/', LogoutView.as_view(), name="user_logout"),
+    path('account/', include('accounts.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

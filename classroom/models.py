@@ -5,16 +5,6 @@ import uuid
 from os.path import join
 
 
-class Account(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    institution = models.CharField(max_length=200)
-    department = models.CharField(max_length=200)
-    profile_picture = models.ImageField(upload_to="profiles/dp/", null=True, blank=True)
-
-    def __str__(self):
-        return self.user.username
-
-
 class Classroom(models.Model):
     def get_uuid():
         return uuid.uuid4().hex
@@ -25,10 +15,10 @@ class Classroom(models.Model):
         default = get_uuid,
         editable = False,
     )
-    name = models.CharField(max_length=200)
-    description =  models.CharField(max_length=500, null=True, blank=True)
-    teachers = models.ManyToManyField(Account, related_name='teacher')
-    students = models.ManyToManyField(Account, related_name='student', blank=True)
+    name = models.CharField(max_length=50)
+    course = models.CharField(max_length=20)
+    teachers = models.ManyToManyField(User, related_name='teacher')
+    students = models.ManyToManyField(User, related_name='student', blank=True)
     created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -47,7 +37,7 @@ class ClassroomPost(models.Model):
     )
     classroom = models.ForeignKey(Classroom, on_delete=models.CASCADE)
     description = models.CharField(max_length=9999)
-    author = models.ForeignKey(Account, on_delete=models.CASCADE)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
     posted = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
