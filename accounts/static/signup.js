@@ -33,8 +33,92 @@ $("#password2").keyup(function(){
     }
 })
 
-function performSignup() {
-    console.log('proceeding')
+
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+const csrftoken = getCookie('csrftoken');
+
+
+function showError(msg, duration=3000) {
+    $("#error-info-text").text(msg)
+    $("#error-info-container").show(0, function(){
+        setTimeout(function(){
+            $("#error-info-text").text(" ")
+            $("#error-info-container").hide()
+        }, duration)
+    })
 }
 
-$("#submit").on('click', performSignup)
+function checkForm() {
+    let error_fields = $('.inset-error')
+    if (error_fields.length > 0) {
+        showError("Please fix the error")
+        $(`#${error_fields[0].id}`).focus()
+        return false
+    }
+    let input_fields = $(".inp_input")
+    for (let field of input_fields) {
+        field_val = $(`#${field.id}`).val()
+        if (field_val.length < 1) {
+            $(`#${field.id}`).focus()
+            showError("Please fill the field")
+            return false
+        }
+    }
+    return true
+}
+
+
+$("#submit").on('click', function(){
+    let form_is_valid = checkForm()
+    if (!form_is_valid) {
+        return false
+    }
+    console.log("proceeding")
+    let data = {
+        "first_name":$("#first_name").val(),
+        "last_name":$("#last_name").val(),
+        "institution":$("#institution").val(),
+        "email": $("#email").val(),
+        "password": $("#password1").val()
+    }
+    let payload = JSON.stringify(data)
+    $.ajax({
+        type: "post",
+        url: signup_url,
+        dataType: "json",
+        contentType: "application/json",
+        beforeSend: function(xhr){
+            // $("#submit).attr("disabled", true)
+            xhr.setRequestHeader("X-CSRFToken", csrftoken)
+        },
+        data: payload,
+        cache: false,
+        statusCode: {
+            201: function() {
+                // window.location = success_url
+                console.log('created')
+            },
+            400: function() {
+                showError("Email already used")
+            },
+            406: function() {
+                showError("Something went wrong")
+            }
+        }
+    });
+
+})

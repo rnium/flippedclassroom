@@ -43,7 +43,23 @@ function showError(msg, duration=5000) {
     })
 }
 
+function checkForm() {
+    let input_fields = $(".inp_input")
+    for (let field of input_fields) {
+        field_val = $(`#${field.id}`).val()
+        if (field_val.length < 1) {
+            $(`#${field.id}`).focus()
+            return false
+        }
+    }
+    return true
+}
+
 $("#submit").on('click', function(){
+    let form_is_valid = checkForm()
+    if (!form_is_valid) {
+        return false
+    }
     let data = {
         "email": $("#email").val(),
         "password": $("#password").val()
@@ -52,7 +68,6 @@ $("#submit").on('click', function(){
     $.ajax({
         type: "post",
         url: "/account/api/login",
-        data: "data",
         dataType: "json",
         contentType: "application/json",
         beforeSend: function(xhr){
@@ -69,7 +84,7 @@ $("#submit").on('click', function(){
                 showError("Something went wrong")
             },
             401: function() {
-                showError("Invalid Credentials", 300)
+                showError("Invalid Credentials", 3000)
             }
         }
     });

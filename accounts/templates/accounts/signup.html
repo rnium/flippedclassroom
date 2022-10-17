@@ -13,7 +13,7 @@
         <div class="form">
             <div class="heading">
                 <div class="site-title">OpenClassroom</div>
-            </div>
+            </div> {% csrf_token %}
             <div class="field-container name">
                 <div class="first_name inset-float-textinput">
                     <input class="inp_input" type="text" id="first_name" placeholder=" ">
@@ -52,11 +52,15 @@
                 <button class="btn-1" id="submit">Sign Up</button>
             </div>
             <div class="login-info">
-                <span>Have an account?</span><a href="">Login here</a>
+                <span>Have an account?</span><a href="{% url 'accounts:user_login_get' %}">Login here</a>
             </div>
         </div>
     </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script> 
 <script src="{% static 'signup.js' %}"></script>
+<script>
+    const signup_url = "{% url 'accounts:user_signup_post' %}"
+    const success_url = "{% url 'classroom:homepage' %}"
+</script>
 </body>
 </html>
