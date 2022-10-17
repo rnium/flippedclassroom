@@ -1,17 +1,28 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
+from django.http import JsonResponse
 from django.views.generic import TemplateView
 from django.contrib.auth.models import User
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 from django.contrib.auth import authenticate, login
+from django.views.decorators.csrf import csrf_exempt
+from django.views import View
 from .models import Account
 
-class LoginView(TemplateView):
-    template_name = 'accounts/login.html'
+class LoginView(View):
+    def get(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return redirect("classroom:homepage")
+        else:
+            return render(request=request, template_name='accounts/login.html')
 
-class SignupView(TemplateView):
-    template_name = 'accounts/signup.html'
+class SignupView(View):
+    def get(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return redirect("classroom:homepage")
+        else:
+            return render(request=request, template_name='accounts/signup.html')
 
 
 @api_view(['POST'])
@@ -47,6 +58,18 @@ def api_signup(request):
     except Exception as e:
         print(e)
         return Response({'status':'email used'}, status=status.HTTP_406_NOT_ACCEPTABLE)
-    # login(user)
+    login(request, user=user)
     return Response({'status':"complete"}, status=status.HTTP_201_CREATED)
 
+
+@csrf_exempt
+def set_avatar(request):
+    if request.method == "POST":
+        print(request.POST)
+        print(request.FILES)
+        if len(request.FILES) > 0:
+            user = request.user
+            account = Account.objects.get(user=user)
+            account.profile_picture = request.FILES.get('dp')
+            account.save()
+            return JsonResponse({'status':'profile picture set'})

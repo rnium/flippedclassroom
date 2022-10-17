@@ -81,6 +81,23 @@ function checkForm() {
     return true
 }
 
+function setupAvatar(image_file) {
+    let image_form = new FormData
+    // fix csrftoken with formdata
+    image_form.append("dp", image_file)
+    $.ajax({
+        type: "post",
+        url: avatar_set_url,
+        data: image_form,
+        contentType: false,
+        processData: false,
+        complete: function(){
+            window.location = success_url
+        }
+    });
+
+}
+
 
 $("#submit").on('click', function(){
     let form_is_valid = checkForm()
@@ -111,6 +128,10 @@ $("#submit").on('click', function(){
             201: function() {
                 // window.location = success_url
                 console.log('created')
+                avatar_files = $("#dp")[0].files
+                if (avatar_files.length > 0) {
+                    setupAvatar(avatar_files[0])
+                }
             },
             400: function() {
                 showError("Email already used")
@@ -120,5 +141,4 @@ $("#submit").on('click', function(){
             }
         }
     });
-
 })

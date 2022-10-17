@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="{% static 'auth.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/auth.css' %}">
     <title>Signup</title>
 </head>
 <body>
@@ -60,6 +60,7 @@
 <script src="{% static 'signup.js' %}"></script>
 <script>
     const signup_url = "{% url 'accounts:user_signup_post' %}"
+    const avatar_set_url = "{% url 'accounts:set_avatar' %}"
     const success_url = "{% url 'classroom:homepage' %}"
 </script>
 </body>

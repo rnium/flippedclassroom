@@ -1,0 +1,216 @@
+@import url('https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap');
+@mixin flexer ($direction) {
+    display: flex;
+    flex-direction: $direction;
+    justify-items: center;
+    align-items: center;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    color: #276363;
+}
+
+body {
+    background-color: #c4d6cc;
+    .container {
+        .form {
+            @include flexer(column);
+            background-color: rgb(255, 255, 255);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -55%);
+            border-radius: 10px;
+            padding: 2rem 3rem 1rem;
+            transition: all 300ms;
+            .heading {
+                margin-bottom: 1.4rem;
+                .site-title {
+                    font-family: 'Gemunu Libre', sans-serif;
+                    font-size: 2rem;
+                    font-weight: 500;
+                    color: #a2afaf;
+                    text-shadow: 0 0 5px rgb(232, 248, 243);
+                }
+
+            }
+            .name {
+                @include flexer(row);
+                .first_name {
+                    padding-right: 0.5rem;
+                    width: 50%;
+                }
+                .last_name {
+                    padding-left: 0.5rem;
+                    width: 50%;
+                }
+            }
+            .field-container {
+                width: 100%;
+                margin-bottom: 1rem;
+                
+                input {
+                    width: 100%;
+                }
+            }
+            .password {
+                i {
+                    cursor: pointer;
+                    font-size: 1.5rem;
+                    position: absolute;
+                    right: 10px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    color: rgb(173, 173, 173);
+                }
+            }
+            .submit {
+                margin: 0;
+                @include flexer(row);
+                justify-content: flex-end;
+                .error-info {
+                    @include flexer(row);
+                    margin-right: 10px;
+                    i {
+                        font-size: 1.2rem;
+                        color: rgb(255, 0, 0);
+                        margin-right: 5px;
+                    }
+                    span {
+                        color: rgb(255, 0, 0);}
+                    }
+            }
+            .login-info {
+                margin-top: 0.5rem;
+                margin-bottom: 0.5rem;
+                span {
+                    color: #7a9c9c
+                }
+                a {
+                    text-decoration: none;
+                    color: rgb(36, 148, 247);
+                    margin-left: 5px;
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+        .login-form {
+            padding: 1.5rem 2rem 1rem;
+            width: 30rem;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -70%);
+        }
+    }
+}
+
+.input-file {
+    @include flexer(row);
+    overflow: hidden;
+    input[type="file"] {
+        display: none;
+    }
+    input[type="file"]:active + label {
+        background-color: rgb(1, 161, 108);
+        color: rgb(231, 231, 231) !important;
+        i {
+            color: rgb(231, 231, 231) !important;
+        }
+    }
+    label {
+        @include flexer(row);
+        background-color: rgba(183, 207, 198, 0.5);
+        border: 1px solid rgb(216, 216, 216);
+        color: #276363;
+        text-align: center;
+        padding: 0.3rem 1rem;
+        cursor: pointer;
+        transition: all 0.3s;
+        border-radius: 5px;
+        i {
+            font-size: 1.5rem;
+            margin-right: 0.5rem;
+            transition: 0.3s all;
+            color: rgb(69, 155, 126);
+        }
+        &:hover {
+            background-color: rgba(138, 179, 164, 0.4);
+        }
+        
+    }
+    .selected-file {
+        margin-left: 0.5rem;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        color: #276363;
+    }
+}
+
+.btn-1 {
+    float: right;
+    border: 0;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    background-color: #4d7385;
+    color: white;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 300ms;
+    &:hover {   
+        background-color: #799eaf;
+    }
+}
+.inset-float-textinput {
+    position: relative;
+    input {
+        width: 100%;
+        padding: 1.5rem 1rem 0.5rem;
+        border-radius: 5px;
+        border: 1px solid rgb(182, 182, 182);
+        font-size: 1rem;
+        &:focus {
+            outline: 2px solid rgb(1, 161, 108);
+            border-color: rgb(1, 161, 108);
+            box-shadow: 0 0 5px rgb(161, 161, 161);
+        }
+        &:focus ~ label {
+            color: rgb(1, 161, 108);
+        }
+        &::placeholder {
+            color: rgb(158, 160, 159);
+        }
+        &::selection {
+            background-color: rgb(36, 206, 149);
+            color: white;
+        }
+    }
+    label {
+        position: absolute;
+        font-size: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 1rem;
+        transition: all 200ms;
+    }
+    .inp_input:focus ~ .inp_label, 
+    .inp_input:not(:placeholder-shown).inp_input:not(:focus) ~ .inp_label {
+        top: 0.6rem;
+        font-size: 0.7rem;
+        color: #3b8f65;
+    }
+}
+.inset-error {
+    &:focus {
+        outline: 2px solid rgb(243, 48, 80) !important;
+        border: 1px solid rgb(243, 48, 80) !important;
+    }
+    &:focus ~ label {
+        color: red !important;
+    }  
+}

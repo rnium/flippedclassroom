@@ -33,7 +33,7 @@ function getCookie(name) {
 }
 const csrftoken = getCookie('csrftoken');
 
-function showError(msg, duration=5000) {
+function showError(msg, duration=3000) {
     $("#error-info-text").text(msg)
     $("#error-info-container").show(0, function(){
         setTimeout(function(){
@@ -48,6 +48,7 @@ function checkForm() {
     for (let field of input_fields) {
         field_val = $(`#${field.id}`).val()
         if (field_val.length < 1) {
+            showError("Please fill the field")
             $(`#${field.id}`).focus()
             return false
         }
@@ -67,7 +68,7 @@ $("#submit").on('click', function(){
     let payload = JSON.stringify(data)
     $.ajax({
         type: "post",
-        url: "/account/api/login",
+        url: login_url,
         dataType: "json",
         contentType: "application/json",
         beforeSend: function(xhr){
@@ -84,7 +85,7 @@ $("#submit").on('click', function(){
                 showError("Something went wrong")
             },
             401: function() {
-                showError("Invalid Credentials", 3000)
+                showError("Invalid Credentials")
             }
         }
     });
