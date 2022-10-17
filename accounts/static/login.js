@@ -31,6 +31,7 @@ function getCookie(name) {
     }
     return cookieValue;
 }
+
 const csrftoken = getCookie('csrftoken');
 
 function showError(msg, duration=3000) {
@@ -56,7 +57,7 @@ function checkForm() {
     return true
 }
 
-$("#submit").on('click', function(){
+function submitForm() {
     let form_is_valid = checkForm()
     if (!form_is_valid) {
         return false
@@ -90,5 +91,13 @@ $("#submit").on('click', function(){
         }
     });
 
-})
+}
+
+$("#password").on('keyup', function (e) { 
+    if (e.key == 'Enter' || e.keyCode === 13) {
+        submitForm()
+    }
+ })
+
+$("#submit").on('click', submitForm)
 
