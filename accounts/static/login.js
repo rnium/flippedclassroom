@@ -54,15 +54,18 @@ $("#submit").on('click', function(){
         success: function (response) {
             console.log('success fired')
         },
-        error: function(xhr, status, error) {
-            console.log('error fired')
-        },
         statusCode: {
-            302: function() {
-                console.log('st 302 returned')
-            },
             400: function() {
-                console.log('st 400 returned')
+                console.log('bad request')
+            },
+            401: function() {
+                console.log('invalid cred.')
+                $("#error-info-container").show(100, function(){
+                    $("#error-info-text").text("Invalid Credentials")
+                    setTimeout(function(){
+                        $("#error-info-container").hide(100)
+                    }, 2000)
+                })
             }
         }
     });
