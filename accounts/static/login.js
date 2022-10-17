@@ -33,6 +33,16 @@ function getCookie(name) {
 }
 const csrftoken = getCookie('csrftoken');
 
+function showError(msg, duration=5000) {
+    $("#error-info-text").text(msg)
+    $("#error-info-container").show(0, function(){
+        setTimeout(function(){
+            $("#error-info-text").text(" ")
+            $("#error-info-container").hide()
+        }, duration)
+    })
+}
+
 $("#submit").on('click', function(){
     let data = {
         "email": $("#email").val(),
@@ -51,21 +61,15 @@ $("#submit").on('click', function(){
         },
         data: payload,
         cache: false,
-        success: function (response) {
-            console.log('success fired')
-        },
         statusCode: {
+            200: function() {
+                window.location = success_url
+            },
             400: function() {
-                console.log('bad request')
+                showError("Something went wrong")
             },
             401: function() {
-                console.log('invalid cred.')
-                $("#error-info-container").show(100, function(){
-                    $("#error-info-text").text("Invalid Credentials")
-                    setTimeout(function(){
-                        $("#error-info-container").hide(100)
-                    }, 2000)
-                })
+                showError("Invalid Credentials", 300)
             }
         }
     });

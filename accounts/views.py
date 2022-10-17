@@ -11,6 +11,7 @@ class LoginView(TemplateView):
 class SignupView(TemplateView):
     template_name = 'accounts/signup.html'
 
+
 @api_view(['POST'])
 def api_login(request):
     # performs login through an api
