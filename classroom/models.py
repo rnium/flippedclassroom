@@ -27,6 +27,19 @@ class Classroom(models.Model):
     @property
     def num_students(self):
         return self.students.count()
+    
+    @property
+    def teacher_name(self):
+        teachers = self.teachers.all()
+        if len(teachers) > 0:
+            teacher1 = teachers[0]
+            first_name = teacher1.first_name
+            if first_name:
+                return first_name
+            else:
+                return teacher1.username
+        else:
+            return None
 
 
 class ClassroomPost(models.Model):
