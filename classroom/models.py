@@ -24,6 +24,10 @@ class Classroom(models.Model):
     def __str__(self):
         return f"{self.name} - {self.id}"
 
+    @property
+    def num_students(self):
+        return self.students.count()
+
 
 class ClassroomPost(models.Model):
     def get_uuid():

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'>
+    <link rel="stylesheet" href="styles/style.css">
+    <script src="scripts/classroom_dash.js" defer></script>
+    <title>OpenClassroom - classroom name</title>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg bg-light">
+            <div class="container-fluid">
+              <div class="navbar-brand flexer-row ms-4" href="#">
+                  <div class="site-title">OpenClassroom</div>
+              </div>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-5 me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Dashboard</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Tests</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Assignments</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Student
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#">Student list</a></li>
+                      <li><a class="dropdown-item" href="#">Student groups</a></li>
+                    </ul>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Files</a>
+                  </li>
+                </ul>
+                <div class="user ms-auto me-4">
+                  <div class="avatar">
+                    <img src="/images/dp3.jpg" alt="">
+                  </div>
+                  <span class="name">First Name</span>
+                  <a href="" class="btn-1-outlined">Logout</a>
+                </div>
+              </div>
+            </div>
+          </nav>
+    </header>
+    <div class="main">
+        <div class="left-col">
+          <div class="classroom-info">
+            <div class="title">Classroom Name</div>
+            <div class="num-students"><span class="num">54</span> Students</div>
+            <div class="share-link">
+              <button id="share-link">copy join link <i class='bx bx-copy'></i><div id="copy-info" class="copy-info" style="display: none;">copied</div></button>
+            </div>
+          </div>
+          <div class="postbox" id="id_postbox" href="#">
+            <div class="form">
+              <div class="inset-float-textinput">
+                <textarea name="description" id="post-descr"></textarea>
+                <label for="post-descr">Post description</label>
+              </div>
+              <div class="form-actions">
+                <div class="attachement-container input-file">
+                  <input type="file" id="post-files" name="post-file" multiple="multiple">
+                  <label for="post-files"><i class='bx bx-paperclip'></i>Attach Files</label>
+                  <div class="selected-file" id="postfiles-file">No files selected</div>
+                </div>
+                <div class="submit-container">
+                  <button type="submit">Post</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="recent-posts">
+            <div class="post-container" id="post-container">
+              <div class="post-item">
+                <div class="icon"><i class='bx bx-file'></i></div>
+                <div class="contents">
+                  <a href="" class="title">Lorem ipsum dolor sit amet consectetur adipisicing</a>
+                  <div class="post-time">Oct 7, 2022</div>
+                  <div class="info">
+                    <div class="info-item"><i class='bx bx-paperclip'></i><span>2 attachments</span></div>
+                    <div class="info-item"><i class='bx bx-envelope-open'></i><span>21 student opened</span></div>
+                    <div class="info-item"><i class='bx bx-comment'></i><span>7 comments</span></div>
+                  </div>
+                </div>
+                <div class="options">
+                  <div class="options-container" id="post0-op-con" style="display: none;">
+                    <a href="">Edit</a>
+                    <a href="">Delete</a>
+                  </div>
+                  <button class="option-toggle" id="post0-option-toggle" data-op_con="post0-op-con"><i class='bx bx-dots-horizontal-rounded'></i></button>
+                </div>
+              </div>
+              <div class="post-item">
+                <div class="icon"><i class='bx bx-file'></i></div>
+                <div class="contents">
+                  <a href="" class="title">Lorem ipsum dolor sit amet consectetur adipisicing</a>
+                  <div class="post-time">Oct 7, 2022</div>
+                  <div class="info">
+                    <div class="info-item"><i class='bx bx-paperclip'></i><span>2 attachments</span></div>
+                    <div class="info-item"><i class='bx bx-envelope-open'></i><span>21 student opened</span></div>
+                    <div class="info-item"><i class='bx bx-comment'></i><span>7 comments</span></div>
+                  </div>
+                </div>
+                <div class="options">
+                  <div class="options-container" id="post1-op-con" style="display: none;">
+                    <a href="">Edit</a>
+                    <a href="">Delete</a>
+                  </div>
+                  <button class="option-toggle" id="post1-option-toggle" data-op_con="post1-op-con"><i class='bx bx-dots-horizontal-rounded'></i></button>
+                </div>
+              </div>
+              <div class="post-item">
+                <div class="icon"><i class='bx bx-file'></i></div>
+                <div class="contents">
+                  <a href="" class="title">Lorem ipsum dolor sit amet consectetur adipisicing</a>
+                  <div class="post-time">Oct 7, 2022</div>
+                  <div class="info">
+                    <div class="info-item"><i class='bx bx-paperclip'></i><span>2 attachments</span></div>
+                    <div class="info-item"><i class='bx bx-envelope-open'></i><span>21 student opened</span></div>
+                    <div class="info-item"><i class='bx bx-comment'></i><span>7 comments</span></div>
+                  </div>
+                </div>
+                <div class="options">
+                  <div class="options-container" id="post2-op-con" style="display: none;">
+                    <a href="">Edit</a>
+                    <a href="">Delete</a>
+                  </div>
+                  <button class="option-toggle" id="post2-option-toggle" data-op_con="post2-op-con"><i class='bx bx-dots-horizontal-rounded'></i></button>
+                </div>
+              </div>
+            </div>
+            <div class="paginator">
+              <!-- to be added -->
+            </div>
+          </div>
+
+        </div>
+        <div class="right-col">
+          <div class="live-tests title-box" id="live_tests">
+            <div class="title">Ongoing Tests</div>
+            <div class="content">
+              <ul>
+                <li>
+                  <div class="test-item">
+                    <i class='bx bx-edit-alt'></i>
+                    <div class="info">
+                      <a href="" class="label-title">Test on electrical circuits 1</a>
+                      <div class="stat">
+                        <div class="issued"><i class='bx bx-user-check'></i><span>Issued:&nbsp;</span><span class="value" id="test0-issued">27</span></div>
+                        <div class="submitted"><i class='bx bx-check-double'></i><span>Submitted:&nbsp;</span><span class="value" id="test0-issued">2</span></div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+
+                <!-- student -->
+                <li>
+                  <div class="test-item">
+                    <i class='bx bx-edit-alt'></i>
+                    <div class="info">
+                      <div class="label-title">Test on electrical circuits 1</div>
+                      <div class="action">
+                        <a href="">Take the test</a>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="upcoming title-box">
+            <div class="title">Upcoming</div>
+            <div class="content">
+              <ul>
+                <li>
+                  <div class="test list-item">
+                    <i class='bx bx-edit-alt'></i>
+                    <div class="info">
+                      <div class="label-title">Test on electrical circuits 1</div>
+                      <div class="time">7:00PM, 17 Oct 2022</div>
+                    </div>
+                  </div>
+                </li>
+
+                <li>
+                  <div class="assignment list-item">
+                    <i class='bx bx-briefcase' ></i>
+                    <div class="info">
+                      <a href="" class="label-title">Assignment on electrical circuits 1</a>
+                      <div class="time">Due: 7:00PM, 17 Oct 2022</div>
+                    </div>
+                  </div>
+                </li>
+
+                <li>
+                  <div class="assignment list-item">
+                    <i class='bx bx-briefcase' ></i>
+                    <div class="info">
+                      <a href="" class="label-title">Assignment on house wiring workshop</a>
+                      <div class="time">Due: 12:00PM, 20 Oct 2022</div>
+                    </div>
+                  </div>
+                </li>
+                <li>
+
+                  <div class="assignment list-item">
+                    <i class='bx bx-briefcase' ></i>
+                    <div class="info">
+                      <a href="" class="label-title">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate, quas?</a>
+                      <div class="time">Due: 7:00PM, 17 Oct 2022</div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="links title-box">
+              <div class="content">
+                <a class="create-test" href=""><i class='bx bx-edit-alt'></i><span>Create New Test</span></a>
+                <a class="create-work" href=""><i class='bx bx-briefcase'></i><span>Assign a Work</span></a>
+              </div>
+          </div>
+            
+      </div>
+    </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script> 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+</body>
+</html>

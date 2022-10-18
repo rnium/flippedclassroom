@@ -3,6 +3,6 @@ from .views import *
 app_name = 'classroom'
 
 urlpatterns = [
-    path('', home, name="homepage"),
+    path('', ClassesDashboard.as_view(), name="homepage"),
 ]
    
