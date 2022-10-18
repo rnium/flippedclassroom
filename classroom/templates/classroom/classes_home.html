@@ -8,7 +8,7 @@
       <div class="heading"><i class='bx bx-user-voice'></i><span>My Teachings</span></div>
       <div class="classrooms-container">
         {% for classroom in classrooms.my_teachings %}
-        <a class="classroom" href="">
+        <a class="classroom" href="{% url 'classroom:classroom_detail' classroom.id %}">
           <div class="classroom-heading">
             <div class="title">{{ classroom.name }}</div>
             <div class="course">{{ classroom.course }}</div>
@@ -33,7 +33,7 @@
       <div class="heading"><i class='bx bx-book'></i><span>My Learnings</span></div>
       <div class="classrooms-container">
         {% for classroom in classrooms.my_learnings %}
-        <a class="classroom" href="">
+        <a class="classroom" href="{% url 'classroom:classroom_detail' classroom.id %}">
           <div class="classroom-heading">
             <div class="title">{{ classroom.name }}</div>
             <div class="course">{{ classroom.course }}</div>

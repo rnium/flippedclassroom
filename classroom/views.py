@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.views.generic import TemplateView
+from django.views.generic import DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Classroom
 
@@ -20,3 +21,9 @@ class ClassesDashboard(LoginRequiredMixin, TemplateView):
         if len(classrooms) > 0:
             context['classrooms'] = classrooms
         return context
+
+class ClassroomDetail(LoginRequiredMixin, DetailView):
+    template_name = 'classroom/classroom_detail.html'
+    def get_object(self):
+        pk = self.kwargs.get('pk')
+        print(pk)
