@@ -20,9 +20,7 @@ function activate_option_btns() {
 activate_option_btns()
 
 $('#share-link').on('click', function(){
-    // do copy stuff
-    let classlink = "https://github.com/rnium/rpolls/blob/main/static/scripts/ctc.js"
-    navigator.clipboard.writeText(classlink)
+    navigator.clipboard.writeText(join_link)
     $('#copy-info').show(200)
     setTimeout(function(){
         $('#copy-info').hide(200)

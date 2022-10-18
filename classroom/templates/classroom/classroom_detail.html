@@ -28,8 +28,8 @@
 {% block content %}
 <div class="left-col">
   <div class="classroom-info">
-    <div class="title">Classroom Name</div>
-    <div class="num-students"><span class="num">54</span> Students</div>
+    <div class="title">{{ classroom.name }}</div>
+    <div class="num-students">{{ classroom.course }}</div>
     <div class="share-link">
       <button id="share-link">copy join link <i class='bx bx-copy'></i><div id="copy-info" class="copy-info" style="display: none;">copied</div></button>
     </div>
@@ -206,4 +206,10 @@
 </div>
 {% endblock content %}
 
-{% comment %} {% block script %}{% endblock script %} {% endcomment %}
+{% block script %}
+{% load static %}
+<script>
+  const join_link = "{{ join_link }}"
+</script>
+<script src="{% static 'classroom/scripts/classroom_dash.js' %}"></script>
+{% endblock script %}

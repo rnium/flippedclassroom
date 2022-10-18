@@ -41,7 +41,7 @@
           </div>
           <div class="info">
             <div class="last-post-info i-item">
-              <i class='bx bx-history'></i><span>last posted: 7 Oct, 2022</span>
+              <i class='bx bx-history'></i><span>last posted: {% if classroom.last_post_time %}{{ classroom.last_post_time|date:'j M, Y' }}{% else %}Never{% endif %}</span>
             </div>
             <div class="event-info i-item">
               <i class='bx bx-calendar-event'></i><span>3 upcoming events</span>

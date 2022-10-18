@@ -41,6 +41,14 @@ class Classroom(models.Model):
         else:
             return None
 
+    @property
+    def last_post_time(self):
+        if self.classroompost_set.count() > 0:
+            post = self.classroompost_set.latest('posted')
+            return post.posted
+        else:
+            return False
+
 
 class ClassroomPost(models.Model):
     def get_uuid():
