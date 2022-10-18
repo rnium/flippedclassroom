@@ -9,3 +9,25 @@ class Account(models.Model):
 
     def __str__(self):
         return self.user.username
+    
+    @property
+    def user_first_name(self):
+        first_name = self.user.first_name
+        if first_name:
+            return first_name
+        else:
+            return self.user.username
+    
+    @property
+    def user_full_name(self):
+        first_name = self.user.first_name
+        last_name = self.user.last_name
+        if first_name or last_name:
+            if first_name and last_name:
+                return f"{first_name} {last_name}"
+            elif first_name:
+                return first_name
+            elif last_name:
+                return last_name
+        else:
+            return self.user.username

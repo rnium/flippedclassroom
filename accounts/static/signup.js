@@ -130,6 +130,8 @@ function submitForm(){
                 avatar_files = $("#dp")[0].files
                 if (avatar_files.length > 0) {
                     setupAvatar(avatar_files[0])
+                } else {
+                    window.location = success_url
                 }
             },
             400: function() {

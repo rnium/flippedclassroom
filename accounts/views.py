@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.views.decorators.csrf import csrf_exempt
 from django.views import View
 from .models import Account
@@ -24,6 +24,12 @@ class SignupView(View):
         else:
             return render(request=request, template_name='accounts/signup.html')
 
+            
+class LogoutView(View):
+    def get(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            logout(request)
+        return redirect("accounts:user_login_get")
 
 @api_view(['POST'])
 def api_login(request):
