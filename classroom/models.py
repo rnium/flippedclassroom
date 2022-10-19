@@ -66,7 +66,7 @@ class ClassroomPost(models.Model):
     posted = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"Post of: {self.classroom}"
+        return f"Post id-{self.id} of: {self.classroom}"
 
 
 class PostAttachment(models.Model):
