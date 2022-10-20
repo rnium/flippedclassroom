@@ -71,8 +71,6 @@ def api_signup(request):
 @csrf_exempt
 def set_avatar(request):
     if request.method == "POST":
-        print(request.POST)
-        print(request.FILES)
         if len(request.FILES) > 0:
             user = request.user
             account = Account.objects.get(user=user)

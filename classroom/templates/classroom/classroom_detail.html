@@ -47,7 +47,7 @@
           <div class="selected-file" id="postfiles-file">No files selected</div>
         </div>
         <div class="submit-container">
-          <button type="submit">Post</button>
+          <button type="submit" id="create-post">Post</button>
         </div>
       </div>
     </div>
@@ -150,6 +150,7 @@
 <script>
   const join_link = "{{ join_link }}"
   const classroom_id = "{{ classroom.id }}"
+  const post_create_url = "{% url 'classroom:post_to_classroom' classroom.id %}"
 </script>
 <script src="{% static 'classroom/scripts/classroom_dash.js' %}"></script>
 {% endblock script %}

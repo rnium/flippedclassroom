@@ -1,12 +1,13 @@
 import django
 from django.shortcuts import redirect, render, get_object_or_404
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.views.generic import TemplateView
 from django.views.generic import DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Classroom
+from django.views.decorators.csrf import csrf_exempt
+from .models import Classroom, ClassroomPost, PostAttachment
 
 
 class ClassesDashboard(LoginRequiredMixin, TemplateView):
@@ -34,7 +35,7 @@ class ClassroomDetail(LoginRequiredMixin, DetailView):
         context["join_link"] = self.request.build_absolute_uri(reverse("classroom:join_classroom", args=(classroom.id,)))
         return context
     
-
+@login_required
 def join_classroom(request, pk):
     classroom = get_object_or_404(Classroom, pk=pk)
     if request.user in classroom.teachers.all():
@@ -43,3 +44,13 @@ def join_classroom(request, pk):
         classroom.students.add(request.user)
         return HttpResponse(f'You\'ve joined to: {classroom.name}')
     return redirect('classroom:classroom_detail', pk=classroom.id)
+
+
+@login_required
+@csrf_exempt
+def create_post(request, pk):
+    if request.method == 'POST':
+        classroom = get_object_or_404(Classroom, pk=pk)
+        print(request.POST)
+        print(request.FILES)
+        return JsonResponse({'status':'completed'})

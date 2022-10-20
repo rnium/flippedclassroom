@@ -37,6 +37,18 @@ $('#share-link').on('click', function(){
 //     }
 //  }
 
+let inputfield = document.getElementById('post-files')
+inputfield.addEventListener("change", function(){
+    let file_nums = inputfield.files.length
+    let filename_container = document.getElementById(`postfiles-file`)
+    let num_str
+    if (file_nums > 1) {
+        num_str = 'files'
+    } else {
+        num_str = 'file'
+    }
+    filename_container.innerText = `${file_nums} ${num_str} selected`
+})
 
 
 function render_post_component(post_data, hidden=false) {
@@ -185,3 +197,30 @@ function load_page_data() {
 $(document).ready(function(){
   load_page_data()
 })
+
+function perform_post() {
+    images = $("#post-files")[0].files
+    let image_form = new FormData
+
+    // fix csrftoken with formdata
+    let post_description = $("#post-descr").val()
+    image_form.append("post_description", post_description)
+    for (let file of images) {
+        console.log(file)
+        image_form.append("files", file)
+    }
+    $.ajax({
+        type: "post",
+        url: post_create_url,
+        data: image_form,
+        contentType: false,
+        processData: false,
+        complete: function(){
+            console.log('complete');
+        }
+    });
+ }
+
+$("#create-post").on('click', function () { 
+    perform_post()
+ })
