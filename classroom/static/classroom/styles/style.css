@@ -446,6 +446,56 @@ body .main .left-col .recent-posts .post-container .post-item .options button i:
   background-color: rgba(197, 207, 214, 0.6);
 }
 
+body .main .left-col .recent-posts .paginator .inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body .main .left-col .recent-posts .paginator .inner ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+body .main .left-col .recent-posts .paginator .inner ul li {
+  display: inline;
+}
+
+body .main .left-col .recent-posts .paginator .inner ul li .current-page {
+  background-color: #7fb6b6;
+  -webkit-box-shadow: 0 0 5px #d1e9e7;
+          box-shadow: 0 0 5px #d1e9e7;
+  color: white;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+  border-radius: 7px;
+  padding: 8px 20px;
+}
+
+body .main .left-col .recent-posts .paginator .inner ul li button.paginator-btn {
+  background-color: #e4eeee;
+  color: gray;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+  border: 0;
+  border-radius: 7px;
+  padding: 6px 12px;
+  cursor: pointer !important;
+}
+
+body .main .left-col .recent-posts .paginator .inner ul li button.paginator-btn:hover {
+  background-color: #62a5a5;
+  color: white;
+}
+
 body .main .right-col {
   width: 30%;
   padding: 0 1rem;

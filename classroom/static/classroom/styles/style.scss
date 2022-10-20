@@ -301,6 +301,40 @@ body {
                         }
                     }
                 }
+                .paginator {
+                    .inner {
+                        @include flexer(column);
+                        ul {
+                            list-style-type: none;
+                            padding: 0;
+                            
+                            li {
+                                display: inline;
+                                .current-page {
+                                    background-color: rgb(127, 182, 182);
+                                    box-shadow: 0 0 5px rgb(209, 233, 231);
+                                    color: white;
+                                    transition: 0.2s;
+                                    border-radius: 7px;
+                                    padding: 8px 20px;
+                                }
+                                button.paginator-btn {
+                                    background-color: #e4eeee;
+                                    color: gray;
+                                    transition: 0.2s;
+                                    border: 0;
+                                    border-radius: 7px;
+                                    padding: 6px 12px;
+                                    cursor: pointer !important;
+                                    &:hover {
+                                        background-color: rgb(98, 165, 165);
+                                        color: white;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
         .right-col {
