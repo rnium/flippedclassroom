@@ -75,6 +75,37 @@ function render_post_component(post_data) {
     return post_comp
 }
 
+function render_paginator(response) {
+    if (response['total_pages'] < 2) {
+        return ""
+    }
+    let list_items = ""
+    let current_page_no = response['current_page']
+    let prev_page_no = current_page_no - 1
+    let next_page_no = current_page_no + 1
+    if (response['prev'] != null) {
+        if (prev_page_no > 1) {
+            list_items += `<li><button class="paginator-btn" id="first_page"><</button></li>`
+        }
+        list_items += `<li><button class="paginator-btn" id="prev_page">${prev_page_no}</button></li>`
+    }
+    list_items += `<li><span class="current-page">${current_page_no}</span></li>`
+    if (response['next'] !== null) {
+        list_items += `<li><button class="paginator-btn" id="next_page">${next_page_no}</button></li>`
+        if (next_page_no < response['total_pages']) {
+            list_items += `<li><button class="paginator-btn" id="next_page">></button></li>`
+        }
+    }
+    let paginator =`<div class="paginator">
+                        <div class="inner">
+                        <ul>
+                            ${list_items}
+                        </ul>
+                        </div>
+                    </div>`
+    return paginator
+}
+
 function render_post_container(posts_arr) {
   let posts = ""
   for (let post of posts_arr) {
@@ -96,7 +127,9 @@ function load_page_data() {
         dataType: "json",
         success: function (response) {
           let container = render_post_container(response['results'])
-          $("#recent-posts").html(container)
+          let paginator = render_paginator(response)
+          let content = container + paginator
+          $("#recent-posts").html(content)
           $("#recent-posts").show(500, function(){
             activate_option_btns()
           })
