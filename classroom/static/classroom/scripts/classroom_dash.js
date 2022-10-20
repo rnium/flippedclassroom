@@ -17,8 +17,6 @@ function activate_option_btns() {
     });
 }
 
-activate_option_btns()
-
 $('#share-link').on('click', function(){
     navigator.clipboard.writeText(join_link)
     $('#copy-info').show(200)
@@ -28,63 +26,7 @@ $('#share-link').on('click', function(){
 })
 
 /* <div class="post-container" id="post-container">
-      <div class="post-item">
-        <div class="icon"><i class='bx bx-file'></i></div>
-        <div class="contents">
-          <a href="" class="title">Lorem ipsum dolor sit amet consectetur adipisicing</a>
-          <div class="post-time">Oct 7, 2022</div>
-          <div class="info">
-            <div class="info-item"><i class='bx bx-paperclip'></i><span>2 attachments</span></div>
-            <div class="info-item"><i class='bx bx-envelope-open'></i><span>21 student opened</span></div>
-            <div class="info-item"><i class='bx bx-comment'></i><span>7 comments</span></div>
-          </div>
-        </div>
-        <div class="options">
-          <div class="options-container" id="post0-op-con" style="display: none;">
-            <a href="">Edit</a>
-            <a href="">Delete</a>
-          </div>
-          <button class="option-toggle" id="post0-option-toggle" data-op_con="post0-op-con"><i class='bx bx-dots-horizontal-rounded'></i></button>
-        </div>
-      </div>
-      <div class="post-item">
-        <div class="icon"><i class='bx bx-file'></i></div>
-        <div class="contents">
-          <a href="" class="title">Lorem ipsum dolor sit amet consectetur adipisicing</a>
-          <div class="post-time">Oct 7, 2022</div>
-          <div class="info">
-            <div class="info-item"><i class='bx bx-paperclip'></i><span>2 attachments</span></div>
-            <div class="info-item"><i class='bx bx-envelope-open'></i><span>21 student opened</span></div>
-            <div class="info-item"><i class='bx bx-comment'></i><span>7 comments</span></div>
-          </div>
-        </div>
-        <div class="options">
-          <div class="options-container" id="post1-op-con" style="display: none;">
-            <a href="">Edit</a>
-            <a href="">Delete</a>
-          </div>
-          <button class="option-toggle" id="post1-option-toggle" data-op_con="post1-op-con"><i class='bx bx-dots-horizontal-rounded'></i></button>
-        </div>
-      </div>
-      <div class="post-item">
-        <div class="icon"><i class='bx bx-file'></i></div>
-        <div class="contents">
-          <a href="" class="title">Lorem ipsum dolor sit amet consectetur adipisicing</a>
-          <div class="post-time">Oct 7, 2022</div>
-          <div class="info">
-            <div class="info-item"><i class='bx bx-paperclip'></i><span>2 attachments</span></div>
-            <div class="info-item"><i class='bx bx-envelope-open'></i><span>21 student opened</span></div>
-            <div class="info-item"><i class='bx bx-comment'></i><span>7 comments</span></div>
-          </div>
-        </div>
-        <div class="options">
-          <div class="options-container" id="post2-op-con" style="display: none;">
-            <a href="">Edit</a>
-            <a href="">Delete</a>
-          </div>
-          <button class="option-toggle" id="post2-option-toggle" data-op_con="post2-op-con"><i class='bx bx-dots-horizontal-rounded'></i></button>
-        </div>
-      </div>
+      
     </div>
     <div class="paginator">
       <div class="inner">
@@ -122,24 +64,35 @@ function render_post_component(post_data) {
     return post_comp
 }
 
-function load_page_data(page_no=null) { 
-    if (page_no === null) {
-        url = `/classroom/api/${classroom_id}/posts`
-    } else {
-        url = `/classroom/api/${classroom_id}/posts?p=${page_no}`
-    }
+function render_post_container(posts_arr) {
+  let posts = ""
+  for (let post of posts_arr) {
+    posts += render_post_component(post)
+  }
+  posts_container =`<div class="post-container" id="post-container">
+                      ${posts}
+                    </div>`
+  return posts_container
+}
+
+
+function load_page_data() { 
+    url = `/classroom/api/${classroom_id}/posts`
     $.ajax({
         type: "get",
         url: url,
         data: "data",
         dataType: "json",
         success: function (response) {
-            return response
+          let container = render_post_container(response['results'])
+          $("#recent-posts").html(container)
+          $("#recent-posts").show(500, function(){
+            activate_option_btns()
+          })
         }
     });
 }
 
 $(document).ready(function(){
-    page_data = load_page_data()
-    console.log(page_data)
+  load_page_data()
 })
