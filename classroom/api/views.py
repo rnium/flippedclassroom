@@ -18,5 +18,5 @@ class ClassroomPostsView(ListAPIView):
         return classroom
     def get_queryset(self):
         classroom = self.get_object()
-        posts = ClassroomPost.objects.filter(classroom=classroom)
+        posts = ClassroomPost.objects.filter(classroom=classroom).order_by('-posted')
         return posts

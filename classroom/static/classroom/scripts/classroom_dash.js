@@ -25,6 +25,15 @@ $('#share-link').on('click', function(){
     }, 1200)
 })
 
+// function format_post_dates() { 
+//     let times = $('.post-time')
+//     for (let time of times) {
+//         $(`#${time.id}`).datepicker({
+//             altFormat: "yy-mm-dd"
+//         });
+//     }
+//  }
+
 /* <div class="post-container" id="post-container">
       
     </div>
@@ -43,22 +52,24 @@ $('#share-link').on('click', function(){
 
 function render_post_component(post_data) {
     let description = post_data['description'].split(' ').slice(0, 7).join(' ')
+    let date_raw = new Date(post_data['posted'])
+    let date = date_raw.toLocaleString("en-US")
     post_comp = `<div class="post-item">
                     <div class="icon"><i class='bx bx-file'></i></div>
                     <div class="contents">
                     <a href="" class="title">${description}</a>
-                    <div class="post-time">${post_data['posted']}</div>
+                    <div class="post-time" id="${post_data['id']}-time">${date}</div>
                     <div class="info">
                         <div class="info-item"><i class='bx bx-paperclip'></i><span>${post_data['num_attachments']} attachments</span></div>
                         <div class="info-item"><i class='bx bx-comment'></i><span>7 comments</span></div>
                     </div>
                     </div>
                     <div class="options">
-                    <div class="options-container" id="post0-op-con" style="display: none;">
+                    <div class="options-container" id="${post_data['id']}-op-con" style="display: none;">
                         <a href="">Edit</a>
                         <a href="">Delete</a>
                     </div>
-                    <button class="option-toggle" id="post0-option-toggle" data-op_con="post0-op-con"><i class='bx bx-dots-horizontal-rounded'></i></button>
+                    <button class="option-toggle" id="${post_data['id']}-option-toggle" data-op_con="${post_data['id']}-op-con"><i class='bx bx-dots-horizontal-rounded'></i></button>
                     </div>
                 </div>`
     return post_comp
