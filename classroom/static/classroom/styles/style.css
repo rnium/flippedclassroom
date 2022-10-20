@@ -446,6 +446,11 @@ body .main .left-col .recent-posts .post-container .post-item .options button i:
   background-color: rgba(197, 207, 214, 0.6);
 }
 
+body .main .left-col .recent-posts .paginator {
+  -webkit-transition: opacity 500ms;
+  transition: opacity 500ms;
+}
+
 body .main .left-col .recent-posts .paginator .inner {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -467,6 +472,7 @@ body .main .left-col .recent-posts .paginator .inner ul {
 
 body .main .left-col .recent-posts .paginator .inner ul li {
   display: inline;
+  padding: 0 2px;
 }
 
 body .main .left-col .recent-posts .paginator .inner ul li .current-page {

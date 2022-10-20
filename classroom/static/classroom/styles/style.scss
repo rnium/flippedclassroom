@@ -302,6 +302,7 @@ body {
                     }
                 }
                 .paginator {
+                    transition: opacity 500ms;
                     .inner {
                         @include flexer(column);
                         ul {
@@ -310,6 +311,7 @@ body {
                             
                             li {
                                 display: inline;
+                                padding: 0 2px;
                                 .current-page {
                                     background-color: rgb(127, 182, 182);
                                     box-shadow: 0 0 5px rgb(209, 233, 231);
