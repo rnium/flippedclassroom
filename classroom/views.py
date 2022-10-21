@@ -34,7 +34,16 @@ class ClassroomDetail(LoginRequiredMixin, DetailView):
         classroom = self.get_object()
         context["join_link"] = self.request.build_absolute_uri(reverse("classroom:join_classroom", args=(classroom.id,)))
         return context
-    
+
+class PostDetail(LoginRequiredMixin, DetailView):
+    template_name = 'classroom/post_detail.html'
+    model = ClassroomPost
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        
+        return context
+
+
 @login_required
 def join_classroom(request, pk):
     classroom = get_object_or_404(Classroom, pk=pk)

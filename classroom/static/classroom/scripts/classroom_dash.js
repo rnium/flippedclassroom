@@ -95,7 +95,7 @@ function render_post_component(post_data, hidden=false) {
     post_comp = `<div class="post-item" ${inline_style}>
                     <div class="icon"><i class='bx bx-file'></i></div>
                     <div class="contents">
-                    <a href="" class="title">${description}</a>
+                    <a href="${post_data['view_url']}" class="title">${description}</a>
                     <div class="post-time" id="${post_data['id']}-time">${date}</div>
                     <div class="info">
                         <div class="info-item"><i class='bx bx-paperclip'></i><span>${post_data['num_attachments']} attachments</span></div>

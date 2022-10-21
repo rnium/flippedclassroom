@@ -2,7 +2,7 @@ from unicodedata import name
 from django.db import models
 from django.contrib.auth.models import User
 import uuid
-from os.path import join
+from os.path import join, basename
 
 
 class Classroom(models.Model):
@@ -74,7 +74,14 @@ class ClassroomPost(models.Model):
 
     @property
     def num_attachments(self):
-        return self.postattachment_set.count()   
+        return self.postattachment_set.count()
+
+    @property
+    def has_attachments(self):
+        if self.num_attachments > 0:
+            return True
+        else:
+            return False   
 
 
 class PostAttachment(models.Model):
@@ -83,6 +90,10 @@ class PostAttachment(models.Model):
 
     classroom_post = models.ForeignKey(ClassroomPost, on_delete=models.CASCADE)
     attached_file = models.FileField(upload_to=filepath)
+
+    @property
+    def filename(self):
+        return str(basename(self.attached_file.name))
 
     
 class Comment(models.Model):

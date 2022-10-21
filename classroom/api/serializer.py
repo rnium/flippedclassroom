@@ -1,13 +1,18 @@
+from django.urls import reverse
 from rest_framework import serializers
 from classroom.models import ClassroomPost
 
 class PostSerializer(serializers.ModelSerializer):
+    view_url = serializers.SerializerMethodField()
     num_attachments = serializers.SerializerMethodField()
     num_comments = serializers.SerializerMethodField()
     action_permitted = serializers.SerializerMethodField()
     class Meta:
         model = ClassroomPost
         exclude = ['author', 'classroom']
+
+    def get_view_url(self, obj):
+        return reverse('classroom:post_detail', kwargs={'pk':obj.id})
 
     def get_num_attachments(self, obj):
         return obj.num_attachments

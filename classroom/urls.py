@@ -8,5 +8,6 @@ urlpatterns = [
     path('classroom/<str:pk>', ClassroomDetail.as_view(), name="classroom_detail"),
     path('classroom/<str:pk>/post', create_post, name="post_to_classroom"),
     path('classroom/join/<str:pk>', join_classroom, name="join_classroom"),
+    path('classroom/post/<str:pk>', PostDetail.as_view(), name="post_detail"),
 ]
    
