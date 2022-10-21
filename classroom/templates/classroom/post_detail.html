@@ -50,11 +50,11 @@
   </div>
   <div class="comments">
     <div class="heading">
-      <i class='bx bxs-chat'></i><span>{{ classroompost.num_comments }} Comments</span>
+      <i class='bx bxs-chat'></i><span id="id_num-comments">{{ classroompost.num_comments }} Comments</span>
     </div>
     <div class="comments-container" id="comments-container">
       {% if classroompost.has_comments %}
-      <ul class="comments-list">
+      <ul class="comments-list" id="id_comments-list">
         {% for thread in threads %}
         <li>
           <div class="comment">
@@ -68,8 +68,7 @@
                   <button class="show-reply-box" id="{{ thread.id }}_reply-shower" data-box_con_id="{{ thread.id }}_reply-con"><i class='bx bx-reply' ></i><span>Reply</span></button>
                 </div>
               </div>
-            </div>
-            {% if thread.has_replies %}
+            </div> 
             <div class="replies">
               <ul class="reply-list" id="{{ thread.id }}-replyList">
                 {% for reply in thread.reply.all %}
@@ -86,7 +85,6 @@
                 {% endfor %}
               </ul>
             </div>
-            {% endif %}
             <div class="reply-input" style="display: none;" id="{{ thread.id }}_reply-con">
               <input type="text" name="" id="{{ thread.id }}_reply" placeholder="Reply to this comment" data-comment_id="{{ thread.id }}">
               <button class="post-comment-btn" id="{{ thread.id }}_reply-btn" data-input_id="{{ thread.id }}_reply" title="post reply"><i class='bx bx-send'></i></button>
@@ -96,6 +94,7 @@
         {% endfor %}
       </ul>
       {% else %}
+      <ul class="comments-list" id="id_comments-list"></ul>
       <div class="no-comments" id="no-comments"><i class='bx bx-info-square'></i><span>This post has no comments yet!</span></div>
       {% endif %}
       <div class="comment-input">
@@ -109,4 +108,8 @@
 {% block script %}
 {% load static %}
 <script src="{% static 'classroom/scripts/post_detail.js' %}"></script>
+<script>
+  const comment_post_url = "{% url 'classroom:post_comment' classroompost.id %}"
+  let csrftoken = "{{ csrf_token }}"
+</script>
 {% endblock script %}
