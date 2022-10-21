@@ -77,3 +77,29 @@ class PostAttachment(models.Model):
     attached_file = models.FileField(upload_to=filepath)
 
     
+class Comment(models.Model):
+    def get_uuid():
+        return uuid.uuid4().hex
+
+    id = models.CharField(
+        max_length=50,
+        primary_key = True,
+        default = get_uuid,
+        editable = False,
+    )
+    post = models.ForeignKey(ClassroomPost, on_delete=models.CASCADE)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    parent = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name='reply')
+    comment_text = models.CharField(max_length=9999)
+    comment_time = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"comment object({self.id}) of post:<{self.post.id}>"
+
+    @property
+    def is_thread(self):
+        # a thread is a type of comment which has no parent comment (not a reply comment)
+        if self.parent is None:
+            return True
+        else:
+            return False

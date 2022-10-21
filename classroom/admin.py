@@ -5,3 +5,4 @@ from classroom.models import *
 admin.site.register(Classroom)
 admin.site.register(ClassroomPost)
 admin.site.register(PostAttachment)
+admin.site.register(Comment)
