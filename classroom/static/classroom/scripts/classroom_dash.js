@@ -183,7 +183,7 @@ function load_page_data() {
           let paginator = render_paginator(response, true)
           let content = container + paginator
           $("#recent-posts").html(content)
-          $("#recent-posts").show(500, function(){
+          $("#recent-posts").show(200, function(){
             activate_option_btns()
             $("#id_paginator").css('opacity', 1)
           })
@@ -199,28 +199,45 @@ $(document).ready(function(){
 })
 
 function perform_post() {
-    images = $("#post-files")[0].files
-    let image_form = new FormData
+    files = $("#post-files")[0].files
+    let post_form = new FormData
 
     // fix csrftoken with formdata
     let post_description = $("#post-descr").val()
-    image_form.append("post_description", post_description)
-    for (let file of images) {
-        console.log(file)
-        image_form.append("files", file)
-    }
+    post_form.append("post_description", post_description)
+    if (files.length > 0) {
+        for (let file of files) {
+            post_form.append("files", file)
+        }
+    } 
     $.ajax({
         type: "post",
         url: post_create_url,
-        data: image_form,
+        data: post_form,
         contentType: false,
         processData: false,
+        beforeSend: function(){
+            $("#loader").show(100)
+            $("#create-post").attr('disabled', true)
+        },
+        success: function(){
+            console.log('success fired')
+            $("#recent-posts").hide(100)
+            load_page_data()
+        },
         complete: function(){
             console.log('complete');
+            $("#loader").hide(100)
+            $("#create-post").removeAttr('disabled');
         }
     });
  }
 
-$("#create-post").on('click', function () { 
+$("#create-post").on('click', function () {
+    let post_description = $("#post-descr").val()
+    if (post_description.length < 1) {
+        $("#post-descr").focus()
+        return null
+    }
     perform_post()
  })
