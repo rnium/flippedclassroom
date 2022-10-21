@@ -67,6 +67,14 @@ class ClassroomPost(models.Model):
 
     def __str__(self):
         return f"Post id-{self.id} of: {self.classroom}"
+    
+    @property
+    def num_comments(self):
+        return self.comment_set.count()
+
+    @property
+    def num_attachments(self):
+        return self.postattachment_set.count()   
 
 
 class PostAttachment(models.Model):
@@ -100,6 +108,14 @@ class Comment(models.Model):
     def is_thread(self):
         # a thread is a type of comment which has no parent comment (not a reply comment)
         if self.parent is None:
+            return True
+        else:
+            return False
+
+    @property
+    def has_replies(self):
+        num_replies = self.reply.count()
+        if num_replies > 0:
             return True
         else:
             return False

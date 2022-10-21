@@ -99,7 +99,7 @@ function render_post_component(post_data, hidden=false) {
                     <div class="post-time" id="${post_data['id']}-time">${date}</div>
                     <div class="info">
                         <div class="info-item"><i class='bx bx-paperclip'></i><span>${post_data['num_attachments']} attachments</span></div>
-                        <div class="info-item"><i class='bx bx-comment'></i><span>7 comments</span></div>
+                        <div class="info-item"><i class='bx bx-comment'></i><span>${post_data['num_comments']} comments</span></div>
                     </div>
                     </div>
                     ${options}
