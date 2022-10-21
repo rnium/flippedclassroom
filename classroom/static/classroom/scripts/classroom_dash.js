@@ -38,22 +38,9 @@ $('#share-link').on('click', function(){
 //  }
 
 let inputfield = document.getElementById('post-files')
-inputfield.addEventListener("change", function(){
-    let file_nums = inputfield.files.length
-    let filename_container = document.getElementById(`postfiles-file`)
-    let num_str
-    if (file_nums > 1) {
-        num_str = 'files'
-    } else {
-        num_str = 'file'
-    }
-    filename_container.innerText = `${file_nums} ${num_str} selected`
-})
-
-function check_existing_input_files(){
-    let inputfield = document.getElementById('post-files')
-    let file_nums = inputfield.files.length
-    if (file_nums > 0) {
+if (inputfield !== null) {
+    inputfield.addEventListener("change", function(){
+        let file_nums = inputfield.files.length
         let filename_container = document.getElementById(`postfiles-file`)
         let num_str
         if (file_nums > 1) {
@@ -62,8 +49,25 @@ function check_existing_input_files(){
             num_str = 'file'
         }
         filename_container.innerText = `${file_nums} ${num_str} selected`
-    } else {
-        $("#postfiles-file").text('No files selected')
+    })
+}
+
+function check_existing_input_files(){
+    let inputfield = document.getElementById('post-files')
+    if (inputfield !== null) {
+        let file_nums = inputfield.files.length
+        if (file_nums > 0) {
+            let filename_container = document.getElementById(`postfiles-file`)
+            let num_str
+            if (file_nums > 1) {
+                num_str = 'files'
+            } else {
+                num_str = 'file'
+            }
+            filename_container.innerText = `${file_nums} ${num_str} selected`
+        } else {
+            $("#postfiles-file").text('No files selected')
+        }
     }
 }
 
@@ -78,6 +82,16 @@ function render_post_component(post_data, hidden=false) {
     let description = post_data['description'].split(' ').slice(0, 7).join(' ')
     let date_raw = new Date(post_data['posted'])
     let date = date_raw.toLocaleString("en-US")
+    let options = ""
+    if (post_data['action_permitted']) {
+        options = `<div class="options">
+                        <div class="options-container" id="${post_data['id']}-op-con" style="display: none;">
+                            <a href="">Edit</a>
+                            <a href="">Delete</a>
+                        </div>
+                        <button class="option-toggle" id="${post_data['id']}-option-toggle" data-op_con="${post_data['id']}-op-con"><i class='bx bx-dots-horizontal-rounded'></i></button>
+                    </div>`
+    }
     post_comp = `<div class="post-item" ${inline_style}>
                     <div class="icon"><i class='bx bx-file'></i></div>
                     <div class="contents">
@@ -88,13 +102,7 @@ function render_post_component(post_data, hidden=false) {
                         <div class="info-item"><i class='bx bx-comment'></i><span>7 comments</span></div>
                     </div>
                     </div>
-                    <div class="options">
-                    <div class="options-container" id="${post_data['id']}-op-con" style="display: none;">
-                        <a href="">Edit</a>
-                        <a href="">Delete</a>
-                    </div>
-                    <button class="option-toggle" id="${post_data['id']}-option-toggle" data-op_con="${post_data['id']}-op-con"><i class='bx bx-dots-horizontal-rounded'></i></button>
-                    </div>
+                    ${options}
                 </div>`
     return post_comp
 }
@@ -187,7 +195,6 @@ function activate_paginator_btns() {
         fetch_new_page(next_page_url)
     })
 }
-
 
 function load_page_data() { 
     url = `/classroom/api/${classroom_id}/posts`

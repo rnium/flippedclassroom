@@ -34,6 +34,7 @@
       <button id="share-link">copy join link <i class='bx bx-copy'></i><div id="copy-info" class="copy-info" style="display: none;">copied</div></button>
     </div>
   </div>
+  {% if request.user in classroom.teachers.all %}
   <div class="postbox" id="id_postbox" href="#">
     <div class="form">
       <div class="inset-float-textinput">
@@ -56,6 +57,7 @@
       </div>
     </div>
   </div>
+  {% endif %}
   <div class="recent-posts" id="recent-posts" style="display: none;">
     
   </div>

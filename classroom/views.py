@@ -1,4 +1,4 @@
-import django
+from django.core.exceptions import PermissionDenied
 from django.shortcuts import redirect, render, get_object_or_404
 from django.http import HttpResponse, JsonResponse
 from django.urls import reverse
@@ -51,7 +51,8 @@ def join_classroom(request, pk):
 def create_post(request, pk):
     if request.method == 'POST':
         classroom = get_object_or_404(Classroom, pk=pk)
-        print(request.POST.get('post_description'))
+        if request.user not in classroom.teachers.all():
+            raise PermissionDenied()
         classroom_post = ClassroomPost(
             classroom = classroom,
             description = request.POST.get('post_description'),
