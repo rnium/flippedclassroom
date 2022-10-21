@@ -51,6 +51,19 @@ def join_classroom(request, pk):
 def create_post(request, pk):
     if request.method == 'POST':
         classroom = get_object_or_404(Classroom, pk=pk)
-        print(request.POST)
-        print(request.FILES)
+        print(request.POST.get('post_description'))
+        classroom_post = ClassroomPost(
+            classroom = classroom,
+            description = request.POST.get('post_description'),
+            author = request.user
+        )
+        classroom_post.save()
+        
+        files_dict = dict(request.FILES)['files']
+        if len(files_dict) > 0:
+            for file in files_dict:
+                PostAttachment.objects.create(
+                    classroom_post = classroom_post,
+                    attached_file = file
+                )
         return JsonResponse({'status':'completed'})

@@ -50,6 +50,21 @@ inputfield.addEventListener("change", function(){
     filename_container.innerText = `${file_nums} ${num_str} selected`
 })
 
+function check_existing_input_files(){
+    let inputfield = document.getElementById('post-files')
+    let file_nums = inputfield.files.length
+    if (file_nums > 0) {
+        let filename_container = document.getElementById(`postfiles-file`)
+        let num_str
+        if (file_nums > 1) {
+            num_str = 'files'
+        } else {
+            num_str = 'file'
+        }
+        filename_container.innerText = `${file_nums} ${num_str} selected`
+    }
+}
+
 
 function render_post_component(post_data, hidden=false) {
     let inline_style
@@ -195,7 +210,8 @@ function load_page_data() {
 }
 
 $(document).ready(function(){
-  load_page_data()
+    check_existing_input_files()
+    load_page_data()
 })
 
 function perform_post() {
