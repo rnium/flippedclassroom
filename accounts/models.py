@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.templatetags.static import static
 
 
 class Account(models.Model):
@@ -31,3 +32,11 @@ class Account(models.Model):
                 return last_name
         else:
             return self.user.username
+
+    @property
+    def avatar_url(self):
+        if bool(self.profile_picture):
+            return self.profile_picture.url
+        else:
+            return static('accounts/images/blank-dp.svg')
+            

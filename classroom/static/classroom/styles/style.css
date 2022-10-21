@@ -942,6 +942,7 @@ body .main .create-assignment-container form .submit-container button:hover {
 }
 
 body .main .post-detail {
+  width: 100%;
   padding: 0 7%;
 }
 
@@ -1159,6 +1160,9 @@ body .main .post-detail .comments .comments-container ul.comments-list li .comme
 
 body .main .post-detail .comments .comments-container ul.comments-list li .comment .comment-inner .comment-body, body .main .post-detail .comments .comments-container ul.comments-list li .comment .reply .comment-body {
   margin-left: 0.5rem;
+  -webkit-box-flex: 100;
+      -ms-flex-positive: 100;
+          flex-grow: 100;
 }
 
 body .main .post-detail .comments .comments-container ul.comments-list li .comment .comment-inner .comment-body .username, body .main .post-detail .comments .comments-container ul.comments-list li .comment .reply .comment-body .username {

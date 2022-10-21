@@ -7,7 +7,7 @@ from django.views.generic import TemplateView
 from django.views.generic import DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.decorators.csrf import csrf_exempt
-from .models import Classroom, ClassroomPost, PostAttachment
+from .models import Classroom, ClassroomPost, PostAttachment, Comment
 
 
 class ClassesDashboard(LoginRequiredMixin, TemplateView):
@@ -40,7 +40,9 @@ class PostDetail(LoginRequiredMixin, DetailView):
     model = ClassroomPost
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        
+        classroom_post = self.get_object()
+        threads = Comment.objects.filter(post=classroom_post, parent=None)
+        context['threads'] = threads
         return context
 
 

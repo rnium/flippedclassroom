@@ -77,6 +77,13 @@ class ClassroomPost(models.Model):
         return self.postattachment_set.count()
 
     @property
+    def has_comments(self):
+        if self.num_comments > 0:
+            return True
+        else:
+            return False
+
+    @property
     def has_attachments(self):
         if self.num_attachments > 0:
             return True
@@ -130,3 +137,11 @@ class Comment(models.Model):
             return True
         else:
             return False
+    
+    @property
+    def cssClass(self):
+        if self.author in self.post.classroom.teachers.all():
+            # user-teacher class has a teacher badge in it
+            return "username user-teacher"
+        else:
+            return "username"

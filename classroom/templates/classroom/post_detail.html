@@ -50,72 +50,52 @@
   </div>
   <div class="comments">
     <div class="heading">
-      <i class='bx bxs-chat'></i><span>5 Comments</span>
+      <i class='bx bxs-chat'></i><span>{{ classroompost.num_comments }} Comments</span>
     </div>
-    <div class="comments-container">
+    <div class="comments-container" id="comments-container">
+      {% if classroompost.has_comments %}
       <ul class="comments-list">
+        {% for thread in threads %}
         <li>
           <div class="comment">
             <div class="comment-inner">
-              <div class="avatar"><img src="images/dp1.jpg" alt=""></div>
+              <div class="avatar"><img src="{{ thread.author.account.avatar_url }}" alt=""></div>
               <div class="comment-body">
-                <div class="username">MSI Rony</div>
-                <div class="time">7:10PM, 27 Oct 2022</div>
-                <div class="comment-text">Lmet consectetur Lorem ipsum dolor sit Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate doloremque dolorum autem. Nihil sint odit nesciunt, expedita inventore recusandae illum labore accusantium animi rerum, corporis eum. Sint doloremque blanditiis impedit? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero fugiat porro eligendi unde atque enim? amet consectetur adipisicing elit. Natus, atque? adipisicing</div>
+                <div class="{{ thread.cssClass }}">{{ thread.author.account.user_full_name }}</div>
+                <div class="time">{{ thread.comment_time }}</div>
+                <div class="comment-text">{{ thread.comment_text }}</div>
                 <div class="reply-btn">
-                  <button class="show-reply-box" id="comment-1_reply-shower" data-box_con_id="comment-1_reply-con"><i class='bx bx-reply' ></i><span>Reply</span></button>
+                  <button class="show-reply-box" id="{{ thread.id }}_reply-shower" data-box_con_id="{{ thread.id }}_reply-con"><i class='bx bx-reply' ></i><span>Reply</span></button>
                 </div>
               </div>
             </div>
+            {% if thread.has_replies %}
             <div class="replies">
-              <ul class="reply-list" id="comment1-replyList">
+              <ul class="reply-list" id="{{ thread.id }}-replyList">
+                {% for reply in thread.reply.all %}
                 <li>
                   <div class="reply">
-                    <div class="avatar"><img src="images/dp4.jpg" alt=""></div>
+                    <div class="avatar"><img src="{{ reply.author.account.avatar_url }}" alt="avatar"></div>
                     <div class="comment-body">
-                      <div class="username user-teacher">Pete Mitchel</div>
-                      <div class="time">7:10PM, 27 Oct 2022</div>
-                      <div class="comment-text">Voluptate doloremque dolorum autem. Nihil sint odit nesciunt Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates nesciunt ducimus, eius corrupti voluptas incidunt optio? Omnis delectus recusandae laudantium.</div>
+                      <div class="{{ reply.cssClass }}">{{ reply.author.account.user_full_name }}</div>
+                      <div class="time">{{ reply.comment_time }}</div>
+                      <div class="comment-text">{{ reply.comment_text }}</div>
                     </div>
                   </div>
                 </li>
-                <li>
-                  <div class="reply">
-                    <div class="avatar"><img src="images/dp3.jpg" alt=""></div>
-                    <div class="comment-body">
-                      <div class="username">Cruize</div>
-                      <div class="time">7:10PM, 27 Oct 2022</div>
-                      <div class="comment-text">Voluptate doloremque dolorum autem. Nihil sint odit nesciunt Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates nesciunt ducimus, eius corrupti voluptas incidunt optio? Omnis delectus recusandae laudantium.</div>
-                    </div>
-                </li>
+                {% endfor %}
               </ul>
             </div>
-            <div class="reply-input" style="display: none;" id="comment-1_reply-con">
-              <input type="text" name="" id="comment-1_reply" placeholder="Reply to this comment">
-              <button class="post-comment-btn" id="comment-1_reply-btn" data-input_id="comment-1_reply" title="post reply"><i class='bx bx-send'></i></button>
+            {% endif %}
+            <div class="reply-input" style="display: none;" id="{{ thread.id }}_reply-con">
+              <input type="text" name="" id="{{ thread.id }}_reply" placeholder="Reply to this comment" data-comment_id="{{ thread.id }}">
+              <button class="post-comment-btn" id="{{ thread.id }}_reply-btn" data-input_id="{{ thread.id }}_reply" title="post reply"><i class='bx bx-send'></i></button>
             </div>
           </div>
         </li>
-        <li>
-          <div class="comment">
-            <div class="comment-inner">
-              <div class="avatar"><img src="images/dp2.jpg" alt=""></div>
-              <div class="comment-body">
-                <div class="username">Mason Barnard</div>
-                <div class="time">6:11PM, 28 Oct 2022</div>
-                <div class="comment-text">Adipisicing elit. Voluptate doloremque dolorum autem. Nihil sint odit nesciunt, expedita inventore recusandae illum labore accusantium animi rerum, corporis eum. Sint doloremque blanditiis impedit? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero fugiat porro eligendi unde atque enim? amet consectetur adipisicing elit. Natus, atque? adipisicing</div>
-                <div class="reply-btn">
-                  <button class="show-reply-box" id="comment-2_reply-shower" data-box_con_id="comment-2_reply-con"><i class='bx bx-reply' ></i><span>Reply</span></button>
-                </div>
-              </div>
-            </div>
-            <div class="reply-input" style="display: none;" id="comment-2_reply-con">
-              <input type="text" name="" id="comment-2_reply" placeholder="Reply to this comment">
-              <button class="post-comment-btn" id="comment-2_reply-btn" data-input_id="comment-2_reply" title="post reply"><i class='bx bx-send'></i></button>
-            </div>
-          </div>
-        </li>
+        {% endfor %}
       </ul>
+      {% endif %}
       <div class="comment-input">
         <input type="text" name="" id="id_comment-box" placeholder="Write a comment">
         <button class="post-comment-btn" id="comment-post-btn" data-input_id="id_comment-box" title="post comment"><i class='bx bxs-send' ></i></button>
