@@ -62,6 +62,8 @@ function check_existing_input_files(){
             num_str = 'file'
         }
         filename_container.innerText = `${file_nums} ${num_str} selected`
+    } else {
+        $("#postfiles-file").text('No files selected')
     }
 }
 
@@ -240,6 +242,9 @@ function perform_post() {
             console.log('success fired')
             $("#recent-posts").hide(100)
             load_page_data()
+            $("#post-files").val("")
+            $("#post-descr").val("")
+            check_existing_input_files()
         },
         complete: function(){
             console.log('complete');

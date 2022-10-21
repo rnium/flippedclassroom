@@ -58,12 +58,13 @@ def create_post(request, pk):
             author = request.user
         )
         classroom_post.save()
-        
-        files_dict = dict(request.FILES)['files']
-        if len(files_dict) > 0:
-            for file in files_dict:
-                PostAttachment.objects.create(
-                    classroom_post = classroom_post,
-                    attached_file = file
-                )
+        has_files = bool(request.FILES.get('files', False))
+        if has_files:
+            files_dict = dict(request.FILES)['files']
+            if len(files_dict) > 0:
+                for file in files_dict:
+                    PostAttachment.objects.create(
+                        classroom_post = classroom_post,
+                        attached_file = file
+                    )
         return JsonResponse({'status':'completed'})
