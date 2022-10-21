@@ -1,5 +1,5 @@
 {% extends 'classroom/base.html' %}
-{% block title %}<title>OpenClassroom post detail</title>{% endblock title %}
+{% block title %}<title>Post - {{ classroompost.description }}</title>{% endblock title %}
 {% block nav %}
 <ul class="navbar-nav ms-5 me-auto mb-2 mb-lg-0">
   <li class="nav-item">
@@ -95,6 +95,8 @@
         </li>
         {% endfor %}
       </ul>
+      {% else %}
+      <div class="no-comments" id="no-comments"><i class='bx bx-info-square'></i><span>This post has no comments yet!</span></div>
       {% endif %}
       <div class="comment-input">
         <input type="text" name="" id="id_comment-box" placeholder="Write a comment">
