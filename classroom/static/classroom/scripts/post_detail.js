@@ -22,8 +22,19 @@ function activate_show_reply(comment_id=null) {
     }
 }
 
+function adjust_times() {
+    let times = $(".time")
+    for (let time of times) {
+        let time_raw = $(`#${time.id}`).text()
+        let date_obj = new Date(time_raw)
+        $(`#${time.id}`).text(date_obj.toLocaleString())
+    }
+}
+
 function appendComment(response) {
-    parent_id = response['parent_id']
+    let parent_id = response['parent_id']
+    let comment_time = new Date(response['comment_time'])
+    let locale_time = comment_time.toLocaleString()
     if (parent_id == null) {
         comment = `<li>
                     <div class="comment" id="comment-${response['id']}" style="display:none;">
@@ -31,7 +42,7 @@ function appendComment(response) {
                         <div class="avatar"><img src="${response['avatar_url']}" alt="avatar"></div>
                         <div class="comment-body">
                         <div class="${response['cssClass']}">${response['author_name']}</div>
-                        <div class="time">${response['comment_time']}</div>
+                        <div class="time" id="${response['id']}_time">${locale_time}</div>
                         <div class="comment-text">${response['comment_text']}</div>
                         <div class="reply-btn">
                             <button class="show-reply-box" id="${response['id']}_reply-shower" data-box_con_id="${response['id']}_reply-con"><i class='bx bx-reply' ></i><span>Reply</span></button>
@@ -60,7 +71,7 @@ function appendComment(response) {
                         <div class="avatar"><img src="${response['avatar_url']}" alt="avatar"></div>
                         <div class="comment-body">
                             <div class="${response['cssClass']}">${response['author_name']}</div>
-                            <div class="time">${response['comment_time']}</div>
+                            <div class="time" id="${response['id']}_time">${locale_time}</div>
                             <div class="comment-text">${response['comment_text']}</div>
                         </div>
                         </div>
@@ -133,5 +144,8 @@ function activate_post_reply(comment_id=null) {
 }
 
 
-activate_show_reply()
-activate_post_reply()
+$(document).ready(function() {
+    adjust_times()
+    activate_show_reply()
+    activate_post_reply()
+})

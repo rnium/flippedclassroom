@@ -30,7 +30,7 @@
   <div class="post-body">
       <div class="description">{{ classroompost.description }}</div>
       <div class="post-info">
-          <div class="post-time"><i class='bx bx-time'></i><span class="time">{{ classroompost.posted }}</span></div>
+          <div class="post-time"><i class='bx bx-time'></i><span class="time" id="post_time">{{ classroompost.posted|date:"c" }}</span></div>
       </div>
       {% if classroompost.has_attachments %}
       <div class="attachments">
@@ -62,7 +62,7 @@
               <div class="avatar"><img src="{{ thread.author.account.avatar_url }}" alt=""></div>
               <div class="comment-body">
                 <div class="{{ thread.cssClass }}">{{ thread.author.account.user_full_name }}</div>
-                <div class="time">{{ thread.comment_time }}</div>
+                <div class="time" id="{{ thread.id }}_time">{{ thread.comment_time|date:"c" }}</div>
                 <div class="comment-text">{{ thread.comment_text }}</div>
                 <div class="reply-btn">
                   <button class="show-reply-box" id="{{ thread.id }}_reply-shower" data-box_con_id="{{ thread.id }}_reply-con"><i class='bx bx-reply' ></i><span>Reply</span></button>
@@ -77,7 +77,7 @@
                     <div class="avatar"><img src="{{ reply.author.account.avatar_url }}" alt="avatar"></div>
                     <div class="comment-body">
                       <div class="{{ reply.cssClass }}">{{ reply.author.account.user_full_name }}</div>
-                      <div class="time">{{ reply.comment_time }}</div>
+                      <div class="time" id="{{ reply.id }}_time">{{ reply.comment_time|date:"c" }}</div>
                       <div class="comment-text">{{ reply.comment_text }}</div>
                     </div>
                   </div>
