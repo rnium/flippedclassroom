@@ -93,7 +93,7 @@ class ClassroomPost(models.Model):
 
 class PostAttachment(models.Model):
     def filepath(self, filename):
-        return join("attachments", str(self.classroom_post.classroom), filename)
+        return join("attachments", str(self.classroom_post.classroom.id), filename)
 
     classroom_post = models.ForeignKey(ClassroomPost, on_delete=models.CASCADE)
     attached_file = models.FileField(upload_to=filepath)
@@ -158,6 +158,19 @@ class Assignment(models.Model):
         editable = False,
     )
     classroom = models.ForeignKey(Classroom, on_delete=models.CASCADE)
-    instructions = models.TextField()
+    title = models.CharField(max_length=200)
+    instructions = models.TextField(null=True, blank=True)
     submission_deadline = models.DateTimeField()
     created = models.DateTimeField(auto_now_add=True)
+
+
+class AssignmentAttachment(models.Model):
+    def filepath(self, filename):
+        return join("attachments/assignments", str(self.assignment.classroom.id), filename)
+
+    assignment = models.ForeignKey(Assignment, on_delete=models.CASCADE)
+    attached_file = models.FileField(upload_to=filepath)
+
+    @property
+    def filename(self):
+        return str(basename(self.attached_file.name))

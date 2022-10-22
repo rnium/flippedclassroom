@@ -1,3 +1,4 @@
+from dateutil import parser
 from django.core.exceptions import PermissionDenied
 from django.shortcuts import redirect, render, get_object_or_404
 from django.http import HttpResponse, JsonResponse
@@ -7,7 +8,7 @@ from django.views.generic import TemplateView, DetailView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.decorators.csrf import csrf_exempt
 from django.utils import timezone
-from .models import Classroom, ClassroomPost, PostAttachment, Comment, Assignment
+from .models import Classroom, ClassroomPost, PostAttachment, Comment, Assignment, AssignmentAttachment
 
 
 
@@ -51,10 +52,19 @@ class PostDetail(LoginRequiredMixin, DetailView):
 def create_assignment(request, pk):
     classroom = get_object_or_404(Classroom, pk=pk)
     if request.method == "GET":
-        
         return render(request, 'classroom/create_assignment.html', context={"classroom":classroom})
     elif request.method == "POST":
-        print(request.FILES)
+        assignment = Assignment(
+            classroom = classroom,
+            title = request.POST.get("title", " "),
+            instructions = request.POST.get("post-descr", None),
+            submission_deadline = parser.parse(request.POST.get("deadline"))
+        )
+        assignment.save()
+        files = dict(request.FILES).get("attachement", False)
+        if files:
+            for file in files:
+                AssignmentAttachment.objects.create(assignment=assignment, attached_file=file)
         return HttpResponse("ok")
 
 

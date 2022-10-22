@@ -36,11 +36,46 @@ function check_fields() {
     } 
 }
 
+let inputfield = document.getElementById('post-files')
+if (inputfield !== null) {
+    inputfield.addEventListener("change", function(){
+        let file_nums = inputfield.files.length
+        let filename_container = document.getElementById(`postfiles-file`)
+        let num_str
+        if (file_nums > 1) {
+            num_str = 'files'
+        } else {
+            num_str = 'file'
+        }
+        filename_container.innerText = `${file_nums} ${num_str} selected`
+    })
+}
+
+function check_existing_input_files(){
+    let inputfield = document.getElementById('post-files')
+    if (inputfield !== null) {
+        let file_nums = inputfield.files.length
+        if (file_nums > 0) {
+            let filename_container = document.getElementById(`postfiles-file`)
+            let num_str
+            if (file_nums > 1) {
+                num_str = 'files'
+            } else {
+                num_str = 'file'
+            }
+            filename_container.innerText = `${file_nums} ${num_str} selected`
+        } else {
+            $("#postfiles-file").text('No files selected')
+        }
+    }
+}
+
 $(document).ready(function(){
     $("#title").focus()
     $("#calendar-icon").on('click', function(){
         $(".form-control").focus()
     })
+    check_existing_input_files()
     $("#create_btn").click(function(event){ 
         event.preventDefault()
         let check_val = check_fields()
