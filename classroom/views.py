@@ -3,11 +3,10 @@ from django.shortcuts import redirect, render, get_object_or_404
 from django.http import HttpResponse, JsonResponse
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
-from django.views.generic import TemplateView
-from django.views.generic import DetailView
+from django.views.generic import TemplateView, DetailView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.decorators.csrf import csrf_exempt
-from .models import Classroom, ClassroomPost, PostAttachment, Comment
+from .models import Classroom, ClassroomPost, PostAttachment, Comment, Assignment
 
 
 class ClassesDashboard(LoginRequiredMixin, TemplateView):
@@ -44,6 +43,14 @@ class PostDetail(LoginRequiredMixin, DetailView):
         threads = Comment.objects.filter(post=classroom_post, parent=None)
         context['threads'] = threads
         return context
+
+
+@login_required
+def create_assignment(request, pk):
+    if request.method == "GET":
+        return render(request, 'classroom/create_assignment.html')
+
+
 
 
 @login_required

@@ -145,7 +145,7 @@
   <div class="links title-box">
       <div class="content">
         <a class="create-test" href=""><i class='bx bx-edit-alt'></i><span>Create New Test</span></a>
-        <a class="create-work" href=""><i class='bx bx-briefcase'></i><span>Assign a Work</span></a>
+        <a class="create-work" href="{% url 'classroom:create_assignment' classroom.id  %}"><i class='bx bx-briefcase'></i><span>Assign a Work</span></a>
       </div>
   </div>
 </div>
