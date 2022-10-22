@@ -853,10 +853,30 @@ body .main .create-assignment-container form .other-fields {
 }
 
 body .main .create-assignment-container form .other-fields .deadline {
-  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-body .main .create-assignment-container form .other-fields .deadline i {
+body .main .create-assignment-container form .other-fields .deadline label {
+  display: block;
+  color: #276363;
+}
+
+body .main .create-assignment-container form .other-fields .deadline .input-container {
+  position: relative;
+  margin-left: 10px;
+}
+
+body .main .create-assignment-container form .other-fields .deadline .input-container i {
   position: absolute;
   right: 5px;
   font-size: 1.5rem;
@@ -868,10 +888,12 @@ body .main .create-assignment-container form .other-fields .deadline i {
   padding: 2px;
 }
 
-body .main .create-assignment-container form .other-fields .deadline input {
+body .main .create-assignment-container form .other-fields .deadline .input-container input.form-control {
+  display: inline-block;
+  width: 18rem;
   border-radius: 5px;
   border: 0;
-  padding: 5px 20px 5px 10px;
+  padding: 5px 30px 5px 10px;
   background-color: rgba(183, 207, 198, 0.1);
   border: 1px solid #d8d8d8;
   -webkit-transition: all 200ms;
@@ -879,32 +901,28 @@ body .main .create-assignment-container form .other-fields .deadline input {
   color: #276363;
 }
 
-body .main .create-assignment-container form .other-fields .deadline input::-webkit-input-placeholder {
+body .main .create-assignment-container form .other-fields .deadline .input-container input.form-control::-webkit-input-placeholder {
   font-size: 0.9rem;
 }
 
-body .main .create-assignment-container form .other-fields .deadline input:-ms-input-placeholder {
+body .main .create-assignment-container form .other-fields .deadline .input-container input.form-control:-ms-input-placeholder {
   font-size: 0.9rem;
 }
 
-body .main .create-assignment-container form .other-fields .deadline input::-ms-input-placeholder {
+body .main .create-assignment-container form .other-fields .deadline .input-container input.form-control::-ms-input-placeholder {
   font-size: 0.9rem;
 }
 
-body .main .create-assignment-container form .other-fields .deadline input::placeholder {
+body .main .create-assignment-container form .other-fields .deadline .input-container input.form-control::placeholder {
   font-size: 0.9rem;
 }
 
-body .main .create-assignment-container form .other-fields .deadline input:focus {
+body .main .create-assignment-container form .other-fields .deadline .input-container input.form-control:focus {
   outline: 2px solid #01a16c;
   border-color: #01a16c;
   -webkit-box-shadow: 0 0 5px #a1a1a1;
           box-shadow: 0 0 5px #a1a1a1;
   background-color: white;
-}
-
-body .main .create-assignment-container form .other-fields .deadline label {
-  color: #276363;
 }
 
 body .main .create-assignment-container form .submit-container {

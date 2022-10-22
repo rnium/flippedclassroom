@@ -145,3 +145,19 @@ class Comment(models.Model):
             return "username user-teacher"
         else:
             return "username"
+
+
+class Assignment(models.Model):
+    def get_uuid():
+        return uuid.uuid4().hex
+
+    id = models.CharField(
+        max_length=50,
+        primary_key = True,
+        default = get_uuid,
+        editable = False,
+    )
+    classroom = models.ForeignKey(Classroom, on_delete=models.CASCADE)
+    instructions = models.TextField()
+    submission_deadline = models.DateTimeField()
+    created = models.DateTimeField(auto_now_add=True)
