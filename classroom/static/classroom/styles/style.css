@@ -782,6 +782,10 @@ body .main .create-assignment-container .page-title {
   margin-bottom: 2rem;
 }
 
+body .main .create-assignment-container form .title-field {
+  margin-bottom: 1rem;
+}
+
 body .main .create-assignment-container form .inset-float-textinput {
   position: relative;
   margin-bottom: 2rem;
@@ -835,6 +839,7 @@ body .main .create-assignment-container form .inset-float-textinput textarea::se
 body .main .create-assignment-container form .inset-float-textinput label {
   position: absolute;
   font-size: 0.7rem;
+  background-color: white;
   top: 0.2rem;
   left: 1rem;
 }
@@ -923,6 +928,14 @@ body .main .create-assignment-container form .other-fields .deadline .input-cont
   -webkit-box-shadow: 0 0 5px #a1a1a1;
           box-shadow: 0 0 5px #a1a1a1;
   background-color: white;
+}
+
+body .main .create-assignment-container form .other-fields .deadline .input-container .error-msg {
+  position: absolute;
+  top: 100%;
+  left: 10px;
+  font-size: 0.7rem;
+  color: #f05d5d;
 }
 
 body .main .create-assignment-container form .submit-container {
@@ -1778,6 +1791,73 @@ body .main .create-classroom .success .share-link button .copy-info {
   color: #1f9c73;
   padding: 2px 10px;
   border-radius: 5px;
+}
+
+.inset-float-textinput-fluid {
+  position: relative;
+}
+
+.inset-float-textinput-fluid input {
+  width: 100%;
+  padding: 1.5rem 1rem 0.5rem;
+  border-radius: 5px;
+  border: 1px solid #b6b6b6;
+  font-size: 1rem;
+}
+
+.inset-float-textinput-fluid input:focus {
+  outline: 2px solid #01a16c;
+  border-color: #01a16c;
+  -webkit-box-shadow: 0 0 5px #a1a1a1;
+          box-shadow: 0 0 5px #a1a1a1;
+}
+
+.inset-float-textinput-fluid input:focus ~ label {
+  color: #01a16c;
+}
+
+.inset-float-textinput-fluid input::-webkit-input-placeholder {
+  color: #9ea09f;
+}
+
+.inset-float-textinput-fluid input:-ms-input-placeholder {
+  color: #9ea09f;
+}
+
+.inset-float-textinput-fluid input::-ms-input-placeholder {
+  color: #9ea09f;
+}
+
+.inset-float-textinput-fluid input::placeholder {
+  color: #9ea09f;
+}
+
+.inset-float-textinput-fluid input::-moz-selection {
+  background-color: #24ce95;
+  color: white;
+}
+
+.inset-float-textinput-fluid input::selection {
+  background-color: #24ce95;
+  color: white;
+}
+
+.inset-float-textinput-fluid label {
+  position: absolute;
+  font-size: 1rem;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  left: 1rem;
+  -webkit-transition: all 200ms;
+  transition: all 200ms;
+}
+
+.inset-float-textinput-fluid .inp_input:focus ~ .inp_label,
+.inset-float-textinput-fluid .inp_input:not(:placeholder-shown).inp_input:not(:focus) ~ .inp_label {
+  top: 0.6rem;
+  font-size: 0.7rem;
+  color: #3b8f65;
 }
 
 .title-box {

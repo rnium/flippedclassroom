@@ -6,7 +6,9 @@ from django.contrib.auth.decorators import login_required
 from django.views.generic import TemplateView, DetailView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.decorators.csrf import csrf_exempt
+from django.utils import timezone
 from .models import Classroom, ClassroomPost, PostAttachment, Comment, Assignment
+
 
 
 class ClassesDashboard(LoginRequiredMixin, TemplateView):
@@ -47,8 +49,13 @@ class PostDetail(LoginRequiredMixin, DetailView):
 
 @login_required
 def create_assignment(request, pk):
+    classroom = get_object_or_404(Classroom, pk=pk)
     if request.method == "GET":
-        return render(request, 'classroom/create_assignment.html')
+        
+        return render(request, 'classroom/create_assignment.html', context={"classroom":classroom})
+    elif request.method == "POST":
+        print(request.FILES)
+        return HttpResponse("ok")
 
 
 
