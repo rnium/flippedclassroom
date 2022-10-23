@@ -150,8 +150,12 @@ function render_paginator(response, is_first_load=false) {
 
 function render_post_container(posts_arr) {
     let posts = ""
-    for (let post of posts_arr) {
-        posts += render_post_component(post)
+    if (posts_arr.length == 0) {
+        posts = `<div class="no-posts"><i class='bx bx-folder-open'></i><span>No posts yet</span></div>`
+    } else {
+        for (let post of posts_arr) {
+            posts += render_post_component(post)
+        }
     }
     posts_container =`<div class="post-container" id="post-container">
                         ${posts}
