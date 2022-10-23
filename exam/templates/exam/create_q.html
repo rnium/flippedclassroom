@@ -44,8 +44,8 @@
                                 <div class="deadline">
                                     <div class="datepicker-container">
                                         <i class='bx bx-calendar'></i>
-                                        <input type="datetime-local" id="deadline-datetime" placeholder="Schedule The Test">
-                                        <span class="error-msg" style="display: none;">*advance date and time required</span>
+                                        <input type="datetime-local" id="test-schedule" placeholder="Schedule The Test">
+                                        <span class="error-msg" id="error-msg" style="display: none;">*advance date and time required</span>
                                     </div>
                                 </div>
                             </div>
@@ -140,7 +140,7 @@
             dateFormat: "Z",
             enableTime: true,
         }
-        flatpickr('#deadline-datetime', config)
+        flatpickr('#test-schedule', config)
         $("#id_test-title").focus()
     })
 </script>

@@ -281,6 +281,24 @@ $('#id_test-time').keyup(function(){
     }
 });
 
+function validate_datetime() {
+    let date_raw = $("#test-schedule").val()
+    if (date_raw.length == 0) {
+        return false
+    }
+    let deadline = new Date(date_raw).getTime()
+    let timenow = new Date().getTime()
+    if (deadline < timenow) {
+        $("#error-msg").show(100)
+        return false
+    } else {
+        $("#error-msg").hide(100)
+        return true
+    }
+}
+
+$("#test-schedule").on('change', validate_datetime)
+
 // data processing and validation
 
 function getCookie(name) {
@@ -312,13 +330,17 @@ function showError(msg, timeOut=5) {
 
 function checkEmptyFields() {
     let textinputs = $(`input[type="text"]`)
-    for(let i=0;i<textinputs.length;i++){
-        let textinput_id = textinputs[i].id
+    for (let inp_field of textinputs) {
+        if (inp_field.classList.contains("form-control")) {
+            console.log('date');
+            continue
+        }
+        let textinput_id = inp_field.id
         if($(`#${textinput_id}`).val().length == 0){
             showError("Fill all the fields")
             $(`#${textinput_id}`).focus()
             return false
-        } 
+        }
     }
     return true
 }
@@ -440,6 +462,12 @@ $("#id_create_q_button").on('click', function(){
         }
     } catch(err) {
         showError(err.message)
+        return null
+    }
+    let is_valid_date = validate_datetime()
+    if (is_valid_date == false) {
+        $(".form-control").focus()
+        showError("Select valid date and time")
         return null
     }
     if (isNoError && isAllFilled && is_all_mcq_valid) {
