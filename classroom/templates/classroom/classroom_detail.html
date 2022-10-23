@@ -96,52 +96,34 @@
       </ul>
     </div>
   </div>
+  {% if classroom.upcoming_events.hasevents %}
   <div class="upcoming title-box">
     <div class="title">Upcoming</div>
     <div class="content">
-      <ul>
+      <ul>{% for exam in classroom.upcoming_events.exams %}
         <li>
           <div class="test list-item">
             <i class='bx bx-edit-alt'></i>
             <div class="info">
-              <div class="label-title">Test on electrical circuits 1</div>
-              <div class="time">7:00PM, 17 Oct 2022</div>
+              <div class="label-title">{{ exam.title }}</div>
+              <div class="time">{{ exam.schedule|date:'c' }}</div>
             </div>
           </div>
-        </li>
-
+        </li>{% endfor %}
+        {% for assignment in classroom.upcoming_events.assignments %}
         <li>
           <div class="assignment list-item">
             <i class='bx bx-briefcase' ></i>
             <div class="info">
-              <a href="" class="label-title">Assignment on electrical circuits 1</a>
-              <div class="time">Due: 7:00PM, 17 Oct 2022</div>
+              <a href="" class="label-title">{{ assignment.title }}</a>
+              <div class="deadline">Due: <span class="time">{{ assignment.submission_deadline|date:'c' }}</span></div>
             </div>
           </div>
-        </li>
-
-        <li>
-          <div class="assignment list-item">
-            <i class='bx bx-briefcase' ></i>
-            <div class="info">
-              <a href="" class="label-title">Assignment on house wiring workshop</a>
-              <div class="time">Due: 12:00PM, 20 Oct 2022</div>
-            </div>
-          </div>
-        </li>
-        <li>
-
-          <div class="assignment list-item">
-            <i class='bx bx-briefcase' ></i>
-            <div class="info">
-              <a href="" class="label-title">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate, quas?</a>
-              <div class="time">Due: 7:00PM, 17 Oct 2022</div>
-            </div>
-          </div>
-        </li>
+        </li>{% endfor %}
       </ul>
     </div>
   </div>
+  {% endif %}
   <div class="links title-box">
       <div class="content">
         <a class="create-test" href="{% url 'exam:create_question' classroom.id %}"><i class='bx bx-edit-alt'></i><span>Create New Test</span></a>
