@@ -34,6 +34,24 @@ class Test(models.Model):
         if marks_int == marks:
             return marks_int
         return marks
+    
+    @property
+    def issued_answer_sheets(self):
+        answer_sheets = self.answersheet_set.all()
+        return answer_sheets
+    
+    @property
+    def submitted_answer_sheets(self):
+        answer_sheets = self.answersheet_set.filter(submit_time__isnull=False)
+        return answer_sheets
+    
+    @property 
+    def num_answer_sheets(self):
+        return self.issued_answer_sheets.count()
+
+    @property 
+    def num_submitted_answer_sheets(self):
+        return self.submitted_answer_sheets.count()
 
 
 

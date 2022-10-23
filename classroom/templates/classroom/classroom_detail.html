@@ -64,38 +64,45 @@
 
 </div>
 <div class="right-col">
+  {% if classroom.ongoing_tests.has_tests %}
   <div class="live-tests title-box" id="live_tests">
     <div class="title">Ongoing Tests</div>
     <div class="content">
       <ul>
+        {% if request.user in classroom.teachers.all %}
+        {% for test in classroom.ongoing_tests.tests %}
         <li>
           <div class="test-item">
             <i class='bx bx-edit-alt'></i>
             <div class="info">
-              <a href="" class="label-title">Test on electrical circuits 1</a>
+              <a href="" class="label-title">{{ test.title }}</a>
               <div class="stat">
-                <div class="issued"><i class='bx bx-user-check'></i><span>Issued:&nbsp;</span><span class="value" id="test0-issued">27</span></div>
-                <div class="submitted"><i class='bx bx-check-double'></i><span>Submitted:&nbsp;</span><span class="value" id="test0-issued">2</span></div>
+                <div class="issued"><i class='bx bx-user-check'></i><span>Issued:&nbsp;</span><span class="value" id="{{test.id}}-issued">{{ test.num_answer_sheets }}</span></div>
+                <div class="submitted"><i class='bx bx-check-double'></i><span>Submitted:&nbsp;</span><span class="value" id="{{test.id}}-submitted">{{ test.num_submitted_answer_sheets }}</span></div>
               </div>
             </div>
           </div>
         </li>
-
-        <!-- student -->
+        {% endfor %}
+        {% else %}
+        {% for test in classroom.ongoing_tests.tests %}
         <li>
           <div class="test-item">
             <i class='bx bx-edit-alt'></i>
             <div class="info">
-              <div class="label-title">Test on electrical circuits 1</div>
+              <div class="label-title">{{ test.title }}</div>
               <div class="action">
                 <a href="">Take the test</a>
               </div>
             </div>
           </div>
         </li>
+        {% endfor %}
+        {% endif %}
       </ul>
     </div>
   </div>
+  {% endif %}
   
   <div class="upcoming title-box">
     <div class="title">Upcoming</div>

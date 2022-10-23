@@ -58,6 +58,13 @@ class Classroom(models.Model):
         num_events = len(exams) + len(assignments)
         hasevents = bool(num_events)
         return {'hasevents':hasevents, 'num_events':num_events, 'exams':exams, 'assignments':assignments}
+    
+    @property
+    def ongoing_tests(self):
+        timenow = timezone.now()
+        tests = self.test_set.filter(schedule__lte=timenow, expired=False).order_by("-created")
+        has_tests = bool(len(tests))
+        return {"has_tests":has_tests, "tests":tests}
 
 
 class ClassroomPost(models.Model):
