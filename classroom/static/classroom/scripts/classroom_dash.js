@@ -222,9 +222,22 @@ function load_page_data() {
     });
 }
 
+
+function adjust_times() {
+    let times = $(".time")
+    for (let time of times) {
+        let time_raw = $(`#${time.id}`).text()
+        let date_obj = new Date(time_raw)
+        $(`#${time.id}`).text(date_obj.toLocaleString())
+    }
+}
+
+
 $(document).ready(function(){
     check_existing_input_files()
+    adjust_times()
     load_page_data()
+    
 })
 
 function perform_post() {

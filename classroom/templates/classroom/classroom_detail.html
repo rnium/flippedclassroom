@@ -114,7 +114,7 @@
             <i class='bx bx-edit-alt'></i>
             <div class="info">
               <div class="label-title">{{ exam.title }}</div>
-              <div class="time">{{ exam.schedule|date:'c' }}</div>
+              <div class="time" id="{{exam.id}}_time">{{ exam.schedule|date:'c' }}</div>
             </div>
           </div>
         </li>{% endfor %}
@@ -124,7 +124,7 @@
             <i class='bx bx-briefcase' ></i>
             <div class="info">
               <a href="" class="label-title">{{ assignment.title }}</a>
-              <div class="deadline">Due: <span class="time">{{ assignment.submission_deadline|date:'c' }}</span></div>
+              <div class="deadline">Due: <span class="time" id="{{assignment.id}}_time">{{ assignment.submission_deadline|date:'c' }}</span></div>
             </div>
           </div>
         </li>{% endfor %}
