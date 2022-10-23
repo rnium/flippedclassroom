@@ -3,6 +3,7 @@ from django.db import models
 from django.contrib.auth.models import User
 import uuid
 from os.path import join, basename
+from django.utils import timezone
 
 
 class Classroom(models.Model):
@@ -48,6 +49,15 @@ class Classroom(models.Model):
             return post.posted
         else:
             return False
+    
+    @property
+    def upcoming_events(self):
+        timenow = timezone.now()
+        exams = self.test_set.filter(schedule__gt=timenow).order_by("-created")
+        assignments = self.assignment_set.filter(submission_deadline__gt=timenow).order_by('-created')
+        num_events = len(exams) + len(assignments)
+        hasevents = bool(num_events)
+        return {'hasevents':hasevents, 'num_events':num_events, 'exams':exams, 'assignments':assignments}
 
 
 class ClassroomPost(models.Model):
