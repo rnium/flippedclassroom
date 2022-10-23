@@ -86,17 +86,19 @@
         {% endfor %}
         {% else %}
         {% for test in classroom.ongoing_tests.tests %}
+        {% if request.user.id not in test.answer_sheet_submitting_users %}
         <li>
           <div class="test-item">
             <i class='bx bx-edit-alt'></i>
             <div class="info">
               <div class="label-title">{{ test.title }}</div>
               <div class="action">
-                <a href="">Take the test</a>
+                <a href="{% url 'exam:take_test' test.id %}">Take the test</a>
               </div>
             </div>
           </div>
         </li>
+        {% endif %}
         {% endfor %}
         {% endif %}
       </ul>

@@ -52,6 +52,11 @@ class Test(models.Model):
     @property 
     def num_submitted_answer_sheets(self):
         return self.submitted_answer_sheets.count()
+    
+    @property
+    def answer_sheet_submitting_users(self):
+        users = self.submitted_answer_sheets.values_list("user", flat=True)
+        return list(users)
 
 
 

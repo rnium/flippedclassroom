@@ -69,7 +69,7 @@ def answer_submit(request, pk):
 
         answer_sheet.submit_time = timezone.now()
         answer_sheet.save()
-        return redirect('homepage')
+        return redirect('classroom:classroom_detail', pk=answer_sheet.test.classroom.id)
     else:
         return HttpResponse("method not allowed") 
 
