@@ -10,5 +10,6 @@ urlpatterns = [
     path('classroom/<str:pk>/assignment/new', create_assignment, name="create_assignment"),
     path('classroom/join/<str:pk>', join_classroom, name="join_classroom"),
     path('classroom/post/<str:pk>', PostDetail.as_view(), name="post_detail"),
+    path('classroom/post/<str:pk>/edit', UnderDev.as_view(), name="post_edit"),
 ]
    

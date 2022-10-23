@@ -69,6 +69,9 @@ def create_assignment(request, pk):
 
 
 
+class UnderDev(LoginRequiredMixin, TemplateView):
+    template_name = "classroom/under_dev.html"
+
 
 @login_required
 def join_classroom(request, pk):
