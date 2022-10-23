@@ -402,7 +402,8 @@ function processData() {
     let testinfo = {
         'title':$("#id_test-title").val(),
         'info':$("#id_test-desc").val(),
-        'duration_seconds': Number($("#id_test-time").val()) * 60
+        'duration_seconds': Number($("#id_test-time").val()) * 60,
+        'schedule': $("#test-schedule").val()
     }
     data['test'] = testinfo
     questions = $(".q")
@@ -486,7 +487,7 @@ $("#id_create_q_button").on('click', function(){
             return null
         }
         $.ajax({
-            url: "/exam/api/createtest/",
+            url: create_test_url,
             contentType: "application/json",
             type: "POST",
             beforeSend: function(xhr){

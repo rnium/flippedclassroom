@@ -1,24 +1,29 @@
+from dateutil import parser
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 from django.utils import timezone
+from django.shortcuts import get_object_or_404
 from datetime import timedelta
 from exam.models import Test, AnswerSheet
 from .serializers import TestSerializer, QuestionSerializer, OptionSerializer
+from classroom.models import Classroom
 
-@api_view(["GET", "POST"])
-def create_test(request):
-    if request.method == "GET":
-        tests = Test.objects.all()
-        serializer = TestSerializer(tests, many=True)
-        print(request.user)
-        return Response(serializer.data)
-    elif request.method == "POST":
+@api_view(["POST"])
+def create_test(request, pk):
+    if request.method == "POST":
+        classroom = get_object_or_404(Classroom, pk=pk)
+        print(classroom)
         testserializer = TestSerializer(data=request.data.get('test'))
+        schedule = parser.parse(testserializer.initial_data['schedule'])
+        testserializer.initial_data['classroom'] = classroom.id
+        testserializer.initial_data['schedule'] = schedule
+        print(testserializer.initial_data)
         user = request.user
         if testserializer.is_valid():
             test = testserializer.save(user=user)
         else:
+            print(testserializer.errors)
             return Response(status=status.HTTP_400_BAD_REQUEST)
         for question in request.data.get('questions'):
             question_data = question['meta']

@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 import uuid
+from classroom.models import Classroom
 
 
 class Test(models.Model):
@@ -13,10 +14,12 @@ class Test(models.Model):
         default = get_uuid,
         editable = False,
     )
+    classroom = models.ForeignKey(Classroom, on_delete=models.CASCADE)
     title = models.CharField(max_length=250)
     info = models.CharField(max_length=9999)
     duration_seconds = models.IntegerField()
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    schedule = models.DateTimeField()
     created = models.DateTimeField(auto_now_add=True)
     expired = models.BooleanField(default=False)
 

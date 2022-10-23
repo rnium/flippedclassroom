@@ -1,10 +1,11 @@
 from optparse import Option
 from django.shortcuts import render, get_object_or_404, redirect
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 from .models import Test, AnswerSheet, Question, McqOption, McqAnswer, DescriptiveAnswer
+from classroom.models import Classroom
 from django.http import HttpResponse
 # Create your views here.
 def home(request):
@@ -18,9 +19,9 @@ class TestsHome(LoginRequiredMixin, TemplateView):
         data['tests'] = Test.objects.all()
         return data
 
-class QuestionCreate(LoginRequiredMixin, TemplateView):
+class QuestionCreate(LoginRequiredMixin, DetailView):
     template_name = "exam/create_q.html"
-
+    model = Classroom
 
 @login_required
 def take_test(request, pk):
