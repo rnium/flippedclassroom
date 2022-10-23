@@ -510,6 +510,37 @@ body .main .left-col .recent-posts .paginator .inner ul li button.paginator-btn:
   color: white;
 }
 
+body .main .left-col .recent-posts .no-posts {
+  background-color: aliceblue;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 5rem 0;
+  border-radius: 5px;
+}
+
+body .main .left-col .recent-posts .no-posts i {
+  font-size: 2rem;
+  color: #5092b1;
+  margin-right: 5px;
+}
+
+body .main .left-col .recent-posts .no-posts span {
+  font-size: 1.2rem;
+  color: #5092b1;
+}
+
 body .main .right-col {
   width: 30%;
   padding: 0 1rem;
@@ -577,6 +608,10 @@ body .main .right-col .upcoming .content ul li .test:hover {
   background-color: rgba(147, 179, 160, 0.1);
 }
 
+body .main .right-col .upcoming .content ul li .assignment .info .deadline {
+  font-size: 0.7rem;
+}
+
 body .main .right-col .upcoming .content ul li .assignment i {
   background-color: rgba(199, 206, 224, 0.678);
   color: #507196;
@@ -584,6 +619,35 @@ body .main .right-col .upcoming .content ul li .assignment i {
 
 body .main .right-col .upcoming .content ul li .assignment:hover {
   background-color: rgba(147, 157, 179, 0.1);
+}
+
+body .main .right-col .upcoming .content .no-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 2rem 0;
+}
+
+body .main .right-col .upcoming .content .no-content i {
+  margin-right: 5px;
+  font-size: 1.5rem;
+  color: #87ac95;
+}
+
+body .main .right-col .upcoming .content .no-content span {
+  color: #87ac95;
+  text-shadow: 0 0 5px #f0f0f0;
 }
 
 body .main .right-col .live-tests .content ul {

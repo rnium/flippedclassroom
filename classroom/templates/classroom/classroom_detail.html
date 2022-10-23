@@ -96,10 +96,11 @@
       </ul>
     </div>
   </div>
-  {% if classroom.upcoming_events.hasevents %}
+  
   <div class="upcoming title-box">
     <div class="title">Upcoming</div>
     <div class="content">
+      {% if classroom.upcoming_events.hasevents %}
       <ul>{% for exam in classroom.upcoming_events.exams %}
         <li>
           <div class="test list-item">
@@ -121,9 +122,11 @@
           </div>
         </li>{% endfor %}
       </ul>
+      {% else %}
+      <div class="no-content"><i class='bx bx-info-circle'></i><span>No upcoming events</span></div>
+      {% endif %}
     </div>
   </div>
-  {% endif %}
   <div class="links title-box">
       <div class="content">
         <a class="create-test" href="{% url 'exam:create_question' classroom.id %}"><i class='bx bx-edit-alt'></i><span>Create New Test</span></a>
