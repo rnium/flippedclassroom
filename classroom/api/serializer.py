@@ -7,6 +7,8 @@ class PostSerializer(serializers.ModelSerializer):
     num_attachments = serializers.SerializerMethodField()
     num_comments = serializers.SerializerMethodField()
     action_permitted = serializers.SerializerMethodField()
+    edit_url = serializers.SerializerMethodField()
+    delete_url = serializers.SerializerMethodField()
     class Meta:
         model = ClassroomPost
         exclude = ['author', 'classroom']
@@ -30,4 +32,23 @@ class PostSerializer(serializers.ModelSerializer):
         else:
             return False
 
+    def get_edit_url(self, obj):
+        request = self.context.get('request')
+        if hasattr(request, 'user'):
+            if request.user in obj.classroom.teachers.all():
+                return reverse('classroom:edit_post', kwargs={'pk':obj.id})
+            else:
+                return None
+        else:
+            return None
+    
+    def get_delete_url(self, obj):
+        request = self.context.get('request')
+        if hasattr(request, 'user'):
+            if request.user in obj.classroom.teachers.all():
+                return reverse('classroom:delete_post', kwargs={'pk':obj.id})
+            else:
+                return None
+        else:
+            return None
 

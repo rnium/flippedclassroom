@@ -12,6 +12,10 @@ from .models import Classroom, ClassroomPost, PostAttachment, Comment, Assignmen
 
 
 
+def render_underDev(request):
+    return render(request,"classroom/under_dev.html")
+
+
 class ClassesDashboard(LoginRequiredMixin, TemplateView):
     template_name = 'classroom/classes_home.html'
     def get_context_data(self, **kwargs):
@@ -57,6 +61,22 @@ class PostDetail(LoginRequiredMixin, DetailView):
 
 
 @login_required
+def edit_post(request, pk):
+    return render_underDev(request)
+
+@login_required
+def delete_post(request, pk):
+    return render_underDev(request)
+
+@login_required
+def view_assignment(request, pk):
+    return render_underDev(request)
+
+def tests_all(request, pk):
+    return render_underDev(request)
+
+
+@login_required
 def create_assignment(request, pk):
     classroom = get_object_or_404(Classroom, pk=pk)
     if request.method == "GET":
@@ -74,12 +94,6 @@ def create_assignment(request, pk):
             for file in files:
                 AssignmentAttachment.objects.create(assignment=assignment, attached_file=file)
         return HttpResponse("ok")
-
-
-
-class UnderDev(LoginRequiredMixin, TemplateView):
-    template_name = "classroom/under_dev.html"
-
 
 @login_required
 def join_classroom(request, pk):

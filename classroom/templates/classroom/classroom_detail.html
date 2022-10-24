@@ -129,7 +129,7 @@
           <div class="assignment list-item">
             <i class='bx bx-briefcase' ></i>
             <div class="info">
-              <a href="" class="label-title">{{ assignment.title }}</a>
+              <a href="{% url 'classroom:view_assignment' assignment.id %}" class="label-title">{{ assignment.title }}</a>
               <div class="deadline">Due: <span class="time" id="{{assignment.id}}_time">{{ assignment.submission_deadline|date:'c' }}</span></div>
             </div>
           </div>
