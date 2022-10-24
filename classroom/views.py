@@ -35,6 +35,14 @@ class ClassroomDetail(LoginRequiredMixin, DetailView):
         context = super().get_context_data(**kwargs)
         classroom = self.get_object()
         context["join_link"] = self.request.build_absolute_uri(reverse("classroom:join_classroom", args=(classroom.id,)))
+        if self.request.user in classroom.teachers.all():
+            query_set = classroom.ongoing_tests
+            if query_set.count() > 0:
+                context['teacher_tests'] = query_set
+        elif self.request.user in classroom.students.all():
+            query_set = classroom.ongoing_tests.exclude(answersheet__user=self.request.user)
+            if query_set.count() > 0:
+                context['student_tests'] = query_set
         return context
 
 class PostDetail(LoginRequiredMixin, DetailView):

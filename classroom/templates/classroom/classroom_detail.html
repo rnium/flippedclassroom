@@ -64,13 +64,12 @@
 
 </div>
 <div class="right-col">
-  {% if classroom.ongoing_tests.has_tests %}
+  {% if teacher_tests %}
   <div class="live-tests title-box" id="live_tests">
     <div class="title">Ongoing Tests</div>
     <div class="content">
       <ul>
-        {% if request.user in classroom.teachers.all %}
-        {% for test in classroom.ongoing_tests.tests %}
+        {% for test in teacher_tests %}
         <li>
           <div class="test-item">
             <i class='bx bx-edit-alt'></i>
@@ -84,9 +83,16 @@
           </div>
         </li>
         {% endfor %}
-        {% else %}
-        {% for test in classroom.ongoing_tests.tests %}
-        {% if request.user.id not in test.answer_sheet_submitting_users %}
+      </ul>
+    </div>
+  </div>
+  {% endif %}
+  {% if student_tests %}
+  <div class="live-tests title-box" id="live_tests">
+    <div class="title">Ongoing Tests</div>
+    <div class="content">
+      <ul>
+        {% for test in student_tests %}
         <li>
           <div class="test-item">
             <i class='bx bx-edit-alt'></i>
@@ -98,9 +104,7 @@
             </div>
           </div>
         </li>
-        {% endif %}
         {% endfor %}
-        {% endif %}
       </ul>
     </div>
   </div>
@@ -136,12 +140,14 @@
       {% endif %}
     </div>
   </div>
+  {% if request.user in classroom.teachers.all %}
   <div class="links title-box">
-      <div class="content">
-        <a class="create-test" href="{% url 'exam:create_question' classroom.id %}"><i class='bx bx-edit-alt'></i><span>Create New Test</span></a>
-        <a class="create-work" href="{% url 'classroom:create_assignment' classroom.id  %}"><i class='bx bx-briefcase'></i><span>Assign a Work</span></a>
-      </div>
+    <div class="content">
+      <a class="create-test" href="{% url 'exam:create_question' classroom.id %}"><i class='bx bx-edit-alt'></i><span>Create New Test</span></a>
+      <a class="create-work" href="{% url 'classroom:create_assignment' classroom.id  %}"><i class='bx bx-briefcase'></i><span>Assign a Work</span></a>
+    </div>
   </div>
+  {% endif %}
 </div>
 {% endblock content %}
 

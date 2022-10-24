@@ -63,8 +63,7 @@ class Classroom(models.Model):
     def ongoing_tests(self):
         timenow = timezone.now()
         tests = self.test_set.filter(schedule__lte=timenow, expired=False).order_by("-created")
-        has_tests = bool(len(tests))
-        return {"has_tests":has_tests, "tests":tests}
+        return tests
 
 
 class ClassroomPost(models.Model):
