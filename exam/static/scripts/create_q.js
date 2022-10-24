@@ -450,6 +450,26 @@ function processData() {
     return data
 }
 
+function processSuccess(response) {
+    $("#id_marks-counter-container").hide()
+    let schedule = new Date(response['schedule']).toLocaleString()
+    let success_con = ` <div class="success-info">
+                            <div class="info"><i class='bx bx-edit-alt'></i><span>Test Created</span></div>
+                            <div class="title" id="test_title">${response['title']}</div>
+                            <div class="schedule"><i class='bx bx-calendar-check'></i><span>Schedule:</span><span class="time">${schedule}</span> </div>
+                            <div class="redirect-info">Redirecting to homepage...</div>
+                        </div>`
+    $("#id_container").hide(300, function(){
+        $("#id_container").empty()
+        $("#id_container").html(success_con)
+        $("#id_container").show(500, function(){
+            setTimeout(function(){
+                window.location = response['classroom_url']
+            },5000)
+        })
+    })
+}
+
 
 $("#id_create_q_button").on('click', function(){
     let isNoError;
@@ -500,8 +520,8 @@ $("#id_create_q_button").on('click', function(){
             data: data,
             cache: false,
             dataType: "json",
-            success: function(){
-                console.log("success")
+            success: function(response){
+                processSuccess(response)
             },
             error: function(xhr,status,error){
                 showError(`error: ${xhr.responseText}`, 60)

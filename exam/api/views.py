@@ -13,17 +13,14 @@ from classroom.models import Classroom
 def create_test(request, pk):
     if request.method == "POST":
         classroom = get_object_or_404(Classroom, pk=pk)
-        print(classroom)
         testserializer = TestSerializer(data=request.data.get('test'))
         schedule = parser.parse(testserializer.initial_data['schedule'])
         testserializer.initial_data['classroom'] = classroom.id
         testserializer.initial_data['schedule'] = schedule
-        print(testserializer.initial_data)
         user = request.user
         if testserializer.is_valid():
             test = testserializer.save(user=user)
         else:
-            print(testserializer.errors)
             return Response(status=status.HTTP_400_BAD_REQUEST)
         for question in request.data.get('questions'):
             question_data = question['meta']
@@ -32,7 +29,6 @@ def create_test(request, pk):
             if questionserializer.is_valid():
                 question_obj = questionserializer.save()
             else:
-               print(questionserializer.errors)
                return Response(status=status.HTTP_400_BAD_REQUEST, data={'error':questionserializer.errors})
             if not question_data['is_descriptive']:
                 for option in question['options']:
@@ -43,7 +39,7 @@ def create_test(request, pk):
                         option_serializer.save()
                     else:
                        return Response(status=status.HTTP_400_BAD_REQUEST, data={'error':option_serializer.errors})
-        return Response(data={"data":"created", "test_id":test.id},status=status.HTTP_201_CREATED)
+        return Response(data=testserializer.data,status=status.HTTP_201_CREATED)
 
 
 @api_view(['POST'])
