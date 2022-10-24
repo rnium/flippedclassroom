@@ -40,7 +40,7 @@ def take_test(request, pk):
 def answer_submit(request, pk):
     if request.method == "POST":
         answer_sheet = get_object_or_404(AnswerSheet, pk=pk)
-        req_data = {**dict(request.POST), **dict(request.FILES)}
+        req_data = dict(request.POST)
         del req_data['csrfmiddlewaretoken']
         for i in req_data:
             if i.startswith('mcq'):
@@ -56,17 +56,18 @@ def answer_submit(request, pk):
                 a_data = i.split('-')
                 data_kwargs = {'answer_sheet':answer_sheet}
                 data_kwargs['question'] = get_object_or_404(Question, pk=a_data[-1])
-                if len(a_data) == 3:
-                    data_kwargs['answer_img'] = request.FILES.get(i)
+                answer_text = req_data[i][0]
+                if len(answer_text) > 0:
+                    data_kwargs['answer_text'] = answer_text
                 else:
-                    answer_text = req_data[i][0]
-                    if len(answer_text) > 0:
-                        data_kwargs['answer_text'] = answer_text
-                    else:
-                        continue
-            
+                    continue
                 DescriptiveAnswer.objects.create(**data_kwargs)
-
+        for file in request.FILES:
+            file_data = file.split('-')
+            data_kwargs = {'answer_sheet':answer_sheet}
+            data_kwargs['question'] = get_object_or_404(Question, pk=file_data[-1])
+            data_kwargs['answer_img'] = request.FILES.get(file)
+            DescriptiveAnswer.objects.create(**data_kwargs)
         answer_sheet.submit_time = timezone.now()
         answer_sheet.save()
         return redirect('classroom:classroom_detail', pk=answer_sheet.test.classroom.id)
