@@ -23,7 +23,7 @@ function get_payload() {
 function processSuccess(response) {
     let success_container = `<div class="success">
                                 <i class='bx bx-message-square-check icon'></i>
-                                <div class="classroom-name"><a href="">${response['name']}</a></div>
+                                <div class="classroom-name"><a href="${response['classroom_url']}">${response['name']}</a></div>
                                 <div class="share-link">
                                 <button id="share-link">copy join link <i class='bx bx-copy'></i><div id="copy-info" class="copy-info" style="display: none;">copied</div></button>
                                 </div>

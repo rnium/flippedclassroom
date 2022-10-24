@@ -70,6 +70,7 @@ def create_classroom(request):
         classroom.teachers.add(request.user)
         response_data = {}
         response_data['name'] = classroom.name
+        response_data['classroom_url'] = reverse("classroom:classroom_detail", args=(classroom.id,))
         response_data["join_link"] = request.build_absolute_uri(reverse("classroom:join_classroom", args=(classroom.id,)))
         return Response(response_data, status=status.HTTP_201_CREATED)
     else:
