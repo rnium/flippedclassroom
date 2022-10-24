@@ -86,8 +86,8 @@ function render_post_component(post_data, hidden=false) {
     if (post_data['action_permitted']) {
         options = `<div class="options">
                         <div class="options-container" id="${post_data['id']}-op-con" style="display: none;">
-                            <a href="">Edit</a>
-                            <a href="">Delete</a>
+                            <a href="${post_data['edit_url']}">Edit</a>
+                            <a href="${post_data['delete_url']}">Delete</a>
                         </div>
                         <button class="option-toggle" id="${post_data['id']}-option-toggle" data-op_con="${post_data['id']}-op-con"><i class='bx bx-dots-horizontal-rounded'></i></button>
                     </div>`
