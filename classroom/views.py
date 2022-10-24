@@ -49,6 +49,7 @@ class ClassroomDetail(LoginRequiredMixin, DetailView):
                 context['student_tests'] = query_set
         return context
 
+
 class PostDetail(LoginRequiredMixin, DetailView):
     template_name = 'classroom/post_detail.html'
     model = ClassroomPost
@@ -94,6 +95,15 @@ def create_assignment(request, pk):
             for file in files:
                 AssignmentAttachment.objects.create(assignment=assignment, attached_file=file)
         return HttpResponse("ok")
+
+@login_required
+def create_classroom(request):
+    return
+
+@login_required
+def create_classroom(request):
+    if request.method == "GET":
+        return render(request, "classroom/create_classroom.html")
 
 @login_required
 def join_classroom(request, pk):

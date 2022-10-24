@@ -1,6 +1,6 @@
 from django.urls import reverse
 from rest_framework import serializers
-from classroom.models import ClassroomPost
+from classroom.models import ClassroomPost, Classroom
 
 class PostSerializer(serializers.ModelSerializer):
     view_url = serializers.SerializerMethodField()
@@ -52,3 +52,7 @@ class PostSerializer(serializers.ModelSerializer):
         else:
             return None
 
+class ClassroomSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Classroom
+        fields = ['name', 'course']

@@ -4,6 +4,7 @@ app_name = 'classroom'
 
 urlpatterns = [
     path('', ClassesDashboard.as_view(), name="homepage"),
+    path('classroom/new', create_classroom, name="create_classroom"),
     path('classroom/api/', include("classroom.api.urls")),
     path('classroom/<str:pk>', ClassroomDetail.as_view(), name="classroom_detail"),
     path('classroom/<str:pk>/assignment/new', create_assignment, name="create_assignment"),

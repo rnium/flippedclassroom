@@ -1,11 +1,12 @@
-from rest_framework.generics import ListAPIView
+from rest_framework.generics import ListAPIView, CreateAPIView
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework import status
 from django.shortcuts import get_object_or_404
+from django.urls import reverse
 from classroom.models import ClassroomPost, Classroom, Comment
-from .serializer import PostSerializer
+from .serializer import PostSerializer, ClassroomSerializer
 from .permission import IsUserPartOfClassroom
 from .pagination import PostsPagination
 
@@ -59,3 +60,17 @@ def post_comment(request, pk):
     }
 
     return Response(payload, status=status.HTTP_201_CREATED)
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def create_classroom(request):
+    serializer = ClassroomSerializer(data=request.data)
+    if serializer.is_valid():
+        classroom = serializer.save()
+        classroom.teachers.add(request.user)
+        response_data = {}
+        response_data['name'] = classroom.name
+        response_data["join_link"] = request.build_absolute_uri(reverse("classroom:join_classroom", args=(classroom.id,)))
+        return Response(response_data, status=status.HTTP_201_CREATED)
+    else:
+        return Response(data={"status":"error"}, status=status.HTTP_400_BAD_REQUEST)
