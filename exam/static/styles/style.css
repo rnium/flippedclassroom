@@ -1154,11 +1154,11 @@ body .main .container .success-info {
           align-items: center;
   position: relative;
   width: 100%;
-  background-color: #7fc5b085;
+  background-color: white;
   padding: 2rem;
   border-radius: 10px;
-  -webkit-box-shadow: 0 0 5px #c8dac9;
-          box-shadow: 0 0 5px #c8dac9;
+  -webkit-box-shadow: 0 0 10px #c2dac3;
+          box-shadow: 0 0 10px #c2dac3;
   overflow: hidden;
 }
 
@@ -1180,19 +1180,22 @@ body .main .container .success-info .info i {
   position: absolute;
   right: -4rem;
   top: -4rem;
-  font-size: 20rem;
+  font-size: 21rem;
   color: #1ebe61;
-  text-shadow: 0 0 5px #a7cca7;
+  text-shadow: 0 0 5px #eaf1ea;
+  z-index: 0;
 }
 
 body .main .container .success-info .info span {
   font-size: 2rem;
-  color: #388b5b;
+  color: #50bb7c;
   font-family: 'Gemunu Libre', sans-serif;
+  z-index: 1;
 }
 
 body .main .container .success-info .title {
-  font-size: 2rem;
+  font-size: 2.2rem;
+  z-index: 1;
 }
 
 body .main .container .success-info .schedule {
@@ -1208,6 +1211,7 @@ body .main .container .success-info .schedule {
       -ms-flex-align: center;
           align-items: center;
   margin-top: 5px;
+  z-index: 1;
 }
 
 body .main .container .success-info .schedule i {
@@ -1228,6 +1232,7 @@ body .main .container .success-info .schedule span.time {
 body .main .container .success-info .redirect-info {
   margin-top: 1rem;
   color: #649191;
+  z-index: 1;
 }
 
 .textinput {

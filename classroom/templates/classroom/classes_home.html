@@ -10,6 +10,7 @@
         {% for classroom in classrooms.my_teachings %}
         <a class="classroom" href="{% url 'classroom:classroom_detail' classroom.id %}">
           <div class="classroom-heading">
+            <i class='bx bx-chalkboard bg'></i>
             <div class="title">{{ classroom.name }}</div>
             <div class="course">{{ classroom.course }}</div>
           </div>
@@ -33,6 +34,7 @@
         {% for classroom in classrooms.my_learnings %}
         <a class="classroom" href="{% url 'classroom:classroom_detail' classroom.id %}">
           <div class="classroom-heading">
+            <i class='bx bxl-redux bg'></i>
             <div class="title">{{ classroom.name }}</div>
             <div class="course">{{ classroom.course }}</div>
             <div class="owner"><i class='bx bx-user-voice'></i><span>{{ classroom.teacher_name }}</span></div>
