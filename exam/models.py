@@ -112,7 +112,7 @@ class AnswerSheet(models.Model):
         return self.descriptiveanswer_set.count()
 
     @property
-    def get_score(self):
+    def total_score(self):
         if self.num_mcq_answers > 0:
             mcq_score = sum([mcq.score for mcq in self.mcqanswer_set.all()])
             if self.num_des_answers > 0:
@@ -121,7 +121,7 @@ class AnswerSheet(models.Model):
                     des_score = sum(des_score_arr)
                     return (mcq_score+des_score)
                 except:
-                    return 'pending'
+                    return None
             else:
                 return mcq_score
         elif self.num_des_answers > 0:
@@ -130,9 +130,9 @@ class AnswerSheet(models.Model):
                 des_score = sum(des_score_arr)
                 return (des_score)
             except:
-                return 'pending'
+                return None
         else:
-            return 'empty answer sheet'
+            return 0
 
 
 class McqAnswer(models.Model):

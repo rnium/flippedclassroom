@@ -70,7 +70,7 @@ def answer_submit(request, pk):
             DescriptiveAnswer.objects.create(**data_kwargs)
         answer_sheet.submit_time = timezone.now()
         answer_sheet.save()
-        return redirect('classroom:classroom_detail', pk=answer_sheet.test.classroom.id)
+        return render(request, 'exam/submit_answer.html', context={'answer_sheet':answer_sheet})
     else:
         return HttpResponse("method not allowed") 
 
