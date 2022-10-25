@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.validators import MinValueValidator, MaxValueValidator
 import uuid
 from classroom.models import Classroom
 
@@ -97,10 +98,39 @@ class AnswerSheet(models.Model):
         default = get_uuid,
         editable = False,
     )
-    test = models.ForeignKey(Test, null=True, on_delete=models.SET_NULL)
+    test = models.ForeignKey(Test, null=True, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     issue_time = models.DateTimeField(blank=True, null=True)
     submit_time = models.DateTimeField(blank=True, null=True)
+
+    @property
+    def num_mcq_answers(self):
+        return self.mcqanswer_set.count()
+
+    @property
+    def num_des_answers(self):
+        return self.descriptiveanswer_set.count()
+
+    @property
+    def get_score(self):
+        if self.num_mcq_answers > 0:
+            mcq_score = sum([mcq.score for mcq in self.mcqanswer_set.all()])
+            if self.num_des_answers > 0:
+                des_score_arr = [des.score for des in self.descriptiveanswer_set.all()]
+                if all(des_score_arr):
+                    des_score = sum(des_score_arr)
+                    return (mcq_score+des_score)
+                else:
+                    return 'pending'
+            else:
+                return mcq_score
+        else:
+            des_score_arr = [des.score for des in self.descriptiveanswer_set.all()]
+            if all(des_score_arr):
+                des_score = sum(des_score_arr)
+                return (des_score)
+            else:
+                return 'pending'
 
 
 class McqAnswer(models.Model):
@@ -112,7 +142,8 @@ class McqAnswer(models.Model):
     def __str__(self) -> str:
         return f"Answer Id: {self.id} to the question {self.question}"
     
-    def get_marks(self):
+    @property
+    def score(self):
         if self.option_chosen.is_correct:
             return self.question.get_mark
         else:
@@ -124,6 +155,7 @@ class DescriptiveAnswer(models.Model):
     answer_sheet = models.ForeignKey(AnswerSheet, on_delete=models.CASCADE)
     answer_text = models.CharField(max_length=9999, null=True)
     answer_img = models.ImageField(upload_to="answers/images/", null=True)
+    score = models.FloatField(null=True)
     submission_time = models.DateTimeField(auto_now_add=True)
 
     def __str__(self) -> str:
