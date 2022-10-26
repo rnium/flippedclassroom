@@ -6,7 +6,11 @@ from django.utils import timezone
 from django.shortcuts import get_object_or_404
 from datetime import timedelta
 from exam.models import Test, AnswerSheet
-from .serializers import TestSerializer, QuestionSerializer, OptionSerializer
+from .serializer import TestSerializer, QuestionSerializer, OptionSerializer, AnswerSheetSerializer
+from .paginations import AnswerSheetPagination
+from rest_framework.permissions import IsAuthenticated
+from .permission import IsUserTeacherOfClassroom
+from rest_framework.generics import ListAPIView
 from classroom.models import Classroom
 
 @api_view(["POST"])
@@ -58,3 +62,18 @@ def issue_answer_sheet(request):
             ans_sheet.save()
         endtime = starttime + timedelta(seconds=duration_seconds)
         return Response(data={'pk': answer_sheet_pk, 'duration':duration_seconds, 'endtime':endtime})
+
+
+class TestAnswersheetsView(ListAPIView):
+    serializer_class = AnswerSheetSerializer
+    permission_classes = [IsAuthenticated & IsUserTeacherOfClassroom]
+    pagination_class = AnswerSheetPagination
+    def get_object(self):
+        pk = self.kwargs.get('pk')
+        test =  get_object_or_404(Test, pk=pk) 
+        self.check_object_permissions(self.request, test)
+        return test
+    def get_queryset(self):
+        test = self.get_object()
+        answer_sheets = AnswerSheet.objects.filter(test=test, submit_time__isnull=False).order_by('-submit_time')
+        return answer_sheets

@@ -133,6 +133,12 @@ class AnswerSheet(models.Model):
                 return None
         else:
             return 0
+    
+    @property
+    def num_correct_ans(self):
+        mcq_corrects = self.mcqanswer_set.filter(option_chosen__is_correct=True).count()
+        des_corrects = self.descriptiveanswer_set.filter(score__isnull=False).filter(score__gt=0).count()
+        return mcq_corrects + des_corrects
 
 
 class McqAnswer(models.Model):

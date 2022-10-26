@@ -5,5 +5,6 @@ app_name = "exam_api"
 
 urlpatterns = [
     path('<str:pk>/create/', views.create_test, name='create_test'),
-    path('issue/', views.issue_answer_sheet, name='issue_answer_sheet')
+    path('issue/', views.issue_answer_sheet, name='issue_answer_sheet'),
+    path('<str:pk>/answersheets', views.TestAnswersheetsView.as_view(), name='test_answersheets')
 ]
