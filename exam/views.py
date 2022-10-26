@@ -26,20 +26,17 @@ class QuestionCreate(LoginRequiredMixin, DetailView):
 @login_required
 def take_test(request, pk):
     test = get_object_or_404(Test, pk=pk)
-    try:
-        answer_sheet = AnswerSheet.objects.get(test=test, user=request.user)
-        if not answer_sheet.submit_time is None:
-            return HttpResponse('you have already submitted your answer sheet')
-    except AnswerSheet.DoesNotExist:
+    user_answer_sheet_queryset = AnswerSheet.objects.filter(test=test, user=request.user)
+    if user_answer_sheet_queryset.count() > 0:
+        if user_answer_sheet_queryset[0].submit_time != None:
+            return render(request, 'exam/already_submitted.html', context={'answer_sheet':user_answer_sheet_queryset[0]})
+    
+    if request.method == "GET":
         answer_sheet = AnswerSheet.objects.create(test=test, user=request.user)
+        return render(request, 'exam/answer_q.html', context={'test':test, 'answer_sheet':answer_sheet})
 
-    return render(request, 'exam/answer_q.html', context={'test':test, 'answer_sheet':answer_sheet})
-
-
-@login_required
-def answer_submit(request, pk):
-    if request.method == "POST":
-        answer_sheet = get_object_or_404(AnswerSheet, pk=pk)
+    elif request.method == "POST":
+        answer_sheet = user_answer_sheet_queryset[0]
         req_data = dict(request.POST)
         del req_data['csrfmiddlewaretoken']
         for i in req_data:
@@ -71,7 +68,4 @@ def answer_submit(request, pk):
         answer_sheet.submit_time = timezone.now()
         answer_sheet.save()
         return render(request, 'exam/submit_answer.html', context={'answer_sheet':answer_sheet})
-    else:
-        return HttpResponse("method not allowed") 
-
 
