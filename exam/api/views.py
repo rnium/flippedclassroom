@@ -1,5 +1,5 @@
 from dateutil import parser
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework import status
 from django.utils import timezone
@@ -65,6 +65,7 @@ def issue_answer_sheet(request):
 
 
 @api_view(["POST"])
+@permission_classes([IsAuthenticated & IsUserTeacherOfClassroom])
 def change_test_expiration_status(request):
     try:
         test = Test.objects.get(pk=request.data.get('test_id'))

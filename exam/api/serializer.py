@@ -23,6 +23,7 @@ class OptionSerializer(serializers.ModelSerializer):
 class AnswerSheetSerializer(serializers.ModelSerializer):
     student_name = serializers.SerializerMethodField(read_only=True)
     avatar_url = serializers.SerializerMethodField(read_only=True)
+    view_url = serializers.SerializerMethodField(read_only=True)
     answers_submitted = serializers.SerializerMethodField(read_only=True)
     answers_correct = serializers.SerializerMethodField(read_only=True)
     score = serializers.SerializerMethodField(read_only=True)
@@ -35,6 +36,8 @@ class AnswerSheetSerializer(serializers.ModelSerializer):
         return obj.user.account.user_full_name
     def get_avatar_url(self, obj):
         return obj.user.account.avatar_url
+    def get_view_url(self, obj):
+        return reverse('exam:view_answersheet', kwargs={'pk': obj.id})
     def get_answers_submitted(self, obj):
         return obj.num_mcq_answers + obj.num_des_answers   
     def get_answers_correct(self, obj):

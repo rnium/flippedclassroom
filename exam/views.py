@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 from .models import Test, AnswerSheet, Question, McqOption, McqAnswer, DescriptiveAnswer
 from classroom.models import Classroom
+from classroom.views import render_underDev
 from django.http import HttpResponse
 # Create your views here.
 def home(request):
@@ -18,6 +19,15 @@ class QuestionCreate(LoginRequiredMixin, DetailView):
 class TestView(LoginRequiredMixin, DetailView):
     template_name = "exam/viewresults.html"
     model = Test
+
+@login_required
+def edit_test(request, pk):
+    return render_underDev(request)
+
+@login_required
+def view_answersheet(request, pk):
+    return render_underDev(request)
+
 
 @login_required
 def take_test(request, pk):

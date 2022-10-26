@@ -6,6 +6,7 @@ let prev_page_url
 let next_page_url
 
 function renderTable(row_data, hidden=false) {
+    console.log(row_data);
     let inline_style
     if (hidden) {
         inline_style =  `style="display:none;"`
@@ -27,7 +28,7 @@ function renderTable(row_data, hidden=false) {
                                 <div class="avatar"><img src="${row['avatar_url']}" alt="avatar"></div>
                                 <span>${row['student_name']}</span>
                             </td>
-                            <td class="sheet-id"><a href="">${row['id']}</a></td>
+                            <td class="sheet-id"><a href="${row['view_url']}">${row['id']}</a></td>
                             <td>${issue_time}</td>
                             <td>${row['answers_submitted']}</td>
                             <td>${row['answers_correct']}</td>

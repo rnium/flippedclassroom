@@ -56,12 +56,12 @@
     </header>
     <div class="main">
         <div class="test">
-          <div class="test-title">{{ test.title }}<a href="" class="edit"><i class='bx bxs-edit'></i></a> </div>
+          <div class="test-title">{{ test.title }}<a href="{% url 'exam:edit_test' test.id %}" class="edit"><i class='bx bxs-edit'></i></a> </div>
           <div class="info">
             <div class="num-ques"><span class="label">Number of questions:&nbsp;</span><span class="value">{{ test.num_questions }}</span></div>
             <div class="total-marks"><span class="label">Total marks:&nbsp;</span><span class="value">{{ test.total_marks }}</span></div>
           </div>
-          <!-- <div class="created"><span class="time">10/23/2022, 10:34:32 pm</span></div> -->
+          {% comment %} <div class="created"><span class="time">10/23/2022, 10:34:32 pm</span></div>  {% endcomment %}
           <div class="action">
             <div class="switch-label" id="switch-info">{% if test.expired %}Test is Inactive{% else %}Test is Active{% endif %}</div>
             <div class="switch">
