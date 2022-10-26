@@ -74,7 +74,7 @@
           <div class="test-item">
             <i class='bx bx-edit-alt'></i>
             <div class="info">
-              <a href="" class="label-title">{{ test.title }}</a>
+              <a href="{% url 'exam:view_test' test.id %}" class="label-title">{{ test.title }}</a>
               <div class="stat">
                 <div class="issued"><i class='bx bx-user-check'></i><span>Issued:&nbsp;</span><span class="value" id="{{test.id}}-issued">{{ test.num_answer_sheets }}</span></div>
                 <div class="submitted"><i class='bx bx-check-double'></i><span>Submitted:&nbsp;</span><span class="value" id="{{test.id}}-submitted">{{ test.num_submitted_answer_sheets }}</span></div>

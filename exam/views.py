@@ -11,17 +11,13 @@ from django.http import HttpResponse
 def home(request):
     return render(request, 'exam/home.html')
 
-class TestsHome(LoginRequiredMixin, TemplateView):
-    template_name = 'exam/home.html'
-
-    def get_context_data(self):
-        data = super().get_context_data()
-        data['tests'] = Test.objects.all()
-        return data
-
 class QuestionCreate(LoginRequiredMixin, DetailView):
     template_name = "exam/create_q.html"
     model = Classroom
+
+class TestView(LoginRequiredMixin, DetailView):
+    template_name = "exam/viewresults.html"
+    model = Test
 
 @login_required
 def take_test(request, pk):

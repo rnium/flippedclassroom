@@ -6,4 +6,5 @@ app_name = "exam"
 urlpatterns = [
     path('<str:pk>/start', views.take_test, name='take_test'),
     path('<str:pk>/new', views.QuestionCreate.as_view(), name='create_question'),
+    path('<str:pk>/view', views.TestView.as_view(), name='view_test'),
 ]
