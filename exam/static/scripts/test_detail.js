@@ -154,6 +154,40 @@ function fetchTableData() {
     });
 }
 
+function update_test_expiration(is_expired) {
+    let data = {
+        test_id: test_id,
+        is_expired: is_expired
+    }
+    
+    $.ajax({
+        url: api_expiration_update_url,
+        contentType: "application/json",
+        type: "POST",
+        beforeSend: function(xhr){
+            xhr.setRequestHeader("X-CSRFToken", csrftoken)
+        },
+        data: JSON.stringify(data),
+        cache: false,
+        dataType: "json",
+        success: function(response){
+            if (response['expired']) {
+                $("#switch-info").text("Test is Inactive")
+            } else {
+                $("#switch-info").text("Test is Active")
+            }
+        },
+    })
+}
+
 $(document).ready(function(){
     fetchTableData()
+    $("#test-exp-switch").on("change", function(){
+        let checked_status = $("#test-exp-switch").is(":checked")
+        if (checked_status === true) {
+            update_test_expiration(false)
+        } else {
+            update_test_expiration(true)
+        } 
+    })
 })

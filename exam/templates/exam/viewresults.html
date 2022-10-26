@@ -63,10 +63,10 @@
           </div>
           <!-- <div class="created"><span class="time">10/23/2022, 10:34:32 pm</span></div> -->
           <div class="action">
-            <div class="switch-label" id="switch-info">{% if test.expired %}Test is Inactive{% else %}Test is Live{% endif %}</div>
+            <div class="switch-label" id="switch-info">{% if test.expired %}Test is Inactive{% else %}Test is Active{% endif %}</div>
             <div class="switch">
-              <input type="checkbox" name="" id="switch1" {% if not test.expired %}checked="checked"{% endif %}>
-              <label for="switch1"></label>
+              <input type="checkbox" name="" id="test-exp-switch" {% if not test.expired %}checked="checked"{% endif %}>
+              <label for="test-exp-switch"></label>
             </div>
           </div>
         </div>
@@ -83,7 +83,9 @@
 <script src="{% static 'scripts/test_detail.js' %}"></script>
 <script>
   const api_url = "{% url 'exam_api:test_answersheets' test.id %}"
+  const api_expiration_update_url = "{% url 'exam_api:expiration_update' %}"
   const test_id = "{{ test.id }}"
+  let csrftoken = "{{ csrf_token }}"
 </script>
 </body>
 </html>
