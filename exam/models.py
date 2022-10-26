@@ -37,6 +37,10 @@ class Test(models.Model):
         return marks
     
     @property
+    def num_questions(self):
+        return self.question_set.count()
+    
+    @property
     def issued_answer_sheets(self):
         answer_sheets = self.answersheet_set.all()
         return answer_sheets

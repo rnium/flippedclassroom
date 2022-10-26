@@ -56,30 +56,35 @@
     </header>
     <div class="main">
         <div class="test">
-          <div class="test-title">Lorem ipsum, dolor sit amet consectetur adipisicing <a href="" class="edit"><i class='bx bxs-edit'></i></a> </div>
+          <div class="test-title">{{ test.title }}<a href="" class="edit"><i class='bx bxs-edit'></i></a> </div>
           <div class="info">
-            <div class="num-ques"><span class="label">Number of questions:&nbsp;</span><span class="value">30</span></div>
-            <div class="total-marks"><span class="label">Total marks:&nbsp;</span><span class="value">100</span></div>
+            <div class="num-ques"><span class="label">Number of questions:&nbsp;</span><span class="value">{{ test.num_questions }}</span></div>
+            <div class="total-marks"><span class="label">Total marks:&nbsp;</span><span class="value">{{ test.total_marks }}</span></div>
           </div>
           <!-- <div class="created"><span class="time">10/23/2022, 10:34:32 pm</span></div> -->
           <div class="action">
-            <div class="switch-label" id="switch-info">Test is Active</div>
+            <div class="switch-label" id="switch-info">{% if test.expired %}Test is Inactive{% else %}Test is Live{% endif %}</div>
             <div class="switch">
-              <input type="checkbox" name="" id="switch1">
+              <input type="checkbox" name="" id="switch1" {% if not test.expired %}checked="checked"{% endif %}>
               <label for="switch1"></label>
             </div>
           </div>
         </div>
         <div class="table-container">
             <div class="heading">Answer Sheets</div>
-            <div class="inner">
-              
-              <!-- <div class="no-content"><i class='bx bx-file-blank'></i><span>No Answersheet has been submitted yet</span></div> -->
+            <div class="inner" id="table-content">
             </div>
             <div class="loader" id="loader"><i class='bx bx-loader-circle'></i><span>Loading</span></div>
         </div>
         
     </div>
+    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script> 
+<script src="{% static 'scripts/test_detail.js' %}"></script>
+<script>
+  const api_url = "{% url 'exam_api:test_answersheets' test.id %}"
+  const test_id = "{{ test.id }}"
+</script>
 </body>
 </html>
 

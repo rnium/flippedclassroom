@@ -19,54 +19,7 @@
                   <!-- <td class="score">25</td> -->
                   <td class="score-pending"><span>Pending</span></td>
                 </tr>
-                <tr>
-                  <td class="user">
-                    <div class="avatar"><img src="/images/blank-dp.svg" alt=""></div>
-                    <span>Student Name</span>
-                  </td>
-                  <td class="sheet-id"><a href="">64a77dd910914058a93a8bf1af730482</a></td>
-                  <td>10:12:32am, 10 Oct 2022</td>
-                  <td>30</td>
-                  <td>25</td>
-                  <!-- <td class="score">25</td> -->
-                  <td class="score-pending"><span>Pending</span></td>
-                </tr>
-                <tr>
-                  <td class="user">
-                    <div class="avatar"><img src="/images/dp5.jpg" alt=""></div>
-                    <span>Student Name</span>
-                  </td>
-                  <td class="sheet-id"><a href="">64a77dd910914058a93a8bf1af730482</a></td>
-                  <td>10:12:32am, 10 Oct 2022</td>
-                  <td>30</td>
-                  <td>25</td>
-                  <!-- <td class="score">25</td> -->
-                  <td class="score-pending"><span>Pending</span></td>
-                </tr>
-                <tr>
-                  <td class="user">
-                    <div class="avatar"><img src="/images/dp1.jpg" alt=""></div>
-                    <span>Student Name</span>
-                  </td>
-                  <td class="sheet-id"><a href="">64a77dd910914058a93a8bf1af730482</a></td>
-                  <td>10:12:32am, 10 Oct 2022</td>
-                  <td>30</td>
-                  <td>25</td>
-                  <!-- <td class="score">25</td> -->
-                  <td class="score-pending"><span>Pending</span></td>
-                </tr>
-                <tr>
-                  <td class="user">
-                    <div class="avatar"><img src="/images/dp2.jpg" alt=""></div>
-                    <span>Student Name</span>
-                  </td>
-                  <td class="sheet-id"><a href="">64a77dd910914058a93a8bf1af730482</a></td>
-                  <td>10:12:32am, 10 Oct 2022</td>
-                  <td>30</td>
-                  <td>25</td>
-                  <!-- <td class="score">25</td> -->
-                  <td class="score-pending"><span>Pending</span></td>
-                </tr>  
+                 
               </table>
               <div class="paginator">
               <div class="inner">
