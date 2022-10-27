@@ -8,7 +8,8 @@ from .models import Test, AnswerSheet, Question, McqOption, McqAnswer, Descripti
 from classroom.models import Classroom
 from classroom.views import render_underDev
 from django.http import HttpResponse
-# Create your views here.
+
+
 def home(request):
     return render(request, 'exam/home.html')
 
@@ -75,3 +76,7 @@ def take_test(request, pk):
         answer_sheet.save()
         return render(request, 'exam/submit_answer.html', context={'answer_sheet':answer_sheet})
 
+
+@login_required
+def classroom_tests(request, pk):
+    return render_underDev(request)

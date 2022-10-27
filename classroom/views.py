@@ -139,3 +139,21 @@ def create_post(request, pk):
                         attached_file = file
                     )
         return JsonResponse({'status':'completed'})
+
+# under dev.
+
+@login_required
+def classroom_assignment(request, pk):
+    return render_underDev(request)
+
+@login_required
+def classroom_students(request, pk):
+    return render_underDev(request)
+
+@login_required
+def classroom_groups(request, pk):
+    return render_underDev(request)
+
+@login_required
+def classroom_files(request, pk):
+    return render_underDev(request)

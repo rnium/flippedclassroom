@@ -6,22 +6,22 @@
     <a class="nav-link active" aria-current="page" href="">Dashboard</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">Tests</a>
+    <a class="nav-link" href="{% url 'classroom:classroom_tests' classroom.id %}">Tests</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">Assignments</a>
+    <a class="nav-link" href="{% url 'classroom:view_classroom_assignment' classroom.id %}">Assignments</a>
   </li>
   <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
       Student
     </a>
     <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="#">Student list</a></li>
-      <li><a class="dropdown-item" href="#">Student groups</a></li>
+      <li><a class="dropdown-item" href="{% url 'classroom:classroom_students' classroom.id %}">Student list</a></li>
+      <li><a class="dropdown-item" href="{% url 'classroom:classroom_groups' classroom.id %}">Student groups</a></li>
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">Files</a>
+    <a class="nav-link" href="{% url 'classroom:classroom_files' classroom.id %}">Files</a>
   </li>
 </ul>
 {% endblock nav %}
