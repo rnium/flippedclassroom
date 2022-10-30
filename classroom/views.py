@@ -56,7 +56,7 @@ class PostDetail(LoginRequiredMixin, DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         classroom_post = self.get_object()
-        threads = Comment.objects.filter(post=classroom_post, parent=None)
+        threads = Comment.objects.filter(post=classroom_post, parent=None).order_by('comment_time')
         context['threads'] = threads
         return context
 

@@ -161,6 +161,10 @@ class Comment(models.Model):
             return "username user-teacher"
         else:
             return "username"
+    
+    @property
+    def replies(self):
+        return self.reply.all().order_by("comment_time")
 
 
 class Assignment(models.Model):

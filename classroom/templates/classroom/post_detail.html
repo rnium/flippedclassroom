@@ -71,7 +71,7 @@
             </div> 
             <div class="replies">
               <ul class="reply-list" id="{{ thread.id }}-replyList">
-                {% for reply in thread.reply.all %}
+                {% for reply in thread.replies %}
                 <li>
                   <div class="reply">
                     <div class="avatar"><img src="{{ reply.author.account.avatar_url }}" alt="avatar"></div>
