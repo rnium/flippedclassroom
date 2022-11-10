@@ -31,6 +31,16 @@ function adjust_times() {
     }
 }
 
+function indexAttachments() {
+    let elems = $(".count")
+    let count = 1
+    for (let elem of elems) {
+        let count_id = elem.id
+        $(`#${count_id}`).text(count);
+        count += 1
+    }  
+}
+
 function appendComment(response) {
     let parent_id = response['parent_id']
     let comment_time = new Date(response['comment_time'])
@@ -148,4 +158,5 @@ $(document).ready(function() {
     adjust_times()
     activate_show_reply()
     activate_post_reply()
+    indexAttachments()
 })

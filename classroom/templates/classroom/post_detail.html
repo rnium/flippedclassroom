@@ -39,8 +39,19 @@
               {% for attachemnt in classroompost.postattachment_set.all %}
               <li>
                 <div class="file-item">
-                    <div class="filename">{{ attachemnt.filename }}</div>
-                    <a href="{{ attachemnt.attached_file.url }}"><i class='bx bxs-download'></i></a>
+                    <div class="meta">
+                      <div class="filename">
+                        <span class="attachment-count">
+                          <div class="inner">
+                            <i class='bx bx-file'></i>
+                            <span class="count" id="{{attachemnt.id}}_count">1</span>
+                          </div>
+                        </span>
+                        <span>{{ attachemnt.filename }}</span>
+                      </div>
+                      <a href="{{ attachemnt.attached_file.url }}"><i class='bx bxs-download'></i>Download</a>
+                    </div>
+                    <embed class="file-embed" src="{{ attachemnt.attached_file.url }}">
                 </div>
               </li>
               {% endfor %}

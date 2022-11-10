@@ -1,6 +1,7 @@
 from unicodedata import name
 from django.db import models
 from django.contrib.auth.models import User
+from django.http import FileResponse
 import uuid
 from os.path import join, basename
 from django.utils import timezone
@@ -117,6 +118,7 @@ class PostAttachment(models.Model):
     @property
     def filename(self):
         return str(basename(self.attached_file.name))
+
 
     
 class Comment(models.Model):
