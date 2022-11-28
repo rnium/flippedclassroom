@@ -70,6 +70,7 @@ class Classroom(models.Model):
 class PostTopic(models.Model):
     name = models.CharField(max_length=100)
     str_id = models.CharField(max_length=100)
+    classroom = models.ForeignKey(Classroom, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name

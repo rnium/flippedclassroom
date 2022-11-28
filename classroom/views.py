@@ -96,7 +96,7 @@ def create_assignment(request, pk):
             for file in files:
                 AssignmentAttachment.objects.create(assignment=assignment, attached_file=file)
         return HttpResponse("ok")
-        
+
 
 @login_required
 def create_classroom(request):
@@ -142,9 +142,9 @@ def create_post(request, pk):
             topics = topics_str.split(',')
             for topic in topics:
                 topicStrId = topic.replace(' ', '')
-                topics_querySet = PostTopic.objects.filter(str_id=topicStrId)
+                topics_querySet = PostTopic.objects.filter(str_id=topicStrId, classroom=classroom)
                 if len(topics_querySet) == 0:
-                    post_topic = PostTopic.objects.create(name=topic, str_id=topicStrId)
+                    post_topic = PostTopic.objects.create(name=topic, str_id=topicStrId, classroom=classroom)
                 else:
                     post_topic = topics_querySet[0]
                 classroom_post.topics.add(post_topic)
