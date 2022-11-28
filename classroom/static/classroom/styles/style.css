@@ -159,11 +159,11 @@ body .main .left-col .postbox .form .inset-float-textinput {
 
 body .main .left-col .postbox .form .inset-float-textinput textarea {
   width: 100%;
-  padding: 1.5rem 1rem 0.5rem;
+  padding: 2rem 1rem 0.5rem;
   background-color: #fcfcfc;
   border-radius: 5px;
   border: 0;
-  height: 5rem;
+  height: 6rem;
   color: #7e7e7e;
   resize: none;
 }
@@ -208,10 +208,58 @@ body .main .left-col .postbox .form .inset-float-textinput textarea::selection {
 
 body .main .left-col .postbox .form .inset-float-textinput label {
   position: absolute;
-  font-size: 0.7rem;
-  top: 0.2rem;
+  font-size: 0.8rem;
+  top: 0.5rem;
   left: 1rem;
   color: #00806b;
+}
+
+body .main .left-col .postbox .form .inset-float-textinput .topic-input input {
+  color: #00806b;
+  font-size: 0.8rem;
+  font-weight: 500;
+  position: absolute;
+  font-size: 0.7rem;
+  top: 0.5rem;
+  right: 0.5rem;
+  border-radius: 180px;
+  border: 0;
+  -webkit-box-shadow: 2px 2px 5px #e5ebe8, -2px -2px 5px #e8eceb;
+          box-shadow: 2px 2px 5px #e5ebe8, -2px -2px 5px #e8eceb;
+  padding: 2px 10px;
+}
+
+body .main .left-col .postbox .form .inset-float-textinput .topic-input input:focus {
+  outline: 2px solid #01a16c;
+  border-color: #01a16c;
+  -webkit-box-shadow: 0 0 5px #a1a1a1;
+          box-shadow: 0 0 5px #a1a1a1;
+}
+
+body .main .left-col .postbox .form .inset-float-textinput .topic-input input::-moz-selection {
+  background-color: #24ce95;
+  color: white;
+}
+
+body .main .left-col .postbox .form .inset-float-textinput .topic-input input::selection {
+  background-color: #24ce95;
+  color: white;
+}
+
+body .main .left-col .postbox .form .inset-float-textinput .topic-input input::-webkit-input-placeholder {
+  color: #6aa17f;
+}
+
+body .main .left-col .postbox .form .inset-float-textinput .topic-input input:-ms-input-placeholder {
+  color: #6aa17f;
+}
+
+body .main .left-col .postbox .form .inset-float-textinput .topic-input input::-ms-input-placeholder {
+  color: #6aa17f;
+}
+
+body .main .left-col .postbox .form .inset-float-textinput .topic-input input::placeholder {
+  color: #6aa17f;
 }
 
 body .main .left-col .postbox .form .form-actions {
@@ -313,6 +361,8 @@ body .main .left-col .recent-posts .post-container .post-item:hover {
 
 body .main .left-col .recent-posts .post-container .post-item .icon {
   background-color: #6183f5;
+  min-width: 40px;
+  max-width: 40px;
   overflow: hidden;
   border-radius: 180px;
 }
@@ -347,6 +397,60 @@ body .main .left-col .recent-posts .post-container .post-item .contents a.title:
 
 body .main .left-col .recent-posts .post-container .post-item .contents .post-time {
   font-size: 0.8rem;
+}
+
+body .main .left-col .recent-posts .post-container .post-item .contents .topics {
+  width: 100%;
+}
+
+body .main .left-col .recent-posts .post-container .post-item .contents .topics a.topic {
+  font-family: 'Gemunu Libre', sans-serif;
+  display: inline-block;
+  padding: 0 10px;
+  margin: 3px 0;
+  background-color: inherit;
+  text-decoration: none;
+  border-radius: 5px;
+  border: 1px solid #0099ff;
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
+}
+
+body .main .left-col .recent-posts .post-container .post-item .contents .topics a.topic span.content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body .main .left-col .recent-posts .post-container .post-item .contents .topics a.topic span.content i, body .main .left-col .recent-posts .post-container .post-item .contents .topics a.topic span.content span {
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
+  color: #4da1da;
+}
+
+body .main .left-col .recent-posts .post-container .post-item .contents .topics a.topic span.content i {
+  margin-right: 5px;
+  font-size: 1.1rem;
+}
+
+body .main .left-col .recent-posts .post-container .post-item .contents .topics a.topic span.content span {
+  font-family: 'Gemunu Libre', sans-serif;
+}
+
+body .main .left-col .recent-posts .post-container .post-item .contents .topics a.topic:hover {
+  background-color: #4da1da;
+}
+
+body .main .left-col .recent-posts .post-container .post-item .contents .topics a.topic:hover span.content i, body .main .left-col .recent-posts .post-container .post-item .contents .topics a.topic:hover span.content span {
+  color: white;
 }
 
 body .main .left-col .recent-posts .post-container .post-item .contents .info {

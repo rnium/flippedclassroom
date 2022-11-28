@@ -240,13 +240,33 @@ $(document).ready(function(){
     
 })
 
+function processTopics() {
+    let topics_str = $("#topics").val()
+    if (topics_str.length > 0) {
+        topics_arr = topics_str.split(',')
+        let topics = []
+        topics_arr.forEach(element => {
+            let trimmed = element.trim()
+            let arr = trimmed.split("")
+            arr[0] = arr[0].toUpperCase()
+            formatted_topic = arr.join("")
+            topics.push(formatted_topic)
+        });
+        return topics.join(',')
+    } else {
+        return ''
+    }
+}
+
 function perform_post() {
     files = $("#post-files")[0].files
     let post_form = new FormData
 
     // fix csrftoken with formdata
     let post_description = $("#post-descr").val()
+    let topics = processTopics()
     post_form.append("post_description", post_description)
+    post_form.append("topics", topics)
     if (files.length > 0) {
         for (let file of files) {
             post_form.append("files", file)

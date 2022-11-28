@@ -1,3 +1,4 @@
+from pydoc_data.topics import topics
 from dateutil import parser
 from django.core.exceptions import PermissionDenied
 from django.shortcuts import redirect, render, get_object_or_404
@@ -8,7 +9,7 @@ from django.views.generic import TemplateView, DetailView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.decorators.csrf import csrf_exempt
 from django.utils import timezone
-from .models import Classroom, ClassroomPost, PostAttachment, Comment, Assignment, AssignmentAttachment
+from .models import Classroom, ClassroomPost, PostTopic, PostAttachment, Comment, Assignment, AssignmentAttachment
 
 
 
@@ -95,10 +96,7 @@ def create_assignment(request, pk):
             for file in files:
                 AssignmentAttachment.objects.create(assignment=assignment, attached_file=file)
         return HttpResponse("ok")
-
-@login_required
-def create_classroom(request):
-    return
+        
 
 @login_required
 def create_classroom(request):
@@ -138,6 +136,18 @@ def create_post(request, pk):
                         classroom_post = classroom_post,
                         attached_file = file
                     )
+        # adding topics
+        topics_str = request.POST.get('topics', '')
+        if len(topics_str) > 0:
+            topics = topics_str.split(',')
+            for topic in topics:
+                topicStrId = topic.replace(' ', '')
+                topics_querySet = PostTopic.objects.filter(str_id=topicStrId)
+                if len(topics_querySet) == 0:
+                    post_topic = PostTopic.objects.create(name=topic, str_id=topicStrId)
+                else:
+                    post_topic = topics_querySet[0]
+                classroom_post.topics.add(post_topic)
         return JsonResponse({'status':'completed'})
 
 # under dev.

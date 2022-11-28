@@ -67,6 +67,15 @@ class Classroom(models.Model):
         return tests
 
 
+class PostTopic(models.Model):
+    name = models.CharField(max_length=100)
+    str_id = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
+
+
+
 class ClassroomPost(models.Model):
     def get_uuid():
         return uuid.uuid4().hex
@@ -79,6 +88,7 @@ class ClassroomPost(models.Model):
     )
     classroom = models.ForeignKey(Classroom, on_delete=models.CASCADE)
     description = models.CharField(max_length=9999)
+    topics = models.ManyToManyField(PostTopic)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     posted = models.DateTimeField(auto_now_add=True)
 
