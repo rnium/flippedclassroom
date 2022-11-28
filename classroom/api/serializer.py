@@ -1,8 +1,19 @@
 from django.urls import reverse
 from rest_framework import serializers
-from classroom.models import ClassroomPost, Classroom
+from classroom.models import ClassroomPost, Classroom, PostTopic
+
+
+class PostTopicSerializer(serializers.ModelSerializer):
+    topic_url = serializers.SerializerMethodField()
+    class Meta:
+        model = PostTopic
+        fields = ['topic_url', 'name']
+    def get_topic_url(self, obj):
+        return reverse('classroom:topic_posts', kwargs={'pk':obj.classroom.id, 'topic_id':obj.str_id})
+
 
 class PostSerializer(serializers.ModelSerializer):
+    topics = PostTopicSerializer(read_only=True, many=True)
     view_url = serializers.SerializerMethodField()
     num_attachments = serializers.SerializerMethodField()
     num_comments = serializers.SerializerMethodField()

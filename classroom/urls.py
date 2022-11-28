@@ -10,6 +10,8 @@ urlpatterns = [
     path('classroom/<str:pk>', ClassroomDetail.as_view(), name="classroom_detail"),
     path('classroom/<str:pk>/assignment/new', create_assignment, name="create_assignment"),
     path('classroom/join/<str:pk>', join_classroom, name="join_classroom"),
+    # topics
+    path('classroom/<str:pk>/topics/<str:topic_id>', topic_posts, name="topic_posts"),
     # posts
     path('classroom/<str:pk>/post', create_post, name="post_to_classroom"),
     path('classroom/post/<str:pk>', PostDetail.as_view(), name="post_detail"),

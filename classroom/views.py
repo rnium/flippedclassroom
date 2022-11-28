@@ -153,6 +153,11 @@ def create_post(request, pk):
 # under dev.
 
 @login_required
+def topic_posts(request, pk, topic_id):
+    return render_underDev(request)
+
+
+@login_required
 def classroom_assignment(request, pk):
     return render_underDev(request)
 

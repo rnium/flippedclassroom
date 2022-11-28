@@ -74,6 +74,7 @@ function check_existing_input_files(){
 
 function render_post_component(post_data, hidden=false) {
     let inline_style
+    let topic_container
     if (hidden) {
         inline_style =  `style="display:none;"`
     } else {
@@ -81,6 +82,21 @@ function render_post_component(post_data, hidden=false) {
     }
     let description = post_data['description'].split(' ').slice(0, 7).join(' ')
     let date_raw = new Date(post_data['posted'])
+    let topics_data = post_data['topics']
+    if (topics_data.length > 0) {
+        let topic_elements = ''
+        topics_data.forEach(element => {
+            topic_elements += `<a href="${element['topic_url']}" class="topic"><span class="content"><i class='bx bx-tag-alt'></i><span>${element['name']}</span></span></a>`
+        })
+        topic_container = `<div class="topics">
+                                    ${topic_elements}
+                                </div>`
+
+
+    } else {
+        topic_container = ''
+    }
+
     let date = date_raw.toLocaleString("en-US")
     let options = ""
     if (post_data['action_permitted']) {
@@ -97,6 +113,7 @@ function render_post_component(post_data, hidden=false) {
                     <div class="contents">
                     <a href="${post_data['view_url']}" class="title">${description}</a>
                     <div class="post-time" id="${post_data['id']}-time">${date}</div>
+                    ${topic_container}
                     <div class="info">
                         <div class="info-item"><i class='bx bx-paperclip'></i><span>${post_data['num_attachments']} attachments</span></div>
                         <div class="info-item"><i class='bx bx-comment'></i><span>${post_data['num_comments']} comments</span></div>
