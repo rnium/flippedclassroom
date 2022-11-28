@@ -86,7 +86,7 @@ function render_post_component(post_data, hidden=false) {
     if (topics_data.length > 0) {
         let topic_elements = ''
         topics_data.forEach(element => {
-            topic_elements += `<a href="${element['topic_url']}" class="topic"><span class="content"><i class='bx bx-tag-alt'></i><span>${element['name']}</span></span></a>`
+            topic_elements += `<a href="${element['topic_url']}" class="topic"><span class="content"><i class='bx bx-tag-alt'></i><span>${element['name']}</span></span></a> `
         })
         topic_container = `<div class="topics">
                                     ${topic_elements}
@@ -305,6 +305,7 @@ function perform_post() {
             load_page_data()
             $("#post-files").val("")
             $("#post-descr").val("")
+            $("#topics").val("")
             check_existing_input_files()
         },
         complete: function(){
