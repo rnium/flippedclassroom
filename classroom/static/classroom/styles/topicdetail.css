@@ -1,0 +1,654 @@
+@import url("https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap");
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  color: #276363;
+}
+
+body header nav {
+  height: 80px;
+}
+
+body header nav .navbar-brand img {
+  opacity: 0.65;
+  width: 50px;
+  height: auto;
+  margin-right: 0.5rem;
+}
+
+body header nav .navbar-brand .site-title {
+  font-weight: 600;
+  color: #94a7ac;
+  font-family: 'Gemunu Libre', sans-serif;
+  font-size: 1.6rem;
+  text-shadow: 0 0 5px rgba(150, 190, 150, 0.3);
+}
+
+body header nav ul li.nav-item {
+  margin-left: 0.5rem;
+}
+
+body header nav ul li.nav-item .nav-link.active {
+  font-weight: 500;
+  color: gray;
+}
+
+body header nav .user {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body header nav .user .avatar {
+  width: 40px;
+  height: 40px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  overflow: hidden;
+  margin-right: 5px;
+  border-radius: 180px;
+  -webkit-box-shadow: 0 0 5px #e6e6e6;
+          box-shadow: 0 0 5px #e6e6e6;
+  border: 1px solid #d4d3d3;
+}
+
+body header nav .user .avatar img {
+  width: 100%;
+}
+
+body header nav .user .name {
+  text-shadow: 0 0 5px rgba(214, 214, 214, 0.993);
+}
+
+body header nav .user a {
+  margin-left: 15px;
+}
+
+body .main {
+  padding: 1.5rem 5%;
+}
+
+body .main .topic-name {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-bottom: 1rem;
+}
+
+body .main .topic-name i, body .main .topic-name span {
+  color: #76919e;
+}
+
+body .main .topic-name i {
+  margin-right: 10px;
+  font-size: 2.3rem;
+}
+
+body .main .topic-name span.name {
+  font-family: 'Gemunu Libre', sans-serif;
+  font-size: 2rem;
+}
+
+body .main .posts {
+  border-radius: 10px 10px 5px 5px;
+  margin-bottom: 2rem;
+  padding: 0.5rem 1rem;
+  -webkit-box-shadow: 0 0 15px #e9e8e8;
+          box-shadow: 0 0 15px #e9e8e8;
+}
+
+body .main .posts .heading {
+  font-size: 1.2rem;
+  padding: 1rem 0 1rem 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body .main .posts .heading i {
+  margin-right: 5px;
+  font-size: 1.5rem;
+  color: white;
+  background-color: #7ea9d8;
+  padding: 0.3rem;
+  border-radius: 180px;
+}
+
+body .main .posts .heading span {
+  font-family: 'Gemunu Libre', sans-serif;
+  font-size: 1.3rem;
+}
+
+body .main .posts .posts-container .post-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0.9rem 1.2rem;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  background-color: aliceblue;
+  border: 1px solid transparent;
+}
+
+body .main .posts .posts-container .post-item:hover {
+  border-color: rgba(0, 102, 255, 0.3);
+}
+
+body .main .posts .posts-container .post-item .icon {
+  background-color: #6183f5;
+  min-width: 40px;
+  max-width: 40px;
+  overflow: hidden;
+  border-radius: 180px;
+}
+
+body .main .posts .posts-container .post-item .icon i {
+  color: white;
+  font-size: 1.5rem;
+  padding: 0.5rem;
+}
+
+body .main .posts .posts-container .post-item .contents {
+  margin-left: 1.1rem;
+  -webkit-box-flex: 100;
+      -ms-flex-positive: 100;
+          flex-grow: 100;
+  color: #63818f;
+}
+
+body .main .posts .posts-container .post-item .contents a.title {
+  font-size: 1.1rem;
+  text-decoration: none;
+  color: #868686;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+body .main .posts .posts-container .post-item .contents a.title:hover {
+  color: #0066ff;
+  -webkit-text-decoration: dotted;
+          text-decoration: dotted;
+}
+
+body .main .posts .posts-container .post-item .contents .post-time {
+  font-size: 0.8rem;
+}
+
+body .main .posts .posts-container .post-item .contents .topics {
+  width: 100%;
+}
+
+body .main .posts .posts-container .post-item .contents .topics a.topic {
+  font-family: 'Gemunu Libre', sans-serif;
+  display: inline-block;
+  padding: 0 10px;
+  margin: 3px 0;
+  background-color: inherit;
+  text-decoration: none;
+  border-radius: 5px;
+  border: 1px solid #0099ff;
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
+}
+
+body .main .posts .posts-container .post-item .contents .topics a.topic span.content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body .main .posts .posts-container .post-item .contents .topics a.topic span.content i, body .main .posts .posts-container .post-item .contents .topics a.topic span.content span {
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
+  color: #4da1da;
+}
+
+body .main .posts .posts-container .post-item .contents .topics a.topic span.content i {
+  margin-right: 5px;
+  font-size: 1.1rem;
+}
+
+body .main .posts .posts-container .post-item .contents .topics a.topic span.content span {
+  font-family: 'Gemunu Libre', sans-serif;
+}
+
+body .main .posts .posts-container .post-item .contents .topics a.topic:hover {
+  background-color: #4da1da;
+}
+
+body .main .posts .posts-container .post-item .contents .topics a.topic:hover span.content i, body .main .posts .posts-container .post-item .contents .topics a.topic:hover span.content span {
+  color: white;
+}
+
+body .main .posts .posts-container .post-item .contents .info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 0.3rem;
+}
+
+body .main .posts .posts-container .post-item .contents .info .info-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-right: 1rem;
+  border-radius: 20px;
+}
+
+body .main .posts .posts-container .post-item .contents .info .info-item i {
+  margin-right: 0.3rem;
+  font-size: 1.1rem;
+  color: #6a92c7;
+}
+
+body .main .posts .posts-container .post-item .contents .info .info-item span {
+  color: #6a92c7;
+}
+
+body .main .posts .posts-container .post-item .options {
+  border-radius: 180px;
+  border: 0;
+  position: relative;
+}
+
+body .main .posts .posts-container .post-item .options .options-container {
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  right: 115%;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  border-radius: 10px;
+  overflow: hidden;
+  -webkit-box-shadow: 0 0 5px rgba(201, 201, 201, 0.1);
+          box-shadow: 0 0 5px rgba(201, 201, 201, 0.1);
+}
+
+body .main .posts .posts-container .post-item .options .options-container a {
+  padding: 0.2rem 1rem;
+  color: gray;
+  display: block;
+  background-color: #dde7ee;
+  width: 100%;
+  text-decoration: none;
+}
+
+body .main .posts .posts-container .post-item .options .options-container a:hover {
+  background-color: #c7d6e2;
+}
+
+body .main .posts .posts-container .post-item .options button {
+  border: 0;
+  background-color: transparent;
+  border-radius: 180px;
+  padding: 0;
+}
+
+body .main .posts .posts-container .post-item .options button i {
+  cursor: pointer;
+  border-radius: 180px;
+  color: #afafaf;
+  padding: 0.3rem;
+  font-size: 1.4rem;
+  background-color: rgba(197, 207, 214, 0.3);
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
+}
+
+body .main .posts .posts-container .post-item .options button i:hover {
+  background-color: rgba(197, 207, 214, 0.6);
+}
+
+body .main .files {
+  border-radius: 10px 10px 5px 5px;
+  background-color: white;
+  padding: 0.5rem 1rem;
+  -webkit-box-shadow: 0 0 15px #e9e8e8;
+          box-shadow: 0 0 15px #e9e8e8;
+}
+
+body .main .files .heading {
+  font-size: 1.2rem;
+  padding: 1rem 0 1rem 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body .main .files .heading i {
+  margin-right: 5px;
+  font-size: 1.5rem;
+  color: white;
+  background-color: #5ab68f;
+  padding: 0.3rem;
+  border-radius: 180px;
+}
+
+body .main .files .heading span {
+  font-family: 'Gemunu Libre', sans-serif;
+  font-size: 1.3rem;
+}
+
+body .main .files .posts-container .post-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0.9rem 1.2rem;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  background-color: aliceblue;
+  border: 1px solid transparent;
+}
+
+body .main .files .posts-container .post-item:hover {
+  border-color: rgba(0, 102, 255, 0.3);
+}
+
+body .main .files .posts-container .post-item .icon {
+  background-color: #6183f5;
+  min-width: 40px;
+  max-width: 40px;
+  overflow: hidden;
+  border-radius: 180px;
+}
+
+body .main .files .posts-container .post-item .icon i {
+  color: white;
+  font-size: 1.5rem;
+  padding: 0.5rem;
+}
+
+body .main .files .posts-container .post-item .contents {
+  margin-left: 1.1rem;
+  -webkit-box-flex: 100;
+      -ms-flex-positive: 100;
+          flex-grow: 100;
+  color: #63818f;
+}
+
+body .main .files .posts-container .post-item .contents a.title {
+  font-size: 1.1rem;
+  text-decoration: none;
+  color: #868686;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+body .main .files .posts-container .post-item .contents a.title:hover {
+  color: #0066ff;
+  -webkit-text-decoration: dotted;
+          text-decoration: dotted;
+}
+
+body .main .files .posts-container .post-item .contents .post-time {
+  font-size: 0.8rem;
+}
+
+body .main .files .posts-container .post-item .contents .topics {
+  width: 100%;
+}
+
+body .main .files .posts-container .post-item .contents .topics a.topic {
+  font-family: 'Gemunu Libre', sans-serif;
+  display: inline-block;
+  padding: 0 10px;
+  margin: 3px 0;
+  background-color: inherit;
+  text-decoration: none;
+  border-radius: 5px;
+  border: 1px solid #0099ff;
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
+}
+
+body .main .files .posts-container .post-item .contents .topics a.topic span.content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body .main .files .posts-container .post-item .contents .topics a.topic span.content i, body .main .files .posts-container .post-item .contents .topics a.topic span.content span {
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
+  color: #4da1da;
+}
+
+body .main .files .posts-container .post-item .contents .topics a.topic span.content i {
+  margin-right: 5px;
+  font-size: 1.1rem;
+}
+
+body .main .files .posts-container .post-item .contents .topics a.topic span.content span {
+  font-family: 'Gemunu Libre', sans-serif;
+}
+
+body .main .files .posts-container .post-item .contents .topics a.topic:hover {
+  background-color: #4da1da;
+}
+
+body .main .files .posts-container .post-item .contents .topics a.topic:hover span.content i, body .main .files .posts-container .post-item .contents .topics a.topic:hover span.content span {
+  color: white;
+}
+
+body .main .files .posts-container .post-item .contents .info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 0.3rem;
+}
+
+body .main .files .posts-container .post-item .contents .info .info-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-right: 1rem;
+  border-radius: 20px;
+}
+
+body .main .files .posts-container .post-item .contents .info .info-item i {
+  margin-right: 0.3rem;
+  font-size: 1.1rem;
+  color: #6a92c7;
+}
+
+body .main .files .posts-container .post-item .contents .info .info-item span {
+  color: #6a92c7;
+}
+
+body .main .files .posts-container .post-item .options {
+  border-radius: 180px;
+  border: 0;
+  position: relative;
+}
+
+body .main .files .posts-container .post-item .options .options-container {
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  right: 115%;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  border-radius: 10px;
+  overflow: hidden;
+  -webkit-box-shadow: 0 0 5px rgba(201, 201, 201, 0.1);
+          box-shadow: 0 0 5px rgba(201, 201, 201, 0.1);
+}
+
+body .main .files .posts-container .post-item .options .options-container a {
+  padding: 0.2rem 1rem;
+  color: gray;
+  display: block;
+  background-color: #dde7ee;
+  width: 100%;
+  text-decoration: none;
+}
+
+body .main .files .posts-container .post-item .options .options-container a:hover {
+  background-color: #c7d6e2;
+}
+
+body .main .files .posts-container .post-item .options button {
+  border: 0;
+  background-color: transparent;
+  border-radius: 180px;
+  padding: 0;
+}
+
+body .main .files .posts-container .post-item .options button i {
+  cursor: pointer;
+  border-radius: 180px;
+  color: #afafaf;
+  padding: 0.3rem;
+  font-size: 1.4rem;
+  background-color: rgba(197, 207, 214, 0.3);
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
+}
+
+body .main .files .posts-container .post-item .options button i:hover {
+  background-color: rgba(197, 207, 214, 0.6);
+}
+
+.btn-1-outlined {
+  display: inline-block;
+  border: 2px solid #76919e;
+  padding: 0.2rem 1rem;
+  border-radius: 10px;
+  background-color: inherit;
+  color: #76919e;
+  cursor: pointer;
+  font-size: 1rem;
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.btn-1-outlined:hover {
+  background-color: #76919e;
+  color: white;
+  -webkit-box-shadow: 3px 3px 5px #d8d8d8;
+          box-shadow: 3px 3px 5px #d8d8d8;
+}
+/*# sourceMappingURL=topicdetail.css.map */

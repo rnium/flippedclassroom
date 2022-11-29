@@ -1,4 +1,7 @@
 {% extends 'classroom/base.html' %}
+{% block style %} {% load static %}
+<link rel="stylesheet" href="{% static 'classroom/styles/style.css' %}">
+{% endblock style %}
 {% block title %}<title>Post - {{ classroompost.description }}</title>{% endblock title %}
 {% block nav %}
 <ul class="navbar-nav ms-5 me-auto mb-2 mb-lg-0">

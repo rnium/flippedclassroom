@@ -1,0 +1,75 @@
+{% extends 'classroom/base.html' %}
+{% block style %} {% load static %}
+<link rel="stylesheet" href="{% static 'classroom/styles/topicdetail.css' %}">
+{% endblock style %}
+{% block title %}<title>{{ topic.name }}</title>{% endblock title %}
+{% block nav %}
+<ul class="navbar-nav ms-5 me-auto mb-2 mb-lg-0">
+    <li class="nav-item">
+      <a class="nav-link" aria-current="page" href="{% url 'classroom:classroom_detail' topic.classroom.id %}">Dashboard</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'classroom:classroom_tests' topic.classroom.id %}">Tests</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'classroom:view_classroom_assignment' topic.classroom.id %}">Assignments</a>
+    </li>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        Student
+      </a>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="{% url 'classroom:classroom_students' topic.classroom.id %}">Student list</a></li>
+        <li><a class="dropdown-item" href="{% url 'classroom:classroom_groups' topic.classroom.id %}">Student groups</a></li>
+      </ul>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'classroom:classroom_files' topic.classroom.id %}">Files</a>
+    </li>
+  </ul>
+{% endblock nav %}
+
+{% block content %}
+<div class="topic-name">
+    <i class='bx bxs-tag-alt'></i>
+    <span class="name">{{ topic.name }}</span>
+</div>
+<div class="posts">
+    <div class="heading"><i class='bx bx-file'></i><span>Posts</span></div>
+    <div class="posts-container">
+        {% for post in topic.posts %}
+        <div class="post-item">
+            <div class="contents">
+                <a href="{% url 'classroom:post_detail' post.id %}" class="title">{{ post.description }}</a>
+                <div class="post-time">{{ post.posted }}</div>
+                {% if post.has_topics %}
+                <div class="topics">
+                    {% for post_topic in post.topics.all %}
+                    <a href="{% url 'classroom:topic_posts' post_topic.classroom.id post_topic.str_id %}" class="topic"><span class="content"><i class='bx bx-tag-alt'></i><span>{{ post_topic.name }}</span></span></a>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                <div class="info">
+                    <div class="info-item"><i class='bx bx-paperclip'></i><span>{{ post.num_attachments }} attachments</span></div>
+                    <div class="info-item"><i class='bx bx-comment'></i><span>{{ post.num_comments }} comments</span></div>
+                </div>
+            </div>
+            <div class="options">
+                <div class="options-container" id="post0-op-con" style="display: none;">
+                    <a href="">Edit</a>
+                    <a href="">Delete</a>
+                </div>
+                <button class="option-toggle" id="post0-option-toggle" data-op_con="post0-op-con"><i
+                        class='bx bx-dots-horizontal-rounded'></i></button>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<div class="files" title="under development">
+    <div class="heading"><i class='bx bx-paperclip'></i><span>Files</span></div>
+    <div class="files-container">
+        
+    </div>
+</div>
+{% endblock content %}

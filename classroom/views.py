@@ -154,7 +154,8 @@ def create_post(request, pk):
 
 @login_required
 def topic_posts(request, pk, topic_id):
-    return render_underDev(request)
+    topic = get_object_or_404(PostTopic, classroom=pk, str_id=topic_id)
+    return render(request, 'classroom/topicdetail.html', context={'topic':topic})
 
 
 @login_required

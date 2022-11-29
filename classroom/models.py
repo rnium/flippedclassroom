@@ -74,6 +74,18 @@ class PostTopic(models.Model):
 
     def __str__(self):
         return self.name
+    
+    @property
+    def num_posts(self):
+        return self.classroompost_set.count()
+    
+    @property
+    def has_posts(self):
+        return bool(self.num_posts)
+    
+    @property
+    def posts(self):
+        return self.classroompost_set.order_by('-posted')
 
 
 
@@ -110,6 +122,14 @@ class ClassroomPost(models.Model):
             return True
         else:
             return False
+    
+    @property
+    def has_topics(self):
+        if self.topics.count() > 0:
+            return True
+        else:
+            return False
+    
 
     @property
     def has_attachments(self):
