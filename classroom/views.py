@@ -141,7 +141,7 @@ def create_post(request, pk):
         if len(topics_str) > 0:
             topics = topics_str.split(',')
             for topic in topics:
-                topicStrId = topic.replace(' ', '')
+                topicStrId = topic.replace(' ', '').lower()
                 topics_querySet = PostTopic.objects.filter(str_id=topicStrId, classroom=classroom)
                 if len(topics_querySet) == 0:
                     post_topic = PostTopic.objects.create(name=topic, str_id=topicStrId, classroom=classroom)
