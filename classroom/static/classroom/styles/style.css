@@ -1,4 +1,125 @@
 @import url("https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap");
+@media screen and (min-width: 1200px) {
+  body header nav .user {
+    margin-left: auto !important;
+    margin-right: 2rem !important;
+  }
+  body .main .left-col {
+    width: 70%;
+  }
+  body .main .right-col {
+    width: 30%;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  body header nav ul {
+    margin: 0 !important;
+  }
+  body header nav ul li {
+    margin: 0 !important;
+    text-align: center;
+  }
+  body header nav .user {
+    -webkit-box-pack: center !important;
+        -ms-flex-pack: center !important;
+            justify-content: center !important;
+  }
+  body .main .left-col {
+    width: 65%;
+  }
+  body .main .right-col {
+    width: 35%;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  body .main .left-col {
+    width: 60%;
+  }
+  body .main .right-col {
+    width: 40%;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  body .main {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: column !important;
+            flex-direction: column !important;
+  }
+  body .main .left-col {
+    width: 100%;
+    padding: 0 !important;
+  }
+  body .main .right-col {
+    width: 100%;
+    padding: 0 !important;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  body .main {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: column !important;
+            flex-direction: column !important;
+  }
+  body .main .left-col .recent-posts .post-item .contents .info .info-item span {
+    font-size: 0.8rem !important;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  body .main {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: column !important;
+            flex-direction: column !important;
+  }
+  body .main .left-col .postbox .form-actions {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: column !important;
+            flex-direction: column !important;
+  }
+  body .main .left-col .postbox .form-actions .attachement-container {
+    width: 100% !important;
+  }
+  body .main .left-col .postbox .form-actions .attachement-container label {
+    font-size: 0.9rem;
+  }
+  body .main .left-col .postbox .form-actions .attachement-container .selected-file {
+    font-size: 0.8rem;
+  }
+  body .main .left-col .postbox .form-actions .submit-container {
+    margin-top: 0.5rem;
+    width: 100%;
+  }
+  body .main .left-col .postbox .form-actions .submit-container button {
+    width: 100%;
+  }
+  body .main .left-col .postbox .form-actions .submit-container .loader {
+    display: none !important;
+  }
+  body .main .left-col .recent-posts .post-item .icon {
+    display: none !important;
+  }
+  body .main .left-col .recent-posts .post-item .contents .info {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: column !important;
+            flex-direction: column !important;
+    margin-top: 1rem;
+    background-color: white;
+    padding: 0.5rem;
+    border-radius: 10px;
+    -webkit-box-shadow: 0 0 5px #dfdede;
+            box-shadow: 0 0 5px #dfdede;
+  }
+}
+
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -8,7 +129,7 @@
 }
 
 body header nav {
-  height: 80px;
+  padding: 1rem 0 !important;
 }
 
 body header nav .navbar-brand img {
@@ -86,8 +207,9 @@ body .main {
 }
 
 body .main .left-col {
-  width: 70%;
   padding: 0 2rem;
+  -webkit-transition: all 100ms;
+  transition: all 100ms;
 }
 
 body .main .left-col .classroom-info {
@@ -467,6 +589,8 @@ body .main .left-col .recent-posts .post-container .post-item .contents .info {
       -ms-flex-align: center;
           align-items: center;
   margin-top: 0.3rem;
+  -webkit-transition: all 100ms;
+  transition: all 100ms;
 }
 
 body .main .left-col .recent-posts .post-container .post-item .contents .info .info-item {
@@ -647,8 +771,9 @@ body .main .left-col .recent-posts .no-posts span {
 }
 
 body .main .right-col {
-  width: 30%;
   padding: 0 1rem;
+  -webkit-transition: all 100ms;
+  transition: all 100ms;
 }
 
 body .main .right-col .upcoming .content ul {

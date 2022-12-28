@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'exam.apps.ExamConfig',
     'classroom.apps.ClassroomConfig',
     'accounts.apps.AccountsConfig',
+    'weeklies.apps.WeekliesConfig',
     'rest_framework'
 ]
 
