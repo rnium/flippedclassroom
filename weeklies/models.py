@@ -18,12 +18,12 @@ class Weekly(models.Model):
     weeknum = models.IntegerField(unique=True)
     classroom = models.ForeignKey(Classroom, on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True)
-    pre_class_instruction = models.CharField(max_length=2000)
-    in_class_instruction = models.CharField(max_length=2000)
-    post_class_instruction = models.CharField(max_length=2000)
+    pre_class_instruction = models.CharField(max_length=2000, blank=True, null=True)
+    in_class_instruction = models.CharField(max_length=2000, blank=True, null=True)
+    post_class_instruction = models.CharField(max_length=2000, blank=True, null=True)
 
     def __str__(self):
-        return str(self.weeknum)
+        return f"{self.classroom.id} - week{self.weeknum}"
 
 
 class PreClassFile(models.Model):
@@ -31,7 +31,7 @@ class PreClassFile(models.Model):
         return join("attachments", str(self.weekly.classroom.id), 'weekly', str(self.weekly.id), 'preclass', filename)
 
     weekly = models.ForeignKey(Weekly, on_delete=models.CASCADE)
-    attached_file = models.FileField(upload_to=filepath)
+    attached_file = models.FileField(upload_to=filepath, max_length=1000)
 
     @property
     def filename(self):
@@ -43,7 +43,7 @@ class InClassFile(models.Model):
         return join("attachments", str(self.weekly.classroom.id), 'weekly', str(self.weekly.id), 'inclass', filename)
 
     weekly = models.ForeignKey(Weekly, on_delete=models.CASCADE)
-    attached_file = models.FileField(upload_to=filepath)
+    attached_file = models.FileField(upload_to=filepath, max_length=1000)
 
     @property
     def filename(self):
@@ -55,7 +55,7 @@ class PostClassFile(models.Model):
         return join("attachments", str(self.weekly.classroom.id), 'weekly', str(self.weekly.id), 'inclass', filename)
 
     weekly = models.ForeignKey(Weekly, on_delete=models.CASCADE)
-    attached_file = models.FileField(upload_to=filepath)
+    attached_file = models.FileField(upload_to=filepath, max_length=1000)
 
     @property
     def filename(self):
@@ -65,16 +65,16 @@ class PostClassFile(models.Model):
 class PreClassTutorial(models.Model):
     weekly = models.ForeignKey(Weekly, on_delete=models.CASCADE)
     yt_id = models.CharField(max_length=10) # yt_id = YouTube ID
-    description = models.CharField(max_length=1000)
+    description = models.CharField(max_length=1000, blank=True, null=True)
 
 
 class InClassTutorial(models.Model):
     weekly = models.ForeignKey(Weekly, on_delete=models.CASCADE)
     yt_id = models.CharField(max_length=10)
-    description = models.CharField(max_length=1000)
+    description = models.CharField(max_length=1000, blank=True, null=True)
 
 
 class PostClassTutorial(models.Model):
     weekly = models.ForeignKey(Weekly, on_delete=models.CASCADE)
     yt_id = models.CharField(max_length=10)
-    description = models.CharField(max_length=1000)
+    description = models.CharField(max_length=1000, blank=True, null=True)
