@@ -36,3 +36,45 @@ class PreClassFile(models.Model):
     @property
     def filename(self):
         return str(basename(self.attached_file.name))
+
+
+class InClassFile(models.Model):
+    def filepath(self, filename):
+        return join("attachments", str(self.weekly.classroom.id), 'weekly', str(self.weekly.id), 'inclass', filename)
+
+    weekly = models.ForeignKey(Weekly, on_delete=models.CASCADE)
+    attached_file = models.FileField(upload_to=filepath)
+
+    @property
+    def filename(self):
+        return str(basename(self.attached_file.name))
+
+
+class PostClassFile(models.Model):
+    def filepath(self, filename):
+        return join("attachments", str(self.weekly.classroom.id), 'weekly', str(self.weekly.id), 'inclass', filename)
+
+    weekly = models.ForeignKey(Weekly, on_delete=models.CASCADE)
+    attached_file = models.FileField(upload_to=filepath)
+
+    @property
+    def filename(self):
+        return str(basename(self.attached_file.name))
+
+
+class PreClassTutorial(models.Model):
+    weekly = models.ForeignKey(Weekly, on_delete=models.CASCADE)
+    yt_id = models.CharField(max_length=10) # yt_id = YouTube ID
+    description = models.CharField(max_length=1000)
+
+
+class InClassTutorial(models.Model):
+    weekly = models.ForeignKey(Weekly, on_delete=models.CASCADE)
+    yt_id = models.CharField(max_length=10)
+    description = models.CharField(max_length=1000)
+
+
+class PostClassTutorial(models.Model):
+    weekly = models.ForeignKey(Weekly, on_delete=models.CASCADE)
+    yt_id = models.CharField(max_length=10)
+    description = models.CharField(max_length=1000)
