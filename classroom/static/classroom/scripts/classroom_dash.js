@@ -71,8 +71,9 @@ function createWeekly(){
         return cookieValue;
     }
     const csrftoken = getCookie('csrftoken');
-    let weeklytopic = $("#weekly-topic-input").text();
+    let weeklytopic = $("#weekly-topic-input").val();
     data = {'topic':weeklytopic}
+    console.log(data);
     $.ajax({
         url: weekly_create_url,
         contentType: "application/json",
