@@ -1,0 +1,1738 @@
+@import url("https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@300;400;500&family=Montserrat:wght@300;400;500&family=Zen+Dots&display=swap");
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  color: #276363;
+}
+
+body header nav {
+  padding: 1rem 0 !important;
+}
+
+body header nav .navbar-brand img {
+  opacity: 0.65;
+  width: 50px;
+  height: auto;
+  margin-right: 0.5rem;
+}
+
+body header nav .navbar-brand .site-title {
+  font-weight: 600;
+  color: #94a7ac;
+  font-family: 'Gemunu Libre', sans-serif;
+  font-size: 1.6rem;
+  text-shadow: 0 0 5px rgba(150, 190, 150, 0.3);
+}
+
+body header nav ul li.nav-item {
+  margin-left: 0.5rem;
+}
+
+body header nav ul li.nav-item .nav-link.active {
+  font-weight: 500;
+  color: gray;
+}
+
+body header nav .user {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body header nav .user .avatar {
+  width: 40px;
+  height: 40px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  overflow: hidden;
+  margin-right: 5px;
+  border-radius: 180px;
+  -webkit-box-shadow: 0 0 5px #e6e6e6;
+          box-shadow: 0 0 5px #e6e6e6;
+  border: 1px solid #d4d3d3;
+}
+
+body header nav .user .avatar img {
+  width: 100%;
+}
+
+body header nav .user .name {
+  text-shadow: 0 0 5px rgba(214, 214, 214, 0.993);
+}
+
+body header nav .user a {
+  margin-left: 15px;
+}
+
+body .main {
+  -webkit-transition: all 100ms;
+  transition: all 100ms;
+}
+
+body .main .top-panel {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 1rem;
+}
+
+body .main .top-panel .classroom {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body .main .top-panel .classroom a {
+  text-decoration: none;
+  background-color: inherit;
+  padding: 2px 10px;
+  border: 1px solid #8dafa4;
+  border-radius: 7px;
+  color: #8dafa4;
+  font-size: 1.2rem;
+  font-family: 'Gemunu Libre', sans-serif;
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
+}
+
+body .main .top-panel .classroom a:hover {
+  color: white;
+  -webkit-box-shadow: 2px 2px 5px gainsboro;
+          box-shadow: 2px 2px 5px gainsboro;
+  background-color: #8dafa4;
+}
+
+body .main .bottom-panel .week-info {
+  text-align: center;
+}
+
+body .main .bottom-panel .week-info .text {
+  color: #22a87b;
+  margin-right: 1rem;
+  -webkit-transition: all 100ms;
+  transition: all 100ms;
+}
+
+body .main .bottom-panel .week-info .num {
+  color: #76919e;
+  -webkit-transition: all 100ms;
+  transition: all 100ms;
+}
+
+body .main .bottom-panel .tab-container {
+  margin-top: 1rem;
+  border-radius: 10px;
+  overflow: hidden;
+  -webkit-box-shadow: 5px 5px 10px #e5ece9;
+          box-shadow: 5px 5px 10px #e5ece9;
+  border: 2px solid #ecf2f7;
+}
+
+body .main .bottom-panel .tab-container .tab-buttons {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto auto auto auto;
+      grid-template-columns: auto auto auto auto;
+}
+
+body .main .bottom-panel .tab-container .tab-buttons button {
+  padding: 0.4rem 1rem 0.2rem;
+  border: 0;
+  background-color: rgba(236, 241, 245, 0.3);
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
+  border-bottom: 3px solid transparent;
+  font-family: 'Gemunu Libre', sans-serif;
+  font-weight: 500;
+}
+
+body .main .bottom-panel .tab-container .tab-buttons button:hover {
+  background-color: #eff3f5;
+}
+
+body .main .bottom-panel .tab-container .tab-buttons button.active {
+  color: #00a078;
+  background-color: rgba(202, 224, 214, 0.6);
+  border-bottom-color: #3fc497;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto;
+      grid-template-columns: auto;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container .tab-body {
+  display: none;
+  padding: 1rem;
+  min-height: 50vh;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container .tab-body.active {
+  display: block !important;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col {
+  -webkit-transition: all 100ms;
+  transition: all 100ms;
+  padding: 0 1rem;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .pre-class-info .descr_adder_btn_con, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .in-class-info .descr_adder_btn_con, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .post-class-info .descr_adder_btn_con, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .pre-class-info .descr_adder_btn_con, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .in-class-info .descr_adder_btn_con, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .post-class-info .descr_adder_btn_con, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .pre-class-info .descr_adder_btn_con, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .in-class-info .descr_adder_btn_con, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .post-class-info .descr_adder_btn_con {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 2rem 0;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .pre-class-info .descr_adder_btn_con button, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .in-class-info .descr_adder_btn_con button, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .post-class-info .descr_adder_btn_con button, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .pre-class-info .descr_adder_btn_con button, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .in-class-info .descr_adder_btn_con button, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .post-class-info .descr_adder_btn_con button, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .pre-class-info .descr_adder_btn_con button, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .in-class-info .descr_adder_btn_con button, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .post-class-info .descr_adder_btn_con button {
+  background-color: #3fc49c;
+  border-radius: 15px;
+  border: 2px solid #3fc49c;
+  -webkit-box-shadow: 2px 2px 5px #c6dfd6;
+          box-shadow: 2px 2px 5px #c6dfd6;
+  padding: 0.6rem 2rem;
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .pre-class-info .descr_adder_btn_con button i, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .pre-class-info .descr_adder_btn_con button span, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .in-class-info .descr_adder_btn_con button i, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .in-class-info .descr_adder_btn_con button span, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .post-class-info .descr_adder_btn_con button i, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .post-class-info .descr_adder_btn_con button span, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .pre-class-info .descr_adder_btn_con button i, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .pre-class-info .descr_adder_btn_con button span, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .in-class-info .descr_adder_btn_con button i, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .in-class-info .descr_adder_btn_con button span, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .post-class-info .descr_adder_btn_con button i, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .post-class-info .descr_adder_btn_con button span, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .pre-class-info .descr_adder_btn_con button i, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .pre-class-info .descr_adder_btn_con button span, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .in-class-info .descr_adder_btn_con button i, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .in-class-info .descr_adder_btn_con button span, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .post-class-info .descr_adder_btn_con button i, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .post-class-info .descr_adder_btn_con button span {
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .pre-class-info .descr_adder_btn_con button:hover, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .in-class-info .descr_adder_btn_con button:hover, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .post-class-info .descr_adder_btn_con button:hover, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .pre-class-info .descr_adder_btn_con button:hover, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .in-class-info .descr_adder_btn_con button:hover, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .post-class-info .descr_adder_btn_con button:hover, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .pre-class-info .descr_adder_btn_con button:hover, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .in-class-info .descr_adder_btn_con button:hover, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .post-class-info .descr_adder_btn_con button:hover {
+  background-color: white;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .pre-class-info .descr_adder_btn_con button:hover i, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .pre-class-info .descr_adder_btn_con button:hover span, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .in-class-info .descr_adder_btn_con button:hover i, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .in-class-info .descr_adder_btn_con button:hover span, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .post-class-info .descr_adder_btn_con button:hover i, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .post-class-info .descr_adder_btn_con button:hover span, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .pre-class-info .descr_adder_btn_con button:hover i, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .pre-class-info .descr_adder_btn_con button:hover span, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .in-class-info .descr_adder_btn_con button:hover i, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .in-class-info .descr_adder_btn_con button:hover span, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .post-class-info .descr_adder_btn_con button:hover i, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .post-class-info .descr_adder_btn_con button:hover span, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .pre-class-info .descr_adder_btn_con button:hover i, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .pre-class-info .descr_adder_btn_con button:hover span, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .in-class-info .descr_adder_btn_con button:hover i, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .in-class-info .descr_adder_btn_con button:hover span, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .post-class-info .descr_adder_btn_con button:hover i, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .post-class-info .descr_adder_btn_con button:hover span {
+  color: #3fc49c;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .pre-class-info .info-text, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .in-class-info .info-text, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .post-class-info .info-text, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .pre-class-info .info-text, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .in-class-info .info-text, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .post-class-info .info-text, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .pre-class-info .info-text, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .in-class-info .info-text, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .post-class-info .info-text {
+  padding: 1rem 0.5rem;
+  font-size: 1.1rem;
+  word-wrap: break-word;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .pre-class-info .info-text .info button.edit, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .in-class-info .info-text .info button.edit, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .post-class-info .info-text .info button.edit, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .pre-class-info .info-text .info button.edit, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .in-class-info .info-text .info button.edit, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .post-class-info .info-text .info button.edit, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .pre-class-info .info-text .info button.edit, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .in-class-info .info-text .info button.edit, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .post-class-info .info-text .info button.edit {
+  margin-left: 0.5rem;
+  display: inline-block;
+  background-color: #d6ebec;
+  border-radius: 180px;
+  border: 0;
+  padding: 5px 5px 0;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .pre-class-info .info-text .info button.edit i, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .in-class-info .info-text .info button.edit i, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .post-class-info .info-text .info button.edit i, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .pre-class-info .info-text .info button.edit i, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .in-class-info .info-text .info button.edit i, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .post-class-info .info-text .info button.edit i, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .pre-class-info .info-text .info button.edit i, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .in-class-info .info-text .info button.edit i, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .post-class-info .info-text .info button.edit i {
+  font-size: 1.3rem;
+  color: #1e75af;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .pre-class-info .description-editor, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .in-class-info .description-editor, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .post-class-info .description-editor, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .pre-class-info .description-editor, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .in-class-info .description-editor, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .post-class-info .description-editor, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .pre-class-info .description-editor, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .in-class-info .description-editor, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .post-class-info .description-editor {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: 2px solid #e2ecec;
+  padding: 1rem 1rem 0.5rem;
+  border-radius: 7px;
+  margin-bottom: 1rem;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .pre-class-info .description-editor .inset-float-textinput, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .in-class-info .description-editor .inset-float-textinput, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .post-class-info .description-editor .inset-float-textinput, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .pre-class-info .description-editor .inset-float-textinput, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .in-class-info .description-editor .inset-float-textinput, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .post-class-info .description-editor .inset-float-textinput, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .pre-class-info .description-editor .inset-float-textinput, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .in-class-info .description-editor .inset-float-textinput, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .post-class-info .description-editor .inset-float-textinput {
+  width: 100%;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .pre-class-info .description-editor .submit-container, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .in-class-info .description-editor .submit-container, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .post-class-info .description-editor .submit-container, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .pre-class-info .description-editor .submit-container, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .in-class-info .description-editor .submit-container, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .post-class-info .description-editor .submit-container, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .pre-class-info .description-editor .submit-container, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .in-class-info .description-editor .submit-container, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .post-class-info .description-editor .submit-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+  margin-top: 5px;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .pre-class-info .description-editor .close-btn, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .in-class-info .description-editor .close-btn, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .post-class-info .description-editor .close-btn, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .pre-class-info .description-editor .close-btn, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .in-class-info .description-editor .close-btn, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .post-class-info .description-editor .close-btn, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .pre-class-info .description-editor .close-btn, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .in-class-info .description-editor .close-btn, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .post-class-info .description-editor .close-btn {
+  background-color: white;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .pre-class-info .description-editor .close-btn i, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .in-class-info .description-editor .close-btn i, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .post-class-info .description-editor .close-btn i, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .pre-class-info .description-editor .close-btn i, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .in-class-info .description-editor .close-btn i, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .post-class-info .description-editor .close-btn i, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .pre-class-info .description-editor .close-btn i, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .in-class-info .description-editor .close-btn i, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .post-class-info .description-editor .close-btn i {
+  color: #69a0a0;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .pre-class-files, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .in-class-files, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .post-class-files, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .pre-class-files, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .in-class-files, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .post-class-files, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .pre-class-files, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .in-class-files, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .post-class-files {
+  background-color: aliceblue;
+  border-color: #9eaedd;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .pre-class-files .title i, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .pre-class-files .title .title-text, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .in-class-files .title i, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .in-class-files .title .title-text, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .post-class-files .title i, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .post-class-files .title .title-text, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .pre-class-files .title i, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .pre-class-files .title .title-text, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .in-class-files .title i, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .in-class-files .title .title-text, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .post-class-files .title i, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .post-class-files .title .title-text, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .pre-class-files .title i, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .pre-class-files .title .title-text, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .in-class-files .title i, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .in-class-files .title .title-text, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .post-class-files .title i, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .post-class-files .title .title-text {
+  color: #41819b;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .pre-class-files .content, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .in-class-files .content, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .post-class-files .content, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .pre-class-files .content, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .in-class-files .content, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .post-class-files .content, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .pre-class-files .content, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .in-class-files .content, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .post-class-files .content {
+  padding: 1rem;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .pre-class-files .content ul, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .in-class-files .content ul, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .post-class-files .content ul, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .pre-class-files .content ul, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .in-class-files .content ul, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .post-class-files .content ul, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .pre-class-files .content ul, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .in-class-files .content ul, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .post-class-files .content ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .pre-class-files .content ul li, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .in-class-files .content ul li, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .post-class-files .content ul li, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .pre-class-files .content ul li, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .in-class-files .content ul li, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .post-class-files .content ul li, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .pre-class-files .content ul li, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .in-class-files .content ul li, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .post-class-files .content ul li {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 1rem;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .pre-class-files .content ul li i, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .in-class-files .content ul li i, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .post-class-files .content ul li i, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .pre-class-files .content ul li i, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .in-class-files .content ul li i, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .post-class-files .content ul li i, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .pre-class-files .content ul li i, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .in-class-files .content ul li i, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .post-class-files .content ul li i {
+  font-size: 1.6rem;
+  margin-right: 0.5rem;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .pre-class-files .content ul li a, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .in-class-files .content ul li a, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .post-class-files .content ul li a, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .pre-class-files .content ul li a, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .in-class-files .content ul li a, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .post-class-files .content ul li a, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .pre-class-files .content ul li a, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .in-class-files .content ul li a, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .post-class-files .content ul li a {
+  text-decoration: none;
+  color: inherit;
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .pre-class-files .content ul li a:hover, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .in-class-files .content ul li a:hover, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .post-class-files .content ul li a:hover, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .pre-class-files .content ul li a:hover, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .in-class-files .content ul li a:hover, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .post-class-files .content ul li a:hover, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .pre-class-files .content ul li a:hover, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .in-class-files .content ul li a:hover, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .post-class-files .content ul li a:hover {
+  text-decoration: underline;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .pre-class-files .content ul li:last-of-type, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .in-class-files .content ul li:last-of-type, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .post-class-files .content ul li:last-of-type, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .pre-class-files .content ul li:last-of-type, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .in-class-files .content ul li:last-of-type, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .post-class-files .content ul li:last-of-type, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .pre-class-files .content ul li:last-of-type, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .in-class-files .content ul li:last-of-type, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .post-class-files .content ul li:last-of-type {
+  margin-bottom: 0;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .pre-class-files .add-content button, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .in-class-files .add-content button, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .post-class-files .add-content button, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .pre-class-files .add-content button, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .in-class-files .add-content button, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .post-class-files .add-content button, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .pre-class-files .add-content button, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .in-class-files .add-content button, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .post-class-files .add-content button {
+  background-color: #3fb0c4;
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
+  -webkit-box-shadow: 3px 3px 5px #c4e4ec;
+          box-shadow: 3px 3px 5px #c4e4ec;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .pre-class-files .add-content button i, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .pre-class-files .add-content button span, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .in-class-files .add-content button i, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .in-class-files .add-content button span, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .post-class-files .add-content button i, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .post-class-files .add-content button span, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .pre-class-files .add-content button i, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .pre-class-files .add-content button span, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .in-class-files .add-content button i, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .in-class-files .add-content button span, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .post-class-files .add-content button i, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .post-class-files .add-content button span, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .pre-class-files .add-content button i, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .pre-class-files .add-content button span, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .in-class-files .add-content button i, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .in-class-files .add-content button span, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .post-class-files .add-content button i, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .post-class-files .add-content button span {
+  color: white;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .pre-class-files .add-content button:hover, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .in-class-files .add-content button:hover, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .post-class-files .add-content button:hover, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .pre-class-files .add-content button:hover, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .in-class-files .add-content button:hover, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .post-class-files .add-content button:hover, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .pre-class-files .add-content button:hover, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .in-class-files .add-content button:hover, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .post-class-files .add-content button:hover {
+  background-color: rgba(63, 176, 196, 0.85);
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .pre-class-files .fileUpload, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .in-class-files .fileUpload, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .post-class-files .fileUpload, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .pre-class-files .fileUpload, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .in-class-files .fileUpload, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .post-class-files .fileUpload, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .pre-class-files .fileUpload, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .in-class-files .fileUpload, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .post-class-files .fileUpload {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background-color: #e2ecec;
+  border-radius: 10px;
+  padding: 0.7rem 1rem;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .pre-class-files .fileUpload .submit-container, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .in-class-files .fileUpload .submit-container, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .post-class-files .fileUpload .submit-container, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .pre-class-files .fileUpload .submit-container, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .in-class-files .fileUpload .submit-container, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .post-class-files .fileUpload .submit-container, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .pre-class-files .fileUpload .submit-container, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .in-class-files .fileUpload .submit-container, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .post-class-files .fileUpload .submit-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .pre-class-files .fileUpload .attachement-container label, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .in-class-files .fileUpload .attachement-container label, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .post-class-files .fileUpload .attachement-container label, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .pre-class-files .fileUpload .attachement-container label, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .in-class-files .fileUpload .attachement-container label, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .post-class-files .fileUpload .attachement-container label, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .pre-class-files .fileUpload .attachement-container label, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .in-class-files .fileUpload .attachement-container label, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .post-class-files .fileUpload .attachement-container label {
+  background-color: #63b68f;
+  color: #ecfff5;
+  margin-left: 0;
+  margin-right: 0.5rem;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .pre-class-files .fileUpload .attachement-container label i, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .in-class-files .fileUpload .attachement-container label i, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .post-class-files .fileUpload .attachement-container label i, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .pre-class-files .fileUpload .attachement-container label i, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .in-class-files .fileUpload .attachement-container label i, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .post-class-files .fileUpload .attachement-container label i, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .pre-class-files .fileUpload .attachement-container label i, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .in-class-files .fileUpload .attachement-container label i, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .post-class-files .fileUpload .attachement-container label i {
+  color: #e6fff0;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .pre-class-files .fileUpload .attachement-container .selected-file, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .in-class-files .fileUpload .attachement-container .selected-file, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .post-class-files .fileUpload .attachement-container .selected-file, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .pre-class-files .fileUpload .attachement-container .selected-file, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .in-class-files .fileUpload .attachement-container .selected-file, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .post-class-files .fileUpload .attachement-container .selected-file, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .pre-class-files .fileUpload .attachement-container .selected-file, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .in-class-files .fileUpload .attachement-container .selected-file, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .post-class-files .fileUpload .attachement-container .selected-file {
+  color: #649292;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .pre-class-tutorials, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .in-class-tutorials, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .post-class-tutorials, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .pre-class-tutorials, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .in-class-tutorials, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .post-class-tutorials, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .pre-class-tutorials, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .in-class-tutorials, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .post-class-tutorials {
+  background-color: #f8f8ee;
+  border-color: burlywood;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .pre-class-tutorials .title i, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .pre-class-tutorials .title .title-text, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .in-class-tutorials .title i, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .in-class-tutorials .title .title-text, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .post-class-tutorials .title i, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .post-class-tutorials .title .title-text, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .pre-class-tutorials .title i, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .pre-class-tutorials .title .title-text, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .in-class-tutorials .title i, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .in-class-tutorials .title .title-text, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .post-class-tutorials .title i, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .post-class-tutorials .title .title-text, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .pre-class-tutorials .title i, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .pre-class-tutorials .title .title-text, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .in-class-tutorials .title i, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .in-class-tutorials .title .title-text, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .post-class-tutorials .title i, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .post-class-tutorials .title .title-text {
+  color: #8b7c60;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .pre-class-tutorials .content ul, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .in-class-tutorials .content ul, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .post-class-tutorials .content ul, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .pre-class-tutorials .content ul, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .in-class-tutorials .content ul, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .post-class-tutorials .content ul, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .pre-class-tutorials .content ul, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .in-class-tutorials .content ul, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .post-class-tutorials .content ul {
+  margin-top: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .pre-class-tutorials .content ul li, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .in-class-tutorials .content ul li, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .post-class-tutorials .content ul li, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .pre-class-tutorials .content ul li, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .in-class-tutorials .content ul li, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .post-class-tutorials .content ul li, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .pre-class-tutorials .content ul li, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .in-class-tutorials .content ul li, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .post-class-tutorials .content ul li {
+  width: 100%;
+  border: 2px dotted burlywood;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .pre-class-tutorials .content ul li .vid-info, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .in-class-tutorials .content ul li .vid-info, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .post-class-tutorials .content ul li .vid-info, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .pre-class-tutorials .content ul li .vid-info, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .in-class-tutorials .content ul li .vid-info, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .post-class-tutorials .content ul li .vid-info, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .pre-class-tutorials .content ul li .vid-info, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .in-class-tutorials .content ul li .vid-info, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .post-class-tutorials .content ul li .vid-info {
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .pre-class-tutorials .content ul li .video-container, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .in-class-tutorials .content ul li .video-container, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .post-class-tutorials .content ul li .video-container, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .pre-class-tutorials .content ul li .video-container, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .in-class-tutorials .content ul li .video-container, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .post-class-tutorials .content ul li .video-container, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .pre-class-tutorials .content ul li .video-container, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .in-class-tutorials .content ul li .video-container, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .post-class-tutorials .content ul li .video-container {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .pre-class-tutorials .content ul li iframe, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .in-class-tutorials .content ul li iframe, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .post-class-tutorials .content ul li iframe, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .pre-class-tutorials .content ul li iframe, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .in-class-tutorials .content ul li iframe, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .post-class-tutorials .content ul li iframe, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .pre-class-tutorials .content ul li iframe, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .in-class-tutorials .content ul li iframe, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .post-class-tutorials .content ul li iframe {
+  border-radius: 5px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .pre-class-tutorials .content ul li:last-of-type, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .in-class-tutorials .content ul li:last-of-type, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .post-class-tutorials .content ul li:last-of-type, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .pre-class-tutorials .content ul li:last-of-type, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .in-class-tutorials .content ul li:last-of-type, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .post-class-tutorials .content ul li:last-of-type, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .pre-class-tutorials .content ul li:last-of-type, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .in-class-tutorials .content ul li:last-of-type, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .post-class-tutorials .content ul li:last-of-type {
+  margin-bottom: 0;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .pre-class-tutorials .add-content, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .in-class-tutorials .add-content, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .post-class-tutorials .add-content, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .pre-class-tutorials .add-content, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .in-class-tutorials .add-content, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .post-class-tutorials .add-content, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .pre-class-tutorials .add-content, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .in-class-tutorials .add-content, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .post-class-tutorials .add-content {
+  margin-top: 1rem;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .pre-class-tutorials .add-content button, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .in-class-tutorials .add-content button, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .post-class-tutorials .add-content button, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .pre-class-tutorials .add-content button, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .in-class-tutorials .add-content button, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .post-class-tutorials .add-content button, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .pre-class-tutorials .add-content button, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .in-class-tutorials .add-content button, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .post-class-tutorials .add-content button {
+  background-color: #c49a3f;
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
+  -webkit-box-shadow: 3px 3px 5px #ebecc4;
+          box-shadow: 3px 3px 5px #ebecc4;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .pre-class-tutorials .add-content button i, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .pre-class-tutorials .add-content button span, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .in-class-tutorials .add-content button i, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .in-class-tutorials .add-content button span, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .post-class-tutorials .add-content button i, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .post-class-tutorials .add-content button span, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .pre-class-tutorials .add-content button i, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .pre-class-tutorials .add-content button span, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .in-class-tutorials .add-content button i, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .in-class-tutorials .add-content button span, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .post-class-tutorials .add-content button i, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .post-class-tutorials .add-content button span, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .pre-class-tutorials .add-content button i, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .pre-class-tutorials .add-content button span, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .in-class-tutorials .add-content button i, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .in-class-tutorials .add-content button span, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .post-class-tutorials .add-content button i, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .post-class-tutorials .add-content button span {
+  color: white;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .pre-class-tutorials .add-content button:hover, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .in-class-tutorials .add-content button:hover, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .post-class-tutorials .add-content button:hover, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .pre-class-tutorials .add-content button:hover, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .in-class-tutorials .add-content button:hover, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .post-class-tutorials .add-content button:hover, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .pre-class-tutorials .add-content button:hover, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .in-class-tutorials .add-content button:hover, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .post-class-tutorials .add-content button:hover {
+  background-color: rgba(196, 154, 63, 0.85);
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .pre-class-tutorials .addvideo, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .in-class-tutorials .addvideo, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .post-class-tutorials .addvideo, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .pre-class-tutorials .addvideo, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .in-class-tutorials .addvideo, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .post-class-tutorials .addvideo, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .pre-class-tutorials .addvideo, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .in-class-tutorials .addvideo, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .post-class-tutorials .addvideo {
+  margin-top: 1rem;
+  padding: 1rem 1rem 0.5rem;
+  border: 2px solid #e2ecec;
+  background-color: white;
+  border-radius: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .pre-class-tutorials .addvideo .info-input, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .in-class-tutorials .addvideo .info-input, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .post-class-tutorials .addvideo .info-input, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .pre-class-tutorials .addvideo .info-input, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .in-class-tutorials .addvideo .info-input, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .post-class-tutorials .addvideo .info-input, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .pre-class-tutorials .addvideo .info-input, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .in-class-tutorials .addvideo .info-input, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .post-class-tutorials .addvideo .info-input {
+  width: 100%;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .pre-class-tutorials .addvideo .submit-container, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .in-class-tutorials .addvideo .submit-container, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .post-class-tutorials .addvideo .submit-container, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .pre-class-tutorials .addvideo .submit-container, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .in-class-tutorials .addvideo .submit-container, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .post-class-tutorials .addvideo .submit-container, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .pre-class-tutorials .addvideo .submit-container, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .in-class-tutorials .addvideo .submit-container, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .post-class-tutorials .addvideo .submit-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col {
+  -webkit-transition: all 100ms;
+  transition: all 100ms;
+  padding: 1rem;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .links, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .links, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .links {
+  background-color: rgba(202, 224, 214, 0.2);
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .links a, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .links a, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .links a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .links a i, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .links a i, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .links a i {
+  font-size: 1.2rem;
+  margin-right: 0.5rem;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .links a.create-test, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .links a.create-test, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .links a.create-test {
+  background-color: #31b48b;
+  -webkit-box-shadow: 0 0 5px #cacaca;
+          box-shadow: 0 0 5px #cacaca;
+  margin-bottom: 0.5rem;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .links a.create-test i, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .links a.create-test span, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .links a.create-test i, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .links a.create-test span, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .links a.create-test i, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .links a.create-test span {
+  color: #e8fff7;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .links a.create-test:hover, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .links a.create-test:hover, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .links a.create-test:hover {
+  background-color: #128863;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .links a.create-work, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .links a.create-work, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .links a.create-work {
+  background-color: #3577b1;
+  -webkit-box-shadow: 0 0 5px #919aa3;
+          box-shadow: 0 0 5px #919aa3;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .links a.create-work i, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .links a.create-work span, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .links a.create-work i, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .links a.create-work span, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .links a.create-work i, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .links a.create-work span {
+  color: #eef2ff;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .links a.create-work:hover, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .links a.create-work:hover, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .links a.create-work:hover {
+  background-color: #285d8b;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tasks .content ul, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tests .content ul, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tasks .content ul, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tests .content ul, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tasks .content ul, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tests .content ul {
+  padding: 0;
+  list-style-type: none;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tasks .content ul li, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tests .content ul li, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tasks .content ul li, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tests .content ul li, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tasks .content ul li, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tests .content ul li {
+  margin-bottom: 2px;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tasks .content ul li a, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tests .content ul li a, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tasks .content ul li a, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tests .content ul li a, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tasks .content ul li a, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tests .content ul li a {
+  text-decoration: none;
+  color: inherit;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tasks .content ul li .list-item .sub-title, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tests .content ul li .list-item .sub-title, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tasks .content ul li .list-item .sub-title, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tests .content ul li .list-item .sub-title, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tasks .content ul li .list-item .sub-title, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tests .content ul li .list-item .sub-title {
+  font-size: 1rem;
+  margin-right: 5px;
+  font-family: 'Gemunu Libre', sans-serif;
+  color: #719899;
+  text-shadow: 0 0 2px #dce7e3;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tasks .content ul li:last-of-type, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tests .content ul li:last-of-type, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tasks .content ul li:last-of-type, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tests .content ul li:last-of-type, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tasks .content ul li:last-of-type, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tests .content ul li:last-of-type {
+  margin-bottom: 0;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tasks .content ul li .list-item, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tests .content ul li .list-item, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tasks .content ul li .list-item, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tests .content ul li .list-item, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tasks .content ul li .list-item, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tests .content ul li .list-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 2px 5px;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tasks .content ul li .list-item i, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tests .content ul li .list-item i, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tasks .content ul li .list-item i, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tests .content ul li .list-item i, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tasks .content ul li .list-item i, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tests .content ul li .list-item i {
+  font-size: 1.5rem;
+  margin-right: 0.5rem;
+  padding: 0.3rem;
+  border-radius: 5px;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tasks .content ul li .list-item .info, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tests .content ul li .list-item .info, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tasks .content ul li .list-item .info, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tests .content ul li .list-item .info, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tasks .content ul li .list-item .info, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tests .content ul li .list-item .info {
+  color: #4b6d63;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tasks .content ul li .list-item .info .label-title, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tests .content ul li .list-item .info .label-title, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tasks .content ul li .list-item .info .label-title, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tests .content ul li .list-item .info .label-title, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tasks .content ul li .list-item .info .label-title, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tests .content ul li .list-item .info .label-title {
+  color: inherit;
+  text-decoration: none;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tasks .content ul li .list-item .info a.label-title, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tests .content ul li .list-item .info a.label-title, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tasks .content ul li .list-item .info a.label-title, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tests .content ul li .list-item .info a.label-title, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tasks .content ul li .list-item .info a.label-title, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tests .content ul li .list-item .info a.label-title {
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tasks .content ul li .list-item .info a.label-title:hover, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tests .content ul li .list-item .info a.label-title:hover, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tasks .content ul li .list-item .info a.label-title:hover, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tests .content ul li .list-item .info a.label-title:hover, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tasks .content ul li .list-item .info a.label-title:hover, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tests .content ul li .list-item .info a.label-title:hover {
+  text-shadow: 0 0 5px rgba(207, 223, 223, 0.6);
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tasks .content ul li .list-item .info .time, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tests .content ul li .list-item .info .time, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tasks .content ul li .list-item .info .time, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tests .content ul li .list-item .info .time, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tasks .content ul li .list-item .info .time, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tests .content ul li .list-item .info .time {
+  font-size: 0.7rem;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tasks .content ul li .test i, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tests .content ul li .test i, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tasks .content ul li .test i, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tests .content ul li .test i, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tasks .content ul li .test i, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tests .content ul li .test i {
+  background-color: #c7e0d8;
+  color: #50967e;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tasks .content ul li .test:hover, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tests .content ul li .test:hover, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tasks .content ul li .test:hover, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tests .content ul li .test:hover, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tasks .content ul li .test:hover, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tests .content ul li .test:hover {
+  background-color: rgba(147, 179, 160, 0.1);
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tasks .content ul li .assignment .info .deadline, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tests .content ul li .assignment .info .deadline, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tasks .content ul li .assignment .info .deadline, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tests .content ul li .assignment .info .deadline, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tasks .content ul li .assignment .info .deadline, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tests .content ul li .assignment .info .deadline {
+  font-size: 0.7rem;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tasks .content ul li .assignment i, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tests .content ul li .assignment i, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tasks .content ul li .assignment i, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tests .content ul li .assignment i, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tasks .content ul li .assignment i, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tests .content ul li .assignment i {
+  background-color: rgba(199, 206, 224, 0.678);
+  color: #507196;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tasks .content ul li .assignment:hover, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tests .content ul li .assignment:hover, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tasks .content ul li .assignment:hover, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tests .content ul li .assignment:hover, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tasks .content ul li .assignment:hover, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tests .content ul li .assignment:hover {
+  background-color: rgba(147, 157, 179, 0.1);
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tasks .content .no-content, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tests .content .no-content, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tasks .content .no-content, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tests .content .no-content, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tasks .content .no-content, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tests .content .no-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 2rem 0;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tasks .content .no-content i, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tests .content .no-content i, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tasks .content .no-content i, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tests .content .no-content i, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tasks .content .no-content i, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tests .content .no-content i {
+  margin-right: 5px;
+  font-size: 1.5rem;
+  color: #87ac95;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tasks .content .no-content span, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tests .content .no-content span, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tasks .content .no-content span, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tests .content .no-content span, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tasks .content .no-content span, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tests .content .no-content span {
+  color: #87ac95;
+  text-shadow: 0 0 5px #f0f0f0;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tests .title, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tests .title, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tests .title {
+  color: #10a051;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tests .content ul li .test-upcoming, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tests .content ul li .test-upcoming, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tests .content ul li .test-upcoming {
+  background-color: rgba(168, 190, 196, 0.2);
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tests .content ul li .test-upcoming i, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tests .content ul li .test-upcoming i, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tests .content ul li .test-upcoming i {
+  color: white;
+  background-color: #31b48b;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tests .content ul li .test-upcoming .info .label-title::after, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tests .content ul li .test-upcoming .info .label-title::after, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tests .content ul li .test-upcoming .info .label-title::after {
+  content: "upcoming";
+  background-color: #85afaf;
+  font-family: 'Gemunu Libre', sans-serif;
+  padding: 3px 5px;
+  font-size: 0.9rem;
+  margin-left: 5px;
+  border-radius: 5px;
+  color: white;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tasks .content ul li .assignment.due, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tasks .content ul li .assignment.due, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tasks .content ul li .assignment.due {
+  background-color: #e9f2f3;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tasks .content ul li .assignment.due i, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tasks .content ul li .assignment.due i, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tasks .content ul li .assignment.due i {
+  background-color: #3577b1;
+  color: white;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tasks .content ul li .assignment:hover, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tasks .content ul li .assignment:hover, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tasks .content ul li .assignment:hover {
+  background-color: rgba(147, 179, 160, 0.1);
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .live-tests .content ul, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .live-tests .content ul, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .live-tests .content ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .live-tests .content ul li, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .live-tests .content ul li, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .live-tests .content ul li {
+  margin-bottom: 1.5rem;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .live-tests .content ul li .test-item, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .live-tests .content ul li .test-item, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .live-tests .content ul li .test-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .live-tests .content ul li .test-item i, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .live-tests .content ul li .test-item i, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .live-tests .content ul li .test-item i {
+  font-size: 2rem;
+  margin-right: 0.5rem;
+  padding: 0.3rem;
+  border-radius: 5px;
+  background-color: #c7e0d8;
+  color: #50967e;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .live-tests .content ul li .test-item .info, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .live-tests .content ul li .test-item .info, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .live-tests .content ul li .test-item .info {
+  width: 100%;
+  margin-top: 5px;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .live-tests .content ul li .test-item .info .label-title, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .live-tests .content ul li .test-item .info .label-title, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .live-tests .content ul li .test-item .info .label-title {
+  color: inherit;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+  font-size: 1.1rem;
+  color: gray;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .live-tests .content ul li .test-item .info a.label-title, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .live-tests .content ul li .test-item .info a.label-title, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .live-tests .content ul li .test-item .info a.label-title {
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .live-tests .content ul li .test-item .info a.label-title:hover, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .live-tests .content ul li .test-item .info a.label-title:hover, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .live-tests .content ul li .test-item .info a.label-title:hover {
+  color: #68c094;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .live-tests .content ul li .test-item .info .stat, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .live-tests .content ul li .test-item .info .stat, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .live-tests .content ul li .test-item .info .stat {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  padding: 3px;
+  margin-top: 0.5rem;
+  border-radius: 10px;
+  width: 100%;
+  background-image: -webkit-gradient(linear, left top, right bottom, from(rgba(194, 191, 191, 0.2)), to(rgba(177, 237, 248, 0.384)));
+  background-image: linear-gradient(to bottom right, rgba(194, 191, 191, 0.2), rgba(177, 237, 248, 0.384));
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .live-tests .content ul li .test-item .info .stat div, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .live-tests .content ul li .test-item .info .stat div, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .live-tests .content ul li .test-item .info .stat div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 0.9rem;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .live-tests .content ul li .test-item .info .stat div i, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .live-tests .content ul li .test-item .info .stat div i, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .live-tests .content ul li .test-item .info .stat div i {
+  font-size: 1.2rem;
+  background-color: transparent;
+  margin-right: 0;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .live-tests .content ul li .test-item .info .stat div span, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .live-tests .content ul li .test-item .info .stat div span, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .live-tests .content ul li .test-item .info .stat div span {
+  color: #6390a5;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .live-tests .content ul li .test-item .info .stat div span.value, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .live-tests .content ul li .test-item .info .stat div span.value, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .live-tests .content ul li .test-item .info .stat div span.value {
+  font-weight: 500;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .live-tests .content ul li .test-item .info .action a, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .live-tests .content ul li .test-item .info .action a, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .live-tests .content ul li .test-item .info .action a {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  padding: 3px;
+  margin-top: 0.5rem;
+  border-radius: 20px;
+  background-color: inherit;
+  border: 2px solid #96beb1;
+  -webkit-box-shadow: 0 0 5px rgba(200, 233, 222, 0.5);
+          box-shadow: 0 0 5px rgba(200, 233, 222, 0.5);
+  width: 100%;
+  color: #05ac45;
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .live-tests .content ul li .test-item .info .action a:hover, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .live-tests .content ul li .test-item .info .action a:hover, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .live-tests .content ul li .test-item .info .action a:hover {
+  color: #ffffff;
+  background-color: #96beb1;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab4 .posts-container {
+  margin: 1rem 0;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab4 .posts-container .post {
+  border-radius: 5px;
+  border: 2px solid #e0e6eb;
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab4 .posts-container .post .post-inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab4 .posts-container .post .post-inner .top-panel {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  padding: 5px 1rem;
+  background-color: #d2e2e2;
+  margin-bottom: 0;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab4 .posts-container .post .post-inner .top-panel .post-time .sub-title {
+  margin-right: 10px;
+  color: #7cacb4;
+  font-size: 0.9rem;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab4 .posts-container .post .post-inner .top-panel .post-time .time {
+  font-family: 'Gemunu Libre', sans-serif;
+  color: #5d9776;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab4 .posts-container .post .post-inner .bottom-panel {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  background-color: #f9fcfd;
+  padding: 1.5rem 1.5rem 3rem;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab4 .posts-container .post .post-inner .bottom-panel .user {
+  margin-right: 30px;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab4 .posts-container .post .post-inner .bottom-panel .user .username {
+  color: #84a191;
+  text-shadow: 0 0 5px #d6e9de;
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab4 .posts-container .post .post-inner .bottom-panel .user .registration {
+  font-family: 'Gemunu Libre', sans-serif;
+  color: #0dac77;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab4 .posts-container .post .post-inner .bottom-panel .user .avatar {
+  margin-top: 10px;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab4 .posts-container .post .post-inner .bottom-panel .user .avatar img {
+  width: 100px;
+  height: auto;
+  border-radius: 5px;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab4 .posts-container .post .post-inner .bottom-panel .user .teacher-badge::after {
+  content: "Teacher";
+  font-family: 'Gemunu Libre', sans-serif;
+  color: white;
+  background-color: #0dac77;
+  padding: 1px 5px;
+  border-radius: 5px;
+  -webkit-box-shadow: 2px 2px 5px #c5dfd0;
+          box-shadow: 2px 2px 5px #c5dfd0;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab4 .posts-container .post .post-inner .bottom-panel .post-body {
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab4 .posts-container .post .post-inner .bottom-panel .post-body p {
+  margin-bottom: 2px;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab4 .posts-container .post .post-inner a.edit {
+  text-decoration: none;
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.5rem;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab4 .posts-container .post .post-inner a.edit i {
+  background-color: #3b886e;
+  -webkit-box-shadow: 2px 2px 5px #bddbd1;
+          box-shadow: 2px 2px 5px #bddbd1;
+  color: white;
+  font-size: 1.3rem;
+  padding: 7px;
+  border-radius: 180px;
+  opacity: 0.8;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab4 .posts-container .post:last-of-type {
+  margin-bottom: 0;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab4 .no-posts {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab4 .no-posts i, body .main .bottom-panel .tab-container .tab-contents-container #tab4 .no-posts span {
+  color: #6f95a7;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab4 .no-posts i {
+  font-size: 2rem;
+  margin-right: 5px;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab4 .no-posts span {
+  font-size: 1.2rem;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab4 .create-post {
+  margin-top: 3rem;
+  position: relative;
+  bottom: 1rem;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab4 .create-post .replyinput {
+  width: 100%;
+  height: 20vh;
+  padding: 1.3rem 1rem 0.5rem;
+  border-radius: 10px;
+  border: 1px solid white;
+  -webkit-box-shadow: 0 0 5px #cac9c9;
+          box-shadow: 0 0 5px #cac9c9;
+  resize: none;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab4 .create-post .replyinput:focus {
+  outline: 2px solid #01a16c;
+  border-color: #01a16c;
+  -webkit-box-shadow: 0 0 5px #a1a1a1;
+          box-shadow: 0 0 5px #a1a1a1;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab4 .create-post .replyinput::-webkit-input-placeholder {
+  color: #9ea09f;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab4 .create-post .replyinput:-ms-input-placeholder {
+  color: #9ea09f;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab4 .create-post .replyinput::-ms-input-placeholder {
+  color: #9ea09f;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab4 .create-post .replyinput::placeholder {
+  color: #9ea09f;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab4 .create-post .replyinput::-moz-selection {
+  background-color: #24ce95;
+  color: white;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab4 .create-post .replyinput::selection {
+  background-color: #24ce95;
+  color: white;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab4 .create-post .btn-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 0.5rem;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab4 .create-post .btn-container button {
+  padding: 0.2rem 3rem;
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
+  background-color: white;
+  color: #01a16c;
+  border: 2px solid #01a16c;
+  font-weight: 500;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab4 .create-post .btn-container button:hover {
+  background-color: #01a16c;
+  color: white;
+}
+
+.title-box {
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 2rem;
+  border: 2px solid rgba(153, 153, 153, 0.2);
+}
+
+.title-box .title {
+  background-color: #dfe9e65b;
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+  font-size: 1.1rem;
+  color: #6ea076;
+  text-align: center;
+}
+
+.title-box .content {
+  margin: 1rem;
+}
+
+.title-box .content .no-content {
+  padding: 1rem 0;
+}
+
+.title-box .content .no-content .icon i {
+  font-size: 3rem;
+  color: gray;
+}
+
+.title-box .content .no-content .info {
+  font-size: 1.2rem;
+  color: gray;
+}
+
+.content-card {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid;
+  border-radius: 5px;
+}
+
+.content-card .title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.content-card .title i {
+  font-size: 1.5rem;
+  margin-right: 0.5rem;
+}
+
+.content-card .title .title-text {
+  font-size: 1.2rem;
+  font-family: 'Gemunu Libre', sans-serif;
+}
+
+.content-card .content ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.content-card .content ul li {
+  margin: 0;
+}
+
+.content-card .no-content {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.content-card .no-content i {
+  font-size: 2rem;
+  margin-right: 1rem;
+}
+
+.content-card .no-content .info {
+  font-size: 1.5rem;
+}
+
+.content-card .add-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.content-card .add-content button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: 0;
+  padding: 0.5rem 2rem;
+  border-radius: 180px;
+}
+
+.content-card .add-content button i {
+  font-size: 1.5rem;
+  margin-right: 10px;
+}
+
+.content-card .add-content button span {
+  font-size: 1.1rem;
+  font-family: 'Gemunu Libre', sans-serif;
+}
+
+.inset-float-textinput {
+  position: relative;
+}
+
+.inset-float-textinput textarea {
+  width: 100%;
+  padding: 1.5rem 1rem 0.5rem;
+  background-color: #fcfcfc;
+  border-radius: 5px;
+  border: 0;
+  height: 6rem;
+  color: #7e7e7e;
+  resize: none;
+}
+
+.inset-float-textinput textarea:focus {
+  outline: 2px solid #01a16c;
+  border-color: #01a16c;
+  -webkit-box-shadow: 0 0 5px #a1a1a1;
+          box-shadow: 0 0 5px #a1a1a1;
+}
+
+.inset-float-textinput textarea:focus ~ label {
+  color: #01a16c;
+  background-color: #fcfcfc;
+}
+
+.inset-float-textinput textarea::-webkit-input-placeholder {
+  color: #9ea09f;
+}
+
+.inset-float-textinput textarea:-ms-input-placeholder {
+  color: #9ea09f;
+}
+
+.inset-float-textinput textarea::-ms-input-placeholder {
+  color: #9ea09f;
+}
+
+.inset-float-textinput textarea::placeholder {
+  color: #9ea09f;
+}
+
+.inset-float-textinput textarea::-moz-selection {
+  background-color: #24ce95;
+  color: white;
+}
+
+.inset-float-textinput textarea::selection {
+  background-color: #24ce95;
+  color: white;
+}
+
+.inset-float-textinput label {
+  position: absolute;
+  font-size: 0.8rem;
+  top: 0.5rem;
+  left: 1rem;
+  color: #00806b;
+}
+
+.info-input {
+  margin-bottom: 0.5rem;
+  position: relative;
+}
+
+.info-input label {
+  position: absolute;
+  font-size: 1rem;
+  top: 1rem;
+  left: 1rem;
+  background-color: white;
+  padding: 0 0.2rem;
+  border-radius: 5px;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+.info-input .textinput:focus ~ .textinput__label,
+.info-input .textinput:not(:placeholder-shown).textinput:not(:focus) ~ .textinput__label {
+  top: 0.4rem;
+  font-size: 0.7rem;
+  color: #01a16c;
+}
+
+.info-input:last-child {
+  margin-bottom: 0;
+}
+
+.textinput {
+  width: 100%;
+  padding: 1.3rem 1rem 0.5rem;
+  border-radius: 5px;
+  border: 1px solid #b6b6b6;
+}
+
+.textinput:focus {
+  outline: 2px solid #01a16c;
+  border-color: #01a16c;
+  -webkit-box-shadow: 0 0 5px #a1a1a1;
+          box-shadow: 0 0 5px #a1a1a1;
+}
+
+.textinput::-webkit-input-placeholder {
+  color: #9ea09f;
+}
+
+.textinput:-ms-input-placeholder {
+  color: #9ea09f;
+}
+
+.textinput::-ms-input-placeholder {
+  color: #9ea09f;
+}
+
+.textinput::placeholder {
+  color: #9ea09f;
+}
+
+.textinput::-moz-selection {
+  background-color: #24ce95;
+  color: white;
+}
+
+.textinput::selection {
+  background-color: #24ce95;
+  color: white;
+}
+
+.input-file {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  overflow: hidden;
+}
+
+.input-file input[type="file"] {
+  display: none;
+}
+
+.input-file input[type="file"]:active + label {
+  background-color: white !important;
+  color: #00ff40 !important;
+}
+
+.input-file input[type="file"]:active + label i {
+  color: #00ff40 !important;
+}
+
+.input-file label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: rgba(183, 207, 198, 0.1);
+  border: 0;
+  color: #276363;
+  text-align: center;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  margin-left: 0.5rem;
+  border-radius: 5px;
+}
+
+.input-file label i {
+  font-size: 1.5rem;
+  margin-right: 0.5rem;
+  -webkit-transition: 0.3s all;
+  transition: 0.3s all;
+  color: #459b7e;
+}
+
+.input-file label:hover {
+  background-color: rgba(58, 199, 147, 0.4);
+}
+
+.input-file .selected-file {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  color: #276363;
+}
+
+.submit-btn {
+  border-radius: 5px;
+  background-color: #84adadce;
+  color: white;
+  padding: 0.3rem 2rem;
+  border: 0;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  -webkit-box-shadow: 0 0 5px #cecdcd;
+          box-shadow: 0 0 5px #cecdcd;
+}
+
+.submit-btn:hover {
+  background-color: #7aa5a5;
+}
+
+.close-btn {
+  border: 0;
+  padding: 0;
+  background-color: white;
+  opacity: 0.5;
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
+}
+
+.close-btn i {
+  font-size: 1.8rem;
+  color: #69a0a0;
+}
+
+.close-btn:hover {
+  background-color: initial;
+  opacity: 1;
+}
+
+.btn-1-outlined {
+  display: inline-block;
+  border: 2px solid #76919e;
+  padding: 0.2rem 1rem;
+  border-radius: 10px;
+  background-color: inherit;
+  color: #76919e;
+  cursor: pointer;
+  font-size: 1rem;
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.btn-1-outlined:hover {
+  background-color: #76919e;
+  color: white;
+  -webkit-box-shadow: 3px 3px 5px #d8d8d8;
+          box-shadow: 3px 3px 5px #d8d8d8;
+}
+
+.btn-iconized {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0.4rem 2rem;
+  border-radius: 180px;
+  border: 0;
+}
+
+.btn-iconized i, .btn-iconized span {
+  color: white;
+}
+
+.btn-iconized i {
+  font-size: 1.4rem;
+}
+
+.btn-iconized span {
+  font-family: 'Gemunu Libre', sans-serif;
+  margin-left: 5px;
+  font-size: 1.2rem;
+}
+
+@media screen and (min-width: 1200px) {
+  body header nav .user {
+    margin-left: auto !important;
+    margin-right: 2rem !important;
+  }
+  body .main .bottom-panel .tab-contents-container #tab1 .tab-content .left-col, body .main .bottom-panel .tab-contents-container #tab2 .tab-content .left-col, body .main .bottom-panel .tab-contents-container #tab3 .tab-content .left-col {
+    width: 65%;
+  }
+  body .main .bottom-panel .tab-contents-container #tab1 .tab-content .left-col .pre-class-tutorials .content ul li, body .main .bottom-panel .tab-contents-container #tab2 .tab-content .left-col .pre-class-tutorials .content ul li, body .main .bottom-panel .tab-contents-container #tab3 .tab-content .left-col .pre-class-tutorials .content ul li {
+    padding: 1rem;
+  }
+  body .main .bottom-panel .tab-contents-container #tab1 .tab-content .right-col, body .main .bottom-panel .tab-contents-container #tab2 .tab-content .right-col, body .main .bottom-panel .tab-contents-container #tab3 .tab-content .right-col {
+    width: 35%;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  body header nav ul {
+    margin: 0 !important;
+  }
+  body header nav ul li {
+    margin: 0 !important;
+    text-align: center;
+  }
+  body header nav .user {
+    -webkit-box-pack: center !important;
+        -ms-flex-pack: center !important;
+            justify-content: center !important;
+  }
+  body .main .bottom-panel .tab-contents-container #tab1 .tab-content .left-col, body .main .bottom-panel .tab-contents-container #tab2 .tab-content .left-col, body .main .bottom-panel .tab-contents-container #tab3 .tab-content .left-col {
+    width: 50%;
+  }
+  body .main .bottom-panel .tab-contents-container #tab1 .tab-content .left-col .pre-class-tutorials .content ul li, body .main .bottom-panel .tab-contents-container #tab2 .tab-content .left-col .pre-class-tutorials .content ul li, body .main .bottom-panel .tab-contents-container #tab3 .tab-content .left-col .pre-class-tutorials .content ul li {
+    padding: 0.5rem;
+  }
+  body .main .bottom-panel .tab-contents-container #tab1 .tab-content .right-col, body .main .bottom-panel .tab-contents-container #tab2 .tab-content .right-col, body .main .bottom-panel .tab-contents-container #tab3 .tab-content .right-col {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .main .bottom-panel #tab1 .tab-content, .main .bottom-panel #tab2 .tab-content, .main .bottom-panel #tab3 .tab-content {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: column !important;
+            flex-direction: column !important;
+  }
+  .main .bottom-panel #tab1 .tab-content .left-col, .main .bottom-panel #tab2 .tab-content .left-col, .main .bottom-panel #tab3 .tab-content .left-col {
+    width: 100% !important;
+  }
+  .main .bottom-panel #tab1 .tab-content .right-col, .main .bottom-panel #tab2 .tab-content .right-col, .main .bottom-panel #tab3 .tab-content .right-col {
+    width: 100% !important;
+  }
+}
+
+@media screen and (min-width: 576px) {
+  body .main {
+    margin: 2rem 3rem;
+  }
+  body .main .bottom-panel .week-info .text, body .main .bottom-panel .week-info .num {
+    font-weight: 500;
+    font-size: 2rem;
+  }
+  body .main .bottom-panel .tab-buttons button {
+    font-size: 1.2rem;
+  }
+  body .main .bottom-panel .tab-contents-container #tab1 .tab-content .left-col .fileUpload, body .main .bottom-panel .tab-contents-container #tab2 .tab-content .left-col .fileUpload, body .main .bottom-panel .tab-contents-container #tab3 .tab-content .left-col .fileUpload {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  body .main {
+    margin: 2rem 1.5rem;
+  }
+  body .main .bottom-panel .week-info .text, body .main .bottom-panel .week-info .num {
+    font-weight: 500;
+    font-size: 1.5rem;
+  }
+  body .main .bottom-panel .tab-buttons button {
+    font-size: 1rem;
+  }
+  body .main .bottom-panel #tab1 .tab-content .left-col, body .main .bottom-panel #tab2 .tab-content .left-col, body .main .bottom-panel #tab3 .tab-content .left-col {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  body .main .bottom-panel #tab1 .tab-content .left-col .info-text-raw, body .main .bottom-panel #tab2 .tab-content .left-col .info-text-raw, body .main .bottom-panel #tab3 .tab-content .left-col .info-text-raw {
+    font-size: 1rem !important;
+  }
+  body .main .bottom-panel #tab1 .tab-content .left-col .fileUpload, body .main .bottom-panel #tab2 .tab-content .left-col .fileUpload, body .main .bottom-panel #tab3 .tab-content .left-col .fileUpload {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: column !important;
+            flex-direction: column !important;
+  }
+  body .main .bottom-panel #tab1 .tab-content .left-col .fileUpload .attachement-container, body .main .bottom-panel #tab2 .tab-content .left-col .fileUpload .attachement-container, body .main .bottom-panel #tab3 .tab-content .left-col .fileUpload .attachement-container {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+  body .main .bottom-panel #tab1 .tab-content .left-col .fileUpload .submit-container, body .main .bottom-panel #tab2 .tab-content .left-col .fileUpload .submit-container, body .main .bottom-panel #tab3 .tab-content .left-col .fileUpload .submit-container {
+    width: 100%;
+  }
+  body .main .bottom-panel #tab1 .tab-content .left-col .fileUpload .submit-container button, body .main .bottom-panel #tab2 .tab-content .left-col .fileUpload .submit-container button, body .main .bottom-panel #tab3 .tab-content .left-col .fileUpload .submit-container button {
+    width: 100%;
+  }
+  body .main .bottom-panel #tab1 .tab-content .right-col, body .main .bottom-panel #tab2 .tab-content .right-col, body .main .bottom-panel #tab3 .tab-content .right-col {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
+/*# sourceMappingURL=weekly.css.map */
