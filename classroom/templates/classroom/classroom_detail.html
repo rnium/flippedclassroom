@@ -210,7 +210,8 @@
   const join_link = "{{ join_link }}"
   const classroom_id = "{{ classroom.id }}"
   const post_create_url = "{% url 'classroom:post_to_classroom' classroom.id %}"
-  const csrftoken = {{ csrftoken }}
+  const post_create_url = "{% url 'classroom:post_to_classroom' classroom.id %}"
+
 </script>
 <script src="{% static 'classroom/scripts/classroom_dash.js' %}"></script>
 {% endblock script %}

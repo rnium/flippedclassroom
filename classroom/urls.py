@@ -28,6 +28,6 @@ urlpatterns = [
     # tests
     path('classroom/<str:pk>/tests', classroom_tests, name="classroom_tests"),
     #weeklies
-    path('classroom/weeklies/', include("weeklies.urls"))
+    path('classroom/<int:cls_pk>/weeklies/', include("weeklies.urls"))
 ]
    

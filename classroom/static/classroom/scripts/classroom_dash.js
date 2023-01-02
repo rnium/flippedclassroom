@@ -90,6 +90,7 @@ function createWeekly(){
         }
     })
 }
+
 $("#create-weekly-cancel-btn").on('click', ()=>{
     let is_double = $("#create-weekly-btns-con").hasClass("double");
     if (is_double) {
