@@ -67,6 +67,29 @@ $("#create-weekly-btn").on('click', ()=>{
     }
 })
 
+function createWeekly(){
+    let weeklytopic = $("#weekly-topic-input")
+    $.ajax({
+        url: create_test_url,
+        contentType: "application/json",
+        type: "POST",
+        beforeSend: function(xhr){
+            $("#id_create_q_button").attr("disabled", "")
+            $("#id_create_q_button").addClass("disabled-btn")
+            
+            xhr.setRequestHeader("X-CSRFToken", csrftoken)
+        },
+        data: data,
+        cache: false,
+        dataType: "json",
+        success: function(response){
+            console.log('success');
+        },
+        error: function(xhr,status,error){
+            console.log('error');
+        }
+    })
+}
 $("#create-weekly-cancel-btn").on('click', ()=>{
     let is_double = $("#create-weekly-btns-con").hasClass("double");
     if (is_double) {
@@ -76,6 +99,8 @@ $("#create-weekly-cancel-btn").on('click', ()=>{
         $("#create-weekly-btn").text("Create Weekly");
     }
 })
+
+//
 
 function check_existing_input_files(){
     let inputfield = document.getElementById('post-files')

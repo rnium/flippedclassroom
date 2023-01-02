@@ -31,7 +31,7 @@ class ClassroomPostsView(ListAPIView):
 def post_comment(request, pk):
     try:
         post = ClassroomPost.objects.get(pk=pk)
-    except Classroom.DoesNotExist:
+    except ClassroomPost.DoesNotExist:
         return Response({'status':'post not found'}, status=status.HTTP_404_NOT_FOUND)
     parent_comment = request.data.get('parent_comment_id')
     if parent_comment != None:
@@ -48,7 +48,7 @@ def post_comment(request, pk):
         comment_text = request.data.get('comment_text', '')
     )
     comment.save()
-    payload = {
+    response = {
         "parent_id": parent_comment,
         "id": comment.id,
         "author_name": comment.author.account.user_full_name,
@@ -59,7 +59,7 @@ def post_comment(request, pk):
         "num_comments": comment.post.num_comments,
     }
 
-    return Response(payload, status=status.HTTP_201_CREATED)
+    return Response(response, status=status.HTTP_201_CREATED)
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
