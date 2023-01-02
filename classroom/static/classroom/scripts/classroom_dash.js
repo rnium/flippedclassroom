@@ -52,6 +52,31 @@ if (inputfield !== null) {
     })
 }
 
+
+// create weekly
+$("#create-weekly-btn").on('click', ()=>{
+    // $(this).text("Create");
+    let is_double = $("#create-weekly-btns-con").hasClass("double");
+    if (!is_double) {
+        $("#weekly-topic-inp-con").show(100)
+        $("#create-weekly-btns-con").addClass("double");
+        $("#create-weekly-cancel-btn").show(100)
+        $("#create-weekly-btn").text("Create");
+    } else {
+        console.log('proceed to request');
+    }
+})
+
+$("#create-weekly-cancel-btn").on('click', ()=>{
+    let is_double = $("#create-weekly-btns-con").hasClass("double");
+    if (is_double) {
+        $("#weekly-topic-inp-con").hide(100)
+        $("#create-weekly-btns-con").removeClass("double");
+        $("#create-weekly-cancel-btn").hide(100)
+        $("#create-weekly-btn").text("Create Weekly");
+    }
+})
+
 function check_existing_input_files(){
     let inputfield = document.getElementById('post-files')
     if (inputfield !== null) {
