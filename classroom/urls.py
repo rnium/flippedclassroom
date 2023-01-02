@@ -27,7 +27,5 @@ urlpatterns = [
     path('classroom/<str:pk>/files', classroom_files, name="classroom_files"),
     # tests
     path('classroom/<str:pk>/tests', classroom_tests, name="classroom_tests"),
-    #weeklies
-    path('classroom/<int:cls_pk>/weeklies/', include("weeklies.urls"))
 ]
    

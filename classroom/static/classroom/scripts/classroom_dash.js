@@ -54,32 +54,35 @@ if (inputfield !== null) {
 
 
 // create weekly
-$("#create-weekly-btn").on('click', ()=>{
-    // $(this).text("Create");
-    let is_double = $("#create-weekly-btns-con").hasClass("double");
-    if (!is_double) {
-        $("#weekly-topic-inp-con").show(100)
-        $("#create-weekly-btns-con").addClass("double");
-        $("#create-weekly-cancel-btn").show(100)
-        $("#create-weekly-btn").text("Create");
-    } else {
-        console.log('proceed to request');
-    }
-})
-
 function createWeekly(){
-    let weeklytopic = $("#weekly-topic-input")
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    const csrftoken = getCookie('csrftoken');
+    let weeklytopic = $("#weekly-topic-input").text();
+    data = {'topic':weeklytopic}
     $.ajax({
-        url: create_test_url,
+        url: weekly_create_url,
         contentType: "application/json",
         type: "POST",
         beforeSend: function(xhr){
             $("#id_create_q_button").attr("disabled", "")
-            $("#id_create_q_button").addClass("disabled-btn")
-            
+            // $("#id_create_q_button").addClass("disabled-btn")
             xhr.setRequestHeader("X-CSRFToken", csrftoken)
         },
-        data: data,
+        data: JSON.stringify(data),
         cache: false,
         dataType: "json",
         success: function(response){
@@ -90,6 +93,21 @@ function createWeekly(){
         }
     })
 }
+
+
+$("#create-weekly-btn").on('click', ()=>{
+    // $(this).text("Create");
+    let is_double = $("#create-weekly-btns-con").hasClass("double");
+    if (!is_double) {
+        $("#weekly-topic-inp-con").show(100)
+        $("#create-weekly-btns-con").addClass("double");
+        $("#create-weekly-cancel-btn").show(100)
+        $("#create-weekly-btn").text("Create");
+    } else {
+        createWeekly()
+    }
+})
+
 
 $("#create-weekly-cancel-btn").on('click', ()=>{
     let is_double = $("#create-weekly-btns-con").hasClass("double");
