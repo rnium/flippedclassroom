@@ -73,7 +73,6 @@ function createWeekly(){
     const csrftoken = getCookie('csrftoken');
     let weeklytopic = $("#weekly-topic-input").val();
     data = {'topic':weeklytopic}
-    console.log(data);
     $.ajax({
         url: weekly_create_url,
         contentType: "application/json",
@@ -87,7 +86,7 @@ function createWeekly(){
         cache: false,
         dataType: "json",
         success: function(response){
-            console.log('success');
+            window.location.href = response['weekly_url']
         },
         error: function(xhr,status,error){
             console.log('error');
