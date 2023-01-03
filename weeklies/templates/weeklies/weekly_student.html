@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+{% load static %}
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,7 +8,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
   <link rel="stylesheet" href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'>
-  <link rel="stylesheet" href="styles/weekly.css">
+  <link rel="stylesheet" href="{% static 'weeklies/styles/weekly.css' %}">
   <title>classroom name - week 1 </title>
 </head>
 
@@ -423,7 +423,7 @@
               <div class="left-col">
                 <div class="post-class-info">
                   <div class="info-text" id="post-class-info-text" data-descr-editor="post_cls-description-editor">
-                    <div class="info" id="post-class-info-text-raw">Lorem adipisicing  elitelitelitelitelitelitelitelitelitelitelitelit elitelit. Natus a sunt dolore ut provident pariatur earum harum autem ea animi. t consectetur adipisicing elit. Quos ddfdfdd<button class="des-edit edit" id="post-class-info-edit"><i class='bx bx-pencil'></i></button></div>
+                    <div class="info" id="post-class-info-text-raw">Lorem adipisicing  elitelitelitelitelitelitelitelitelitelitelitelit elitelit. Natus a sunt dolore ut provident pariatur earum harum autem ea animi. t consectetur adipisicing elit. Quos ddfdfdd</div>
                   </div>
                 </div>
                 
@@ -652,7 +652,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
     crossorigin="anonymous"></script>
-  <script src="/scripts/weekly_detail.js"></script>
+    <script src="{% static 'weeklies/scripts/weekly_detail.js' %}"></script>
 </body>
 
 </html>

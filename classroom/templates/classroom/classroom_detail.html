@@ -118,13 +118,15 @@
   <div class="weeklies title-box">
     <div class="title">Weeklies</div>
     <div class="content">
-      <!-- <ul>
+      {% if classroom.has_weeklies %}
+      <ul>
+        {% for weekly in classroom.weeklies %}
         <li>
-          <a href="">
+          <a href="{% url 'weeklies:weeklydetail' weekly.classroom.id weekly.weeknum %}">
             <div class="week">
               <div class="week-no">
                 <span class="weektext">Week</span>
-                <span class="num">1</span>
+                <span class="num">{{ weekly.weeknum }}</span>
               </div>
               <div class="icon">
                 <i class='bx bxs-calendar-week'></i>
@@ -132,24 +134,14 @@
             </div>
           </a>
         </li>
-        <li>
-          <a href="">
-            <div class="week">
-              <div class="week-no">
-                <span class="weektext">Week</span>
-                <span class="num">2</span>
-              </div>
-              <div class="icon">
-                <i class='bx bxs-calendar-week'></i>
-              </div>
-            </div>
-          </a>
-        </li>
-      </ul> -->
+        {% endfor %}
+      </ul>
+      {% else %}
       <div class="no-content">
         <div class="icon-rotated"><i class='bx bx-calendar-week'></i></div>
         <div class="info">No Weeklies</div>
       </div>
+      {% endif %}
       {% if request.user in classroom.teachers.all %}
       <div class="create-weekly">
         <div class="weekly-topic-inp-con" id="weekly-topic-inp-con" style="display: none;">

@@ -66,6 +66,14 @@ class Classroom(models.Model):
         tests = self.test_set.filter(schedule__lte=timenow, expired=False).order_by("-created")
         return tests
 
+    @property
+    def weeklies(self):
+        qs = self.weekly_set.all().order_by('created')
+        return qs
+    
+    @property
+    def has_weeklies(self):
+        return bool(self.weeklies)
 
 class PostTopic(models.Model):
     name = models.CharField(max_length=100)
