@@ -78,7 +78,7 @@ function createWeekly(){
         contentType: "application/json",
         type: "POST",
         beforeSend: function(xhr){
-            $("#id_create_q_button").attr("disabled", "")
+            $("#create-weekly-btn").attr("disabled", "")
             // $("#id_create_q_button").addClass("disabled-btn")
             xhr.setRequestHeader("X-CSRFToken", csrftoken)
         },
@@ -89,7 +89,7 @@ function createWeekly(){
             window.location.href = response['weekly_url']
         },
         error: function(xhr,status,error){
-            console.log('error');
+            console.log(error);
         }
     })
 }

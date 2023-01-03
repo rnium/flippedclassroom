@@ -1,4 +1,58 @@
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+const csrftoken = getCookie('csrftoken');
+
+
 // ---- DESCRIPTION EDIT/ADD -----------------
+function updateWeekly(data, callback) {
+    payload = JSON.stringify(data)
+    $.ajax({
+        url: weekly_update_url,
+        contentType: "application/json",
+        type: "PATCH",
+        beforeSend: function(xhr){
+            $("#id_create_q_button").attr("disabled", "")
+            // $("#id_create_q_button").addClass("disabled-btn")
+            xhr.setRequestHeader("X-CSRFToken", csrftoken)
+        },
+        data: payload,
+        cache: false,
+        dataType: "json",
+        success: function(response){
+            console.log('calling callback');
+            callback()
+        },
+        error: function(xhr,status,error){
+            console.log(error);
+        }
+    })
+}
+
+function update_infotext_and_hide_editor(editorId, infoTextContainerId, infotextRawId, newText, adder_con_id) {
+    $(`#${infotextRawId}`).text(newText)
+    if (newText.length > 0) {
+        $(`#${editorId}`).hide(0, function(){
+            $(`#${infoTextContainerId}`).show()
+        })
+     } else {
+         $(`#${editorId}`).hide(0, function(){
+             $(`#${adder_btn_id}`).show()
+         })
+     }
+}
 
 // edit description button
 let des_edit_btns = $(".des-edit")
@@ -51,6 +105,14 @@ $.each(des_editor_close_btns, function (indexInArray, valueOfElement) {
         }
      })
 });
+
+// pre class instruction save
+$("#pre-class-info-save-btn").on('click', ()=>{
+    let pre_class_instruction = $("#pre-descr").val()
+    updateWeekly(data={"pre_class_instruction":pre_class_instruction}, callback=()=>{
+        update_infotext_and_hide_editor("pre_cls-description-editor", "pre-class-info-text", "info-text-raw", pre_class_instruction, 'pre_cls_descr_adder_btn_con')
+    })
+})
 
 
 // ---- FILE ADD -------------------
