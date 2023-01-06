@@ -1,6 +1,6 @@
 from unicodedata import name
 from django.urls import path
-from weeklies.api.views import UpdateWeeklyAV, createWeekly, update_weekly
+from weeklies.api.views import UpdateWeeklyAV, createWeekly
 # 'classroom/<int:cls_pk>/weeklies/api/' --->
 
 urlpatterns = [

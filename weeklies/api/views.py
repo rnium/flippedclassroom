@@ -31,25 +31,10 @@ def createWeekly(request, cls_pk):
         return Response(serializer.errors)
 
 
-@api_view(['PUT'])
-@permission_classes([IsAuthenticated and IsUserTeacher])
-def update_weekly(request, cls_pk, pk):
-    weekly = get_object_or_404(Weekly, pk=pk)
-    print(request.data)
-    serializer = WeeklySerializer(weekly, request.data)
-    print(serializer.initial_data)
-    # serializer.initial_data['weeknum'] = weekly.weeknum
-    # serializer.initial_data['weeknum'] = weekly.weeknum
-    if serializer.is_valid():
-        serializer.update()
-        return Response(serializer.validated_data)
-    else:
-        return Response(serializer.errors)
 
 class UpdateWeeklyAV(UpdateAPIView):
     serializer_class = WeeklySerializer
     permission_classes = [IsAuthenticated, IsUserTeacher]
 
     def get_queryset(self):
-        print(self.kwargs.get('pk'))
         return Weekly.objects.filter(pk=self.kwargs.get('pk'))
