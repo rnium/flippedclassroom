@@ -48,14 +48,14 @@
             <div class="pre-class-info">
               {% if weekly.pre_class_instruction %}
               <div class="info-text" id="pre-class-info-text" data-descr-editor="pre_cls-description-editor">
-                <div class="info" id="preClsInfoCon"><span id="info-text-raw">{{ weekly.pre_class_instruction }}</span><button class="des-edit edit" id="pre-class-info-edit"><i class='bx bx-pencil'></i></button></div>
+                <div class="info" id="preClsInfoCon"><span id="pre-cls-info-text-raw">{{ weekly.pre_class_instruction }}</span><button class="des-edit edit" id="pre-class-info-edit"><i class='bx bx-pencil'></i></button></div>
               </div>
               <div class="descr_adder_btn_con" id="pre_cls_descr_adder_btn_con" style="display: none">
                 <button class="btn-iconized des-adder" id="pre_cls_des_adder" data-editorId="pre_cls-description-editor"><i class='bx bxs-message-square-add'></i><span>Add Description</span></button>
               </div>
               {% else %}
               <div class="info-text" id="pre-class-info-text" data-descr-editor="pre_cls-description-editor" style="display: none;">
-                <div class="info"><span id="info-text-raw">{{ weekly.pre_class_instruction }}</span><button class="des-edit edit" id="pre-class-info-edit"><i class='bx bx-pencil'></i></button></div>
+                <div class="info" id="preClsInfoCon"><span id="pre-cls-info-text-raw">{{ weekly.pre_class_instruction }}</span><button class="des-edit edit" id="pre-class-info-edit"><i class='bx bx-pencil'></i></button></div>
               </div>
               <div class="descr_adder_btn_con" id="pre_cls_descr_adder_btn_con">
                 <button class="btn-iconized des-adder" id="pre_cls_des_adder" data-editorId="pre_cls-description-editor"><i class='bx bxs-message-square-add'></i><span>Add Description</span></button>
@@ -67,7 +67,7 @@
                   <label for="post-descr">Description</label>
                   <div class="submit-container">
                     <button class="submit-btn" id="pre-class-info-save-btn">Save</button>
-                    <button class="editor-close-btn close-btn" id="close-description-editor" data-infoTextId="pre-class-info-text" data-adderId="pre_cls_descr_adder_btn_con"><i class='bx bx-window-close'></i></button>
+                    <button class="editor-close-btn close-btn" id="close-description-editor" data-infoTextId="pre-class-info-text" data-rawText="pre-cls-info-text-raw" data-adderId="pre_cls_descr_adder_btn_con"><i class='bx bx-window-close'></i></button>
                   </div>
                 </div>
               </div>

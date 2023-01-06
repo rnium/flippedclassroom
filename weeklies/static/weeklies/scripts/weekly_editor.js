@@ -32,7 +32,6 @@ function updateWeekly(data, callback) {
         cache: false,
         dataType: "json",
         success: function(response){
-            console.log('calling callback');
             callback()
         },
         error: function(xhr,status,error){
@@ -49,7 +48,7 @@ function update_infotext_and_hide_editor(editorId, infoTextContainerId, infotext
         })
      } else {
          $(`#${editorId}`).hide(0, function(){
-             $(`#${adder_btn_id}`).show()
+             $(`#${adder_con_id}`).show()
          })
      }
 }
@@ -89,15 +88,13 @@ $.each(des_editor_close_btns, function (indexInArray, valueOfElement) {
      $(`#${valueOfElement.id}`).on('click', ()=>{
         let infoTextId = $(this).attr('data-infoTextId')
         let adderId = $(this).attr('data-adderId')
+        let rawTextId = $(this).attr('data-rawText')
         let self_container_id = $(this).parent().parent().parent().attr('id')
-        let infoText = $(`#${infoTextId}`)
-        
-        if (infoText.length == 1) {
-           if (infoText.css('display') == 'none') {
-               $(`#${self_container_id}`).hide(0, function(){
-                   $(`#${infoTextId}`).show()
-               })
-           }
+        let infoText = $(`#${rawTextId}`).text()
+        if (infoText.length > 0) {
+            $(`#${self_container_id}`).hide(0, function(){
+                $(`#${infoTextId}`).show()
+            })
         } else {
             $(`#${self_container_id}`).hide(0, function(){
                 $(`#${adderId}`).show()
@@ -110,7 +107,7 @@ $.each(des_editor_close_btns, function (indexInArray, valueOfElement) {
 $("#pre-class-info-save-btn").on('click', ()=>{
     let pre_class_instruction = $("#pre-descr").val()
     updateWeekly(data={"pre_class_instruction":pre_class_instruction}, callback=()=>{
-        update_infotext_and_hide_editor("pre_cls-description-editor", "pre-class-info-text", "info-text-raw", pre_class_instruction, 'pre_cls_descr_adder_btn_con')
+        update_infotext_and_hide_editor("pre_cls-description-editor", "pre-class-info-text", "pre-cls-info-text-raw", pre_class_instruction, 'pre_cls_descr_adder_btn_con')
     })
 })
 
