@@ -526,19 +526,28 @@
         <div class="tab-content">
           <div class="left-col">
             <div class="post-class-info">
-              <!-- <div class="info-text" id="post-class-info-text" data-descr-editor="post_cls-description-editor">
-                <div class="info" id="post-class-info-text-raw">Lorem adipisicing  elitelitelitelitelitelitelitelitelitelitelitelit elitelit. Natus a sunt dolore ut provident pariatur earum harum autem ea animi. t consectetur adipisicing elit. Quos ddfdfdd<button class="des-edit edit" id="post-class-info-edit"><i class='bx bx-pencil'></i></button></div>
-              </div> -->
+              {% if weekly.post_class_instruction %}
+              <div class="info-text" id="post-class-info-text" data-descr-editor="post_cls-description-editor">
+                <div class="info" id="postClsInfoCon"><span id="post-cls-info-text-raw">{{ weekly.post_class_instruction }}</span><button class="des-edit edit" id="post-class-info-edit"><i class='bx bx-pencil'></i></button></div>
+              </div>
+              <div class="descr_adder_btn_con" id="in_cls_descr_adder_btn_con" style="display: none">
+                <button class="btn-iconized des-adder" id="in_cls_des_adder" data-editorId="in_cls-description-editor"><i class='bx bxs-message-square-add'></i><span>Add Description</span></button>
+              </div>
+              {% else %}
+              <div class="info-text" id="post-class-info-text" data-descr-editor="post_cls-description-editor" style="display: none;">
+                <div class="info" id="postClsInfoCon"><span id="post-cls-info-text-raw">{{ weekly.post_class_instruction }}</span><button class="des-edit edit" id="post-class-info-edit"><i class='bx bx-pencil'></i></button></div>
+              </div>
               <div class="descr_adder_btn_con" id="post_cls_descr_adder_btn_con">
                 <button class="btn-iconized des-adder" id="post_cls_des_adder" data-editorId="post_cls-description-editor"><i class='bx bxs-message-square-add'></i><span>Add Description</span></button>
               </div>
+              {% endif %}
               <div class="description-editor" id="post_cls-description-editor" style="display: none;">
                 <div class="inset-float-textinput">
                   <textarea class="editor-textarea" name="description" id="post-descr"></textarea>
                   <label for="post-descr">Description</label>
                   <div class="submit-container">
-                    <button class="submit-btn" id="">Save</button>
-                    <button class="editor-close-btn close-btn" id="postCls-close-description-editor" data-infoTextId="post-class-info-text" data-adderId="post_cls_descr_adder_btn_con"><i class='bx bx-window-close'></i></button>
+                    <button class="submit-btn" id="post-class-info-save-btn">Save</button>
+                    <button class="editor-close-btn close-btn" id="post-cls-close-description-editor" data-infoTextId="post-class-info-text" data-rawText="post-cls-info-text-raw" data-adderId="post_cls_descr_adder_btn_con"><i class='bx bx-window-close'></i></button>
                   </div>
                 </div>
               </div>

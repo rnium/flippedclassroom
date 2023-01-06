@@ -119,6 +119,15 @@ $("#in-class-info-save-btn").on('click', ()=>{
     })
 })
 
+// post class instruction save
+$("#post-class-info-save-btn").on('click', ()=>{
+    let post_class_instruction = $("#post-descr").val()
+    updateWeekly(data={"post_class_instruction":post_class_instruction}, callback=()=>{
+        update_infotext_and_hide_editor("post_cls-description-editor", "post-class-info-text", "post-cls-info-text-raw", post_class_instruction, 'post_cls_descr_adder_btn_con')
+    })
+})
+
+
 
 // ---- FILE ADD -------------------
 
