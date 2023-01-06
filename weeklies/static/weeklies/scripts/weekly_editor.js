@@ -168,3 +168,78 @@ $.each(vid_adder_close_btns, function (indexInArray, valueOfElement) {
         })
     })
 });
+
+// ajax caller
+function addTutorial(data, beforesend_callback, callback) {
+    payload = JSON.stringify(data)
+    $.ajax({
+        url: weekly_tutorial_add_url,
+        contentType: "application/json",
+        type: "POST",
+        beforeSend: function(xhr){
+            // $("#id_create_q_button").attr("disabled", "")
+            // $("#id_create_q_button").addClass("disabled-btn")
+            beforesend_callback()
+            xhr.setRequestHeader("X-CSRFToken", csrftoken)
+        },
+        data: payload,
+        cache: false,
+        dataType: "json",
+        success: function(response){
+            callback(response)
+        },
+        error: function(xhr,status,error){
+            console.log(error);
+        }
+    })
+}
+
+function beforeSendTutoAdd() {
+    console.log('sending req');
+}
+
+function tutoAddCallback(response, containerId, adderContainerId, adderBtn) {
+    let tutorial_descr_elem
+    if (response['description'] != null) {
+        tutorial_descr_elem = `<div class="vid-info">${response['description']}</div>`
+    } else {
+        tutorial_descr_elem = ""
+    }
+    
+    tutorial_elem = `<li>
+                        ${tutorial_descr_elem}
+                        <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/${response['video_id']}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </li>`
+    $(`#${containerId}`).hide(100,()=>{
+        $(`#${containerId}`).append(tutorial_elem);
+        $(`#${adderContainerId}`).hide(100, ()=>{
+            let inputs = $(`#${adderContainerId} input`)
+            $.each(inputs, function (indexInArray, valueOfElement) { 
+                $(`#${valueOfElement.id}`).val("")
+            });
+            $(`#${adderBtn}`).show()
+        });
+        $(`#${containerId}`).show(100)
+    });
+}
+
+// add_btn
+$("#preClassTutoAdd").on('click',()=>{
+    let description = $("#pre_cls_vid_info").val()
+    if (description.length == 0) {
+        description = null
+    } 
+    let yt_url = $("#pre_cls_vid_url").val()
+    data = {
+        "description": description,
+        "yt_url": yt_url,
+        "pre_class": true,
+        "in_class": false,
+        "post_class": false
+    }
+    addTutorial(data, beforeSendTutoAdd, (response)=>{
+        tutoAddCallback(response, 'preClsTutoList', 'preClassVideoAdder', 'PreClsAddVideosTogglerBtn-Con')
+    })
+})

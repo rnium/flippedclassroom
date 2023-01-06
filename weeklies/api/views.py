@@ -7,9 +7,10 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.generics import UpdateAPIView
 from rest_framework import status
+from urllib.parse import urlparse, parse_qs
 from weeklies.api.permission import IsUserTeacher
 from classroom.models import Classroom
-from weeklies.models import Weekly
+from weeklies.models import *
 from .serializer import WeeklySerializer
 
 @api_view(['POST'])
@@ -38,3 +39,27 @@ class UpdateWeeklyAV(UpdateAPIView):
 
     def get_queryset(self):
         return Weekly.objects.filter(pk=self.kwargs.get('pk'))
+
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated and IsUserTeacher])
+def add_tutorial(request, cls_pk, pk):
+    weekly = get_object_or_404(Weekly, pk=pk)
+    video_url = request.data['yt_url']
+    parse_result = urlparse(video_url)
+    try:
+        video_id = parse_qs(parse_result.query).get('v')[0]
+    except TypeError:
+        return Response(status=status.HTTP_400_BAD_REQUEST)
+    vid_descr = request.data['description']
+    if request.data['pre_class']:
+        PreClassTutorial.objects.create(weekly=weekly, yt_id=video_id, description=vid_descr)
+    elif request.data['in_class']:
+        InClassTutorial.objects.create(weekly=weekly, yt_id=video_id, description=vid_descr)
+    elif request.data['post_class']:
+        PostClassTutorial.objects.create(weekly=weekly, yt_id=video_id, description=vid_descr)
+    data = {
+        "video_id": video_id,
+        "description": vid_descr
+    }
+    return Response(data)

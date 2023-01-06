@@ -128,44 +128,45 @@
                 </div>
               </div>
             </div>
-
-            {% comment %} <div class="pre-class-tutorials content-card">
+            <div class="pre-class-tutorials content-card">
               <div class="title">
                 <i class='bx bxl-youtube' ></i>
                 <div class="title-text">Video Tutorials</div>
               </div>
               <div class="content">
-                <ul>
+                <ul id="preClsTutoList">
+                  {% for pretuto in weekly.preClassTuto  %}
                   <li>
-                    <div class="vid-info">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Asperiores, in!</div>
+                    {% if pretuto.description %}<div class="vid-info">{{ pretuto.description }}</div>{% endif %}
                     <div class="video-container">
-                      <iframe src="https://www.youtube.com/embed/n594CkrP6xE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                      <iframe src="https://www.youtube.com/embed/{{ pretuto.yt_id }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                   </li>
+                  {% endfor %}
                 </ul>
               </div>
-              <!-- <div class="no-content">
+              <div class="no-content">
                 <i class='bx bx-info-circle'></i>
                 <div class="info">No Tutorials</div>
-              </div> -->
+              </div>
               <div class="add-content" id="PreClsAddVideosTogglerBtn-Con">
                 <button class="addVideosTogglerBtn" id="PreCls-addVideosTogglerBtn" data-videoAdderId="preClassVideoAdder"><i class='bx bxs-video-plus'></i><span>Add Videos</span></button>
               </div>
               <div class="addvideo" id="preClassVideoAdder" style="display: none;">
                 <div class="video-url info-input">
-                  <input type="text" class="textinput" id="vid_url_inp" name="name_test-title" placeholder=" ">
-                  <label for="vid_url_inp" class="textinput__label">YouTube URL</label>
+                  <input type="text" class="textinput" id="pre_cls_vid_url" placeholder=" ">
+                  <label for="pre_cls_vid_url" class="textinput__label">YouTube URL</label>
                 </div>
                 <div class="video-info info-input">
-                  <input type="text" class="textinput" id="vid_info_inp" placeholder=" ">
-                  <label for="vid_info_inp" class="textinput__label">Tutorial Information</label>
+                  <input type="text" class="textinput" id="pre_cls_vid_info" placeholder=" ">
+                  <label for="pre_cls_vid_info" class="textinput__label">Tutorial Information</label>
                 </div>
                 <div class="submit-container">
-                  <button class="submit-btn">Add</button>
+                  <button class="submit-btn" id="preClassTutoAdd">Add</button>
                   <button class="vidAdderCloseBtn close-btn" id="preClassVideoAdderClose" data-addVideosTogglerBtnCon-Id="PreClsAddVideosTogglerBtn-Con"><i class='bx bx-window-close'></i></button>
                 </div>
               </div>
-            </div> {% endcomment %}
+            </div> 
           </div>
           <div class="right-col">
             <div class="live-tests title-box">
@@ -828,5 +829,6 @@
   <script src="{% static 'weeklies/scripts/weekly_editor.js' %}"></script>
   <script>
     const weekly_update_url = "{% url 'weeklies:update_weekly' weekly.classroom.id weekly.id  %}"
+    const weekly_tutorial_add_url = "{% url 'weeklies:add_tutorial' weekly.classroom.id weekly.id  %}"
   </script>
 {% endblock script %}

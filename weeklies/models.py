@@ -25,6 +25,11 @@ class Weekly(models.Model):
 
     def __str__(self):
         return f"{self.classroom.id} - week{self.weeknum}"
+    
+    @property
+    def preClassTuto(self):
+        qs = self.preclasstutorial_set.all().order_by('added')
+        return qs
 
 
 class PreClassFile(models.Model):
@@ -67,15 +72,18 @@ class PreClassTutorial(models.Model):
     weekly = models.ForeignKey(Weekly, on_delete=models.CASCADE)
     yt_id = models.CharField(max_length=10) # yt_id = YouTube ID
     description = models.CharField(max_length=1000, blank=True, null=True)
+    added = models.DateTimeField(auto_now_add=True)
 
 
 class InClassTutorial(models.Model):
     weekly = models.ForeignKey(Weekly, on_delete=models.CASCADE)
     yt_id = models.CharField(max_length=10)
     description = models.CharField(max_length=1000, blank=True, null=True)
+    added = models.DateTimeField(auto_now_add=True)
 
 
 class PostClassTutorial(models.Model):
     weekly = models.ForeignKey(Weekly, on_delete=models.CASCADE)
     yt_id = models.CharField(max_length=10)
     description = models.CharField(max_length=1000, blank=True, null=True)
+    added = models.DateTimeField(auto_now_add=True)

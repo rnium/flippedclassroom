@@ -369,7 +369,6 @@ function perform_post() {
             $("#create-post").attr('disabled', true)
         },
         success: function(){
-            console.log('success fired')
             $("#recent-posts").hide(100)
             load_page_data()
             $("#post-files").val("")
@@ -378,7 +377,6 @@ function perform_post() {
             check_existing_input_files()
         },
         complete: function(){
-            console.log('complete');
             $("#loader").hide(100)
             $("#create-post").removeAttr('disabled');
         }
