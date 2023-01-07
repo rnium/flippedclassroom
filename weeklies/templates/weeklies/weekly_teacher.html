@@ -625,34 +625,40 @@
                 <i class='bx bxl-youtube' ></i>
                 <div class="title-text">Video Tutorials</div>
               </div>
-              <!-- <div class="content">
-                <ul>
+              <div class="content">
+                <ul id="postClsTutoList">
+                  {% for posttuto in weekly.postClassTuto  %}
                   <li>
-                    <div class="vid-info">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Asperiores, in!</div>
+                    {% if posttuto.description %}<div class="vid-info">{{ posttuto.description }}</div>{% endif %}
                     <div class="video-container">
-                      <iframe src="https://www.youtube.com/embed/kVuoa9ntPgA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                      <iframe src="https://www.youtube.com/embed/{{ posttuto.yt_id }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                   </li>
+                  {% endfor %}
                 </ul>
-              </div> -->
-              <div class="no-content">
-                <i class='bx bx-info-circle'></i>
-                <div class="info">No Tutorials</div>
+              </div>
+              <div id="postClsNoTuto">
+                {% if not weekly.hasPostClassTuto %}
+                <div class="no-content">
+                  <i class='bx bx-info-circle'></i>
+                  <div class="info">No Tutorials</div>
+                </div>
+                {% endif %}
               </div>
               <div class="add-content" id="postClsAddVideosTogglerBtn-Con">
                 <button class="addVideosTogglerBtn" id="postCls-addVideosTogglerBtn" data-videoAdderId="postClassVideoAdder"><i class='bx bxs-video-plus'></i><span>Add Videos</span></button>
               </div>
               <div class="addvideo" id="postClassVideoAdder" style="display: none;">
                 <div class="video-url info-input">
-                  <input type="text" class="textinput" id="post_class_vid_url_inp" name="name_test-title" placeholder=" ">
-                  <label for="post_class_vid_url_inp" class="textinput__label">YouTube URL</label>
+                  <input type="text" class="textinput" id="post_cls_vid_url" name="name_test-title" placeholder=" ">
+                  <label for="post_cls_vid_url" class="textinput__label">YouTube URL</label>
                 </div>
                 <div class="video-info info-input">
-                  <input type="text" class="textinput" id="post_class_vid_info_inp" placeholder=" ">
-                  <label for="post_class_vid_info_inp" class="textinput__label">Tutorial Information</label>
+                  <input type="text" class="textinput" id="post_cls_vid_info" placeholder=" ">
+                  <label for="post_cls_vid_info" class="textinput__label">Tutorial Information</label>
                 </div>
                 <div class="submit-container">
-                  <button class="submit-btn">Add</button>
+                  <button class="submit-btn" id="postClassTutoAdd">Add</button>
                   <button class="vidAdderCloseBtn close-btn" id="postClassVideoAdderClose" data-addVideosTogglerBtnCon-Id="postClsAddVideosTogglerBtn-Con"><i class='bx bx-window-close'></i></button>
                 </div>
               </div>

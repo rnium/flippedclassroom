@@ -264,3 +264,21 @@ $("#inClassTutoAdd").on('click',()=>{
         tutoAddCallback(response, 'inClsTutoList', 'inClsNoTuto', 'inClassVideoAdder', 'inClsAddVideosTogglerBtn-Con')
     })
 })
+
+$("#postClassTutoAdd").on('click',()=>{
+    let description = $("#post_cls_vid_info").val()
+    if (description.length == 0) {
+        description = null
+    } 
+    let yt_url = $("#post_cls_vid_url").val()
+    data = {
+        "description": description,
+        "yt_url": yt_url,
+        "pre_class": false,
+        "in_class": false,
+        "post_class": true
+    }
+    addTutorial(data, beforeSendTutoAdd, (response)=>{
+        tutoAddCallback(response, 'postClsTutoList', 'postClsNoTuto', 'postClassVideoAdder', 'postClsAddVideosTogglerBtn-Con')
+    })
+})
