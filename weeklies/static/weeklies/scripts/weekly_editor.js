@@ -246,3 +246,21 @@ $("#preClassTutoAdd").on('click',()=>{
         tutoAddCallback(response, 'preClsTutoList', 'preClsNoTuto', 'preClassVideoAdder', 'PreClsAddVideosTogglerBtn-Con')
     })
 })
+
+$("#inClassTutoAdd").on('click',()=>{
+    let description = $("#in_cls_vid_info").val()
+    if (description.length == 0) {
+        description = null
+    } 
+    let yt_url = $("#in_cls_vid_url").val()
+    data = {
+        "description": description,
+        "yt_url": yt_url,
+        "pre_class": false,
+        "in_class": true,
+        "post_class": false
+    }
+    addTutorial(data, beforeSendTutoAdd, (response)=>{
+        tutoAddCallback(response, 'inClsTutoList', 'inClsNoTuto', 'inClassVideoAdder', 'inClsAddVideosTogglerBtn-Con')
+    })
+})

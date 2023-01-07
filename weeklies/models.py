@@ -32,8 +32,28 @@ class Weekly(models.Model):
         return qs
     
     @property
+    def inClassTuto(self):
+        qs = self.inclasstutorial_set.all().order_by('added')
+        return qs
+
+    @property
+    def postClassTuto(self):
+        qs = self.postclasstutorial_set.all().order_by('added')
+        return qs
+    
+    @property
     def hasPreClassTuto(self):
         qs = self.preclasstutorial_set.all().order_by('added')
+        return bool(len(qs))
+    
+    @property
+    def hasInClassTuto(self):
+        qs = self.inclasstutorial_set.all().order_by('added')
+        return bool(len(qs))
+    
+    @property
+    def hasPostClassTuto(self):
+        qs = self.postclasstutorial_set.all().order_by('added')
         return bool(len(qs))
 
 
