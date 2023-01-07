@@ -145,9 +145,13 @@
                   {% endfor %}
                 </ul>
               </div>
-              <div class="no-content">
-                <i class='bx bx-info-circle'></i>
-                <div class="info">No Tutorials</div>
+              <div id="preClsNoTuto">
+                {% if not weekly.hasPreClassTuto %}
+                <div class="no-content">
+                  <i class='bx bx-info-circle'></i>
+                  <div class="info">No Tutorials</div>
+                </div>
+                {% endif %}
               </div>
               <div class="add-content" id="PreClsAddVideosTogglerBtn-Con">
                 <button class="addVideosTogglerBtn" id="PreCls-addVideosTogglerBtn" data-videoAdderId="preClassVideoAdder"><i class='bx bxs-video-plus'></i><span>Add Videos</span></button>

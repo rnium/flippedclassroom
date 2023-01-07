@@ -198,7 +198,7 @@ function beforeSendTutoAdd() {
     console.log('sending req');
 }
 
-function tutoAddCallback(response, containerId, adderContainerId, adderBtn) {
+function tutoAddCallback(response, containerId, noContentContainerId, adderContainerId, adderBtn) {
     let tutorial_descr_elem
     if (response['description'] != null) {
         tutorial_descr_elem = `<div class="vid-info">${response['description']}</div>`
@@ -213,6 +213,9 @@ function tutoAddCallback(response, containerId, adderContainerId, adderBtn) {
                         </div>
                     </li>`
     $(`#${containerId}`).hide(100,()=>{
+        if ($(`#${noContentContainerId}`).css("display")!=null) {
+            $(`#${noContentContainerId}`).hide()
+        }
         $(`#${containerId}`).append(tutorial_elem);
         $(`#${adderContainerId}`).hide(100, ()=>{
             let inputs = $(`#${adderContainerId} input`)
@@ -240,6 +243,6 @@ $("#preClassTutoAdd").on('click',()=>{
         "post_class": false
     }
     addTutorial(data, beforeSendTutoAdd, (response)=>{
-        tutoAddCallback(response, 'preClsTutoList', 'preClassVideoAdder', 'PreClsAddVideosTogglerBtn-Con')
+        tutoAddCallback(response, 'preClsTutoList', 'preClsNoTuto', 'preClassVideoAdder', 'PreClsAddVideosTogglerBtn-Con')
     })
 })

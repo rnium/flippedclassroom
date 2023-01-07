@@ -30,6 +30,11 @@ class Weekly(models.Model):
     def preClassTuto(self):
         qs = self.preclasstutorial_set.all().order_by('added')
         return qs
+    
+    @property
+    def hasPreClassTuto(self):
+        qs = self.preclasstutorial_set.all().order_by('added')
+        return bool(len(qs))
 
 
 class PreClassFile(models.Model):
