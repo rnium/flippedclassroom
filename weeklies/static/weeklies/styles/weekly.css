@@ -389,6 +389,35 @@ body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-conte
   margin-bottom: 0;
 }
 
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .pre-class-files .content ul li.muststudy i, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .pre-class-files .content ul li.muststudy a, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .in-class-files .content ul li.muststudy i, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .in-class-files .content ul li.muststudy a, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .post-class-files .content ul li.muststudy i, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .post-class-files .content ul li.muststudy a, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .pre-class-files .content ul li.muststudy i, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .pre-class-files .content ul li.muststudy a, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .in-class-files .content ul li.muststudy i, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .in-class-files .content ul li.muststudy a, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .post-class-files .content ul li.muststudy i, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .post-class-files .content ul li.muststudy a, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .pre-class-files .content ul li.muststudy i, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .pre-class-files .content ul li.muststudy a, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .in-class-files .content ul li.muststudy i, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .in-class-files .content ul li.muststudy a, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .post-class-files .content ul li.muststudy i, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .post-class-files .content ul li.muststudy a {
+  color: #2f90bd;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .pre-class-files .content ul li.muststudy a, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .in-class-files .content ul li.muststudy a, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .post-class-files .content ul li.muststudy a, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .pre-class-files .content ul li.muststudy a, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .in-class-files .content ul li.muststudy a, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .post-class-files .content ul li.muststudy a, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .pre-class-files .content ul li.muststudy a, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .in-class-files .content ul li.muststudy a, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .post-class-files .content ul li.muststudy a {
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .pre-class-files .content ul li.muststudy a::after, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .in-class-files .content ul li.muststudy a::after, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .post-class-files .content ul li.muststudy a::after, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .pre-class-files .content ul li.muststudy a::after, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .in-class-files .content ul li.muststudy a::after, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .post-class-files .content ul li.muststudy a::after, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .pre-class-files .content ul li.muststudy a::after, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .in-class-files .content ul li.muststudy a::after, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .post-class-files .content ul li.muststudy a::after {
+  content: "Must Study";
+  font-family: 'Gemunu Libre', sans-serif;
+  font-size: 0.9rem;
+  border: 2px solid #2f90bd;
+  color: #2f90bd;
+  padding: 2px 5px;
+  margin-left: 8px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 0 5px #bce7e7;
+          box-shadow: 0 0 5px #bce7e7;
+  -webkit-transition: all 100ms;
+  transition: all 100ms;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .pre-class-files .content ul li.muststudy a:hover::after, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .in-class-files .content ul li.muststudy a:hover::after, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .post-class-files .content ul li.muststudy a:hover::after, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .pre-class-files .content ul li.muststudy a:hover::after, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .in-class-files .content ul li.muststudy a:hover::after, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .post-class-files .content ul li.muststudy a:hover::after, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .pre-class-files .content ul li.muststudy a:hover::after, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .in-class-files .content ul li.muststudy a:hover::after, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .post-class-files .content ul li.muststudy a:hover::after {
+  background-color: #2f90bd;
+  color: white;
+}
+
 body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .pre-class-files .add-content button, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .in-class-files .add-content button, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .post-class-files .add-content button, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .pre-class-files .add-content button, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .in-class-files .add-content button, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .post-class-files .add-content button, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .pre-class-files .add-content button, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .in-class-files .add-content button, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .post-class-files .add-content button {
   background-color: #3fb0c4;
   -webkit-transition: all 300ms;
@@ -409,10 +438,10 @@ body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-conte
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
+  -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+      -ms-flex-direction: column;
+          flex-direction: column;
   justify-items: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -420,7 +449,9 @@ body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-conte
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  background-color: #e2ecec;
+  background-color: white;
+  -webkit-box-shadow: 0 0 5px #d4e4e6;
+          box-shadow: 0 0 5px #d4e4e6;
   border-radius: 10px;
   padding: 0.7rem 1rem;
 }
@@ -439,8 +470,12 @@ body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-conte
           align-items: center;
 }
 
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .pre-class-files .fileUpload .attachement-container, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .in-class-files .fileUpload .attachement-container, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .post-class-files .fileUpload .attachement-container, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .pre-class-files .fileUpload .attachement-container, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .in-class-files .fileUpload .attachement-container, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .post-class-files .fileUpload .attachement-container, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .pre-class-files .fileUpload .attachement-container, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .in-class-files .fileUpload .attachement-container, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .post-class-files .fileUpload .attachement-container {
+  width: 100%;
+}
+
 body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .pre-class-files .fileUpload .attachement-container label, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .in-class-files .fileUpload .attachement-container label, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .post-class-files .fileUpload .attachement-container label, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .pre-class-files .fileUpload .attachement-container label, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .in-class-files .fileUpload .attachement-container label, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .post-class-files .fileUpload .attachement-container label, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .pre-class-files .fileUpload .attachement-container label, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .in-class-files .fileUpload .attachement-container label, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .post-class-files .fileUpload .attachement-container label {
-  background-color: #63b68f;
+  background-color: #63acb6;
   color: #ecfff5;
   margin-left: 0;
   margin-right: 0.5rem;
@@ -452,6 +487,76 @@ body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-conte
 
 body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .pre-class-files .fileUpload .attachement-container .selected-file, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .in-class-files .fileUpload .attachement-container .selected-file, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .post-class-files .fileUpload .attachement-container .selected-file, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .pre-class-files .fileUpload .attachement-container .selected-file, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .in-class-files .fileUpload .attachement-container .selected-file, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .post-class-files .fileUpload .attachement-container .selected-file, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .pre-class-files .fileUpload .attachement-container .selected-file, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .in-class-files .fileUpload .attachement-container .selected-file, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .post-class-files .fileUpload .attachement-container .selected-file {
   color: #649292;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .pre-class-files .fileUpload .switch-container, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .in-class-files .fileUpload .switch-container, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .post-class-files .fileUpload .switch-container, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .pre-class-files .fileUpload .switch-container, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .in-class-files .fileUpload .switch-container, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .post-class-files .fileUpload .switch-container, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .pre-class-files .fileUpload .switch-container, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .in-class-files .fileUpload .switch-container, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .post-class-files .fileUpload .switch-container {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 15px 0 20px;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .pre-class-files .fileUpload .switch-container .switch, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .in-class-files .fileUpload .switch-container .switch, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .post-class-files .fileUpload .switch-container .switch, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .pre-class-files .fileUpload .switch-container .switch, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .in-class-files .fileUpload .switch-container .switch, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .post-class-files .fileUpload .switch-container .switch, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .pre-class-files .fileUpload .switch-container .switch, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .in-class-files .fileUpload .switch-container .switch, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .post-class-files .fileUpload .switch-container .switch {
+  display: inline-block;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .pre-class-files .fileUpload .switch-container .switch label, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .in-class-files .fileUpload .switch-container .switch label, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .post-class-files .fileUpload .switch-container .switch label, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .pre-class-files .fileUpload .switch-container .switch label, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .in-class-files .fileUpload .switch-container .switch label, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .post-class-files .fileUpload .switch-container .switch label, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .pre-class-files .fileUpload .switch-container .switch label, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .in-class-files .fileUpload .switch-container .switch label, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .post-class-files .fileUpload .switch-container .switch label {
+  background-color: #f1f1f1;
+  -webkit-box-shadow: inset 0 0 2px #cecece;
+          box-shadow: inset 0 0 2px #cecece;
+  display: block;
+  width: 50px;
+  height: 22px;
+  border-radius: 100px;
+  cursor: pointer;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .pre-class-files .fileUpload .switch-container .switch label::after, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .in-class-files .fileUpload .switch-container .switch label::after, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .post-class-files .fileUpload .switch-container .switch label::after, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .pre-class-files .fileUpload .switch-container .switch label::after, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .in-class-files .fileUpload .switch-container .switch label::after, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .post-class-files .fileUpload .switch-container .switch label::after, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .pre-class-files .fileUpload .switch-container .switch label::after, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .in-class-files .fileUpload .switch-container .switch label::after, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .post-class-files .fileUpload .switch-container .switch label::after {
+  content: "";
+  display: block;
+  width: 27px;
+  height: 27px;
+  background-color: #d1d0d0;
+  border-radius: 180px;
+  position: relative;
+  top: 50%;
+  left: 0;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  -webkit-transition: all 100ms ease-out;
+  transition: all 100ms ease-out;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .pre-class-files .fileUpload .switch-container .switch input, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .in-class-files .fileUpload .switch-container .switch input, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .post-class-files .fileUpload .switch-container .switch input, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .pre-class-files .fileUpload .switch-container .switch input, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .in-class-files .fileUpload .switch-container .switch input, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .post-class-files .fileUpload .switch-container .switch input, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .pre-class-files .fileUpload .switch-container .switch input, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .in-class-files .fileUpload .switch-container .switch input, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .post-class-files .fileUpload .switch-container .switch input {
+  width: 0;
+  height: 0;
+  display: none;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .pre-class-files .fileUpload .switch-container .switch input:checked + label, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .in-class-files .fileUpload .switch-container .switch input:checked + label, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .post-class-files .fileUpload .switch-container .switch input:checked + label, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .pre-class-files .fileUpload .switch-container .switch input:checked + label, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .in-class-files .fileUpload .switch-container .switch input:checked + label, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .post-class-files .fileUpload .switch-container .switch input:checked + label, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .pre-class-files .fileUpload .switch-container .switch input:checked + label, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .in-class-files .fileUpload .switch-container .switch input:checked + label, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .post-class-files .fileUpload .switch-container .switch input:checked + label {
+  background-color: #b1e4e7;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .pre-class-files .fileUpload .switch-container .switch input:checked + label::after, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .in-class-files .fileUpload .switch-container .switch input:checked + label::after, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .post-class-files .fileUpload .switch-container .switch input:checked + label::after, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .pre-class-files .fileUpload .switch-container .switch input:checked + label::after, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .in-class-files .fileUpload .switch-container .switch input:checked + label::after, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .post-class-files .fileUpload .switch-container .switch input:checked + label::after, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .pre-class-files .fileUpload .switch-container .switch input:checked + label::after, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .in-class-files .fileUpload .switch-container .switch input:checked + label::after, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .post-class-files .fileUpload .switch-container .switch input:checked + label::after {
+  left: 55%;
+  background-image: -webkit-gradient(linear, left top, right bottom, from(#01afa6), to(#03c9c9));
+  background-image: linear-gradient(to bottom right, #01afa6, #03c9c9);
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .pre-class-files .fileUpload .switch-container .switch-label, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .in-class-files .fileUpload .switch-container .switch-label, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .post-class-files .fileUpload .switch-container .switch-label, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .pre-class-files .fileUpload .switch-container .switch-label, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .in-class-files .fileUpload .switch-container .switch-label, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .post-class-files .fileUpload .switch-container .switch-label, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .pre-class-files .fileUpload .switch-container .switch-label, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .in-class-files .fileUpload .switch-container .switch-label, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .post-class-files .fileUpload .switch-container .switch-label {
+  margin-left: 10px;
 }
 
 body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .pre-class-tutorials, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .in-class-tutorials, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .post-class-tutorials, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .pre-class-tutorials, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .in-class-tutorials, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .post-class-tutorials, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .pre-class-tutorials, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .in-class-tutorials, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .post-class-tutorials {
@@ -1477,12 +1582,12 @@ body .main .bottom-panel .tab-container .tab-contents-container #tab4 .create-po
 }
 
 .input-file input[type="file"]:active + label {
-  background-color: white !important;
-  color: #00ff40 !important;
+  background-color: #e2f0e0 !important;
+  color: #2baa95 !important;
 }
 
 .input-file input[type="file"]:active + label i {
-  color: #00ff40 !important;
+  color: #2baa95 !important;
 }
 
 .input-file label {
