@@ -131,7 +131,7 @@ $("#post-class-info-save-btn").on('click', ()=>{
 
 // ---- FILE ADD -------------------
 
-// file uploads
+// show file upload window
 let uploadFileBtns = $(".files-add-btn")
 $.each(uploadFileBtns, function (indexInArray, valueOfElement) { 
     $(`#${valueOfElement.id}`).on('click', ()=>{
@@ -140,6 +140,33 @@ $.each(uploadFileBtns, function (indexInArray, valueOfElement) {
         $(`#${containerId}`).hide(0, function(){
             $(`#${uploaderId}`).show()
         })
+    })
+});
+
+// selected file number label
+let uploadFileInputs = $(".cls-input-files")
+$.each(uploadFileInputs, function (indexInArray, valueOfElement) {
+    let file_nums = valueOfElement.files.length
+    if (file_nums > 0) {
+        let filenums_label_id = $(this).attr('data-fileCountLabel')
+        let num_str
+        if (file_nums > 1) {
+            num_str = 'files'
+        } else {
+            num_str = 'file'
+        }
+        $(`#${filenums_label_id}`).text(`${file_nums} ${num_str} selected`)
+    } 
+    valueOfElement.addEventListener("change", function(){
+        let file_nums = valueOfElement.files.length
+        let filenums_label_id = $(this).attr('data-fileCountLabel')
+        let num_str
+        if (file_nums > 1) {
+            num_str = 'files'
+        } else {
+            num_str = 'file'
+        }
+        $(`#${filenums_label_id}`).text(`${file_nums} ${num_str} selected`)
     })
 });
 
