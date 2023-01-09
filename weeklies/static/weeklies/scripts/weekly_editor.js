@@ -144,19 +144,30 @@ $.each(uploadFileBtns, function (indexInArray, valueOfElement) {
 });
 
 // selected file number label
+
+function refresh_input_file_count() {
+    let uploadFileInputs = $(".cls-input-files")
+    $.each(uploadFileInputs, function (indexInArray, valueOfElement) {
+        let file_nums = valueOfElement.files.length
+        let filenums_label_id = $(this).attr('data-fileCountLabel')
+        if (file_nums > 0) {
+            let num_str
+            if (file_nums > 1) {
+                num_str = 'files'
+            } else {
+                num_str = 'file'
+            }
+            $(`#${filenums_label_id}`).text(`${file_nums} ${num_str} selected`)
+        } else {
+            $(`#${filenums_label_id}`).text("No files selected")
+        }
+    });
+    console.log('refreshed');
+}
+
+
 let uploadFileInputs = $(".cls-input-files")
 $.each(uploadFileInputs, function (indexInArray, valueOfElement) {
-    let file_nums = valueOfElement.files.length
-    if (file_nums > 0) {
-        let filenums_label_id = $(this).attr('data-fileCountLabel')
-        let num_str
-        if (file_nums > 1) {
-            num_str = 'files'
-        } else {
-            num_str = 'file'
-        }
-        $(`#${filenums_label_id}`).text(`${file_nums} ${num_str} selected`)
-    } 
     valueOfElement.addEventListener("change", function(){
         let file_nums = valueOfElement.files.length
         let filenums_label_id = $(this).attr('data-fileCountLabel')
@@ -169,6 +180,58 @@ $.each(uploadFileInputs, function (indexInArray, valueOfElement) {
         $(`#${filenums_label_id}`).text(`${file_nums} ${num_str} selected`)
     })
 });
+
+
+function perform_file_upload(input_id, switch_id, data) {
+    files = $(`#${input_id}`)[0].files
+    let post_form = new FormData
+
+    // fix csrftoken with formdata
+    let must_read = $(`#${switch_id}`).val()
+    if ($(`#${switch_id}`).is(':checked')) {
+        post_form.append("must_read", true)
+    }
+    for (let i in data) {
+        post_form.append(i, true)
+    }
+    if (files.length > 0) {
+        for (let file of files) {
+            post_form.append("files", file)
+        }
+    } else {
+        console.log('no files selected');
+        return null
+    }
+    $.ajax({
+        type: "post",
+        url: weekly_file_upload_url,
+        data: post_form,
+        contentType: false,
+        processData: false,
+        // beforeSend: function(){
+        //     $("#loader").show(100)
+        //     $("#create-post").attr('disabled', true)
+        // },
+        success: function(){
+            // $("#recent-posts").hide(100)
+            // load_page_data()
+            $(`#${input_id}`).val("")
+            // $("#post-descr").val("")
+            // $("#topics").val("")
+            refresh_input_file_count()
+            console.log('posted');
+        },
+        // complete: function(){
+        //     $("#loader").hide(100)
+        //     $("#create-post").removeAttr('disabled');
+        // }
+    });
+}
+
+$("#preClsFileUpBtn").on('click', function () {
+    console.log('upload pressed');
+    perform_file_upload("in-cls-input-files", "preClassMustStudy", {"preclass": true})
+ })
 
 // ----- VIDEO ADD -------------------
 
@@ -308,4 +371,13 @@ $("#postClassTutoAdd").on('click',()=>{
     addTutorial(data, beforeSendTutoAdd, (response)=>{
         tutoAddCallback(response, 'postClsTutoList', 'postClsNoTuto', 'postClassVideoAdder', 'postClsAddVideosTogglerBtn-Con')
     })
+})
+
+
+
+
+
+// on page load
+$(document).ready(function(){
+    refresh_input_file_count()
 })
