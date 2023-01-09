@@ -62,6 +62,7 @@ class PreClassFile(models.Model):
         return join("attachments", str(self.weekly.classroom.id), 'weekly', str(self.weekly.id), 'preclass', filename)
 
     weekly = models.ForeignKey(Weekly, on_delete=models.CASCADE)
+    must_study = models.BooleanField(default=False)
     attached_file = models.FileField(upload_to=filepath, max_length=1000)
 
     @property
@@ -74,6 +75,7 @@ class InClassFile(models.Model):
         return join("attachments", str(self.weekly.classroom.id), 'weekly', str(self.weekly.id), 'inclass', filename)
 
     weekly = models.ForeignKey(Weekly, on_delete=models.CASCADE)
+    must_study = models.BooleanField(default=False)
     attached_file = models.FileField(upload_to=filepath, max_length=1000)
 
     @property
@@ -86,6 +88,7 @@ class PostClassFile(models.Model):
         return join("attachments", str(self.weekly.classroom.id), 'weekly', str(self.weekly.id), 'inclass', filename)
 
     weekly = models.ForeignKey(Weekly, on_delete=models.CASCADE)
+    must_study = models.BooleanField(default=False)
     attached_file = models.FileField(upload_to=filepath, max_length=1000)
 
     @property
