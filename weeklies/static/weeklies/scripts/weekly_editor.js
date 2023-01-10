@@ -182,12 +182,10 @@ $.each(uploadFileInputs, function (indexInArray, valueOfElement) {
 });
 
 
-function perform_file_upload(input_id, switch_id, data) {
+function perform_file_upload(input_id, switch_id, upload_btn_id, data) {
     files = $(`#${input_id}`)[0].files
     let post_form = new FormData
-
     // fix csrftoken with formdata
-    let must_read = $(`#${switch_id}`).val()
     if ($(`#${switch_id}`).is(':checked')) {
         post_form.append("must_study", "True")
     }
@@ -208,29 +206,26 @@ function perform_file_upload(input_id, switch_id, data) {
         data: post_form,
         contentType: false,
         processData: false,
-        // beforeSend: function(){
-        //     $("#loader").show(100)
-        //     $("#create-post").attr('disabled', true)
-        // },
-        success: function(){
-            // $("#recent-posts").hide(100)
-            // load_page_data()
-            $(`#${input_id}`).val("")
-            // $("#post-descr").val("")
-            // $("#topics").val("")
-            refresh_input_file_count()
-            console.log('posted');
+        beforeSend: function(){
+            $(`#${upload_btn_id}`).attr('disabled', true)
         },
-        // complete: function(){
-        //     $("#loader").hide(100)
-        //     $("#create-post").removeAttr('disabled');
-        // }
+        success: function(){
+            $(`#${input_id}`).val("");
+            refresh_input_file_count();
+            if ($(`#${switch_id}`).is(':checked')) {
+                $(`#${switch_id}`).prop( "checked", false )
+            };
+            location.reload()
+        },
+        complete: function(){
+            $(`#${upload_btn_id}`).removeAttr('disabled');
+        }
     });
 }
 
 $("#preClsFileUpBtn").on('click', function () {
     console.log('upload pressed');
-    perform_file_upload("in-cls-input-files", "preClassMustStudy", {"preclass": true})
+    perform_file_upload("in-cls-input-files", "preClassMustStudy", 'preClsFileUpBtn', {"preclass": true})
  })
 
 // ----- VIDEO ADD -------------------
