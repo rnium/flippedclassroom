@@ -189,7 +189,7 @@ function perform_file_upload(input_id, switch_id, data) {
     // fix csrftoken with formdata
     let must_read = $(`#${switch_id}`).val()
     if ($(`#${switch_id}`).is(':checked')) {
-        post_form.append("must_read", true)
+        post_form.append("must_study", "True")
     }
     for (let i in data) {
         post_form.append(i, true)

@@ -2,7 +2,7 @@ from django.db import models
 from classroom.models import Classroom
 import uuid
 from os.path import join, basename
-
+from pathlib import Path
 
 
 class Weekly(models.Model):
@@ -25,12 +25,40 @@ class Weekly(models.Model):
 
     def __str__(self):
         return f"{self.classroom.id} - week{self.weeknum}"
+    # files properties
+    @property
+    def preClassFiles(self):
+        qs = self.preclassfile_set.all()
+        return qs
     
+    @property
+    def inClassFiles(self):
+        qs = self.inclassfile_set.all()
+        return qs
+    
+    @property
+    def postClassFiles(self):
+        qs = self.postclassfile_set.all()
+        return qs
+    
+    @property
+    def hasPreClassFiles(self):
+        return bool(len(self.preClassFiles))
+    
+    @property
+    def hasInClassFiles(self):
+        return bool(len(self.inClassFiles))
+    
+    @property
+    def hasPostClassFiles(self):
+        return bool(len(self.postClassFiles))
+
     @property
     def preClassTuto(self):
         qs = self.preclasstutorial_set.all().order_by('added')
         return qs
-    
+
+    # tutorial properties
     @property
     def inClassTuto(self):
         qs = self.inclasstutorial_set.all().order_by('added')
@@ -57,6 +85,7 @@ class Weekly(models.Model):
         return bool(len(qs))
 
 
+
 class PreClassFile(models.Model):
     def filepath(self, filename):
         return join("attachments", str(self.weekly.classroom.id), 'weekly', str(self.weekly.id), 'preclass', filename)
@@ -68,6 +97,25 @@ class PreClassFile(models.Model):
     @property
     def filename(self):
         return str(basename(self.attached_file.name))
+    
+    @property
+    def css_class(self):
+        css_classes = {
+            ".pdf": "bx bxs-file-pdf",
+            ".pptx":"bx bx-slideshow",
+            ".jpg": "bx bxs-file-image",
+            ".png": "bx bxs-file-image",
+            ".docx": "bx bxs-file-doc",
+            ".zip": "bx bxs-file-archive",
+            ".txt": "bx bxs-file-txt"
+        }
+        file_extention = Path(self.filename).suffix
+        if file_extention in css_classes:
+            return css_classes[file_extention]
+        else:
+            return "bx bxs-file-blank"
+
+            
 
 
 class InClassFile(models.Model):
@@ -81,6 +129,7 @@ class InClassFile(models.Model):
     @property
     def filename(self):
         return str(basename(self.attached_file.name))
+    
 
 
 class PostClassFile(models.Model):

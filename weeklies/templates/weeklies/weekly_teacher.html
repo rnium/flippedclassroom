@@ -77,42 +77,30 @@
                 <i class='bx bx-paperclip'></i>
                 <div class="title-text">Files</div>
               </div>
+              {% if weekly.hasPreClassFiles %}
               <div class="content">
                 <ul>
-                  <li>
-                    <i class='bx bxs-file-pdf'></i>
-                    <a href="">filename.pdf</a>
+                  {% for preclassfile in weekly.preClassFiles %}
+                  {% if preclassfile.must_study %}
+                  <li class="muststudy">
+                    <i class="{{ preclassfile.css_class }}"></i>
+                    <a href="">{{ preclassfile.filename }}</a>
                   </li>
+                  {% else %}
                   <li>
-                    <i class='bx bx-slideshow' ></i>
-                    <a href="">filename.pptx</a>
+                    <i class="{{ preclassfile.css_class }}"></i>
+                    <a href="">{{ preclassfile.filename }}</a>
                   </li>
-                  <li>
-                    <i class='bx bxs-file-image'></i>
-                    <a href="">filename.jpg</a>
-                  </li>
-                  <li>
-                    <i class='bx bxs-file-doc'></i>
-                    <a href="">filename.docx</a>
-                  </li>
-                  <li>
-                    <i class='bx bxs-file-archive'></i>
-                    <a href="">filename.zip</a>
-                  </li>
-                  <li>
-                    <i class='bx bxs-file-txt'></i>
-                    <a href="">filename.txt</a>
-                  </li>
-                  <li>
-                    <i class='bx bxs-file-blank' ></i>
-                    <a href="">filename.extension</a>
-                  </li>
+                  {% endif %}
+                  {% endfor %}
                 </ul>
               </div>
-              <!-- <div class="no-content">
+              {% else %}
+              <div class="no-content">
                 <i class='bx bx-info-circle'></i>
                 <div class="info">No files yet</div>
-              </div> -->
+              </div>
+              {% endif %}
               <div class="add-content" id="pre-class-upload-btn-con">
                 <button class="files-add-btn" id="pre-class-upload-btn" data-uploaderId="pre-class-fileUpload"><i class='bx bx-upload'></i><span>Upload Files</span></button>
               </div>
