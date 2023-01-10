@@ -211,7 +211,7 @@ function perform_file_upload(input_id, switch_id, upload_btn_id, data) {
 }
 
 $("#preClsFileUpBtn").on('click', function () {
-    perform_file_upload("in-cls-input-files", "preClassMustStudy", 'preClsFileUpBtn', {"preclass": true})
+    perform_file_upload("pre-cls-input-files", "preClassMustStudy", 'preClsFileUpBtn', {"preclass": true})
  })
 
 $("#inClsFileUpBtn").on('click', function () {

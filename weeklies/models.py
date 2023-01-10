@@ -108,7 +108,9 @@ class PreClassFile(models.Model):
             ".png": "bx bxs-file-image",
             ".docx": "bx bxs-file-doc",
             ".zip": "bx bxs-file-archive",
-            ".txt": "bx bxs-file-txt"
+            ".txt": "bx bxs-file-txt",
+            ".py": "bx bxl-python",
+            ".pyw": "bx bxl-python"
         }
         file_extention = Path(self.filename).suffix
         if file_extention in css_classes:
@@ -141,7 +143,9 @@ class InClassFile(models.Model):
             ".png": "bx bxs-file-image",
             ".docx": "bx bxs-file-doc",
             ".zip": "bx bxs-file-archive",
-            ".txt": "bx bxs-file-txt"
+            ".txt": "bx bxs-file-txt",
+            ".py": "bx bxl-python",
+            ".pyw": "bx bxl-python"
         }
         file_extention = Path(self.filename).suffix
         if file_extention in css_classes:
@@ -173,7 +177,9 @@ class PostClassFile(models.Model):
             ".png": "bx bxs-file-image",
             ".docx": "bx bxs-file-doc",
             ".zip": "bx bxs-file-archive",
-            ".txt": "bx bxs-file-txt"
+            ".txt": "bx bxs-file-txt",
+            ".py": "bx bxl-python",
+            ".pyw": "bx bxl-python"
         }
         file_extention = Path(self.filename).suffix
         if file_extention in css_classes:
