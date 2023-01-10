@@ -84,12 +84,12 @@
                   {% if preclassfile.must_study %}
                   <li class="muststudy">
                     <i class="{{ preclassfile.css_class }}"></i>
-                    <a href="">{{ preclassfile.filename }}</a>
+                    <a href="{% url 'weeklies:downloadweeklyfile' preclassfile.weekly.id preclassfile.id  %}?contentcode=0" target="blank" download>{{ preclassfile.filename }}</a>
                   </li>
                   {% else %}
                   <li>
                     <i class="{{ preclassfile.css_class }}"></i>
-                    <a href="">{{ preclassfile.filename }}</a>
+                    <a href="{% url 'weeklies:downloadweeklyfile' preclassfile.weekly.id preclassfile.id  %}?contentcode=0" target="blank" download>{{ preclassfile.filename }}</a>
                   </li>
                   {% endif %}
                   {% endfor %}

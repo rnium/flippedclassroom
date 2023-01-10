@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
-from django.http import JsonResponse
+from django.http import JsonResponse, FileResponse, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from .models import Weekly, PreClassFile, InClassFile, PostClassFile
 
@@ -49,3 +49,31 @@ def addFiles(request, weekly_pk):
                             attached_file = file
                         )
         return JsonResponse({'status':'completed'})
+    else:
+        return JsonResponse({'error':'Method not allowed'})
+
+
+@login_required
+def downloadFile(request, weekly_pk, pk):
+    if request.method == "GET":
+        contentcode = request.GET.get('contentcode', False)
+        response = None
+        if contentcode != False:
+            if contentcode == "0":
+                file_obj = get_object_or_404(PreClassFile, pk=pk, weekly__id=weekly_pk)
+                file_path = file_obj.attached_file.path
+                response = FileResponse(open(file_path, 'rb'))
+            elif contentcode == "1":
+                file_obj = get_object_or_404(InClassFile, pk=pk, weekly__id=weekly_pk)
+                file_path = file_obj.attached_file.path
+                response = FileResponse(open(file_path, 'rb'))
+            elif contentcode == "2":
+                file_obj = get_object_or_404(PostClassFile, pk=pk, weekly__id=weekly_pk)
+                file_path = file_obj.attached_file.path
+                response = FileResponse(open(file_path, 'rb'))
+            else:
+                return HttpResponse('Invalid ContentCode')
+            return response
+        else:
+            HttpResponse('Invalid Request')
+                
