@@ -145,24 +145,11 @@ $.each(uploadFileBtns, function (indexInArray, valueOfElement) {
 
 // selected file number label
 
-function refresh_input_file_count() {
+function refresh_input_file() {
     let uploadFileInputs = $(".cls-input-files")
     $.each(uploadFileInputs, function (indexInArray, valueOfElement) {
-        let file_nums = valueOfElement.files.length
-        let filenums_label_id = $(this).attr('data-fileCountLabel')
-        if (file_nums > 0) {
-            let num_str
-            if (file_nums > 1) {
-                num_str = 'files'
-            } else {
-                num_str = 'file'
-            }
-            $(`#${filenums_label_id}`).text(`${file_nums} ${num_str} selected`)
-        } else {
-            $(`#${filenums_label_id}`).text("No files selected")
-        }
+        $(`#${valueOfElement.id}`).val("")
     });
-    console.log('refreshed');
 }
 
 
@@ -212,7 +199,6 @@ function perform_file_upload(input_id, switch_id, upload_btn_id, data) {
         },
         success: function(){
             $(`#${input_id}`).val("");
-            refresh_input_file_count();
             if ($(`#${switch_id}`).is(':checked')) {
                 $(`#${switch_id}`).prop( "checked", false )
             };
@@ -230,6 +216,10 @@ $("#preClsFileUpBtn").on('click', function () {
 
 $("#inClsFileUpBtn").on('click', function () {
     perform_file_upload("in-cls-input-files", "inClassMustStudy", 'inClsFileUpBtn', {"inclass": true})
+ })
+
+$("#postClsFileUpBtn").on('click', function () {
+    perform_file_upload("post-cls-input-files", "postClassMustStudy", 'postClsFileUpBtn', {"postclass": true})
  })
 
 // ----- VIDEO ADD -------------------
@@ -378,5 +368,5 @@ $("#postClassTutoAdd").on('click',()=>{
 
 // on page load
 $(document).ready(function(){
-    refresh_input_file_count()
+    refresh_input_file()
 })

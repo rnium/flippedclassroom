@@ -556,53 +556,48 @@
                 <i class='bx bx-paperclip'></i>
                 <div class="title-text">Files</div>
               </div>
+              {% if weekly.hasPostClassFiles %}
               <div class="content">
                 <ul>
-                  <li>
-                    <i class='bx bxs-file-pdf'></i>
-                    <a href="">filename.pdf</a>
+                  {% for postclassfile in weekly.postClassFiles %}
+                  {% if postclassfile.must_study %}
+                  <li class="muststudy">
+                    <i class="{{ postclassfile.css_class }}"></i>
+                    <a href="{% url 'weeklies:downloadweeklyfile' postclassfile.weekly.id postclassfile.id  %}?contentcode=2" target="blank" download>{{ postclassfile.filename }}</a>
                   </li>
+                  {% else %}
                   <li>
-                    <i class='bx bx-slideshow' ></i>
-                    <a href="">filename.pptx</a>
+                    <i class="{{ postclassfile.css_class }}"></i>
+                    <a href="{% url 'weeklies:downloadweeklyfile' postclassfile.weekly.id postclassfile.id  %}?contentcode=2" target="blank" download>{{ postclassfile.filename }}</a>
                   </li>
-                  <li>
-                    <i class='bx bxs-file-image'></i>
-                    <a href="">filename.jpg</a>
-                  </li>
-                  <li>
-                    <i class='bx bxs-file-doc'></i>
-                    <a href="">filename.docx</a>
-                  </li>
-                  <li>
-                    <i class='bx bxs-file-archive'></i>
-                    <a href="">filename.zip</a>
-                  </li>
-                  <li>
-                    <i class='bx bxs-file-txt'></i>
-                    <a href="">filename.txt</a>
-                  </li>
-                  <li>
-                    <i class='bx bxs-file-blank' ></i>
-                    <a href="">filename.extension</a>
-                  </li>
+                  {% endif %}
+                  {% endfor %}
                 </ul>
               </div>
-              <!-- <div class="no-content">
+              {% else %}
+              <div class="no-content">
                 <i class='bx bx-info-circle'></i>
                 <div class="info">No files yet</div>
-              </div> -->
+              </div>
+              {% endif %}
               <div class="add-content" id="post-class-upload-btn-con">
                 <button class="files-add-btn" id="post-class-upload-btn" data-uploaderId="post-class-fileUpload"><i class='bx bx-upload'></i><span>Upload Files</span></button>
               </div>
               <div class="fileUpload" id="post-class-fileUpload" style="display: none;">
                 <div class="attachement-container input-file">
-                  <input type="file" id="post-class-post-files" name="post-file" multiple="multiple">
-                  <label for="post-files"><i class='bx bx-paperclip'></i>Select Files</label>
-                  <div class="selected-file" id="postClassPostfiles-file">No files selected</div>
+                  <input class="cls-input-files" type="file" id="post-cls-input-files" data-fileCountLabel="postClsFileNoCount" multiple="multiple">
+                  <label for="post-cls-input-files"><i class='bx bx-paperclip'></i>Select Files</label>
+                  <div class="selected-file" id="postClsFileNoCount">No files selected</div>
+                </div>
+                <div class="switch-container">
+                  <div class="switch">
+                    <input type="checkbox" id="postClassMustStudy">
+                    <label for="postClassMustStudy"></label>
+                  </div>
+                  <div class="switch-label">Mark as must study</div>
                 </div>
                 <div class="submit-container">
-                  <button class="submit-btn">Upload</button>
+                  <button class="submit-btn" id="postClsFileUpBtn">Upload</button>
                 </div>
               </div>
             </div>
