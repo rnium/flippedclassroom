@@ -171,6 +171,7 @@ $.each(uploadFileInputs, function (indexInArray, valueOfElement) {
     valueOfElement.addEventListener("change", function(){
         let file_nums = valueOfElement.files.length
         let filenums_label_id = $(this).attr('data-fileCountLabel')
+        console.log(filenums_label_id);
         let num_str
         if (file_nums > 1) {
             num_str = 'files'
@@ -224,8 +225,11 @@ function perform_file_upload(input_id, switch_id, upload_btn_id, data) {
 }
 
 $("#preClsFileUpBtn").on('click', function () {
-    console.log('upload pressed');
     perform_file_upload("in-cls-input-files", "preClassMustStudy", 'preClsFileUpBtn', {"preclass": true})
+ })
+
+$("#inClsFileUpBtn").on('click', function () {
+    perform_file_upload("in-cls-input-files", "inClassMustStudy", 'inClsFileUpBtn', {"inclass": true})
  })
 
 // ----- VIDEO ADD -------------------

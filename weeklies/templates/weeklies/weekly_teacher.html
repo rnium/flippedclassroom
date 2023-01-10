@@ -106,8 +106,8 @@
               </div>
               <div class="fileUpload" id="pre-class-fileUpload" style="display: none;">
                 <div class="attachement-container input-file">
-                  <input class="cls-input-files" type="file" id="in-cls-input-files" data-fileCountLabel="preClsFileNoCount" multiple="multiple">
-                  <label for="in-cls-input-files"><i class='bx bx-paperclip'></i>Select Files</label>
+                  <input class="cls-input-files" type="file" id="pre-cls-input-files" data-fileCountLabel="preClsFileNoCount" multiple="multiple">
+                  <label for="pre-cls-input-files"><i class='bx bx-paperclip'></i>Select Files</label>
                   <div class="selected-file" id="preClsFileNoCount">No files selected</div>
                 </div>
                 <div class="switch-container">
@@ -311,63 +311,56 @@
                 </div>
               </div>
             </div>
-            
             <div class="in-class-files content-card">
               <div class="title">
                 <i class='bx bx-paperclip'></i>
                 <div class="title-text">Files</div>
               </div>
+              {% if weekly.hasInClassFiles %}
               <div class="content">
                 <ul>
-                  <li>
-                    <i class='bx bxs-file-pdf'></i>
-                    <a href="">filename.pdf</a>
+                  {% for inclassfile in weekly.inClassFiles %}
+                  {% if inclassfile.must_study %}
+                  <li class="muststudy">
+                    <i class="{{ inclassfile.css_class }}"></i>
+                    <a href="{% url 'weeklies:downloadweeklyfile' inclassfile.weekly.id inclassfile.id  %}?contentcode=1" target="blank" download>{{ inclassfile.filename }}</a>
                   </li>
+                  {% else %}
                   <li>
-                    <i class='bx bx-slideshow' ></i>
-                    <a href="">filename.pptx</a>
+                    <i class="{{ inclassfile.css_class }}"></i>
+                    <a href="{% url 'weeklies:downloadweeklyfile' inclassfile.weekly.id inclassfile.id  %}?contentcode=1" target="blank" download>{{ inclassfile.filename }}</a>
                   </li>
-                  <li>
-                    <i class='bx bxs-file-image'></i>
-                    <a href="">filename.jpg</a>
-                  </li>
-                  <li>
-                    <i class='bx bxs-file-doc'></i>
-                    <a href="">filename.docx</a>
-                  </li>
-                  <li>
-                    <i class='bx bxs-file-archive'></i>
-                    <a href="">filename.zip</a>
-                  </li>
-                  <li>
-                    <i class='bx bxs-file-txt'></i>
-                    <a href="">filename.txt</a>
-                  </li>
-                  <li>
-                    <i class='bx bxs-file-blank' ></i>
-                    <a href="">filename.extension</a>
-                  </li>
+                  {% endif %}
+                  {% endfor %}
                 </ul>
               </div>
-              <!-- <div class="no-content">
+              {% else %}
+              <div class="no-content">
                 <i class='bx bx-info-circle'></i>
                 <div class="info">No files yet</div>
-              </div> -->
+              </div>
+              {% endif %}
               <div class="add-content" id="in-class-upload-btn-con">
                 <button class="files-add-btn" id="in-class-upload-btn" data-uploaderId="in-class-fileUpload"><i class='bx bx-upload'></i><span>Upload Files</span></button>
               </div>
               <div class="fileUpload" id="in-class-fileUpload" style="display: none;">
                 <div class="attachement-container input-file">
-                  <input type="file" id="in-class-post-files" name="post-file" multiple="multiple">
-                  <label for="post-files"><i class='bx bx-paperclip'></i>Select Files</label>
-                  <div class="selected-file" id="inClassPostfiles-file">No files selected</div>
+                  <input class="cls-input-files" type="file" id="in-cls-input-files" data-fileCountLabel="inClsFileNoCount" multiple="multiple">
+                  <label for="in-cls-input-files"><i class='bx bx-paperclip'></i>Select Files</label>
+                  <div class="selected-file" id="inClsFileNoCount">No files selected</div>
+                </div>
+                <div class="switch-container">
+                  <div class="switch">
+                    <input type="checkbox" id="inClassMustStudy">
+                    <label for="inClassMustStudy"></label>
+                  </div>
+                  <div class="switch-label">Mark as must study</div>
                 </div>
                 <div class="submit-container">
-                  <button class="submit-btn">Upload</button>
+                  <button class="submit-btn" id="inClsFileUpBtn">Upload</button>
                 </div>
               </div>
             </div>
-
             <div class="in-class-tutorials content-card">
               <div class="title">
                 <i class='bx bxl-youtube' ></i>
