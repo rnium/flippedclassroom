@@ -2,10 +2,10 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.core.validators import MinValueValidator, MaxValueValidator
 import uuid
-from classroom.models import Classroom
+from weeklies.models import Weekly
 
 
-class Test(models.Model):
+class WeeklyTest(models.Model):
     def get_uuid():
         return uuid.uuid4().hex
 
@@ -15,14 +15,17 @@ class Test(models.Model):
         default = get_uuid,
         editable = False,
     )
-    classroom = models.ForeignKey(Classroom, on_delete=models.CASCADE)
+    weekly = models.ForeignKey(Weekly, on_delete=models.CASCADE)
     title = models.CharField(max_length=250)
     info = models.CharField(max_length=9999)
+    preclass = models.BooleanField(default=False)
+    inclass = models.BooleanField(default=False)
+    postclass = models.BooleanField(default=False)
     duration_seconds = models.IntegerField()
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     schedule = models.DateTimeField()
+    expiration = models.DateTimeField()
     created = models.DateTimeField(auto_now_add=True)
-    expired = models.BooleanField(default=False)
 
     def __str__(self) -> str:
         return f"Test Id: {self.id}"
@@ -65,7 +68,7 @@ class Test(models.Model):
 
 
 class Question(models.Model):
-    test = models.ForeignKey(Test, on_delete=models.CASCADE)
+    test = models.ForeignKey(WeeklyTest, on_delete=models.CASCADE)
     statement = models.CharField(max_length=99999)
     marks = models.FloatField()
     is_descriptive = models.BooleanField(default=False)
@@ -101,8 +104,8 @@ class AnswerSheet(models.Model):
         default = get_uuid,
         editable = False,
     )
-    test = models.ForeignKey(Test, null=True, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    test = models.ForeignKey(WeeklyTest, null=True, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='weekly_test_user')
     issue_time = models.DateTimeField(blank=True, null=True)
     submit_time = models.DateTimeField(blank=True, null=True)
 

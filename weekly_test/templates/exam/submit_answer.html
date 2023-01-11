@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="{% static 'styles/submit_answer.css' %}">
+    <title>Submitted</title>
+</head>
+<body>
+    <div class="main">
+        <div class="content" id="id-content" style="display: none;">
+            <a href="{% url 'classroom:homepage' %}" class="navigate-home"><i class='bx bx-home-alt-2'></i></a>
+            <i class='bx bx-check-double bg'></i>
+            <div class="status">Answer sheet submitted</div>
+            <div class="sheet-id"><span>Sheet ID:&nbsp;</span><span id="id-answer-sheet-id">{{ answer_sheet.id }}</span></div>
+            <div class="test-title">{{ answer_sheet.test.title }}</div>
+            <div class="full-marks"><span>Full marks:&nbsp;</span><span id="id-full-marks">{{ answer_sheet.test.total_marks }}</span></div>
+            {% if answer_sheet.total_score != none %}
+            <div class="obtained-score"><span>Obtained Score:&nbsp;</span><span id="id-obtained-score">{{ answer_sheet.total_score }}</span></div>
+            {% else %}
+            <div class="pending-result">Result Pending</div>
+            {% endif %}
+        </div>
+    </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script> 
+<script>
+    $(document).ready(function(){
+        $("#id-content").show(300)
+    })
+</script>
+</body>
+</html>

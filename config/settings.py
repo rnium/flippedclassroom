@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'exam.apps.ExamConfig',
+    'weekly_test.apps.WeeklyTestConfig',
     'classroom.apps.ClassroomConfig',
     'accounts.apps.AccountsConfig',
     'weeklies.apps.WeekliesConfig',
