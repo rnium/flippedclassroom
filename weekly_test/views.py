@@ -11,14 +11,14 @@ from django.http import HttpResponse
 
 
 def home(request):
-    return render(request, 'exam/home.html')
+    return render(request, 'weekly_test/home.html')
 
 class QuestionCreate(LoginRequiredMixin, DetailView):
-    template_name = "exam/create_q.html"
+    template_name = "weekly_test/create_q.html"
     model = Weekly
 
 class TestView(LoginRequiredMixin, DetailView):
-    template_name = "exam/viewresults.html"
+    template_name = "weekly_test/viewresults.html"
     model = WeeklyTest
 
 @login_required
@@ -36,11 +36,11 @@ def take_test(request, pk):
     user_answer_sheet_queryset = AnswerSheet.objects.filter(test=test, user=request.user)
     if user_answer_sheet_queryset.count() > 0:
         if user_answer_sheet_queryset[0].submit_time != None:
-            return render(request, 'exam/already_submitted.html', context={'answer_sheet':user_answer_sheet_queryset[0]})
+            return render(request, 'weekly_test/already_submitted.html', context={'answer_sheet':user_answer_sheet_queryset[0]})
     
     if request.method == "GET":
         answer_sheet = AnswerSheet.objects.create(test=test, user=request.user)
-        return render(request, 'exam/answer_q.html', context={'test':test, 'answer_sheet':answer_sheet})
+        return render(request, 'weekly_test/answer_q.html', context={'test':test, 'answer_sheet':answer_sheet})
 
     elif request.method == "POST":
         answer_sheet = user_answer_sheet_queryset[0]
@@ -74,7 +74,7 @@ def take_test(request, pk):
             DescriptiveAnswer.objects.create(**data_kwargs)
         answer_sheet.submit_time = timezone.now()
         answer_sheet.save()
-        return render(request, 'exam/submit_answer.html', context={'answer_sheet':answer_sheet})
+        return render(request, 'weekly_test/submit_answer.html', context={'answer_sheet':answer_sheet})
 
 
 @login_required

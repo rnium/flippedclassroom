@@ -1,5 +1,5 @@
 from django.urls import path, include
-from exam import views
+from weekly_test import views
 
 
 # test/weeklies
