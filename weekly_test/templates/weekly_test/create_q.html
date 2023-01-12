@@ -34,17 +34,24 @@
                             <input type="text" class="textinput" id="id_test-desc" name="name_test-desc" placeholder=" ">
                             <label for="id_test-title" class="textinput__label">Test Description or Instructions</label>
                         </div>
+                        <div class="info-input time-input">
+                            <input type="text" class="textinput" id="id_test-time" name="name_test-time" placeholder=" ">
+                            <label for="id_test-title" class="textinput__label">Test Time (in minutes)</label>
+                            <div id="id_time-error_info" class="time-error_info"><i class='bx bx-error-circle'></i><span>positive integer required</span></div>
+                        </div>
                         <div class="inp-group">
-                            <div class="info-input time-input">
-                                <input type="text" class="textinput" id="id_test-time" name="name_test-time" placeholder=" ">
-                                <label for="id_test-title" class="textinput__label">Test Time (in minutes)</label>
-                                <div id="id_time-error_info" class="time-error_info"><i class='bx bx-error-circle'></i><span>positive integer required</span></div>
-                            </div>
-                            <div class="deadline">
+                            <div class="schedule">
                                 <div class="datepicker-container">
                                     <i class='bx bx-calendar'></i>
                                     <input type="datetime-local" id="test-schedule" placeholder="Schedule The Test">
-                                    <span class="error-msg" id="error-msg" style="display: none;">*advance date and time required</span>
+                                    <span class="error-msg" id="error-msg-schedule" style="display: none;">*advance date and time required</span>
+                                </div>
+                            </div>
+                            <div class="deadline">
+                                <div class="datepicker-container">
+                                    <i class='bx bxs-calendar-minus'></i>
+                                    <input type="datetime-local" id="deadline-datetime" placeholder="Test Expiration">
+                                    <span class="error-msg" id="error-msg-deadline" style="display: none;">*Must be after the schedule</span>
                                 </div>
                             </div>
                         </div>
@@ -140,6 +147,7 @@
             enableTime: true,
         }
         flatpickr('#test-schedule', config)
+        flatpickr('#deadline-datetime', config)
         $("#id_test-title").focus()
     })
 </script>

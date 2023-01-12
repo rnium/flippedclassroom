@@ -569,7 +569,7 @@ body .main .container #id_create-q-form-container .test-info .input-container .i
   margin: 0;
 }
 
-body .main .container #id_create-q-form-container .test-info .input-container .inp-group .deadline {
+body .main .container #id_create-q-form-container .test-info .input-container .inp-group .schedule, body .main .container #id_create-q-form-container .test-info .input-container .inp-group .deadline {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -584,13 +584,13 @@ body .main .container #id_create-q-form-container .test-info .input-container .i
   margin: 0;
 }
 
-body .main .container #id_create-q-form-container .test-info .input-container .inp-group .deadline .datepicker-container {
+body .main .container #id_create-q-form-container .test-info .input-container .inp-group .schedule .datepicker-container, body .main .container #id_create-q-form-container .test-info .input-container .inp-group .deadline .datepicker-container {
   position: relative;
   margin-left: 10px;
   width: 100%;
 }
 
-body .main .container #id_create-q-form-container .test-info .input-container .inp-group .deadline .datepicker-container i {
+body .main .container #id_create-q-form-container .test-info .input-container .inp-group .schedule .datepicker-container i, body .main .container #id_create-q-form-container .test-info .input-container .inp-group .deadline .datepicker-container i {
   position: absolute;
   right: 1rem;
   font-size: 1.5rem;
@@ -602,7 +602,7 @@ body .main .container #id_create-q-form-container .test-info .input-container .i
   padding: 2px;
 }
 
-body .main .container #id_create-q-form-container .test-info .input-container .inp-group .deadline .datepicker-container input.form-control {
+body .main .container #id_create-q-form-container .test-info .input-container .inp-group .schedule .datepicker-container input.form-control, body .main .container #id_create-q-form-container .test-info .input-container .inp-group .deadline .datepicker-container input.form-control {
   display: inline-block;
   width: 100%;
   border-radius: 5px;
@@ -615,23 +615,23 @@ body .main .container #id_create-q-form-container .test-info .input-container .i
   color: #276363;
 }
 
-body .main .container #id_create-q-form-container .test-info .input-container .inp-group .deadline .datepicker-container input.form-control::-webkit-input-placeholder {
+body .main .container #id_create-q-form-container .test-info .input-container .inp-group .schedule .datepicker-container input.form-control::-webkit-input-placeholder, body .main .container #id_create-q-form-container .test-info .input-container .inp-group .deadline .datepicker-container input.form-control::-webkit-input-placeholder {
   font-size: 0.9rem;
 }
 
-body .main .container #id_create-q-form-container .test-info .input-container .inp-group .deadline .datepicker-container input.form-control:-ms-input-placeholder {
+body .main .container #id_create-q-form-container .test-info .input-container .inp-group .schedule .datepicker-container input.form-control:-ms-input-placeholder, body .main .container #id_create-q-form-container .test-info .input-container .inp-group .deadline .datepicker-container input.form-control:-ms-input-placeholder {
   font-size: 0.9rem;
 }
 
-body .main .container #id_create-q-form-container .test-info .input-container .inp-group .deadline .datepicker-container input.form-control::-ms-input-placeholder {
+body .main .container #id_create-q-form-container .test-info .input-container .inp-group .schedule .datepicker-container input.form-control::-ms-input-placeholder, body .main .container #id_create-q-form-container .test-info .input-container .inp-group .deadline .datepicker-container input.form-control::-ms-input-placeholder {
   font-size: 0.9rem;
 }
 
-body .main .container #id_create-q-form-container .test-info .input-container .inp-group .deadline .datepicker-container input.form-control::placeholder {
+body .main .container #id_create-q-form-container .test-info .input-container .inp-group .schedule .datepicker-container input.form-control::placeholder, body .main .container #id_create-q-form-container .test-info .input-container .inp-group .deadline .datepicker-container input.form-control::placeholder {
   font-size: 0.9rem;
 }
 
-body .main .container #id_create-q-form-container .test-info .input-container .inp-group .deadline .datepicker-container input.form-control:focus {
+body .main .container #id_create-q-form-container .test-info .input-container .inp-group .schedule .datepicker-container input.form-control:focus, body .main .container #id_create-q-form-container .test-info .input-container .inp-group .deadline .datepicker-container input.form-control:focus {
   outline: 2px solid #01a16c;
   border-color: #01a16c;
   -webkit-box-shadow: 0 0 5px #a1a1a1;
@@ -639,12 +639,16 @@ body .main .container #id_create-q-form-container .test-info .input-container .i
   background-color: white;
 }
 
-body .main .container #id_create-q-form-container .test-info .input-container .inp-group .deadline .datepicker-container .error-msg {
+body .main .container #id_create-q-form-container .test-info .input-container .inp-group .schedule .datepicker-container .error-msg, body .main .container #id_create-q-form-container .test-info .input-container .inp-group .deadline .datepicker-container .error-msg {
   position: absolute;
   top: 100%;
   left: 10px;
   font-size: 0.7rem;
   color: #f05d5d;
+}
+
+body .main .container #id_create-q-form-container .test-info .input-container .inp-group .schedule .datepicker-container {
+  margin-left: 0;
 }
 
 body .main .container #id_create-q-form-container .test-questions {
