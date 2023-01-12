@@ -17,6 +17,20 @@ class QuestionCreate(LoginRequiredMixin, DetailView):
     template_name = "weekly_test/create_q.html"
     model = Weekly
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        cc = self.request.GET.get('contentcode', 10)
+        context['contentcode'] = cc
+        if cc == "0":
+            context['section'] = 'Pre Class'
+        elif cc == "1":
+            context['section'] = 'In Class'
+        elif cc == "2":
+            context['section'] = 'Post Class'
+        
+        return context
+
+
 class TestView(LoginRequiredMixin, DetailView):
     template_name = "weekly_test/viewresults.html"
     model = WeeklyTest
