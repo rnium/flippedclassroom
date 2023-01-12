@@ -18,8 +18,13 @@
     </div>
     <div class="main">
         <div class="container" id="id_container">
+            <div class="home-links">
+                <a href="{% url 'classroom:classroom_detail' weekly.classroom.id  %}" class="classroom">{{ weekly.classroom.name }}</a>
+                <i class='bx bxs-chevron-right' ></i>
+                <a href="{% url 'weeklies:weeklydetail' weekly.classroom.id weekly.weeknum %}" class="weekly">Week {{ weekly.weeknum }}</a>
+            </div>
             <div class="create-test-header">
-                <div class="title">Create Test for Week {{ weekly.weeknum }} {% if section %}{{ section }}{% endif %}</div>
+                <div class="title">Create Test for <span class='week'>Week {{ weekly.weeknum }}</span> {% if section %}<span class="section">{{ section }}</span>{% endif %}</div>
             </div>
             <div id="id_create-q-form-container">
                 {% csrf_token %}

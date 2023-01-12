@@ -202,6 +202,23 @@ body .main .container .exam-header .title .description, body .main .container .c
   border-radius: 4px;
 }
 
+body .main .container .exam-header .title .week, body .main .container .create-test-header .title .week {
+  color: #50bb7c;
+  margin-left: 5px;
+}
+
+body .main .container .exam-header .title .section, body .main .container .create-test-header .title .section {
+  display: inline-block;
+  font-family: 'Gemunu Libre', sans-serif;
+  background-color: #b5ddc9;
+  color: #089465;
+  -webkit-box-shadow: 0 0 5px #d8e4dd;
+          box-shadow: 0 0 5px #d8e4dd;
+  padding: 0 10px;
+  border-radius: 5px;
+  margin-left: 10px;
+}
+
 body .main .container .exam-header .exam-info, body .main .container .create-test-header .exam-info {
   width: 80%;
   margin-top: 1rem;
@@ -234,6 +251,66 @@ body .main .container .exam-header .exam-info .timeunit, body .main .container .
   margin-left: 1px;
   margin-right: 3px;
   cursor: default;
+}
+
+body .main .container .home-links {
+  width: 100%;
+  justify-self: flex-start;
+  margin-bottom: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body .main .container .home-links a.classroom {
+  display: block;
+  text-decoration: none;
+  color: #62a7a7;
+  background-color: inherit;
+  border: 1px solid #62a7a7;
+  border-radius: 5px;
+  padding: 0 5px;
+  font-family: 'Gemunu Libre', sans-serif;
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
+}
+
+body .main .container .home-links a.classroom:hover {
+  -webkit-box-shadow: 0 0 5px #b5d1d1;
+          box-shadow: 0 0 5px #b5d1d1;
+}
+
+body .main .container .home-links i {
+  margin: 0 0.3rem;
+  font-size: 1.2rem;
+  color: #62a7a7;
+}
+
+body .main .container .home-links a.weekly {
+  display: block;
+  text-decoration: none;
+  color: white;
+  background-color: #62a7a7;
+  border: 1px solid #62a7a7;
+  border-radius: 5px;
+  padding: 0 5px;
+  font-family: 'Gemunu Libre', sans-serif;
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
+}
+
+body .main .container .home-links a.weekly:hover {
+  background-color: #60c4b3;
+  border-color: #60c4b3;
+  color: white;
 }
 
 body .main .container .create-test-header {

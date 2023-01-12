@@ -1,6 +1,5 @@
 from django.db import models
 from django.utils import timezone
-
 from classroom.models import Classroom
 import uuid
 from os.path import join, basename
@@ -157,10 +156,8 @@ class Weekly(models.Model):
     @property
     def has_post_class_ongoing_test(self):
         return bool(len(self.inClassOngoingTest))
+     
     
-    
-    
-
 class PreClassFile(models.Model):
     def filepath(self, filename):
         return join("attachments", str(self.weekly.classroom.id), 'weekly', str(self.weekly.id), 'preclass', filename)
