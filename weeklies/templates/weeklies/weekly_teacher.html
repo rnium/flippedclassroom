@@ -167,78 +167,64 @@
             </div> 
           </div>
           <div class="right-col">
+            {% if weekly.has_pre_class_ongoing_test %}
             <div class="live-tests title-box">
               <div class="title">Ongoing Tests</div>
               <div class="content">
                 <ul>
+                  {% for test in weekly.preClassOngoingTest %}
                   <li>
                     <div class="test-item">
                       <i class='bx bx-edit-alt'></i>
                       <div class="info">
-                        <a href="" class="label-title">Test on electrical circuits 1</a>
+                        <a href="" class="label-title">{{ test.title }}</a>
                         <div class="stat">
                           <div class="issued"><i class='bx bx-user-check'></i><span>Issued:&nbsp;</span><span class="value"
-                              id="test0-issued">27</span></div>
+                              id="test0-issued">{{ test.issued_answer_sheets.count }}</span></div>
                           <div class="submitted"><i class='bx bx-check-double'></i><span>Submitted:&nbsp;</span><span
-                              class="value" id="test0-issued">2</span></div>
+                              class="value" id="test0-issued">{{ test.submitted_answer_sheets.count }}</span></div>
                         </div>
                       </div>
                     </div>
                   </li>
+                  {% endfor %}
                 </ul>
               </div>
             </div>
-            
+            {% endif %}
             <div class="weekly-tests title-box">
               <div class="title">Test</div>
               <div class="content">
+                {% if weekly.has_pre_class_tests %}
                 <ul>
+                  {% for upcoming_test in weekly.preClassUpcomingTest %}
                   <li>
                     <div class="test test-upcoming list-item">
                       <i class='bx bxs-edit-alt'></i>
                       <div class="info">
-                        <div class="label-title">Test on electrical circuits 2 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, molestias?</div>
-                        <div class="held-on"><span class="sub-title">Schedule:</span><span class="time">7:00PM, 17 Oct 2022</span></div>
+                        <div class="label-title">{{ upcoming_test.title }}</div>
+                        <div class="held-on"><span class="sub-title">Schedule:</span><span class="time">{{ upcoming_test.schedule }}</span></div>
                       </div>
                     </div>
                   </li>
-
-                  <li>
-                    <div class="test test-upcoming list-item">
-                      <i class='bx bxs-edit-alt'></i>
-                      <div class="info">
-                        <div class="label-title">Test on electrical circuits 2</div>
-                        <div class="held-on"><span class="sub-title">Schedule:</span><span class="time">7:00PM, 17 Oct 2022</span></div>
-                      </div>
-                    </div>
-                  </li>
-
+                  {% endfor %}
+                  {% for prev_test in weekly.preClassPreviousTest %}
                   <li>
                     <a href="">
                       <div class="test list-item">
                         <i class='bx bx-edit-alt'></i>
                         <div class="info">
-                          <div class="label-title">Test on electrical circuits 1</div>
-                          <div class="held-on"><span class="sub-title">held on:</span><span class="time">7:00PM, 17 Oct 2022</span></div>
+                          <div class="label-title">{{ prev_test.title }}</div>
+                          <div class="held-on"><span class="sub-title">held on:</span><span class="time">{{ prev_test.schedule }}</span></div>
                         </div>
                       </div>
                     </a>
                   </li>
-
-                    <li>
-                      <a href="">
-                        <div class="test list-item">
-                          <i class='bx bx-edit-alt'></i>
-                          <div class="info">
-                            <div class="label-title">Test on electrical circuits 1</div>
-                            <div class="held-on"><span class="sub-title">held on:</span><span class="time">7:00PM, 17 Oct 2022</span></div>
-                          </div>
-                        </div>
-                      </a>
-                    </li>
-                    
-                  </ul>
-                <!-- <div class="no-content"><i class='bx bx-info-circle'></i><span>No Tests</span></div> -->
+                  {% endfor %}
+                </ul>
+                {% else %}
+                <div class="no-content"><i class='bx bx-info-circle'></i><span>No Tests</span></div> 
+                {% endif %}
               </div>
             </div>
             <div class="weekly-tasks title-box">

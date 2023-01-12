@@ -1,4 +1,6 @@
 from django.db import models
+from django.utils import timezone
+
 from classroom.models import Classroom
 import uuid
 from os.path import join, basename
@@ -84,6 +86,29 @@ class Weekly(models.Model):
         qs = self.postclasstutorial_set.all().order_by('added')
         return bool(len(qs))
 
+    @property
+    def preClassUpcomingTest(self):
+        timenow = timezone.now()
+        return self.weeklytest_set.filter(preclass=True, schedule__gt=timenow).order_by('-schedule')
+    
+    @property
+    def preClassOngoingTest(self):
+        timenow = timezone.now()
+        return self.weeklytest_set.filter(preclass=True, schedule__lte=timenow, expiration__gt=timenow).order_by('-schedule')
+    
+    @property
+    def preClassPreviousTest(self):
+        timenow = timezone.now()
+        return self.weeklytest_set.filter(preclass=True, expiration__lt=timenow).order_by('-schedule')
+    
+    @property
+    def has_pre_class_tests(self):
+        return bool(len(self.preClassUpcomingTest) + len(self.preClassPreviousTest))
+    
+    @property
+    def has_pre_class_ongoing_test(self):
+        return bool(len(self.preClassOngoingTest))
+    
 
 
 class PreClassFile(models.Model):
