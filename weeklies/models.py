@@ -86,6 +86,7 @@ class Weekly(models.Model):
         qs = self.postclasstutorial_set.all().order_by('added')
         return bool(len(qs))
 
+    # tests
     @property
     def preClassUpcomingTest(self):
         timenow = timezone.now()
@@ -109,7 +110,56 @@ class Weekly(models.Model):
     def has_pre_class_ongoing_test(self):
         return bool(len(self.preClassOngoingTest))
     
-
+    # in class tests
+    @property
+    def inClassUpcomingTest(self):
+        timenow = timezone.now()
+        return self.weeklytest_set.filter(inclass=True, schedule__gt=timenow).order_by('schedule')
+    
+    @property
+    def inClassOngoingTest(self):
+        timenow = timezone.now()
+        return self.weeklytest_set.filter(inclass=True, schedule__lte=timenow, expiration__gt=timenow).order_by('schedule')
+    
+    @property
+    def inClassPreviousTest(self):
+        timenow = timezone.now()
+        return self.weeklytest_set.filter(inclass=True, expiration__lt=timenow).order_by('schedule')
+    
+    @property
+    def has_in_class_tests(self):
+        return bool(len(self.inClassUpcomingTest) + len(self.inClassPreviousTest))
+    
+    @property
+    def has_in_class_ongoing_test(self):
+        return bool(len(self.inClassOngoingTest))
+    
+    # post class tests
+    @property
+    def postClassUpcomingTest(self):
+        timenow = timezone.now()
+        return self.weeklytest_set.filter(postclass=True, schedule__gt=timenow).order_by('schedule')
+    
+    @property
+    def postClassOngoingTest(self):
+        timenow = timezone.now()
+        return self.weeklytest_set.filter(postclass=True, schedule__lte=timenow, expiration__gt=timenow).order_by('schedule')
+    
+    @property
+    def postClassPreviousTest(self):
+        timenow = timezone.now()
+        return self.weeklytest_set.filter(postclass=True, expiration__lt=timenow).order_by('schedule')
+    
+    @property
+    def has_post_class_tests(self):
+        return bool(len(self.postClassUpcomingTest) + len(self.postClassPreviousTest))
+    
+    @property
+    def has_post_class_ongoing_test(self):
+        return bool(len(self.inClassOngoingTest))
+    
+    
+    
 
 class PreClassFile(models.Model):
     def filepath(self, filename):
@@ -141,9 +191,7 @@ class PreClassFile(models.Model):
         if file_extention in css_classes:
             return css_classes[file_extention]
         else:
-            return "bx bxs-file-blank"
-
-            
+            return "bx bxs-file-blank"        
 
 
 class InClassFile(models.Model):
@@ -178,7 +226,6 @@ class InClassFile(models.Model):
         else:
             return "bx bxs-file-blank"
     
-
 
 class PostClassFile(models.Model):
     def filepath(self, filename):
