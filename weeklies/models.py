@@ -89,17 +89,17 @@ class Weekly(models.Model):
     @property
     def preClassUpcomingTest(self):
         timenow = timezone.now()
-        return self.weeklytest_set.filter(preclass=True, schedule__gt=timenow).order_by('-schedule')
+        return self.weeklytest_set.filter(preclass=True, schedule__gt=timenow).order_by('schedule')
     
     @property
     def preClassOngoingTest(self):
         timenow = timezone.now()
-        return self.weeklytest_set.filter(preclass=True, schedule__lte=timenow, expiration__gt=timenow).order_by('-schedule')
+        return self.weeklytest_set.filter(preclass=True, schedule__lte=timenow, expiration__gt=timenow).order_by('schedule')
     
     @property
     def preClassPreviousTest(self):
         timenow = timezone.now()
-        return self.weeklytest_set.filter(preclass=True, expiration__lt=timenow).order_by('-schedule')
+        return self.weeklytest_set.filter(preclass=True, expiration__lt=timenow).order_by('schedule')
     
     @property
     def has_pre_class_tests(self):
