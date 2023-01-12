@@ -281,23 +281,52 @@ $('#id_test-time').keyup(function(){
     }
 });
 
-function validate_datetime() {
+function validate_schedule_datetime() {
     let date_raw = $("#test-schedule").val()
     if (date_raw.length == 0) {
         return false
     }
-    let deadline = new Date(date_raw).getTime()
+    let schedule = new Date(date_raw).getTime()
     let timenow = new Date().getTime()
-    if (deadline < timenow) {
-        $("#error-msg").show(100)
+    if (schedule < timenow) {
+        $("#error-msg-schedule").show(100)
         return false
     } else {
-        $("#error-msg").hide(100)
+        $("#error-msg-schedule").hide(100)
+        let deadline_date_raw = $("#deadline-datetime").val()
+        if (deadline_date_raw.length != 0) {
+            let deadline = new Date(deadline_date_raw).getTime()
+            console.log('checking deadline');
+            if (schedule > deadline) {
+                $("#error-msg-deadline").show(100)
+            } else {
+                $("#error-msg-deadline").hide(100)
+            }
+        }
         return true
     }
 }
 
-$("#test-schedule").on('change', validate_datetime)
+function validate_deadline_datetime() {
+    let schedule_date_raw = $("#test-schedule").val()
+    let deadline_date_raw = $("#deadline-datetime").val()
+    console.log('deadline changed');
+    if (deadline_date_raw.length == 0 || schedule_date_raw.length == 0) {
+        return false
+    }
+    let deadline = new Date(deadline_date_raw).getTime()
+    let schedule = new Date(schedule_date_raw).getTime()
+    if (deadline < schedule) {
+        $("#error-msg-deadline").show(100)
+        return false
+    } else {
+        $("#error-msg-deadline").hide(100)
+        return true
+    }
+}
+
+$("#test-schedule").on('change', validate_schedule_datetime)
+$("#deadline-datetime").on('change', validate_deadline_datetime)
 
 // data processing and validation
 
@@ -485,7 +514,7 @@ $("#id_create_q_button").on('click', function(){
         showError(err.message)
         return null
     }
-    let is_valid_date = validate_datetime()
+    let is_valid_date = validate_schedule_datetime()
     if (is_valid_date == false) {
         $(".form-control").focus()
         showError("Select valid date and time")
