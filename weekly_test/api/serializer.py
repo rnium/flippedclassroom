@@ -1,16 +1,14 @@
-from exam.models import *
+from weekly_test.models import *
 from rest_framework import serializers
 from django.urls import reverse
 
-from weekly_test.models import WeeklyTest
-
 class TestSerializer(serializers.ModelSerializer):
-    classroom_url = serializers.SerializerMethodField(read_only=True)
+    weekly_url = serializers.SerializerMethodField(read_only=True)
     class Meta:
         model = WeeklyTest
         fields = "__all__"
-    def get_classroom_url(self, obj):
-        return reverse('classroom:classroom_detail', kwargs={'pk': obj.weekly.classroom.id})
+    def get_weekly_url(self, obj):
+        return reverse('weeklies:weeklydetail', kwargs={'cls_pk':obj.weekly.classroom.id,'weeknum': obj.weekly.weeknum})
 
 class QuestionSerializer(serializers.ModelSerializer):
     class Meta:

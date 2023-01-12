@@ -297,7 +297,7 @@ function validate_schedule_datetime() {
         if (deadline_date_raw.length != 0) {
             let deadline = new Date(deadline_date_raw).getTime()
             console.log('checking deadline');
-            if (schedule > deadline) {
+            if (schedule >= deadline) {
                 $("#error-msg-deadline").show(100)
             } else {
                 $("#error-msg-deadline").hide(100)
@@ -316,7 +316,7 @@ function validate_deadline_datetime() {
     }
     let deadline = new Date(deadline_date_raw).getTime()
     let schedule = new Date(schedule_date_raw).getTime()
-    if (deadline < schedule) {
+    if (deadline <= schedule) {
         $("#error-msg-deadline").show(100)
         return false
     } else {
@@ -432,7 +432,8 @@ function processData() {
         'title':$("#id_test-title").val(),
         'info':$("#id_test-desc").val(),
         'duration_seconds': Number($("#id_test-time").val()) * 60,
-        'schedule': $("#test-schedule").val()
+        'schedule': $("#test-schedule").val(),
+        'expiration': $("#deadline-datetime").val(),
     }
     data['test'] = testinfo
     questions = $(".q")
@@ -493,7 +494,7 @@ function processSuccess(response) {
         $("#id_container").html(success_con)
         $("#id_container").show(500, function(){
             setTimeout(function(){
-                window.location = response['classroom_url']
+                window.location = response['weekly_url']
             },5000)
         })
     })
@@ -514,7 +515,7 @@ $("#id_create_q_button").on('click', function(){
         showError(err.message)
         return null
     }
-    let is_valid_date = validate_schedule_datetime()
+    let is_valid_date = validate_schedule_datetime() && validate_deadline_datetime()
     if (is_valid_date == false) {
         $(".form-control").focus()
         showError("Select valid date and time")

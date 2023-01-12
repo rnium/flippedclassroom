@@ -11,25 +11,40 @@ from .paginations import AnswerSheetPagination
 from rest_framework.permissions import IsAuthenticated
 from .permission import IsUserTeacherOfClassroom
 from rest_framework.generics import ListAPIView
-from classroom.models import Classroom
+from weeklies.models import Weekly
 
 @api_view(["POST"])
 def create_test(request, pk):
     if request.method == "POST":
-        classroom = get_object_or_404(Classroom, pk=pk)
+        weekly = get_object_or_404(Weekly, pk=pk)
         testserializer = TestSerializer(data=request.data.get('test'))
+        cc = request.GET.get("contentcode", False)
+        if cc != False:
+            if cc == '0':
+                testserializer.initial_data['preclass'] = True
+            elif cc == '1':
+                testserializer.initial_data['inclass'] = True
+            elif cc == '2':
+                testserializer.initial_data['postclass'] = True
+            else:
+                return Response(status=status.HTTP_400_BAD_REQUEST, data={'error':'invalid contentcode'})
         schedule = parser.parse(testserializer.initial_data['schedule'])
-        testserializer.initial_data['classroom'] = classroom.id
+        expiration = parser.parse(testserializer.initial_data['expiration'])
+        testserializer.initial_data['weekly'] = weekly.id
         testserializer.initial_data['schedule'] = schedule
+        testserializer.initial_data['expiration'] = expiration
+        
         user = request.user
         if testserializer.is_valid():
             test = testserializer.save(user=user)
         else:
-            return Response(status=status.HTTP_400_BAD_REQUEST)
+            return Response(status=status.HTTP_400_BAD_REQUEST, data=testserializer.errors)
         for question in request.data.get('questions'):
             question_data = question['meta']
             question_data['test'] = test.id
             questionserializer = QuestionSerializer(data=question_data)
+            print(f"test id: {test.id}")
+            print(questionserializer.initial_data)
             if questionserializer.is_valid():
                 question_obj = questionserializer.save()
             else:
