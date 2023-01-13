@@ -51,11 +51,12 @@ def take_test(request, pk):
     if user_answer_sheet_queryset.count() > 0:
         if user_answer_sheet_queryset[0].submit_time != None:
             return render(request, 'weekly_test/already_submitted.html', context={'answer_sheet':user_answer_sheet_queryset[0]})
-        else:
-            if user_answer_sheet_queryset[0].issue_time != None:
-                return render(request, 'weekly_test/answer_q.html', context={'test':test, 'answer_sheet':user_answer_sheet_queryset[0]})
+            
     
     if request.method == "GET":
+        if user_answer_sheet_queryset.count() > 0:
+            if user_answer_sheet_queryset[0].issue_time != None:
+                return render(request, 'weekly_test/answer_q.html', context={'test':test, 'answer_sheet':user_answer_sheet_queryset[0]})
         answer_sheet = AnswerSheet.objects.create(test=test, user=request.user)
         return render(request, 'weekly_test/answer_q.html', context={'test':test, 'answer_sheet':answer_sheet})
 
