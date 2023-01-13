@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 from django.utils import timezone
 from classroom.models import Classroom
@@ -156,6 +157,15 @@ class Weekly(models.Model):
     @property
     def has_post_class_ongoing_test(self):
         return bool(len(self.inClassOngoingTest))
+    
+    # forum post
+    @property
+    def forum_posts(self):
+        return self.forumpost_set.all().order_by('added')
+    
+    @property
+    def has_forum_post(self):
+        return bool(len(self.forum_posts))
      
     
 class PreClassFile(models.Model):
@@ -276,3 +286,11 @@ class PostClassTutorial(models.Model):
     yt_id = models.CharField(max_length=20)
     description = models.CharField(max_length=1000, blank=True, null=True)
     added = models.DateTimeField(auto_now_add=True)
+
+
+class Forumpost(models.Model):
+    weekly = models.ForeignKey(Weekly, on_delete=models.CASCADE)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    postcontent = models.TextField()
+    added = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)

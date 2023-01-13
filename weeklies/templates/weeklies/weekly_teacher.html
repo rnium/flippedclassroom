@@ -720,49 +720,34 @@
         </div>
       </div>
       <div class="tab-body" id="tab4">
-        <div class="posts-container">
+        {% if weekly.has_forum_post %}
+        <div class="posts-container" id="forum_post_container">
+          {% for post in weekly.forum_posts %}
           <div class="post">
             <div class="post-inner">
               <div class="top-panel">
-                <div class="post-time"><span class="sub-title">Posted</span><span class="time">9:31pm, 26 Dec 2022</span></div>
+                <div class="post-time"><span class="sub-title">Posted</span><span class="time">{{ post.added }}</span></div>
               </div>
               <div class="bottom-panel">
                 <div class="user">
-                  <div class="username">Enzo</div>
-                  <div class="teacher-badge"></div>
-                  <div class="avatar"><img src="images/dp2.jpg" alt=""></div>
+                  <div class="username">{{ post.author.account.user_full_name }}</div>
+                  {% if post.author in post.weekly.classroom.teachers.all %}<div class="teacher-badge"></div>{% else %}<div class="registration">Reg. No.</div>{% endif %}
+                  <div class="avatar"><img src="{{ post.author.account.avatar_url }}" alt=""></div>
                 </div>
-                <div class="post-body">
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, quia?</p>
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi ipsum voluptates porro facilis ex fugit quidem dolore quae laboriosam natus.</p>
-                </div>
+                <div class="post-body">{{ post.postcontent }}</div>
               </div>
+              {% if request.user == post.author %}<a class="edit" href=""><i class='bx bx-pencil'></i></a>{% endif %}
             </div>
           </div>
-          <div class="post">
-            <div class="post-inner">
-              <div class="top-panel">
-                <div class="post-time"><span class="sub-title">Posted</span><span class="time">9:31pm, 26 Dec 2022</span></div>
-              </div>
-              <div class="bottom-panel">
-                <div class="user">
-                  <div class="username">MSI Rony</div>
-                  <div class="registration">2018338514</div>
-                  <div class="avatar"><img src="images/dp4.jpg" alt=""></div>
-                </div>
-                <div class="post-body">
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, quia?</p>
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi ipsum voluptates porro facilis ex fugit quidem dolore quae laboriosam natus.</p>
-                </div>
-              </div>
-              <a class="edit" href=""><i class='bx bx-pencil'></i></a>
-            </div>
-          </div>
+          {% endfor %}
         </div>
-        <!-- <div class="no-posts">
+        {% else %}
+        <div class="posts-container" id="forum_post_container"></div>
+        <div class="no-posts" id="no-forum-posts">
           <i class='bx bxs-info-square'></i>
           <span>No Posts Yet</span>
-        </div> -->
+        </div>
+        {% endif %}
         <div class="create-post">
           <textarea class="replyinput" placeholder="Write something" name="" id=""></textarea>
           <div class="btn-container">
