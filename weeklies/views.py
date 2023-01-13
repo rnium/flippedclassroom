@@ -6,13 +6,21 @@ from django.views.decorators.csrf import csrf_exempt
 from .models import Weekly, PreClassFile, InClassFile, PostClassFile
 
 # Create your views here.
+@login_required
 def weeklyDetail(request, cls_pk, weeknum):
     weekly = get_object_or_404(Weekly, classroom__id=cls_pk, weeknum=weeknum)
     classroom = weekly.classroom
     if request.user in classroom.teachers.all():
         return render(request, 'weeklies/weekly_teacher.html', context={'weekly':weekly})
+    elif request.user in classroom.students.all():
+        context = {}
+        context['weekly'] = weekly
+        pre_class_ongoing_tests = weekly.preClassOngoingTest.exclude(answersheet__user=request.user)
+        if pre_class_ongoing_tests.count() > 0:
+            context['pre_class_ongoing_tests'] = pre_class_ongoing_tests
+        return render(request, 'weeklies/weekly_student.html', context=context)
     else:
-        return render(request, 'weeklies/weekly_student.html', context={'weekly':weekly})
+        return HttpResponse("Unauthorized Access Denied")
 
 
 @login_required

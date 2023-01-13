@@ -105,12 +105,12 @@
             </div>
           </div>
           <div class="right-col">
-            {% if weekly.has_pre_class_ongoing_test %}
+            {% if pre_class_ongoing_tests %}
             <div class="live-tests title-box">
               <div class="title">Ongoing Tests</div>
               <div class="content">
                 <ul>
-                  {% for test in weekly.preClassOngoingTest %}
+                  {% for test in pre_class_ongoing_tests %}
                   <li>
                     <div class="test-item">
                       <i class='bx bx-edit-alt'></i>
