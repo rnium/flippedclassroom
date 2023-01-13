@@ -20,12 +20,12 @@
 {% block content %}
 <div class="top-panel">
   <div class="classroom">
-    <div class="classroom-name"><a href="">Classroom Name</a></div>
+    <div class="classroom-name"><a href="{% url 'classroom:classroom_detail' weekly.classroom.id %}">{{ weekly.classroom.name }}</a></div>
   </div>
 </div>
 <div class="bottom-panel">
   <div class="week-info">
-    <span class="text">Week</span><span class="num">1</span>
+    <span class="text">Week</span><span class="num">{{ weekly.weeknum }}</span>
   </div>
   <div class="tab-container">
     <div class="tab-buttons">
@@ -39,8 +39,10 @@
         <div class="tab-content">
           <div class="left-col">
             <div class="pre-class-info">
-              <div class="info-text" id="pre-class-info-text" data-descr-editor="pre_cls-description-editor">
-                <div class="info" id="info-text-raw">Lorem adipisicing elitelit. Natus a sunt dolore ut provident pariatur earum harum autem ea animi. t consectetur adipisicing elit. Quos ddfdfdd</div>
+              <div class="info-text">
+                {% if weekly.pre_class_instruction %}
+                <div class="info">{{ weekly.pre_class_instruction }}</div>
+                {% endif %}
               </div>
             </div>
             
@@ -49,131 +51,116 @@
                 <i class='bx bx-paperclip'></i>
                 <div class="title-text">Files</div>
               </div>
+              {% if weekly.hasPreClassFiles %}
               <div class="content">
                 <ul>
-                  <li>
-                    <i class='bx bxs-file-pdf'></i>
-                    <a href="">filename.pdf</a>
+                  {% for preclassfile in weekly.preClassFiles %}
+                  {% if preclassfile.must_study %}
+                  <li class="muststudy">
+                    <i class="{{ preclassfile.css_class }}"></i>
+                    <a href="{% url 'weeklies:downloadweeklyfile' preclassfile.weekly.id preclassfile.id  %}?contentcode=0" target="blank" download>{{ preclassfile.filename }}</a>
                   </li>
+                  {% else %}
                   <li>
-                    <i class='bx bx-slideshow' ></i>
-                    <a href="">filename.pptx</a>
+                    <i class="{{ preclassfile.css_class }}"></i>
+                    <a href="{% url 'weeklies:downloadweeklyfile' preclassfile.weekly.id preclassfile.id  %}?contentcode=0" target="blank" download>{{ preclassfile.filename }}</a>
                   </li>
-                  <li>
-                    <i class='bx bxs-file-image'></i>
-                    <a href="">filename.jpg</a>
-                  </li>
-                  <li>
-                    <i class='bx bxs-file-doc'></i>
-                    <a href="">filename.docx</a>
-                  </li>
-                  <li>
-                    <i class='bx bxs-file-archive'></i>
-                    <a href="">filename.zip</a>
-                  </li>
-                  <li>
-                    <i class='bx bxs-file-txt'></i>
-                    <a href="">filename.txt</a>
-                  </li>
-                  <li>
-                    <i class='bx bxs-file-blank' ></i>
-                    <a href="">filename.extension</a>
-                  </li>
+                  {% endif %}
+                  {% endfor %}
                 </ul>
               </div>
-              <!-- <div class="no-content">
+              {% else %}
+              <div class="no-content">
                 <i class='bx bx-info-circle'></i>
                 <div class="info">No files yet</div>
-              </div> -->
+              </div>
+              {% endif %}
             </div>
-
-            <!-- <div class="pre-class-tutorials content-card">
+            
+            <div class="pre-class-tutorials content-card">
               <div class="title">
                 <i class='bx bxl-youtube' ></i>
                 <div class="title-text">Video Tutorials</div>
               </div>
               <div class="content">
-                <ul>
+                <ul id="preClsTutoList">
+                  {% for pretuto in weekly.preClassTuto  %}
                   <li>
-                    <div class="vid-info">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Asperiores, in!</div>
+                    {% if pretuto.description %}<div class="vid-info">{{ pretuto.description }}</div>{% endif %}
                     <div class="video-container">
-                      <iframe src="https://www.youtube.com/embed/kVuoa9ntPgA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                      <iframe src="https://www.youtube.com/embed/{{ pretuto.yt_id }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                   </li>
+                  {% endfor %}
                 </ul>
               </div>
-            </div> -->
+              <div id="preClsNoTuto">
+                {% if not weekly.hasPreClassTuto %}
+                <div class="no-content">
+                  <i class='bx bx-info-circle'></i>
+                  <div class="info">No Tutorials</div>
+                </div>
+                {% endif %}
+              </div>
+            </div>
           </div>
           <div class="right-col">
+            {% if weekly.has_pre_class_ongoing_test %}
             <div class="live-tests title-box">
               <div class="title">Ongoing Tests</div>
               <div class="content">
                 <ul>
+                  {% for test in weekly.preClassOngoingTest %}
                   <li>
                     <div class="test-item">
                       <i class='bx bx-edit-alt'></i>
                       <div class="info">
-                        <div class="label-title">Test on electrical circuits 1</div>
+                        <div class="label-title">{{ test.title }}</div>
                         <div class="action">
                           <a href="">Participate</a>
                         </div>
                       </div>
                     </div>
                   </li>
+                  {% endfor %}
                 </ul>
               </div>
             </div>
+            {% endif %}
             
             <div class="weekly-tests title-box">
               <div class="title">Test</div>
               <div class="content">
-                <!-- <ul>
+                {% if weekly.has_pre_class_tests %}
+                <ul>
+                  {% for upcoming_test in weekly.preClassUpcomingTest %}
                   <li>
                     <div class="test test-upcoming list-item">
                       <i class='bx bxs-edit-alt'></i>
                       <div class="info">
-                        <div class="label-title">Test on electrical circuits 2 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, molestias?</div>
-                        <div class="held-on"><span class="sub-title">Schedule:</span><span class="time">7:00PM, 17 Oct 2022</span></div>
+                        <div class="label-title">{{ upcoming_test.title }}</div>
+                        <div class="held-on"><span class="sub-title">Schedule:</span><span class="time">{{ upcoming_test.schedule }}</span></div>
                       </div>
                     </div>
                   </li>
-
-                  <li>
-                    <div class="test test-upcoming list-item">
-                      <i class='bx bxs-edit-alt'></i>
-                      <div class="info">
-                        <div class="label-title">Test on electrical circuits 2</div>
-                        <div class="held-on"><span class="sub-title">Schedule:</span><span class="time">7:00PM, 17 Oct 2022</span></div>
-                      </div>
-                    </div>
-                  </li>
-
+                  {% endfor %}
+                  {% for prev_test in weekly.preClassPreviousTest %}
                   <li>
                     <a href="">
                       <div class="test list-item">
                         <i class='bx bx-edit-alt'></i>
                         <div class="info">
-                          <div class="label-title">Test on electrical circuits 1</div>
-                          <div class="held-on"><span class="sub-title">held on:</span><span class="time">7:00PM, 17 Oct 2022</span></div>
+                          <div class="label-title">{{ prev_test.title }}</div>
+                          <div class="held-on"><span class="sub-title">held on:</span><span class="time">{{ prev_test.schedule }}</span></div>
                         </div>
                       </div>
                     </a>
                   </li>
-
-                    <li>
-                      <a href="">
-                        <div class="test list-item">
-                          <i class='bx bx-edit-alt'></i>
-                          <div class="info">
-                            <div class="label-title">Test on electrical circuits 1</div>
-                            <div class="held-on"><span class="sub-title">held on:</span><span class="time">7:00PM, 17 Oct 2022</span></div>
-                          </div>
-                        </div>
-                      </a>
-                    </li>
-                    
-                  </ul> -->
-                <div class="no-content"><i class='bx bx-info-circle'></i><span>No Tests</span></div>
+                  {% endfor %}
+                </ul>
+                {% else %}
+                <div class="no-content"><i class='bx bx-info-circle'></i><span>No Tests</span></div> 
+                {% endif %}
               </div>
             </div>
             <div class="weekly-tasks title-box">
