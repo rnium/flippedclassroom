@@ -40,7 +40,7 @@
                 </div>
             </div>
             <div id="id_ans-q-form-container">
-                <form action="{% url 'exam:take_test' test.id %}" method="POST" enctype='multipart/form-data' id="id_ans-sheet-form"  style="display: none;">
+                <form action="{% url 'weekly_test:take_test' test.id %}" method="POST" enctype='multipart/form-data' id="id_ans-sheet-form"  style="display: none;">
                     {% csrf_token %}
                     <input type="hidden" id="id_ans_sheet" value="{{ answer_sheet.id }}">
                     {% for question in test.question_set.all %}
@@ -110,6 +110,9 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script> 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
-<script src="{% static 'scripts/answer_q.js' %}"></script>
+<script src="{% static 'weekly_test/scripts/answer_q.js' %}"></script>
+<script>
+    const issue_answer_sheet_url = "{% url 'weekly_test_api:issue_answer_sheet' %}"
+</script>
 </body>
 </html>

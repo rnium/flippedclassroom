@@ -118,7 +118,7 @@ $(document).ready(function() {
     }
     $.ajax({
         type: "POST",
-        url: "/test/api/issue/",
+        url: issue_answer_sheet_url,
         data: JSON.stringify(data),
         cache: false,
         dataType: "json",

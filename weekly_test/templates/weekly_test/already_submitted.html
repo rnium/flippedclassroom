@@ -15,7 +15,7 @@
             <div class="status-alert">You've Already Submitted Your Answer Sheet</div>
             <div class="sheet-id"><span>Sheet ID:&nbsp;</span><span id="id-answer-sheet-id">{{ answer_sheet.id }}</span></div>
             <div class="action">
-                <a href="{% url 'exam:view_answersheet' answer_sheet.id %}" class="nav-btn nav1"><i class='bx bx-spreadsheet'></i><span>View Result</span></a>
+                <a href="{% url 'weekly_test:view_answersheet' answer_sheet.id %}" class="nav-btn nav1"><i class='bx bx-spreadsheet'></i><span>View Result</span></a>
                 <a href="{% url 'classroom:homepage' %}" class="nav2"><i class='bx bx-home-alt-2'></i><span></span></a>
             </div>
         </div>

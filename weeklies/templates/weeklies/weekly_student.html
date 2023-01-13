@@ -117,7 +117,7 @@
                       <div class="info">
                         <div class="label-title">{{ test.title }}</div>
                         <div class="action">
-                          <a href="">Participate</a>
+                          <a href="{% url 'weekly_test:take_test' test.id %}">Participate</a>
                         </div>
                       </div>
                     </div>

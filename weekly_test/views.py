@@ -4,7 +4,7 @@ from django.views.generic import TemplateView, DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
-from .models import WeeklyTest, AnswerSheet, Question, McqOption, McqAnswer, DescriptiveAnswer
+from weekly_test.models import WeeklyTest, AnswerSheet, Question, McqOption, McqAnswer, DescriptiveAnswer
 from weeklies.models import Weekly
 from classroom.views import render_underDev
 from django.http import HttpResponse
@@ -51,6 +51,9 @@ def take_test(request, pk):
     if user_answer_sheet_queryset.count() > 0:
         if user_answer_sheet_queryset[0].submit_time != None:
             return render(request, 'weekly_test/already_submitted.html', context={'answer_sheet':user_answer_sheet_queryset[0]})
+        else:
+            if user_answer_sheet_queryset[0].issue_time != None:
+                return render(request, 'weekly_test/answer_q.html', context={'test':test, 'answer_sheet':user_answer_sheet_queryset[0]})
     
     if request.method == "GET":
         answer_sheet = AnswerSheet.objects.create(test=test, user=request.user)
