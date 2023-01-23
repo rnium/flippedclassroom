@@ -16,6 +16,7 @@ class Task(models.Model):
         default = get_uuid,
         editable = False,
     )
+
     title = models.CharField(max_length=250)
     marks = models.IntegerField(default=100)
     instruction = models.CharField(max_length=1000)
@@ -52,7 +53,7 @@ class Group(models.Model):
     members = models.ManyToManyField(User)
 
 
-class SubmittedWork(models.Model):
+class Work(models.Model):
     task = models.ForeignKey(Task, on_delete=models.CASCADE)
     submission_by = models.ForeignKey(User, on_delete=models.CASCADE)
     is_submitted = models.BooleanField(default=False)
@@ -64,7 +65,7 @@ class WorkAttachment(models.Model):
     def filepath(self, filename):
         return join("attachments", str(self.task.classroom.id), 'tasks', str(self.task.id), 'submissions', filename)
 
-    work = models.ForeignKey(SubmittedWork, on_delete=models.CASCADE)
+    work = models.ForeignKey(Work, on_delete=models.CASCADE)
     attached_file = models.FileField(upload_to=filepath)
 
     @property

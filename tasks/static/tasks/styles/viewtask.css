@@ -1,0 +1,1399 @@
+@import url("https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap");
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  color: #276363;
+}
+
+body header nav {
+  padding: 1rem 0 !important;
+}
+
+body header nav .navbar-brand img {
+  opacity: 0.65;
+  width: 50px;
+  height: auto;
+  margin-right: 0.5rem;
+}
+
+body header nav .navbar-brand .site-title {
+  font-weight: 600;
+  color: #94a7ac;
+  font-family: 'Gemunu Libre', sans-serif;
+  font-size: 1.6rem;
+  text-shadow: 0 0 5px rgba(150, 190, 150, 0.3);
+}
+
+body header nav ul li.nav-item {
+  margin-left: 0.5rem;
+}
+
+body header nav ul li.nav-item .nav-link.active {
+  font-weight: 500;
+  color: gray;
+}
+
+body header nav .user {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body header nav .user .avatar {
+  width: 40px;
+  height: 40px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  overflow: hidden;
+  margin-right: 5px;
+  border-radius: 180px;
+  -webkit-box-shadow: 0 0 5px #e6e6e6;
+          box-shadow: 0 0 5px #e6e6e6;
+  border: 1px solid #d4d3d3;
+}
+
+body header nav .user .avatar img {
+  width: 100%;
+}
+
+body header nav .user .name {
+  text-shadow: 0 0 5px rgba(214, 214, 214, 0.993);
+}
+
+body header nav .user a {
+  margin-left: 15px;
+}
+
+body .main .view-task-container {
+  margin-top: 3rem;
+  width: 100%;
+  padding: 0 5%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+body .main .view-task-container .left-col .task-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+body .main .view-task-container .left-col .task-info div {
+  margin-bottom: 1rem;
+}
+
+body .main .view-task-container .left-col .task-info .task-title {
+  font-size: 1.2rem;
+}
+
+body .main .view-task-container .left-col .task-info .task-instruction .instruction-text {
+  font-size: 1rem;
+  color: #6b9c98;
+}
+
+body .main .view-task-container .left-col .task-info .task-instruction .attachments {
+  display: -ms-grid;
+  display: grid;
+  gap: 10px;
+}
+
+body .main .view-task-container .left-col .task-info .task-instruction .attachments a {
+  text-decoration: none;
+  word-wrap: break-word;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  background-color: rgba(233, 237, 241, 0.5);
+  border-radius: 10px 20px 10px 10px;
+  overflow: hidden;
+}
+
+body .main .view-task-container .left-col .task-info .task-instruction .attachments a:hover {
+  outline: 1px solid gainsboro;
+}
+
+body .main .view-task-container .left-col .task-info .task-instruction .attachments a i {
+  font-size: 5rem;
+  padding: 20px 0 40px;
+}
+
+body .main .view-task-container .left-col .task-info .task-instruction .attachments a .filename {
+  margin: 0;
+  opacity: 0.9;
+  font-size: 0.8rem;
+  position: absolute;
+  bottom: 0;
+  background-color: #d7e5e7;
+  font-weight: 500;
+  color: #578581;
+  padding: 5px 15px;
+  width: 100%;
+}
+
+body .main .view-task-container .left-col .task-info .task-meta-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: default;
+}
+
+body .main .view-task-container .left-col .task-info .task-meta-info .task-type {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 180px;
+  overflow: hidden;
+  padding: 4px;
+}
+
+body .main .view-task-container .left-col .task-info .task-meta-info .task-type i {
+  font-size: 1.2rem;
+  padding: 5px;
+  border-radius: 180px;
+}
+
+body .main .view-task-container .left-col .task-info .task-meta-info .task-type span {
+  font-family: 'Gemunu Libre', sans-serif;
+  padding: 0 10px 0 5px;
+}
+
+body .main .view-task-container .left-col .task-info .task-meta-info .task-type-indiv {
+  -webkit-box-shadow: inset 0 0 5px rgba(177, 221, 204, 0.76);
+          box-shadow: inset 0 0 5px rgba(177, 221, 204, 0.76);
+  background-color: #dff1e99c;
+}
+
+body .main .view-task-container .left-col .task-info .task-meta-info .task-type-indiv i {
+  color: white;
+  text-shadow: 0 0 2px #07ff66;
+  background-color: #4ec49c;
+}
+
+body .main .view-task-container .left-col .task-info .task-meta-info .task-type-group {
+  -webkit-box-shadow: inset 0 0 5px rgba(177, 216, 221, 0.76);
+          box-shadow: inset 0 0 5px rgba(177, 216, 221, 0.76);
+  background-color: #dfedf19c;
+}
+
+body .main .view-task-container .left-col .task-info .task-meta-info .task-type-group i {
+  color: cyan;
+  font-size: 1.2rem;
+  background-color: #2b92b1;
+}
+
+body .main .view-task-container .left-col .task-info .task-meta-info .added {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-left: 1rem;
+  border-radius: 180px;
+  border: 1px dashed #83b4c7;
+  overflow: hidden;
+  padding: 4px;
+}
+
+body .main .view-task-container .left-col .task-info .task-meta-info .added i {
+  font-size: 1.2rem;
+  padding: 5px;
+  border-radius: 180px;
+  color: white;
+  background-color: #83b4c7;
+}
+
+body .main .view-task-container .left-col .task-info .task-meta-info .added span {
+  font-family: 'Gemunu Libre', sans-serif;
+  padding: 0 20px 0 15px;
+  color: #4598b9;
+}
+
+body .main .view-task-container .right-col .my-work {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 1rem;
+  border-radius: 1rem 1rem 0.7rem 0.7rem;
+  -webkit-box-shadow: 0 0 10px #e9e9e9;
+          box-shadow: 0 0 10px #e9e9e9;
+  margin-left: 2rem;
+}
+
+body .main .view-task-container .right-col .my-work .title {
+  font-family: 'Gemunu Libre', sans-serif;
+  font-size: 1.3rem;
+  color: #4dbe99;
+  text-shadow: 0 0 5px #daf0e9;
+  margin-bottom: 10px;
+}
+
+body .main .view-task-container .right-col .my-work .info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+body .main .view-task-container .right-col .my-work .info .due-date .time {
+  font-size: 0.8rem;
+}
+
+body .main .view-task-container .right-col .my-work .info .due-date .time::before {
+  content: "Due:";
+  margin-right: 5px;
+  color: #6b9c98;
+}
+
+body .main .view-task-container .right-col .my-work .info .points {
+  font-family: 'Gemunu Libre', sans-serif;
+  color: #8a7eac;
+}
+
+body .main .view-task-container .right-col .my-work .info .points .num-points {
+  margin-right: 5px;
+  color: rebeccapurple;
+  font-weight: 500;
+}
+
+body .main .view-task-container .right-col .my-work .form {
+  margin-top: 1.5rem;
+}
+
+body .main .view-task-container .right-col .my-work .form .attachement-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  overflow: hidden;
+}
+
+body .main .view-task-container .right-col .my-work .form .attachement-container input[type="file"] {
+  display: none;
+}
+
+body .main .view-task-container .right-col .my-work .form .attachement-container input[type="file"]:active + label {
+  background-color: #dcebe6;
+}
+
+body .main .view-task-container .right-col .my-work .form .attachement-container label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: rgba(183, 207, 198, 0.1);
+  border: 1px solid #d8d8d8;
+  color: #276363;
+  text-align: center;
+  width: 80%;
+  padding: 1rem;
+  cursor: pointer;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  margin-left: 0.5rem;
+  border-radius: 5px;
+}
+
+body .main .view-task-container .right-col .my-work .form .attachement-container label i {
+  font-size: 1.5rem;
+  margin-right: 0.5rem;
+  -webkit-transition: 0.3s all;
+  transition: 0.3s all;
+  color: #459b7e;
+}
+
+body .main .view-task-container .right-col .my-work .form .attachement-container label:hover {
+  border-color: #459b7e;
+}
+
+body .main .view-task-container .right-col .my-work .form .attachement-container .status-text {
+  margin-top: 5px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  color: #39b96a;
+}
+
+body .main .view-task-container .right-col .my-work .uploaded-work {
+  margin-top: 2rem;
+}
+
+body .main .view-task-container .right-col .my-work .uploaded-work ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+body .main .view-task-container .right-col .my-work .uploaded-work ul li {
+  margin-bottom: 10px;
+}
+
+body .main .view-task-container .right-col .my-work .uploaded-work ul li:last-of-type {
+  margin-bottom: 0;
+}
+
+body .main .view-task-container .right-col .my-work .uploaded-work ul li a {
+  text-decoration: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: rgba(216, 233, 238, 0.589);
+  border-radius: 10px;
+  padding: 10px;
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
+}
+
+body .main .view-task-container .right-col .my-work .uploaded-work ul li a:hover {
+  outline: 1px solid #39b96ab7;
+}
+
+body .main .view-task-container .right-col .my-work .uploaded-work ul li a i {
+  font-size: 3rem;
+  color: #39b96a;
+}
+
+body .main .view-task-container .right-col .my-work .uploaded-work ul li a .filename {
+  padding: 0 10px;
+  font-size: 0.9rem;
+}
+
+body .main .view-task-container .right-col .my-work .uploaded-work .submitted-by {
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  color: #299773;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  -webkit-box-shadow: 0 0 10px gainsboro;
+          box-shadow: 0 0 10px gainsboro;
+  cursor: default;
+  font-family: 'Gemunu Libre', sans-serif;
+}
+
+body .main .view-task-container .right-col .my-work .uploaded-work .submitted-by::before {
+  content: "Submitted by";
+  font-family: 'Gemunu Libre', sans-serif;
+  display: inline-block;
+  margin-right: 5px;
+  color: white;
+  background-color: #9fc0c0;
+  padding: 2px 10px;
+}
+
+body .main .view-task-container .right-col .my-work .uploaded-work .obtained-score {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+body .main .view-task-container .right-col .my-work .uploaded-work .obtained-score i {
+  font-size: 1.5rem;
+  color: #39cc9b;
+  text-shadow: 0 0 5px #e0fff5;
+}
+
+body .main .view-task-container .right-col .my-work .uploaded-work .obtained-score .point {
+  font-weight: 600;
+  margin: 0 3px 0 10px;
+}
+
+body .main .view-task-container .right-col .my-work .uploaded-work .action-btn {
+  width: 70%;
+  border-radius: 180px;
+  padding: 0.1rem 1rem;
+  margin-left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  font-family: 'Gemunu Libre', sans-serif;
+  font-size: 1.2rem;
+  -webkit-transition: all 200ms;
+  transition: all 200ms;
+}
+
+body .main .view-task-container .right-col .my-work .uploaded-work .action-btn.submit {
+  background-color: #8a7eac;
+  border: 2px solid #8a7eac;
+  color: white;
+  -webkit-box-shadow: 2px 2px 5px gainsboro;
+          box-shadow: 2px 2px 5px gainsboro;
+}
+
+body .main .view-task-container .right-col .my-work .uploaded-work .action-btn.submit:hover {
+  background-color: #7e70a5;
+}
+
+body .main .view-task-container .right-col .my-work .uploaded-work .action-btn.unsubmit {
+  background-color: inherit;
+  border: 2px solid #8a7eac;
+  color: #8a7eac;
+}
+
+body .main .view-task-container .right-col .my-work .uploaded-work .action-btn.unsubmit:hover {
+  background-color: rgba(233, 231, 240, 0.5);
+}
+
+body .main .view-task-container .right-col .my-work .teammates {
+  padding: 10px 15px;
+  background-color: #deebe973;
+  border-radius: 10px;
+  margin-top: 2rem;
+}
+
+body .main .view-task-container .right-col .my-work .teammates .title {
+  font-family: 'Gemunu Libre', sans-serif;
+  text-align: center;
+  color: #57a1a1;
+  text-shadow: none;
+  font-size: 1.1rem;
+}
+
+body .main .view-task-container .right-col .my-work .teammates ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+body .main .view-task-container .right-col .my-work .teammates ul li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 5px;
+}
+
+body .main .view-task-container .right-col .my-work .teammates ul li:last-of-type {
+  margin-bottom: 0;
+}
+
+body .main .view-task-container .right-col .my-work .teammates ul li .dp {
+  overflow: hidden;
+  margin-right: 10px;
+  min-width: 30px;
+  max-width: 30px;
+  min-height: 30px;
+  max-height: 30px;
+  border-radius: 180px;
+  -webkit-box-shadow: 0 0 5px #88aa9f;
+          box-shadow: 0 0 5px #88aa9f;
+}
+
+body .main .view-task-container .right-col .my-work .teammates ul li .dp img {
+  width: 100%;
+}
+
+body .main .view-task-container .right-col .my-work .teammates ul li .name {
+  font-size: 0.9rem;
+  position: relative;
+}
+
+body .main .view-task-container .right-col .my-work .teammates ul li .name i {
+  display: inline-block;
+  position: absolute;
+  bottom: 50%;
+  -webkit-transform: translateY(50%);
+          transform: translateY(50%);
+  font-size: 1.4rem;
+  margin-left: 5px;
+  color: #2cbbbb;
+}
+
+body .main .view-task-container .right-col .submissions {
+  margin: 1rem 0 3rem;
+  padding: 0.7rem 1rem 2rem;
+  -webkit-box-shadow: 0 0 10px gainsboro;
+          box-shadow: 0 0 10px gainsboro;
+  border-radius: 10px;
+  background-color: rgba(202, 224, 214, 0.932);
+}
+
+body .main .view-task-container .right-col .submissions .title {
+  font-family: 'Gemunu Libre', sans-serif;
+  font-size: 1.3rem;
+  color: #669c87;
+  margin-bottom: 1rem;
+}
+
+body .main .view-task-container .right-col .submissions .contents {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 10px;
+}
+
+body .main .view-task-container .right-col .submissions .contents a {
+  text-decoration: none;
+}
+
+body .main .view-task-container .right-col .submissions .contents a .submission {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 10px;
+  background-color: white;
+  padding: 1rem;
+  -webkit-transition: all 100ms;
+  transition: all 100ms;
+}
+
+body .main .view-task-container .right-col .submissions .contents a .submission .info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+body .main .view-task-container .right-col .submissions .contents a .submission .info .score .score-con {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: rgba(215, 224, 230, 0.6);
+  border-radius: 180px;
+  overflow: hidden;
+}
+
+body .main .view-task-container .right-col .submissions .contents a .submission .info .score .score-con i {
+  font-size: 1.2rem;
+  padding: 5px;
+  background-color: #23c1d6;
+  color: white;
+  border-radius: 180px;
+}
+
+body .main .view-task-container .right-col .submissions .contents a .submission .info .score .score-con .points {
+  padding: 0 10px 0 5px;
+  font-family: 'Gemunu Libre', sans-serif;
+  font-size: 0.9rem;
+}
+
+body .main .view-task-container .right-col .submissions .contents a .submission .info .score .score-con .points .point {
+  font-family: 'Gemunu Libre', sans-serif;
+  font-weight: 600;
+  margin-right: 3px;
+}
+
+body .main .view-task-container .right-col .submissions .contents a .submission .info .submit-time {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 5px 0;
+}
+
+body .main .view-task-container .right-col .submissions .contents a .submission .info .submit-time i, body .main .view-task-container .right-col .submissions .contents a .submission .info .submit-time .time {
+  color: #18b17e;
+  text-shadow: 0 0 5px #e9f1ee;
+}
+
+body .main .view-task-container .right-col .submissions .contents a .submission .info .submit-time i {
+  font-size: 1.3rem;
+  margin-right: 5px;
+}
+
+body .main .view-task-container .right-col .submissions .contents a .submission .info .submit-time .time {
+  font-family: 'Gemunu Libre', sans-serif;
+  font-size: 0.8rem;
+}
+
+body .main .view-task-container .right-col .submissions .contents a .submission .done-late {
+  position: relative;
+}
+
+body .main .view-task-container .right-col .submissions .contents a .submission .done-late i, body .main .view-task-container .right-col .submissions .contents a .submission .done-late .time {
+  color: #f50273;
+  text-shadow: 0 0 5px #e4d7dd;
+}
+
+body .main .view-task-container .right-col .submissions .contents a .submission .done-late .time::after {
+  position: absolute;
+  display: block;
+  opacity: 0;
+  content: "Submitted Late";
+  font-family: 'Gemunu Libre', sans-serif;
+  font-size: 0.8rem;
+  bottom: -1.2rem;
+  border-radius: 5px;
+  color: #8f8282;
+  padding: 0 5px;
+  background-color: #f1e6eb;
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
+}
+
+body .main .view-task-container .right-col .submissions .contents a .submission .done-late .time:hover::after {
+  opacity: 1;
+}
+
+body .main .view-task-container .right-col .submissions .contents a .submission .group-members {
+  width: 100%;
+  padding: 10px 15px;
+  background-color: #deebe973;
+  border-radius: 10px;
+  margin-top: 2rem;
+}
+
+body .main .view-task-container .right-col .submissions .contents a .submission .group-members .title {
+  font-family: 'Gemunu Libre', sans-serif;
+  text-align: center;
+  color: #57a1a1;
+  text-shadow: none;
+  font-size: 1.1rem;
+}
+
+body .main .view-task-container .right-col .submissions .contents a .submission .group-members ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+body .main .view-task-container .right-col .submissions .contents a .submission .group-members ul li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 5px;
+}
+
+body .main .view-task-container .right-col .submissions .contents a .submission .group-members ul li:last-of-type {
+  margin-bottom: 0;
+}
+
+body .main .view-task-container .right-col .submissions .contents a .submission .group-members ul li .dp {
+  overflow: hidden;
+  margin-right: 10px;
+  min-width: 30px;
+  max-width: 30px;
+  min-height: 30px;
+  max-height: 30px;
+  border-radius: 180px;
+  -webkit-box-shadow: 0 0 5px #88aa9f;
+          box-shadow: 0 0 5px #88aa9f;
+}
+
+body .main .view-task-container .right-col .submissions .contents a .submission .group-members ul li .dp img {
+  width: 100%;
+}
+
+body .main .view-task-container .right-col .submissions .contents a .submission .group-members ul li .name {
+  font-size: 0.9rem;
+  position: relative;
+}
+
+body .main .view-task-container .right-col .submissions .contents a .submission .group-members ul li .name i {
+  display: inline-block;
+  position: absolute;
+  bottom: 50%;
+  -webkit-transform: translateY(50%);
+          transform: translateY(50%);
+  font-size: 1.4rem;
+  margin-left: 5px;
+  color: #2cbbbb;
+}
+
+body .main .view-task-container .right-col .submissions .contents a .submission .num-attachments {
+  font-family: 'Gemunu Libre', sans-serif;
+  font-size: 1.1rem;
+  width: 100%;
+  text-align: center;
+}
+
+body .main .view-task-container .right-col .submissions .contents a .submission .num-attachments .num {
+  margin-right: 5px;
+  font-weight: 500;
+}
+
+body .main .view-task-container .right-col .submissions .contents a:hover .submission {
+  outline: 3px solid #38ce9c;
+}
+
+body .main .view-task-container.teacher {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+body .main .view-task-container.teacher .left-col .task-info .task-instruction .attachments {
+  -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+
+body .main .view-task-container.student {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+body .main .view-task-container.student .left-col {
+  width: 70%;
+  padding-right: 2rem;
+}
+
+body .main .view-task-container.student .left-col .task-info .task-instruction .attachments {
+  -ms-grid-columns: 1fr 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+body .main .view-task-container.student .right-col {
+  width: 30%;
+}
+
+body .main .view-submission-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body .main .view-submission-container .info {
+  width: 100%;
+  -webkit-box-shadow: 0 0 10px gainsboro;
+          box-shadow: 0 0 10px gainsboro;
+  padding: 1.5rem 2rem;
+  min-height: 275px;
+}
+
+body .main .view-submission-container .info .home-links {
+  width: 100%;
+  justify-self: flex-start;
+  margin-bottom: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body .main .view-submission-container .info .home-links a {
+  display: block;
+  text-decoration: none;
+  color: #62a7a7;
+  background-color: inherit;
+  border: 1px solid #62a7a7;
+  border-radius: 5px;
+  padding: 0 5px;
+  font-family: 'Gemunu Libre', sans-serif;
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
+}
+
+body .main .view-submission-container .info .home-links a:hover {
+  -webkit-box-shadow: 0 0 5px #b5d1d1;
+          box-shadow: 0 0 5px #b5d1d1;
+}
+
+body .main .view-submission-container .info .home-links i {
+  margin: 0 0.3rem;
+  font-size: 1.2rem;
+  color: #62a7a7;
+}
+
+body .main .view-submission-container .info .home-links a.current {
+  display: block;
+  text-decoration: none;
+  color: white;
+  background-color: #62a7a7;
+  border: 1px solid #62a7a7;
+  border-radius: 5px;
+  padding: 0 10px;
+  font-family: 'Gemunu Libre', sans-serif;
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
+}
+
+body .main .view-submission-container .info .home-links a.current:hover {
+  background-color: #60c4b3;
+  border-color: #60c4b3;
+  color: white;
+}
+
+body .main .view-submission-container .info .score-card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 1.5rem 0;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+body .main .view-submission-container .info .score-card .obtained-points .score-con {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: rgba(215, 224, 230, 0.6);
+  border-radius: 180px;
+  overflow: hidden;
+}
+
+body .main .view-submission-container .info .score-card .obtained-points .score-con i {
+  font-size: 1.5rem;
+  padding: 7px;
+  background-color: #23d6d6;
+  color: white;
+  border-radius: 180px;
+}
+
+body .main .view-submission-container .info .score-card .obtained-points .score-con .points {
+  padding: 0 15px 0 10px;
+  font-family: 'Gemunu Libre', sans-serif;
+  font-size: 1.1rem;
+}
+
+body .main .view-submission-container .info .score-card .obtained-points .score-con .points .point {
+  font-family: 'Gemunu Libre', sans-serif;
+  font-weight: 600;
+  margin-right: 3px;
+}
+
+body .main .view-submission-container .info .score-card .obtained-points .score-none {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body .main .view-submission-container .info .score-card .obtained-points .score-none i {
+  font-size: 1.5rem;
+  margin-right: 10px;
+}
+
+body .main .view-submission-container .info .score-card .obtained-points .score-none i, body .main .view-submission-container .info .score-card .obtained-points .score-none span {
+  color: #c90f82;
+  text-shadow: 0 0 5px rgba(172, 122, 196, 0.3);
+}
+
+body .main .view-submission-container .info .score-card .task-points {
+  font-family: 'Gemunu Libre', sans-serif;
+  color: #8a7eac;
+  font-size: 1.1rem;
+}
+
+body .main .view-submission-container .info .score-card .task-points .num-points {
+  margin-right: 5px;
+  color: rebeccapurple;
+  font-weight: 500;
+}
+
+body .main .view-submission-container .info .score-card .task-points::before {
+  content: "Task of";
+  margin-right: 7px;
+  display: inline-block;
+  background-color: #d9e4e4a4;
+  border-radius: 5px;
+  padding: 0 10px;
+  color: #637d96;
+}
+
+body .main .view-submission-container .info .task-title {
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+body .main .view-submission-container .info .task-type-capsule .group-task {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body .main .view-submission-container .info .task-type-capsule .group-task .task-type-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 180px;
+  overflow: hidden;
+  padding: 4px;
+  margin-top: 1rem;
+}
+
+body .main .view-submission-container .info .task-type-capsule .group-task .task-type-group i {
+  font-size: 1.2rem;
+  padding: 5px;
+  border-radius: 180px;
+  color: cyan;
+  font-size: 1.2rem;
+  background-color: #2b92b1;
+}
+
+body .main .view-submission-container .info .task-type-capsule .group-task .task-type-group span {
+  font-family: 'Gemunu Libre', sans-serif;
+  padding: 0 10px 0 5px;
+}
+
+body .main .view-submission-container .info .time-and-action {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+body .main .view-submission-container .info .time-and-action .submission-time {
+  font-size: 0.9rem;
+}
+
+body .main .view-submission-container .info .time-and-action .submission-time .label {
+  color: #8baaaa;
+  font-family: 'Gemunu Libre', sans-serif;
+  font-size: 1rem;
+  margin-right: 5px;
+}
+
+body .main .view-submission-container .info .time-and-action .scoring-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body .main .view-submission-container .info .time-and-action .scoring-form input {
+  width: 10rem;
+  padding: 5px 10px;
+  margin-right: 10px;
+  border-radius: 5px;
+  border: 1px solid #b6b6b6;
+  font-size: 1rem;
+}
+
+body .main .view-submission-container .info .time-and-action .scoring-form input:focus {
+  outline: 2px solid #01a16c;
+  border-color: #01a16c;
+  -webkit-box-shadow: 0 0 5px #a1a1a1;
+          box-shadow: 0 0 5px #a1a1a1;
+}
+
+body .main .view-submission-container .info .time-and-action .scoring-form input:focus ~ label {
+  color: #01a16c;
+}
+
+body .main .view-submission-container .info .time-and-action .scoring-form input::-webkit-input-placeholder {
+  color: #9ea09f;
+}
+
+body .main .view-submission-container .info .time-and-action .scoring-form input:-ms-input-placeholder {
+  color: #9ea09f;
+}
+
+body .main .view-submission-container .info .time-and-action .scoring-form input::-ms-input-placeholder {
+  color: #9ea09f;
+}
+
+body .main .view-submission-container .info .time-and-action .scoring-form input::placeholder {
+  color: #9ea09f;
+}
+
+body .main .view-submission-container .info .time-and-action .scoring-form input::-moz-selection {
+  background-color: #24ce95;
+  color: white;
+}
+
+body .main .view-submission-container .info .time-and-action .scoring-form input::selection {
+  background-color: #24ce95;
+  color: white;
+}
+
+body .main .view-submission-container .info .time-and-action .scoring-form button {
+  padding: 5px 15px;
+}
+
+body .main .view-submission-container .bottom-pane {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  padding: 3rem 2rem;
+  background-color: rgba(202, 224, 214, 0.932);
+  min-height: calc(100vh - 275px);
+}
+
+body .main .view-submission-container .bottom-pane .submitted-contents {
+  width: 70%;
+  margin-right: 2rem;
+  background-color: white;
+  padding: 1rem 10px;
+  border-radius: 10px;
+}
+
+body .main .view-submission-container .bottom-pane .submitted-contents .title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-left: 10px;
+}
+
+body .main .view-submission-container .bottom-pane .submitted-contents .title i {
+  font-size: 1.5rem;
+  margin-right: 5px;
+}
+
+body .main .view-submission-container .bottom-pane .submitted-contents .title span {
+  font-family: 'Gemunu Libre', sans-serif;
+  font-size: 1.2rem;
+}
+
+body .main .view-submission-container .bottom-pane .submitted-contents .accordion {
+  padding: 1rem 10px;
+}
+
+body .main .view-submission-container .bottom-pane .submitted-contents .accordion .accordion-item .accordion-button:focus {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  border-color: rgba(0, 0, 0, 0.125);
+}
+
+body .main .view-submission-container .bottom-pane .submitted-contents .accordion .accordion-item .accordion-body embed {
+  width: 100%;
+  height: 1000px;
+  border-radius: 10px;
+}
+
+body .main .view-submission-container .bottom-pane .group-members {
+  width: 30%;
+  padding: 10px 2rem;
+  border-radius: 10px;
+  background-color: white;
+}
+
+body .main .view-submission-container .bottom-pane .group-members .title {
+  font-family: 'Gemunu Libre', sans-serif;
+  text-align: center;
+  color: #57a1a1;
+  text-shadow: none;
+  font-size: 1.1rem;
+}
+
+body .main .view-submission-container .bottom-pane .group-members ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+body .main .view-submission-container .bottom-pane .group-members ul li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 10px;
+}
+
+body .main .view-submission-container .bottom-pane .group-members ul li:last-of-type {
+  margin-bottom: 0;
+}
+
+body .main .view-submission-container .bottom-pane .group-members ul li .dp {
+  overflow: hidden;
+  margin-right: 10px;
+  min-width: 40px;
+  max-width: 40px;
+  min-height: 40px;
+  max-height: 40px;
+  border-radius: 180px;
+  -webkit-box-shadow: 0 0 5px #c1d6d0;
+          box-shadow: 0 0 5px #c1d6d0;
+}
+
+body .main .view-submission-container .bottom-pane .group-members ul li .dp img {
+  width: 100%;
+}
+
+body .main .view-submission-container .bottom-pane .group-members ul li .name {
+  font-size: 0.9rem;
+  position: relative;
+}
+
+@-webkit-keyframes opacity1 {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes opacity1 {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.uploading {
+  -webkit-animation-name: opacity1;
+          animation-name: opacity1;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+}
+
+.btn-1-outlined {
+  display: inline-block;
+  border: 2px solid #76919e;
+  padding: 0.2rem 1rem;
+  border-radius: 10px;
+  background-color: inherit;
+  color: #76919e;
+  cursor: pointer;
+  font-size: 1rem;
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.btn-1-outlined:hover {
+  background-color: #76919e;
+  color: white;
+  -webkit-box-shadow: 3px 3px 5px #d8d8d8;
+          box-shadow: 3px 3px 5px #d8d8d8;
+}
+/*# sourceMappingURL=viewtask.css.map */
