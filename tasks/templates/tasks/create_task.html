@@ -27,16 +27,16 @@
 {% block content %}
 <div class="create-assignment-container">
 <div class="page-title">Assignment for {{ classroom.name }}</div>
-<form action="{% url 'classroom:create_assignment' classroom.id %}" method="POST" id="create-assignment-form" enctype="multipart/form-data">
+<form action="" method="POST" id="create-assignment-form" enctype="multipart/form-data">
     {% csrf_token %}
     <div class="mark-input">
       <div class="task-marks">
-        <input type="text" class="q-marks-input" id="task-marks" name="qid_0_marks" value="100">
+        <input type="text" class="q-marks-input" id="task-marks" name="marks" value="100">
         <label for="task-marks">Points</label>
       </div>
     </div>
     <div class="inset-float-textinput-fluid title-field">
-      <input class="inp_input" type="text" id="title" placeholder=" ">
+      <input class="inp_input" type="text" id="title" placeholder=" " name="title">
       <label class="inp_label" for="title">Assignment Title</label>
     </div>
     <div class="inset-float-textinput">
@@ -47,21 +47,21 @@
       <div class="section-label">Task Type</div>
       <div class="inputs">
         <div class="individual inp-inner">
-          <input type="radio" name="tasktype" id="tasktype-indiv" checked>
+          <input type="radio" name="tasktype" id="tasktype-indiv" value="indiv" checked>
           <label for="tasktype-indiv">
             <i class='bx bx-user'></i>
             <span>Individual</span>
           </label>
         </div>
         <div class="groupwise inp-inner">
-          <input type="radio" name="tasktype" id="tasktype-group">
+          <input type="radio" name="tasktype" id="tasktype-group" value="group">
           <label for="tasktype-group">
             <i class='bx bxs-group'></i>
             <span>Groupwise</span>
           </label>
         </div>
         <div class="num-member inp-inner" id="num-group-member-con" style="display: none;">
-          <input type="text" id="num-group-member" placeholder="Number of members" required="">
+          <input type="text" id="num-group-member" name="num-group-member" placeholder="Number of members" required="">
           <div id="num-group-member-error" style="display: none;"></div>
         </div>
       </div>
@@ -83,7 +83,7 @@
       
     </div>
     <div class="submit-container">
-      <button type="submit">Create</button>
+      <button type="submit" id="create_btn">Create</button>
     </div>
 </form>
 </div>
@@ -101,6 +101,6 @@
     enableTime: true,
   }
   flatpickr('#deadline-datetime', config);
-
+  const num_students = {{ classroom.students.count }}
 </script>
 {% endblock script %}

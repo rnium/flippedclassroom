@@ -76,6 +76,14 @@ function check_fields() {
         $(".form-control").focus()
         return false
     }
+    if ($("#tasktype-group").is(':checked')) {
+        num_members = $("#num-group-member").val()
+        if ( num_members > num_students || num_members == 0) {
+            $("#num-group-member").focus()
+            return false
+        }
+    }
+    
     let date_valid = validate_datetime()
     if (date_valid) {
         return true

@@ -27,5 +27,7 @@ urlpatterns = [
     path('classroom/<str:pk>/files', classroom_files, name="classroom_files"),
     # tests
     path('classroom/<str:pk>/tests', classroom_tests, name="classroom_tests"),
+    # tasks
+    path('classroom/<str:cls_pk>/task/', include("tasks.urls")),
 ]
    

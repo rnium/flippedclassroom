@@ -40,6 +40,10 @@
   body .main .right-col {
     width: 40%;
   }
+  body .main .classrooms-dashboard .classes-section .classrooms-container {
+    -ms-grid-columns: 1fr 1fr 1fr !important;
+        grid-template-columns: 1fr 1fr 1fr !important;
+  }
 }
 
 @media screen and (max-width: 1000px) {
@@ -59,15 +63,38 @@
   }
 }
 
+@media screen and (max-width: 900px) {
+  body .main .classrooms-dashboard .classes-section .classrooms-container {
+    -ms-grid-columns: 1fr 1fr !important;
+        grid-template-columns: 1fr 1fr !important;
+  }
+}
+
 @media screen and (max-width: 600px) {
   body .main {
     -webkit-box-orient: vertical !important;
     -webkit-box-direction: normal !important;
         -ms-flex-direction: column !important;
             flex-direction: column !important;
+    margin: 2.5rem 1rem !important;
   }
   body .main .left-col .recent-posts .post-item .contents .info .info-item span {
     font-size: 0.8rem !important;
+  }
+  body .main .classrooms-dashboard .classes-section .heading {
+    border-radius: 5px 5px 0 3px;
+    margin-bottom: 2rem !important;
+  }
+  body .main .classrooms-dashboard .classes-section .heading i {
+    font-size: 2rem !important;
+  }
+  body .main .classrooms-dashboard .classes-section .heading span {
+    font-size: 1rem !important;
+    font-weight: 500 !important;
+  }
+  body .main .classrooms-dashboard .classes-section .classrooms-container {
+    -ms-grid-columns: 1fr !important;
+        grid-template-columns: 1fr !important;
   }
 }
 
@@ -1350,9 +1377,84 @@ body .main .create-assignment-container form .title-field {
   margin-bottom: 1rem;
 }
 
+body .main .create-assignment-container form .mark-input {
+  margin-bottom: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+body .main .create-assignment-container form .mark-input .task-marks {
+  width: 7rem;
+  background-color: rgba(235, 241, 241, 0.1);
+  position: relative;
+}
+
+body .main .create-assignment-container form .mark-input .task-marks input {
+  background-color: inherit;
+  width: 100%;
+  padding: 1rem 1rem 0.2rem;
+  border-radius: 10px;
+  border: 0;
+  font-weight: 500;
+  color: #0189a1;
+  outline: 2px solid #0189a1;
+  border-color: #0189a1;
+  -webkit-box-shadow: 0 0 5px #cecece;
+          box-shadow: 0 0 5px #cecece;
+  font-size: 1.2rem;
+}
+
+body .main .create-assignment-container form .mark-input .task-marks input:focus {
+  outline: 3px solid #01a16c;
+  border-color: #01a16c;
+  color: #01a16c;
+}
+
+body .main .create-assignment-container form .mark-input .task-marks input::-webkit-input-placeholder {
+  color: #9ea09f;
+}
+
+body .main .create-assignment-container form .mark-input .task-marks input:-ms-input-placeholder {
+  color: #9ea09f;
+}
+
+body .main .create-assignment-container form .mark-input .task-marks input::-ms-input-placeholder {
+  color: #9ea09f;
+}
+
+body .main .create-assignment-container form .mark-input .task-marks input::placeholder {
+  color: #9ea09f;
+}
+
+body .main .create-assignment-container form .mark-input .task-marks input::-moz-selection {
+  background-color: #24c8ce;
+  color: white;
+}
+
+body .main .create-assignment-container form .mark-input .task-marks input::selection {
+  background-color: #24c8ce;
+  color: white;
+}
+
+body .main .create-assignment-container form .mark-input .task-marks label {
+  position: absolute;
+  font-size: 0.7rem;
+  top: 0.2rem;
+  left: 1rem;
+  color: #3490a0;
+}
+
 body .main .create-assignment-container form .inset-float-textinput {
   position: relative;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 body .main .create-assignment-container form .inset-float-textinput textarea {
@@ -1360,7 +1462,8 @@ body .main .create-assignment-container form .inset-float-textinput textarea {
   padding: 1.5rem 1rem 0.5rem;
   border-radius: 5px;
   border: 1px solid #b6b6b6;
-  height: 12rem;
+  height: 7rem;
+  resize: none;
 }
 
 body .main .create-assignment-container form .inset-float-textinput textarea:focus {
@@ -1376,18 +1479,22 @@ body .main .create-assignment-container form .inset-float-textinput textarea:foc
 
 body .main .create-assignment-container form .inset-float-textinput textarea::-webkit-input-placeholder {
   color: #9ea09f;
+  font-size: 0.5rem;
 }
 
 body .main .create-assignment-container form .inset-float-textinput textarea:-ms-input-placeholder {
   color: #9ea09f;
+  font-size: 0.5rem;
 }
 
 body .main .create-assignment-container form .inset-float-textinput textarea::-ms-input-placeholder {
   color: #9ea09f;
+  font-size: 0.5rem;
 }
 
 body .main .create-assignment-container form .inset-float-textinput textarea::placeholder {
   color: #9ea09f;
+  font-size: 0.5rem;
 }
 
 body .main .create-assignment-container form .inset-float-textinput textarea::-moz-selection {
@@ -1406,6 +1513,145 @@ body .main .create-assignment-container form .inset-float-textinput label {
   background-color: white;
   top: 0.2rem;
   left: 1rem;
+}
+
+body .main .create-assignment-container form .task-type {
+  padding: 1rem 2.5rem 2rem;
+  margin-bottom: 1.5rem;
+  border-radius: 10px;
+  -webkit-box-shadow: 0 0 10px gainsboro;
+          box-shadow: 0 0 10px gainsboro;
+}
+
+body .main .create-assignment-container form .task-type .section-label {
+  font-family: 'Gemunu Libre', sans-serif;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: #17a055;
+}
+
+body .main .create-assignment-container form .task-type .inputs {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+body .main .create-assignment-container form .task-type .inputs .inp-inner {
+  margin-right: 1rem;
+}
+
+body .main .create-assignment-container form .task-type .inputs .inp-inner:last-of-type {
+  margin-right: 0;
+}
+
+body .main .create-assignment-container form .task-type .inputs .inp-inner input[type=radio] {
+  display: none;
+}
+
+body .main .create-assignment-container form .task-type .inputs .inp-inner input[type=radio]:checked + label {
+  background-color: rgba(216, 233, 245, 0.3);
+  border-color: #7a9eec;
+  -webkit-box-shadow: 2px 2px 5px #e7eef0;
+          box-shadow: 2px 2px 5px #e7eef0;
+}
+
+body .main .create-assignment-container form .task-type .inputs .inp-inner input[type=radio]:checked + label i, body .main .create-assignment-container form .task-type .inputs .inp-inner input[type=radio]:checked + label span {
+  color: #4871c9;
+}
+
+body .main .create-assignment-container form .task-type .inputs .inp-inner label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #f8f8f8;
+  cursor: pointer;
+  border-radius: 10px;
+  border: 2px solid #bebebe;
+  padding: 10px 20px;
+  -webkit-transition: all 100ms;
+  transition: all 100ms;
+}
+
+body .main .create-assignment-container form .task-type .inputs .inp-inner label i, body .main .create-assignment-container form .task-type .inputs .inp-inner label span {
+  color: #9b9898;
+  -webkit-transition: all 100ms;
+  transition: all 100ms;
+}
+
+body .main .create-assignment-container form .task-type .inputs .inp-inner label i {
+  font-size: 1.2rem;
+  margin-right: 5px;
+}
+
+body .main .create-assignment-container form .task-type .inputs .inp-inner input[type=text] {
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: 1px solid #b6b6b6;
+}
+
+body .main .create-assignment-container form .task-type .inputs .inp-inner input[type=text]:focus {
+  outline: 2px solid #0189a1;
+  border-color: #0189a1;
+  -webkit-box-shadow: 0 0 5px #a1a1a1;
+          box-shadow: 0 0 5px #a1a1a1;
+}
+
+body .main .create-assignment-container form .task-type .inputs .inp-inner input[type=text]::-webkit-input-placeholder {
+  color: #9ea09f;
+}
+
+body .main .create-assignment-container form .task-type .inputs .inp-inner input[type=text]:-ms-input-placeholder {
+  color: #9ea09f;
+}
+
+body .main .create-assignment-container form .task-type .inputs .inp-inner input[type=text]::-ms-input-placeholder {
+  color: #9ea09f;
+}
+
+body .main .create-assignment-container form .task-type .inputs .inp-inner input[type=text]::placeholder {
+  color: #9ea09f;
+}
+
+body .main .create-assignment-container form .task-type .inputs .inp-inner input[type=text]::-moz-selection {
+  background-color: #24c8ce;
+  color: white;
+}
+
+body .main .create-assignment-container form .task-type .inputs .inp-inner input[type=text]::selection {
+  background-color: #24c8ce;
+  color: white;
+}
+
+body .main .create-assignment-container form .task-type .inputs .num-member {
+  position: relative;
+}
+
+body .main .create-assignment-container form .task-type .inputs .num-member #num-group-member-error {
+  position: absolute;
+  top: 100%;
+  left: 10px;
+  font-size: 0.7rem;
+  color: #f05d5d;
 }
 
 body .main .create-assignment-container form .other-fields {
@@ -2063,7 +2309,7 @@ body .main .classrooms-dashboard .classes-section .heading {
       -ms-flex-align: center;
           align-items: center;
   border-radius: 5px 5px 0 3px;
-  padding: 0 0 5px 10px;
+  margin-bottom: 1.5rem;
 }
 
 body .main .classrooms-dashboard .classes-section .heading i {
@@ -2079,14 +2325,16 @@ body .main .classrooms-dashboard .classes-section .classrooms-container {
   width: 100%;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 24% 24% 24% 24%;
-      grid-template-columns: 24% 24% 24% 24%;
+  -ms-grid-columns: 1fr 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
   -webkit-column-gap: 1%;
           column-gap: 1%;
   row-gap: 1rem;
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
 }
 
 body .main .classrooms-dashboard .classes-section .classrooms-container a.classroom {
@@ -2123,6 +2371,8 @@ body .main .classrooms-dashboard .classes-section .classrooms-container a.classr
   bottom: -10px;
   z-index: 1;
   opacity: 0.2;
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
 }
 
 body .main .classrooms-dashboard .classes-section .classrooms-container a.classroom .classroom-heading .title {
@@ -2200,6 +2450,10 @@ body .main .classrooms-dashboard .classes-section .classrooms-container a.classr
 body .main .classrooms-dashboard .classes-section .classrooms-container a.classroom:hover {
   -webkit-box-shadow: 0 0 10px rgba(192, 192, 192, 0.3);
           box-shadow: 0 0 10px rgba(192, 192, 192, 0.3);
+}
+
+body .main .classrooms-dashboard .classes-section .classrooms-container a.classroom:hover .classroom-heading i {
+  color: #029797 !important;
 }
 
 body .main .classrooms-dashboard .my-teachings .heading i {
