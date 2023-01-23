@@ -45,6 +45,28 @@ def create_task(request, cls_pk):
             elif contentcode == "2":
                 task_obj_kwargs['postclass'] = True
         
-
+        task = Task(**task_obj_kwargs)
+        task.save()
+        # attached files create
+        has_files = bool(request.FILES.get('post-file', False))
+        if has_files:
+            files_dict = dict(request.FILES)['post-file']
+            if len(files_dict) > 0:
+                for file in files_dict:
+                    TaskAttachment.objects.create(
+                        task = task,
+                        attached_file = file
+                    )
+        # creating groups
+        print('creating groups')
+        students_user_list = list(classroom.students.all())
+        print(students_user_list)
+        print(num_group_members)
+        group_userlists = random_subsets(students_user_list, num_group_members)
+        print(group_userlists)
+        for user_list in group_userlists:
+            print(user_list)
+            group = Group.objects.create(task=task)
+            group.members.add(*user_list)
         
-        return HttpResponse(str(task_obj_kwargs))
+        return HttpResponse('Task Created')
