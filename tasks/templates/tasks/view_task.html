@@ -25,7 +25,7 @@
 
 {% block content %}
 
-<div class="view-task-container teacher">
+<div class="view-task-container {% if is_teacher %}teacher{% else %}student{% endif %}">
   <div class="left-col">
     <div class="task-info">
       <div class="task-title">{{ task.title }}</div>
@@ -68,60 +68,7 @@
     </div>
   </div>
   <div class="right-col">
-    <!-- <div class="my-work">
-      <div class="title">My Work</div>
-      <div class="info">
-        <div class="due-date">
-          <span class="time" id="taskID-due-time">7:33PM, 7 Jan 2023</span>
-        </div>
-        <div class="points"><span class="num-points">100</span>Points</div>
-      </div>
-      <div class="form">
-        <div class="attachement-container">
-          <input type="file" id="post-files" name="post-file" multiple="multiple">
-          <label for="post-files"><i class='bx bx-upload'></i>Upload Work</label>
-          <div class="status-text" id="postfiles-file-status" style="display: none;">2 files uploading</div>
-        </div>
-      </div>
-      <div class="uploaded-work">
-        <ul>
-          <li>
-            <a href="" class="attachment-item">
-              <i class='bx bxs-file-pdf'></i>
-              <div class="filename">Sample work.pdf</div>
-            </a>
-          </li>
-          <li>
-            <a href="" class="attachment-item">
-              <i class='bx bxs-file-pdf'></i>
-              <div class="filename">Sample work.pdf</div>
-            </a>
-          </li>
-        </ul>
-        <div class="submitted-by">Md. Saiful</div>
-        <div class="obtained-score"><i class='bx bx-trophy'></i><span class="point">70</span>Points</div>
-        <button class="action-btn unsubmit">Unsubmit</button>
-      </div>
-      <div class="teammates">
-        <div class="title">Group Members</div>
-        <ul>
-          <li>
-            <div class="dp">
-              <img src="/images/dp2.jpg" alt="">
-            </div>
-            <div class="name">Md. Atikur Rahman Sifat</div>
-            
-          </li>
-          <li>
-            <div class="dp">
-              <img src="/images/dp1.jpg" alt="">
-            </div>
-            <div class="name">Md. Atikur Rahman</div>
-          </li>
-        </ul>
-      </div>
-    </div> -->
-    
+    {% if is_teacher %}
     <div class="submissions">
       <div class="title">Submissions</div>
       <div class="contents">
@@ -234,6 +181,62 @@
         {% endfor %}
       </div>
     </div>
+    {% else %}
+    <div class="my-work">
+      <div class="title">My Work</div>
+      <div class="info">
+        <div class="due-date">
+          <span class="time" id="{{task.id}}-due-time">{{ task.deadline|date:'c' }}</span>
+        </div>
+        <div class="points"><span class="num-points">{{task.marks}}</span>Points</div>
+      </div>
+      {% if work %}
+      <div class="uploaded-work">
+        <ul>
+          {% for file in work.attachments %}
+          <li>
+            <a href="" class="attachment-item">
+              <i class='{{ file.css_class }}'></i>
+              <div class="filename">{{ file.filename|truncatechars:20 }}</div>
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
+        {% if group %}<div class="submitted-by">{{ work.submission_by.account.user_full_name }}</div>{% endif %}
+        {% if work.score %}
+        <div class="obtained-score"><i class='bx bx-trophy'></i><span class="point">{{work.score}}</span>Points</div>
+        {% else %}
+        <button class="action-btn unsubmit">Unsubmit</button>
+        {% endif %}
+      </div>
+      {% else %}
+      <div class="form">
+        <div class="attachement-container">
+          <input type="file" id="post-files" name="post-file" multiple="multiple">
+          <label for="post-files"><i class='bx bx-upload'></i>Upload Work</label>
+          <div class="status-text" id="postfiles-file-status" style="display: none;">files uploading</div>
+        </div>
+      </div>
+      {% endif %}
+      {% if group %}
+      <div class="teammates">
+        <div class="title">Group Members</div>
+        <ul>
+          {% for member in group.members.all %}
+          <li>
+            <div class="dp">
+              <img src="{{member.account.avatar_url}}" alt="">
+            </div>
+            <div class="name">{{member.account.user_full_name}}</div>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+    </div>
+    {% endif %}
+    
+    
   </div>
 </div>
 {% endblock content %}

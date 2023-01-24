@@ -103,10 +103,9 @@ class TaskDetail(LoginRequiredMixin, DetailView):
                         unsubmitting_indiv.append(s)
                 context['unsubmitting_indiv'] = unsubmitting_indiv
                 
-            
         elif self.request.user in task.classroom.students.all():
             if group_type:
-                group = Group.objects.filter(members=self.request.user)
+                group = Group.objects.filter(members=self.request.user)[0]
                 context['group'] = group
                 work_queryset = Work.objects.filter(group=group)
                 if len(work_queryset) > 0:

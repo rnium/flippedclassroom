@@ -112,7 +112,6 @@ class Work(models.Model):
         return self.attachments.count()
     
 
-
 class WorkAttachment(models.Model):
     def filepath(self, filename):
         return join("attachments", str(self.task.classroom.id), 'tasks', str(self.task.id), 'submissions', filename)
@@ -122,4 +121,24 @@ class WorkAttachment(models.Model):
 
     @property
     def filename(self):
-        return str(basename(self.attached_file.name))
+        name_str = basename(self.attached_file.name)
+        return name_str.replace('_', ' ')
+    
+    @property
+    def css_class(self):
+        css_classes = {
+            ".pdf": "bx bxs-file-pdf",
+            ".pptx":"bx bx-slideshow",
+            ".jpg": "bx bxs-file-image",
+            ".png": "bx bxs-file-image",
+            ".docx": "bx bxs-file-doc",
+            ".zip": "bx bxs-file-archive",
+            ".txt": "bx bxs-file-txt",
+            ".py": "bx bxl-python",
+            ".pyw": "bx bxl-python"
+        }
+        file_extention = Path(self.filename).suffix
+        if file_extention in css_classes:
+            return css_classes[file_extention]
+        else:
+            return "bx bxs-file-blank"
