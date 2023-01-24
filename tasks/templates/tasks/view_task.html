@@ -126,7 +126,7 @@
               </div>
             </div>
             
-            <div class="num-attachments"><span class="num">{{ indiv_work.num_attachments }}</span>Attachments</div>
+            <div class="num-attachments"><span class="num">{{ indiv_work.num_attachments }}</span>Attachment{{ indiv_work.num_attachments|pluralize }}</div>
             <div class="user">
               <div class="dp" style="background-image: url('{{ indiv_work.submission_by.account.avatar_url }}')">
               </div>
@@ -178,7 +178,6 @@
         <div class="due-date">
           <span class="time" id="{{task.id}}-due-time">{{ task.deadline|date:'c' }}</span>
         </div>
-        <div class="points"><span class="num-points">{{task.marks}}</span>Points</div>
       </div>
       {% if work %}
       <div class="uploaded-work">
@@ -187,7 +186,7 @@
           <li>
             <a href="" class="attachment-item">
               <i class='{{ file.css_class }}'></i>
-              <div class="filename">{{ file.filename|truncatechars:20 }}</div>
+              <div class="filename">{{ file.filename|truncatechars:25 }}</div>
             </a>
           </li>
           {% endfor %}
@@ -196,7 +195,7 @@
         {% if work.score %}
         <div class="obtained-score"><i class='bx bx-trophy'></i><span class="point">{{work.score}}</span>Points</div>
         {% else %}
-        {% if work.is_submitted %}<button class="action-btn unsubmit">Unsubmit</button>{% else %}<button class="action-btn submit">Submit</button>{% endif %}
+        {% if work.is_submitted %}<button class="action-btn unsubmit" id="alt_sub_status_btn">Unsubmit</button>{% else %}<button class="action-btn submit" id="alt_sub_status_btn">Submit</button>{% endif %}
         
         {% endif %}
       </div>
@@ -233,7 +232,13 @@
 {% block script %}
 <script type="text/javascript" src="{% static 'tasks/scripts/task.js' %}"></script>
 <script type="text/javascript" src="{% static 'classroom/scripts/localtimes.js' %}"></script>
+{% if not is_teacher %}
 <script>
   const upload_work_url = "{% url 'classroom:tasks:upload_work' task.classroom.id task.id %}"
+  {% if work %}
+  const change_work_submission_status_api = "{% url 'classroom:tasks:change_work_submission_status' work.task.classroom.id work.id %}"
+  {% endif %}
+  let csrftoken = "{{ csrf_token }}"
 </script>
+{% endif %}
 {% endblock script %}

@@ -30,8 +30,40 @@ function upload_work() {
     });
 }
 
+function change_work_status() {
+    $.ajax({
+        url: change_work_submission_status_api,
+        contentType: "application/json",
+        type: "POST",
+        beforeSend: function(xhr){
+            xhr.setRequestHeader("X-CSRFToken", csrftoken);
+            $("#alt_sub_status_btn").attr('disabled', true);
+        },
+        cache: false,
+        dataType: "json",
+        success: function(response){
+            if (response['is_submitted']) {
+                $("#alt_sub_status_btn").text("Unsubmit")
+                $("#alt_sub_status_btn").removeClass("submit")
+                $("#alt_sub_status_btn").addClass("unsubmit")
+            } else {
+                $("#alt_sub_status_btn").text("Submit")
+                $("#alt_sub_status_btn").removeClass("unsubmit")
+                $("#alt_sub_status_btn").addClass("submit")
+            }
+        },
+        complete: function(){
+            $("#alt_sub_status_btn").attr('disabled', false);
+        }
+    })
+}
 
 
-$("#post-files").on('change', ()=>{
-    upload_work()
-})
+
+$(document).ready(function () {
+    $("#post-files").on('change', ()=>{
+        upload_work()
+    })
+    $("#alt_sub_status_btn").on('click', change_work_status)    
+});
+

@@ -6,6 +6,10 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from django.core.exceptions import SuspiciousOperation
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
+from rest_framework import status
 from classroom.models import Classroom
 from weeklies.models import Weekly
 from tasks.models import Task, TaskAttachment, Group, Work, WorkAttachment
@@ -157,3 +161,20 @@ def upload_work(request, cls_pk, pk):
             )
         return JsonResponse({'status':'completed'})
 
+@api_view(["POST"])
+@permission_classes([IsAuthenticated])
+def change_work_submission_status(request, cls_pk, pk):
+    try:
+        work = Work.objects.get(pk=pk, task__classroom__id=cls_pk)
+    except Work.DoesNotExist:
+        return Response(data={'info': 'Work not found'}, status=status.HTTP_404_NOT_FOUND)
+    if work.task.is_group_task:
+        if request.user not in work.group.members.all():
+            return Response(status=status.HTTP_403_FORBIDDEN)
+    else:
+        if work.submission_by != request.user:
+            return Response(status=status.HTTP_403_FORBIDDEN)
+        
+    work.is_submitted = not work.is_submitted #just altering
+    work.save()
+    return Response(data={'info': 'success', 'is_submitted':work.is_submitted}, status=status.HTTP_200_OK)
