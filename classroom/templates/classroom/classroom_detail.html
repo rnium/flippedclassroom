@@ -174,8 +174,8 @@
           <div class="assignment list-item">
             <i class='bx bx-briefcase' ></i>
             <div class="info">
-              <a href="{% url 'classroom:view_assignment' assignment.id %}" class="label-title">{{ assignment.title }}</a>
-              <div class="deadline">Due: <span class="time" id="{{assignment.id}}_time">{{ assignment.submission_deadline|date:'c' }}</span></div>
+              <a href="{% url 'classroom:tasks:view_task' classroom.id assignment.id %}" class="label-title">{{ assignment.title }}</a>
+              <div class="deadline">Due: <span class="time" id="{{assignment.id}}_time">{{ assignment.deadline|date:'c' }}</span></div>
             </div>
           </div>
         </li>{% endfor %}
@@ -189,7 +189,7 @@
   <div class="links title-box">
     <div class="content">
       <a class="create-test" href="{% url 'exam:create_question' classroom.id %}"><i class='bx bx-edit-alt'></i><span>Create New Test</span></a>
-      <a class="create-work" href="{% url 'classroom:create_assignment' classroom.id  %}"><i class='bx bx-briefcase'></i><span>Assign a Work</span></a>
+      <a class="create-work" href="{% url 'classroom:tasks:create_task' classroom.id  %}"><i class='bx bx-briefcase'></i><span>Assign a Work</span></a>
     </div>
   </div>
   {% endif %}

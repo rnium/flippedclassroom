@@ -1,8 +1,11 @@
 from dateutil import parser
 from django.views.generic import TemplateView, DetailView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import HttpResponse, Http404
+from django.http import HttpResponse, JsonResponse, Http404
 from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_exempt
+from django.core.exceptions import SuspiciousOperation
 from classroom.models import Classroom
 from weeklies.models import Weekly
 from tasks.models import Task, TaskAttachment, Group, Work, WorkAttachment
@@ -98,22 +101,59 @@ class TaskDetail(LoginRequiredMixin, DetailView):
                 students = task.classroom.students.all()
                 unsubmitting_indiv = []
                 for s in students:
-                    qs = Work.objects.filter(submission_by=s)
+                    qs = Work.objects.filter(task=task, submission_by=s)
                     if len(qs) == 0:
                         unsubmitting_indiv.append(s)
                 context['unsubmitting_indiv'] = unsubmitting_indiv
                 
         elif self.request.user in task.classroom.students.all():
             if group_type:
-                group = Group.objects.filter(members=self.request.user)[0]
+                group = Group.objects.filter(task=task, members=self.request.user)[0]
                 context['group'] = group
-                work_queryset = Work.objects.filter(group=group)
-                if len(work_queryset) > 0:
-                    context['work'] = work_queryset[0]
+                if group.work:
+                    context['work'] = group.work
             else:
-                work_queryset = Work.objects.filter(submission_by=self.request.user)
+                work_queryset = Work.objects.filter(task=task,submission_by=self.request.user)
                 if len(work_queryset) > 0:
                     context['work'] = work_queryset[0]
                     
         return context
+
+
+@login_required
+@csrf_exempt
+def upload_work(request, cls_pk, pk):
+    if request.method == 'POST':
+        # not creating work if no files were added
+        has_files = bool(request.FILES.get('files', False))
+        files_dict = None
+        if has_files:
+            files_dict = dict(request.FILES)['files']
+            if len(files_dict) < 1:
+                raise SuspiciousOperation("No files included")
+        else:
+            raise SuspiciousOperation("Invalid Form")
+        
+        task = get_object_or_404(Task, classroom__id=cls_pk, pk=pk)
+        new_work_obj_data = {"task":task}
+        if task.is_group_task:
+            group = get_object_or_404(Group, task=task, members=request.user)
+            prev_work_of_grp = Work.objects.filter(task=task, group=group) # checking if group has any previous works
+            if len(prev_work_of_grp) > 0:
+                raise SuspiciousOperation('Group already has their work')
+            new_work_obj_data['group'] = group
+        else:
+            prev_work_of_indiv = Work.objects.filter(task=task,submission_by=request.user) # checking if user has any previous works
+            if len(prev_work_of_indiv) > 0:
+                raise SuspiciousOperation("User already has their work")
+        new_work_obj_data['submission_by'] = request.user
+        work = Work.objects.create(**new_work_obj_data)
+        
+        # adding files
+        for file in files_dict:
+            WorkAttachment.objects.create(
+                work = work,
+                attached_file = file
+            )
+        return JsonResponse({'status':'completed'})
 

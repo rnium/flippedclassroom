@@ -22,9 +22,7 @@
   </li>
 </ul>
 {% endblock nav %}
-
 {% block content %}
-
 <div class="view-task-container {% if is_teacher %}teacher{% else %}student{% endif %}">
   <div class="left-col">
     <div class="task-info">
@@ -49,7 +47,6 @@
           <i class='bx bx-time'></i>
           <span class="time" id="task{{task.id}}-deadline">{{ task.deadline|date:"c" }}</span>
         </div>
-        
       </div>
       <div class="task-instruction">
         {% if task.instruction %}
@@ -64,7 +61,6 @@
           {% endfor %}
         </div>
       </div>
-      
     </div>
   </div>
   <div class="right-col">
@@ -72,32 +68,31 @@
     <div class="submissions">
       <div class="title">Submissions</div>
       <div class="contents">
-        {% for group_work in group_submissions  %}
+        {% for group in group_submissions  %}
         <a href="">
           <div class="submission">
             <div class="info">
               <div class="score">
-                {% if group_work.score %}
+                {% if group.work.score %}
                 <div class="score-con">
                   <i class='bx bx-trophy'></i>
-                  <div class="points"><span class="point">{{ group_work.score }}</span>Points</div>
+                  <div class="points"><span class="point">{{ group.work.score }}</span>Points</div>
                 </div>
                 {% else %}
                 <div class="unchecked">Unchecked</div>
                 {% endif %}
-                
               </div>
-              <div class="submit-time {% if group_task.is_late %}done-late{% endif %}">
+              <div class="submit-time {% if group.work.is_late %}done-late{% endif %}">
                 <i class='bx bx-timer'></i>
-                <span class="time" id="work{{group_work.id}}-submit-time">{{ group_work.submission_time }}</span>
+                <span class="time" id="work{{group.work.id}}-submit-time">{{ group.work.submission_time|date:'c' }}</span>
               </div>
             </div>
             
-            <div class="num-attachments"><span class="num">{{ group_work.num_attachments }}</span>Attachments</div>
+            <div class="num-attachments"><span class="num">{{ group.work.num_attachments }}</span>Attachments</div>
             <div class="group-members">
               <div class="title">Group Members</div>
               <ul>
-                {% for member in group_work.members.all %}
+                {% for member in group.members.all %}
                 <li>
                   <div class="dp">
                     <img src="{{ member.account.avatar_url }}" alt="">
@@ -106,11 +101,6 @@
                 </li>
                 {% endfor %}
               </ul>
-            </div>
-            <div class="user">
-              <div class="dp" style="background-image: url('/images/dp2.jpg')">
-              </div>
-              <div class="name">Md. Atikur Rahman Sifat</div>
             </div>
           </div>
         </a>
@@ -132,7 +122,7 @@
               </div>
               <div class="submit-time {% if group_task.is_late %}done-late{% endif %}">
                 <i class='bx bx-timer'></i>
-                <span class="time" id="work{{indiv_work.id}}-submit-time">{{ indiv_work.submission_time }}</span>
+                <span class="time" id="work{{indiv_work.id}}-submit-time">{{ indiv_work.submission_time|date:"c" }}</span>
               </div>
             </div>
             
@@ -206,7 +196,8 @@
         {% if work.score %}
         <div class="obtained-score"><i class='bx bx-trophy'></i><span class="point">{{work.score}}</span>Points</div>
         {% else %}
-        <button class="action-btn unsubmit">Unsubmit</button>
+        {% if work.is_submitted %}<button class="action-btn unsubmit">Unsubmit</button>{% else %}<button class="action-btn submit">Submit</button>{% endif %}
+        
         {% endif %}
       </div>
       {% else %}
@@ -235,8 +226,14 @@
       {% endif %}
     </div>
     {% endif %}
-    
-    
   </div>
 </div>
 {% endblock content %}
+
+{% block script %}
+<script type="text/javascript" src="{% static 'tasks/scripts/task.js' %}"></script>
+<script type="text/javascript" src="{% static 'classroom/scripts/localtimes.js' %}"></script>
+<script>
+  const upload_work_url = "{% url 'classroom:tasks:upload_work' task.classroom.id task.id %}"
+</script>
+{% endblock script %}

@@ -80,8 +80,11 @@ class Group(models.Model):
     
     @property
     def work(self):
-        qs = self.work_set.all()[0]
-        return qs
+        qs = self.work_set.all()
+        if len(qs) > 0:
+            return qs[0]
+        else:
+            return False
 
     @property
     def submitted_work(self):
@@ -93,7 +96,7 @@ class Work(models.Model):
     submission_by = models.ForeignKey(User, on_delete=models.CASCADE)
     is_submitted = models.BooleanField(default=False)
     group = models.ForeignKey(Group, null=True, blank=True, on_delete=models.CASCADE)
-    score = models.IntegerField()
+    score = models.IntegerField(null=True, blank=True)
     submission_time = models.DateTimeField(auto_now=True)
     
     @property
@@ -114,7 +117,7 @@ class Work(models.Model):
 
 class WorkAttachment(models.Model):
     def filepath(self, filename):
-        return join("attachments", str(self.task.classroom.id), 'tasks', str(self.task.id), 'submissions', filename)
+        return join("attachments", str(self.work.task.classroom.id), 'tasks', str(self.work.task.id), 'submissions', filename)
 
     work = models.ForeignKey(Work, on_delete=models.CASCADE)
     attached_file = models.FileField(upload_to=filepath, max_length=1000)

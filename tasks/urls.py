@@ -7,5 +7,6 @@ app_name = 'tasks'
 urlpatterns = [
     path('new', views.create_task, name="create_task"),
     path('<str:pk>', views.TaskDetail.as_view(), name="view_task"),
+    path('<str:pk>/upload_work', views.upload_work, name="upload_work"),
 ]
    

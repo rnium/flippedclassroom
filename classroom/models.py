@@ -55,7 +55,7 @@ class Classroom(models.Model):
     def upcoming_events(self):
         timenow = timezone.now()
         exams = self.test_set.filter(schedule__gt=timenow).order_by("schedule")
-        assignments = self.assignment_set.filter(submission_deadline__gt=timenow).order_by('submission_deadline')
+        assignments = self.task_set.filter(deadline__gt=timenow).order_by('deadline')
         num_events = len(exams) + len(assignments)
         hasevents = bool(num_events)
         return {'hasevents':hasevents, 'num_events':num_events, 'exams':exams, 'assignments':assignments}
