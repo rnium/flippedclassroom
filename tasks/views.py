@@ -1,8 +1,8 @@
 from dateutil import parser
 from django.views.generic import TemplateView, DetailView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import HttpResponse
-from django.shortcuts import render, get_object_or_404
+from django.http import HttpResponse, Http404
+from django.shortcuts import render, get_object_or_404, redirect
 from classroom.models import Classroom
 from weeklies.models import Weekly
 from tasks.models import Task, TaskAttachment, Group, Work, WorkAttachment
@@ -21,6 +21,11 @@ def create_task(request, cls_pk):
         else:
             task_obj_kwargs['weekly'] = None
         task_obj_kwargs['title'] = request.POST.get('title', None)
+        marks = request.POST.get('marks', None)
+        if marks != None:
+            if len(marks) > 0:
+                if marks.isdigit():
+                    task_obj_kwargs['marks'] = int(marks)
         try:
             deadline = request.POST.get('deadline-datetime', None)
             task_obj_kwargs['deadline'] =  parser.parse(deadline)
@@ -60,24 +65,56 @@ def create_task(request, cls_pk):
                         attached_file = file
                     )
         # creating groups
-        print('creating groups')
-        students_user_list = list(classroom.students.all())
-        print(students_user_list)
-        print(num_group_members)
-        group_userlists = random_subsets(students_user_list, num_group_members)
-        print(group_userlists)
-        for user_list in group_userlists:
-            print(user_list)
-            group = Group.objects.create(task=task)
-            group.members.add(*user_list)
+        if tasktype == 'group':
+            students_user_list = list(classroom.students.all())
+            group_userlists = random_subsets(students_user_list, num_group_members)
+            for user_list in group_userlists:
+                group = Group.objects.create(task=task)
+                group.members.add(*user_list)
         
-        return HttpResponse('Task Created')
+        return redirect('classroom:tasks:view_task', cls_pk=cls_pk, pk=task.id)
 
 
 class TaskDetail(LoginRequiredMixin, DetailView):
     template_name = 'tasks/view_task.html'
     model = Task
+    def get_object(self):
+        task = super().get_object()
+        if not (self.request.user in task.classroom.teachers.all() or self.request.user in task.classroom.students.all()):
+            raise Http404
+        return task
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        task = context['task']
+        group_type = task.is_group_task 
+        if self.request.user in task.classroom.teachers.all():
+            context['is_teacher'] = True
+            if task.is_group_task:
+                groups = Group.objects.filter(task=task)
+                context['group_submissions'] = [g for g in groups if g.work_submitted]
+                context['unsubmitting_groups'] = [g for g in groups if not g.work_submitted]
+            else:
+                context['indiv_submissions'] = Work.objects.filter(task=task, is_submitted=True, group=None)
+                students = task.classroom.students.all()
+                unsubmitting_indiv = []
+                for s in students:
+                    qs = Work.objects.filter(submission_by=s)
+                    if len(qs) == 0:
+                        unsubmitting_indiv.append(s)
+                context['unsubmitting_indiv'] = unsubmitting_indiv
+                
+            
+        elif self.request.user in task.classroom.students.all():
+            if group_type:
+                group = Group.objects.filter(members=self.request.user)
+                context['group'] = group
+                work_queryset = Work.objects.filter(group=group)
+                if len(work_queryset) > 0:
+                    context['work'] = work_queryset[0]
+            else:
+                work_queryset = Work.objects.filter(submission_by=self.request.user)
+                if len(work_queryset) > 0:
+                    context['work'] = work_queryset[0]
+                    
         return context
 

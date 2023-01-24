@@ -41,8 +41,6 @@
           <span>Individual Task</span>
         </div>
         {% endif %}
-        
-        
         <div class="points">
           <i class='bx bxs-coin-stack'></i>
           <span class="point">{{ task.marks }}</span><span class="label">Points</span>
@@ -54,28 +52,16 @@
         
       </div>
       <div class="task-instruction">
-        <div class="instruction-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum obcaecati quisquam hic ipsum ex incidunt nam enim? Voluptas, quasi alias?</div>
+        {% if task.instruction %}
+        <div class="instruction-text">{{ task.instruction }}</div>
+        {% endif %}
         <div class="attachments">
+          {% for file in task.taskattachment_set.all %}
           <a href="" class="attachment-item">
-            <i class='bx bxs-file-pdf'></i>
-            <div class="filename">Sample format.pdf</div>
+            <i class='{{ file.css_class }}'></i>
+            <div class="filename">{{ file.filename|truncatechars:20 }}</div>
           </a>
-          <a href="" class="attachment-item">
-            <i class='bx bxs-file-pdf'></i>
-            <div class="filename">Sample format.pdf</div>
-          </a>
-          <a href="" class="attachment-item">
-            <i class='bx bxs-file-pdf'></i>
-            <div class="filename">Sample format.pdf</div>
-          </a>
-          <a href="" class="attachment-item">
-            <i class='bx bxs-file-pdf'></i>
-            <div class="filename">Sample format.pdf</div>
-          </a>
-          <a href="" class="attachment-item">
-            <i class='bx bxs-file-pdf'></i>
-            <div class="filename">Sample format.pdf</div>
-          </a>
+          {% endfor %}
         </div>
       </div>
       
@@ -139,40 +125,41 @@
     <div class="submissions">
       <div class="title">Submissions</div>
       <div class="contents">
+        {% for group_work in group_submissions  %}
         <a href="">
           <div class="submission">
             <div class="info">
               <div class="score">
+                {% if group_work.score %}
                 <div class="score-con">
                   <i class='bx bx-trophy'></i>
-                  <div class="points"><span class="point">70</span>Points</div>
+                  <div class="points"><span class="point">{{ group_work.score }}</span>Points</div>
                 </div>
+                {% else %}
+                <div class="unchecked">Unchecked</div>
+                {% endif %}
+                
               </div>
-              <div class="submit-time">
+              <div class="submit-time {% if group_task.is_late %}done-late{% endif %}">
                 <i class='bx bx-timer'></i>
-                <span class="time" id="taskId-submit-time">7:34PM, 7 Jan 2023</span>
+                <span class="time" id="work{{group_work.id}}-submit-time">{{ group_work.submission_time }}</span>
               </div>
             </div>
             
-            <div class="num-attachments"><span class="num">2</span>Attachments</div>
-            <!-- <div class="group-members">
+            <div class="num-attachments"><span class="num">{{ group_work.num_attachments }}</span>Attachments</div>
+            <div class="group-members">
               <div class="title">Group Members</div>
               <ul>
+                {% for member in group_work.members.all %}
                 <li>
                   <div class="dp">
-                    <img src="/images/dp2.jpg" alt="">
+                    <img src="{{ member.account.avatar_url }}" alt="">
                   </div>
-                  <div class="name">Md. Atikur Rahman Sifat</div>
-                  
+                  <div class="name">{{ member.account.user_full_name }}</div>
                 </li>
-                <li>
-                  <div class="dp">
-                    <img src="/images/dp1.jpg" alt="">
-                  </div>
-                  <div class="name">Md. Atikur Rahman</div>
-                </li>
+                {% endfor %}
               </ul>
-            </div> -->
+            </div>
             <div class="user">
               <div class="dp" style="background-image: url('/images/dp2.jpg')">
               </div>
@@ -180,41 +167,39 @@
             </div>
           </div>
         </a>
-        <!-- <a href="">
+        {% endfor %}
+        {% for indiv_work in indiv_submissions  %}
+        <a href="">
           <div class="submission">
             <div class="info">
               <div class="score">
+                {% if indiv_work.score %}
+                <div class="score-con">
+                  <i class='bx bx-trophy'></i>
+                  <div class="points"><span class="point">{{ indiv_work.score }}</span>Points</div>
+                </div>
+                {% else %}
                 <div class="unchecked">Unchecked</div>
+                {% endif %}
+                
               </div>
-              <div class="submit-time done-late">
+              <div class="submit-time {% if group_task.is_late %}done-late{% endif %}">
                 <i class='bx bx-timer'></i>
-                <span class="time" id="taskId-submit-time">7:34PM, 7 Jan 2023</span>
+                <span class="time" id="work{{indiv_work.id}}-submit-time">{{ indiv_work.submission_time }}</span>
               </div>
             </div>
             
-            <div class="num-attachments"><span class="num">2</span>Attachments</div>
-            <div class="group-members">
-              <div class="title">Group Members</div>
-              <ul>
-                <li>
-                  <div class="dp">
-                    <img src="/images/dp2.jpg" alt="">
-                  </div>
-                  <div class="name">Md. Atikur Rahman Sifat</div>
-                  
-                </li>
-                <li>
-                  <div class="dp">
-                    <img src="/images/dp1.jpg" alt="">
-                  </div>
-                  <div class="name">Md. Atikur Rahman</div>
-                </li>
-              </ul>
+            <div class="num-attachments"><span class="num">{{ indiv_work.num_attachments }}</span>Attachments</div>
+            <div class="user">
+              <div class="dp" style="background-image: url('{{ indiv_work.submission_by.account.avatar_url }}')">
+              </div>
+              <div class="name">{{indiv_work.submission_by.account.user_full_name}}</div>
             </div>
           </div>
-        </a> -->
-
-        <!-- <div class="unsubmitting">
+        </a>
+        {% endfor %}
+        {% for unsub_group in unsubmitting_groups %}
+        <div class="unsubmitting">
           <div class="info">
             <i class='bx bx-calendar-exclamation'></i>
             <span>Assigned, not Submitted</span>
@@ -222,33 +207,31 @@
           <div class="group-members">
             <div class="title">Group Members</div>
             <ul>
+              {% for member in unsub_group.members.all %}
               <li>
                 <div class="dp">
-                  <img src="/images/dp2.jpg" alt="">
+                  <img src="{{member.account.avatar_url}}" alt="">
                 </div>
-                <div class="name">Md. Atikur Rahman Sifat</div>
-                
+                <div class="name">{{member.account.user_full_name}}</div>
               </li>
-              <li>
-                <div class="dp">
-                  <img src="/images/dp1.jpg" alt="">
-                </div>
-                <div class="name">Md. Atikur Rahman</div>
-              </li>
+              {% endfor %}
             </ul>
           </div>
-        </div> -->
+        </div>
+        {% endfor %}
+        {% for unsub_indiv in unsubmitting_indiv  %}
         <div class="unsubmitting">
           <div class="info">
             <i class='bx bx-calendar-exclamation'></i>
             <span>Assigned, not Submitted</span>
           </div>
           <div class="user">
-            <div class="dp" style="background-image: url('/images/dp2.jpg')">
+            <div class="dp" style="background-image: url('{{ unsub_indiv.account.avatar_url }}')">
             </div>
-            <div class="name">Md. Atikur Rahman Sifat</div>
+            <div class="name">{{unsub_indiv.account.user_full_name}}</div>
           </div>
         </div>
+        {% endfor %}
       </div>
     </div>
   </div>

@@ -4,7 +4,6 @@ def random_subsets(lst, num_item):
     random.shuffle(lst)
     subsets_container = []
     while bool(len(lst)):
-        print(len(lst))
         if len(lst) >= num_item:
             subset = [lst.pop() for i in range(num_item)]
             subsets_container.append(subset)
