@@ -1,4 +1,6 @@
 from dateutil import parser
+from django.views.generic import TemplateView, DetailView, CreateView
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 from classroom.models import Classroom
@@ -70,3 +72,12 @@ def create_task(request, cls_pk):
             group.members.add(*user_list)
         
         return HttpResponse('Task Created')
+
+
+class TaskDetail(LoginRequiredMixin, DetailView):
+    template_name = 'tasks/view_task.html'
+    model = Task
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
+

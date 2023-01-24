@@ -194,13 +194,11 @@ body .main .view-task-container .left-col .task-info .task-meta-info .task-type 
           align-items: center;
   border-radius: 180px;
   overflow: hidden;
-  padding: 4px;
+  padding: 4px 10px;
 }
 
 body .main .view-task-container .left-col .task-info .task-meta-info .task-type i {
-  font-size: 1.2rem;
-  padding: 5px;
-  border-radius: 180px;
+  font-size: 1.5rem;
 }
 
 body .main .view-task-container .left-col .task-info .task-meta-info .task-type span {
@@ -209,30 +207,60 @@ body .main .view-task-container .left-col .task-info .task-meta-info .task-type 
 }
 
 body .main .view-task-container .left-col .task-info .task-meta-info .task-type-indiv {
-  -webkit-box-shadow: inset 0 0 5px rgba(177, 221, 204, 0.76);
-          box-shadow: inset 0 0 5px rgba(177, 221, 204, 0.76);
   background-color: #dff1e99c;
+  border: 1px solid #35b087;
 }
 
-body .main .view-task-container .left-col .task-info .task-meta-info .task-type-indiv i {
-  color: white;
-  text-shadow: 0 0 2px #07ff66;
-  background-color: #4ec49c;
+body .main .view-task-container .left-col .task-info .task-meta-info .task-type-indiv i, body .main .view-task-container .left-col .task-info .task-meta-info .task-type-indiv span {
+  color: #35b087;
 }
 
 body .main .view-task-container .left-col .task-info .task-meta-info .task-type-group {
-  -webkit-box-shadow: inset 0 0 5px rgba(177, 216, 221, 0.76);
-          box-shadow: inset 0 0 5px rgba(177, 216, 221, 0.76);
+  border: 1px solid #2b92b1;
   background-color: #dfedf19c;
 }
 
-body .main .view-task-container .left-col .task-info .task-meta-info .task-type-group i {
-  color: cyan;
-  font-size: 1.2rem;
-  background-color: #2b92b1;
+body .main .view-task-container .left-col .task-info .task-meta-info .task-type-group i, body .main .view-task-container .left-col .task-info .task-meta-info .task-type-group span {
+  color: #169ac2;
 }
 
-body .main .view-task-container .left-col .task-info .task-meta-info .added {
+body .main .view-task-container .left-col .task-info .task-meta-info .points {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-left: 10px;
+  background-color: rgba(151, 124, 179, 0.2);
+  padding: 4px 10px;
+  border-radius: 180px;
+  border: 1px solid rgba(138, 86, 190, 0.589);
+}
+
+body .main .view-task-container .left-col .task-info .task-meta-info .points i {
+  font-size: 1.3rem;
+  margin-right: 5px;
+  color: rebeccapurple;
+}
+
+body .main .view-task-container .left-col .task-info .task-meta-info .points .point {
+  font-weight: 500;
+  color: rebeccapurple;
+  margin-right: 3px;
+  font-family: 'Gemunu Libre', sans-serif;
+}
+
+body .main .view-task-container .left-col .task-info .task-meta-info .points .label {
+  font-family: 'Gemunu Libre', sans-serif;
+}
+
+body .main .view-task-container .left-col .task-info .task-meta-info .deadline {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -251,7 +279,7 @@ body .main .view-task-container .left-col .task-info .task-meta-info .added {
   padding: 4px;
 }
 
-body .main .view-task-container .left-col .task-info .task-meta-info .added i {
+body .main .view-task-container .left-col .task-info .task-meta-info .deadline i {
   font-size: 1.2rem;
   padding: 5px;
   border-radius: 180px;
@@ -259,7 +287,7 @@ body .main .view-task-container .left-col .task-info .task-meta-info .added i {
   background-color: #83b4c7;
 }
 
-body .main .view-task-container .left-col .task-info .task-meta-info .added span {
+body .main .view-task-container .left-col .task-info .task-meta-info .deadline span {
   font-family: 'Gemunu Libre', sans-serif;
   padding: 0 20px 0 15px;
   color: #4598b9;
@@ -711,6 +739,16 @@ body .main .view-task-container .right-col .submissions .contents a .submission 
   margin-right: 3px;
 }
 
+body .main .view-task-container .right-col .submissions .contents a .submission .info .score .unchecked {
+  opacity: 0.9;
+  font-family: 'Gemunu Libre', sans-serif;
+  font-size: 0.9rem;
+  padding: 3px 10px;
+  border: 1px solid #97aeae;
+  background-color: rgba(229, 237, 237, 0.3);
+  border-radius: 180px;
+}
+
 body .main .view-task-container .right-col .submissions .contents a .submission .info .submit-time {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -746,7 +784,7 @@ body .main .view-task-container .right-col .submissions .contents a .submission 
 }
 
 body .main .view-task-container .right-col .submissions .contents a .submission .done-late i, body .main .view-task-container .right-col .submissions .contents a .submission .done-late .time {
-  color: #f50273;
+  color: #f50273 !important;
   text-shadow: 0 0 5px #e4d7dd;
 }
 
@@ -842,6 +880,37 @@ body .main .view-task-container .right-col .submissions .contents a .submission 
   color: #2cbbbb;
 }
 
+body .main .view-task-container .right-col .submissions .contents a .submission .user {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 2rem;
+  width: 100%;
+  padding: 1rem 0.5rem;
+  background-color: #deebe973;
+  border-radius: 10px;
+}
+
+body .main .view-task-container .right-col .submissions .contents a .submission .user .dp {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  margin-right: 5px;
+  -webkit-box-shadow: 0 0 5px #c6c4c4;
+          box-shadow: 0 0 5px #c6c4c4;
+}
+
 body .main .view-task-container .right-col .submissions .contents a .submission .num-attachments {
   font-family: 'Gemunu Libre', sans-serif;
   font-size: 1.1rem;
@@ -856,6 +925,161 @@ body .main .view-task-container .right-col .submissions .contents a .submission 
 
 body .main .view-task-container .right-col .submissions .contents a:hover .submission {
   outline: 3px solid #38ce9c;
+}
+
+body .main .view-task-container .right-col .submissions .contents .unsubmitting {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 10px;
+  background-color: #fbf0dc;
+  padding: 1rem;
+}
+
+body .main .view-task-container .right-col .submissions .contents .unsubmitting .info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+body .main .view-task-container .right-col .submissions .contents .unsubmitting .info i {
+  font-size: 2rem;
+  color: red;
+  margin-bottom: 10px;
+  text-shadow: 0 0 5px #e8caca;
+}
+
+body .main .view-task-container .right-col .submissions .contents .unsubmitting .info span {
+  font-family: 'Gemunu Libre', sans-serif;
+  font-size: 1.2rem;
+  color: #c32121;
+  text-shadow: 0 0 5px #e8d5d5;
+}
+
+body .main .view-task-container .right-col .submissions .contents .unsubmitting .group-members {
+  width: 100%;
+  padding: 10px 15px;
+  background-color: white;
+  border-radius: 10px;
+  -webkit-box-shadow: 0 0 10px #e8d3ad;
+          box-shadow: 0 0 10px #e8d3ad;
+  margin-top: 1rem;
+}
+
+body .main .view-task-container .right-col .submissions .contents .unsubmitting .group-members .title {
+  font-family: 'Gemunu Libre', sans-serif;
+  text-align: center;
+  color: #57a1a1;
+  text-shadow: none;
+  font-size: 1.1rem;
+}
+
+body .main .view-task-container .right-col .submissions .contents .unsubmitting .group-members ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+body .main .view-task-container .right-col .submissions .contents .unsubmitting .group-members ul li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 5px;
+}
+
+body .main .view-task-container .right-col .submissions .contents .unsubmitting .group-members ul li:last-of-type {
+  margin-bottom: 0;
+}
+
+body .main .view-task-container .right-col .submissions .contents .unsubmitting .group-members ul li .dp {
+  overflow: hidden;
+  margin-right: 10px;
+  min-width: 30px;
+  max-width: 30px;
+  min-height: 30px;
+  max-height: 30px;
+  border-radius: 180px;
+  -webkit-box-shadow: 0 0 5px #88aa9f;
+          box-shadow: 0 0 5px #88aa9f;
+}
+
+body .main .view-task-container .right-col .submissions .contents .unsubmitting .group-members ul li .dp img {
+  width: 100%;
+}
+
+body .main .view-task-container .right-col .submissions .contents .unsubmitting .group-members ul li .name {
+  font-size: 0.9rem;
+  position: relative;
+}
+
+body .main .view-task-container .right-col .submissions .contents .unsubmitting .group-members ul li .name i {
+  display: inline-block;
+  position: absolute;
+  bottom: 50%;
+  -webkit-transform: translateY(50%);
+          transform: translateY(50%);
+  font-size: 1.4rem;
+  margin-left: 5px;
+  color: #2cbbbb;
+}
+
+body .main .view-task-container .right-col .submissions .contents .unsubmitting .user {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 1.2rem;
+  width: 100%;
+  padding: 1rem 0.5rem;
+  background-color: white;
+  -webkit-box-shadow: 0 0 10px #e8d3ad;
+          box-shadow: 0 0 10px #e8d3ad;
+  border-radius: 10px;
+}
+
+body .main .view-task-container .right-col .submissions .contents .unsubmitting .user .dp {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  margin-right: 5px;
+  -webkit-box-shadow: 0 0 5px #c6c4c4;
+          box-shadow: 0 0 5px #c6c4c4;
 }
 
 body .main .view-task-container.teacher {
