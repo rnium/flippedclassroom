@@ -184,7 +184,7 @@
         <ul>
           {% for file in work.attachments %}
           <li>
-            <a href="" class="attachment-item">
+            <a href="{% url 'classroom:tasks:view_work_file' file.work.task.classroom.id file.id %}" target="blank" class="attachment-item">
               <i class='{{ file.css_class }}'></i>
               <div class="filename">{{ file.filename|truncatechars:25 }}</div>
             </a>

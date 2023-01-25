@@ -6,7 +6,11 @@
 {% block nav %}
 <ul class="navbar-nav mb-2 mb-lg-0">
   <li class="nav-item">
+    {% if task_file %}
     <a class="nav-link" aria-current="page" href="{% url 'classroom:classroom_detail' current_file.task.classroom.id %}">Dashboard</a>
+    {% else %}
+    <a class="nav-link" aria-current="page" href="{% url 'classroom:classroom_detail' current_file.work.task.classroom.id %}">Dashboard</a>
+    {% endif %}
   </li>
   <li class="nav-item">
     <a class="nav-link" href="#">Weeklies</a>
@@ -26,8 +30,9 @@
 {% block content %}
 <div class="view-file-container">
   <div class="info">
+    {% if task_file %}
     <div class="home-links">
-      <a href="">{{ current_file.task.classroom.name }}</a>
+      <a href="{% url 'classroom:classroom_detail' current_file.task.classroom.id %}">{{ current_file.task.classroom.name }}</a>
       {% if current_file.task.weekly %}
       <i class='bx bxs-chevron-right' ></i>
       <a href="{% url 'weeklies:weeklydetail' current_file.task.weekly.classroom.id current_file.task.weekly.weeknum %}">Week {{current_file.task.weekly.weeknum}}</a>
@@ -36,6 +41,18 @@
       <a href="{% url 'classroom:tasks:view_task' current_file.task.classroom.id current_file.task.id %}" class="current">Task</a>
     </div>
     <div class="task-title">{{current_file.task.title}}</div>
+    {% else %}
+    <div class="home-links">
+      <a href="{% url 'classroom:classroom_detail' current_file.work.task.classroom.id %}">{{ current_file.work.task.classroom.name }}</a>
+      {% if current_file.work.task.weekly %}
+      <i class='bx bxs-chevron-right' ></i>
+      <a href="{% url 'weeklies:weeklydetail' current_file.work.task.weekly.classroom.id current_file.work.task.weekly.weeknum %}">Week {{current_file.work.task.weekly.weeknum}}</a>
+      {% endif %}
+      <i class='bx bxs-chevron-right' ></i>
+      <a href="{% url 'classroom:tasks:view_task' current_file.work.task.classroom.id current_file.work.task.id %}" class="current">Task</a>
+    </div>
+    <div class="task-title">{{current_file.work.task.title}}</div>
+    {% endif %}
   </div>
   <div class="bottom-pane">
     <div class="file-content">
@@ -55,6 +72,7 @@
       </div>
     </div>
     <div class="other-files">
+      {% if task_file %}
       <div class="title">Other Attached Files</div>
       {% if other_files %}
       <ul>
@@ -70,6 +88,24 @@
       {% else %}
       <div class="no-files"><i class='bx bx-info-circle' ></i><span>No Files</span></div>
       {% endif %}
+      {% else %}
+      <div class="title">Other Submissions Files</div>
+      {% if other_files %}
+      <ul>
+        {% for file in other_files %}
+        <li>
+          <a href="{% url 'classroom:tasks:view_work_file' file.work.task.classroom.id file.id %}" class="attachment-item">
+            <i class='{{file.css_class}}'></i>
+            <div class="filename">{{file.filename|truncatechars:25}}</div>
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+      {% else %}
+      <div class="no-files"><i class='bx bx-info-circle' ></i><span>No Files</span></div>
+      {% endif %}
+      {% endif %}
+      
     </div>
   </div>
 </div>

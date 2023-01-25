@@ -10,6 +10,7 @@ urlpatterns = [
     path('files/<int:pk>', views.view_task_file, name="view_task_file"),
     path('work/<str:pk>', views.WorkDetail.as_view(), name="view_work"),
     path('<str:pk>/upload_work', views.upload_work, name="upload_work"),
+    path('work/files/<int:pk>', views.view_work_file, name="view_work_file"),
     path('work/<str:pk>/changesubmission', views.change_work_submission_status, name="change_work_submission_status"),
     path('work/<str:pk>/marking', views.update_work_score, name="update_work_score"),
 ]

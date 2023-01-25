@@ -89,8 +89,18 @@ def view_task_file(request, cls_pk, pk):
     if not (request.user in attachment.task.classroom.teachers.all() or request.user in attachment.task.classroom.students.all()):
         raise Http404
     context = {}
+    context['task_file'] = True
     context['current_file'] = attachment
     context['other_files'] = TaskAttachment.objects.filter(task=attachment.task).exclude(id=attachment.id)
+    return render(request, "tasks/view_file.html", context=context)
+
+def view_work_file(request, cls_pk, pk):
+    attachment = get_object_or_404(WorkAttachment, work__task__classroom__id=cls_pk, pk=pk)
+    if not (request.user in attachment.work.task.classroom.students.all()):
+        raise Http404
+    context = {}
+    context['current_file'] = attachment
+    context['other_files'] = WorkAttachment.objects.filter(work=attachment.work).exclude(id=attachment.id)
     return render(request, "tasks/view_file.html", context=context)
 
 #CBV
