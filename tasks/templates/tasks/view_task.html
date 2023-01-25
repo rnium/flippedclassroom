@@ -69,7 +69,7 @@
       <div class="title">Submissions</div>
       <div class="contents">
         {% for group in group_submissions  %}
-        <a href="">
+        <a href="{% url 'classroom:tasks:view_work' group.work.task.classroom.id group.work.id %}">
           <div class="submission">
             <div class="info">
               <div class="score">

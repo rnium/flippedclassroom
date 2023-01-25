@@ -124,6 +124,19 @@ class TaskDetail(LoginRequiredMixin, DetailView):
         return context
 
 
+class WorkDetail(LoginRequiredMixin, DetailView):
+    template_name = 'tasks/view_work.html'
+    model = Work
+    
+    def get_object(self):
+        work = super().get_object()
+        if not (self.request.user in work.task.classroom.teachers.all() or self.request.user in work.task.classroom.students.all()):
+            raise Http404
+        if not work.is_submitted:
+            raise Http404
+        return work
+
+
 @login_required
 @csrf_exempt
 def upload_work(request, cls_pk, pk):
@@ -178,3 +191,23 @@ def change_work_submission_status(request, cls_pk, pk):
     work.is_submitted = not work.is_submitted #just altering
     work.save()
     return Response(data={'info': 'success', 'is_submitted':work.is_submitted}, status=status.HTTP_200_OK)
+
+
+@api_view(["POST"])
+@permission_classes([IsAuthenticated])
+def update_work_score(request, cls_pk, pk):
+    print(request.data)
+    try:
+        work = Work.objects.get(pk=pk, task__classroom__id=cls_pk, )
+    except Work.DoesNotExist:
+        return Response(data={'info': 'Work not found'}, status=status.HTTP_404_NOT_FOUND)
+    if not work.is_submitted:
+        return Response(status=status.HTTP_400_BAD_REQUEST)
+    if request.user not in work.task.classroom.teachers.all():
+        return Response(status=status.HTTP_403_FORBIDDEN)
+    score = request.data['score']
+    if (score > work.task.marks) or (score < 0):
+        return Response(status=status.HTTP_406_NOT_ACCEPTABLE)
+    work.score = score
+    work.save()
+    return Response(data={'info': 'success', 'score':work.score}, status=status.HTTP_200_OK)

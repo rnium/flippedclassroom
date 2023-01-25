@@ -1,0 +1,139 @@
+{% extends 'classroom/base.html' %}
+{% block style %} {% load static %}
+<link rel="stylesheet" href="{% static 'tasks/styles/viewtask.css' %}">
+{% endblock style %}
+{% block title %}<title>View Work</title>{% endblock title %}
+{% block nav %}
+<ul class="navbar-nav mb-2 mb-lg-0">
+  <li class="nav-item">
+    <a class="nav-link" aria-current="page" href="{% url 'classroom:classroom_detail' work.task.classroom.id %}">Dashboard</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Weeklies</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Students</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Assessment</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">About</a>
+  </li>
+</ul>
+{% endblock nav %}
+
+{% block content %}
+<div class="view-submission-container">
+  <div class="info">
+    <div class="home-links">
+      <a href="{% url 'classroom:classroom_detail' work.task.classroom.id %}">{{work.task.classroom.name}}</a>
+      {% if work.task.weekly %}
+      <i class='bx bxs-chevron-right' ></i>
+      <a href="">Week {{work.task.weekly.weeknum}}</a>
+      {% endif %}
+      <i class='bx bxs-chevron-right' ></i>
+      <a href="{% url 'classroom:tasks:view_task' work.task.classroom.id work.task.id %}" class="current">Task</a>
+    </div>
+    <div class="score-card">
+      <div class="obtained-points" id="id-work-score-con">
+        {% if work.score %}
+        <div class="score-con">
+          <i class='bx bx-trophy'></i>
+          <div class="points"><span class="point">{{work.score}}</span>Point{{work.score|pluralize}}</div>
+        </div>
+        {% else %}
+        <div class="score-none">
+          <i class='bx bx-info-square'></i>
+          <span>Unchecked</span>
+        </div>
+        {% endif %}
+      </div>
+      <div class="task-points"><span class="num-points">{{work.task.marks}}</span>Point{{work.task.marks|pluralize}}</div>
+    </div>
+    <div class="task-title">{{ work.task.title }}</div>
+    <div class="task-type-capsule">
+      {% if work.task.is_group_task %}
+      <div class="group-task">
+        <div class="task-type-group task-type">
+          <i class='bx bxs-group'></i>
+          <span>Group Task</span>
+        </div>
+      </div>
+      {% else %}
+      <div class="individual-task">
+        <div class="task-type-indiv task-type">
+          <i class='bx bx-user'></i>
+          <span>Individual Task</span>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+    <div class="time-and-action">
+      <div class="submission-time">
+        <span class="label">Submitted at:</span>
+        <span class="time" id="{{work.id}}-st">{{work.submission_time|date:"c"}}</span>
+      </div>
+      <div class="scoring-form">
+        <input type="text" placeholder="score" id="work_score_inp">
+        <button class="btn btn-secondary" id="update_score_btn">Save</button>
+      </div>
+    </div>
+  </div>
+  <div class="bottom-pane">
+    <div class="submitted-contents">
+      <div class="title"><i class='bx bx-file'></i><span>Submitted Files</span></div>
+      <div class="accordion" id="accordion-{{work.id}}">
+        {% for file in work.attachments %}
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="heading{{file.id}}">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{{file.id}}" aria-expanded="false" aria-controls="collapse-{{file.id}}">
+              {{file.filename}}
+            </button>
+          </h2>
+          <div id="collapse-{{file.id}}" class="accordion-collapse collapse" aria-labelledby="heading{{file.id}}" data-bs-parent="#accordion-{{work.id}}">
+            <div class="accordion-body">
+              <embed src="{{file.attached_file.url}}" type="">
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% if work.group %}
+    <div class="group-members">
+      <div class="title">Group Members</div>
+      <ul>
+        {% for member in work.group.members.all %}
+        <li>
+          <div class="dp">
+            <img src="{{member.account.avatar_url}}" alt="">
+          </div>
+          <div class="name">{{member.account.user_full_name}}</div>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+    
+  </div>
+</div>
+{% endblock content %}
+
+{% block script %}
+<script type="text/javascript" src="{% static 'classroom/scripts/localtimes.js' %}"></script>
+<script type="text/javascript" src="{% static 'tasks/scripts/view_work.js' %}"></script>
+<script>
+  const update_work_score_api = "{% url 'classroom:tasks:update_work_score' work.task.classroom.id work.id %}"
+  let csrftoken = "{{ csrf_token }}"
+  let marks = {{ work.task.marks }}
+</script>
+{% endblock script %}
+
+
+
+
+
+
+
+
