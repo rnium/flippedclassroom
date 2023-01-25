@@ -21,7 +21,23 @@ from tasks.utils import random_subsets
 def create_task(request, cls_pk):
     classroom = get_object_or_404(Classroom, pk=cls_pk)
     if request.method == "GET":
-        return render(request, 'tasks/create_task.html', context={'classroom':classroom})
+        weekly_pk = request.GET.get('weekly', None)
+        context = {}
+        context['classroom'] = classroom
+        if weekly_pk != None:
+            weekly = get_object_or_404(Weekly, pk=weekly_pk)
+            context['weeknum'] = weekly.weeknum
+            contentcode = request.GET.get('contentcode', False)
+            if contentcode != False:
+                if contentcode == "0":
+                    context['section'] = "PreClass"
+                elif contentcode == "1":
+                    context['section'] = "InClass"
+                elif contentcode == "2":
+                    context['section'] = "PostClass"
+                else:
+                    return HttpResponse("Invalid Contentcode")
+        return render(request, 'tasks/create_task.html', context=context)
     elif request.method == "POST":
         task_obj_kwargs = {"classroom":classroom}
         weekly_pk = request.GET.get('weekly', None)

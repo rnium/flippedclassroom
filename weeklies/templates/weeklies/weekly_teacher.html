@@ -261,7 +261,7 @@
             <div class="links title-box">
               <div class="content">
                 <a class="create-test" href="{% url 'weekly_test:create_question' weekly.id %}?contentcode=0"><i class='bx bx-edit-alt'></i><span>Take Test</span></a>
-                <a class="create-work" href=""><i class='bx bx-briefcase'></i><span>Assign Task</span></a>
+                <a class="create-work" href="{% url 'classroom:tasks:create_task' weekly.classroom.id %}?weekly={{weekly.id}}&contentcode=0"><i class='bx bx-briefcase'></i><span>Assign Task</span></a>
               </div>
             </div>
           </div>
@@ -486,7 +486,7 @@
             <div class="links title-box">
               <div class="content">
                 <a class="create-test" href="{% url 'weekly_test:create_question' weekly.id %}?contentcode=1"><i class='bx bx-edit-alt'></i><span>Take Test</span></a>
-                <a class="create-work" href=""><i class='bx bx-briefcase'></i><span>Assign Task</span></a>
+                <a class="create-work" href="{% url 'classroom:tasks:create_task' weekly.classroom.id %}?weekly={{weekly.id}}&contentcode=1"><i class='bx bx-briefcase'></i><span>Assign Task</span></a>
               </div>
             </div>
           </div>
@@ -713,7 +713,7 @@
             <div class="links title-box">
               <div class="content">
                 <a class="create-test" href="{% url 'weekly_test:create_question' weekly.id %}?contentcode=2"><i class='bx bx-edit-alt'></i><span>Take Test</span></a>
-                <a class="create-work" href=""><i class='bx bx-briefcase'></i><span>Assign Task</span></a>
+                <a class="create-work" href="{% url 'classroom:tasks:create_task' weekly.classroom.id %}?weekly={{weekly.id}}&contentcode=2"><i class='bx bx-briefcase'></i><span>Assign Task</span></a>
               </div>
             </div>
           </div>

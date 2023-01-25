@@ -26,7 +26,7 @@
 
 {% block content %}
 <div class="create-assignment-container">
-<div class="page-title">Assignment for {{ classroom.name }}</div>
+<div class="page-title">Assignment for {{ classroom.name }}&nbsp;{% if weeknum  %}Week-{{weeknum}}&nbsp;{{section}}{% endif %}</div>
 <form action="" method="POST" id="create-assignment-form" enctype="multipart/form-data">
     {% csrf_token %}
     <div class="mark-input">
