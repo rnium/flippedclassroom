@@ -114,6 +114,14 @@
         {% endfor %}
       </ul>
     </div>
+    {% else %}
+    <div class="submitting-student">
+      <div class="title">Submitted By</div>
+      <div class="user">
+        <div class="dp" style="background-image: url('{{work.submission_by.account.avatar_url}}');"></div>
+        <div class="name">{{work.submission_by.account.user_full_name}}</div>
+      </div>
+    </div>
     {% endif %}
     
   </div>

@@ -137,6 +137,7 @@ body .main .view-task-container .left-col .task-info .task-instruction .attachme
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  width: 14rem;
   position: relative;
   background-color: rgba(233, 237, 241, 0.5);
   border-radius: 10px 20px 10px 10px;
@@ -306,6 +307,7 @@ body .main .view-task-container .right-col .my-work {
   -webkit-box-shadow: 0 0 10px #e9e9e9;
           box-shadow: 0 0 10px #e9e9e9;
   margin-left: 2rem;
+  margin-bottom: 5rem;
 }
 
 body .main .view-task-container .right-col .my-work .title {
@@ -607,17 +609,16 @@ body .main .view-task-container .right-col .my-work .teammates ul li:last-of-typ
 body .main .view-task-container .right-col .my-work .teammates ul li .dp {
   overflow: hidden;
   margin-right: 10px;
-  min-width: 30px;
-  max-width: 30px;
-  min-height: 30px;
-  max-height: 30px;
-  border-radius: 180px;
-  -webkit-box-shadow: 0 0 5px #88aa9f;
-          box-shadow: 0 0 5px #88aa9f;
-}
-
-body .main .view-task-container .right-col .my-work .teammates ul li .dp img {
-  width: 100%;
+  min-width: 35px;
+  max-width: 35px;
+  min-height: 35px;
+  max-height: 35px;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  -webkit-box-shadow: 0 0 2px #88aa9f;
+          box-shadow: 0 0 2px #88aa9f;
 }
 
 body .main .view-task-container .right-col .my-work .teammates ul li .name {
@@ -851,17 +852,16 @@ body .main .view-task-container .right-col .submissions .contents a .submission 
 body .main .view-task-container .right-col .submissions .contents a .submission .group-members ul li .dp {
   overflow: hidden;
   margin-right: 10px;
-  min-width: 30px;
-  max-width: 30px;
-  min-height: 30px;
-  max-height: 30px;
-  border-radius: 180px;
-  -webkit-box-shadow: 0 0 5px #88aa9f;
-          box-shadow: 0 0 5px #88aa9f;
-}
-
-body .main .view-task-container .right-col .submissions .contents a .submission .group-members ul li .dp img {
-  width: 100%;
+  min-width: 35px;
+  max-width: 35px;
+  min-height: 35px;
+  max-height: 35px;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  -webkit-box-shadow: 0 0 2px #88aa9f;
+          box-shadow: 0 0 2px #88aa9f;
 }
 
 body .main .view-task-container .right-col .submissions .contents a .submission .group-members ul li .name {
@@ -1020,17 +1020,16 @@ body .main .view-task-container .right-col .submissions .contents .unsubmitting 
 body .main .view-task-container .right-col .submissions .contents .unsubmitting .group-members ul li .dp {
   overflow: hidden;
   margin-right: 10px;
-  min-width: 30px;
-  max-width: 30px;
-  min-height: 30px;
-  max-height: 30px;
-  border-radius: 180px;
-  -webkit-box-shadow: 0 0 5px #88aa9f;
-          box-shadow: 0 0 5px #88aa9f;
-}
-
-body .main .view-task-container .right-col .submissions .contents .unsubmitting .group-members ul li .dp img {
-  width: 100%;
+  min-width: 35px;
+  max-width: 35px;
+  min-height: 35px;
+  max-height: 35px;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  -webkit-box-shadow: 0 0 2px #88aa9f;
+          box-shadow: 0 0 2px #88aa9f;
 }
 
 body .main .view-task-container .right-col .submissions .contents .unsubmitting .group-members ul li .name {
@@ -1511,14 +1510,14 @@ body .main .view-submission-container .bottom-pane .submitted-contents .accordio
   background-color: #e4eaed !important;
 }
 
-body .main .view-submission-container .bottom-pane .group-members {
+body .main .view-submission-container .bottom-pane .group-members, body .main .view-submission-container .bottom-pane .submitting-student {
   width: 30%;
   padding: 10px 2rem;
   border-radius: 10px;
   background-color: white;
 }
 
-body .main .view-submission-container .bottom-pane .group-members .title {
+body .main .view-submission-container .bottom-pane .group-members .title, body .main .view-submission-container .bottom-pane .submitting-student .title {
   font-family: 'Gemunu Libre', sans-serif;
   text-align: center;
   color: #57a1a1;
@@ -1526,12 +1525,12 @@ body .main .view-submission-container .bottom-pane .group-members .title {
   font-size: 1.1rem;
 }
 
-body .main .view-submission-container .bottom-pane .group-members ul {
+body .main .view-submission-container .bottom-pane .group-members ul, body .main .view-submission-container .bottom-pane .submitting-student ul {
   list-style-type: none;
   padding: 0;
 }
 
-body .main .view-submission-container .bottom-pane .group-members ul li {
+body .main .view-submission-container .bottom-pane .group-members ul li, body .main .view-submission-container .bottom-pane .submitting-student ul li {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1546,29 +1545,66 @@ body .main .view-submission-container .bottom-pane .group-members ul li {
   margin-bottom: 10px;
 }
 
-body .main .view-submission-container .bottom-pane .group-members ul li:last-of-type {
+body .main .view-submission-container .bottom-pane .group-members ul li:last-of-type, body .main .view-submission-container .bottom-pane .submitting-student ul li:last-of-type {
   margin-bottom: 0;
 }
 
-body .main .view-submission-container .bottom-pane .group-members ul li .dp {
+body .main .view-submission-container .bottom-pane .group-members ul li .dp, body .main .view-submission-container .bottom-pane .submitting-student ul li .dp {
   overflow: hidden;
   margin-right: 10px;
-  min-width: 40px;
-  max-width: 40px;
-  min-height: 40px;
-  max-height: 40px;
-  border-radius: 180px;
-  -webkit-box-shadow: 0 0 5px #c1d6d0;
-          box-shadow: 0 0 5px #c1d6d0;
+  min-width: 35px;
+  max-width: 35px;
+  min-height: 35px;
+  max-height: 35px;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  -webkit-box-shadow: 0 0 2px #88aa9f;
+          box-shadow: 0 0 2px #88aa9f;
 }
 
-body .main .view-submission-container .bottom-pane .group-members ul li .dp img {
-  width: 100%;
-}
-
-body .main .view-submission-container .bottom-pane .group-members ul li .name {
+body .main .view-submission-container .bottom-pane .group-members ul li .name, body .main .view-submission-container .bottom-pane .submitting-student ul li .name {
   font-size: 0.9rem;
   position: relative;
+}
+
+body .main .view-submission-container .bottom-pane .group-members .user, body .main .view-submission-container .bottom-pane .submitting-student .user {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0.5rem 0;
+  padding-top: 10px;
+  border-top: 1px solid gainsboro;
+}
+
+body .main .view-submission-container .bottom-pane .group-members .user .dp, body .main .view-submission-container .bottom-pane .submitting-student .user .dp {
+  overflow: hidden;
+  margin-right: 10px;
+  min-width: 50px;
+  max-width: 50px;
+  min-height: 50px;
+  max-height: 50px;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  -webkit-box-shadow: 0 0 2px #88aa9f;
+          box-shadow: 0 0 2px #88aa9f;
+}
+
+body .main .view-submission-container .bottom-pane .group-members .user .name, body .main .view-submission-container .bottom-pane .submitting-student .user .name {
+  margin-top: 10px;
+  color: #50b291;
+  text-shadow: 0 0 5px #ceded9;
 }
 
 body .main .view-file-container {
@@ -1653,247 +1689,9 @@ body .main .view-file-container .info .home-links a.current:hover {
   color: white;
 }
 
-body .main .view-file-container .info .score-card {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  justify-items: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin: 1.5rem 0;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-}
-
-body .main .view-file-container .info .score-card .obtained-points .score-con {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  justify-items: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  background-color: rgba(215, 224, 230, 0.6);
-  border-radius: 180px;
-  overflow: hidden;
-}
-
-body .main .view-file-container .info .score-card .obtained-points .score-con i {
-  font-size: 1.5rem;
-  padding: 7px;
-  background-color: #23d6d6;
-  color: white;
-  border-radius: 180px;
-}
-
-body .main .view-file-container .info .score-card .obtained-points .score-con .points {
-  padding: 0 15px 0 10px;
-  font-family: 'Gemunu Libre', sans-serif;
-  font-size: 1.1rem;
-}
-
-body .main .view-file-container .info .score-card .obtained-points .score-con .points .point {
-  font-family: 'Gemunu Libre', sans-serif;
-  font-weight: 600;
-  margin-right: 3px;
-}
-
-body .main .view-file-container .info .score-card .obtained-points .score-none {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  justify-items: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-body .main .view-file-container .info .score-card .obtained-points .score-none i {
-  font-size: 1.5rem;
-  margin-right: 10px;
-}
-
-body .main .view-file-container .info .score-card .obtained-points .score-none i, body .main .view-file-container .info .score-card .obtained-points .score-none span {
-  color: #c90f82;
-  text-shadow: 0 0 5px rgba(172, 122, 196, 0.3);
-}
-
-body .main .view-file-container .info .score-card .task-points {
-  font-family: 'Gemunu Libre', sans-serif;
-  color: #8a7eac;
-  font-size: 1.1rem;
-}
-
-body .main .view-file-container .info .score-card .task-points .num-points {
-  margin-right: 5px;
-  color: rebeccapurple;
-  font-weight: 500;
-}
-
-body .main .view-file-container .info .score-card .task-points::before {
-  content: "Task of";
-  margin-right: 7px;
-  display: inline-block;
-  background-color: #d9e4e4a4;
-  border-radius: 5px;
-  padding: 0 10px;
-  color: #637d96;
-}
-
 body .main .view-file-container .info .task-title {
   text-align: center;
   font-size: 1.2rem;
-}
-
-body .main .view-file-container .info .task-type-capsule .group-task {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  justify-items: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-body .main .view-file-container .info .task-type-capsule .group-task .task-type-group {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  justify-items: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  border-radius: 180px;
-  overflow: hidden;
-  padding: 4px;
-  margin-top: 1rem;
-}
-
-body .main .view-file-container .info .task-type-capsule .group-task .task-type-group i {
-  font-size: 1.2rem;
-  padding: 5px;
-  border-radius: 180px;
-  color: cyan;
-  font-size: 1.2rem;
-  background-color: #2b92b1;
-}
-
-body .main .view-file-container .info .task-type-capsule .group-task .task-type-group span {
-  font-family: 'Gemunu Libre', sans-serif;
-  padding: 0 10px 0 5px;
-}
-
-body .main .view-file-container .info .time-and-action {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  justify-items: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-}
-
-body .main .view-file-container .info .time-and-action .submission-time {
-  font-size: 0.9rem;
-}
-
-body .main .view-file-container .info .time-and-action .submission-time .label {
-  color: #8baaaa;
-  font-family: 'Gemunu Libre', sans-serif;
-  font-size: 1rem;
-  margin-right: 5px;
-}
-
-body .main .view-file-container .info .time-and-action .scoring-form {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  justify-items: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-body .main .view-file-container .info .time-and-action .scoring-form input {
-  width: 10rem;
-  padding: 5px 10px;
-  margin-right: 10px;
-  border-radius: 5px;
-  border: 1px solid #b6b6b6;
-  font-size: 1rem;
-}
-
-body .main .view-file-container .info .time-and-action .scoring-form input:focus {
-  outline: 2px solid #01a16c;
-  border-color: #01a16c;
-  -webkit-box-shadow: 0 0 5px #a1a1a1;
-          box-shadow: 0 0 5px #a1a1a1;
-}
-
-body .main .view-file-container .info .time-and-action .scoring-form input:focus ~ label {
-  color: #01a16c;
-}
-
-body .main .view-file-container .info .time-and-action .scoring-form input::-webkit-input-placeholder {
-  color: #9ea09f;
-}
-
-body .main .view-file-container .info .time-and-action .scoring-form input:-ms-input-placeholder {
-  color: #9ea09f;
-}
-
-body .main .view-file-container .info .time-and-action .scoring-form input::-ms-input-placeholder {
-  color: #9ea09f;
-}
-
-body .main .view-file-container .info .time-and-action .scoring-form input::placeholder {
-  color: #9ea09f;
-}
-
-body .main .view-file-container .info .time-and-action .scoring-form input::-moz-selection {
-  background-color: #24ce95;
-  color: white;
-}
-
-body .main .view-file-container .info .time-and-action .scoring-form input::selection {
-  background-color: #24ce95;
-  color: white;
-}
-
-body .main .view-file-container .info .time-and-action .scoring-form button {
-  padding: 5px 15px;
 }
 
 body .main .view-file-container .bottom-pane {
@@ -2028,6 +1826,31 @@ body .main .view-file-container .bottom-pane .other-files ul li a i {
 body .main .view-file-container .bottom-pane .other-files ul li a .filename {
   padding: 0 10px;
   font-size: 0.9rem;
+}
+
+body .main .view-file-container .bottom-pane .other-files .no-files {
+  width: 100%;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 2.5rem 0 4rem;
+}
+
+body .main .view-file-container .bottom-pane .other-files .no-files i {
+  font-size: 1.3rem;
+  margin-right: 5px;
 }
 
 @-webkit-keyframes opacity1 {

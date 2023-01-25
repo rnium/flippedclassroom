@@ -127,7 +127,7 @@ class TaskDetail(LoginRequiredMixin, DetailView):
                 students = task.classroom.students.all()
                 unsubmitting_indiv = []
                 for s in students:
-                    qs = Work.objects.filter(task=task, submission_by=s)
+                    qs = Work.objects.filter(task=task, submission_by=s, is_submitted=True)
                     if len(qs) == 0:
                         unsubmitting_indiv.append(s)
                 context['unsubmitting_indiv'] = unsubmitting_indiv

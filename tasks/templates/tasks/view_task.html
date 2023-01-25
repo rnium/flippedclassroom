@@ -106,7 +106,7 @@
         </a>
         {% endfor %}
         {% for indiv_work in indiv_submissions  %}
-        <a href="">
+        <a href="{% url 'classroom:tasks:view_work' indiv_work.task.classroom.id indiv_work.id %}">
           <div class="submission">
             <div class="info">
               <div class="score">
