@@ -166,6 +166,26 @@ class Weekly(models.Model):
     @property
     def has_forum_post(self):
         return bool(len(self.forum_posts))
+    
+    # assigned tasks
+    @property
+    def preClassOngoingTask(self):
+        timenow = timezone.now()
+        return self.task_set.filter(preclass=True, deadline__gte=timenow).order_by('deadline')
+    
+    @property
+    def preClassPreviousTask(self):
+        timenow = timezone.now()
+        return self.task_set.filter(preclass=True, deadline__lt=timenow).order_by('deadline')
+    
+    @property
+    def has_pre_class_tasks(self):
+        return bool(len(self.preClassOngoingTask) + len(self.preClassPreviousTask))
+    
+    @property
+    def has_pre_class_ongoing_task(self):
+        return bool(len(self.preClassOngoingTask))
+    
      
     
 class PreClassFile(models.Model):

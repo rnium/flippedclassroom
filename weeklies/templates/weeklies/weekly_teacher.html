@@ -230,32 +230,38 @@
             <div class="weekly-tasks title-box">
               <div class="title">Assigned Task</div>
               <div class="content">
+                {% if weekly.has_pre_class_tasks %}
                 <ul>
-                    <li>
-                      <a href="">
-                        <div class="assignment due list-item">
-                          <i class='bx bxs-briefcase'></i>
-                          <div class="info">
-                            <div class="label-title">assignment title</div>
-                            <div class="deadline"><span class="sub-title">Deadline:</span><span class="time">7:00PM, 17 Oct 2022</span></div>
-                          </div>
+                  {% for task in weekly.preClassOngoingTask %}
+                  <li>
+                    <a href="{% url 'classroom:tasks:view_task' task.classroom.id task.id %}">
+                      <div class="assignment due list-item">
+                        <i class='bx bxs-briefcase'></i>
+                        <div class="info">
+                          <div class="label-title">{{task.title}}</div>
+                          <div class="deadline"><span class="sub-title">Deadline:</span><span class="time" id="deadline_{{task.id}}">{{task.deadline|date:"c"}}</span></div>
                         </div>
-                      </a>
-                    </li>
-
-                    <li>
-                      <a href="">
-                        <div class="assignment list-item">
-                          <i class='bx bx-briefcase' ></i>
-                          <div class="info">
-                            <div class="label-title">assignment title</div>
-                            <div class="deadline"><span class="sub-title">Closed:</span><span class="time">7:00PM, 17 Oct 2022</span></div>
-                          </div>
+                      </div>
+                    </a>
+                  </li>
+                  {% endfor %}
+                  {% for task in weekly.preClassPreviousTask %}
+                  <li>
+                    <a href="{% url 'classroom:tasks:view_task' task.classroom.id task.id %}">
+                      <div class="assignment list-item">
+                        <i class='bx bx-briefcase' ></i>
+                        <div class="info">
+                          <div class="label-title">{{task.title}}</div>
+                          <div class="deadline"><span class="sub-title">Closed:</span><span class="time" id="deadline_{{task.id}}">{{task.deadline|date:"c"}}</span></div>
                         </div>
-                      </a>
-                    </li>
-                  </ul>
-                <!-- <div class="no-content"><i class='bx bx-info-circle'></i><span>No upcoming events</span></div> -->
+                      </div>
+                    </a>
+                  </li>
+                  {% endfor %}
+                </ul>
+                {% else %}
+                <div class="no-content"><i class='bx bx-info-circle'></i><span>No Tasks</span></div>
+                {% endif %}
               </div>
             </div>
             <div class="links title-box">
