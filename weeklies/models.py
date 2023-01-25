@@ -168,6 +168,7 @@ class Weekly(models.Model):
         return bool(len(self.forum_posts))
     
     # assigned tasks
+    # pre-class task
     @property
     def preClassOngoingTask(self):
         timenow = timezone.now()
@@ -185,6 +186,42 @@ class Weekly(models.Model):
     @property
     def has_pre_class_ongoing_task(self):
         return bool(len(self.preClassOngoingTask))
+    # in-class task
+    @property
+    def inClassOngoingTask(self):
+        timenow = timezone.now()
+        return self.task_set.filter(inclass=True, deadline__gte=timenow).order_by('deadline')
+    
+    @property
+    def inClassPreviousTask(self):
+        timenow = timezone.now()
+        return self.task_set.filter(inclass=True, deadline__lt=timenow).order_by('deadline')
+    
+    @property
+    def has_in_class_tasks(self):
+        return bool(len(self.inClassOngoingTask) + len(self.inClassPreviousTask))
+    
+    @property
+    def has_in_class_ongoing_task(self):
+        return bool(len(self.inClassOngoingTask))
+    # post-class task
+    @property
+    def postClassOngoingTask(self):
+        timenow = timezone.now()
+        return self.task_set.filter(postclass=True, deadline__gte=timenow).order_by('deadline')
+    
+    @property
+    def postClassPreviousTask(self):
+        timenow = timezone.now()
+        return self.task_set.filter(postclass=True, deadline__lt=timenow).order_by('deadline')
+    
+    @property
+    def has_post_class_tasks(self):
+        return bool(len(self.postClassOngoingTask) + len(self.postClassPreviousTask))
+    
+    @property
+    def has_post_class_ongoing_task(self):
+        return bool(len(self.postClassOngoingTask))
     
      
     
