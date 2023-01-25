@@ -16,6 +16,8 @@ from weeklies.models import Weekly
 from tasks.models import Task, TaskAttachment, Group, Work, WorkAttachment
 from tasks.utils import random_subsets
 
+
+# FBV
 def create_task(request, cls_pk):
     classroom = get_object_or_404(Classroom, pk=cls_pk)
     if request.method == "GET":
@@ -82,7 +84,16 @@ def create_task(request, cls_pk):
         
         return redirect('classroom:tasks:view_task', cls_pk=cls_pk, pk=task.id)
 
+def view_task_file(request, cls_pk, pk):
+    attachment = get_object_or_404(TaskAttachment, task__classroom__id=cls_pk, pk=pk)
+    if not (request.user in attachment.task.classroom.teachers.all() or request.user in attachment.task.classroom.students.all()):
+        raise Http404
+    context = {}
+    context['current_file'] = attachment
+    context['other_files'] = TaskAttachment.objects.filter(task=attachment.task).exclude(id=attachment.id)
+    return render(request, "tasks/view_file.html", context=context)
 
+#CBV
 class TaskDetail(LoginRequiredMixin, DetailView):
     template_name = 'tasks/view_task.html'
     model = Task
@@ -138,6 +149,7 @@ class WorkDetail(LoginRequiredMixin, DetailView):
         return work
 
 
+#API
 @login_required
 @csrf_exempt
 def upload_work(request, cls_pk, pk):
@@ -199,7 +211,6 @@ def change_work_submission_status(request, cls_pk, pk):
         work.submission_time = timezone.now()
     work.save()
     return Response(data={'info': 'success', 'is_submitted':work.is_submitted}, status=status.HTTP_200_OK)
-
 
 @api_view(["POST"])
 @permission_classes([IsAuthenticated])

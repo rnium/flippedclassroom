@@ -30,7 +30,7 @@
       <a href="{% url 'classroom:classroom_detail' work.task.classroom.id %}">{{work.task.classroom.name}}</a>
       {% if work.task.weekly %}
       <i class='bx bxs-chevron-right' ></i>
-      <a href="">Week {{work.task.weekly.weeknum}}</a>
+      <a href="{% url 'weeklies:weeklydetail' work.task.weekly.classroom.id work.task.weekly.weeknum %}">Week {{work.task.weekly.weeknum}}</a>
       {% endif %}
       <i class='bx bxs-chevron-right' ></i>
       <a href="{% url 'classroom:tasks:view_task' work.task.classroom.id work.task.id %}" class="current">Task</a>

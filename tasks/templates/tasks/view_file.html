@@ -1,0 +1,164 @@
+{% extends 'classroom/base.html' %}
+{% block style %} {% load static %}
+<link rel="stylesheet" href="{% static 'tasks/styles/viewtask.css' %}">
+{% endblock style %}
+{% block title %}<title>View Task</title>{% endblock title %}
+{% block nav %}
+<ul class="navbar-nav mb-2 mb-lg-0">
+  <li class="nav-item">
+    <a class="nav-link" aria-current="page" href="{% url 'classroom:classroom_detail' current_file.task.classroom.id %}">Dashboard</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Weeklies</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Students</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Assessment</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">About</a>
+  </li>
+</ul>
+{% endblock nav %}
+
+{% block content %}
+<div class="view-file-container">
+  <div class="info">
+    <div class="home-links">
+      <a href="">{{ current_file.task.classroom.name }}</a>
+      {% if current_file.task.weekly %}
+      <i class='bx bxs-chevron-right' ></i>
+      <a href="{% url 'weeklies:weeklydetail' current_file.task.weekly.classroom.id current_file.task.weekly.weeknum %}">Week {{current_file.task.weekly.weeknum}}</a>
+      {% endif %}
+      <i class='bx bxs-chevron-right' ></i>
+      <a href="{% url 'classroom:tasks:view_task' current_file.task.classroom.id current_file.task.id %}" class="current">Task</a>
+    </div>
+    <div class="task-title">{{current_file.task.title}}</div>
+  </div>
+  <div class="bottom-pane">
+    <div class="file-content">
+      <div class="accordion" id="accordionExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingOne">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              {{current_file.filename}}
+            </button>
+          </h2>
+          <div id="collapseOne" class="accordion-collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <embed src="{{ current_file.attached_file.url }}" type="">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="other-files">
+      <div class="title">Other Attached Files</div>
+      {% if other_files %}
+      <ul>
+        {% for file in other_files %}
+        <li>
+          <a href="{% url 'classroom:tasks:view_task_file' file.task.classroom.id file.id %}" class="attachment-item">
+            <i class='{{file.css_class}}'></i>
+            <div class="filename">{{file.filename|truncatechars:25}}</div>
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+      {% else %}
+      <div class="no-files"><i class='bx bx-info-circle' ></i><span>No Files</span></div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock content %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="styles/viewtask.css">
+    <title>view file</title>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg bg-light">
+            <div class="container-fluid">
+              <div class="navbar-brand flexer-row ms-4" href="#">
+                  <div class="site-title">OpenClassroom</div>
+              </div>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Dashboard</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Class Tests</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Student
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#">Student list</a></li>
+                      <li><a class="dropdown-item" href="#">Student groups</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Class Archives</a>
+                  </li>
+                </ul>
+                <div class="user ms-auto me-4">
+                  <div class="avatar">
+                    <img src="/images/dp3.jpg" alt="">
+                  </div>
+                  <span class="name">First Name</span>
+                  <a href="" class="btn-1-outlined">Logout</a>
+                </div>
+              </div>
+            </div>
+          </nav>
+    </header>
+    <div class="main">
+        
+    </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script> 
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+</body>
+</html>

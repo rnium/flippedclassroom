@@ -54,7 +54,7 @@
         {% endif %}
         <div class="attachments">
           {% for file in task.taskattachment_set.all %}
-          <a href="" class="attachment-item">
+          <a href="{% url 'classroom:tasks:view_task_file' file.task.classroom.id file.id %}" class="attachment-item">
             <i class='{{ file.css_class }}'></i>
             <div class="filename">{{ file.filename|truncatechars:20 }}</div>
           </a>
