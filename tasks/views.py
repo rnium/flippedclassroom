@@ -222,6 +222,30 @@ def change_work_submission_status(request, cls_pk, pk):
     work.save()
     return Response(data={'info': 'success', 'is_submitted':work.is_submitted}, status=status.HTTP_200_OK)
 
+
+@api_view(["POST"])
+@permission_classes([IsAuthenticated])
+def delete_work(request, cls_pk, pk):
+    try:
+        work = Work.objects.get(pk=pk, task__classroom__id=cls_pk)
+    except Work.DoesNotExist:
+        return Response(data={'info': 'Work not found'}, status=status.HTTP_404_NOT_FOUND)
+    if work.task.is_group_task:
+        if request.user not in work.group.members.all():
+            return Response(status=status.HTTP_403_FORBIDDEN)
+    else:
+        if work.submission_by != request.user:
+            return Response(status=status.HTTP_403_FORBIDDEN)
+    
+    # if work has score, cannot be deleted
+    if work.score != None:
+        return Response(status=status.HTTP_406_NOT_ACCEPTABLE)
+
+    work.delete()
+    return Response(data={'info': 'deleted', 'is_deleted':True}, status=status.HTTP_204_NO_CONTENT)
+
+
+
 @api_view(["POST"])
 @permission_classes([IsAuthenticated])
 def update_work_score(request, cls_pk, pk):

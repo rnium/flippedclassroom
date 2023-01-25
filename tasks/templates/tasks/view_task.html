@@ -118,9 +118,8 @@
                 {% else %}
                 <div class="unchecked">Unchecked</div>
                 {% endif %}
-                
               </div>
-              <div class="submit-time {% if group_task.is_late %}done-late{% endif %}">
+              <div class="submit-time {% if indiv_work.is_late %}done-late{% endif %}">
                 <i class='bx bx-timer'></i>
                 <span class="time" id="work{{indiv_work.id}}-submit-time">{{ indiv_work.submission_time|date:"c" }}</span>
               </div>
@@ -195,7 +194,17 @@
         {% if work.score %}
         <div class="obtained-score"><i class='bx bx-trophy'></i><span class="point">{{work.score}}</span>Points</div>
         {% else %}
-        {% if work.is_submitted %}<button class="action-btn unsubmit" id="alt_sub_status_btn">Unsubmit</button>{% else %}<button class="action-btn submit" id="alt_sub_status_btn">Submit</button>{% endif %}
+        {% if work.is_submitted %}
+        <div class="buttons-container">
+          <button class="action-btn unsubmit" id="alt_sub_status_btn">Unsubmit</button>
+          <button class="del-btn" id="work-del-btn" style="display: none;"><i class='bx bx-trash-alt'></i></button>
+        </div>
+        {% else %}
+        <div class="buttons-container">
+          <button class="action-btn submit" id="alt_sub_status_btn">Submit</button>
+          <button class="del-btn" id="work-del-btn"><i class='bx bx-trash-alt'></i></button>
+        </div>
+        {% endif %}
         
         {% endif %}
       </div>
@@ -237,6 +246,7 @@
   const upload_work_url = "{% url 'classroom:tasks:upload_work' task.classroom.id task.id %}"
   {% if work %}
   const change_work_submission_status_api = "{% url 'classroom:tasks:change_work_submission_status' work.task.classroom.id work.id %}"
+  const delete_work_api_url = "{% url 'classroom:tasks:delete_work' work.task.classroom.id work.id %}"
   {% endif %}
   let csrftoken = "{{ csrf_token }}"
 </script>

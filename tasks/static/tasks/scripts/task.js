@@ -44,12 +44,16 @@ function change_work_status() {
         success: function(response){
             if (response['is_submitted']) {
                 $("#alt_sub_status_btn").text("Unsubmit")
-                $("#alt_sub_status_btn").removeClass("submit")
-                $("#alt_sub_status_btn").addClass("unsubmit")
+                $("#work-del-btn").hide(0, function () { 
+                    $("#alt_sub_status_btn").removeClass("submit")
+                    $("#alt_sub_status_btn").addClass("unsubmit")
+                 })
             } else {
                 $("#alt_sub_status_btn").text("Submit")
-                $("#alt_sub_status_btn").removeClass("unsubmit")
-                $("#alt_sub_status_btn").addClass("submit")
+                $("#work-del-btn").show(0, ()=>{
+                    $("#alt_sub_status_btn").removeClass("unsubmit")
+                    $("#alt_sub_status_btn").addClass("submit")
+                })
             }
         },
         complete: function(){
@@ -64,11 +68,39 @@ function change_work_status() {
 }
 
 
+function delete_work() {
+    $.ajax({
+        url: delete_work_api_url,
+        contentType: "application/json",
+        type: "POST",
+        beforeSend: function(xhr){
+            xhr.setRequestHeader("X-CSRFToken", csrftoken);
+            $("#alt_sub_status_btn").attr('disabled', true);
+            $("#work-del-btn").attr('disabled', true);
+        },
+        cache: false,
+        dataType: "json",
+        success: function(response){
+            location.reload()
+        },
+        error: function(){
+            $("#alt_sub_status_btn").attr('disabled', false);
+            $("#work-del-btn").attr('disabled', false);
+        },
+        statusCode: {
+            406: function() {
+                alert("Unable to delete, please refresh");
+            }
+        }
+    })
+}
+
 
 $(document).ready(function () {
     $("#post-files").on('change', ()=>{
         upload_work()
     })
-    $("#alt_sub_status_btn").on('click', change_work_status)    
+    $("#alt_sub_status_btn").on('click', change_work_status);  
+    $("#work-del-btn").on('click', delete_work)  
 });
 

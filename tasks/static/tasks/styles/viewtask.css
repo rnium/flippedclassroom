@@ -532,20 +532,34 @@ body .main .view-task-container .right-col .my-work .uploaded-work .obtained-sco
   margin: 0 3px 0 10px;
 }
 
-body .main .view-task-container .right-col .my-work .uploaded-work .action-btn {
-  width: 70%;
-  border-radius: 180px;
-  padding: 0.1rem 1rem;
-  margin-left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
-  font-family: 'Gemunu Libre', sans-serif;
-  font-size: 1.2rem;
-  -webkit-transition: all 200ms;
-  transition: all 200ms;
+body .main .view-task-container .right-col .my-work .uploaded-work .buttons-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
-body .main .view-task-container .right-col .my-work .uploaded-work .action-btn.submit {
+body .main .view-task-container .right-col .my-work .uploaded-work .buttons-container .action-btn {
+  border-radius: 180px;
+  padding: 0.1rem 1rem;
+  font-family: 'Gemunu Libre', sans-serif;
+  font-size: 1.2rem;
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
+}
+
+body .main .view-task-container .right-col .my-work .uploaded-work .buttons-container .action-btn.submit {
+  width: 70%;
   background-color: #8a7eac;
   border: 2px solid #8a7eac;
   color: white;
@@ -553,18 +567,47 @@ body .main .view-task-container .right-col .my-work .uploaded-work .action-btn.s
           box-shadow: 2px 2px 5px gainsboro;
 }
 
-body .main .view-task-container .right-col .my-work .uploaded-work .action-btn.submit:hover {
+body .main .view-task-container .right-col .my-work .uploaded-work .buttons-container .action-btn.submit:hover {
   background-color: #7e70a5;
 }
 
-body .main .view-task-container .right-col .my-work .uploaded-work .action-btn.unsubmit {
+body .main .view-task-container .right-col .my-work .uploaded-work .buttons-container .action-btn.unsubmit {
+  width: 75%;
   background-color: inherit;
   border: 2px solid #8a7eac;
   color: #8a7eac;
 }
 
-body .main .view-task-container .right-col .my-work .uploaded-work .action-btn.unsubmit:hover {
+body .main .view-task-container .right-col .my-work .uploaded-work .buttons-container .action-btn.unsubmit:hover {
   background-color: rgba(233, 231, 240, 0.5);
+}
+
+body .main .view-task-container .right-col .my-work .uploaded-work .buttons-container .del-btn {
+  border-radius: 50%;
+  margin-left: 7px;
+  border: 0;
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
+  background-color: white;
+  -webkit-box-shadow: 2px 3px 5px gainsboro, -1px -1px 3px gainsboro;
+          box-shadow: 2px 3px 5px gainsboro, -1px -1px 3px gainsboro;
+}
+
+body .main .view-task-container .right-col .my-work .uploaded-work .buttons-container .del-btn i {
+  padding: 5px 2px 0;
+  font-size: 1.5rem;
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
+}
+
+body .main .view-task-container .right-col .my-work .uploaded-work .buttons-container .del-btn:hover {
+  background-color: #d29898;
+  -webkit-box-shadow: 2px 3px 5px #ddc3c3;
+          box-shadow: 2px 3px 5px #ddc3c3;
+}
+
+body .main .view-task-container .right-col .my-work .uploaded-work .buttons-container .del-btn:hover i {
+  color: white;
 }
 
 body .main .view-task-container .right-col .my-work .teammates {

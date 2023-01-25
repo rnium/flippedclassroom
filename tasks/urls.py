@@ -12,6 +12,7 @@ urlpatterns = [
     path('<str:pk>/upload_work', views.upload_work, name="upload_work"),
     path('work/files/<int:pk>', views.view_work_file, name="view_work_file"),
     path('work/<str:pk>/changesubmission', views.change_work_submission_status, name="change_work_submission_status"),
+    path('work/<str:pk>/delete', views.delete_work, name="delete_work"),
     path('work/<str:pk>/marking', views.update_work_score, name="update_work_score"),
 ]
    
