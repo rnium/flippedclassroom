@@ -97,7 +97,7 @@ class Work(models.Model):
     is_submitted = models.BooleanField(default=False)
     group = models.ForeignKey(Group, null=True, blank=True, on_delete=models.CASCADE)
     score = models.IntegerField(null=True, blank=True)
-    submission_time = models.DateTimeField(auto_now=True)
+    submission_time = models.DateTimeField(null=True, blank=True)
     
     @property
     def is_late(self):

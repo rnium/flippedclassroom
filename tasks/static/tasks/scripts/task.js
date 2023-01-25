@@ -54,6 +54,11 @@ function change_work_status() {
         },
         complete: function(){
             $("#alt_sub_status_btn").attr('disabled', false);
+        },
+        statusCode: {
+            406: function() {
+                alert("Unable to unsubmit, please refresh");
+            }
         }
     })
 }

@@ -6,6 +6,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from django.core.exceptions import SuspiciousOperation
+from django.utils import timezone
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
@@ -130,7 +131,7 @@ class WorkDetail(LoginRequiredMixin, DetailView):
     
     def get_object(self):
         work = super().get_object()
-        if not (self.request.user in work.task.classroom.teachers.all() or self.request.user in work.task.classroom.students.all()):
+        if not self.request.user in work.task.classroom.teachers.all():
             raise Http404
         if not work.is_submitted:
             raise Http404
@@ -187,8 +188,15 @@ def change_work_submission_status(request, cls_pk, pk):
     else:
         if work.submission_by != request.user:
             return Response(status=status.HTTP_403_FORBIDDEN)
-        
-    work.is_submitted = not work.is_submitted #just altering
+    
+    if work.is_submitted:
+        # if work has score, cannot be unsubmitted
+        if work.score != None:
+            return Response(status=status.HTTP_406_NOT_ACCEPTABLE)
+        work.is_submitted = False
+    else:
+        work.is_submitted = True
+        work.submission_time = timezone.now()
     work.save()
     return Response(data={'info': 'success', 'is_submitted':work.is_submitted}, status=status.HTTP_200_OK)
 
