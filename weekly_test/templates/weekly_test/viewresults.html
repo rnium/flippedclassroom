@@ -82,7 +82,7 @@
     </div>
     
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script> 
-<script src="{% static 'scripts/test_detail.js' %}"></script>
+<script src="{% static 'weekly_test/scripts/test_detail.js' %}"></script>
 <script>
   const api_url = "{% url 'weekly_test_api:test_answersheets' weeklytest.id %}"
   const test_id = "{{ weeklytest.id }}"

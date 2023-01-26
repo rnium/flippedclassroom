@@ -441,7 +441,7 @@
                   {% endfor %}
                   {% for prev_test in weekly.inClassPreviousTest %}
                   <li>
-                    <a href="">
+                    <a href="{% url 'weekly_test:view_test' prev_test.id %}">
                       <div class="test list-item">
                         <i class='bx bx-edit-alt'></i>
                         <div class="info">
@@ -674,7 +674,7 @@
                   {% endfor %}
                   {% for prev_test in weekly.postClassPreviousTest %}
                   <li>
-                    <a href="">
+                    <a href="{% url 'weekly_test:view_test' prev_test.id %}">
                       <div class="test list-item">
                         <i class='bx bx-edit-alt'></i>
                         <div class="info">

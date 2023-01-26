@@ -156,7 +156,7 @@ class Weekly(models.Model):
     
     @property
     def has_post_class_ongoing_test(self):
-        return bool(len(self.inClassOngoingTest))
+        return bool(len(self.postClassOngoingTest))
     
     # forum post
     @property

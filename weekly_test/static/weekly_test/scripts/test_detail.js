@@ -137,6 +137,7 @@ function fetchTableData() {
             if (response['count'] == 0) {
                 $("#table-content").html(no_content)
                 $("#id-no-content").show(300)
+                $("#loader").hide()
             } else {
                 let table_elem = renderTable(response['results'], true)
                 let paginator = render_paginator(response, true)
