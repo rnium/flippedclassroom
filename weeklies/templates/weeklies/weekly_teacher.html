@@ -785,6 +785,7 @@
     integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
     crossorigin="anonymous"></script>
   <script src="{% static 'weeklies/scripts/weekly_detail.js' %}"></script>
+  <script src="{% static 'weeklies/scripts/weekly_editor.js' %}"></script>
   <script>
     const weekly_update_url = "{% url 'weeklies:update_weekly' weekly.classroom.id weekly.id  %}"
     const weekly_tutorial_add_url = "{% url 'weeklies:add_tutorial' weekly.classroom.id weekly.id  %}"
