@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
 from django.http import JsonResponse, FileResponse, HttpResponse
@@ -92,5 +92,16 @@ def edit_post(request, weekly_pk, pk):
     post = get_object_or_404(Forumpost, pk=pk, weekly__pk=weekly_pk, author=request.user)
     if request.method == "GET":
         return render(request, 'weeklies/edit_weekly_forum.html', context={'post':post})
-    
+    elif request.method == "POST":
+        postcontent = request.POST.get("post_content", False)
+        print(postcontent)
+        if postcontent != False:
+            if len(postcontent) < 1:
+                return HttpResponse("Post content cannot be empty")
+            else:
+                post.postcontent = postcontent
+                post.save()
+                return redirect("weeklies:weeklydetail", cls_pk=post.weekly.classroom.id, weeknum=post.weekly.weeknum)
+        else:
+            return HttpResponse("Invalid form")
     
