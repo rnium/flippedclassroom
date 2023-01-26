@@ -21,6 +21,37 @@ $.each(tabBtns, function (indexInArray, valueOfElement) {
     })
 });
 
+function append_post(response) {
+    let post_time = new Date(response['post_time'])
+    let locale_time = post_time.toLocaleString()
+    let post_elem_id = `post-${response['id']}`
+    let user_designation_div
+    if (response['is_teacher']) {
+        user_designation_div = `<div class="teacher-badge"></div>`
+    } else {
+        user_designation_div = `<div class="registration">Reg. No.</div>`
+    }
+    let post_elem = `<div class="post" id="${post_elem_id}" style="display:none;">
+                        <div class="post-inner">
+                        <div class="top-panel">
+                            <div class="post-time"><span class="sub-title">Posted</span><span class="time">${locale_time}</span></div>
+                        </div>
+                        <div class="bottom-panel">
+                            <div class="user">
+                            <div class="username">${response['author_name']}</div>
+                            ${user_designation_div}
+                            <div class="avatar"><img src="${response['avatar_url']}" alt=""></div>
+                            </div>
+                            <div class="post-body">${response['postcontent']}</div>
+                        </div>
+                        <a class="edit" href="${response['edit_url']}"><i class='bx bx-pencil'></i></a>
+                        </div>
+                    </div>`
+    $("#forum_post_container").append(post_elem)
+    $(`#${post_elem_id}`).show(200)
+    $("#no-forum-posts").hide(100)
+}
+
 
 function create_post() {
     let postcontent = $("#post_text_inp").val()
@@ -41,7 +72,7 @@ function create_post() {
         data: JSON.stringify(payload),
         cache: false,
         success: function(response) {
-            // appendComment(response)
+            append_post(response)
             $("#post_text_inp").val("")
         },
         error: function() {
