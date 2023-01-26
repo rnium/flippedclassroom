@@ -754,7 +754,7 @@
                 </div>
                 <div class="post-body">{{ post.postcontent }}</div>
               </div>
-              {% if request.user == post.author %}<a class="edit" href=""><i class='bx bx-pencil'></i></a>{% endif %}
+              {% if request.user == post.author %}<a class="edit" href="{% url 'weeklies:edit_post' post.weekly.id post.id %}"><i class='bx bx-pencil'></i></a>{% endif %}
             </div>
           </div>
           {% endfor %}

@@ -6,7 +6,7 @@
 {% block nav %}
 <ul class="navbar-nav mb-2 mb-lg-0">
   <li class="nav-item">
-    <a class="nav-link" aria-current="page" href="{% url 'classroom:classroom_detail' weekly.classroom.id %}">Dashboard</a>
+    <a class="nav-link" aria-current="page" href="{% url 'classroom:classroom_detail' post.weekly.classroom.id %}">Dashboard</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="#">Weeklies</a>
@@ -27,9 +27,9 @@
 <div class="edit-forum-container">
   <div class="info">
     <div class="home-links">
-      <a href="">Classroom Name</a>
+      <a href="{% url 'classroom:classroom_detail' post.weekly.classroom.id %}">{{post.weekly.classroom.name}}</a>
       <i class='bx bxs-chevron-right' ></i>
-      <a href="">Week 1</a>
+      <a href="{% url 'weeklies:weeklydetail' post.weekly.classroom.id post.weekly.weeknum %}">Week {{post.weekly.weeknum}}</a>
       <i class='bx bxs-chevron-right' ></i>
       <span class="current">Edit Post</span>
     </div>
@@ -52,7 +52,7 @@
 
 {% block script %}
 <script>
-  let prev_text = "Lorem, ipsum consectetur adipisicing elit. Cumque, aut."
+  let prev_text = "{{post.postcontent}}"
   $( document ).ready(function(){
     $("#post-descr").val(prev_text)
     $("#post-descr").focus()

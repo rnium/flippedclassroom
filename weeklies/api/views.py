@@ -81,6 +81,7 @@ def create_post(request, cls_pk, pk):
         postcontent = request.data.get('post_text', '')
     )
     post.save()
+    edit_url = reverse("weeklies:edit_post", kwargs={"weekly_pk":post.weekly.id, "pk":post.id})
     response = {
         "id": post.id,
         "author_name": post.author.account.user_full_name,
@@ -88,7 +89,7 @@ def create_post(request, cls_pk, pk):
         "avatar_url": post.author.account.avatar_url,
         "postcontent": post.postcontent,
         "post_time": post.added,
-        "edit_url": "https://www.w3schools.com/jquery/default.asp"
+        "edit_url": edit_url
     }
 
     return Response(response, status=status.HTTP_201_CREATED)

@@ -3,7 +3,8 @@ from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
 from django.http import JsonResponse, FileResponse, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
-from .models import Weekly, PreClassFile, InClassFile, PostClassFile
+from .models import Weekly, PreClassFile, InClassFile, PostClassFile, Forumpost
+from django.urls import reverse
 
 # Create your views here.
 @login_required
@@ -85,3 +86,11 @@ def downloadFile(request, weekly_pk, pk):
         else:
             HttpResponse('Invalid Request')
                 
+
+@login_required
+def edit_post(request, weekly_pk, pk):
+    post = get_object_or_404(Forumpost, pk=pk, weekly__pk=weekly_pk, author=request.user)
+    if request.method == "GET":
+        return render(request, 'weeklies/edit_weekly_forum.html', context={'post':post})
+    
+    
