@@ -203,7 +203,7 @@
                       <i class='bx bxs-edit-alt'></i>
                       <div class="info">
                         <div class="label-title">{{ upcoming_test.title }}</div>
-                        <div class="held-on"><span class="sub-title">Schedule:</span><span class="time">{{ upcoming_test.schedule }}</span></div>
+                        <div class="held-on"><span class="sub-title">Schedule:</span><span class="time" id="test-{{upcoming_test.id}}">{{ upcoming_test.schedule|date:"c" }}</span></div>
                       </div>
                     </div>
                   </li>
@@ -215,7 +215,7 @@
                         <i class='bx bx-edit-alt'></i>
                         <div class="info">
                           <div class="label-title">{{ prev_test.title }}</div>
-                          <div class="held-on"><span class="sub-title">held on:</span><span class="time">{{ prev_test.schedule }}</span></div>
+                          <div class="held-on"><span class="sub-title">held on:</span><span class="time" id="test-{{prev_test.id}}">{{ prev_test.schedule|date:"c" }}</span></div>
                         </div>
                       </div>
                     </a>
@@ -239,7 +239,7 @@
                         <i class='bx bxs-briefcase'></i>
                         <div class="info">
                           <div class="label-title">{{task.title}}</div>
-                          <div class="deadline"><span class="sub-title">Deadline:</span><span class="time" id="deadline_{{task.id}}">{{task.deadline|date:"c"}}</span></div>
+                          <div class="deadline"><span class="sub-title">Deadline:</span><span class="time" id="task_deadline_{{task.id}}">{{task.deadline|date:"c"}}</span></div>
                         </div>
                       </div>
                     </a>
@@ -252,7 +252,7 @@
                         <i class='bx bx-briefcase' ></i>
                         <div class="info">
                           <div class="label-title">{{task.title}}</div>
-                          <div class="deadline"><span class="sub-title">Closed:</span><span class="time" id="deadline_{{task.id}}">{{task.deadline|date:"c"}}</span></div>
+                          <div class="deadline"><span class="sub-title">Closed:</span><span class="time" id="task_deadline_{{task.id}}">{{task.deadline|date:"c"}}</span></div>
                         </div>
                       </div>
                     </a>
@@ -434,7 +434,7 @@
                       <i class='bx bxs-edit-alt'></i>
                       <div class="info">
                         <div class="label-title">{{ upcoming_test.title }}</div>
-                        <div class="held-on"><span class="sub-title">Schedule:</span><span class="time">{{ upcoming_test.schedule }}</span></div>
+                        <div class="held-on"><span class="sub-title">Schedule:</span><span class="time" id="test-{{upcoming_test.id}}">{{ upcoming_test.schedule|date:"c" }}</span></div>
                       </div>
                     </div>
                   </li>
@@ -446,7 +446,7 @@
                         <i class='bx bx-edit-alt'></i>
                         <div class="info">
                           <div class="label-title">{{ prev_test.title }}</div>
-                          <div class="held-on"><span class="sub-title">held on:</span><span class="time">{{ prev_test.schedule }}</span></div>
+                          <div class="held-on"><span class="sub-title">held on:</span><span class="time" id="test-{{prev_test.id}}">{{ prev_test.schedule|date:"c" }}</span></div>
                         </div>
                       </div>
                     </a>
@@ -470,7 +470,7 @@
                         <i class='bx bxs-briefcase'></i>
                         <div class="info">
                           <div class="label-title">{{task.title}}</div>
-                          <div class="deadline"><span class="sub-title">Deadline:</span><span class="time" id="deadline_{{task.id}}">{{task.deadline|date:"c"}}</span></div>
+                          <div class="deadline"><span class="sub-title">Deadline:</span><span class="time" id="task_deadline_{{task.id}}">{{task.deadline|date:"c"}}</span></div>
                         </div>
                       </div>
                     </a>
@@ -483,7 +483,7 @@
                         <i class='bx bx-briefcase' ></i>
                         <div class="info">
                           <div class="label-title">{{task.title}}</div>
-                          <div class="deadline"><span class="sub-title">Closed:</span><span class="time" id="deadline_{{task.id}}">{{task.deadline|date:"c"}}</span></div>
+                          <div class="deadline"><span class="sub-title">Closed:</span><span class="time" id="task_deadline_{{task.id}}">{{task.deadline|date:"c"}}</span></div>
                         </div>
                       </div>
                     </a>
@@ -667,7 +667,7 @@
                       <i class='bx bxs-edit-alt'></i>
                       <div class="info">
                         <div class="label-title">{{ upcoming_test.title }}</div>
-                        <div class="held-on"><span class="sub-title">Schedule:</span><span class="time">{{ upcoming_test.schedule }}</span></div>
+                        <div class="held-on"><span class="sub-title">Schedule:</span><span class="time"  id="test-{{upcoming_test.id}}">{{ upcoming_test.schedule|date:"c" }}</span></div>
                       </div>
                     </div>
                   </li>
@@ -679,7 +679,7 @@
                         <i class='bx bx-edit-alt'></i>
                         <div class="info">
                           <div class="label-title">{{ prev_test.title }}</div>
-                          <div class="held-on"><span class="sub-title">held on:</span><span class="time">{{ prev_test.schedule }}</span></div>
+                          <div class="held-on"><span class="sub-title">held on:</span><span class="time" id="test-{{prev_test.id}}">{{ prev_test.schedule|date:"c" }}</span></div>
                         </div>
                       </div>
                     </a>
@@ -744,7 +744,7 @@
           <div class="post">
             <div class="post-inner">
               <div class="top-panel">
-                <div class="post-time"><span class="sub-title">Posted</span><span class="time">{{ post.added }}</span></div>
+                <div class="post-time"><span class="sub-title">Posted</span><span class="time" id="post-{{post.id}}">{{ post.added|date:"c" }}</span></div>
               </div>
               <div class="bottom-panel">
                 <div class="user">
@@ -785,11 +785,11 @@
     integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
     crossorigin="anonymous"></script>
   <script src="{% static 'weeklies/scripts/weekly_detail.js' %}"></script>
-  <script src="{% static 'weeklies/scripts/weekly_editor.js' %}"></script>
   <script>
     const weekly_update_url = "{% url 'weeklies:update_weekly' weekly.classroom.id weekly.id  %}"
     const weekly_tutorial_add_url = "{% url 'weeklies:add_tutorial' weekly.classroom.id weekly.id  %}"
     const weekly_file_upload_url = "{% url 'weeklies:uploadweeklyfiles' weekly.id  %}"
     const weekly_create_post_url = "{% url 'weeklies:create_post'  weekly.classroom.id weekly.id  %}"
   </script>
+  <script src="{% static 'classroom/scripts/localtimes.js' %}"></script>
 {% endblock script %}
