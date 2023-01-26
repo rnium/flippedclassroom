@@ -66,6 +66,17 @@ class WeeklyTest(models.Model):
     def answer_sheet_submitting_users(self):
         users = self.submitted_answer_sheets.values_list("user", flat=True)
         return list(users)
+        
+    @property
+    def weekly_section(self):
+        if self.preclass:
+            return "PreClass"
+        elif self.inclass:
+            return "InClass"
+        elif self.postclass:
+            return "PostClass"
+        else:
+            return "Weekly General"
 
 
 class Question(models.Model):
