@@ -2,7 +2,7 @@
 {% block style %} {% load static %}
 <link rel="stylesheet" href="{% static 'weeklies/styles/weekly.css' %}">
 {% endblock style %}
-{% block title %}<title>OpenClassroom</title>{% endblock title %}
+{% block title %}<title>{{weekly.classroom.name}} Week-{{weekly.weeknum}}</title>{% endblock title %}
 {% block nav %}
 <ul class="navbar-nav mb-2 mb-lg-0">
   <li class="nav-item">
