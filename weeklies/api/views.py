@@ -68,9 +68,9 @@ def add_tutorial(request, cls_pk, pk):
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
-def create_post(request, pk):
+def create_post(request, cls_pk, pk):
     try:
-        weekly = Weekly.objects.get(pk=pk)
+        weekly = Weekly.objects.get(pk=pk, classroom__id=cls_pk)
     except Weekly.DoesNotExist:
         return Response({'status':'weekly not found'}, status=status.HTTP_404_NOT_FOUND)
     if not (request.user in weekly.classroom.teachers.all() or request.user in weekly.classroom.students.all()):
