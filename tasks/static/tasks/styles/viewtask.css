@@ -87,6 +87,67 @@ body .main .view-task-container {
           flex-direction: row;
 }
 
+body .main .view-task-container .left-col .home-links {
+  width: 100%;
+  justify-self: flex-start;
+  margin-bottom: 1.2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body .main .view-task-container .left-col .home-links a {
+  display: block;
+  text-decoration: none;
+  color: #62a7a7;
+  background-color: inherit;
+  border: 1px solid #62a7a7;
+  border-radius: 5px;
+  padding: 0 5px;
+  font-family: 'Gemunu Libre', sans-serif;
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
+}
+
+body .main .view-task-container .left-col .home-links a:hover {
+  -webkit-box-shadow: 0 0 5px #b5d1d1;
+          box-shadow: 0 0 5px #b5d1d1;
+}
+
+body .main .view-task-container .left-col .home-links i {
+  margin: 0 0.3rem;
+  font-size: 1.2rem;
+  color: #62a7a7;
+}
+
+body .main .view-task-container .left-col .home-links a.current {
+  display: block;
+  text-decoration: none;
+  color: white;
+  background-color: #62a7a7;
+  border: 1px solid #62a7a7;
+  border-radius: 5px;
+  padding: 0 10px;
+  cursor: default;
+  font-family: 'Gemunu Libre', sans-serif;
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
+}
+
+body .main .view-task-container .left-col .home-links a.current:hover {
+  background-color: #60c4b3;
+  border-color: #60c4b3;
+  color: white;
+}
+
 body .main .view-task-container .left-col .task-info {
   display: -webkit-box;
   display: -ms-flexbox;

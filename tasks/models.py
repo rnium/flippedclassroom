@@ -35,6 +35,27 @@ class Task(models.Model):
     @property
     def is_group_task(self):
         return bool(self.group_set.count())
+    
+    @property
+    def is_weekly_task(self):
+        if self.weekly == None:
+            return False
+        else:
+            return True
+        
+    @property
+    def weekly_section(self):
+        if self.is_weekly_task:
+            if self.preclass:
+                return "PreClass"
+            elif self.inclass:
+                return "InClass"
+            elif self.postclass:
+                return "PostClass"
+            else:
+                return "Weekly General"
+        else:
+            return "General"
 
 
 class TaskAttachment(models.Model):

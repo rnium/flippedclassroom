@@ -25,6 +25,15 @@
 {% block content %}
 <div class="view-task-container {% if is_teacher %}teacher{% else %}student{% endif %}">
   <div class="left-col">
+    {% if task.is_weekly_task %}
+    <div class="home-links">
+      <a href="{% url 'classroom:classroom_detail' task.classroom.id %}">{{task.classroom.name}}</a>
+      <i class='bx bxs-chevron-right' ></i>
+      <a href="{% url 'weeklies:weeklydetail' task.classroom.id task.weekly.weeknum %}">Week {{task.weekly.weeknum}}</a>
+      <i class='bx bxs-chevron-right' ></i>
+      <a class="current" >{{task.weekly_section}}</a>
+    </div>
+    {% endif %}
     <div class="task-info">
       <div class="task-title">{{ task.title }}</div>
       <div class="task-meta-info">
