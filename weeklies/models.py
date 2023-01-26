@@ -224,7 +224,6 @@ class Weekly(models.Model):
         return bool(len(self.postClassOngoingTask))
     
      
-    
 class PreClassFile(models.Model):
     def filepath(self, filename):
         return join("attachments", str(self.weekly.classroom.id), 'weekly', str(self.weekly.id), 'preclass', filename)

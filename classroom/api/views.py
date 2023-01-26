@@ -37,7 +37,7 @@ def post_comment(request, pk):
     if parent_comment != None:
         try:
             parent = Comment.objects.get(pk=parent_comment)
-        except Classroom.DoesNotExist:
+        except Comment.DoesNotExist:
             return Response({'status':'comment not found'}, status=status.HTTP_404_NOT_FOUND)
     else:
         parent = None

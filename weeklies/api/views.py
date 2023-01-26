@@ -12,6 +12,8 @@ from weeklies.api.permission import IsUserTeacher
 from classroom.models import Classroom
 from weeklies.models import *
 from .serializer import WeeklySerializer
+from .permission import IsUserPartOfClassroom
+
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated and IsUserTeacher])
@@ -30,7 +32,6 @@ def createWeekly(request, cls_pk):
         return Response({'num_weeklies':num_weeklies, 'weekly_url':weekly_url})
     else:
         return Response(serializer.errors)
-
 
 
 class UpdateWeeklyAV(UpdateAPIView):
@@ -63,3 +64,31 @@ def add_tutorial(request, cls_pk, pk):
         "description": vid_descr
     }
     return Response(data)
+
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def create_post(request, pk):
+    try:
+        weekly = Weekly.objects.get(pk=pk)
+    except Weekly.DoesNotExist:
+        return Response({'status':'weekly not found'}, status=status.HTTP_404_NOT_FOUND)
+    if not (request.user in weekly.classroom.teachers.all() or request.user in weekly.classroom.students.all()):
+        return Response({'status':'user not permitted'}, status=status.HTTP_403_FORBIDDEN)
+    post = Forumpost(
+        weekly = weekly,
+        author = request.user,
+        postcontent = request.data.get('post_text', '')
+    )
+    post.save()
+    response = {
+        "id": post.id,
+        "author_name": post.author.account.user_full_name,
+        "is_teacher": post.author in post.weekly.classroom.teachers.all(),
+        "avatar_url": post.author.account.avatar_url,
+        "postcontent": post.postcontent,
+        "post_time": post.added,
+        "edit_url": "https://www.w3schools.com/jquery/default.asp"
+    }
+
+    return Response(response, status=status.HTTP_201_CREATED)

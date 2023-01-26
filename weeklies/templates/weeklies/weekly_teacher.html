@@ -790,5 +790,6 @@
     const weekly_update_url = "{% url 'weeklies:update_weekly' weekly.classroom.id weekly.id  %}"
     const weekly_tutorial_add_url = "{% url 'weeklies:add_tutorial' weekly.classroom.id weekly.id  %}"
     const weekly_file_upload_url = "{% url 'weeklies:uploadweeklyfiles' weekly.id  %}"
+    const weekly_create_post_url = "{% url 'weeklies:create_post'  weekly.classroom.id weekly.id  %}"
   </script>
 {% endblock script %}
