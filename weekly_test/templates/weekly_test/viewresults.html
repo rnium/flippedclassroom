@@ -47,7 +47,7 @@
                   <div class="avatar">
                     <img src="{{ request.user.account.avatar_url }}" alt="avatar">
                   </div>
-                  <span class="name">{{ request.user.first_name }}</span>
+                  <span class="name">{{ request.user.account.user_first_name }}</span>
                   <a href="{% url 'accounts:user_logout' %}" class="btn-1-outlined">Logout</a>
                 </div>
               </div>

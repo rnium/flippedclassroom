@@ -142,10 +142,12 @@
           </div>
         </div>
         {% endfor %}
-        
+        {% if answersheet.num_des_answers %}
         <div class="submit-container">
-            <button type="submit">Save</button>
+          <button type="submit">Save</button>
         </div>
+        {% endif %}
+        
       </div>
     </div>
     <div class="submitting-student">
