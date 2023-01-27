@@ -30,7 +30,7 @@
     <div class="home-links">
       <a href="{% url 'classroom:classroom_detail' answersheet.test.weekly.classroom.id %}">{{answersheet.test.weekly.classroom.name|truncatechars:10}}</a>
       <i class='bx bxs-chevron-right'></i>
-      <a href="{% url 'weeklies:weeklydetail' answersheet.test.weekly.classroom.id answersheet.test.weekly.weeknum %}">Week 1</a>
+      <a href="{% url 'weeklies:weeklydetail' answersheet.test.weekly.classroom.id answersheet.test.weekly.weeknum %}">Week {{answersheet.test.weekly.weeknum}}</a>
       <i class='bx bxs-chevron-right'></i>
       <a href="{% url 'weekly_test:view_test' answersheet.test.id %}" class="current">{{answersheet.test.weekly_section}} Test</a>
     </div>
@@ -112,7 +112,7 @@
         </div>
         {% endif %}
         {% endfor %}
-        {% for mcq_ans in answersheet.answers.des_answers.mcq_answers %}
+        {% for mcq_ans in answersheet.answers.mcq_answers %}
         <div class="q qtype-mcq" id="qid_1">
           <div class="qno-count-container">
               <div class="qno-count-inner">
@@ -126,9 +126,9 @@
                 <div class="q-title" id="qid_{{mcq_ans.id}}-title"><span class="label">Statement:</span>{{mcq_ans.question.statement}}</div>
                 <div class="score-container">
                   {% if mcq_ans.is_correct_ans %}
-                  <span class="correct">Correct<span class="score">{{mcq_ans.question.marks}}/{{mcq_ans.question.marks}}</span></span>
+                  <span class="correct">Correct<span class="score">{{mcq_ans.question.get_mark}}/{{mcq_ans.question.get_mark}}</span></span>
                   {% else %}
-                  <span class="incorrect">Incorrect<span class="score">0/{{mcq_ans.question.marks}}</span></span>
+                  <span class="incorrect">Incorrect<span class="score">0/{{mcq_ans.question.get_mark}}</span></span>
                   {% endif %}
                 </div>
               </div>

@@ -199,12 +199,13 @@ class McqAnswer(models.Model):
             unit_data['choice_code'] = chr(choice_code)
             choice_code += 1
             unit_data['option_text'] = option.option_text
-            if (option == self.option_chosen) and (self.is_correct_ans):
+            if option.is_correct:
                 unit_data['css_class'] = 'correct'
-            elif (option == self.option_chosen) and (not self.is_correct_ans):
-                unit_data['css_class'] = 'incorrect'
             else:
-                unit_data['css_class'] = ''
+                if option == self.option_chosen:
+                    unit_data['css_class'] = 'incorrect'
+                else:
+                    unit_data['css_class'] = ''
             returning_dataset.append(unit_data)
         return returning_dataset
             
