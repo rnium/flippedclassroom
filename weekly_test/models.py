@@ -157,6 +157,12 @@ class AnswerSheet(models.Model):
         mcq_corrects = self.mcqanswer_set.filter(option_chosen__is_correct=True).count()
         des_corrects = self.descriptiveanswer_set.filter(score__isnull=False).filter(score__gt=0).count()
         return mcq_corrects + des_corrects
+    
+    @property
+    def answers(self):
+        des_answers = self.descriptiveanswer_set.all()
+        mcq_answers = self.mcqanswer_set.all()
+        return {'des_answers':des_answers, 'mcq_answers':mcq_answers}
 
 
 class McqAnswer(models.Model):
@@ -169,11 +175,40 @@ class McqAnswer(models.Model):
         return f"Answer Id: {self.id} to the question {self.question}"
     
     @property
-    def score(self):
+    def is_correct_ans(self):
         if self.option_chosen.is_correct:
+            return True
+        else:
+            return False
+        
+    
+    @property
+    def score(self):
+        if self.is_correct_ans:
             return self.question.get_mark
         else:
             return 0
+    
+    @property
+    def options_data(self):
+        options = self.question.mcqoption_set.all()
+        returning_dataset = []
+        choice_code = ord("A")
+        for option in options:
+            unit_data = {}
+            unit_data['choice_code'] = chr(choice_code)
+            choice_code += 1
+            unit_data['option_text'] = option.option_text
+            if (option == self.option_chosen) and (self.is_correct_ans):
+                unit_data['css_class'] = 'correct'
+            elif (option == self.option_chosen) and (not self.is_correct_ans):
+                unit_data['css_class'] = 'incorrect'
+            else:
+                unit_data['css_class'] = ''
+            returning_dataset.append(unit_data)
+        return returning_dataset
+            
+            
 
 
 class DescriptiveAnswer(models.Model):
