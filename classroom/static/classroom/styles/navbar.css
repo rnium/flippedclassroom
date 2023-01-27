@@ -1,0 +1,120 @@
+@import url("https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap");
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  color: #276363;
+}
+
+body header nav {
+  padding: 1rem 0 !important;
+}
+
+body header nav .navbar-brand img {
+  opacity: 0.65;
+  width: 50px;
+  height: auto;
+  margin-right: 0.5rem;
+}
+
+body header nav .navbar-brand .site-title {
+  font-weight: 600;
+  color: #94a7ac;
+  font-family: 'Gemunu Libre', sans-serif;
+  font-size: 1.6rem;
+  text-shadow: 0 0 5px rgba(150, 190, 150, 0.3);
+}
+
+body header nav ul li.nav-item {
+  margin-left: 0.5rem;
+}
+
+body header nav ul li.nav-item .nav-link.active {
+  font-weight: 500;
+  color: gray;
+}
+
+body header nav .user {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body header nav .user .avatar {
+  width: 40px;
+  height: 40px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  overflow: hidden;
+  margin-right: 5px;
+  border-radius: 180px;
+  -webkit-box-shadow: 0 0 5px #e6e6e6;
+          box-shadow: 0 0 5px #e6e6e6;
+  border: 1px solid #d4d3d3;
+}
+
+body header nav .user .avatar img {
+  width: 100%;
+}
+
+body header nav .user .name {
+  text-shadow: 0 0 5px rgba(214, 214, 214, 0.993);
+}
+
+body header nav .user a {
+  margin-left: 15px;
+}
+
+.btn-1-outlined {
+  display: inline-block;
+  border: 2px solid #76919e;
+  padding: 0.2rem 1rem;
+  border-radius: 10px;
+  background-color: inherit;
+  color: #76919e;
+  cursor: pointer;
+  font-size: 1rem;
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.btn-1-outlined:hover {
+  background-color: #76919e;
+  color: white;
+  -webkit-box-shadow: 3px 3px 5px #d8d8d8;
+          box-shadow: 3px 3px 5px #d8d8d8;
+}
+
+@media screen and (min-width: 1200px) {
+  body header nav .user {
+    margin-left: auto !important;
+    margin-right: 2rem !important;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  body header nav ul {
+    margin: 0 !important;
+  }
+  body header nav ul li {
+    margin: 0 !important;
+    text-align: center;
+  }
+  body header nav .user {
+    -webkit-box-pack: center !important;
+        -ms-flex-pack: center !important;
+            justify-content: center !important;
+  }
+}
+/*# sourceMappingURL=navbar.css.map */

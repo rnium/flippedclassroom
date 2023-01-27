@@ -7,7 +7,7 @@ from django.utils import timezone
 from weekly_test.models import WeeklyTest, AnswerSheet, Question, McqOption, McqAnswer, DescriptiveAnswer
 from weeklies.models import Weekly
 from classroom.views import render_underDev
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
 
 
 def home(request):
@@ -34,15 +34,27 @@ class QuestionCreate(LoginRequiredMixin, DetailView):
 class TestView(LoginRequiredMixin, DetailView):
     template_name = "weekly_test/viewresults.html"
     model = WeeklyTest
+    
+    def get_object(self):
+        test = super().get_object()
+        if self.request.user not in test.weekly.classroom.teachers.all():
+            raise Http404
+        return test
+
+
+class AnswersheetView(LoginRequiredMixin, DetailView):
+    template_name = "weekly_test/view_answersheet.html"
+    model = AnswerSheet
+    
+    def get_object(self):
+        sheet = super().get_object()
+        if not (self.request.user in sheet.test.weekly.classroom.teachers.all() or self.request.user in sheet.test.weekly.classroom.students.all()):
+            raise Http404
+        return sheet
 
 @login_required
 def edit_test(request, pk):
     return render_underDev(request)
-
-@login_required
-def view_answersheet(request, pk):
-    return render_underDev(request)
-
 
 @login_required
 def take_test(request, pk):

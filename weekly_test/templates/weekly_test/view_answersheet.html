@@ -1,0 +1,298 @@
+{% extends 'classroom/base.html' %}
+{% block style %} {% load static %}
+<link rel="stylesheet" href="{% static 'weekly_test/styles/view_answersheet.css' %}">
+<link rel="stylesheet" href="{% static 'classroom/styles/navbar.css' %}">
+{% endblock style %}
+{% block title %}<title>{{answersheet.test.weekly.classroom.name}} Week-{{answersheet.test.weekly.weeknum}}</title>{% endblock title %}
+{% block nav %}
+<ul class="navbar-nav mb-2 mb-lg-0">
+  <li class="nav-item">
+    <a class="nav-link" aria-current="page" href="{% url 'classroom:classroom_detail' answersheet.test.weekly.classroom.id %}">Dashboard</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Weeklies</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Students</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Assessment</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">About</a>
+  </li>
+</ul>
+{% endblock nav %}
+
+{% block content %}
+<div class="view-submission-container">
+  <div class="info">
+    <div class="home-links">
+      <a href="{% url 'classroom:classroom_detail' answersheet.test.weekly.classroom.id %}">{{answersheet.test.weekly.classroom.name|truncatechars:10}}</a>
+      <i class='bx bxs-chevron-right'></i>
+      <a href="{% url 'weeklies:weeklydetail' answersheet.test.weekly.classroom.id answersheet.test.weekly.weeknum %}">Week 1</a>
+      <i class='bx bxs-chevron-right'></i>
+      <a href="{% url 'weekly_test:view_test' answersheet.test.id %}" class="current">{{answersheet.test.weekly_section}} Test</a>
+    </div>
+    <div class="score-card">
+      <div class="obtained-points">
+        {% if answersheet.total_score is none %}
+        <div class="score-none">
+          <i class='bx bx-info-circle'></i>
+          <span>Result Pending</span>
+        </div>
+        {% else %}
+        <div class="score-con">
+          <i class='bx bx-trophy'></i>
+          <div class="points">Score:<span class="point">{{answersheet.total_score}}</span></div>
+        </div>
+        {% endif %}
+      </div>
+      <div class="task-points"><span class="num-points">{{answersheet.test.total_marks}}</span></div>
+    </div>
+    <div class="task-title">{{answersheet.test.title}}</div>
+    
+    <div class="test-time">
+      <div class="time-info">
+        <span class="label">Started at:</span>
+        <span class="time" id="as-{{answersheet.id}}-start">{{answersheet.issue_time|date:"c"}}</span>
+      </div>
+      <div class="time-info">
+        <span class="label">Submitted at:</span>
+        <span class="time" id="as-{{answersheet.id}}-submit">{{answersheet.submit_time|date:"c"}}</span>
+      </div>
+    </div>
+  </div>
+  <div class="bottom-pane">
+    <div class="submitted-contents">
+      <div class="title"><i class='bx bx-file'></i><span>Submitted Answers</span></div>
+      <div class="answers-container">
+
+        <div class="q qtype-image" id="qid_0">
+          <div class="qno-count-container">
+              <div class="qno-count-inner">
+                  <div class="label">SN</div>
+                  <div class="qno-count" id="qid_0-count">1</div>
+              </div>
+              <div class="qtype-info">DESCRIPTIVE</div>
+          </div>
+          <div class="content">
+              <div class="meta">
+                <div class="q-title"><span class="label">Statement:</span>Lorem ipsum dolor sit amet consectetur adipisicing.</div>
+                <div class="a-score inset-float-textinput">
+                  <input type="text" class="q-marks-input" id="qid_0-marks" name="qid_0_marks">
+                  <label for="qid_0-marks">Score - out of <span class="marks">100</span></label>
+                </div>
+              </div>
+              <div class="ans-img">
+                  <img src="/images/large_images/Screenshot 2021-12-15 202139.png" alt="">
+              </div>
+          </div>
+        </div>
+
+        <div class="q qtype-mcq" id="qid_1">
+            <div class="qno-count-container">
+                <div class="qno-count-inner">
+                  <div class="label">SN</div>
+                  <div class="qno-count" id="qid_0-count">1</div>
+                </div>
+                <div class="qtype-info">MCQ</div>
+            </div>
+            <div class="content">
+                <div class="meta">
+                  <div class="q-title" id="qid_1-title"><span class="label">Statement:</span>Lorem iPraesentium, incidunt?</div>
+                  <div class="score-container"><span class="correct">Correct<span class="score">5/5</span></span></div>
+                </div>
+                <div class="choice-container">
+                    <input type="radio" id="op1" value="qid opid" disabled="disabled">
+                    <label for="op1">A</label>
+                    <div class="choice-text">Choice text1</div>
+                </div>
+                <div class="choice-container">
+                    <input type="radio" id="op2" value="qid opid" disabled="disabled">
+                    <label for="op2">B</label>
+                    <div class="choice-text">Choice text2</div>
+                </div>
+                <div class="choice-container">
+                    <input type="radio" class="correct" id="op3" value="qid opid" disabled="disabled">
+                    <label for="op3">C</label>
+                    <div class="choice-text">Choice text3</div>
+                </div>
+                <div class="choice-container">
+                    <input type="radio" id="op4" value="qid opid" disabled="disabled">
+                    <label for="op4">D</label>
+                    <div class="choice-text">Choice text4</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="q qtype-mcq" id="qid_1">
+          <div class="qno-count-container">
+              <div class="qno-count-inner">
+                <div class="label">SN</div>
+                <div class="qno-count" id="qid_0-count">1</div>
+              </div>
+              <div class="qtype-info">MCQ</div>
+          </div>
+          <div class="content">
+              <div class="meta">
+                <div class="q-title" id="qid_1-title"><span class="label">Statement:</span>Lorem iPraesentium, Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus incidunt eum voluptatum recusandae eaque officiis quas optio natus dolor labore! incidunt?</div>
+                <div class="score-container"><span class="incorrect">Incorrect<span class="score">0/5</span></span></div>
+              </div>
+              <div class="choice-container">
+                  <input type="radio" id="op1" value="qid opid" disabled="disabled" class="incorrect">
+                  <label for="op1">A</label>
+                  <div class="choice-text">Choice text1</div>
+              </div>
+              <div class="choice-container">
+                  <input type="radio" id="op2" value="qid opid" disabled="disabled">
+                  <label for="op2">B</label>
+                  <div class="choice-text">Choice text2</div>
+              </div>
+              <div class="choice-container">
+                  <input type="radio" class="correct" id="op3" value="qid opid" disabled="disabled">
+                  <label for="op3">C</label>
+                  <div class="choice-text">Choice text3</div>
+              </div>
+              <div class="choice-container">
+                  <input type="radio" id="op4" value="qid opid" disabled="disabled">
+                  <label for="op4">D</label>
+                  <div class="choice-text">Choice text4</div>
+              </div>
+          </div>
+        </div>
+
+        <div class="q qtype-text" id="qid_2">
+            <div class="qno-count-container">
+                <div class="qno-count-inner">
+                  <div class="label">SN</div>
+                  <div class="qno-count" id="qid_0-count">1</div>
+                </div>
+                <div class="qtype-info">DESCRIPTIVE</div>
+            </div>
+            <div class="content">
+                <div class="meta">
+                  <div class="q-title"><span class="label">Statement:</span>Lorem ipsum dolor sit amet consectetur adipisicing.</div>
+                  <div class="a-score inset-float-textinput">
+                    <input type="text" class="q-marks-input" id="qid_0-marks" name="qid_0_marks">
+                    <label for="qid_0-marks">Score - out of <span class="marks">100</span></label>
+                  </div>
+                </div>
+                <div class="ans-text" alt="Answer">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis provident ipsa, impedit ullam autem praesentium ea ut in, ab modi consequuntur odio saepe quibusdam, officia fuga suscipit error animi mollitia? Sapiente, commodi inventore expedita in, amet accusamus, sint eos pariatur provident sit nihil porro ratione enim laboriosam neque exercitationem autem? Sit qui in, nesciunt libero voluptas exercitationem commodi consequatur culpa, vero placeat impedit nemo necessitatibus modi aliquid itaque voluptatem voluptate neque perferendis quas at consectetur sunt perspiciatis. Sapiente porro corporis ut molestias nobis! Veritatis pariatur temporibus dolores nihil, sed similique, reprehenderit, vitae nisi distinctio obcaecati illo ad cumque eligendi provident.</div>
+            </div>
+        </div>
+        <div class="submit-container">
+            <button type="submit">Save</button>
+        </div>
+      </div>
+    </div>
+    <div class="submitting-student">
+      <div class="title">Examinee</div>
+      <div class="user">
+        <div class="dp" style="background-image: url('{{answersheet.user.account.avatar_url}}');"></div>
+        <div class="name">{{answersheet.user.account.user_full_name}}</div>
+      </div>
+    </div>
+    <!-- <div class="group-members">
+          <div class="title">Group Members</div>
+          <ul>
+            <li>
+              <div class="dp">
+                <img src="/images/dp2.jpg" alt="">
+              </div>
+              <div class="name">Md. Atikur Rahman Sifat</div>
+              
+            </li>
+            <li>
+              <div class="dp">
+                <img src="/images/dp1.jpg" alt="">
+              </div>
+              <div class="name">Md. Atikur Rahman</div>
+            </li>
+          </ul>
+        </div> -->
+  </div>
+
+</div>
+{% endblock content %}
+
+{% block script %}
+<script src="{% static 'classroom/scripts/localtimes.js' %}"></script>
+{% endblock script %}
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <link rel="stylesheet" href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'>
+  <link rel="stylesheet" href="/exam/styles/view_answersheet.css">
+  <link rel="stylesheet" href="../styles/navbar.css">
+  <title>view answersheet</title>
+</head>
+
+<body>
+  <header>
+    <nav class="navbar navbar-expand-xl bg-light">
+      <div class="container-fluid">
+        <div class="navbar-brand flexer-row ms-4" href="#">
+          <div class="site-title">OpenClassroom</div>
+        </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="#">Dashboard</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Weeklies</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Students</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Assessment</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+          </ul>
+          <div class="user">
+            <div class="avatar">
+              <img src="/images/dp3.jpg" alt="">
+            </div>
+            <span class="name">First Name</span>
+            <a href="" class="btn-1-outlined">Logout</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <div class="main">
+    
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

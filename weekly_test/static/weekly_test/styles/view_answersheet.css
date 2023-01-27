@@ -1,0 +1,779 @@
+@import url("https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap");
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  color: #276363;
+}
+
+body .main .view-submission-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body .main .view-submission-container .info {
+  width: 100%;
+  -webkit-box-shadow: 0 0 10px gainsboro;
+          box-shadow: 0 0 10px gainsboro;
+  padding: 1.5rem 2rem;
+  min-height: 230px;
+}
+
+body .main .view-submission-container .info .home-links {
+  width: 100%;
+  justify-self: flex-start;
+  margin-bottom: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body .main .view-submission-container .info .home-links a {
+  display: block;
+  text-decoration: none;
+  color: #62a7a7;
+  background-color: inherit;
+  border: 1px solid #62a7a7;
+  border-radius: 5px;
+  padding: 0 5px;
+  font-family: 'Gemunu Libre', sans-serif;
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
+}
+
+body .main .view-submission-container .info .home-links a:hover {
+  -webkit-box-shadow: 0 0 5px #b5d1d1;
+          box-shadow: 0 0 5px #b5d1d1;
+}
+
+body .main .view-submission-container .info .home-links i {
+  margin: 0 0.3rem;
+  font-size: 1.2rem;
+  color: #62a7a7;
+}
+
+body .main .view-submission-container .info .home-links a.current {
+  display: block;
+  text-decoration: none;
+  color: white;
+  background-color: #62a7a7;
+  border: 1px solid #62a7a7;
+  border-radius: 5px;
+  padding: 0 10px;
+  font-family: 'Gemunu Libre', sans-serif;
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
+}
+
+body .main .view-submission-container .info .home-links a.current:hover {
+  background-color: #60c4b3;
+  border-color: #60c4b3;
+  color: white;
+}
+
+body .main .view-submission-container .info .score-card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 1.5rem 0;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+body .main .view-submission-container .info .score-card .obtained-points .score-con {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: rgba(215, 224, 230, 0.6);
+  border-radius: 180px;
+  overflow: hidden;
+}
+
+body .main .view-submission-container .info .score-card .obtained-points .score-con i {
+  font-size: 1.5rem;
+  padding: 7px;
+  background-color: #23d6b2;
+  color: white;
+  border-radius: 180px;
+}
+
+body .main .view-submission-container .info .score-card .obtained-points .score-con .points {
+  padding: 0 15px 0 5px;
+  font-family: 'Gemunu Libre', sans-serif;
+  font-size: 1.1rem;
+}
+
+body .main .view-submission-container .info .score-card .obtained-points .score-con .points .point {
+  font-family: 'Gemunu Libre', sans-serif;
+  font-weight: 600;
+  margin-left: 3px;
+}
+
+body .main .view-submission-container .info .score-card .obtained-points .score-none {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: rgba(230, 166, 47, 0.795);
+  padding: 5px 10px;
+  border-radius: 180px;
+}
+
+body .main .view-submission-container .info .score-card .obtained-points .score-none i {
+  font-size: 1.5rem;
+  margin-right: 5px;
+}
+
+body .main .view-submission-container .info .score-card .obtained-points .score-none i, body .main .view-submission-container .info .score-card .obtained-points .score-none span {
+  color: #fff8fc;
+  text-shadow: 0 0 5px rgba(172, 122, 196, 0.3);
+}
+
+body .main .view-submission-container .info .score-card .task-points {
+  font-family: 'Gemunu Libre', sans-serif;
+  font-size: 1.1rem;
+}
+
+body .main .view-submission-container .info .score-card .task-points .num-points {
+  margin-right: 5px;
+  color: #28be4b;
+  font-weight: 500;
+  margin-left: 7px;
+  display: inline-block;
+  background-color: #d9e4e4a4;
+  border-radius: 5px;
+  padding: 0 10px;
+}
+
+body .main .view-submission-container .info .score-card .task-points::before {
+  content: "Total Marks";
+  display: inline-block;
+  color: #637d96;
+}
+
+body .main .view-submission-container .info .task-title {
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+body .main .view-submission-container .info .test-time {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+body .main .view-submission-container .info .test-time .time-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  font-size: 0.9rem;
+}
+
+body .main .view-submission-container .info .test-time .time-info .label {
+  color: #8baaaa;
+  font-family: 'Gemunu Libre', sans-serif;
+  font-size: 1rem;
+  margin-right: 5px;
+}
+
+body .main .view-submission-container .info .test-time .scoring-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body .main .view-submission-container .info .test-time .scoring-form input {
+  width: 10rem;
+  padding: 5px 10px;
+  margin-right: 10px;
+  border-radius: 5px;
+  border: 1px solid #b6b6b6;
+  font-size: 1rem;
+}
+
+body .main .view-submission-container .info .test-time .scoring-form input:focus {
+  outline: 2px solid #01a16c;
+  border-color: #01a16c;
+  -webkit-box-shadow: 0 0 5px #a1a1a1;
+          box-shadow: 0 0 5px #a1a1a1;
+}
+
+body .main .view-submission-container .info .test-time .scoring-form input:focus ~ label {
+  color: #01a16c;
+}
+
+body .main .view-submission-container .info .test-time .scoring-form input::-webkit-input-placeholder {
+  color: #9ea09f;
+}
+
+body .main .view-submission-container .info .test-time .scoring-form input:-ms-input-placeholder {
+  color: #9ea09f;
+}
+
+body .main .view-submission-container .info .test-time .scoring-form input::-ms-input-placeholder {
+  color: #9ea09f;
+}
+
+body .main .view-submission-container .info .test-time .scoring-form input::placeholder {
+  color: #9ea09f;
+}
+
+body .main .view-submission-container .info .test-time .scoring-form input::-moz-selection {
+  background-color: #24ce95;
+  color: white;
+}
+
+body .main .view-submission-container .info .test-time .scoring-form input::selection {
+  background-color: #24ce95;
+  color: white;
+}
+
+body .main .view-submission-container .info .test-time .scoring-form button {
+  padding: 5px 15px;
+}
+
+body .main .view-submission-container .bottom-pane {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  padding: 3rem 2rem;
+  background-color: rgba(202, 224, 214, 0.932);
+  min-height: calc(100vh - 230px);
+}
+
+body .main .view-submission-container .bottom-pane .submitted-contents {
+  width: 70%;
+  margin-right: 2rem;
+  background-color: #e7eeed;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+body .main .view-submission-container .bottom-pane .submitted-contents .title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0.7rem 1rem;
+  background-color: white;
+}
+
+body .main .view-submission-container .bottom-pane .submitted-contents .title i {
+  font-size: 1.5rem;
+  margin-right: 5px;
+}
+
+body .main .view-submission-container .bottom-pane .submitted-contents .title span {
+  font-family: 'Gemunu Libre', sans-serif;
+  font-size: 1.2rem;
+}
+
+body .main .view-submission-container .bottom-pane .submitted-contents .answers-container {
+  margin-top: 1.5rem;
+  width: 100%;
+  padding: 0 10px;
+}
+
+body .main .view-submission-container .bottom-pane .submitted-contents .answers-container .q {
+  width: 100%;
+  background-color: white;
+  -webkit-box-shadow: 0 0 5px rgba(184, 184, 184, 0.5);
+          box-shadow: 0 0 5px rgba(184, 184, 184, 0.5);
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+
+body .main .view-submission-container .bottom-pane .submitted-contents .answers-container .q .qno-count-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 0.5rem 1rem 0;
+}
+
+body .main .view-submission-container .bottom-pane .submitted-contents .answers-container .q .qno-count-container .qno-count-inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body .main .view-submission-container .bottom-pane .submitted-contents .answers-container .q .qno-count-container .qno-count-inner div {
+  font-family: 'Gemunu Libre', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #bcd6cc;
+  margin-right: 5px;
+}
+
+body .main .view-submission-container .bottom-pane .submitted-contents .answers-container .q .qno-count-container .qno-count-inner div.qno-count {
+  color: #27b887;
+}
+
+body .main .view-submission-container .bottom-pane .submitted-contents .answers-container .q .qno-count-container .qtype-info {
+  font-family: 'Gemunu Libre', sans-serif;
+  color: #a5bdb5;
+}
+
+body .main .view-submission-container .bottom-pane .submitted-contents .answers-container .q .content {
+  padding: 0.5rem 1.5rem 1.5rem;
+}
+
+body .main .view-submission-container .bottom-pane .submitted-contents .answers-container .q .content .meta {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+body .main .view-submission-container .bottom-pane .submitted-contents .answers-container .q .content .meta .q-title {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+body .main .view-submission-container .bottom-pane .submitted-contents .answers-container .q .content .meta .q-title .label {
+  font-family: 'Gemunu Libre', sans-serif;
+  margin-right: 5px;
+  color: #6fa4a4;
+  font-size: 1.3rem;
+}
+
+body .main .view-submission-container .bottom-pane .submitted-contents .answers-container .q .content .meta .a-score {
+  min-width: 9rem;
+  max-width: 9rem;
+  margin-left: 2%;
+}
+
+body .main .view-submission-container .bottom-pane .submitted-contents .answers-container .q .content .meta .inset-float-textinput {
+  position: relative;
+}
+
+body .main .view-submission-container .bottom-pane .submitted-contents .answers-container .q .content .meta .inset-float-textinput input {
+  width: 100%;
+  padding: 1.5rem 1rem 0.5rem;
+  border-radius: 5px;
+  border: 1px solid #b6b6b6;
+  -webkit-transition: all 100ms;
+  transition: all 100ms;
+}
+
+body .main .view-submission-container .bottom-pane .submitted-contents .answers-container .q .content .meta .inset-float-textinput input:focus {
+  outline: 2px solid #01a16c;
+  border-color: #01a16c;
+  -webkit-box-shadow: 0 0 5px #a1a1a1;
+          box-shadow: 0 0 5px #a1a1a1;
+}
+
+body .main .view-submission-container .bottom-pane .submitted-contents .answers-container .q .content .meta .inset-float-textinput input:focus ~ label {
+  color: #01a16c;
+}
+
+body .main .view-submission-container .bottom-pane .submitted-contents .answers-container .q .content .meta .inset-float-textinput input::-webkit-input-placeholder {
+  color: #9ea09f;
+}
+
+body .main .view-submission-container .bottom-pane .submitted-contents .answers-container .q .content .meta .inset-float-textinput input:-ms-input-placeholder {
+  color: #9ea09f;
+}
+
+body .main .view-submission-container .bottom-pane .submitted-contents .answers-container .q .content .meta .inset-float-textinput input::-ms-input-placeholder {
+  color: #9ea09f;
+}
+
+body .main .view-submission-container .bottom-pane .submitted-contents .answers-container .q .content .meta .inset-float-textinput input::placeholder {
+  color: #9ea09f;
+}
+
+body .main .view-submission-container .bottom-pane .submitted-contents .answers-container .q .content .meta .inset-float-textinput input::-moz-selection {
+  background-color: #24ce95;
+  color: white;
+}
+
+body .main .view-submission-container .bottom-pane .submitted-contents .answers-container .q .content .meta .inset-float-textinput input::selection {
+  background-color: #24ce95;
+  color: white;
+}
+
+body .main .view-submission-container .bottom-pane .submitted-contents .answers-container .q .content .meta .inset-float-textinput input.error {
+  outline: 1px solid #e81d46;
+  border-color: #e81d46;
+}
+
+body .main .view-submission-container .bottom-pane .submitted-contents .answers-container .q .content .meta .inset-float-textinput input.error:focus {
+  outline: 2px solid #e81d46;
+}
+
+body .main .view-submission-container .bottom-pane .submitted-contents .answers-container .q .content .meta .inset-float-textinput input.error ~ label {
+  color: #e81d46;
+}
+
+body .main .view-submission-container .bottom-pane .submitted-contents .answers-container .q .content .meta .inset-float-textinput input.error ~ label .marks {
+  color: #b9b900;
+}
+
+body .main .view-submission-container .bottom-pane .submitted-contents .answers-container .q .content .meta .inset-float-textinput label {
+  position: absolute;
+  font-size: 0.7rem;
+  top: 0.2rem;
+  left: 0.5rem;
+}
+
+body .main .view-submission-container .bottom-pane .submitted-contents .answers-container .q .content .meta .inset-float-textinput label .marks {
+  font-family: 'Gemunu Libre', sans-serif;
+  font-size: 0.9rem;
+  color: #00b478;
+  text-shadow: 0 0 5px #e6f0ec;
+}
+
+body .main .view-submission-container .bottom-pane .submitted-contents .answers-container .q .content .ans-text {
+  padding: 10px;
+  border: 1px solid #9fbeb3;
+  border-radius: 5px;
+  background-color: #f6f8f7;
+}
+
+body .main .view-submission-container .bottom-pane .submitted-contents .answers-container .qtype-mcq .meta .score-container {
+  padding: 5px 10px;
+}
+
+body .main .view-submission-container .bottom-pane .submitted-contents .answers-container .qtype-mcq .meta .score-container .correct {
+  font-weight: 500;
+  color: #7cab9b;
+  text-shadow: 0 0 5px #cff1e6;
+}
+
+body .main .view-submission-container .bottom-pane .submitted-contents .answers-container .qtype-mcq .meta .score-container .correct .score {
+  padding: 3px 5px;
+  background-color: #e4f7f1;
+  color: #0ac284;
+  margin-left: 5px;
+  border-radius: 5px;
+  text-shadow: none;
+}
+
+body .main .view-submission-container .bottom-pane .submitted-contents .answers-container .qtype-mcq .meta .score-container .incorrect {
+  font-weight: 500;
+  color: #ab7ca1;
+  text-shadow: 0 0 5px #f1cfcf;
+}
+
+body .main .view-submission-container .bottom-pane .submitted-contents .answers-container .qtype-mcq .meta .score-container .incorrect .score {
+  padding: 3px 5px;
+  background-color: #f7e4f1;
+  color: #da0e71;
+  margin-left: 5px;
+  border-radius: 5px;
+  text-shadow: none;
+}
+
+body .main .view-submission-container .bottom-pane .submitted-contents .answers-container .qtype-mcq .choice-container {
+  margin-bottom: 0.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+body .main .view-submission-container .bottom-pane .submitted-contents .answers-container .qtype-mcq .choice-container input {
+  display: none;
+}
+
+body .main .view-submission-container .bottom-pane .submitted-contents .answers-container .qtype-mcq .choice-container label {
+  display: inline-block;
+  font-size: 0.8rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  font-weight: 500;
+  border: 2px solid rgba(128, 128, 128, 0.4);
+  color: gray;
+  text-align: center;
+  padding-top: 1px;
+  border-radius: 50px;
+  cursor: pointer;
+  -webkit-transition: 0.3s all;
+  transition: 0.3s all;
+}
+
+body .main .view-submission-container .bottom-pane .submitted-contents .answers-container .qtype-mcq .choice-container .choice-text {
+  margin-left: 0.5rem;
+  -webkit-transition: 0.3s all;
+  transition: 0.3s all;
+  cursor: default;
+}
+
+body .main .view-submission-container .bottom-pane .submitted-contents .answers-container .qtype-mcq .choice-container input.correct + label {
+  background-color: #01a16c;
+  border-color: #01a16c;
+  color: white;
+}
+
+body .main .view-submission-container .bottom-pane .submitted-contents .answers-container .qtype-mcq .choice-container input.correct ~ .choice-text {
+  color: #01a16c;
+  text-shadow: 0 0 5px rgba(119, 185, 163, 0.3);
+}
+
+body .main .view-submission-container .bottom-pane .submitted-contents .answers-container .qtype-mcq .choice-container input.incorrect + label {
+  background-color: #cd0d54;
+  border-color: #cd0d54;
+  color: white;
+}
+
+body .main .view-submission-container .bottom-pane .submitted-contents .answers-container .qtype-mcq .choice-container input.incorrect ~ .choice-text {
+  color: #cd0d54;
+  text-shadow: 0 0 5px rgba(176, 119, 185, 0.3);
+}
+
+body .main .view-submission-container .bottom-pane .submitted-contents .answers-container .qtype-image .ans-img {
+  padding: 2px;
+  border: 2px solid #aed2d5;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+body .main .view-submission-container .bottom-pane .submitted-contents .answers-container .qtype-image .ans-img img {
+  width: 100%;
+}
+
+body .main .view-submission-container .bottom-pane .submitted-contents .answers-container .submit-container {
+  margin: 1rem 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: end;
+  position: relative;
+}
+
+body .main .view-submission-container .bottom-pane .submitted-contents .answers-container .submit-container button[type="submit"] {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 5px;
+  background-color: #649292;
+  color: white;
+  padding: 0.7rem 2rem;
+  border: 0;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+body .main .view-submission-container .bottom-pane .submitted-contents .answers-container .submit-container button[type="submit"]:hover {
+  background-color: #7aa5a5;
+}
+
+body .main .view-submission-container .bottom-pane .submitting-student {
+  width: 30%;
+  padding: 10px 2rem;
+  border-radius: 10px;
+  background-color: white;
+}
+
+body .main .view-submission-container .bottom-pane .submitting-student .title {
+  font-family: 'Gemunu Libre', sans-serif;
+  text-align: center;
+  color: #57a1a1;
+  text-shadow: none;
+  font-size: 1.1rem;
+}
+
+body .main .view-submission-container .bottom-pane .submitting-student ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+body .main .view-submission-container .bottom-pane .submitting-student ul li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 10px;
+}
+
+body .main .view-submission-container .bottom-pane .submitting-student ul li:last-of-type {
+  margin-bottom: 0;
+}
+
+body .main .view-submission-container .bottom-pane .submitting-student ul li .dp {
+  overflow: hidden;
+  margin-right: 10px;
+  min-width: 35px;
+  max-width: 35px;
+  min-height: 35px;
+  max-height: 35px;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  -webkit-box-shadow: 0 0 2px #88aa9f;
+          box-shadow: 0 0 2px #88aa9f;
+}
+
+body .main .view-submission-container .bottom-pane .submitting-student ul li .name {
+  font-size: 0.9rem;
+  position: relative;
+}
+
+body .main .view-submission-container .bottom-pane .submitting-student .user {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0.5rem 0;
+  padding-top: 10px;
+  border-top: 1px solid gainsboro;
+}
+
+body .main .view-submission-container .bottom-pane .submitting-student .user .dp {
+  overflow: hidden;
+  margin-right: 10px;
+  min-width: 50px;
+  max-width: 50px;
+  min-height: 50px;
+  max-height: 50px;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  -webkit-box-shadow: 0 0 2px #88aa9f;
+          box-shadow: 0 0 2px #88aa9f;
+}
+
+body .main .view-submission-container .bottom-pane .submitting-student .user .name {
+  margin-top: 10px;
+  color: #50b291;
+  text-shadow: 0 0 5px #ceded9;
+}
+/*# sourceMappingURL=view_answersheet.css.map */
