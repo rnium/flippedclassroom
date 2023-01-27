@@ -67,120 +67,82 @@
     <div class="submitted-contents">
       <div class="title"><i class='bx bx-file'></i><span>Submitted Answers</span></div>
       <div class="answers-container">
-
+        {% for des_ans in answersheet.answers.des_answers %}
+        {% if des_ans.ans_as_img %}
         <div class="q qtype-image" id="qid_0">
           <div class="qno-count-container">
               <div class="qno-count-inner">
                   <div class="label">SN</div>
-                  <div class="qno-count" id="qid_0-count">1</div>
+                  <div class="qno-count" id="aid_{{des_ans.id}}-count">-</div>
               </div>
               <div class="qtype-info">DESCRIPTIVE</div>
           </div>
           <div class="content">
               <div class="meta">
-                <div class="q-title"><span class="label">Statement:</span>Lorem ipsum dolor sit amet consectetur adipisicing.</div>
+                <div class="q-title"><span class="label">Statement:</span>{{des_ans.question.statement}}</div>
                 <div class="a-score inset-float-textinput">
-                  <input type="text" class="q-marks-input" id="qid_0-marks" name="qid_0_marks">
-                  <label for="qid_0-marks">Score - out of <span class="marks">100</span></label>
+                  <input type="text" class="q-marks-input" id="qid_{{des_ans.id}}-marks" data-q-marks="{{des_ans.question.get_mark}}" {% if des_ans.score %}value={{des_ans.score}}{% endif %}>
+                  <label for="qid_{{des_ans.id}}-marks">Score - out of <span class="marks">{{des_ans.question.get_mark}}</span></label>
                 </div>
               </div>
               <div class="ans-img">
-                  <img src="/images/large_images/Screenshot 2021-12-15 202139.png" alt="">
+                  <img src="{{des_ans.answer_img.url}}" alt="">
               </div>
           </div>
         </div>
-
-        <div class="q qtype-mcq" id="qid_1">
+        {% else %}
+        <div class="q qtype-text" id="qid_2">
             <div class="qno-count-container">
-                <div class="qno-count-inner">
+              <div class="qno-count-inner">
                   <div class="label">SN</div>
-                  <div class="qno-count" id="qid_0-count">1</div>
+                  <div class="qno-count" id="aid_{{des_ans.id}}-count">-</div>
+              </div>
+              <div class="qtype-info">DESCRIPTIVE</div>
+          </div>
+          <div class="content">
+              <div class="meta">
+                <div class="q-title"><span class="label">Statement:</span>{{des_ans.question.statement}}</div>
+                <div class="a-score inset-float-textinput">
+                  <input type="text" class="q-marks-input" id="qid_{{des_ans.id}}-marks" data-q-marks="{{des_ans.question.get_mark}}" {% if des_ans.score %}value={{des_ans.score}}{% endif %}>
+                  <label for="qid_{{des_ans.id}}-marks">Score - out of <span class="marks">{{des_ans.question.get_mark}}</span></label>
                 </div>
-                <div class="qtype-info">MCQ</div>
-            </div>
-            <div class="content">
-                <div class="meta">
-                  <div class="q-title" id="qid_1-title"><span class="label">Statement:</span>Lorem iPraesentium, incidunt?</div>
-                  <div class="score-container"><span class="correct">Correct<span class="score">5/5</span></span></div>
-                </div>
-                <div class="choice-container">
-                    <input type="radio" id="op1" value="qid opid" disabled="disabled">
-                    <label for="op1">A</label>
-                    <div class="choice-text">Choice text1</div>
-                </div>
-                <div class="choice-container">
-                    <input type="radio" id="op2" value="qid opid" disabled="disabled">
-                    <label for="op2">B</label>
-                    <div class="choice-text">Choice text2</div>
-                </div>
-                <div class="choice-container">
-                    <input type="radio" class="correct" id="op3" value="qid opid" disabled="disabled">
-                    <label for="op3">C</label>
-                    <div class="choice-text">Choice text3</div>
-                </div>
-                <div class="choice-container">
-                    <input type="radio" id="op4" value="qid opid" disabled="disabled">
-                    <label for="op4">D</label>
-                    <div class="choice-text">Choice text4</div>
-                </div>
-            </div>
+              </div>
+              <div class="ans-text" alt="Answer">{{des_ans.answer_text}}</div>
+          </div>
         </div>
-
+        {% endif %}
+        {% endfor %}
+        {% for mcq_ans in answersheet.answers.des_answers.mcq_answers %}
         <div class="q qtype-mcq" id="qid_1">
           <div class="qno-count-container">
               <div class="qno-count-inner">
                 <div class="label">SN</div>
-                <div class="qno-count" id="qid_0-count">1</div>
+                <div class="qno-count" id="aid_{{mcq_ans.id}}-count">-</div>
               </div>
               <div class="qtype-info">MCQ</div>
           </div>
           <div class="content">
               <div class="meta">
-                <div class="q-title" id="qid_1-title"><span class="label">Statement:</span>Lorem iPraesentium, Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus incidunt eum voluptatum recusandae eaque officiis quas optio natus dolor labore! incidunt?</div>
-                <div class="score-container"><span class="incorrect">Incorrect<span class="score">0/5</span></span></div>
+                <div class="q-title" id="qid_{{mcq_ans.id}}-title"><span class="label">Statement:</span>{{mcq_ans.question.statement}}</div>
+                <div class="score-container">
+                  {% if mcq_ans.is_correct_ans %}
+                  <span class="correct">Correct<span class="score">{{mcq_ans.question.marks}}/{{mcq_ans.question.marks}}</span></span>
+                  {% else %}
+                  <span class="incorrect">Incorrect<span class="score">0/{{mcq_ans.question.marks}}</span></span>
+                  {% endif %}
+                </div>
               </div>
+              {% for option in mcq_ans.options_data %}
               <div class="choice-container">
-                  <input type="radio" id="op1" value="qid opid" disabled="disabled" class="incorrect">
-                  <label for="op1">A</label>
-                  <div class="choice-text">Choice text1</div>
+                <input type="radio" class="{{option.css_class}}" disabled="disabled">
+                <label>{{option.choice_code}}</label>
+                <div class="choice-text">{{option.option_text}}</div>
               </div>
-              <div class="choice-container">
-                  <input type="radio" id="op2" value="qid opid" disabled="disabled">
-                  <label for="op2">B</label>
-                  <div class="choice-text">Choice text2</div>
-              </div>
-              <div class="choice-container">
-                  <input type="radio" class="correct" id="op3" value="qid opid" disabled="disabled">
-                  <label for="op3">C</label>
-                  <div class="choice-text">Choice text3</div>
-              </div>
-              <div class="choice-container">
-                  <input type="radio" id="op4" value="qid opid" disabled="disabled">
-                  <label for="op4">D</label>
-                  <div class="choice-text">Choice text4</div>
-              </div>
+              {% endfor %}
           </div>
         </div>
-
-        <div class="q qtype-text" id="qid_2">
-            <div class="qno-count-container">
-                <div class="qno-count-inner">
-                  <div class="label">SN</div>
-                  <div class="qno-count" id="qid_0-count">1</div>
-                </div>
-                <div class="qtype-info">DESCRIPTIVE</div>
-            </div>
-            <div class="content">
-                <div class="meta">
-                  <div class="q-title"><span class="label">Statement:</span>Lorem ipsum dolor sit amet consectetur adipisicing.</div>
-                  <div class="a-score inset-float-textinput">
-                    <input type="text" class="q-marks-input" id="qid_0-marks" name="qid_0_marks">
-                    <label for="qid_0-marks">Score - out of <span class="marks">100</span></label>
-                  </div>
-                </div>
-                <div class="ans-text" alt="Answer">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis provident ipsa, impedit ullam autem praesentium ea ut in, ab modi consequuntur odio saepe quibusdam, officia fuga suscipit error animi mollitia? Sapiente, commodi inventore expedita in, amet accusamus, sint eos pariatur provident sit nihil porro ratione enim laboriosam neque exercitationem autem? Sit qui in, nesciunt libero voluptas exercitationem commodi consequatur culpa, vero placeat impedit nemo necessitatibus modi aliquid itaque voluptatem voluptate neque perferendis quas at consectetur sunt perspiciatis. Sapiente porro corporis ut molestias nobis! Veritatis pariatur temporibus dolores nihil, sed similique, reprehenderit, vitae nisi distinctio obcaecati illo ad cumque eligendi provident.</div>
-            </div>
-        </div>
+        {% endfor %}
+        
         <div class="submit-container">
             <button type="submit">Save</button>
         </div>
