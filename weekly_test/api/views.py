@@ -5,7 +5,7 @@ from rest_framework import status
 from django.utils import timezone
 from django.shortcuts import get_object_or_404
 from datetime import timedelta
-from weekly_test.models import WeeklyTest, AnswerSheet
+from weekly_test.models import WeeklyTest, AnswerSheet, DescriptiveAnswer
 from .serializer import TestSerializer, QuestionSerializer, OptionSerializer, AnswerSheetSerializer
 from .paginations import AnswerSheetPagination
 from rest_framework.permissions import IsAuthenticated
@@ -84,8 +84,11 @@ def issue_answer_sheet(request):
 @permission_classes([IsAuthenticated])
 def update_score(request, answersheet_pk):
     answersheet = get_object_or_404(AnswerSheet, pk=answersheet_pk)
-    print(request.data)
-    return Response(status=status.HTTP_200_OK)
+    for ans_dat in request.data:
+        des_ans = get_object_or_404(DescriptiveAnswer, pk=ans_dat['pk'], answer_sheet=answersheet)
+        des_ans.score = ans_dat['score']
+        des_ans.save()
+    return Response(data={'status':'score updated'},status=status.HTTP_202_ACCEPTED)
 
 
 

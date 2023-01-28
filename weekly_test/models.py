@@ -153,6 +153,15 @@ class AnswerSheet(models.Model):
             return 0
     
     @property
+    def get_score(self):
+        raw_score = self.total_score
+        int_score = int(raw_score)
+        if int_score == raw_score:
+            return int_score
+        else:
+            return raw_score
+    
+    @property
     def num_correct_ans(self):
         mcq_corrects = self.mcqanswer_set.filter(option_chosen__is_correct=True).count()
         des_corrects = self.descriptiveanswer_set.filter(score__isnull=False).filter(score__gt=0).count()
@@ -222,6 +231,13 @@ class DescriptiveAnswer(models.Model):
 
     def __str__(self) -> str:
         return f"Answer Id: {self.id} to the question {self.question}"
+    
+    @property
+    def get_score(self):
+        int_score = int(self.score)
+        if int_score == self.score:
+            return int_score
+        return self.score
     
 
 

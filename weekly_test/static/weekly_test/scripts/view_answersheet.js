@@ -88,10 +88,10 @@ function update_score(){
         cache: false,
         dataType: "json",
         success: function(response){
-            console.log('success');
+            location.reload()
         },
         error: function(xhr,status,error){
-            console.log('error');
+            alert("An Error Occurred")
         },
         complete: function(){
             $("#save-score_btn").attr("disabled", false)

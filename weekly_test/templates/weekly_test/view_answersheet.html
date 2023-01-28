@@ -44,7 +44,7 @@
         {% else %}
         <div class="score-con">
           <i class='bx bx-trophy'></i>
-          <div class="points">Score:<span class="point">{{answersheet.total_score}}</span></div>
+          <div class="points">Score:<span class="point">{{answersheet.get_score}}</span></div>
         </div>
         {% endif %}
       </div>
@@ -81,7 +81,7 @@
               <div class="meta">
                 <div class="q-title"><span class="label">Statement:</span>{{des_ans.question.statement}}</div>
                 <div class="a-score inset-float-textinput">
-                  <input type="text" class="q-marks-input" id="desid_{{des_ans.id}}-marks" data-q-marks="{{des_ans.question.get_mark}}" data-ans-id="{{des_ans.id}}" {% if des_ans.score %}value={{des_ans.score}}{% endif %}>
+                  <input type="text" class="q-marks-input" id="desid_{{des_ans.id}}-marks" data-q-marks="{{des_ans.question.get_mark}}" data-ans-id="{{des_ans.id}}" {% if des_ans.score %}value={{des_ans.get_score}}{% endif %}>
                   <label for="qid_{{des_ans.id}}-marks">Score - out of <span class="marks">{{des_ans.question.get_mark}}</span></label>
                 </div>
               </div>
@@ -103,7 +103,7 @@
               <div class="meta">
                 <div class="q-title"><span class="label">Statement:</span>{{des_ans.question.statement}}</div>
                 <div class="a-score inset-float-textinput">
-                  <input type="text" class="q-marks-input" id="desid_{{des_ans.id}}-marks" data-q-marks="{{des_ans.question.get_mark}}"  data-ans-id="{{des_ans.id}}" {% if des_ans.score %}value={{des_ans.score}}{% endif %}>
+                  <input type="text" class="q-marks-input" id="desid_{{des_ans.id}}-marks" data-q-marks="{{des_ans.question.get_mark}}"  data-ans-id="{{des_ans.id}}" {% if des_ans.score %}value={{des_ans.get_score}}{% endif %}>
                   <label for="qid_{{des_ans.id}}-marks">Score - out of <span class="marks">{{des_ans.question.get_mark}}</span></label>
                 </div>
               </div>
@@ -170,80 +170,3 @@
   const csrftoken = "{{csrf_token}}"
 </script>
 {% endblock script %}
-
-
-
-
-
-
-
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-  <link rel="stylesheet" href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'>
-  <link rel="stylesheet" href="/exam/styles/view_answersheet.css">
-  <link rel="stylesheet" href="../styles/navbar.css">
-  <title>view answersheet</title>
-</head>
-
-<body>
-  <header>
-    <nav class="navbar navbar-expand-xl bg-light">
-      <div class="container-fluid">
-        <div class="navbar-brand flexer-row ms-4" href="#">
-          <div class="site-title">OpenClassroom</div>
-        </div>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="#">Dashboard</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Weeklies</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Students</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Assessment</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">About</a>
-            </li>
-          </ul>
-          <div class="user">
-            <div class="avatar">
-              <img src="/images/dp3.jpg" alt="">
-            </div>
-            <span class="name">First Name</span>
-            <a href="" class="btn-1-outlined">Logout</a>
-          </div>
-        </div>
-      </div>
-    </nav>
-  </header>
-  <div class="main">
-    
-  </div>
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
-    crossorigin="anonymous"></script>
-</body>
-
-</html>
