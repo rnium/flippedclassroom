@@ -81,7 +81,7 @@
               <div class="meta">
                 <div class="q-title"><span class="label">Statement:</span>{{des_ans.question.statement}}</div>
                 <div class="a-score inset-float-textinput">
-                  <input type="text" class="q-marks-input" id="qid_{{des_ans.id}}-marks" data-q-marks="{{des_ans.question.get_mark}}" {% if des_ans.score %}value={{des_ans.score}}{% endif %}>
+                  <input type="text" class="q-marks-input" id="desid_{{des_ans.id}}-marks" data-q-marks="{{des_ans.question.get_mark}}" data-ans-id="{{des_ans.id}}" {% if des_ans.score %}value={{des_ans.score}}{% endif %}>
                   <label for="qid_{{des_ans.id}}-marks">Score - out of <span class="marks">{{des_ans.question.get_mark}}</span></label>
                 </div>
               </div>
@@ -103,7 +103,7 @@
               <div class="meta">
                 <div class="q-title"><span class="label">Statement:</span>{{des_ans.question.statement}}</div>
                 <div class="a-score inset-float-textinput">
-                  <input type="text" class="q-marks-input" id="qid_{{des_ans.id}}-marks" data-q-marks="{{des_ans.question.get_mark}}" {% if des_ans.score %}value={{des_ans.score}}{% endif %}>
+                  <input type="text" class="q-marks-input" id="desid_{{des_ans.id}}-marks" data-q-marks="{{des_ans.question.get_mark}}"  data-ans-id="{{des_ans.id}}" {% if des_ans.score %}value={{des_ans.score}}{% endif %}>
                   <label for="qid_{{des_ans.id}}-marks">Score - out of <span class="marks">{{des_ans.question.get_mark}}</span></label>
                 </div>
               </div>
@@ -123,7 +123,7 @@
           </div>
           <div class="content">
               <div class="meta">
-                <div class="q-title" id="qid_{{mcq_ans.id}}-title"><span class="label">Statement:</span>{{mcq_ans.question.statement}}</div>
+                <div class="q-title" id="mcqid_{{mcq_ans.id}}-title"><span class="label">Statement:</span>{{mcq_ans.question.statement}}</div>
                 <div class="score-container">
                   {% if mcq_ans.is_correct_ans %}
                   <span class="correct">Correct<span class="score">{{mcq_ans.question.get_mark}}/{{mcq_ans.question.get_mark}}</span></span>
