@@ -50,20 +50,19 @@ body header nav .user {
 }
 
 body header nav .user .avatar {
-  width: 40px;
-  height: 40px;
-  -o-object-fit: contain;
-     object-fit: contain;
+  min-width: 40px;
+  max-width: 40px;
+  min-height: 40px;
+  max-height: 40px;
   overflow: hidden;
   margin-right: 5px;
-  border-radius: 180px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  border-radius: 50%;
   -webkit-box-shadow: 0 0 5px #e6e6e6;
           box-shadow: 0 0 5px #e6e6e6;
   border: 1px solid #d4d3d3;
-}
-
-body header nav .user .avatar img {
-  width: 100%;
 }
 
 body header nav .user .name {

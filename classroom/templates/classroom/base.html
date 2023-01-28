@@ -22,8 +22,7 @@
               <div class="collapse navbar-collapse ms-auto" id="navbarSupportedContent">
                 {% block nav %}{% endblock nav %}
                 <div class="user ms-auto me-4">
-                    <div class="avatar">
-                      <img src="{{ request.user.account.avatar_url }}" alt="">
+                    <div class="avatar" style="background-image: url('{{ request.user.account.avatar_url }}');">
                     </div>
                     <span class="name">{{ request.user.account.user_first_name }}</span>
                     <a href="{% url 'accounts:user_logout' %}" class="btn-1-outlined">Logout</a>
