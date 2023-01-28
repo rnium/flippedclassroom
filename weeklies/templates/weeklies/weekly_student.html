@@ -153,7 +153,7 @@
                   {% endfor %}
                   {% for prev_test in weekly.preClassPreviousTest %}
                   <li>
-                    <a href="">
+                    <a href="{% url 'weekly_test:view_test' prev_test.id %}">
                       <div class="test list-item">
                         <i class='bx bx-edit-alt'></i>
                         <div class="info">
@@ -214,72 +214,93 @@
         <div class="tab-content">
           <div class="left-col">
             <div class="in-class-info">
-              <div class="info-text" id="in-class-info-text" data-descr-editor="in_cls-description-editor">
-                <div class="info" id="in-class-info-text-raw">Lorem adipisicing elitelit. Natus a sunt dolore ut provident pariatur earum harum autem ea animi. t consectetur adipisicing elit. Quos ddfdfdd</div>
+              <div class="info-text">
+                {% if weekly.in_class_instruction %}
+                <div class="info">{{ weekly.in_class_instruction }}</div>
+                {% endif %}
               </div>
-            </div>
-            
+            </div>  
             <div class="in-class-files content-card">
               <div class="title">
                 <i class='bx bx-paperclip'></i>
                 <div class="title-text">Files</div>
               </div>
-              <!-- <div class="content">
+              {% if weekly.hasInClassFiles %}
+              <div class="content">
                 <ul>
-                  <li>
-                    <i class='bx bxs-file-pdf'></i>
-                    <a href="">filename.pdf</a>
+                  {% for inclassfile in weekly.inClassFiles %}
+                  {% if inclassfile.must_study %}
+                  <li class="muststudy">
+                    <i class="{{ inclassfile.css_class }}"></i>
+                    <a href="{% url 'weeklies:downloadweeklyfile' inclassfile.weekly.id inclassfile.id  %}?contentcode=1" target="blank" download>{{ inclassfile.filename }}</a>
                   </li>
+                  {% else %}
                   <li>
-                    <i class='bx bx-slideshow' ></i>
-                    <a href="">filename.pptx</a>
+                    <i class="{{ inclassfile.css_class }}"></i>
+                    <a href="{% url 'weeklies:downloadweeklyfile' inclassfile.weekly.id inclassfile.id  %}?contentcode=1" target="blank" download>{{ inclassfile.filename }}</a>
                   </li>
-                  <li>
-                    <i class='bx bxs-file-image'></i>
-                    <a href="">filename.jpg</a>
-                  </li>
-                  <li>
-                    <i class='bx bxs-file-doc'></i>
-                    <a href="">filename.docx</a>
-                  </li>
-                  <li>
-                    <i class='bx bxs-file-archive'></i>
-                    <a href="">filename.zip</a>
-                  </li>
-                  <li>
-                    <i class='bx bxs-file-txt'></i>
-                    <a href="">filename.txt</a>
-                  </li>
-                  <li>
-                    <i class='bx bxs-file-blank' ></i>
-                    <a href="">filename.extension</a>
-                  </li>
+                  {% endif %}
+                  {% endfor %}
                 </ul>
-              </div> -->
+              </div>
+              {% else %}
               <div class="no-content">
                 <i class='bx bx-info-circle'></i>
-                <div class="info">No files</div>
+                <div class="info">No files yet</div>
               </div>
+              {% endif %}
             </div>
 
-            <!-- <div class="in-class-tutorials content-card">
+            <div class="in-class-tutorials content-card">
               <div class="title">
                 <i class='bx bxl-youtube' ></i>
                 <div class="title-text">Video Tutorials</div>
               </div>
               <div class="content">
-                <ul>
+                <ul id="inClsTutoList">
+                  {% for intuto in weekly.inClassTuto  %}
                   <li>
-                    <div class="vid-info">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Asperiores, in!</div>
+                    {% if intuto.description %}<div class="vid-info">{{ intuto.description }}</div>{% endif %}
                     <div class="video-container">
-                      <iframe src="https://www.youtube.com/embed/kVuoa9ntPgA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                      <iframe src="https://www.youtube.com/embed/{{ intuto.yt_id }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                   </li>
+                  {% endfor %}
                 </ul>
               </div>
-            </div> -->
+              <div id="inClsNoTuto">
+                {% if not weekly.hasInClassTuto %}
+                <div class="no-content">
+                  <i class='bx bx-info-circle'></i>
+                  <div class="info">No Tutorials</div>
+                </div>
+                {% endif %}
+              </div>
+            </div>
           </div>
           <div class="right-col">
+            {% if in_class_ongoing_tests %}
+            <div class="live-tests title-box">
+              <div class="title">Ongoing Tests</div>
+              <div class="content">
+                <ul>
+                  {% for test in in_class_ongoing_tests %}
+                  <li>
+                    <div class="test-item">
+                      <i class='bx bx-edit-alt'></i>
+                      <div class="info">
+                        <div class="label-title">{{ test.title }}</div>
+                        <div class="action">
+                          <a href="{% url 'weekly_test:take_test' test.id %}">Participate</a>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+            {% endif %}
             <div class="live-tests title-box">
               <div class="title">Ongoing Tests</div>
               <div class="content">

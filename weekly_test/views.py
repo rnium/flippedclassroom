@@ -31,15 +31,33 @@ class QuestionCreate(LoginRequiredMixin, DetailView):
         return context
 
 
-class TestView(LoginRequiredMixin, DetailView):
-    template_name = "weekly_test/viewresults.html"
-    model = WeeklyTest
+# class TestView(LoginRequiredMixin, DetailView):
+#     template_name = "weekly_test/viewresults.html"
+#     model = WeeklyTest
     
-    def get_object(self):
-        test = super().get_object()
-        if self.request.user not in test.weekly.classroom.teachers.all():
-            raise Http404
-        return test
+#     def get_object(self):
+#         test = super().get_object()
+#         if self.request.user not in test.weekly.classroom.teachers.all():
+#             raise Http404
+#         return test
+    
+
+@login_required
+def view_test(request, pk):
+    test = get_object_or_404(WeeklyTest, pk=pk)
+    if request.user in test.weekly.classroom.teachers.all():
+        return render(request, "weekly_test/viewresults.html", context={"weeklytest":test})
+    elif request.user in test.weekly.classroom.students.all():
+        # if test.expiration >= timezone.now():
+        #     return renderinfo("Test is Ongoing")
+        answersheet_qs = AnswerSheet.objects.filter(test=test, user=request.user)
+        # if len(answersheet_qs) == 0:
+        #     return renderinfo("You Haven't participated in this test")
+        answersheet = answersheet_qs[0]
+        if answersheet.submit_time == None:
+            return redirect("weekly_test:take_test", kwargs={"pk":test.id})
+        else:
+            return redirect("weekly_test:view_answersheet", pk=answersheet.id) 
 
 
 class AnswersheetView(LoginRequiredMixin, DetailView):
