@@ -144,7 +144,7 @@
         {% endfor %}
         {% if answersheet.num_des_answers %}
         <div class="submit-container">
-          <button type="submit">Save</button>
+          <button type="submit" id="save-score_btn">Save</button>
         </div>
         {% endif %}
         
@@ -165,6 +165,10 @@
 {% block script %}
 <script src="{% static 'classroom/scripts/localtimes.js' %}"></script>
 <script src="{% static 'weekly_test/scripts/view_answersheet.js' %}"></script>
+<script>
+  const update_score_url = "{% url 'weekly_test_api:update_score' answersheet.id %}"
+  const csrftoken = "{{csrf_token}}"
+</script>
 {% endblock script %}
 
 

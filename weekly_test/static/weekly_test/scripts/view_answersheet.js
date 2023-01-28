@@ -50,12 +50,53 @@ function processData(){
          let pk_raw = $(`#${valueOfElement.id}`).attr("data-ans-id")
          let pk = Number(pk_raw)
          let score_raw = $(`#${valueOfElement.id}`).val()
+         if (score_raw.length < 1) {
+            return;
+         }
          let score = Number(score_raw)
          unit_data['pk'] = pk
          unit_data['score'] = score
          data_list.push(unit_data)
     });
     return data_list
+}
+
+function update_score(){
+    let payload
+    console.log('cl');
+    let error_res = checkErrorFields()
+    console.log(error_res);
+    if (error_res == false) {
+        return false
+    } else {
+        dat = processData()
+        console.log(dat.length);
+        if (dat.length == 0){
+            return false
+        }
+        payload = JSON.stringify(dat)
+    }
+    $.ajax({
+        url: update_score_url,
+        contentType: "application/json",
+        type: "POST",
+        beforeSend: function(xhr){
+            $("#save-score_btn").attr("disabled", true)
+            xhr.setRequestHeader("X-CSRFToken", csrftoken)
+        },
+        data: payload,
+        cache: false,
+        dataType: "json",
+        success: function(response){
+            console.log('success');
+        },
+        error: function(xhr,status,error){
+            console.log('error');
+        },
+        complete: function(){
+            $("#save-score_btn").attr("disabled", false)
+        }
+    })
 }
 
 
@@ -65,4 +106,5 @@ function processData(){
 $(document).ready(function () {
     adjust_answercounts()
     activate_score_box()
+    $("#save-score_btn").on('click', update_score)
 });

@@ -14,6 +14,7 @@ from rest_framework.generics import ListAPIView
 from classroom.models import Classroom
 
 @api_view(["POST"])
+@permission_classes([IsAuthenticated])
 def create_test(request, pk):
     if request.method == "POST":
         classroom = get_object_or_404(Classroom, pk=pk)
@@ -47,6 +48,7 @@ def create_test(request, pk):
 
 
 @api_view(['POST'])
+@permission_classes([IsAuthenticated])
 def issue_answer_sheet(request):
     if request.method == "POST":
         answer_sheet_pk = request.data.get("answer_sheet_pk")

@@ -79,6 +79,16 @@ def issue_answer_sheet(request):
         return Response(data={'pk': answer_sheet_pk, 'duration':duration_seconds, 'endtime':endtime})
 
 
+
+@api_view(["POST"])
+@permission_classes([IsAuthenticated])
+def update_score(request, answersheet_pk):
+    answersheet = get_object_or_404(AnswerSheet, pk=answersheet_pk)
+    print(request.data)
+    return Response(status=status.HTTP_200_OK)
+
+
+
 class TestAnswersheetsView(ListAPIView):
     serializer_class = AnswerSheetSerializer
     permission_classes = [IsAuthenticated & IsUserTeacherOfClassroom]
