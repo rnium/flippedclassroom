@@ -68,7 +68,7 @@
       <div class="title"><i class='bx bx-file'></i><span>Submitted Answers</span></div>
       <div class="answers-container">
         {% for des_ans in answersheet.answers.des_answers %}
-        {% if des_ans.ans_as_img %}
+        {% if des_ans.question.ans_as_img %}
         <div class="q qtype-image">
           <div class="qno-count-container">
               <div class="qno-count-inner">
@@ -117,7 +117,7 @@
           <div class="qno-count-container">
               <div class="qno-count-inner">
                 <div class="label">SN</div>
-                <div class="qno-count" id="aid_{{mcq_ans.id}}-count">-</div>
+                <div class="qno-count" id="mcqid_{{mcq_ans.id}}-count">-</div>
               </div>
               <div class="qtype-info">MCQ</div>
           </div>

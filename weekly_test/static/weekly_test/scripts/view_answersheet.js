@@ -100,9 +100,6 @@ function update_score(){
 }
 
 
-
-
-
 $(document).ready(function () {
     adjust_answercounts()
     activate_score_box()
