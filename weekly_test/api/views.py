@@ -84,6 +84,8 @@ def issue_answer_sheet(request):
 @permission_classes([IsAuthenticated])
 def update_score(request, answersheet_pk):
     answersheet = get_object_or_404(AnswerSheet, pk=answersheet_pk)
+    if request.user not in answersheet.test.weekly.classroom.teachers.all():
+        return Response(status=status.HTTP_403_FORBIDDEN)
     for ans_dat in request.data:
         des_ans = get_object_or_404(DescriptiveAnswer, pk=ans_dat['pk'], answer_sheet=answersheet)
         des_ans.score = ans_dat['score']
