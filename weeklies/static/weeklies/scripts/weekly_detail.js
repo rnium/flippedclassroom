@@ -54,6 +54,7 @@ function append_post(response) {
 
 
 function create_post() {
+    console.log('hi');
     let postcontent = $("#post_text_inp").val()
     if (postcontent.length < 1) {
         $("#post_text_inp").focus()

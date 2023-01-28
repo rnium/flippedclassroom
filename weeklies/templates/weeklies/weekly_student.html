@@ -146,7 +146,7 @@
                       <i class='bx bxs-edit-alt'></i>
                       <div class="info">
                         <div class="label-title">{{ upcoming_test.title }}</div>
-                        <div class="held-on"><span class="sub-title">Schedule:</span><span class="time">{{ upcoming_test.schedule|date:"c" }}</span></div>
+                        <div class="held-on"><span class="sub-title">Schedule:</span><span class="time" id="test_{{upcoming_test.id}}">{{ upcoming_test.schedule|date:"c" }}</span></div>
                       </div>
                     </div>
                   </li>
@@ -158,7 +158,7 @@
                         <i class='bx bx-edit-alt'></i>
                         <div class="info">
                           <div class="label-title">{{ prev_test.title }}</div>
-                          <div class="held-on"><span class="sub-title">held on:</span><span class="time">{{ prev_test.schedule|date:"c" }}</span></div>
+                          <div class="held-on"><span class="sub-title">held on:</span><span class="time" id="test_{{upcoming_test.id}}">{{ prev_test.schedule|date:"c" }}</span></div>
                         </div>
                       </div>
                     </a>
@@ -301,106 +301,76 @@
               </div>
             </div>
             {% endif %}
-            <div class="live-tests title-box">
-              <div class="title">Ongoing Tests</div>
-              <div class="content">
-                <ul>
-                  <li>
-                    <div class="test-item">
-                      <i class='bx bx-edit-alt'></i>
-                      <div class="info">
-                        <div class="label-title">Test on electrical circuits 1</div>
-                        <div class="action">
-                          <a href="">Participate</a>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            
             <div class="weekly-tests title-box">
               <div class="title">Test</div>
               <div class="content">
+                {% if weekly.has_in_class_tests %}
                 <ul>
+                  {% for upcoming_test in weekly.inClassUpcomingTest %}
                   <li>
                     <div class="test test-upcoming list-item">
                       <i class='bx bxs-edit-alt'></i>
                       <div class="info">
-                        <div class="label-title">Test on electrical circuits 2 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, molestias?</div>
-                        <div class="held-on"><span class="sub-title">Schedule:</span><span class="time">7:00PM, 17 Oct 2022</span></div>
+                        <div class="label-title">{{ upcoming_test.title }}</div>
+                        <div class="held-on"><span class="sub-title">Schedule:</span><span class="time" id="test-{{upcoming_test.id}}">{{ upcoming_test.schedule|date:"c" }}</span></div>
                       </div>
                     </div>
                   </li>
-
+                  {% endfor %}
+                  {% for prev_test in weekly.inClassPreviousTest %}
                   <li>
-                    <div class="test test-upcoming list-item">
-                      <i class='bx bxs-edit-alt'></i>
-                      <div class="info">
-                        <div class="label-title">Test on electrical circuits 2</div>
-                        <div class="held-on"><span class="sub-title">Schedule:</span><span class="time">7:00PM, 17 Oct 2022</span></div>
-                      </div>
-                    </div>
-                  </li>
-
-                  <li>
-                    <a href="">
+                    <a href="{% url 'weekly_test:view_test' prev_test.id %}">
                       <div class="test list-item">
                         <i class='bx bx-edit-alt'></i>
                         <div class="info">
-                          <div class="label-title">Test on electrical circuits 1</div>
-                          <div class="held-on"><span class="sub-title">held on:</span><span class="time">7:00PM, 17 Oct 2022</span></div>
+                          <div class="label-title">{{ prev_test.title }}</div>
+                          <div class="held-on"><span class="sub-title">held on:</span><span class="time" id="test-{{prev_test.id}}">{{ prev_test.schedule|date:"c" }}</span></div>
                         </div>
                       </div>
                     </a>
                   </li>
-
-                    <li>
-                      <a href="">
-                        <div class="test list-item">
-                          <i class='bx bx-edit-alt'></i>
-                          <div class="info">
-                            <div class="label-title">Test on electrical circuits 1</div>
-                            <div class="held-on"><span class="sub-title">held on:</span><span class="time">7:00PM, 17 Oct 2022</span></div>
-                          </div>
-                        </div>
-                      </a>
-                    </li>
-                    
-                  </ul>
-                <!-- <div class="no-content"><i class='bx bx-info-circle'></i><span>No Tests</span></div> -->
+                  {% endfor %}
+                </ul>
+                {% else %}
+                <div class="no-content"><i class='bx bx-info-circle'></i><span>No Tests</span></div> 
+                {% endif %}
               </div>
             </div>
             <div class="weekly-tasks title-box">
               <div class="title">Assigned Task</div>
               <div class="content">
+                {% if weekly.has_in_class_tasks %}
                 <ul>
-                    <li>
-                      <a href="">
-                        <div class="assignment due list-item">
-                          <i class='bx bxs-briefcase'></i>
-                          <div class="info">
-                            <div class="label-title">assignment title</div>
-                            <div class="deadline"><span class="sub-title">Due:</span><span class="time">7:00PM, 17 Oct 2022</span></div>
-                          </div>
+                  {% for task in weekly.inClassOngoingTask %}
+                  <li>
+                    <a href="{% url 'classroom:tasks:view_task' task.classroom.id task.id %}">
+                      <div class="assignment due list-item">
+                        <i class='bx bxs-briefcase'></i>
+                        <div class="info">
+                          <div class="label-title">{{task.title}}</div>
+                          <div class="deadline"><span class="sub-title">Due:</span><span class="time" id="task_deadline_{{task.id}}">{{task.deadline|date:"c"}}</span></div>
                         </div>
-                      </a>
-                    </li>
-
-                    <li>
-                      <a href="">
-                        <div class="assignment list-item">
-                          <i class='bx bx-briefcase' ></i>
-                          <div class="info">
-                            <div class="label-title">assignment title</div>
-                            <div class="deadline"><span class="sub-title">Sumitted:</span><span class="time">7:00PM, 17 Oct 2022</span></div>
-                          </div>
+                      </div>
+                    </a>
+                  </li>
+                  {% endfor %}
+                  {% for task in weekly.inClassPreviousTask %}
+                  <li>
+                    <a href="{% url 'classroom:tasks:view_task' task.classroom.id task.id %}">
+                      <div class="assignment list-item">
+                        <i class='bx bx-briefcase' ></i>
+                        <div class="info">
+                          <div class="label-title">{{task.title}}</div>
+                          <div class="deadline"><span class="sub-title">Closed:</span><span class="time" id="task_deadline_{{task.id}}">{{task.deadline|date:"c"}}</span></div>
                         </div>
-                      </a>
-                    </li>
-                  </ul>
-                <!-- <div class="no-content"><i class='bx bx-info-circle'></i><span>No upcoming events</span></div> -->
+                      </div>
+                    </a>
+                  </li>
+                  {% endfor %}
+                </ul>
+                {% else %}
+                <div class="no-content"><i class='bx bx-info-circle'></i><span>No Tasks</span></div>
+                {% endif %}
               </div>
             </div>
           </div>
@@ -410,8 +380,10 @@
         <div class="tab-content">
           <div class="left-col">
             <div class="post-class-info">
-              <div class="info-text" id="post-class-info-text" data-descr-editor="post_cls-description-editor">
-                <div class="info" id="post-class-info-text-raw">Lorem adipisicing  elitelitelitelitelitelitelitelitelitelitelitelit elitelit. Natus a sunt dolore ut provident pariatur earum harum autem ea animi. t consectetur adipisicing elit. Quos ddfdfdd</div>
+              <div class="info-text">
+                {% if weekly.post_class_instruction %}
+                <div class="info">{{ weekly.post_class_instruction }}</div>
+                {% endif %}
               </div>
             </div>
             
@@ -420,214 +392,190 @@
                 <i class='bx bx-paperclip'></i>
                 <div class="title-text">Files</div>
               </div>
+              {% if weekly.hasPostClassFiles %}
               <div class="content">
                 <ul>
-                  <li>
-                    <i class='bx bxs-file-pdf'></i>
-                    <a href="">filename.pdf</a>
+                  {% for postclassfile in weekly.postClassFiles %}
+                  {% if postclassfile.must_study %}
+                  <li class="muststudy">
+                    <i class="{{ postclassfile.css_class }}"></i>
+                    <a href="{% url 'weeklies:downloadweeklyfile' postclassfile.weekly.id postclassfile.id  %}?contentcode=2" target="blank" download>{{ postclassfile.filename }}</a>
                   </li>
+                  {% else %}
                   <li>
-                    <i class='bx bx-slideshow' ></i>
-                    <a href="">filename.pptx</a>
+                    <i class="{{ postclassfile.css_class }}"></i>
+                    <a href="{% url 'weeklies:downloadweeklyfile' postclassfile.weekly.id postclassfile.id  %}?contentcode=2" target="blank" download>{{ postclassfile.filename }}</a>
                   </li>
-                  <li>
-                    <i class='bx bxs-file-image'></i>
-                    <a href="">filename.jpg</a>
-                  </li>
-                  <li>
-                    <i class='bx bxs-file-doc'></i>
-                    <a href="">filename.docx</a>
-                  </li>
-                  <li>
-                    <i class='bx bxs-file-archive'></i>
-                    <a href="">filename.zip</a>
-                  </li>
-                  <li>
-                    <i class='bx bxs-file-txt'></i>
-                    <a href="">filename.txt</a>
-                  </li>
-                  <li>
-                    <i class='bx bxs-file-blank' ></i>
-                    <a href="">filename.extension</a>
-                  </li>
+                  {% endif %}
+                  {% endfor %}
                 </ul>
               </div>
-              <!-- <div class="no-content">
+              {% else %}
+              <div class="no-content">
                 <i class='bx bx-info-circle'></i>
                 <div class="info">No files yet</div>
-              </div> -->
+              </div>
+              {% endif %}
             </div>
 
-            <!-- <div class="post-class-tutorials content-card">
+            <div class="post-class-tutorials content-card">
               <div class="title">
                 <i class='bx bxl-youtube' ></i>
                 <div class="title-text">Video Tutorials</div>
               </div>
               <div class="content">
-                <ul>
+                <ul id="postClsTutoList">
+                  {% for posttuto in weekly.postClassTuto  %}
                   <li>
-                    <div class="vid-info">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Asperiores, in!</div>
+                    {% if posttuto.description %}<div class="vid-info">{{ posttuto.description }}</div>{% endif %}
                     <div class="video-container">
-                      <iframe src="https://www.youtube.com/embed/kVuoa9ntPgA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                      <iframe src="https://www.youtube.com/embed/{{ posttuto.yt_id }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                   </li>
+                  {% endfor %}
                 </ul>
               </div>
-            </div> -->
+              <div id="postClsNoTuto">
+                {% if not weekly.hasPostClassTuto %}
+                <div class="no-content">
+                  <i class='bx bx-info-circle'></i>
+                  <div class="info">No Tutorials</div>
+                </div>
+                {% endif %}
+              </div>
+            </div>
           </div>
           <div class="right-col">
+            {% if post_class_ongoing_tests %}
             <div class="live-tests title-box">
               <div class="title">Ongoing Tests</div>
               <div class="content">
                 <ul>
+                  {% for test in post_class_ongoing_tests %}
                   <li>
                     <div class="test-item">
                       <i class='bx bx-edit-alt'></i>
                       <div class="info">
-                        <div class="label-title">Test on electrical circuits 1</div>
+                        <div class="label-title">{{ test.title }}</div>
                         <div class="action">
-                          <a href="">Participate</a>
+                          <a href="{% url 'weekly_test:take_test' test.id %}">Participate</a>
                         </div>
                       </div>
                     </div>
                   </li>
+                  {% endfor %}
                 </ul>
               </div>
             </div>
+            {% endif %}
             <div class="weekly-tests title-box">
               <div class="title">Test</div>
               <div class="content">
+                {% if weekly.has_post_class_tests %}
                 <ul>
+                  {% for upcoming_test in weekly.postClassUpcomingTest %}
                   <li>
                     <div class="test test-upcoming list-item">
                       <i class='bx bxs-edit-alt'></i>
                       <div class="info">
-                        <div class="label-title">Test on electrical circuits 2 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, molestias?</div>
-                        <div class="held-on"><span class="sub-title">Schedule:</span><span class="time">7:00PM, 17 Oct 2022</span></div>
+                        <div class="label-title">{{ upcoming_test.title }}</div>
+                        <div class="held-on"><span class="sub-title">Schedule:</span><span class="time"  id="test-{{upcoming_test.id}}">{{ upcoming_test.schedule|date:"c" }}</span></div>
                       </div>
                     </div>
                   </li>
-
+                  {% endfor %}
+                  {% for prev_test in weekly.postClassPreviousTest %}
                   <li>
-                    <div class="test test-upcoming list-item">
-                      <i class='bx bxs-edit-alt'></i>
-                      <div class="info">
-                        <div class="label-title">Test on electrical circuits 2</div>
-                        <div class="held-on"><span class="sub-title">Schedule:</span><span class="time">7:00PM, 17 Oct 2022</span></div>
-                      </div>
-                    </div>
-                  </li>
-
-                  <li>
-                    <a href="">
+                    <a href="{% url 'weekly_test:view_test' prev_test.id %}">
                       <div class="test list-item">
                         <i class='bx bx-edit-alt'></i>
                         <div class="info">
-                          <div class="label-title">Test on electrical circuits 1</div>
-                          <div class="held-on"><span class="sub-title">held on:</span><span class="time">7:00PM, 17 Oct 2022</span></div>
+                          <div class="label-title">{{ prev_test.title }}</div>
+                          <div class="held-on"><span class="sub-title">held on:</span><span class="time" id="test-{{prev_test.id}}">{{ prev_test.schedule|date:"c" }}</span></div>
                         </div>
                       </div>
                     </a>
                   </li>
-
-                    <li>
-                      <a href="">
-                        <div class="test list-item">
-                          <i class='bx bx-edit-alt'></i>
-                          <div class="info">
-                            <div class="label-title">Test on electrical circuits 1</div>
-                            <div class="held-on"><span class="sub-title">held on:</span><span class="time">7:00PM, 17 Oct 2022</span></div>
-                          </div>
-                        </div>
-                      </a>
-                    </li>
-                    
-                  </ul>
-                <!-- <div class="no-content"><i class='bx bx-info-circle'></i><span>No Tests</span></div> -->
+                  {% endfor %}
+                </ul>
+                {% else %}
+                <div class="no-content"><i class='bx bx-info-circle'></i><span>No Tests</span></div> 
+                {% endif %}
               </div>
             </div>
             <div class="weekly-tasks title-box">
               <div class="title">Assigned Task</div>
               <div class="content">
+                {% if weekly.has_post_class_tasks %}
                 <ul>
-                    <li>
-                      <a href="">
-                        <div class="assignment due list-item">
-                          <i class='bx bxs-briefcase'></i>
-                          <div class="info">
-                            <div class="label-title">assignment title</div>
-                            <div class="deadline"><span class="sub-title">Due:</span><span class="time">7:00PM, 17 Oct 2022</span></div>
-                          </div>
+                  {% for task in weekly.postClassOngoingTask %}
+                  <li>
+                    <a href="{% url 'classroom:tasks:view_task' task.classroom.id task.id %}">
+                      <div class="assignment due list-item">
+                        <i class='bx bxs-briefcase'></i>
+                        <div class="info">
+                          <div class="label-title">{{task.title}}</div>
+                          <div class="deadline"><span class="sub-title">Deadline:</span><span class="time" id="deadline_{{task.id}}">{{task.deadline|date:"c"}}</span></div>
                         </div>
-                      </a>
-                    </li>
-
-                    <li>
-                      <a href="">
-                        <div class="assignment list-item">
-                          <i class='bx bx-briefcase' ></i>
-                          <div class="info">
-                            <div class="label-title">assignment title</div>
-                            <div class="deadline"><span class="sub-title">Sumitted:</span><span class="time">7:00PM, 17 Oct 2022</span></div>
-                          </div>
+                      </div>
+                    </a>
+                  </li>
+                  {% endfor %}
+                  {% for task in weekly.postClassPreviousTask %}
+                  <li>
+                    <a href="{% url 'classroom:tasks:view_task' task.classroom.id task.id %}">
+                      <div class="assignment list-item">
+                        <i class='bx bx-briefcase' ></i>
+                        <div class="info">
+                          <div class="label-title">{{task.title}}</div>
+                          <div class="deadline"><span class="sub-title">Closed:</span><span class="time" id="deadline_{{task.id}}">{{task.deadline|date:"c"}}</span></div>
                         </div>
-                      </a>
-                    </li>
-                  </ul>
-                <!-- <div class="no-content"><i class='bx bx-info-circle'></i><span>No upcoming events</span></div> -->
+                      </div>
+                    </a>
+                  </li>
+                  {% endfor %}
+                </ul>
+                {% else %}
+                <div class="no-content"><i class='bx bx-info-circle'></i><span>No Tasks</span></div>
+                {% endif %}
               </div>
             </div>
           </div>
         </div>
       </div>
       <div class="tab-body" id="tab4">
-        <!-- <div class="posts-container">
+        {% if weekly.has_forum_post %}
+        <div class="posts-container" id="forum_post_container">
+          {% for post in weekly.forum_posts %}
           <div class="post">
             <div class="post-inner">
               <div class="top-panel">
-                <div class="post-time"><span class="sub-title">Posted</span><span class="time">9:31pm, 12 Dec 2022</span></div>
+                <div class="post-time"><span class="sub-title">Posted</span><span class="time" id="post-{{post.id}}">{{ post.added|date:"c" }}</span></div>
               </div>
               <div class="bottom-panel">
                 <div class="user">
-                  <div class="username">Enzo</div>
-                  <div class="teacher-badge"></div>
-                  <div class="avatar"><img src="images/dp2.jpg" alt=""></div>
+                  <div class="username">{{ post.author.account.user_full_name }}</div>
+                  {% if post.author in post.weekly.classroom.teachers.all %}<div class="teacher-badge"></div>{% else %}<div class="registration">Reg. No.</div>{% endif %}
+                  <div class="avatar"><img src="{{ post.author.account.avatar_url }}" alt=""></div>
                 </div>
-                <div class="post-body">
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, quia?</p>
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi ipsum voluptates porro facilis ex fugit quidem dolore quae laboriosam natus.</p>
-                </div>
+                <div class="post-body">{{ post.postcontent }}</div>
               </div>
+              {% if request.user == post.author %}<a class="edit" href="{% url 'weeklies:edit_post' post.weekly.id post.id %}"><i class='bx bx-pencil'></i></a>{% endif %}
             </div>
           </div>
-          <div class="post">
-            <div class="post-inner">
-              <div class="top-panel">
-                <div class="post-time"><span class="sub-title">Posted</span><span class="time">9:31pm, 12 Dec 2022</span></div>
-              </div>
-              <div class="bottom-panel">
-                <div class="user">
-                  <div class="username">MSI Rony</div>
-                  <div class="registration">2018338514</div>
-                  <div class="avatar"><img src="images/dp4.jpg" alt=""></div>
-                </div>
-                <div class="post-body">
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, quia?</p>
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi ipsum voluptates porro facilis ex fugit quidem dolore quae laboriosam natus.</p>
-                </div>
-              </div>
-              <a class="edit" href=""><i class='bx bx-pencil'></i></a>
-            </div>
-          </div>
-        </div> -->
-        <div class="no-posts">
+          {% endfor %}
+        </div>
+        {% else %}
+        <div class="posts-container" id="forum_post_container"></div>
+        <div class="no-posts" id="no-forum-posts">
           <i class='bx bxs-info-square'></i>
           <span>No Posts Yet</span>
         </div>
+        {% endif %}
         <div class="create-post">
-          <textarea class="replyinput" placeholder="Write something" name="" id=""></textarea>
+          <textarea class="replyinput" placeholder="Write something" name="" id="post_text_inp"></textarea>
           <div class="btn-container">
-            <button class="btn-iconized">Post</button>
+            <button class="btn-iconized" id="create_post_btn">Post</button>
           </div>
         </div>
       </div>
@@ -641,5 +589,10 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
     crossorigin="anonymous"></script>
+<script>
+  const weekly_create_post_url = "{% url 'weeklies:create_post'  weekly.classroom.id weekly.id  %}"
+  const csrftoken = "{{csrf_token}}"
+</script>
 <script src="{% static 'weeklies/scripts/weekly_detail.js' %}"></script>
+<script src="{% static 'classroom/scripts/localtimes.js' %}"></script>
 {% endblock script %}
