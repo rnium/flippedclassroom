@@ -63,14 +63,11 @@ function processData(){
 
 function update_score(){
     let payload
-    console.log('cl');
     let error_res = checkErrorFields()
-    console.log(error_res);
     if (error_res == false) {
         return false
     } else {
         dat = processData()
-        console.log(dat.length);
         if (dat.length == 0){
             return false
         }
