@@ -17,8 +17,14 @@ def weeklyDetail(request, cls_pk, weeknum):
         context = {}
         context['weekly'] = weekly
         pre_class_ongoing_tests = weekly.preClassOngoingTest.exclude(answersheet__user=request.user)
+        in_class_ongoing_tests = weekly.inClassOngoingTest.exclude(answersheet__user=request.user)
+        post_class_ongoing_tests = weekly.postClassOngoingTest.exclude(answersheet__user=request.user)
         if pre_class_ongoing_tests.count() > 0:
             context['pre_class_ongoing_tests'] = pre_class_ongoing_tests
+        if in_class_ongoing_tests.count() > 0:
+            context['in_class_ongoing_tests'] = in_class_ongoing_tests
+        if post_class_ongoing_tests.count() > 0:
+            context['post_class_ongoing_tests'] = post_class_ongoing_tests
         return render(request, 'weeklies/weekly_student.html', context=context)
     else:
         return HttpResponse("Unauthorized Access Denied")
