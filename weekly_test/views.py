@@ -49,7 +49,7 @@ def view_test(request, pk):
         return render(request, "weekly_test/viewresults.html", context={"weeklytest":test})
     elif request.user in test.weekly.classroom.students.all():
         if test.expiration >= timezone.now():
-            return render_info_or_error(request, "TEST ONGOING", "Answersheet will be available after test finishes", "info")
+            return render_info_or_error(request, "TEST ONGOING", "Details will be available after test finishes", "info")
         answersheet_qs = AnswerSheet.objects.filter(test=test, user=request.user)
         if len(answersheet_qs) == 0:
             return render_info_or_error(request, "No Answersheet", "You Haven't participated", "info")

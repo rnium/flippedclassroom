@@ -94,10 +94,10 @@
 </head>
 <body>
     <div class="main">
-        <div class="content info">
-            <div class="heading">Ongoing Test</div>
-            <div class="description">This portion of the website is currently under development</div>
-            <a href=""><i class='bx bx-home-alt-2'></i></a>
+        <div class="content {{css_class}}">
+            <div class="heading">{{heading}}</div>
+            <div class="description">{{description}}</div>
+            <a href="{% url 'classroom:homepage' %}"><i class='bx bx-home-alt-2'></i></a>
         </div>
     </div>
 </body>
