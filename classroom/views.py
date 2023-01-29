@@ -16,6 +16,13 @@ from .models import Classroom, ClassroomPost, PostTopic, PostAttachment, Comment
 def render_underDev(request):
     return render(request,"classroom/under_dev.html")
 
+def render_info_or_error(request, heading, description, css_class="info"):
+    context = {}
+    context['heading'] = heading
+    context['description'] = description
+    context['css_class'] = css_class
+    return render(request, 'classroom/infoerror.html', context=context)
+
 
 class ClassesDashboard(LoginRequiredMixin, TemplateView):
     template_name = 'classroom/classes_home.html'

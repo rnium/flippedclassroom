@@ -239,6 +239,12 @@ class DescriptiveAnswer(models.Model):
             return int_score
         return self.score
     
+    @property
+    def has_score(self):
+        if self.score is None:
+            return False
+        else:
+            return True
 
 
 

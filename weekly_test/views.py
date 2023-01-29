@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 from weekly_test.models import WeeklyTest, AnswerSheet, Question, McqOption, McqAnswer, DescriptiveAnswer
 from weeklies.models import Weekly
-from classroom.views import render_underDev
+from classroom.views import render_underDev, render_info_or_error
 from django.http import HttpResponse, Http404
 
 
@@ -48,11 +48,11 @@ def view_test(request, pk):
     if request.user in test.weekly.classroom.teachers.all():
         return render(request, "weekly_test/viewresults.html", context={"weeklytest":test})
     elif request.user in test.weekly.classroom.students.all():
-        # if test.expiration >= timezone.now():
-        #     return renderinfo("Test is Ongoing")
+        if test.expiration >= timezone.now():
+            return render_info_or_error(request, "TEST ONGOING", "Answersheet will be available after test finishes", "info")
         answersheet_qs = AnswerSheet.objects.filter(test=test, user=request.user)
-        # if len(answersheet_qs) == 0:
-        #     return renderinfo("You Haven't participated in this test")
+        if len(answersheet_qs) == 0:
+            return render_info_or_error(request, "No Answersheet", "You Haven't participated", "info")
         answersheet = answersheet_qs[0]
         if answersheet.submit_time == None:
             return redirect("weekly_test:take_test", kwargs={"pk":test.id})
