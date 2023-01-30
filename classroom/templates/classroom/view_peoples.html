@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en"> {% load static %}
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  <link rel="stylesheet" href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'>
+  <link rel="stylesheet" href="{% static 'classroom/styles/navbar.css' %}">
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap");
+    main {
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    main .section-title i {
+      font-size: 2.5rem;
+      color: #dafaef;
+    }
+
+    main .section-title .info h1 {
+      color: #26efac;
+      font-family: 'Gemunu Libre', sans-serif;
+      font-size: 1.5rem;
+    }
+
+    main .section-title .info small {
+      color: azure;
+    }
+
+    main .student .remove-btn {
+      font-family: 'Gemunu Libre', sans-serif;
+      font-size: 1.1rem;
+      background-color: #faebd7;
+      border: 1px solid #d0a66f;
+      border-radius: 5px;
+      -webkit-transition: all 300ms;
+      transition: all 300ms;
+    }
+
+    main .student .remove-btn:hover {
+      background-color: #f8e4e4;
+      color: #d05858;
+      -webkit-box-shadow: 2px 2px 5px #eacbcb;
+              box-shadow: 2px 2px 5px #eacbcb;
+    }
+
+    .dp {
+      display: inline-block;
+      min-width: 40px;
+      max-width: 40px;
+      min-height: 40px;
+      max-height: 40px;
+      border-radius: 5px;
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+    }
+  </style>
+  <title>{{classroom.name}} Connections</title>
+</head>
+
+<body>
+  <header>
+    <nav class="navbar navbar-expand-xl bg-light">
+      <div class="container-fluid">
+        <div class="navbar-brand flexer-row ms-4" href="#">
+          <div class="site-title">OpenClassroom</div>
+        </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="{% url 'classroom:classroom_detail' classroom.id %}">Dashboard</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Weeklies</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="#">Connections</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Assessment</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+          </ul>
+          <div class="user">
+            <div class="avatar" style="background-image: url('{{request.user.account.avatar_url}}');">
+            </div>
+            <span class="name">{{ request.user.account.user_first_name }}</span>
+            <a href="{% url 'accounts:user_logout' %}" class="btn-1-outlined">Logout</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+  
+  <main class="container">
+    <div class="section-title d-flex align-items-center p-3 my-4 text-white bg-secondary rounded shadow-sm">
+      <i class='bx bx-shape-circle me-2'></i>
+      <div class="info lh-1">
+        <h1 class="mb-1 lh-1">Connections</h1>
+        <small>Peoples of {{classroom.name}}</small>
+      </div>
+    </div>
+  
+    <div class="classroom-teachers my-3 p-3 bg-body rounded shadow-lg">
+      <h6 class="border-bottom pb-2 mb-0">Teachers</h6>
+      {% for teacher in classroom.teachers.all %}
+      <div class="d-flex text-muted pt-3">
+        <div class="dp me-2" style="background-image: url('{{teacher.account.avatar_url}}');"></div>
+        <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
+          <div class="d-flex justify-content-between">
+            <strong class="text-gray-dark">{{teacher.account.user_full_name}}</strong>
+          </div>
+          <span class="d-block">{{teacher.email}}</span>
+        </div>
+      </div>
+      {% endfor %}
+      
+      
+    </div>
+  
+    <div class="classroom-students my-3 p-3 bg-body rounded shadow-lg">
+      <h6 class="border-bottom pb-2 mb-0">Students</h6>
+      {% if request.user in classroom.teachers.all %}
+      {% for student in classroom.students.all %}
+      <div class="student d-flex text-muted pt-3">
+        <div class="dp me-2" style="background-image: url('{{student.account.avatar_url}}');"></div>
+        <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
+          <div class="d-flex justify-content-between">
+            <strong class="text-gray-dark">{{student.account.user_full_name}}</strong>
+            <button class="remove-btn">remove</button>
+          </div>
+          <span class="d-block">{{student.email}}</span>
+        </div>
+      </div>
+      {% endfor %}
+      {% else %}
+      {% for student in classroom.students.all %}
+      <div class="student d-flex text-muted pt-3">
+        <div class="dp me-2" style="background-image: url('{{student.account.avatar_url}}');"></div>
+        <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
+          <div class="d-flex justify-content-between">
+            <strong class="text-gray-dark">{{student.account.user_full_name}}</strong>
+          </div>
+          <span class="d-block">{{student.email}}</span>
+        </div>
+      </div>
+      {% endfor %}
+      {% endif %}
+      
+    </div>
+  </main>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

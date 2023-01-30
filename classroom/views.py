@@ -2,7 +2,7 @@ from pydoc_data.topics import topics
 from dateutil import parser
 from django.core.exceptions import PermissionDenied
 from django.shortcuts import redirect, render, get_object_or_404
-from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponse, JsonResponse, Http404
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.views.generic import TemplateView, DetailView, CreateView
@@ -56,6 +56,17 @@ class ClassroomDetail(LoginRequiredMixin, DetailView):
             if query_set.count() > 0:
                 context['student_tests'] = query_set
         return context
+
+
+class ClassroomConnections(LoginRequiredMixin, DetailView):
+    template_name = 'classroom/view_peoples.html'
+    model = Classroom
+    def get_object(self):
+        classroom = super().get_object()
+        if (self.request.user in classroom.teachers.all()) or (self.request.user in classroom.students.all()):
+            return classroom
+        else:
+            raise Http404
 
 
 class PostDetail(LoginRequiredMixin, DetailView):
@@ -115,9 +126,9 @@ def join_classroom(request, pk):
     classroom = get_object_or_404(Classroom, pk=pk)
     if request.user in classroom.teachers.all():
         return redirect('classroom:classroom_detail', pk=classroom.id)
-    if request.user not in classroom.students.all():
+    elif request.user not in classroom.students.all():
         classroom.students.add(request.user)
-        return HttpResponse(f'You\'ve joined to: {classroom.name}')
+        return render_info_or_error(request, "Joined Successfully", f'You\'ve joined to: {classroom.name}', 'info')
     return redirect('classroom:classroom_detail', pk=classroom.id)
 
 
