@@ -1,4 +1,4 @@
-from optparse import Option
+from datetime import timedelta
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import TemplateView, DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -49,15 +49,12 @@ def view_test(request, pk):
         return render(request, "weekly_test/viewresults.html", context={"weeklytest":test})
     elif request.user in test.weekly.classroom.students.all():
         if test.expiration >= timezone.now():
-            return render_info_or_error(request, "TEST ONGOING", "Details will be available after test finishes", "info")
+            return render_info_or_error(request, "TEST ONGOING", "Return to dashboard to perticipate", "info")
         answersheet_qs = AnswerSheet.objects.filter(test=test, user=request.user)
         if len(answersheet_qs) == 0:
             return render_info_or_error(request, "No Answersheet", "You Haven't participated", "info")
         answersheet = answersheet_qs[0]
-        if answersheet.submit_time == None:
-            return redirect("weekly_test:take_test", kwargs={"pk":test.id})
-        else:
-            return redirect("weekly_test:view_answersheet", pk=answersheet.id) 
+        return redirect("weekly_test:view_answersheet", pk=answersheet.id) 
 
 
 class AnswersheetView(LoginRequiredMixin, DetailView):
@@ -69,6 +66,30 @@ class AnswersheetView(LoginRequiredMixin, DetailView):
         if not (self.request.user in sheet.test.weekly.classroom.teachers.all() or self.request.user in sheet.test.weekly.classroom.students.all()):
             raise Http404
         return sheet
+
+
+def view_answersheet(request, pk):
+    sheet = get_object_or_404(AnswerSheet, pk=pk)
+    if request.user in sheet.test.weekly.classroom.teachers.all():
+        return render(request, "weekly_test/view_answersheet.html", context={"answersheet":sheet})
+    elif request.user == sheet.user:
+        timenow = timezone.now()
+        if sheet.submit_time == None:
+            endtime = sheet.issue_time + timedelta(seconds=sheet.test.duration_seconds)
+            if endtime < timenow:
+                return render_info_or_error(request, "Unsubmitted", "Your answersheet is not submitted", "error")
+            else:
+                return redirect("weekly_test:take_test", pk=sheet.test.id)
+        else:
+            if sheet.test.expiration > timenow:
+               return render_info_or_error(request, "TEST ONGOING", "Answersheet will be available after test finishes", "info")
+            else:
+                return render(request, "weekly_test/view_answersheet.html", context={"answersheet":sheet})
+    
+    else:
+        return render_info_or_error(request, "Unauthorized", "You cannot view this answersheet", "error")
+
+
 
 @login_required
 def edit_test(request, pk):
