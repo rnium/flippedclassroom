@@ -43,6 +43,14 @@ class ClassesDashboard(LoginRequiredMixin, TemplateView):
 class ClassroomDetail(LoginRequiredMixin, DetailView):
     template_name = 'classroom/classroom_detail.html'
     model = Classroom
+    
+    def get_object(self):
+        classroom = super().get_object()
+        if (self.request.user in classroom.teachers.all()) or (self.request.user in classroom.students.all()):
+            return classroom
+        else:
+            raise Http404
+        
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         classroom = self.get_object()

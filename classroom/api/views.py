@@ -3,6 +3,7 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework import status
+from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404
 from django.urls import reverse
 from classroom.models import ClassroomPost, Classroom, Comment
@@ -75,3 +76,19 @@ def create_classroom(request):
         return Response(response_data, status=status.HTTP_201_CREATED)
     else:
         return Response(data={"status":"error"}, status=status.HTTP_400_BAD_REQUEST)
+
+ 
+@api_view(['POST'])
+@permission_classes([IsAuthenticated & IsUserPartOfClassroom])
+def remove_student(request, pk):
+    classroom = get_object_or_404(Classroom, pk=pk)
+    if request.user in classroom.teachers.all():
+        try:
+            user_id = request.data['user_id']
+        except KeyError:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+        student = get_object_or_404(User, pk=user_id)
+        classroom.students.remove(student)
+        return Response({'status':"user removed"}, status=status.HTTP_200_OK)
+    else:
+        return Response(status=status.HTTP_403_FORBIDDEN)
