@@ -56,15 +56,13 @@
     <div class="btn-con">
       {% if request.user in classroom.teachers.all %}
       {% if classroom.active %}
-      <button class="btn-1 deactivate"><i class='bx bx-stop-circle'></i><span>Deactivate Classroom</span></button>
+      <button class="btn-1 deactivate" id="change_active_btn" data-active=true><i class='bx bx-stop-circle'></i><span>Deactivate Classroom</span></button>
       {% else %}
-      <button class="btn-1 activate"><i class='bx bx-play-circle' ></i><span>Activate Classroom</span></button>
+      <button class="btn-1 activate" id="change_active_btn" data-active=false><i class='bx bx-play-circle'></i><span>Activate Classroom</span></button>
       {% endif %}
       {% else %}
       <button class="btn-1"><i class='bx bx-exit'></i><span>Leave Classroom</span></button>
       {% endif %}
-      
-      
     </div>
   </div>
   <div class="join-code-con">
@@ -79,8 +77,11 @@
 {% block script %}
 <script src="{% static 'classroom/scripts/qrcode.min.js' %}"></script>
 <script src="{% static 'classroom/scripts/localtimes.js' %}"></script>
+<script src="{% static 'classroom/scripts/about_classroom.js' %}"></script>
 <script>
   var qrcode = new QRCode("join-code", "{% url 'classroom:join_classroom' classroom.id %}");
+  const classroom_update_url = "{% url 'classroom:update_classroom' classroom.id  %}"
+  const csrftoken = "{{csrf_token}}"
 </script>
 {% endblock script %}
 

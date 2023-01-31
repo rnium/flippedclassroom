@@ -1,4 +1,4 @@
-from rest_framework.generics import ListAPIView, CreateAPIView
+from rest_framework.generics import ListAPIView, CreateAPIView, UpdateAPIView
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
@@ -8,7 +8,7 @@ from django.shortcuts import get_object_or_404
 from django.urls import reverse
 from classroom.models import ClassroomPost, Classroom, Comment
 from .serializer import PostSerializer, ClassroomSerializer
-from .permission import IsUserPartOfClassroom
+from .permission import IsUserPartOfClassroom, IsUserTeacher
 from .pagination import PostsPagination
 
 
@@ -26,6 +26,13 @@ class ClassroomPostsView(ListAPIView):
         posts = ClassroomPost.objects.filter(classroom=classroom).order_by('-posted')
         return posts
 
+
+class UpdateClassroomAV(UpdateAPIView):
+    serializer_class = ClassroomSerializer
+    permission_classes = [IsAuthenticated, IsUserTeacher]
+
+    def get_queryset(self):
+        return Classroom.objects.filter(pk=self.kwargs.get('pk'))
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated & IsUserPartOfClassroom])
@@ -82,12 +89,12 @@ def create_classroom(request):
 @permission_classes([IsAuthenticated & IsUserPartOfClassroom])
 def remove_student(request, pk):
     classroom = get_object_or_404(Classroom, pk=pk)
-    if request.user in classroom.teachers.all():
-        try:
-            user_id = request.data['user_id']
-        except KeyError:
-            return Response(status=status.HTTP_400_BAD_REQUEST)
-        student = get_object_or_404(User, pk=user_id)
+    try:
+        user_id = request.data['user_id']
+    except KeyError:
+        return Response(status=status.HTTP_400_BAD_REQUEST)
+    student = get_object_or_404(User, pk=user_id)
+    if (request.user in classroom.teachers.all()) or (request.user==student):
         classroom.students.remove(student)
         return Response({'status':"user removed"}, status=status.HTTP_200_OK)
     else:
