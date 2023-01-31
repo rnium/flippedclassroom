@@ -29,6 +29,16 @@
   <div class="classroom">
     <div class="classroom-name"><a href="{% url 'classroom:classroom_detail' weekly.classroom.id %}">{{ weekly.classroom.name }}</a></div>
   </div>
+  <div class="topic">
+    {% if weekly.topic %}
+    <div class="inner">
+      <i class='bx bx-paperclip'></i><span class="topic-name">{{weekly.topic}}</span>
+    </div>
+    {% endif %}
+    <div class="edit">
+      <a href=""><i class='bx bx-pencil'></i></a>
+    </div>
+  </div>
 </div>
 <div class="bottom-panel">
   <div class="week-info">

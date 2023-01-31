@@ -16,19 +16,21 @@ body .main .top-panel {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
+  -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+      -ms-flex-direction: row;
+          flex-direction: row;
   justify-items: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
   margin-bottom: 1rem;
 }
 
 body .main .top-panel .classroom {
-  width: 100%;
+  width: 50%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -60,6 +62,67 @@ body .main .top-panel .classroom a:hover {
   -webkit-box-shadow: 2px 2px 5px gainsboro;
           box-shadow: 2px 2px 5px gainsboro;
   background-color: #8dafa4;
+}
+
+body .main .top-panel .topic {
+  width: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+body .main .top-panel .topic .inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #f6fefd;
+  padding: 2px 10px;
+  border-radius: 5px;
+  border: 1px solid #72b4ca;
+}
+
+body .main .top-panel .topic .inner i {
+  font-size: 1.2rem;
+  color: #0e96b4;
+  margin-right: 5px;
+}
+
+body .main .top-panel .topic .inner .topic-name {
+  color: #0e96b4;
+  font-family: 'Gemunu Libre', sans-serif;
+}
+
+body .main .top-panel .topic .edit a {
+  color: #10a051;
+  text-decoration: none;
+  margin-left: 5px;
+}
+
+body .main .top-panel .topic .edit a i {
+  display: inline-block;
+  background-color: #afe2d1;
+  padding: 5px;
+  font-size: 1.2rem;
+  border-radius: 180px;
 }
 
 body .main .bottom-panel .week-info {
@@ -1404,6 +1467,162 @@ body .main .edit-forum-container .bottom-pane .form-container form .textinput-co
           justify-content: flex-end;
 }
 
+body .main .edit-weekly .home-links {
+  width: 100%;
+  justify-self: flex-start;
+  margin-bottom: 3rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body .main .edit-weekly .home-links a {
+  display: block;
+  text-decoration: none;
+  color: #62a7a7;
+  background-color: inherit;
+  border: 1px solid #62a7a7;
+  border-radius: 5px;
+  padding: 0 5px;
+  font-family: 'Gemunu Libre', sans-serif;
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
+}
+
+body .main .edit-weekly .home-links a:hover {
+  -webkit-box-shadow: 0 0 5px #b5d1d1;
+          box-shadow: 0 0 5px #b5d1d1;
+}
+
+body .main .edit-weekly .home-links i {
+  margin: 0 0.3rem;
+  font-size: 1.2rem;
+  color: #62a7a7;
+}
+
+body .main .edit-weekly .home-links a.current {
+  display: block;
+  text-decoration: none;
+  color: white;
+  background-color: #62a7a7;
+  border: 1px solid #62a7a7;
+  border-radius: 5px;
+  padding: 0 10px;
+  cursor: default;
+  font-family: 'Gemunu Libre', sans-serif;
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
+}
+
+body .main .edit-weekly .home-links a.current:hover {
+  background-color: #60c4b3;
+  border-color: #60c4b3;
+  color: white;
+}
+
+body .main .edit-weekly .info-input input {
+  border-radius: 10px;
+}
+
+body .main .edit-weekly .info-con {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  background-color: white;
+  padding: 4rem 2rem;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+body .main .edit-weekly .info-con .weekly-info {
+  border-radius: 5px;
+  overflow: hidden;
+  cursor: default;
+}
+
+body .main .edit-weekly .info-con .weekly-info .label {
+  font-size: 1.5rem;
+  background-color: #83c4ac;
+  padding: 5px 10px;
+  font-family: 'Gemunu Libre', sans-serif;
+}
+
+body .main .edit-weekly .info-con .weekly-info .weeknum {
+  font-size: 1.5rem;
+  padding: 5px 10px;
+  background-color: #2fbd82;
+  color: white;
+  font-family: 'Gemunu Libre', sans-serif;
+}
+
+body .main .edit-weekly .info-con i.bg {
+  position: absolute;
+  bottom: -1rem;
+  right: -1.5rem;
+  font-size: 10rem;
+  color: #87a4a4;
+  text-shadow: 0 0 5px gainsboro;
+  opacity: 0.3;
+}
+
+body .main .edit-weekly .action {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 1rem;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+body .main .edit-weekly .action .ico-btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body .main .edit-weekly .action .ico-btn i, body .main .edit-weekly .action .ico-btn span {
+  color: white;
+}
+
+body .main .edit-weekly .action .ico-btn i {
+  font-size: 1.3rem;
+  margin-right: 5px;
+}
+
 .title-box {
   border-radius: 10px;
   overflow: hidden;
@@ -1928,21 +2147,27 @@ body .main .edit-forum-container .bottom-pane .form-container form .textinput-co
 
 @media screen and (max-width: 576px) {
   body .main {
-    margin: 2rem 1.5rem;
+    margin: 2rem 0.5rem;
+  }
+  body .main .top-panel .classroom a {
+    font-size: 0.9rem;
+  }
+  body .main .top-panel .topic {
+    font-size: 0.8rem;
   }
   body .main .bottom-panel .week-info .text, body .main .bottom-panel .week-info .num {
     font-weight: 500;
     font-size: 1.5rem;
   }
   body .main .bottom-panel .tab-buttons button {
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
   body .main .bottom-panel #tab1 .tab-content .left-col, body .main .bottom-panel #tab2 .tab-content .left-col, body .main .bottom-panel #tab3 .tab-content .left-col {
     padding-left: 0 !important;
     padding-right: 0 !important;
   }
-  body .main .bottom-panel #tab1 .tab-content .left-col .info-text-raw, body .main .bottom-panel #tab2 .tab-content .left-col .info-text-raw, body .main .bottom-panel #tab3 .tab-content .left-col .info-text-raw {
-    font-size: 1rem !important;
+  body .main .bottom-panel #tab1 .tab-content .left-col .info, body .main .bottom-panel #tab2 .tab-content .left-col .info, body .main .bottom-panel #tab3 .tab-content .left-col .info {
+    font-size: 0.9rem !important;
   }
   body .main .bottom-panel #tab1 .tab-content .left-col .fileUpload, body .main .bottom-panel #tab2 .tab-content .left-col .fileUpload, body .main .bottom-panel #tab3 .tab-content .left-col .fileUpload {
     -webkit-box-orient: vertical !important;
