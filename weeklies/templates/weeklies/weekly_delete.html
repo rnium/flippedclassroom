@@ -1,0 +1,44 @@
+{% extends 'classroom/base.html' %}
+{% block style %} {% load static %}
+<link rel="stylesheet" href="{% static 'weeklies/styles/weekly.css' %}">
+<link rel="stylesheet" href="{% static 'classroom/styles/navbar.css' %}">
+{% endblock style %}
+{% block title %}<title>{{weekly.classroom.name}} Week-{{weekly.weeknum}}</title>{% endblock title %}
+{% block nav %}
+<ul class="navbar-nav mb-2 mb-lg-0">
+  <li class="nav-item">
+    <a class="nav-link" aria-current="page" href="{% url 'classroom:classroom_detail' weekly.classroom.id %}">Dashboard</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Weeklies</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Students</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Assessment</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">About</a>
+  </li>
+</ul>
+{% endblock nav %}
+
+{% block content %}
+<div class="edit-weekly">
+  <div class="home-links">
+    <a href="{% url 'classroom:classroom_detail' weekly.classroom.id %}">{{weekly.classroom.name}}</a>
+  </div>
+  <div class="info-con shadow-lg">
+    <i class='bg bx bxs-calendar-week' ></i>
+    <div class="weekly-info mb-3 shadow-sm">
+      <span class="label">Week</span><span class="weeknum">{{weekly.weeknum}}</span>
+    </div>
+    <div class="info-text">Are you sure to delete this weekly and all the data associated with it?</div>
+  </div>
+  <div class="action">
+    <a href="{% url 'weeklies:weeklydetail' weekly.classroom.id weekly.weeknum %}" class="ico-btn btn btn-secondary"><i class='bx bx-chevrons-left'></i><span>Go Back</span></a>
+    <button href="#" class="ico-btn btn btn-danger"><i class='bx bx-trash-alt'></i><span>Delete</span></button>
+  </div>
+</div>
+{% endblock content %}

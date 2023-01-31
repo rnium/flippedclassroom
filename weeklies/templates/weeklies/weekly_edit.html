@@ -1,0 +1,136 @@
+{% extends 'classroom/base.html' %}
+{% block style %} {% load static %}
+<link rel="stylesheet" href="{% static 'weeklies/styles/weekly.css' %}">
+<link rel="stylesheet" href="{% static 'classroom/styles/navbar.css' %}">
+{% endblock style %}
+{% block title %}<title>{{weekly.classroom.name}} Week-{{weekly.weeknum}}</title>{% endblock title %}
+{% block nav %}
+<ul class="navbar-nav mb-2 mb-lg-0">
+  <li class="nav-item">
+    <a class="nav-link" aria-current="page" href="{% url 'classroom:classroom_detail' weekly.classroom.id %}">Dashboard</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Weeklies</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Students</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Assessment</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">About</a>
+  </li>
+</ul>
+{% endblock nav %}
+
+{% block content %}
+<div class="edit-weekly">
+  <div class="home-links">
+    <a href="{% url 'classroom:classroom_detail' weekly.classroom.id %}">{{weekly.classroom.name}}</a>
+    <i class='bx bxs-chevron-right' ></i>
+    <a href="{% url 'weeklies:weeklydetail' weekly.classroom.id weekly.weeknum %}" class="current">Week {{weekly.weeknum}}</a>
+  </div>
+  <div class="info-input">
+    <input type="text" class="textinput" id="weekly_topic_inp" placeholder=" ">
+    <label for="weekly_topic_inp" class="textinput__label">Weekly Topic</label>
+  </div>
+  <div class="action">
+    <button class="btn btn-primary">Update</button>
+    <a href="{% url 'weeklies:delete_weekly' weekly.id %}" class="btn btn-danger">Delete Weekly</a>
+  </div>
+</div>
+{% endblock content %}
+
+{% block script %}
+<script>
+  const pre_topic = "{{weekly.topic}}"
+  $("#weekly_topic_inp").val(pre_topic)
+  $("#weekly_topic_inp").focus()
+</script>
+{% endblock script %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  <link rel="stylesheet" href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'>
+  <link rel="stylesheet" href="styles/weekly.css">
+  <link rel="stylesheet" href="styles/navbar.css">
+  <title>classroom name - week 1 </title>
+</head>
+
+<body>
+  <header>
+    <nav class="navbar navbar-expand-xl bg-light">
+      <div class="container-fluid">
+        <div class="navbar-brand flexer-row ms-4" href="#">
+          <div class="site-title">OpenClassroom</div>
+        </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="#">Dashboard</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Weeklies</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Students</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Assessment</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+          </ul>
+          <div class="user">
+            <div class="avatar" style="background-image: url('/images/dp3.jpg');">
+            </div>
+            <span class="name">First Name</span>
+            <a href="" class="btn-1-outlined">Logout</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+  
+  <main class="main">
+    
+  </main>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+    crossorigin="anonymous"></script>
+  <script src="/scripts/weekly_detail.js"></script>
+  <script src="/scripts/weekly_editor.js"></script>
+  
+</body>
+
+</html>

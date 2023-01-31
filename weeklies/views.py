@@ -5,6 +5,7 @@ from django.http import JsonResponse, FileResponse, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from .models import Weekly, PreClassFile, InClassFile, PostClassFile, Forumpost
 from django.urls import reverse
+from classroom.views import render_info_or_error
 
 # Create your views here.
 @login_required
@@ -29,6 +30,23 @@ def weeklyDetail(request, cls_pk, weeknum):
     else:
         return HttpResponse("Unauthorized Access Denied")
 
+
+@login_required
+def edit_weekly_view(request, pk):
+    weekly = get_object_or_404(Weekly, pk=pk)
+    if request.user in weekly.classroom.teachers.all():
+        return render(request, 'weeklies/weekly_edit.html', context={'weekly':weekly})
+    else:
+        return render_info_or_error(request, "Unauthorized", "Action not permitted", 'error')
+    
+
+@login_required
+def delete_weekly_view(request, pk):
+    weekly = get_object_or_404(Weekly, pk=pk)
+    if request.user in weekly.classroom.teachers.all():
+        return render(request, 'weeklies/weekly_delete.html', context={'weekly':weekly})
+    else:
+        return render_info_or_error(request, "Unauthorized", "Action not permitted", 'error')
 
 @login_required
 @csrf_exempt
