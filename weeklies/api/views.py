@@ -42,6 +42,7 @@ class UpdateWeeklyAV(UpdateAPIView):
         return Weekly.objects.filter(pk=self.kwargs.get('pk'))
 
 
+
 @api_view(['POST'])
 @permission_classes([IsAuthenticated and IsUserTeacher])
 def add_tutorial(request, cls_pk, pk):
