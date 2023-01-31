@@ -61,7 +61,7 @@
       <button class="btn-1 activate" id="change_active_btn" data-active=false><i class='bx bx-play-circle'></i><span>Activate Classroom</span></button>
       {% endif %}
       {% else %}
-      <button class="btn-1"><i class='bx bx-exit'></i><span>Leave Classroom</span></button>
+      <button class="btn-1" id="leave-btn" data-user-id={{request.user.id}}><i class='bx bx-exit'></i><span>Leave Classroom</span></button>
       {% endif %}
     </div>
   </div>
@@ -80,7 +80,8 @@
 <script src="{% static 'classroom/scripts/about_classroom.js' %}"></script>
 <script>
   var qrcode = new QRCode("join-code", "{% url 'classroom:join_classroom' classroom.id %}");
-  const classroom_update_url = "{% url 'classroom:update_classroom' classroom.id  %}"
+  const classroom_update_url = "{% url 'classroom:update_classroom' classroom.id  %}";
+  const remove_student_url = "{% url 'classroom:remove_student' classroom.id %}";
   const csrftoken = "{{csrf_token}}"
 </script>
 {% endblock script %}
