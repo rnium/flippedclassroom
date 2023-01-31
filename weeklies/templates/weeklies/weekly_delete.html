@@ -38,7 +38,16 @@
   </div>
   <div class="action">
     <a href="{% url 'weeklies:weeklydetail' weekly.classroom.id weekly.weeknum %}" class="ico-btn btn btn-secondary"><i class='bx bx-chevrons-left'></i><span>Go Back</span></a>
-    <button href="#" class="ico-btn btn btn-danger"><i class='bx bx-trash-alt'></i><span>Delete</span></button>
+    <button id="delete_weekly_btn" class="ico-btn btn btn-danger"><i class='bx bx-trash-alt'></i><span>Delete</span></button>
   </div>
 </div>
 {% endblock content %}
+
+{% block script %}
+<script src="{% static 'weeklies/scripts/update_weekly.js' %}"></script>
+<script>
+  const weekly_delete_url = "{% url 'weeklies:delete_weekly' weekly.classroom.id weekly.id  %}";
+  const classroom_url = "{% url 'classroom:classroom_detail' weekly.classroom.id %}";
+  const csrftoken = "{{csrf_token}}";
+</script>
+{% endblock script %}

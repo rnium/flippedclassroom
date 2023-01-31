@@ -43,7 +43,7 @@
 {% endblock content %}
 
 {% block script %}
-<script src="{% static 'weeklies/scripts/update_topic.js' %}"></script>
+<script src="{% static 'weeklies/scripts/update_weekly.js' %}"></script>
 <script>
   const weekly_update_url = "{% url 'weeklies:update_weekly' weekly.classroom.id weekly.id  %}";
   const pre_topic = "{{weekly.topic}}";

@@ -23,13 +23,18 @@ def createWeekly(request, cls_pk):
     except Classroom.DoesNotExist:
         return Response({'status':'post not found'}, status=status.HTTP_404_NOT_FOUND)
     serializer = WeeklySerializer(data=request.data)   
-    num_weeklies = classroom.weekly_set.filter(classroom=cls_pk).count()
+    classroom_weeklies = classroom.weekly_set.all().order_by('-weeknum')
+    if len(classroom_weeklies) > 0:
+        latest_wk = classroom_weeklies[0]
+        latest_weeknum = latest_wk.weeknum
+    else:
+        latest_weeknum == 0
     serializer.initial_data['classroom'] = classroom.id
-    serializer.initial_data['weeknum'] = num_weeklies + 1
+    serializer.initial_data['weeknum'] = latest_weeknum + 1
     if serializer.is_valid():
         weekly = serializer.save()
         weekly_url = reverse('weeklies:weeklydetail', kwargs={'cls_pk':classroom.id, 'weeknum':weekly.weeknum})
-        return Response({'num_weeklies':num_weeklies, 'weekly_url':weekly_url})
+        return Response({'num_weeklies':latest_weeknum+1, 'weekly_url':weekly_url})
     else:
         return Response(serializer.errors)
 
@@ -40,6 +45,17 @@ class UpdateWeeklyAV(UpdateAPIView):
 
     def get_queryset(self):
         return Weekly.objects.filter(pk=self.kwargs.get('pk'))
+
+
+@api_view(['DELETE'])
+def delete_weekly(request, cls_pk, pk):
+    weekly = get_object_or_404(Weekly, pk=pk, classroom__id=cls_pk)
+    if request.user in weekly.classroom.teachers.all():
+        classroom_url = reverse('classroom:classroom_detail', kwargs={'pk':weekly.classroom.id})
+        weekly.delete()
+        return Response({'info':'deleted', 'classroom_url':classroom_url}, status=status.HTTP_204_NO_CONTENT)
+    else:
+        return Response(status=status.HTTP_403_FORBIDDEN)
 
 
 
