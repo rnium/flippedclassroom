@@ -1,0 +1,382 @@
+@import url("https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap");
+@media screen and (min-width: 1200px) {
+  body .main .left-col {
+    width: 70%;
+  }
+  body .main .right-col {
+    width: 30%;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  body .main .left-col {
+    width: 65%;
+  }
+  body .main .right-col {
+    width: 35%;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  body .main .left-col {
+    width: 60%;
+  }
+  body .main .right-col {
+    width: 40%;
+  }
+  body .main .classrooms-dashboard .classes-section .classrooms-container {
+    -ms-grid-columns: 1fr 1fr 1fr !important;
+        grid-template-columns: 1fr 1fr 1fr !important;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  body .main {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: column !important;
+            flex-direction: column !important;
+  }
+  body .main .left-col {
+    width: 100%;
+    padding: 0 !important;
+  }
+  body .main .right-col {
+    width: 100%;
+    padding: 0 !important;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  body .main .classrooms-dashboard .classes-section .classrooms-container {
+    -ms-grid-columns: 1fr 1fr !important;
+        grid-template-columns: 1fr 1fr !important;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  body .main {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: column !important;
+            flex-direction: column !important;
+    margin: 2.5rem 1rem !important;
+  }
+  body .main .left-col .recent-posts .post-item .contents .info .info-item span {
+    font-size: 0.8rem !important;
+  }
+  body .main .classrooms-dashboard .classes-section .heading {
+    border-radius: 5px 5px 0 3px;
+    margin-bottom: 2rem !important;
+  }
+  body .main .classrooms-dashboard .classes-section .heading i {
+    font-size: 2rem !important;
+  }
+  body .main .classrooms-dashboard .classes-section .heading span {
+    font-size: 1rem !important;
+    font-weight: 500 !important;
+  }
+  body .main .classrooms-dashboard .classes-section .classrooms-container {
+    -ms-grid-columns: 1fr !important;
+        grid-template-columns: 1fr !important;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  body .main {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: column !important;
+            flex-direction: column !important;
+  }
+  body .main .left-col .postbox .form-actions {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: column !important;
+            flex-direction: column !important;
+  }
+  body .main .left-col .postbox .form-actions .attachement-container {
+    width: 100% !important;
+  }
+  body .main .left-col .postbox .form-actions .attachement-container label {
+    font-size: 0.9rem;
+  }
+  body .main .left-col .postbox .form-actions .attachement-container .selected-file {
+    font-size: 0.8rem;
+  }
+  body .main .left-col .postbox .form-actions .submit-container {
+    margin-top: 0.5rem;
+    width: 100%;
+  }
+  body .main .left-col .postbox .form-actions .submit-container button {
+    width: 100%;
+  }
+  body .main .left-col .postbox .form-actions .submit-container .loader {
+    display: none !important;
+  }
+  body .main .left-col .recent-posts .post-item .icon {
+    display: none !important;
+  }
+  body .main .left-col .recent-posts .post-item .contents .info {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: column !important;
+            flex-direction: column !important;
+    margin-top: 1rem;
+    background-color: white;
+    padding: 0.5rem;
+    border-radius: 10px;
+    -webkit-box-shadow: 0 0 5px #dfdede;
+            box-shadow: 0 0 5px #dfdede;
+  }
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  color: #276363;
+}
+
+.main {
+  padding: 3rem 1rem;
+}
+
+.main .meta-info {
+  margin: 0 15%;
+  padding: 2rem 3rem;
+  border-radius: 10px;
+  position: relative;
+  background-color: #e5efef;
+  overflow: hidden;
+}
+
+.main .meta-info .classroom-name {
+  font-size: 2.5rem;
+  text-shadow: 0 0 5px #e0e0e0;
+}
+
+.main .meta-info .course {
+  font-size: 1.5rem;
+  color: #038d5f;
+}
+
+.main .meta-info i {
+  font-size: 7rem;
+  position: absolute;
+  right: -10px;
+  bottom: -15px;
+  color: #11c186;
+  text-shadow: 0 0 5px #e3e7e6;
+}
+
+.main .content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 3rem 1rem;
+  margin: 0 20%;
+}
+
+.main .content .table-and-action {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.main .content .table-and-action table td {
+  padding: 2px 1rem;
+}
+
+.main .content .table-and-action table td.label {
+  font-weight: 500;
+}
+
+.main .content .table-and-action table td.online i {
+  color: #11cc8e;
+  margin-right: 5px;
+}
+
+.main .content .table-and-action table td.online::after {
+  content: "Active";
+  color: #06b57b;
+}
+
+.main .content .table-and-action table td.offline i {
+  color: #cc115c;
+  margin-right: 5px;
+}
+
+.main .content .table-and-action table td.offline::after {
+  content: "Inactive";
+  color: #cc115c;
+}
+
+.main .content .table-and-action .btn-1 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 2rem;
+  border: 0;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  background-color: #4d7385;
+  color: white;
+  cursor: pointer;
+  font-size: 1rem;
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
+}
+
+.main .content .table-and-action .btn-1:hover {
+  background-color: #799eaf;
+}
+
+.main .content .table-and-action .btn-1 i {
+  font-size: 1.5rem;
+  margin-right: 5px;
+}
+
+.main .content .table-and-action .btn-1 span, .main .content .table-and-action .btn-1 i {
+  color: white;
+}
+
+.main .content .table-and-action .deactivate {
+  background-color: #e7e1e8 !important;
+}
+
+.main .content .table-and-action .deactivate i, .main .content .table-and-action .deactivate span {
+  color: #b63883;
+}
+
+.main .content .table-and-action .activate {
+  background-color: #d0e1dc !important;
+}
+
+.main .content .table-and-action .activate i, .main .content .table-and-action .activate span {
+  color: #03c178;
+}
+
+.main .content .join-code-con {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.main .content .join-code-con #join-code .title {
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.main .content .join-code-con #join-code img {
+  width: 180px;
+}
+
+@media screen and (max-width: 900px) {
+  .main .meta-info {
+    margin: 0 2% !important;
+  }
+  .main .meta-info i {
+    font-size: 5rem !important;
+  }
+  .main .content {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: column !important;
+            flex-direction: column !important;
+    -webkit-box-pack: center !important;
+        -ms-flex-pack: center !important;
+            justify-content: center !important;
+    margin: 0 10%;
+  }
+  .main .content .table-and-action {
+    width: 100%;
+    -webkit-box-ordinal-group: 3;
+        -ms-flex-order: 2;
+            order: 2;
+  }
+  .main .content .join-code-con {
+    -webkit-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+            order: 1;
+    width: 100%;
+    -webkit-box-pack: center !important;
+        -ms-flex-pack: center !important;
+            justify-content: center !important;
+    margin-bottom: 2rem;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .main {
+    padding: 1rem 5px !important;
+  }
+  .main .meta-info {
+    margin: 0 !important;
+    padding: 2rem 1rem !important;
+  }
+  .main .meta-info .classroom-name {
+    font-size: 1.5rem;
+  }
+  .main .meta-info .course {
+    font-size: 1rem;
+  }
+  .main .meta-info i {
+    font-size: 3rem !important;
+    bottom: -5px;
+    right: -3px;
+  }
+  .main .content {
+    margin: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  .main .content table td {
+    font-size: 0.8rem;
+  }
+  .main .content table td.label {
+    padding-left: 0 !important;
+  }
+  .main .content table td.value {
+    padding-left: 0 !important;
+  }
+}
+/*# sourceMappingURL=about.css.map */

@@ -75,7 +75,18 @@ class ClassroomConnections(LoginRequiredMixin, DetailView):
             return classroom
         else:
             raise Http404
+        
 
+class ClassroomAbout(LoginRequiredMixin, DetailView):
+    template_name = 'classroom/classroom_about.html'
+    model = Classroom
+    def get_object(self):
+        classroom = super().get_object()
+        if (self.request.user in classroom.teachers.all()) or (self.request.user in classroom.students.all()):
+            return classroom
+        else:
+            raise Http404
+        
 
 class PostDetail(LoginRequiredMixin, DetailView):
     template_name = 'classroom/post_detail.html'

@@ -21,6 +21,7 @@ class Classroom(models.Model):
     course = models.CharField(max_length=20)
     teachers = models.ManyToManyField(User, related_name='teacher')
     students = models.ManyToManyField(User, related_name='student', blank=True)
+    active = models.BooleanField(default=True)
     created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -43,6 +44,13 @@ class Classroom(models.Model):
         else:
             return None
 
+    @property
+    def active_status_css_class(self):
+        if self.active:
+            return "online"
+        else:
+            return "offline"
+    
     @property
     def last_post_time(self):
         if self.classroompost_set.count() > 0:
@@ -72,8 +80,16 @@ class Classroom(models.Model):
         return qs
     
     @property
+    def num_weeklies(self):
+        return self.weeklies.count()
+    
+    @property
     def has_weeklies(self):
-        return bool(self.weeklies)
+        return bool(self.num_weeklies)
+    
+    @property
+    def num_posts(self):
+        return self.classroompost_set.count()
 
 class PostTopic(models.Model):
     name = models.CharField(max_length=100)
