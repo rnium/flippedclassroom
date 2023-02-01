@@ -19,6 +19,9 @@ for (let toggler of passtogglers) {
 let inputfield = document.getElementsByClassName("input-img")[0]
 inputfield.addEventListener("change", function(){
     let filename = inputfield.files.item(0).name
+    if (filename.length > 12) {
+        filename = filename.slice(0, 12) + "..."
+    }
     let filename_container = document.getElementById(`selected-file`)
     filename_container.innerText = filename
 })
@@ -108,6 +111,7 @@ function submitForm(){
         "first_name":$("#first_name").val(),
         "last_name":$("#last_name").val(),
         "institution":$("#institution").val(),
+        "institutional_id":$("#inst-id").val(),
         "email": $("#email").val(),
         "password": $("#password1").val()
     }

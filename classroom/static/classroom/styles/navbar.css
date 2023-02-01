@@ -65,8 +65,11 @@ body header nav .user .avatar {
   border: 1px solid #d4d3d3;
 }
 
-body header nav .user .name {
+body header nav .user a.name {
   text-shadow: 0 0 5px rgba(214, 214, 214, 0.993);
+  margin: 0 !important;
+  text-decoration: none;
+  color: inherit;
 }
 
 body header nav .user a {

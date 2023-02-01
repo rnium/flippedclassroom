@@ -71,7 +71,8 @@ def api_signup(request):
         user.save()
         Account.objects.create(
             user = user,
-            institution = request.data['institution']
+            institution = request.data['institution'],
+            institutional_id = request.data['institutional_id']
         )
     except Exception as e:
         print(e)
