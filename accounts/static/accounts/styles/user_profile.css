@@ -1,0 +1,510 @@
+@import url("https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap");
+@media screen and (min-width: 1200px) {
+  body .main .left-col {
+    width: 70%;
+  }
+  body .main .right-col {
+    width: 30%;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  body .main .left-col {
+    width: 65%;
+  }
+  body .main .right-col {
+    width: 35%;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  body .main .left-col {
+    width: 60%;
+  }
+  body .main .right-col {
+    width: 40%;
+  }
+  body .main .classrooms-dashboard .classes-section .classrooms-container {
+    -ms-grid-columns: 1fr 1fr 1fr !important;
+        grid-template-columns: 1fr 1fr 1fr !important;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  body .main {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: column !important;
+            flex-direction: column !important;
+  }
+  body .main .left-col {
+    width: 100%;
+    padding: 0 !important;
+  }
+  body .main .right-col {
+    width: 100%;
+    padding: 0 !important;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  body .main .classrooms-dashboard .classes-section .classrooms-container {
+    -ms-grid-columns: 1fr 1fr !important;
+        grid-template-columns: 1fr 1fr !important;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  body .main {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: column !important;
+            flex-direction: column !important;
+    margin: 2.5rem 1rem !important;
+  }
+  body .main .left-col .recent-posts .post-item .contents .info .info-item span {
+    font-size: 0.8rem !important;
+  }
+  body .main .classrooms-dashboard .classes-section .heading {
+    border-radius: 5px 5px 0 3px;
+    margin-bottom: 2rem !important;
+  }
+  body .main .classrooms-dashboard .classes-section .heading i {
+    font-size: 2rem !important;
+  }
+  body .main .classrooms-dashboard .classes-section .heading span {
+    font-size: 1rem !important;
+    font-weight: 500 !important;
+  }
+  body .main .classrooms-dashboard .classes-section .classrooms-container {
+    -ms-grid-columns: 1fr !important;
+        grid-template-columns: 1fr !important;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  body .main {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: column !important;
+            flex-direction: column !important;
+  }
+  body .main .left-col .postbox .form-actions {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: column !important;
+            flex-direction: column !important;
+  }
+  body .main .left-col .postbox .form-actions .attachement-container {
+    width: 100% !important;
+  }
+  body .main .left-col .postbox .form-actions .attachement-container label {
+    font-size: 0.9rem;
+  }
+  body .main .left-col .postbox .form-actions .attachement-container .selected-file {
+    font-size: 0.8rem;
+  }
+  body .main .left-col .postbox .form-actions .submit-container {
+    margin-top: 0.5rem;
+    width: 100%;
+  }
+  body .main .left-col .postbox .form-actions .submit-container button {
+    width: 100%;
+  }
+  body .main .left-col .postbox .form-actions .submit-container .loader {
+    display: none !important;
+  }
+  body .main .left-col .recent-posts .post-item .icon {
+    display: none !important;
+  }
+  body .main .left-col .recent-posts .post-item .contents .info {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: column !important;
+            flex-direction: column !important;
+    margin-top: 1rem;
+    background-color: white;
+    padding: 0.5rem;
+    border-radius: 10px;
+    -webkit-box-shadow: 0 0 5px #dfdede;
+            box-shadow: 0 0 5px #dfdede;
+  }
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  color: #276363;
+}
+
+.main .profile-card {
+  position: relative;
+  border: none !important;
+  border-radius: 10px;
+  background-color: #fff;
+}
+
+.main .profile-card .content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.main .profile-card .content a.profile-edit-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  text-decoration: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 3px 10px;
+  background-color: #d1e0db;
+  border-radius: 180px;
+}
+
+.main .profile-card .content a.profile-edit-btn i {
+  font-size: 1.3rem;
+  margin-right: 5px;
+}
+
+.main .profile-card .content a.profile-edit-btn span {
+  font-family: 'Gemunu Libre', sans-serif;
+}
+
+.main .profile-card .content .info .id-no-con .label {
+  font-weight: 500;
+}
+
+.main .profile-card .content .info .id-no-con .id-no {
+  font-family: 'Gemunu Libre', sans-serif;
+  font-size: 1.1rem;
+  color: #20a075;
+}
+
+.main .profile-card .content .info .no-classrooms .cls-no {
+  font-weight: 500;
+}
+
+.main .edit-profile-con {
+  border-radius: 10px;
+}
+
+.main .edit-profile-con .info {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.main .edit-profile-con .info .dp {
+  overflow: hidden;
+  min-width: 80px;
+  max-width: 80px;
+  min-height: 80px;
+  max-height: 80px;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  -webkit-box-shadow: 0 0 2px #88aa9f;
+          box-shadow: 0 0 2px #88aa9f;
+}
+
+.main .edit-profile-con .info .heading {
+  font-family: 'Gemunu Libre', sans-serif;
+  font-size: 2rem;
+  text-shadow: 0 0 5px #e6efe9;
+  color: #89b4a5;
+}
+
+.main .edit-profile-con .inp-con .submit {
+  margin: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.main .edit-profile-con .inp-con .submit .error-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-right: 10px;
+}
+
+.main .edit-profile-con .inp-con .submit .error-info i {
+  font-size: 1.2rem;
+  color: red;
+  margin-right: 5px;
+}
+
+.main .edit-profile-con .inp-con .submit .error-info span {
+  color: red;
+}
+
+.inset-float-textinput {
+  position: relative;
+}
+
+.inset-float-textinput input {
+  width: 100%;
+  padding: 1.5rem 1rem 0.5rem;
+  border-radius: 3px;
+  border: 0;
+  border-bottom: 1px solid #b6b6b6;
+  font-size: 1rem;
+}
+
+.inset-float-textinput input:focus {
+  outline: 3px solid #01a16c;
+  border-color: transparent;
+  -webkit-box-shadow: 0 0 5px #a1a1a1;
+          box-shadow: 0 0 5px #a1a1a1;
+  border-radius: 5px;
+}
+
+.inset-float-textinput input:focus ~ label {
+  color: #01a16c;
+}
+
+.inset-float-textinput input::-webkit-input-placeholder {
+  color: #9ea09f;
+}
+
+.inset-float-textinput input:-ms-input-placeholder {
+  color: #9ea09f;
+}
+
+.inset-float-textinput input::-ms-input-placeholder {
+  color: #9ea09f;
+}
+
+.inset-float-textinput input::placeholder {
+  color: #9ea09f;
+}
+
+.inset-float-textinput input::-moz-selection {
+  background-color: #24ce95;
+  color: white;
+}
+
+.inset-float-textinput input::selection {
+  background-color: #24ce95;
+  color: white;
+}
+
+.inset-float-textinput label {
+  position: absolute;
+  font-size: 1rem;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  left: 1rem;
+  -webkit-transition: all 200ms;
+  transition: all 200ms;
+}
+
+.inset-float-textinput .inp_input:focus ~ .inp_label,
+.inset-float-textinput .inp_input:not(:placeholder-shown).inp_input:not(:focus) ~ .inp_label {
+  top: 0.6rem;
+  font-size: 0.7rem;
+  color: #3b8f65;
+}
+
+.input-file {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  overflow: hidden;
+}
+
+.input-file input[type="file"] {
+  display: none;
+}
+
+.input-file input[type="file"]:active + label {
+  background-color: #dde7eb;
+}
+
+.input-file label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: rgba(183, 207, 198, 0.5);
+  border: 1px solid #d8d8d8;
+  color: #276363;
+  text-align: center;
+  padding: 0.3rem 1rem;
+  cursor: pointer;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  border-radius: 5px;
+}
+
+.input-file label span {
+  font-family: 'Gemunu Libre', sans-serif;
+  color: #509880;
+}
+
+.input-file label i {
+  font-size: 1.5rem;
+  margin-right: 0.5rem;
+  -webkit-transition: 0.3s all;
+  transition: 0.3s all;
+  color: #459b7e;
+}
+
+.input-file label:hover {
+  background-color: rgba(138, 179, 164, 0.4);
+}
+
+.input-file .selected-file {
+  margin-left: 0.5rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  color: #276363;
+}
+
+.btn-1 {
+  float: right;
+  border: 0;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  background-color: #628b8e;
+  color: white;
+  cursor: pointer;
+  font-size: 1rem;
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
+}
+
+.btn-1:hover {
+  background-color: #799eaf;
+}
+
+.btn-1:disabled {
+  opacity: 0.5;
+}
+
+@media screen and (max-width: 768px) {
+  .main .profile-card .content {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: column !important;
+            flex-direction: column !important;
+  }
+  .main .profile-card .content .image {
+    margin: 2.5rem 0 0 !important;
+  }
+  .main .profile-card .content .info {
+    margin: 1rem 0 !important;
+  }
+  .main .profile-card .content a.profile-edit-btn {
+    top: auto !important;
+    bottom: 10px !important;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .main .profile-card .content .info {
+    margin: 2rem 0 !important;
+    padding: 0 10px !important;
+  }
+  .main .profile-card .content .info .name {
+    font-size: 1.2rem;
+  }
+  .main .profile-card .content .info .id-no-con, .main .profile-card .content .info .instituition, .main .profile-card .content .info .no-classrooms {
+    font-size: 0.9rem !important;
+  }
+  .main .edit-profile-con {
+    padding: 1rem 0.8rem !important;
+  }
+  .main .edit-profile-con .info .dp {
+    min-width: 50px;
+    max-width: 50px;
+    min-height: 50px;
+    max-height: 50px;
+  }
+  .main .edit-profile-con .info .heading {
+    font-size: 1.5rem;
+    margin-left: 15px !important;
+  }
+  .main .edit-profile-con .input-file label {
+    padding: 3px 5px;
+  }
+  .main .edit-profile-con .input-file .selected-file {
+    font-size: 0.8rem;
+  }
+  .main .edit-profile-con .submit {
+    margin-top: 10px !important;
+  }
+  .main .edit-profile-con .btn-1 {
+    font-size: 0.9rem;
+  }
+}
+/*# sourceMappingURL=user_profile.css.map */

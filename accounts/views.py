@@ -1,4 +1,4 @@
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render, get_object_or_404
 from django.http import JsonResponse
 from django.views.generic import TemplateView
 from django.contrib.auth.models import User
@@ -8,6 +8,7 @@ from rest_framework import status
 from django.contrib.auth import authenticate, login, logout
 from django.views.decorators.csrf import csrf_exempt
 from django.views import View
+from django.contrib.auth.decorators import login_required
 from .models import Account
 
 class LoginView(View):
@@ -30,6 +31,12 @@ class LogoutView(View):
         if request.user.is_authenticated:
             logout(request)
         return redirect("accounts:user_login_get")
+    
+@login_required
+def view_profile(request, pk):
+    account = get_object_or_404(Account, pk=pk)
+    return render(request, 'accounts/user_profile.html', context={'account':account})
+
 
 @api_view(['POST'])
 def api_login(request):

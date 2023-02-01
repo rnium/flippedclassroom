@@ -1,0 +1,27 @@
+{% extends 'classroom/base.html' %}
+{% block style %} {% load static %}
+<link rel="stylesheet" href="{% static 'accounts/styles/user_profile.css' %}">
+<link rel="stylesheet" href="{% static 'classroom/styles/navbar.css' %}">
+{% endblock style %}
+{% block title %}<title>Edit post</title>{% endblock title %}
+
+{% block content %}
+<div class="container mt-5 d-flex justify-content-center">
+    <div class="profile-card card p-3 shadow-lg">
+        <div class="content">
+            <a href="" class="profile-edit-btn shadow-sm"><i class='bx bx-pencil'></i><span class="label">Edit Profile</span></a>
+            <div class="image me-3">
+                <img src="/images/dp4.jpg"
+                    class="rounded" width="155">
+            </div>
+            <div class="info ml-3 w-100 p-4">
+                <div class="name mb-0 mt-0 h4">Alex HMorrision</div>
+                <div class="id-no-con"><span class="label me-2">ID:</span><span class="id-no">2018338514</span></div>
+                <div class="instituition">Sylhet Engineering College, Sylhet</div>
+                <div class="no-classrooms"><span class="label me-2">Classrooms:</span><span class="cls-no">4</span></div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
