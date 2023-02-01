@@ -101,7 +101,8 @@ class PostDetail(LoginRequiredMixin, DetailView):
 
 @login_required
 def edit_post(request, pk):
-    return render_underDev(request)
+    post = get_object_or_404(ClassroomPost, pk=pk)
+    return render(request, 'classroom/post_edit.html', context={'post':post})
 
 @login_required
 def delete_post(request, pk):

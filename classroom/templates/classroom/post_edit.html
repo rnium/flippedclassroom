@@ -1,0 +1,64 @@
+{% extends 'classroom/base.html' %}
+{% block style %} {% load static %}
+<link rel="stylesheet" href="{% static 'classroom/styles/edit_post.css' %}">
+<link rel="stylesheet" href="{% static 'classroom/styles/navbar.css' %}">
+{% endblock style %}
+{% block title %}<title>Edit post</title>{% endblock title %}
+{% block nav %}
+<ul class="navbar-nav mb-2 mb-lg-0">
+  <li class="nav-item">
+    <a class="nav-link" aria-current="page" href="#">Dashboard</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'classroom:classroom_connections' post.classroom.id %}">Connections</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Assessment</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">About</a>
+  </li>
+</ul>
+{% endblock nav %}
+
+{% block content %}
+<div class="content mt-5">
+  <div class="descr-inp-con">
+    <div class="inset-float-textinput">
+      <textarea name="description" id="post-descr"></textarea>
+      <label for="post-descr">Post description</label>
+    </div>
+  </div>
+  <div class="files-con">
+    {% for file in post.postattachment_set.all %}
+    <div class="file-content shadow-sm" id="file-{{file.id}}-container">
+      <i class='file-ico bx bxs-file-pdf'></i>
+      <div class="filename">{{file.filename|truncatechars:25}}</div>
+      <button class="del-btn" id="file-{{file.id}}-rm-btn" data-fileid="{{file.id}}" data-container="file-{{file.id}}-container"><i class='bx bx-no-entry'></i></button>
+    </div>
+    {% endfor %}
+  </div>
+  <div class="new-file-input-con">
+    <div class="attachement-container input-file">
+      <input type="file" id="post-files" name="post-file" multiple="multiple">
+      <label for="post-files"><i class='bx bx-paperclip'></i>Attach Files</label>
+      <div class="selected-file" id="postfiles-file">No files selected</div>
+    </div>
+  </div>
+  <div class="submit-container">
+    <button type="submit">Save</button>
+  </div>
+</div>
+{% endblock content %}
+
+{% block script %}
+<script src="{% static 'classroom/scripts/edit_post.js' %}"></script>
+<script>
+  const prev_descr = "{{ post.description }}"
+  const csrftoken = "{{ csrf_token }}"
+  $("#post-descr").val(prev_descr)
+  $("#post-descr").focus()
+</script>
+{% endblock script %}
+
+
