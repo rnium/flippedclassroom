@@ -45,5 +45,17 @@
 </div>
 {% endblock content %}
 
-
+{% block script %}
+<script src="{% static 'accounts/scripts/signup.js' %}"></script>
+<script>
+    function setPrevVal() {
+        $("#first_name").val('{{ account.user.first_name }}');
+        $("#last_name").val('{{ account.user.last_name }}');
+        $("#institution").val('{{ account.institution }}');
+        $("#inst-id").val('{{ account.institutional_id }}');
+        $("#email").val('{{ account.user.email }}');
+    }
+    setTimeout(setPrevVal, 500)
+</script>
+{% endblock script %}
 

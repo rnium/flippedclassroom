@@ -18,7 +18,7 @@
             </div>
             <div class="info ml-3 w-100 p-4">
                 <div class="name mb-0 mt-0 h4">{{account.user_full_name}}</div>
-                <div class="id-no-con"><span class="label me-2">ID:</span><span class="id-no">2018338514</span></div>
+                <div class="id-no-con"><span class="label me-2">ID:</span><span class="id-no">{{account.institutional_id}}</span></div>
                 <div class="instituition">{{account.institution}}</div>
                 <div class="no-classrooms"><span class="label me-2">Classrooms:</span><span class="cls-no">{{account.num_classrooms}}</span></div>
             </div>
@@ -26,4 +26,6 @@
     </div>
 </div>
 {% endblock content %}
+
+
 
