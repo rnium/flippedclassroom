@@ -120,4 +120,15 @@ def update_post_des_and_rm_files(request, pk):
                continue
            posted_file.delete()
     return Response(data={"info":"complete"}, status=status.HTTP_200_OK)
+
+
+
+@api_view(['DELETE'])
+@permission_classes([IsAuthenticated ])
+def delete_post(request, pk):
+    post = get_object_or_404(ClassroomPost, pk=pk)
+    if request.user not in post.classroom.teachers.all():
+        return Response(status=status.HTTP_403_FORBIDDEN)
+    post.delete()
+    return Response(data={"status":"deleted"}, status=status.HTTP_204_NO_CONTENT)
     

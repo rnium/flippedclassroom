@@ -8,5 +8,6 @@ urlpatterns = [
     path('<str:pk>/removestudent', views.remove_student, name="remove_student"),
     path('post/<str:pk>/postcomment', views.post_comment, name="post_comment"),
     path('post/<str:pk>/update', views.update_post_des_and_rm_files, name="update_post_des_and_rm_files"),
+    path('post/<str:pk>/delete', views.delete_post, name="delete_post_api"),
 ]
    

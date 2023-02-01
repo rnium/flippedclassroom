@@ -29,7 +29,7 @@ class ClassesDashboard(LoginRequiredMixin, TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data()
         my_teachings = Classroom.objects.filter(teachers=self.request.user)
-        my_learnings = Classroom.objects.filter(students=self.request.user)
+        my_learnings = Classroom.objects.filter(students=self.request.user, active=True)
         classrooms = {}
         if len(my_teachings) > 0:
             classrooms['my_teachings'] = my_teachings
@@ -101,12 +101,13 @@ class PostDetail(LoginRequiredMixin, DetailView):
 
 @login_required
 def edit_post(request, pk):
-    post = get_object_or_404(ClassroomPost, pk=pk)
-    return render(request, 'classroom/post_edit.html', context={'post':post})
+    classroom_post = get_object_or_404(ClassroomPost, pk=pk)
+    return render(request, 'classroom/post_edit.html', context={'post':classroom_post})
 
 @login_required
 def delete_post(request, pk):
-    return render_underDev(request)
+    classroom_post = get_object_or_404(ClassroomPost, pk=pk)
+    return render(request, 'classroom/post_delete.html', context={'post':classroom_post})
 
 @login_required
 def view_assignment(request, pk):
