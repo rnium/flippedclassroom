@@ -37,6 +37,11 @@ def view_profile(request, pk):
     account = get_object_or_404(Account, pk=pk)
     return render(request, 'accounts/user_profile.html', context={'account':account})
 
+@login_required
+def edit_profile(request, pk):
+    account = get_object_or_404(Account, pk=pk)
+    return render(request, 'accounts/user_edit_profile.html', context={'account':account})
+
 
 @api_view(['POST'])
 def api_login(request):

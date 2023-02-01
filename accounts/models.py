@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.templatetags.static import static
+from classroom.models import Classroom
 
 
 class Account(models.Model):
@@ -39,4 +40,10 @@ class Account(models.Model):
             return self.profile_picture.url
         else:
             return static('accounts/images/blank-dp.svg')
+        
+    @property
+    def num_classrooms(self):
+        teaching = Classroom.objects.filter(teachers=self.user).count()
+        learning = Classroom.objects.filter(students=self.user).count()
+        return teaching+learning
             

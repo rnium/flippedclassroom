@@ -9,16 +9,18 @@
 <div class="container mt-5 d-flex justify-content-center">
     <div class="profile-card card p-3 shadow-lg">
         <div class="content">
-            <a href="" class="profile-edit-btn shadow-sm"><i class='bx bx-pencil'></i><span class="label">Edit Profile</span></a>
+            {% if request.user == account.user %}
+            <a href="{% url 'accounts:edit_profile' account.id %}" class="profile-edit-btn shadow-sm"><i class='bx bx-pencil'></i><span class="label">Edit Profile</span></a>
+            {% endif %}
             <div class="image me-3">
-                <img src="/images/dp4.jpg"
+                <img src="{{account.avatar_url}}"
                     class="rounded" width="155">
             </div>
             <div class="info ml-3 w-100 p-4">
-                <div class="name mb-0 mt-0 h4">Alex HMorrision</div>
+                <div class="name mb-0 mt-0 h4">{{account.user_full_name}}</div>
                 <div class="id-no-con"><span class="label me-2">ID:</span><span class="id-no">2018338514</span></div>
-                <div class="instituition">Sylhet Engineering College, Sylhet</div>
-                <div class="no-classrooms"><span class="label me-2">Classrooms:</span><span class="cls-no">4</span></div>
+                <div class="instituition">{{account.institution}}</div>
+                <div class="no-classrooms"><span class="label me-2">Classrooms:</span><span class="cls-no">{{account.num_classrooms}}</span></div>
             </div>
         </div>
     </div>
