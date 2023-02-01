@@ -2,9 +2,10 @@ from django.shortcuts import redirect, render, get_object_or_404
 from django.http import JsonResponse
 from django.views.generic import TemplateView
 from django.contrib.auth.models import User
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.permissions import IsAuthenticated
 from django.contrib.auth import authenticate, login, logout
 from django.views.decorators.csrf import csrf_exempt
 from django.views import View
@@ -80,6 +81,32 @@ def api_signup(request):
     login(request, user=user)
     return Response({'status':"complete"}, status=status.HTTP_201_CREATED)
 
+
+@api_view(["POST"])
+@permission_classes([IsAuthenticated])
+def update_profile(request):
+    # firstly checking email is used or not
+    user_qs = User.objects.filter(email=request.data['user_data']['email'])
+    print(user_qs)
+    if len(user_qs) > 0:
+        if user_qs[0] != request.user:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+    user_data = request.data['user_data']
+    account_data = request.data['account_data']
+    
+    user = request.user
+    account = user.account
+
+    try:
+        for attr, val in user_data.items():
+            setattr(user, attr, val)
+        user.save()
+        for attr, val in account_data.items():
+            setattr(account, attr, val)
+        account.save()
+    except Exception:
+        return Response(status=status.HTTP_406_NOT_ACCEPTABLE)
+    return Response(status=status.HTTP_200_OK)
 
 @csrf_exempt
 def set_avatar(request):

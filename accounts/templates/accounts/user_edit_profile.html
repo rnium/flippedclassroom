@@ -39,14 +39,14 @@
         </div>
         <div class="field-container submit">
             <div class="error-info" id="error-info-container" style="display: none;"><i class='bx bx-info-circle'></i><span id="error-info-text"></span></div>
-            <button class="btn-1 shadow-sm" id="submit">Save Changes</button>
+            <button class="btn-1 shadow-sm" id="submit-btn">Save Changes</button>
         </div>
     </div>
 </div>
 {% endblock content %}
 
 {% block script %}
-<script src="{% static 'accounts/scripts/signup.js' %}"></script>
+<script src="{% static 'accounts/scripts/edit_profile.js' %}"></script>
 <script>
     function setPrevVal() {
         $("#first_name").val('{{ account.user.first_name }}');
@@ -55,7 +55,9 @@
         $("#inst-id").val('{{ account.institutional_id }}');
         $("#email").val('{{ account.user.email }}');
     }
-    setTimeout(setPrevVal, 500)
+    setTimeout(setPrevVal, 500);
+    const update_profile_api = "{% url 'accounts:update_profile_api' %}";
+    const csrftoken = "{{csrf_token}}";
 </script>
 {% endblock script %}
 
