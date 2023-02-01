@@ -54,9 +54,11 @@
 {% block script %}
 <script src="{% static 'classroom/scripts/edit_post.js' %}"></script>
 <script>
-  const post_update_url = "{% url 'classroom:update_post_des_and_rm_files' post.id %}"
-  const prev_descr = "{{ post.description }}"
-  const csrftoken = "{{ csrf_token }}"
+  const post_update_url = "{% url 'classroom:update_post_des_and_rm_files' post.id %}";
+  const clssroom_url = "{% url 'classroom:classroom_detail' post.classroom.id %}";
+  const upload_file_url = "{% url 'classroom:uploadPostFile' post.id %}";
+  const prev_descr = "{{ post.description }}";
+  const csrftoken = "{{ csrf_token }}";
   $("#post-descr").val(prev_descr)
   $("#post-descr").focus()
 </script>

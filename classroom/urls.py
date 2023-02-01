@@ -18,6 +18,7 @@ urlpatterns = [
     path('classroom/<str:pk>/post', create_post, name="post_to_classroom"),
     path('classroom/post/<str:pk>', PostDetail.as_view(), name="post_detail"),
     path('classroom/post/<str:pk>/edit', edit_post, name="edit_post"),
+    path('classroom/post/<str:pk>/newfile', uploadPostFile, name="uploadPostFile"),
     path('classroom/post/<str:pk>/delete', delete_post, name="delete_post"),
     # assignment
     path('classroom/<str:pk>/assignments', classroom_assignment, name="view_classroom_assignment"),

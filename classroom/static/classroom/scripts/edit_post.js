@@ -32,7 +32,7 @@ function check_existing_input_files(){
     }
 }
 
-function updatePost(btn_id, payload){
+function updatePost(btn_id, payload, success_callback){
     $.ajax({
         type: "post",
         url: post_update_url,
@@ -45,7 +45,7 @@ function updatePost(btn_id, payload){
         data: JSON.stringify(payload),
         cache: false,
         success: function(response) {
-            alert("updated")
+            success_callback()
         },
         error: function() {
             alert("Something went wrong")
@@ -55,6 +55,46 @@ function updatePost(btn_id, payload){
 
 }
 
+function redirect_home(){
+    window.location.href = clssroom_url
+}
+
+
+function upload_post_files() {
+    let inputfield = document.getElementById('post-files')
+    let file_nums = inputfield.files.length
+
+    let files = $("#post-files")[0].files
+    let post_form = new FormData
+    if (files.length > 0) {
+        for (let file of files) {
+            post_form.append("files", file)
+        }
+    } else {
+        redirect_home()
+        return;
+    }
+    $.ajax({
+        type: "post",
+        url: upload_file_url,
+        data: post_form,
+        contentType: false,
+        processData: false,
+        beforeSend: function(){
+            $("#post-files").attr('disabled', true)
+            $("#post-save-btn").attr('disabled', true)
+        },
+        success: function(){
+            redirect_home()
+        },
+        error: function(){
+            $("#post-files").removeAttr('disabled');
+            $("#post-save-btn").removeAttr('disabled');   
+        }
+    });
+}
+
+
 let btns = $(".del-btn")
 let removed_files = []
 $.each(btns, function (indexInArray, valueOfElement) { 
@@ -63,7 +103,6 @@ $.each(btns, function (indexInArray, valueOfElement) {
         let file_id = $(this).data('fileid');
         let containerid = $(this).data('container');
         removed_files.push(file_id)
-        console.log(removed_files);
         $(`#${containerid}`).hide(300)
     })
 });
@@ -81,9 +120,9 @@ $(document).ready(function () {
             if (removed_files.length != 0) {
                 data['removed_files'] = removed_files
             }
-            updatePost("post-save-btn", data)
+            updatePost("post-save-btn", data, upload_post_files)
         } else {
-            return;
+            upload_post_files();
         }
         
     })
