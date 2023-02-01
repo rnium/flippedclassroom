@@ -46,7 +46,7 @@
     </div>
   </div>
   <div class="submit-container">
-    <button type="submit">Save</button>
+    <button type="submit" id="post-save-btn">Save</button>
   </div>
 </div>
 {% endblock content %}
@@ -54,6 +54,7 @@
 {% block script %}
 <script src="{% static 'classroom/scripts/edit_post.js' %}"></script>
 <script>
+  const post_update_url = "{% url 'classroom:update_post_des_and_rm_files' post.id %}"
   const prev_descr = "{{ post.description }}"
   const csrftoken = "{{ csrf_token }}"
   $("#post-descr").val(prev_descr)

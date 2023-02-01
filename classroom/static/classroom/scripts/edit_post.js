@@ -32,6 +32,29 @@ function check_existing_input_files(){
     }
 }
 
+function updatePost(btn_id, payload){
+    $.ajax({
+        type: "post",
+        url: post_update_url,
+        dataType: "json",
+        contentType: "application/json",
+        beforeSend: function(xhr){
+            $(`#${btn_id}`).attr("disabled", true)
+            xhr.setRequestHeader("X-CSRFToken", csrftoken)
+        },
+        data: JSON.stringify(payload),
+        cache: false,
+        success: function(response) {
+            alert("updated")
+        },
+        error: function() {
+            alert("Something went wrong")
+            $(`#${btn_id}`).removeAttr("disabled");
+        },
+    });
+
+}
+
 let btns = $(".del-btn")
 let removed_files = []
 $.each(btns, function (indexInArray, valueOfElement) { 
@@ -48,4 +71,20 @@ $.each(btns, function (indexInArray, valueOfElement) {
 
 $(document).ready(function () {
     check_existing_input_files()
+    $("#post-save-btn").on('click', ()=>{
+        data = {}
+        let new_descr = $("#post-descr").val()
+        if (new_descr != prev_descr || removed_files.length != 0) {
+            if (new_descr != prev_descr) {
+                data['description'] = new_descr
+            }
+            if (removed_files.length != 0) {
+                data['removed_files'] = removed_files
+            }
+            updatePost("post-save-btn", data)
+        } else {
+            return;
+        }
+        
+    })
 });

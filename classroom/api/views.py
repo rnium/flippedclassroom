@@ -6,7 +6,7 @@ from rest_framework import status
 from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404
 from django.urls import reverse
-from classroom.models import ClassroomPost, Classroom, Comment
+from classroom.models import ClassroomPost, PostAttachment, Classroom, Comment
 from .serializer import PostSerializer, ClassroomSerializer
 from .permission import IsUserPartOfClassroom, IsUserTeacher
 from .pagination import PostsPagination
@@ -99,3 +99,25 @@ def remove_student(request, pk):
         return Response({'status':"user removed"}, status=status.HTTP_200_OK)
     else:
         return Response(status=status.HTTP_403_FORBIDDEN)
+    
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated ])
+def update_post_des_and_rm_files(request, pk):
+    post = get_object_or_404(ClassroomPost, pk=pk)
+    if request.user not in post.classroom.teachers.all():
+        return Response(status=status.HTTP_403_FORBIDDEN)
+    new_descr = request.data.get("description", None)
+    if new_descr:
+        post.description = new_descr
+        post.save()
+    removed_files = request.data.get('removed_files', None)
+    if removed_files != None:
+        for file_pk in removed_files:
+           try:
+               posted_file = PostAttachment.objects.get(classroom_post=post, pk=file_pk)
+           except PostAttachment.DoesNotExist:
+               continue
+           posted_file.delete()
+    return Response(data={"info":"complete"}, status=status.HTTP_200_OK)
+    
