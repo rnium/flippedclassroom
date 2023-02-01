@@ -57,6 +57,7 @@
     }
     setTimeout(setPrevVal, 500);
     const update_profile_api = "{% url 'accounts:update_profile_api' %}";
+    const avatar_set_url = "{% url 'accounts:set_avatar' %}"
     const csrftoken = "{{csrf_token}}";
 </script>
 {% endblock script %}

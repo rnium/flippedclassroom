@@ -8,6 +8,23 @@ function showError(msg, duration=3000) {
     })
 }
 
+function setupAvatar(image_file) {
+    let image_form = new FormData
+    // fix csrftoken with formdata
+    image_form.append("dp", image_file)
+    $.ajax({
+        type: "post",
+        url: avatar_set_url,
+        data: image_form,
+        contentType: false,
+        processData: false,
+        complete: function(){
+            alert("Profile updated")
+        }
+    });
+
+}
+
 
 function updateProfile(btn_id, data) {
     let payload = JSON.stringify(data)
@@ -23,7 +40,12 @@ function updateProfile(btn_id, data) {
         data: payload,
         cache: false,
         success: function(response){
-            alert("Profile Updated")
+            avatar_files = $("#dp")[0].files
+            if (avatar_files.length > 0) {
+                setupAvatar(avatar_files[0])
+            } else {
+                alert("Profile updated")
+            }
         },
         complete: function(xhr,status,error){
             $(`#${btn_id}`).attr("disabled", false)
