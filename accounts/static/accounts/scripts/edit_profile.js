@@ -8,6 +8,19 @@ function showError(msg, duration=3000) {
     })
 }
 
+function checkForm() {
+    let input_fields = $(".inp_input")
+    for (let field of input_fields) {
+        field_val = $(`#${field.id}`).val()
+        if (field_val.length < 1) {
+            $(`#${field.id}`).focus()
+            showError("Please fill the field")
+            return false
+        }
+    }
+    return true
+}
+
 function setupAvatar(image_file) {
     let image_form = new FormData
     // fix csrftoken with formdata
@@ -72,6 +85,10 @@ inputfield.addEventListener("change", function(){
 })
 
 $("#submit-btn").on('click', ()=>{
+    let check_res = checkForm()
+    if (!check_res) {
+        return;
+    }
     let first_name = $("#first_name").val();
     let last_name = $("#last_name").val();
     let institution = $("#institution").val();
@@ -81,6 +98,7 @@ $("#submit-btn").on('click', ()=>{
         'user_data': {
             'first_name': first_name,
             'last_name': last_name,
+            'username': email,
             'email': email,
         },
         'account_data': {
