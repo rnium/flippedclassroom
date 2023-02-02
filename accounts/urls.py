@@ -10,7 +10,7 @@ urlpatterns = [
     path('signup/', SignupView.as_view(), name="user_signup_get"),
     path('profile/<int:pk>', view_profile, name="view_profile"),
     path('profile/update', update_profile, name="update_profile_api"),
-    path('profile/<int:pk>/edit', edit_profile, name="edit_profile"),
+    path('profile/edit', edit_profile, name="edit_profile"),
     path('api/signup', api_signup, name="user_signup_post"),
     path('profile/avatar/set', set_avatar, name="set_avatar"),
 ]

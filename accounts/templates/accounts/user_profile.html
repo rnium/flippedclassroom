@@ -10,7 +10,7 @@
     <div class="profile-card card p-3 shadow-lg">
         <div class="content">
             {% if request.user == account.user %}
-            <a href="{% url 'accounts:edit_profile' account.id %}" class="profile-edit-btn shadow-sm"><i class='bx bx-pencil'></i><span class="label">Edit Profile</span></a>
+            <a href="{% url 'accounts:edit_profile' %}" class="profile-edit-btn shadow-sm"><i class='bx bx-pencil'></i><span class="label">Edit Profile</span></a>
             {% endif %}
             <div class="image me-3">
                 <img src="{{account.avatar_url}}"
