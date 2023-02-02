@@ -265,7 +265,6 @@ def delete_work(request, cls_pk, pk):
 @api_view(["POST"])
 @permission_classes([IsAuthenticated])
 def update_work_score(request, cls_pk, pk):
-    print(request.data)
     try:
         work = Work.objects.get(pk=pk, task__classroom__id=cls_pk, )
     except Work.DoesNotExist:
