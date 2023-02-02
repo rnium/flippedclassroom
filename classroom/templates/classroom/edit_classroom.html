@@ -1,0 +1,47 @@
+{% extends 'classroom/base.html' %}
+{% block style %} {% load static %}
+<link rel="stylesheet" href="{% static 'classroom/styles/edit_classroom.css' %}">
+<link rel="stylesheet" href="{% static 'classroom/styles/navbar.css' %}">
+{% endblock style %}
+{% block title %}<title>Edit classroom</title>{% endblock title %}
+
+{% block content %}
+<div class="edit-classroom">
+  <div class="heading mb-5">
+    <div class="title">Edit classroom information</div>
+  </div>
+
+  <div class="form">
+    <div class="field-container inset-float-textinput mb-4">
+      <input class="inp_input" type="text" id="classname" placeholder=" ">
+      <label class="inp_label" for="classname">Classroom Name</label>
+    </div>
+    <div class="field-container inset-float-textinput">
+      <input class="inp_input" type="text" id="course" placeholder=" ">
+      <label class="inp_label" for="course">Course Code or Batch</label>
+    </div>
+    <div class="submit mt-5">
+      <button class="btn-1 shadow-sm">Update</button>
+    </div>
+  </div>
+  {% comment %} <div class="success">
+    <i class='bx bx-message-square-check icon'></i>
+    <div class="classroom-name">Lorem ipsum dolor sit amet</div>
+    <div class="share-link">
+      <a class="shadow-btn" id="share-link">Go Back</a>
+    </div>
+  </div> {% endcomment %}
+</div>
+{% endblock content %}
+
+
+{% block script %}
+{% comment %} <script src="{% static 'classroom/scripts/create_classroom.js' %}"></script> {% endcomment %}
+<script>
+  csrftoken = "{{ csrf_token }}"
+  $(document).ready(function(){
+    $('#classname').val("{{classroom.name}}");
+    $('#course').val("{{classroom.course}}");
+  })
+</script>
+{% endblock script %}

@@ -143,6 +143,14 @@ def create_classroom(request):
         return render(request, "classroom/create_classroom.html")
 
 @login_required
+def edit_classroom(request, pk):
+    classroom = get_object_or_404(Classroom, pk=pk)
+    if request.user in classroom.teachers.all():
+        return render(request, "classroom/edit_classroom.html", context={"classroom":classroom})
+    else:
+        return render_info_or_error(request, "Unauthorized", "You have no permission to perform this action", "error")
+
+@login_required
 def join_classroom(request, pk):
     classroom = get_object_or_404(Classroom, pk=pk)
     if request.user in classroom.teachers.all():
