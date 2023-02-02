@@ -11,7 +11,7 @@
     <div class="title">Edit classroom information</div>
   </div>
 
-  <div class="form">
+  <div class="form" id="form-container">
     <div class="field-container inset-float-textinput mb-4">
       <input class="inp_input" type="text" id="classname" placeholder=" ">
       <label class="inp_label" for="classname">Classroom Name</label>
@@ -21,24 +21,25 @@
       <label class="inp_label" for="course">Course Code or Batch</label>
     </div>
     <div class="submit mt-5">
-      <button class="btn-1 shadow-sm">Update</button>
+      <button class="btn-1 shadow-sm" id="update-btn">Update</button>
     </div>
   </div>
-  {% comment %} <div class="success">
+  <div class="success" id="success-container" style="display: none">
     <i class='bx bx-message-square-check icon'></i>
-    <div class="classroom-name">Lorem ipsum dolor sit amet</div>
+    <div class="classroom-name" id="new-classroom-name"></div>
     <div class="share-link">
-      <a class="shadow-btn" id="share-link">Go Back</a>
+      <a href="{% url 'classroom:classroom_detail' classroom.id %}" class="shadow-btn" id="share-link">Go Back</a>
     </div>
-  </div> {% endcomment %}
+  </div>
 </div>
 {% endblock content %}
 
 
 {% block script %}
-{% comment %} <script src="{% static 'classroom/scripts/create_classroom.js' %}"></script> {% endcomment %}
+<script src="{% static 'classroom/scripts/edit_classroom.js' %}"></script> 
 <script>
-  csrftoken = "{{ csrf_token }}"
+  const update_clssroom_api = "{% url 'classroom:update_classroom' classroom.id %}"
+  const csrftoken = "{{ csrf_token }}"
   $(document).ready(function(){
     $('#classname').val("{{classroom.name}}");
     $('#course').val("{{classroom.course}}");
