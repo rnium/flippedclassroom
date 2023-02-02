@@ -11,6 +11,11 @@ body {
   background-color: #c4d6cc;
 }
 
+body .container {
+  margin-top: 1rem;
+  min-height: 97vh;
+}
+
 body .container .form {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -24,11 +29,6 @@ body .container .form {
       -ms-flex-align: center;
           align-items: center;
   background-color: white;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -55%);
-          transform: translate(-50%, -55%);
   border-radius: 10px;
   padding: 2rem 3rem 1rem;
   -webkit-transition: all 300ms;
@@ -59,6 +59,7 @@ body .container .form .name {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  width: 100%;
 }
 
 body .container .form .name .first_name {
@@ -156,10 +157,41 @@ body .container .form .login-info a:hover {
 body .container .login-form {
   padding: 1.5rem 2rem 1rem;
   width: 30rem;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -70%);
-          transform: translate(-50%, -70%);
+}
+
+body .container.login {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+body footer {
+  height: 3vh;
+  margin: 1rem 0;
+  text-align: center;
+  font-family: 'Gemunu Libre', sans-serif;
+}
+
+body footer a {
+  margin-left: 5px;
+  text-decoration: none;
+  color: #5b8175;
+  font-family: 'Gemunu Libre', sans-serif;
+}
+
+body footer a:hover {
+  text-decoration: underline;
 }
 
 .input-file {
@@ -256,7 +288,7 @@ body .container .login-form {
 
 .inset-float-textinput input {
   width: 100%;
-  padding: 1.5rem 1rem 0.5rem;
+  padding: 1.3rem 1rem 0.4rem;
   border-radius: 5px;
   border: 1px solid #b6b6b6;
   font-size: 1rem;
@@ -324,5 +356,83 @@ body .container .login-form {
 
 .inset-error:focus ~ label {
   color: red !important;
+}
+
+@media screen and (min-width: 1200px) {
+  body .container.signup {
+    width: 50%;
+    padding-top: 1rem;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  body .container .form {
+    padding: 20px;
+  }
+  body .container .form .heading .site-title {
+    font-size: 1.5rem;
+  }
+  body .container .form .inset-float-textinput label {
+    font-size: 0.8rem;
+  }
+  body .container .form .inset-float-textinput input {
+    padding: 1.2rem 1rem 0.3rem;
+  }
+  body .container .form .name {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: column !important;
+            flex-direction: column !important;
+  }
+  body .container .form .name .first_name, body .container .form .name .last_name {
+    padding: 0;
+    width: 100%;
+  }
+  body .container .form .name .first_name {
+    margin-bottom: 0.7rem;
+  }
+  body .container .form .field-container {
+    margin-bottom: 0.7rem !important;
+  }
+  body .container .form .input-file label {
+    padding: 3px 5px;
+  }
+  body .container .form .input-file label span {
+    font-family: 'Gemunu Libre', sans-serif !important;
+    color: #72a48b;
+  }
+  body .container .form .input-file .selected-file {
+    font-size: 0.8rem;
+  }
+  body .container .form .submit {
+    margin-top: 0 !important;
+  }
+  body .container .form .submit .error-info {
+    font-size: 0.7rem !important;
+  }
+  body .container .form .submit .error-info i {
+    font-size: 0.9rem;
+    margin: 0;
+  }
+  body .container .form .btn-1 {
+    font-size: 0.8rem;
+  }
+  body .container .form .login-info {
+    margin: 0 !important;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    justify-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  body .container .form .login-info span, body .container .form .login-info a {
+    font-size: 0.8rem;
+  }
 }
 /*# sourceMappingURL=auth.css.map */

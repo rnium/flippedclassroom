@@ -101,3 +101,5 @@ $("#password").on('keyup', function (e) {
 
 $("#submit").on('click', submitForm)
 
+$("#footer").html(`Developed by <a href="https://github.com/rnium">MSI Rony</a>`);
+

@@ -155,3 +155,5 @@ $("#password2").on('keyup', function (e) {
         submitForm()
     }
  })
+
+$("#footer").html(`Developed by <a href="https://github.com/rnium">MSI Rony</a>`);
