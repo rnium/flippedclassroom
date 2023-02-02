@@ -65,7 +65,39 @@ function showError(msg, duration=3000) {
     })
 }
 
+
+function validateEmail(input_text) {
+    var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    if (input_text.match(validRegex)) {
+      return true;
+    } else {
+      return false;
+    }
+}
+
+function checkEmail(){
+    let email = $("#email").val()
+    let email_validation = validateEmail(email)
+    if (!email_validation) {
+        $("#email").addClass("inset-error")
+        return false;
+    } else {
+        $("#email").removeClass("inset-error")
+        return true;
+    }
+}
+
+$("#email").keyup(function(){
+    checkEmail()
+})
+
+
 function checkForm() {
+    let email_validation = checkEmail()
+    if (!email_validation) {
+        showError("Invalid email")
+        return false
+    }
     let error_fields = $('.inset-error')
     if (error_fields.length > 0) {
         showError("Please fix the error")
