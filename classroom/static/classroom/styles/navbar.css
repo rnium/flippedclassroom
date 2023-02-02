@@ -23,7 +23,7 @@ body header nav .navbar-brand .site-title {
   color: #94a7ac;
   font-family: 'Gemunu Libre', sans-serif;
   font-size: 1.6rem;
-  text-shadow: 0 0 5px rgba(150, 190, 150, 0.3);
+  text-shadow: 0 0 5px rgba(196, 213, 196, 0.3);
 }
 
 body header nav ul li.nav-item {
@@ -117,6 +117,12 @@ body header nav .user a {
     -webkit-box-pack: center !important;
         -ms-flex-pack: center !important;
             justify-content: center !important;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  body header nav .navbar-brand {
+    margin: 0 !important;
   }
 }
 /*# sourceMappingURL=navbar.css.map */

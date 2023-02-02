@@ -150,6 +150,8 @@
   position: relative;
   background-color: #e5efef;
   overflow: hidden;
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
 }
 
 .main .meta-info .classroom-name {
@@ -162,13 +164,47 @@
   color: #038d5f;
 }
 
-.main .meta-info i {
+.main .meta-info i.bg {
   font-size: 7rem;
   position: absolute;
   right: -10px;
   bottom: -15px;
   color: #11c186;
   text-shadow: 0 0 5px #e3e7e6;
+}
+
+.main .meta-info .edit-btn {
+  text-decoration: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 2px 10px;
+  background-color: white;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border-radius: 180px;
+}
+
+.main .meta-info .edit-btn i, .main .meta-info .edit-btn span {
+  color: #329d9d;
+}
+
+.main .meta-info .edit-btn i {
+  font-size: 1.2rem;
+}
+
+.main .meta-info .edit-btn span {
+  padding: 0 10px 0 5px;
+  font-family: 'Gemunu Libre', sans-serif;
 }
 
 .main .content {
@@ -201,6 +237,8 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
 }
 
 .main .content .table-and-action table td {
@@ -299,6 +337,8 @@
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
 }
 
 .main .content .join-code-con #join-code .title {
@@ -310,11 +350,11 @@
   width: 180px;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 992px) {
   .main .meta-info {
     margin: 0 2% !important;
   }
-  .main .meta-info i {
+  .main .meta-info i.bg {
     font-size: 5rem !important;
   }
   .main .content {
@@ -345,7 +385,7 @@
   }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 576px) {
   .main {
     padding: 1rem 5px !important;
   }
@@ -359,7 +399,7 @@
   .main .meta-info .course {
     font-size: 1rem;
   }
-  .main .meta-info i {
+  .main .meta-info i.bg {
     font-size: 3rem !important;
     bottom: -5px;
     right: -3px;
