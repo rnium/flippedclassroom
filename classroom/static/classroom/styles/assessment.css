@@ -1,0 +1,575 @@
+@import url("https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap");
+@media screen and (min-width: 1200px) {
+  body .main .left-col {
+    width: 70%;
+  }
+  body .main .right-col {
+    width: 30%;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  body .main .left-col {
+    width: 65%;
+  }
+  body .main .right-col {
+    width: 35%;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  body .main .left-col {
+    width: 60%;
+  }
+  body .main .right-col {
+    width: 40%;
+  }
+  body .main .classrooms-dashboard .classes-section .classrooms-container {
+    -ms-grid-columns: 1fr 1fr 1fr !important;
+        grid-template-columns: 1fr 1fr 1fr !important;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  body .main {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: column !important;
+            flex-direction: column !important;
+  }
+  body .main .left-col {
+    width: 100%;
+    padding: 0 !important;
+  }
+  body .main .right-col {
+    width: 100%;
+    padding: 0 !important;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  body .main .classrooms-dashboard .classes-section .classrooms-container {
+    -ms-grid-columns: 1fr 1fr !important;
+        grid-template-columns: 1fr 1fr !important;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  body .main {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: column !important;
+            flex-direction: column !important;
+    margin: 2.5rem 1rem !important;
+  }
+  body .main .left-col .recent-posts .post-item .contents .info .info-item span {
+    font-size: 0.8rem !important;
+  }
+  body .main .classrooms-dashboard .classes-section .heading {
+    border-radius: 5px 5px 0 3px;
+    margin-bottom: 2rem !important;
+  }
+  body .main .classrooms-dashboard .classes-section .heading i {
+    font-size: 2rem !important;
+  }
+  body .main .classrooms-dashboard .classes-section .heading span {
+    font-size: 1rem !important;
+    font-weight: 500 !important;
+  }
+  body .main .classrooms-dashboard .classes-section .classrooms-container {
+    -ms-grid-columns: 1fr !important;
+        grid-template-columns: 1fr !important;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  body .main {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: column !important;
+            flex-direction: column !important;
+  }
+  body .main .left-col .postbox .form-actions {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: column !important;
+            flex-direction: column !important;
+  }
+  body .main .left-col .postbox .form-actions .attachement-container {
+    width: 100% !important;
+  }
+  body .main .left-col .postbox .form-actions .attachement-container label {
+    font-size: 0.9rem;
+  }
+  body .main .left-col .postbox .form-actions .attachement-container .selected-file {
+    font-size: 0.8rem;
+  }
+  body .main .left-col .postbox .form-actions .submit-container {
+    margin-top: 0.5rem;
+    width: 100%;
+  }
+  body .main .left-col .postbox .form-actions .submit-container button {
+    width: 100%;
+  }
+  body .main .left-col .postbox .form-actions .submit-container .loader {
+    display: none !important;
+  }
+  body .main .left-col .recent-posts .post-item .icon {
+    display: none !important;
+  }
+  body .main .left-col .recent-posts .post-item .contents .info {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: column !important;
+            flex-direction: column !important;
+    margin-top: 1rem;
+    background-color: white;
+    padding: 0.5rem;
+    border-radius: 10px;
+    -webkit-box-shadow: 0 0 5px #dfdede;
+            box-shadow: 0 0 5px #dfdede;
+  }
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  color: #276363;
+}
+
+body .main .create-assessment .title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body .main .create-assessment .title i, body .main .create-assessment .title span {
+  color: #6ac09e;
+  text-shadow: 0 0 3px #ecf1ef;
+}
+
+body .main .create-assessment .title i {
+  font-size: 1.7rem;
+}
+
+body .main .create-assessment .title span {
+  font-family: 'Gemunu Libre', sans-serif;
+  font-size: 1.3rem;
+}
+
+body .main .create-assessment .input-container .auto-fields {
+  background-color: #e7eeee;
+}
+
+body .main .create-assessment .input-container .auto-fields .fields-title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+body .main .create-assessment .input-container .auto-fields .fields-title i {
+  font-size: 1.3rem;
+  color: #609595;
+}
+
+body .main .create-assessment .input-container .auto-fields .fields-title span {
+  font-size: 0.9rem;
+  color: #609595;
+}
+
+body .main .assessment-list {
+  position: relative;
+  padding-bottom: 3rem;
+}
+
+body .main .assessment-list .heading {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+body .main .assessment-list .heading i, body .main .assessment-list .heading .title {
+  color: #228f8f;
+}
+
+body .main .assessment-list .heading i {
+  font-size: 2.5rem;
+  margin-right: 10px;
+}
+
+body .main .assessment-list .heading .title {
+  font-family: 'Gemunu Libre', sans-serif;
+  font-size: 1.5rem;
+}
+
+body .main .assessment-list .assessment-table {
+  border-radius: 10px;
+  overflow-x: auto;
+}
+
+body .main .assessment-list .assessment-table table {
+  width: 100%;
+}
+
+body .main .assessment-list .assessment-table table thead th {
+  text-align: center;
+  font-family: 'Gemunu Libre', sans-serif;
+  color: #93ba9f;
+  text-shadow: 0 0 5px #f3f6f5;
+  font-weight: 500;
+  font-size: 1.1rem;
+  padding-bottom: 10px;
+}
+
+body .main .assessment-list .assessment-table table tbody tr, body .main .assessment-list .assessment-table table tbody td {
+  border: 1px solid gainsboro;
+  border-collapse: collapse;
+}
+
+body .main .assessment-list .assessment-table table tbody tr {
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+body .main .assessment-list .assessment-table table tbody tr td {
+  min-width: 120px !important;
+  padding: 10px 5px;
+  text-align: center;
+}
+
+body .main .assessment-list .assessment-table table tbody tr td:nth-child(2) {
+  background-color: #eff3f1;
+  font-family: 'Gemunu Libre', sans-serif;
+  font-size: 1.1rem;
+}
+
+body .main .assessment-list .assessment-table table tbody tr td:last-of-type {
+  background-color: #eff3f1;
+}
+
+body .main .assessment-list .assessment-table table tbody tr td.pending {
+  background-color: #ffff3f;
+}
+
+body .main .assessment-list .info {
+  width: 100%;
+  background-color: rgba(240, 255, 255, 0.5);
+  border: 1px solid #afe9e9;
+  border-radius: 5px;
+  padding: 1rem 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body .main .assessment-list .info .student-stats .num {
+  font-weight: 500;
+}
+
+body .main .assessment-list .info .btn-container {
+  margin-top: 0.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body .main .assessment-list .print {
+  position: absolute;
+  right: 1rem;
+  bottom: 5px;
+}
+
+.inset-float-textinput-fluid {
+  position: relative;
+}
+
+.inset-float-textinput-fluid input {
+  width: 100%;
+  padding: 1.5rem 1rem 0.5rem;
+  border-radius: 5px;
+  border: 1px solid #b6b6b6;
+  font-size: 1rem;
+}
+
+.inset-float-textinput-fluid input:focus {
+  outline: 2px solid #01a16c;
+  border-color: #01a16c;
+  -webkit-box-shadow: 0 0 5px #a1a1a1;
+          box-shadow: 0 0 5px #a1a1a1;
+}
+
+.inset-float-textinput-fluid input:focus ~ label {
+  color: #01a16c;
+}
+
+.inset-float-textinput-fluid input::-webkit-input-placeholder {
+  color: #9ea09f;
+}
+
+.inset-float-textinput-fluid input:-ms-input-placeholder {
+  color: #9ea09f;
+}
+
+.inset-float-textinput-fluid input::-ms-input-placeholder {
+  color: #9ea09f;
+}
+
+.inset-float-textinput-fluid input::placeholder {
+  color: #9ea09f;
+}
+
+.inset-float-textinput-fluid input::-moz-selection {
+  background-color: #24ce95;
+  color: white;
+}
+
+.inset-float-textinput-fluid input::selection {
+  background-color: #24ce95;
+  color: white;
+}
+
+.inset-float-textinput-fluid label {
+  position: absolute;
+  font-size: 1rem;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  left: 1rem;
+  -webkit-transition: all 200ms;
+  transition: all 200ms;
+}
+
+.inset-float-textinput-fluid .inp_input:focus ~ .inp_label,
+.inset-float-textinput-fluid .inp_input:not(:placeholder-shown).inp_input:not(:focus) ~ .inp_label {
+  top: 0.7rem;
+  font-size: 0.7rem;
+  color: #3b8f65;
+}
+
+.btn-1 {
+  float: right;
+  border: 0;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  background-color: #6a8fa0;
+  color: white;
+  cursor: pointer;
+  font-size: 1rem;
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
+}
+
+.btn-1:hover {
+  background-color: #799eaf;
+}
+
+a.btn-a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-decoration: none;
+  padding: 5px 20px 5px 15px;
+  border-radius: 180px;
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
+}
+
+a.btn-a i {
+  font-size: 1.2rem;
+}
+
+a.btn-a span {
+  margin-left: 10px;
+  font-family: 'Gemunu Libre', sans-serif;
+}
+
+a.download {
+  background-color: #59ebba;
+}
+
+a.download:hover {
+  background-color: #43ca9d;
+}
+
+a.print:hover {
+  background-color: #b9cfcf;
+}
+
+.edit-btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: 0;
+  padding: 5px 10px;
+  background-color: #e6a9a9;
+  border-radius: 180px;
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
+}
+
+.edit-btn i, .edit-btn span {
+  color: #228f8f;
+}
+
+.edit-btn i {
+  font-size: 1.5rem;
+}
+
+.edit-btn span {
+  padding: 0 10px 0 5px;
+  font-family: 'Gemunu Libre', sans-serif;
+}
+
+.edit-btn:hover {
+  background-color: #d7bcbc;
+}
+
+input.score-inp {
+  width: 7rem;
+  padding: 0.3rem 0.5rem;
+  border-radius: 5px;
+  border: 1px solid #b6b6b6;
+  font-size: 1rem;
+}
+
+input.score-inp:focus {
+  outline: 2px solid #01a16c;
+  border-color: #01a16c;
+  -webkit-box-shadow: 0 0 5px #a1a1a1;
+          box-shadow: 0 0 5px #a1a1a1;
+}
+
+input.score-inp.empty {
+  border-color: yellowgreen;
+  background-color: rgba(239, 247, 223, 0.3);
+}
+
+input.score-inp.empty:focus {
+  outline: 2px solid yellowgreen;
+}
+
+input.score-inp.error {
+  border-color: #cd3247;
+  background-color: rgba(247, 223, 232, 0.3);
+}
+
+input.score-inp.error:focus {
+  outline: 2px solid #cd3249;
+}
+
+@media screen and (max-width: 576px) {
+  body .main .create-assessment {
+    padding: 0 !important;
+  }
+  body .main .create-assessment .input-container .inset-float-textinput-fluid input {
+    padding: 1.3rem 0.8rem 0.3rem;
+  }
+  body .main .create-assessment .input-container .inset-float-textinput-fluid label {
+    font-size: 0.8rem !important;
+  }
+  body .main .create-assessment .input-container .inset-float-textinput-fluid .inp_input:focus ~ .inp_label,
+  body .main .create-assessment .input-container .inset-float-textinput-fluid .inp_input:not(:placeholder-shown).inp_input:not(:focus) ~ .inp_label {
+    font-size: 0.6rem !important;
+  }
+  body .main .assessment-list .heading {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: column !important;
+            flex-direction: column !important;
+  }
+  body .main .assessment-list .heading i {
+    margin: 0;
+  }
+  body .main .assessment-list .heading span {
+    font-size: 1.1rem !important;
+  }
+  body .main .assessment-list table td {
+    font-size: 0.9rem !important;
+  }
+  body .main .info {
+    padding: 15px;
+  }
+  body .main .info .student-stats {
+    font-size: 0.8rem;
+  }
+  body .main .info .btn-container {
+    width: 100%;
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: column !important;
+            flex-direction: column !important;
+    margin-top: 1.5rem !important;
+  }
+  body .main .info .btn-container a, body .main .info .btn-container button {
+    width: 100%;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  body .main .info .btn-container button {
+    margin: 0 !important;
+    margin-top: 10px !important;
+  }
+  body .main .btn-1 {
+    font-size: 0.8rem !important;
+    padding: 0.5rem 0.7rem;
+  }
+}
+/*# sourceMappingURL=assessment.css.map */

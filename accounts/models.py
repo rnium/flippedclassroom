@@ -50,15 +50,32 @@ class Account(models.Model):
         learning = Classroom.objects.filter(students=self.user).count()
         return teaching+learning
 
+    
+    def group_works(self, classroom):
+        gw = Work.objects.filter(group__members=self.user, task__classroom=classroom)
+        return gw
+    
+    def indiv_works(self, classroom):
+        iw = Work.objects.filter(group=None, submission_by=self.user, task__classroom=classroom)
+        return iw
 
-    def tasks_score(self, classroom):
-        total_score = 0
-        group_works = Work.objects.filter(group__members=self.user, task__classroom=classroom)
-        indiv_works = Work.objects.filter(group=None, submission_by=self.user, task__classroom=classroom)
-        all_works = list(chain(group_works, indiv_works))
-        for work in all_works:
+
+    def group_task_total_points(self, classroom):
+        gw_points = 0
+        gw = self.group_works(classroom)
+        for work in gw:
             if work.score != None:
-                total_score += work.score
+                gw_points += work.score
             else:
                 return None
-        return total_score
+        return gw_points
+    
+    def indiv_task_total_points(self, classroom):
+        iw_points = 0
+        iw = self.indiv_works(classroom)
+        for work in iw:
+            if work.score != None:
+                iw_points += work.score
+            else:
+                return None
+        return iw_points

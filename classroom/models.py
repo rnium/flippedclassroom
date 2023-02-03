@@ -90,6 +90,39 @@ class Classroom(models.Model):
     @property
     def num_posts(self):
         return self.classroompost_set.count()
+    
+    @property
+    def assigned_tasks(self):
+        return self.task_set.all()
+    
+    @property
+    def assigned_group_tasks_list(self):
+        tasks = self.assigned_tasks.filter
+        return [task for task in tasks if task.is_group_task]
+    
+    @property
+    def assigned_indiv_tasks_list(self):
+        tasks = self.assigned_tasks.filter
+        return [task for task in tasks if not task.is_group_task]
+    
+    @property
+    def num_tasks(self):
+        return self.assigned_tasks.count()
+    
+    @property 
+    def num_group_tasks(self):
+        return len(self.assigned_group_tasks_list)
+        
+    @property 
+    def num_indiv_tasks(self):
+        return len(self.assigned_indiv_tasks_list)
+    
+    @property
+    def assigned_tasks_total_marks(self):
+        tasks = self.assigned_tasks
+        marks = tasks.aggregate(models.Sum('marks'))['column__sum']
+        return marks
+
 
 class PostTopic(models.Model):
     name = models.CharField(max_length=100)
@@ -110,7 +143,6 @@ class PostTopic(models.Model):
     @property
     def posts(self):
         return self.classroompost_set.order_by('-posted')
-
 
 
 class ClassroomPost(models.Model):
@@ -251,3 +283,39 @@ class AssignmentAttachment(models.Model):
     @property
     def filename(self):
         return str(basename(self.attached_file.name))
+    
+    
+class AssessmentMeta(models.Model):
+    classroom = models.OneToOneField(Classroom, on_delete=models.CASCADE)
+    attendance_marks = models.FloatField(default=10)
+    classtest_marks = models.FloatField(default=10)
+    group_task_marks = models.FloatField(default=5)
+    indiv_task_marks = models.FloatField(default=5)
+    weekly_test_marks = models.FloatField(default=10)
+    
+    def __str__(self):
+        return f"{self.classroom.id} - Assessment meta"
+    
+    
+class Assessment(models.Model):
+    meta = models.ForeignKey(AssessmentMeta, on_delete=models.CASCADE)
+    student = models.ForeignKey(User, on_delete=models.CASCADE)
+    attendance_score = models.FloatField(null=True, blank=True)
+    classtest_score = models.FloatField(null=True, blank=True)
+    
+    def __str__(self):
+        return f"User-{self.student.id} assessment of classroom {self.meta.classroom.id}"
+    
+    
+    @property
+    def group_task_score(self):
+        students_gw_total_score = self.student.account.group_task_total_points(self.meta.classroom)
+        num_group_tasks = self.meta.classroom.num_group_tasks
+        score_per_mark = students_gw_total_score/num_group_tasks
+        obtained_score = score_per_mark*self.meta.group_task_marks
+        return obtained_score
+        
+
+    # @property
+    # def indiv_task_score(self):
+        
