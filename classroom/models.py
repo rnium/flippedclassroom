@@ -328,6 +328,14 @@ class Assessment(models.Model):
         score_per_mark = students_gw_total_score/group_tasks_total_marks
         obtained_score = score_per_mark*self.meta.group_task_marks
         return obtained_score
+    
+    @property
+    def indiv_task_score(self):
+        students_iw_total_score = self.student.account.indiv_task_total_points(self.meta.classroom)
+        indiv_tasks_total_marks = self.meta.classroom.indiv_tasks_total_marks
+        score_per_mark = students_iw_total_score/indiv_tasks_total_marks
+        obtained_score = score_per_mark*self.meta.indiv_task_marks
+        return obtained_score
         
 
     # @property
