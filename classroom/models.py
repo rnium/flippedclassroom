@@ -356,6 +356,13 @@ class Assessment(models.Model):
     def __str__(self):
         return f"User-{self.student.id} assessment of classroom {self.meta.classroom.id}"
     
+    @property
+    def get_attendance_score(self):
+        return prettify_marks(self.attendance_score)
+    
+    @property
+    def get_classtest_score(self):
+        return prettify_marks(self.classtest_score)
     
     @property
     def group_task_score(self):
@@ -396,7 +403,7 @@ class Assessment(models.Model):
             self.indiv_task_score,
             self.weekly_tests_score
         ]
-        if all(scores):
+        if all([score!=None for score in scores]):
             total = sum(scores)
             return prettify_marks(total)
         else:

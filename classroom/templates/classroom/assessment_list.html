@@ -44,34 +44,34 @@
               </tr>
           </thead>
           <tbody>
+              {% for assessment in meta.assessment_set.all %}
               <tr>
-                  <td>Md Saiful Islam Rony</td>
-                  <td>33333434324</td>
-                  <td class="inp-con">
-                      <input type="text" class="score-inp">
-                  </td>
-                  <td class="inp-con">
-                      <input type="text" class="score-inp">
-                  </td>
-                  <td>5</td>
-                  <td>5</td>
-                  <td>10</td>
-                  <td class="pending">Pending</td>
+                <td>{{assessment.student.account.user_full_name}}</td>
+                <td>{{assessment.student.account.institutional_id}}</td>
+                <td class="inp-con">
+                    {% if assessment.attendance_score %}
+                    <input type="text" class="score-inp" value="{{assessment.get_attendance_score}}">
+                    {% else %}
+                    <input type="text" class="score-inp empty">
+                    {% endif %}
+                </td>
+                <td class="inp-con">
+                  {% if assessment.classtest_score %}
+                  <input type="text" class="score-inp" value="{{assessment.get_classtest_score}}">
+                  {% else %}
+                  <input type="text" class="score-inp empty">
+                  {% endif %}
+                </td>
+                <td>{{assessment.group_task_score}}</td>
+                <td>{{assessment.indiv_task_score}}</td>
+                <td>{{assessment.weekly_tests_score}}</td>
+                {% if assessment.total_score != None %}
+                <td>{{assessment.total_score}}</td>
+                {% else %}
+                <td class="pending">Pending</td>
+                {% endif %}
               </tr>
-              <tr>
-                  <td>Atikur Rahman</td>
-                  <td>3018338514</td>
-                  <td class="inp-con">
-                      <input type="text" class="score-inp empty">
-                  </td>
-                  <td class="inp-con">
-                      <input type="text" class="score-inp error">
-                  </td>
-                  <td>5</td>
-                  <td>5</td>
-                  <td>10</td>
-                  <td class="pending">Pending</td>
-              </tr>
+              {% endfor %}
           </tbody>
       </table>
       <div class="submit mt-3">
