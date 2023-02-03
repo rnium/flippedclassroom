@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.templatetags.static import static
 from classroom.models import Classroom
 from tasks.models import Group, Work
+from weekly_test.models import AnswerSheet
 from itertools import chain
 
 
@@ -55,6 +56,12 @@ class Account(models.Model):
         gw = Work.objects.filter(group__members=self.user, task__classroom=classroom)
         return gw
     
+    
+    def classroom_test_answersheets(self, classroom):
+        sheets = AnswerSheet.objects.filter(user=self.user, test__weekly__classroom=classroom)
+        return sheets
+    
+    
     def indiv_works(self, classroom):
         iw = Work.objects.filter(group=None, submission_by=self.user, task__classroom=classroom)
         return iw
@@ -79,3 +86,13 @@ class Account(models.Model):
             else:
                 return None
         return iw_points
+
+    def classroom_test_points(self, classroom):
+        points = 0
+        sheets = self.classroom_test_answersheets(classroom)
+        for sheet in sheets:
+            if sheet.total_score != None:
+                points += sheet.get_score
+            else:
+                return None
+        return points
