@@ -223,6 +223,19 @@ class Weekly(models.Model):
     def has_post_class_ongoing_task(self):
         return bool(len(self.postClassOngoingTask))
     
+    @property
+    def tests(self):
+        return self.weeklytest_set.all()
+    
+    @property
+    def num_tests(self):
+        return self.tests.count()
+    
+    @property
+    def tests_total_marks(self):
+        total_marks = sum([test.total_marks for test in self.tests])
+        return total_marks
+    
      
 class PreClassFile(models.Model):
     def filepath(self, filename):

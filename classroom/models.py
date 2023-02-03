@@ -135,6 +135,19 @@ class Classroom(models.Model):
         marks = sum([task.marks for task in tasks])
         return marks
     
+    @property
+    def num_tests(self):
+        weeklies = self.weekly_set.all()
+        count = sum([w.num_tests for w in weeklies])
+        return count
+    
+    @property
+    def classroom_tests_total_marks(self):
+        weeklies = self.weekly_set.all()
+        all_tests_marks = sum([weekly.tests_total_marks for weekly in weeklies])
+        return all_tests_marks
+        
+    
 
 
 
@@ -337,7 +350,11 @@ class Assessment(models.Model):
         obtained_score = score_per_mark*self.meta.indiv_task_marks
         return obtained_score
         
-
-    # @property
-    # def indiv_task_score(self):
+    @property
+    def weekly_tests_score(self):
+        students_points = self.student.account.classroom_test_points(self.meta.classroom)
+        classroom_tests_total_marks = self.meta.classroom.classroom_tests_total_marks
+        score_per_mark = students_points/classroom_tests_total_marks
+        obtained_score = score_per_mark*self.meta.weekly_test_marks
+        return obtained_score
         
