@@ -97,12 +97,12 @@ class Classroom(models.Model):
     
     @property
     def assigned_group_tasks_list(self):
-        tasks = self.assigned_tasks.filter
+        tasks = self.assigned_tasks
         return [task for task in tasks if task.is_group_task]
     
     @property
     def assigned_indiv_tasks_list(self):
-        tasks = self.assigned_tasks.filter
+        tasks = self.assigned_tasks
         return [task for task in tasks if not task.is_group_task]
     
     @property
@@ -122,6 +122,20 @@ class Classroom(models.Model):
         tasks = self.assigned_tasks
         marks = tasks.aggregate(models.Sum('marks'))['column__sum']
         return marks
+    
+    @property
+    def group_tasks_total_marks(self):
+        tasks = self.assigned_group_tasks_list
+        marks = sum([task.marks for task in tasks])
+        return marks
+    
+    @property
+    def indiv_tasks_total_marks(self):
+        tasks = self.assigned_indiv_tasks_list
+        marks = sum([task.marks for task in tasks])
+        return marks
+    
+
 
 
 class PostTopic(models.Model):
@@ -310,8 +324,8 @@ class Assessment(models.Model):
     @property
     def group_task_score(self):
         students_gw_total_score = self.student.account.group_task_total_points(self.meta.classroom)
-        num_group_tasks = self.meta.classroom.num_group_tasks
-        score_per_mark = students_gw_total_score/num_group_tasks
+        group_tasks_total_marks = self.meta.classroom.group_tasks_total_marks
+        score_per_mark = students_gw_total_score/group_tasks_total_marks
         obtained_score = score_per_mark*self.meta.group_task_marks
         return obtained_score
         
