@@ -50,11 +50,7 @@
 </head>
 <body>
     <header>
-        <h2 class="title">Classroom Name Assessment Report</h2>
-        <small>
-            <span class="label">Time:&nbsp;</span>
-            <span class="time" id="render-time">23/02/2023, 7:34:23PM</span>
-        </small>
+        <h2 class="title">{{meta.classroom.name}} Assessment Report</h2>
     </header>
     <main>
         <table>
@@ -62,35 +58,51 @@
                 <tr>
                     <th>SL. No.</th>
                     <th>Registration No</th>
-                    <th>Attendance (10)</th>
-                    <th>Class Test (10)</th>
-                    <th>Group Tasks (5)</th>
-                    <th>Individual Tasks (5)</th>
-                    <th>Tests (10)</th>
-                    <th>Total (40)</th>
+                    <th>Attendance ({{meta.get_attendance_marks}})</th>
+                    <th>Class Test ({{meta.get_classtest_marks}})</th>
+                    <th>Group Tasks ({{meta.get_group_task_marks}})</th>
+                    <th>Individual Tasks ({{meta.get_indiv_task_marks}})</th>
+                    <th>Tests ({{meta.get_weekly_test_marks}})</th>
+                    <th>Total ({{meta.total_marks}})</th>
                 </tr>
             </thead>
             <tbody>
+                {% for a in meta.assessment_set.all %}
                 <tr>
-                    <td>1</td>
-                    <td>2018338514</td>
-                    <td>10</td>
-                    <td>10</td>
-                    <td>5</td>
-                    <td>5</td>
-                    <td>10</td>
-                    <td>40</td>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{ a.student.account.institutional_id }}</td>
+                    {% if a.attendance_score != None %} 
+                    <td>{{a.get_attendance_score}}</td>
+                    {% else %}
+                    <td>**</td>
+                    {% endif %}
+                    {% if a.classtest_score != None%} 
+                    <td>{{a.get_classtest_score}}</td>
+                    {% else %}
+                    <td>**</td>
+                    {% endif %}
+                    {% if a.group_task_score != None%} 
+                    <td>{{a.group_task_score}}</td>
+                    {% else %}
+                    <td>**</td>
+                    {% endif %}
+                    {% if a.indiv_task_score != None%} 
+                    <td>{{a.indiv_task_score}}</td>
+                    {% else %}
+                    <td>**</td>
+                    {% endif %}
+                    {% if a.weekly_tests_score != None%} 
+                    <td>{{a.weekly_tests_score}}</td>
+                    {% else %}
+                    <td>**</td>
+                    {% endif %}
+                    {% if a.total_score != None%} 
+                    <td>{{a.total_score}}</td>
+                    {% else %}
+                    <td>**</td>
+                    {% endif %}
                 </tr>
-                <tr>
-                    <td>2</td>
-                    <td>3018338514</td>
-                    <td>blank</td>
-                    <td>10</td>
-                    <td>5</td>
-                    <td>5</td>
-                    <td>10</td>
-                    <td>pending</td>
-                </tr>
+                {% endfor %}
             </tbody>
         </table>
     </main>

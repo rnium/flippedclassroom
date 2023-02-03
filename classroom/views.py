@@ -110,6 +110,16 @@ def view_assessment(request, pk):
         context['meta'] = meta_qs[0]
     return render(request, 'classroom/assessment_list.html', context=context)
 
+
+@login_required
+def view_assessment_printf(request, pk):
+    classroom = get_object_or_404(Classroom, pk=pk)
+    meta_qs = AssessmentMeta.objects.filter(classroom=classroom)
+    if len(meta_qs) == 0:
+        return render_info_or_error(request, "No Metadata", "Assessment metadata not found, please define marks first")
+    return render(request, 'classroom/assessment_print.html', context={'meta':meta_qs[0]})
+
+
 @login_required
 def edit_post(request, pk):
     classroom_post = get_object_or_404(ClassroomPost, pk=pk)

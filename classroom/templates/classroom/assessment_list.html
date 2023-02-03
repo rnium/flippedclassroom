@@ -85,7 +85,7 @@
       <button class="edit-btn shadow-sm ms-2"><i class='bx bx-refresh'></i><span>Reset All</span></button>
     </div>
   </div>
-  <a href="" class="print btn-a shadow ms-2"><i class='bx bx-printer'></i><span>Print Format</span></a>
+  <a href="{% url 'classroom:view_assessment_printf' meta.classroom.id %}" class="print btn-a shadow ms-2" target="blank"><i class='bx bx-printer'></i><span>Print Format</span></a>
 </div>
 {% else %}
 <div class="create-assessment container mt-4">
