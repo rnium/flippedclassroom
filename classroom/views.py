@@ -9,7 +9,8 @@ from django.views.generic import TemplateView, DetailView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.decorators.csrf import csrf_exempt
 from django.utils import timezone
-from .models import Classroom, ClassroomPost, PostTopic, PostAttachment, Comment, Assignment, AssignmentAttachment
+from .models import (Classroom, ClassroomPost, PostTopic, PostAttachment,
+                     Comment, Assignment, AssignmentAttachment, AssessmentMeta, Assessment)
 
 
 
@@ -98,6 +99,16 @@ class PostDetail(LoginRequiredMixin, DetailView):
         context['threads'] = threads
         return context
 
+
+@login_required
+def view_assessment(request, pk):
+    classroom = get_object_or_404(Classroom, pk=pk)
+    context = {}
+    context['classroom'] = classroom
+    meta_qs = AssessmentMeta.objects.filter(classroom=classroom)
+    if len(meta_qs) > 0:
+        context['meta'] = meta_qs[0]
+    return render(request, 'classroom/assessment_list.html', context=context)
 
 @login_required
 def edit_post(request, pk):

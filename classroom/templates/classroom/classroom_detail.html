@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="{% static 'classroom/styles/style.css' %}">
 <link rel="stylesheet" href="{% static 'classroom/styles/navbar.css' %}">
 {% endblock style %}
-{% block title %}<title>OpenClassroom</title>{% endblock title %}
+{% block title %}<title>{{classroom.name}}</title>{% endblock title %}
 {% block nav %}
 <ul class="navbar-nav mb-2 mb-lg-0">
   <li class="nav-item">
@@ -13,7 +13,7 @@
     <a class="nav-link" href="{% url 'classroom:classroom_connections' classroom.id %}">Connections</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">Assessment</a>
+    <a class="nav-link" href="{% url 'classroom:view_assessment' classroom.id %}">Assessment</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="{% url 'classroom:classroom_about' classroom.id %}">About</a>
