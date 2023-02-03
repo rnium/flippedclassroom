@@ -5,6 +5,7 @@ from django.http import FileResponse
 import uuid
 from os.path import join, basename
 from django.utils import timezone
+from .utilities import prettify_marks
 
 
 class Classroom(models.Model):
@@ -147,9 +148,6 @@ class Classroom(models.Model):
         all_tests_marks = sum([weekly.tests_total_marks for weekly in weeklies])
         return all_tests_marks
         
-    
-
-
 
 class PostTopic(models.Model):
     name = models.CharField(max_length=100)
@@ -323,6 +321,31 @@ class AssessmentMeta(models.Model):
     def __str__(self):
         return f"{self.classroom.id} - Assessment meta"
     
+    @property
+    def total_marks(self):
+        marks = (self.attendance_marks + self.classtest_marks + self.group_task_marks 
+                + self.indiv_task_marks + self.weekly_test_marks)
+        return prettify_marks(marks)
+    
+    @property
+    def get_attendance_marks(self):
+        return prettify_marks(self.attendance_marks)
+    
+    @property
+    def get_classtest_marks(self):
+        return prettify_marks(self.classtest_marks)
+    
+    @property
+    def get_group_task_marks(self):
+        return prettify_marks(self.group_task_marks)
+    
+    @property
+    def get_indiv_task_marks(self):
+        return prettify_marks(self.indiv_task_marks)
+    
+    @property
+    def get_weekly_test_marks(self):
+        return prettify_marks(self.weekly_test_marks)
     
 class Assessment(models.Model):
     meta = models.ForeignKey(AssessmentMeta, on_delete=models.CASCADE)
@@ -337,24 +360,65 @@ class Assessment(models.Model):
     @property
     def group_task_score(self):
         students_gw_total_score = self.student.account.group_task_total_points(self.meta.classroom)
+        if students_gw_total_score == None:
+            return None
         group_tasks_total_marks = self.meta.classroom.group_tasks_total_marks
         score_per_mark = students_gw_total_score/group_tasks_total_marks
         obtained_score = score_per_mark*self.meta.group_task_marks
-        return obtained_score
+        return prettify_marks(obtained_score)
     
     @property
     def indiv_task_score(self):
         students_iw_total_score = self.student.account.indiv_task_total_points(self.meta.classroom)
+        if students_iw_total_score == None:
+            return None
         indiv_tasks_total_marks = self.meta.classroom.indiv_tasks_total_marks
         score_per_mark = students_iw_total_score/indiv_tasks_total_marks
         obtained_score = score_per_mark*self.meta.indiv_task_marks
-        return obtained_score
+        return prettify_marks(obtained_score)
         
     @property
     def weekly_tests_score(self):
         students_points = self.student.account.classroom_test_points(self.meta.classroom)
+        if students_points == None:
+            return None
         classroom_tests_total_marks = self.meta.classroom.classroom_tests_total_marks
         score_per_mark = students_points/classroom_tests_total_marks
         obtained_score = score_per_mark*self.meta.weekly_test_marks
-        return obtained_score
+        return prettify_marks(obtained_score)
+    
+    @property
+    def total_score(self):
+        scores = [
+            self.attendance_score,
+            self.classtest_score,
+            self.group_task_score,
+            self.indiv_task_score,
+            self.weekly_tests_score
+        ]
+        if all(scores):
+            total = sum(scores)
+            return prettify_marks(total)
+        else:
+            return None
+    
+    @property
+    def attendance_css_class(self):
+        if self.attendance_score == None:
+            return "empty"
+        else:
+            return ""
         
+    @property
+    def classtest_css_class(self):
+        if self.classtest_score == None:
+            return "empty"
+        else:
+            return ""
+        
+    @property
+    def total_score_css_class(self):
+        if self.total_score == None:
+            return "pending"
+        else:
+            return ""
