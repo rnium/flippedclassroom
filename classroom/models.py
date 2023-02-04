@@ -443,3 +443,13 @@ class Assessment(models.Model):
     @property
     def num_participated_tests(self):
         return self.student.account.classroom_test_answersheets(self.meta.classroom).count()
+    
+    @property
+    def score_percentage(self):
+        total_score = self.total_score
+        total_marks = self.meta.total_marks
+        if total_marks==None or total_score==None:
+            return None
+        score_per_mark = total_score/total_marks
+        percentage_score = score_per_mark * 100
+        return prettify_marks(percentage_score)

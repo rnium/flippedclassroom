@@ -1,4 +1,6 @@
 def prettify_marks(marks_raw):
+    if marks_raw == None:
+        return None
     marks_int = int(marks_raw)
     if marks_int != marks_raw:
         return round(marks_raw, 2)
