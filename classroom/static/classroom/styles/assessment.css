@@ -320,6 +320,168 @@ body .main .assessment-list .print {
   bottom: 5px;
 }
 
+body .main .assessment-con {
+  border-radius: 10px;
+}
+
+body .main .assessment-con .heading {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+body .main .assessment-con .heading i, body .main .assessment-con .heading .title {
+  color: #228f8f;
+}
+
+body .main .assessment-con .heading i {
+  font-size: 2.5rem;
+  margin-right: 10px;
+}
+
+body .main .assessment-con .heading .title {
+  font-family: 'Gemunu Libre', sans-serif;
+  font-size: 1.5rem;
+}
+
+body .main .assessment-con .student-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body .main .assessment-con .student-info .dp {
+  overflow: hidden;
+  min-width: 80px;
+  max-width: 80px;
+  min-height: 80px;
+  max-height: 80px;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  -webkit-box-shadow: 0 0 2px #88aa9f;
+          box-shadow: 0 0 2px #88aa9f;
+}
+
+body .main .assessment-con .student-info .info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+body .main .assessment-con .student-info .info .name {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+body .main .assessment-con .student-info .info .inst-id {
+  font-family: 'Gemunu Libre', sans-serif;
+  color: #3b8f65;
+}
+
+body .main .assessment-con .student-info .info .inst {
+  font-size: 1rem;
+}
+
+body .main .assessment-con .table-con {
+  overflow: hidden;
+}
+
+body .main .assessment-con .table-con table, body .main .assessment-con .table-con th, body .main .assessment-con .table-con td {
+  border: 1px solid #bccdc3;
+  border-collapse: collapse;
+}
+
+body .main .assessment-con .table-con table {
+  width: 100%;
+}
+
+body .main .assessment-con .table-con table th, body .main .assessment-con .table-con table td {
+  padding: 5px 10px;
+}
+
+body .main .assessment-con .table-con table th {
+  font-weight: 500;
+  color: #5e8784;
+}
+
+body .main .assessment-con .table-con table td {
+  min-width: 75%;
+  font-weight: 500;
+}
+
+body .main .assessment-con .table-con table td .outof {
+  font-size: 1rem !important;
+  font-weight: 300;
+  color: #358484;
+  margin-left: 10px;
+}
+
+body .main .assessment-con .table-con table td .outof .marks {
+  color: #358484;
+  font-weight: 500;
+}
+
+body .main .assessment-con .table-con table .score-row td, body .main .assessment-con .table-con table .score-row th {
+  color: #35ad85;
+  background-color: rgba(231, 240, 237, 0.5);
+}
+
+body .main .assessment-con .table-con table .score-row-total td, body .main .assessment-con .table-con table .score-row-total th {
+  font-family: 'Gemunu Libre', sans-serif;
+  font-size: 1.2rem;
+  color: #3da482;
+  background-color: #e7f0ed;
+  text-shadow: 0 0 5px gainsboro;
+}
+
+body .main .assessment-con .no-assessment {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body .main .assessment-con .no-assessment i {
+  font-size: 5rem;
+}
+
+body .main .assessment-con .no-assessment .info {
+  font-size: 2rem;
+  font-family: 'Gemunu Libre', sans-serif;
+}
+
 .inset-float-textinput-fluid {
   position: relative;
 }
@@ -566,6 +728,62 @@ input.score-inp.error:focus {
   body .main .info .btn-container button {
     margin: 0 !important;
     margin-top: 10px !important;
+  }
+  body .main .assessment-con {
+    padding: 0 10px !important;
+  }
+  body .main .assessment-con .heading {
+    margin-bottom: 2rem !important;
+  }
+  body .main .assessment-con .heading i {
+    font-size: 2rem;
+    text-shadow: 0 0 5px #f1f7f5;
+  }
+  body .main .assessment-con .heading span {
+    font-size: 1.1rem !important;
+  }
+  body .main .assessment-con .student-info .dp {
+    min-width: 60px;
+    max-width: 60px;
+    min-height: 60px;
+    max-height: 60px;
+  }
+  body .main .assessment-con .student-info .info {
+    margin-left: 0.2rem !important;
+    padding-left: 10px !important;
+  }
+  body .main .assessment-con .student-info .info .name {
+    font-size: 0.9rem;
+  }
+  body .main .assessment-con .student-info .info .inst-id {
+    font-size: 0.8rem;
+  }
+  body .main .assessment-con .student-info .info .inst {
+    font-size: 0.7rem;
+  }
+  body .main .assessment-con .table-con table tr th, body .main .assessment-con .table-con table tr td {
+    font-size: 0.8rem;
+  }
+  body .main .assessment-con .table-con table tr th {
+    width: 50% !important;
+  }
+  body .main .assessment-con .table-con table tr td {
+    width: 50% !important;
+  }
+  body .main .assessment-con .table-con table tr td .outof {
+    font-size: 0.8rem !important;
+  }
+  body .main .assessment-con .table-con table .score-row-total td, body .main .assessment-con .table-con table .score-row-total th {
+    font-size: 0.7rem !important;
+    text-align: center !important;
+  }
+  body .main .assessment-con .no-assessment i {
+    font-size: 3rem;
+  }
+  body .main .assessment-con .no-assessment .info {
+    font-size: 1.1rem;
+    margin-top: 10px;
+    padding: 0 !important;
   }
   body .main .btn-1 {
     font-size: 0.8rem !important;

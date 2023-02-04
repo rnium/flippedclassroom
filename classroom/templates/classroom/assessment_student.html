@@ -1,0 +1,105 @@
+{% extends 'classroom/base.html' %}
+{% block style %} {% load static %}
+<link rel="stylesheet" href="{% static 'classroom/styles/assessment.css' %}">
+<link rel="stylesheet" href="{% static 'classroom/styles/navbar.css' %}">
+{% endblock style %}
+{% block title %}<title>Assessment details</title>{% endblock title %}
+{% block nav %}
+<ul class="navbar-nav mb-2 mb-lg-0">
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="#">Dashboard</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'classroom:classroom_connections' classroom.id %}">Connections</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'classroom:view_assessment' classroom.id %}">Assessment</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'classroom:classroom_about' classroom.id %}">About</a>
+  </li>
+</ul>
+{% endblock nav %}
+
+{% block content %}
+<div class="assessment-con container p-3 mt-3 mb-5">
+  {% if assessment %}
+  <div class="heading mb-3">
+          <i class='bx bx-stats'></i>
+          <span class="title">Student Assessment Report</span>
+        </div>
+        <div class="student-info">
+            <div class="dp" style="background-image: url('/images/blank-dp.svg');"></div>
+            <div class="info ms-4">
+                <div class="name">Atikur Rahman</div>
+                <div class="inst-id">3018338514</div>
+                <div class="inst">Sylhet Engineering College</div>
+            </div>
+        </div>
+        <div class="table-con mt-4 shadow-sm">
+          <table>
+            <tr class="score-row">
+              <th>Attendance</th>
+              <td>10<span class="outof">(out of<span class="marks ms-1">10</span> )</span></td>
+            </tr>
+            <tr class="score-row">
+              <th>Class test</th>
+              <td>10<span class="outof">(out of<span class="marks ms-1">20</span> )</span></td>
+            </tr>
+            <tr>
+              <th>Group Tasks Completed</th>
+              <td>1<span class="outof">(<span class="marks me-1">20</span>assigned)</span></td>
+            </tr>
+            <tr>
+              <th>Group Work Points</th>
+              <td>140<span class="outof">(out of<span class="marks ms-1">150</span> )</span></td>
+            </tr>
+            <tr class="score-row">
+              <th>Group Work Score</th>
+              <td>10<span class="outof">(out of<span class="marks ms-1">20</span> )</span></td>
+            </tr>
+            
+            <tr>
+              <th>Individual Tasks Completed</th>
+              <td>1<span class="outof">(<span class="marks me-1">20</span>assigned)</span></td>
+            </tr>
+            <tr>
+              <th>Individual Work Points</th>
+              <td>140<span class="outof">(out of<span class="marks ms-1">150</span> )</span></td>
+            </tr>
+            <tr class="score-row">
+              <th>Individual Work Score</th>
+              <td>10<span class="outof">(out of<span class="marks ms-1">20</span> )</span></td>
+            </tr>
+            
+            <tr>
+              <th>Weekly Test Participated</th>
+              <td>1<span class="outof">(<span class="marks me-1">20</span>Taken)</span></td>
+            </tr>
+            <tr>
+              <th>Weekly Test Points</th>
+              <td>140<span class="outof">(out of<span class="marks ms-1">150</span> )</span></td>
+            </tr>
+            <tr class="score-row">
+              <th>Weekly Test Score</th>
+              <td>10<span class="outof">(out of<span class="marks ms-1">20</span> )</span></td>
+            </tr>
+            <tr class="score-row-total">
+              <th>Total Score</th>
+              <td>10<span class="outof">(out of<span class="marks ms-1">20</span> )</span></td>
+            </tr>
+            <tr class="score-row-total">
+              <th>Score (%)</th>
+              <td>90%</td>
+            </tr>
+          </table>
+        </div>
+  {% else %}
+  <div class="no-assessment">
+    <i class='bx bx-stats'></i>
+    <div class="info">Assessment is not available yet</div>
+  </div>
+  {% endif %}
+</div>
+{% endblock content %}
+

@@ -129,10 +129,18 @@ def view_assessment(request, pk):
     classroom = get_object_or_404(Classroom, pk=pk)
     context = {}
     context['classroom'] = classroom
-    meta_qs = AssessmentMeta.objects.filter(classroom=classroom)
-    if len(meta_qs) > 0:
-        context['meta'] = meta_qs[0]
-    return render(request, 'classroom/assessment_list.html', context=context)
+    
+    if request.user in classroom.teachers.all():
+        if hasattr(classroom, "assessmentmeta"):
+            context['meta'] = classroom.assessmentmeta
+        return render(request, 'classroom/assessment_list.html', context=context)
+    elif request.user in classroom.students.all():
+        assessment_qs = Assessment.objects.filter(student=request.user, meta__classroom=classroom)
+        if len(assessment_qs) > 0:
+            context['assessment'] = assessment_qs[0]
+        return render(request, 'classroom/assessment_student.html', context=context)
+    else:
+        return render_info_or_error(request, "ERROR 403", "Access Denied", 'error')
 
 
 @login_required
