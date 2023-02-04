@@ -93,7 +93,7 @@
   <div class="info mt-4">
     <div class="student-stats"><span class="num">{{meta.assessments.count}}</span> of the <span class="num">{{meta.classroom.students.count}}</span> students has been assessed</div>
     <div class="btn-container">
-      <a href="" class="download btn-a shadow-sm"><i class='bx bx-table'></i><span>Download as CSV</span></a>
+      <a href="{% url 'classroom:download_assessment_excel' classroom.id %}" class="download btn-a shadow-sm" download=""><i class='bx bx-table'></i><span>Download as CSV</span></a>
       <button class="edit-btn shadow-sm ms-2" id="rst-assessment-btn"><i class='bx bx-refresh'></i><span>Reset All</span></button>
     </div>
   </div>

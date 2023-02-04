@@ -1,4 +1,4 @@
-from pydoc_data.topics import topics
+from excel_response import ExcelResponse
 from dateutil import parser
 from django.core.exceptions import PermissionDenied
 from django.shortcuts import redirect, render, get_object_or_404
@@ -9,7 +9,7 @@ from django.views.generic import TemplateView, DetailView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.decorators.csrf import csrf_exempt
 from django.utils import timezone
-from .utilities import get_float_or_none
+from .utilities import get_float_or_none, prepare_excel_file_data
 from .models import (Classroom, ClassroomPost, PostTopic, PostAttachment,
                      Comment, Assignment, AssignmentAttachment, AssessmentMeta, Assessment)
 
@@ -136,11 +136,25 @@ def view_assessment(request, pk):
 
 
 @login_required
+def download_assessment_excel(request, cls_pk):
+    classroom = get_object_or_404(Classroom, pk=cls_pk)
+    if request.user in classroom.teachers.all():
+        if hasattr(classroom, 'assessmentmeta'):
+            meta = classroom.assessmentmeta
+            data = prepare_excel_file_data(meta)
+            return ExcelResponse(data=data, output_filename=f"{classroom.name} Assessment Report")
+        else:
+            return render_info_or_error(request, 'No Metadata', 'No assessment meta found! Please define first.')
+    else:
+        return render_info_or_error(request, "ERROR 403", "Access Denied", 'error')
+        
+
+@login_required
 def view_assessment_printf(request, pk):
     classroom = get_object_or_404(Classroom, pk=pk)
     meta_qs = AssessmentMeta.objects.filter(classroom=classroom)
     if len(meta_qs) == 0:
-        return render_info_or_error(request, "No Metadata", "Assessment metadata not found, please define marks first")
+        return render_info_or_error(request, 'No Metadata', 'No assessment meta found! Please define first.')
     return render(request, 'classroom/assessment_print.html', context={'meta':meta_qs[0]})
 
 
