@@ -348,6 +348,10 @@ class AssessmentMeta(models.Model):
         return prettify_marks(self.indiv_task_marks)
     
     @property
+    def num_weekly_tests(self):
+        return sum([w.num_tests for w in self.weekly_set.all()])
+    
+    @property
     def get_weekly_test_marks(self):
         return prettify_marks(self.weekly_test_marks)
     
@@ -399,6 +403,11 @@ class Assessment(models.Model):
         return prettify_marks(obtained_score)
         
     @property
+    def weekly_tests_points(self):
+        points = self.student.account.classroom_test_points(self.meta.classroom)
+        return prettify_marks(points)
+        
+    @property
     def weekly_tests_score(self):
         students_points = self.student.account.classroom_test_points(self.meta.classroom)
         if students_points == None:
@@ -430,3 +439,7 @@ class Assessment(models.Model):
     @property
     def num_indiv_works(self):
         return self.student.account.indiv_works(self.meta.classroom).count()
+    
+    @property
+    def num_participated_tests(self):
+        return self.student.account.classroom_test_answersheets(self.meta.classroom).count()

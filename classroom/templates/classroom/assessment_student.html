@@ -74,19 +74,19 @@
       
       <tr>
         <th>Weekly Test participated</th>
-        <td>1<span class="outof">(<span class="marks me-1">20</span>Taken)</span></td>
+        <td>{{assessment.num_participated_tests}}<span class="outof">(<span class="marks me-1">{{assessment.meta.classroom.num_tests}}</span>Taken)</span></td>
       </tr>
       <tr>
         <th>Weekly Test points</th>
-        <td>140<span class="outof">(out of<span class="marks ms-1">150</span> )</span></td>
+        <td>{{assessment.weekly_tests_points}}<span class="outof">(out of<span class="marks ms-1">{{assessment.meta.classroom.classroom_tests_total_marks}}</span> )</span></td>
       </tr>
       <tr class="score-row">
         <th>Weekly Test score</th>
-        <td>10<span class="outof">(out of<span class="marks ms-1">20</span> )</span></td>
+        <td>{{assessment.weekly_tests_score}}<span class="outof">(out of<span class="marks ms-1">{{assessment.meta.get_weekly_test_marks}}</span> )</span></td>
       </tr>
       <tr class="score-row-total">
         <th>Total Score</th>
-        <td>10<span class="outof">(out of<span class="marks ms-1">20</span> )</span></td>
+        <td>{{assessment.total_score}}<span class="outof">(out of<span class="marks ms-1">{{assessment.meta.total_marks}}</span> )</span></td>
       </tr>
       <tr class="score-row-total">
         <th>Score (%)</th>
