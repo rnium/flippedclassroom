@@ -57,7 +57,7 @@
             <thead>
                 <tr>
                     <th>SL. No.</th>
-                    <th>Registration No</th>
+                    <th>Registration No.</th>
                     <th>Attendance ({{meta.get_attendance_marks}})</th>
                     <th>Class Test ({{meta.get_classtest_marks}})</th>
                     <th>Group Tasks ({{meta.get_group_task_marks}})</th>
@@ -67,7 +67,7 @@
                 </tr>
             </thead>
             <tbody>
-                {% for a in meta.assessment_set.all %}
+                {% for a in meta.assessments %}
                 <tr>
                     <td>{{forloop.counter}}</td>
                     <td>{{ a.student.account.institutional_id }}</td>

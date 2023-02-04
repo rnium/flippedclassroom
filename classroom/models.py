@@ -322,6 +322,10 @@ class AssessmentMeta(models.Model):
         return f"{self.classroom.id} - Assessment meta"
     
     @property
+    def assessments(self):
+        return self.assessment_set.all().order_by('student__account__institutional_id')
+    
+    @property
     def total_marks(self):
         marks = (self.attendance_marks + self.classtest_marks + self.group_task_marks 
                 + self.indiv_task_marks + self.weekly_test_marks)

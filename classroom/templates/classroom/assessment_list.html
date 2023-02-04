@@ -44,7 +44,7 @@
               </tr>
           </thead>
           <tbody>
-              {% for assessment in meta.assessment_set.all %}
+              {% for assessment in meta.assessments %}
               <tr>
                 <td>{{assessment.student.account.user_full_name}}</td>
                 <td>{{assessment.student.account.institutional_id}}</td>
