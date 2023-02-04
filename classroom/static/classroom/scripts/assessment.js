@@ -7,18 +7,22 @@ function check_input(inp_id) {
         if (isNaN(score)) {
             $(inp_selector).removeClass("empty")
             $(inp_selector).addClass("error")
+            return false
         } else {
             if (score > marks) {
                 $(inp_selector).removeClass("empty")
                 $(inp_selector).addClass("error")
+                return false
             } else {
                 $(inp_selector).removeClass("error")
                 $(inp_selector).removeClass("empty")
+                return true
             }
         }
     } else {
         $(inp_selector).removeClass("error")
         $(inp_selector).addClass("empty")
+        return null
     }
 }
 
@@ -31,6 +35,22 @@ function activate_score_box(){
     });
     
 }
+
+function validate_inputs() {
+    inp_fields = $(".score-inp");
+    for (let index = 0; index < inp_fields.length; index++) {
+        let element = inp_fields[index].id;
+        check_input(element)
+    }
+    let error_fields = $(".error");
+    if (error_fields.length > 0) {
+        $(`#${error_fields[0].id}`).focus()
+        return false
+    } else {
+        return true
+    }
+}
+
 
 function processData() {
     let inp_fields = $(".score-inp");
@@ -62,6 +82,12 @@ function processData() {
 $(document).ready(function () {
     activate_score_box()
     $("#a-save-btn").on('click', function(){
-        console.log(processData());
+        let validated = validate_inputs()
+        if (!validated) {
+            return;
+        } else {
+            console.log(processData());
+        }
+        
     })
 });
