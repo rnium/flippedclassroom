@@ -50,16 +50,16 @@
                 <td>{{assessment.student.account.institutional_id}}</td>
                 <td class="inp-con">
                     {% if assessment.attendance_score %}
-                    <input type="text" class="score-inp" value="{{assessment.get_attendance_score}}">
+                    <input type="text" id="aid-{{assessment.id}}-attendance-score" class="score-inp" data-marks="{{assessment.meta.attendance_marks}}" value="{{assessment.get_attendance_score}}">
                     {% else %}
-                    <input type="text" class="score-inp empty">
+                    <input type="text" id="aid-{{assessment.id}}-attendance-score" class="score-inp empty" data-marks="{{assessment.meta.attendance_marks}}">
                     {% endif %}
                 </td>
                 <td class="inp-con">
                   {% if assessment.classtest_score %}
-                  <input type="text" class="score-inp" value="{{assessment.get_classtest_score}}">
+                  <input type="text" id="aid-{{assessment.id}}-ct-score" class="score-inp" data-marks="{{assessment.meta.classtest_marks}}" value="{{assessment.get_classtest_score}}">
                   {% else %}
-                  <input type="text" class="score-inp empty">
+                  <input type="text" id="aid-{{assessment.id}}-ct-score" class="score-inp empty" data-marks="{{assessment.meta.classtest_marks}}">
                   {% endif %}
                 </td>
                 {% if assessment.group_task_score != None%} 
