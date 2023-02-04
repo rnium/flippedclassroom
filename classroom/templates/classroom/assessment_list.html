@@ -62,9 +62,21 @@
                   <input type="text" class="score-inp empty">
                   {% endif %}
                 </td>
+                {% if assessment.group_task_score != None%} 
                 <td>{{assessment.group_task_score}}</td>
+                {% else %}
+                <td>Pending</td>
+                {% endif %}
+                {% if assessment.indiv_task_score != None%} 
                 <td>{{assessment.indiv_task_score}}</td>
+                {% else %}
+                <td>Pending</td>
+                {% endif %}
+                {% if assessment.weekly_tests_score != None%} 
                 <td>{{assessment.weekly_tests_score}}</td>
+                {% else %}
+                <td>Pending</td>
+                {% endif %}
                 {% if assessment.total_score != None %}
                 <td>{{assessment.total_score}}</td>
                 {% else %}
@@ -75,11 +87,11 @@
           </tbody>
       </table>
       <div class="submit mt-3">
-        <button class="btn-1">Save</button>
+        <button class="btn-1 shadow-sm">Save</button>
       </div>
   </div>
   <div class="info mt-4">
-    <div class="student-stats"><span class="num">50</span> of the <span class="num">54</span> students has been assessed</div>
+    <div class="student-stats"><span class="num">{{meta.assessments.count}}</span> of the <span class="num">{{meta.classroom.students.count}}</span> students has been assessed</div>
     <div class="btn-container">
       <a href="" class="download btn-a shadow-sm"><i class='bx bx-table'></i><span>Download as CSV</span></a>
       <button class="edit-btn shadow-sm ms-2"><i class='bx bx-refresh'></i><span>Reset All</span></button>
