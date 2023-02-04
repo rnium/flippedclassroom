@@ -27,7 +27,7 @@
 <div class="assessment-list container mt-4">
   <div class="heading mb-3">
     <i class='bx bx-stats'></i>
-    <span class="title">{{classroom.name}} Assessment Report</span>
+    <span class="title">{{classroom.name}} Assessment Table</span>
   </div>
   <div class="assessment-table p-3 shadow">
       <table>
@@ -137,11 +137,10 @@
 {% endblock content %}
 
 {% block script %}
-{% comment %} <script>
-  const classroom_id = "{{ classroom.id }}"
-  const post_create_url = "{% url 'classroom:post_to_classroom' classroom.id %}"
-  const weekly_create_url = "{% url 'weeklies:create_weekly' classroom.id %}"
+<script>
+  const update_assessment_url = "{% url 'classroom:update_assessments' classroom.id %}"
+  const csrftoken = "{{csrf_token}}"
 
-</script> {% endcomment %}
+</script>
 <script src="{% static 'classroom/scripts/assessment.js' %}"></script>
 {% endblock script %}

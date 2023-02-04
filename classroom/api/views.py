@@ -6,7 +6,7 @@ from rest_framework import status
 from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404
 from django.urls import reverse
-from classroom.models import ClassroomPost, PostAttachment, Classroom, Comment
+from classroom.models import ClassroomPost, PostAttachment, Classroom, Comment, AssessmentMeta, Assessment
 from .serializer import PostSerializer, ClassroomSerializer
 from .permission import IsUserPartOfClassroom, IsUserTeacher
 from .pagination import PostsPagination
@@ -140,10 +140,17 @@ def update_assessments(request, cls_pk):
     if request.user not in classroom.teachers.all():
         return Response(status=status.HTTP_403_FORBIDDEN)
     else:
-        print(request.data)
-        data = {
-            {'aid':2, 'attendance_score':9, 'classtest_score':10},
-            {'aid':3, 'attendance_score':7, 'classtest_score':10},
-        }
+        for a_data in request.data:
+            assessment = get_object_or_404(Assessment, pk=a_data, meta__classroom=classroom)
+            for attr, value in request.data[a_data].items():
+                if attr == 'attendance_score':
+                    if (value > assessment.meta.attendance_marks) or (value < 0):
+                        return Response(status=status.HTTP_406_NOT_ACCEPTABLE)
+                    setattr(assessment, attr, value)
+                elif attr == 'classtest_score':
+                    if (value > assessment.meta.classtest_marks) or (value < 0):
+                        return Response(status=status.HTTP_406_NOT_ACCEPTABLE)
+                    setattr(assessment, attr, value)
+            assessment.save()
         return Response(status=status.HTTP_200_OK)
     

@@ -78,6 +78,30 @@ function processData() {
     return dataset
 }
 
+function post_data(data) {
+    let payload = JSON.stringify(data)
+    $.ajax({
+        url: update_assessment_url,
+        contentType: "application/json",
+        type: "POST",
+        beforeSend: function(xhr){
+            $("#a-save-btn").attr("disabled", true)
+            xhr.setRequestHeader("X-CSRFToken", csrftoken)
+        },
+        data: payload,
+        cache: false,
+        success: function(response){
+            alert('Data saved')
+        },
+        error: function(xhr,status,error){
+            alert('something went wrong')
+        },
+        complete: function(){
+            $("#a-save-btn").attr("disabled", false)
+        }
+    })
+}
+
 
 $(document).ready(function () {
     activate_score_box()
@@ -86,7 +110,8 @@ $(document).ready(function () {
         if (!validated) {
             return;
         } else {
-            console.log(processData());
+            let data = processData()
+            post_data(data)
         }
         
     })
