@@ -128,7 +128,7 @@ class Classroom(models.Model):
     def group_tasks_total_marks(self):
         tasks = self.assigned_group_tasks_list
         marks = sum([task.marks for task in tasks])
-        return marks
+        return prettify_marks(marks)
     
     @property
     def indiv_tasks_total_marks(self):
@@ -369,6 +369,11 @@ class Assessment(models.Model):
         return prettify_marks(self.classtest_score)
     
     @property
+    def group_task_points(self):
+        points = self.student.account.group_task_total_points(self.meta.classroom)
+        return prettify_marks(points)
+    
+    @property
     def group_task_score(self):
         students_gw_total_score = self.student.account.group_task_total_points(self.meta.classroom)
         if students_gw_total_score == None:
@@ -414,22 +419,5 @@ class Assessment(models.Model):
             return None
     
     @property
-    def attendance_css_class(self):
-        if self.attendance_score == None:
-            return "empty"
-        else:
-            return ""
-        
-    @property
-    def classtest_css_class(self):
-        if self.classtest_score == None:
-            return "empty"
-        else:
-            return ""
-        
-    @property
-    def total_score_css_class(self):
-        if self.total_score == None:
-            return "pending"
-        else:
-            return ""
+    def num_group_work(self):
+        return self.student.account.group_works(self.meta.classroom).count()
