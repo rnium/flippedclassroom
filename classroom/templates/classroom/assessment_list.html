@@ -90,34 +90,36 @@
 {% else %}
 <div class="create-assessment container mt-4">
   <div class="title mb-4"><i class='bx bx-code me-1'></i><span>Define total marks</span></div>
-  <div class="input-container">
-      <div class="inset-float-textinput-fluid attendance-field mb-2">
-          <input class="inp_input" type="text" id="attendance" placeholder=" ">
-          <label class="inp_label" for="attendance">Attendance</label>
-      </div>
-      <div class="inset-float-textinput-fluid title-field mb-2">
-          <input class="inp_input" type="text" id="classtest" placeholder=" ">
-          <label class="inp_label" for="classtest">Class Test</label>
-      </div>
-      <div class="auto-fields p-3 rounded">
-          <div class="fields-title mb-2"><i class='bx bx-refresh me-1'></i><span>Score to be generated from classroom activities</span></div>
-          <div class="inset-float-textinput-fluid mb-2">
-              <input class="inp_input" type="text" id="tasks-group" placeholder=" ">
-              <label class="inp_label" for="tasks-group">Weekly Group Task</label>
-          </div>
-          <div class="inset-float-textinput-fluid mb-2">
-              <input class="inp_input" type="text" id="tasks" placeholder=" ">
-              <label class="inp_label" for="tasks">Weekly Individual Task</label>
-          </div>
-          <div class="inset-float-textinput-fluid">
-              <input class="inp_input" type="text" id="title" placeholder=" ">
-              <label class="inp_label" for="title">Weekly Test</label>
-          </div>
-      </div>
-      <div class="submit-con mt-3">
-          <button class="btn-1 shadow-sm">Create Assessments</button>
-      </div>
-  </div>
+  <form action="{% url 'classroom:create_assessment' classroom.id %}" method="POST"> {% csrf_token %}
+    <div class="input-container">
+        <div class="inset-float-textinput-fluid attendance-field mb-2">
+            <input class="inp_input" type="text" name="attendance" id="attendance" placeholder=" " required="">
+            <label class="inp_label" for="attendance">Attendance</label>
+        </div>
+        <div class="inset-float-textinput-fluid title-field mb-2">
+            <input class="inp_input" type="text" name="classtest" id="classtest" placeholder=" " required="">
+            <label class="inp_label" for="classtest">Class Test</label>
+        </div>
+        <div class="auto-fields p-3 rounded">
+            <div class="fields-title mb-2"><i class='bx bx-refresh me-1'></i><span>Score to be generated from classroom activities</span></div>
+            <div class="inset-float-textinput-fluid mb-2">
+                <input class="inp_input" type="text" name="tasks-group" id="tasks-group" placeholder=" " required="">
+                <label class="inp_label" for="tasks-group">Weekly Group Task</label>
+            </div>
+            <div class="inset-float-textinput-fluid mb-2">
+                <input class="inp_input" type="text" name="tasks-indiv" id="tasks-indiv" placeholder=" " required="">
+                <label class="inp_label" for="tasks-indiv">Weekly Individual Task</label>
+            </div>
+            <div class="inset-float-textinput-fluid">
+                <input class="inp_input" type="text" name="weekly_tests" id="weekly_tests" placeholder=" " required="">
+                <label class="inp_label" for="weekly_tests">Weekly Test</label>
+            </div>
+        </div>
+        <div class="submit-con mt-3">
+            <button type="submit" class="btn-1 shadow-sm">Create Assessments</button>
+        </div>
+    </div>
+  </form>
 </div>
 {% endif %}
 {% endblock content %}

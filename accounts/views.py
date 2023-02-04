@@ -76,7 +76,6 @@ def api_signup(request):
             institutional_id = request.data['institutional_id']
         )
     except Exception as e:
-        print(e)
         return Response({'status':'email used'}, status=status.HTTP_406_NOT_ACCEPTABLE)
     login(request, user=user)
     return Response({'status':"complete"}, status=status.HTTP_201_CREATED)
@@ -87,7 +86,6 @@ def api_signup(request):
 def update_profile(request):
     # firstly checking email is used or not
     user_qs = User.objects.filter(email=request.data['user_data']['email'])
-    print(user_qs)
     if len(user_qs) > 0:
         if user_qs[0] != request.user:
             return Response(status=status.HTTP_400_BAD_REQUEST)

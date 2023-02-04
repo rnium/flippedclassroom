@@ -9,6 +9,7 @@ from django.views.generic import TemplateView, DetailView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.decorators.csrf import csrf_exempt
 from django.utils import timezone
+from .utilities import get_float_or_none
 from .models import (Classroom, ClassroomPost, PostTopic, PostAttachment,
                      Comment, Assignment, AssignmentAttachment, AssessmentMeta, Assessment)
 
@@ -98,6 +99,29 @@ class PostDetail(LoginRequiredMixin, DetailView):
         threads = Comment.objects.filter(post=classroom_post, parent=None).order_by('comment_time')
         context['threads'] = threads
         return context
+
+
+@login_required
+def create_assessment(request, pk):
+    if request.method == "POST":
+        classroom = get_object_or_404(Classroom, pk=pk)
+        if request.user in classroom.teachers.all():
+            assessmentmeta_data = {}
+            assessmentmeta_data['classroom'] = classroom
+            assessmentmeta_data['attendance_marks'] = get_float_or_none(request.POST.get("attendance"))
+            assessmentmeta_data['classtest_marks'] = get_float_or_none(request.POST.get("classtest"))
+            assessmentmeta_data['group_task_marks'] = get_float_or_none(request.POST.get("tasks-group"))
+            assessmentmeta_data['indiv_task_marks'] = get_float_or_none(request.POST.get("tasks-indiv"))
+            assessmentmeta_data['weekly_test_marks'] = get_float_or_none(request.POST.get("weekly_tests"))
+            if all([data!=None for data in assessmentmeta_data.values()]):
+                meta = AssessmentMeta.objects.create(**assessmentmeta_data)
+                for student in classroom.students.all():
+                    Assessment.objects.create(meta=meta, student=student)
+                return redirect('classroom:view_assessment', pk=classroom.id)
+            else:
+                return render_info_or_error(request, "ERROR 400", "Bad Request", 'error')
+        else:
+            return render_info_or_error(request, "ERROR 403", "Access Denied", 'error')
 
 
 @login_required
