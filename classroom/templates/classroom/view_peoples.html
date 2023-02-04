@@ -138,7 +138,7 @@
             <strong class="text-gray-dark">{{student.account.user_full_name}}</strong>
             <button class="remove-btn" id="usr-{{student.id}}-remove-btn" data-std-id="{{student.id}}" data-con="student-{{student.id}}-con">remove</button>
           </div>
-          <span class="d-block">{{student.email}}</span>
+          <span class="d-block">{{student.account.institutional_id}}</span>
         </div>
       </div>
       {% endfor %}
