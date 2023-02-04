@@ -8,56 +8,7 @@
     integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
   <link rel="stylesheet" href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'>
   <link rel="stylesheet" href="{% static 'classroom/styles/navbar.css' %}">
-  <style>
-    @import url("https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap");
-    main {
-      font-family: 'Montserrat', sans-serif;
-    }
-
-    main .section-title i {
-      font-size: 2.5rem;
-      color: #dafaef;
-    }
-
-    main .section-title .info h1 {
-      color: #26efac;
-      font-family: 'Gemunu Libre', sans-serif;
-      font-size: 1.5rem;
-    }
-
-    main .section-title .info small {
-      color: azure;
-    }
-
-    main .student .remove-btn {
-      font-family: 'Gemunu Libre', sans-serif;
-      font-size: 1.1rem;
-      background-color: #faebd7;
-      border: 1px solid #d0a66f;
-      border-radius: 5px;
-      -webkit-transition: all 300ms;
-      transition: all 300ms;
-    }
-
-    main .student .remove-btn:hover {
-      background-color: #f8e4e4;
-      color: #d05858;
-      -webkit-box-shadow: 2px 2px 5px #eacbcb;
-              box-shadow: 2px 2px 5px #eacbcb;
-    }
-
-    .dp {
-      display: inline-block;
-      min-width: 40px;
-      max-width: 40px;
-      min-height: 40px;
-      max-height: 40px;
-      border-radius: 5px;
-      background-repeat: no-repeat;
-      background-position: center center;
-      background-size: cover;
-    }
-  </style>
+  <link rel="stylesheet" href="{% static 'classroom/styles/connections.css' %}">
   <title>{{classroom.name}} Connections</title>
 </head>
 
@@ -112,6 +63,25 @@
   
     <div class="classroom-teachers my-3 p-3 bg-body rounded shadow-lg">
       <h6 class="border-bottom pb-2 mb-0">Teachers</h6>
+      {% if request.user in classroom.teachers.all %}
+      {% for teacher in classroom.teachers.all %}
+      <div class="d-flex text-muted pt-3">
+        <div class="dp me-2" style="background-image: url('{{teacher.account.avatar_url}}');"></div>
+        <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
+          <div class="d-flex justify-content-between">
+            <strong class="text-gray-dark"><a class="user-profile" href="{% url 'accounts:view_profile' teacher.account.id %}">{{teacher.account.user_full_name}}</a></strong>
+          </div>
+          <span class="d-block">{{teacher.email}}</span>
+        </div>
+      </div>
+      {% endfor %}
+      <div class="add-teacher mt-3">
+        <div class="inp-con">
+          <input type="email" class="email-inp" placeholder="Email">
+        </div>
+        <button class="btn-1 ms-1 shadow-sm">Add Teacher</button>
+      </div>
+      {% else %}
       {% for teacher in classroom.teachers.all %}
       <div class="d-flex text-muted pt-3">
         <div class="dp me-2" style="background-image: url('{{teacher.account.avatar_url}}');"></div>
@@ -123,6 +93,8 @@
         </div>
       </div>
       {% endfor %}
+      {% endif %}
+      
       
       
     </div>
@@ -135,7 +107,7 @@
         <div class="dp me-2" style="background-image: url('{{student.account.avatar_url}}');"></div>
         <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
           <div class="d-flex justify-content-between">
-            <strong class="text-gray-dark">{{student.account.user_full_name}}</strong>
+            <strong class="text-gray-dark"><a class="user-profile" href="{% url 'accounts:view_profile' student.account.id %}">{{student.account.user_full_name}}</a></strong>
             <button class="remove-btn" id="usr-{{student.id}}-remove-btn" data-std-id="{{student.id}}" data-con="student-{{student.id}}-con">remove</button>
           </div>
           <span class="d-block">{{student.account.institutional_id}}</span>
@@ -148,7 +120,7 @@
         <div class="dp me-2" style="background-image: url('{{student.account.avatar_url}}');"></div>
         <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
           <div class="d-flex justify-content-between">
-            <strong class="text-gray-dark">{{student.account.user_full_name}}</strong>
+            <strong class="text-gray-dark"><a class="user-profile" href="{% url 'accounts:view_profile' student.account.id %}">{{student.account.user_full_name}}</a></strong>
           </div>
           <span class="d-block">{{student.email}}</span>
         </div>

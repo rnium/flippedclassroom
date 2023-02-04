@@ -146,6 +146,19 @@
   background-color: #fff;
 }
 
+.main .profile-card .avatar {
+  min-width: 110px;
+  max-width: 110px;
+  min-height: 130px;
+  max-height: 130px;
+  border-radius: 10px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  -webkit-box-shadow: 0 0 2px #88aa9f;
+          box-shadow: 0 0 2px #88aa9f;
+}
+
 .main .profile-card .content {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -188,6 +201,10 @@
 
 .main .profile-card .content a.profile-edit-btn span {
   font-family: 'Gemunu Libre', sans-serif;
+}
+
+.main .profile-card .content .info {
+  min-width: 20rem;
 }
 
 .main .profile-card .content .info .id-no-con .label {

@@ -1,0 +1,119 @@
+@import url("https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap");
+main {
+  font-family: 'Montserrat', sans-serif;
+}
+
+main .section-title i {
+  font-size: 2.5rem;
+  color: #dafaef;
+}
+
+main .section-title .info h1 {
+  color: #26efac;
+  font-family: 'Gemunu Libre', sans-serif;
+  font-size: 1.5rem;
+}
+
+main .section-title .info small {
+  color: azure;
+}
+
+main .classroom-teachers .add-teacher {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: flex-end;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+main .student .remove-btn {
+  font-family: 'Gemunu Libre', sans-serif;
+  font-size: 1.1rem;
+  background-color: #faebd7;
+  border: 1px solid #d0a66f;
+  border-radius: 5px;
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
+}
+
+main .student .remove-btn:hover {
+  background-color: #f8e4e4;
+  color: #d05858;
+  -webkit-box-shadow: 2px 2px 5px #eacbcb;
+          box-shadow: 2px 2px 5px #eacbcb;
+}
+
+.btn-1 {
+  border: 0;
+  padding: 0.3rem 0.5rem;
+  border-radius: 5px;
+  background-color: #7297a8;
+  color: white;
+  cursor: pointer;
+  font-family: 'Gemunu Libre', sans-serif;
+  font-size: 1rem;
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
+}
+
+.btn-1:hover {
+  background-color: #5ca5c6;
+}
+
+a.user-profile {
+  text-decoration: none;
+  color: #5b6e77;
+}
+
+.dp {
+  display: inline-block;
+  min-width: 40px;
+  max-width: 40px;
+  min-height: 40px;
+  max-height: 40px;
+  border-radius: 5px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+input.email-inp {
+  padding: 0.3rem 0.5rem;
+  border-radius: 5px;
+  border: 1px solid #b6b6b6;
+  font-size: 1rem;
+}
+
+input.email-inp:focus {
+  outline: 2px solid #01a16c;
+  border-color: #01a16c;
+  -webkit-box-shadow: 0 0 5px #a1a1a1;
+          box-shadow: 0 0 5px #a1a1a1;
+}
+
+@media screen and (max-width: 576px) {
+  body .container .classroom-teachers .add-teacher {
+    -webkit-box-pack: center !important;
+        -ms-flex-pack: center !important;
+            justify-content: center !important;
+  }
+  body .container .classroom-teachers .add-teacher .inp-con {
+    width: 65%;
+  }
+  body .container .classroom-teachers .add-teacher .inp-con input {
+    width: 100%;
+    font-size: 0.9rem;
+  }
+  body .container .classroom-teachers .add-teacher .btn-1 {
+    padding: 0.3rem 0.5rem;
+    font-size: 0.8rem;
+  }
+}
+/*# sourceMappingURL=connections.css.map */
