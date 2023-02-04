@@ -45,5 +45,4 @@ function update_test_score() {
 
 $(document).ready(function () {
     $("#update_score_btn").on('click', update_test_score)
-    console.log('hi');  
 });

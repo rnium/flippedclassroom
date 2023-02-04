@@ -50,16 +50,16 @@
                 <td>{{assessment.student.account.institutional_id}}</td>
                 <td class="inp-con">
                     {% if assessment.attendance_score %}
-                    <input type="text" id="aid-{{assessment.id}}-attendance-score" class="score-inp" data-marks="{{assessment.meta.attendance_marks}}" value="{{assessment.get_attendance_score}}">
+                    <input type="text" id="aid-{{assessment.id}}-attendance-score" class="score-inp" data-marks={{assessment.meta.attendance_marks}} data-aid="{{assessment.id}}" value="{{assessment.get_attendance_score}}">
                     {% else %}
-                    <input type="text" id="aid-{{assessment.id}}-attendance-score" class="score-inp empty" data-marks="{{assessment.meta.attendance_marks}}">
+                    <input type="text" id="aid-{{assessment.id}}-attendance-score" class="score-inp empty" data-marks={{assessment.meta.attendance_marks}} data-aid="{{assessment.id}}">
                     {% endif %}
                 </td>
                 <td class="inp-con">
                   {% if assessment.classtest_score %}
-                  <input type="text" id="aid-{{assessment.id}}-ct-score" class="score-inp" data-marks="{{assessment.meta.classtest_marks}}" value="{{assessment.get_classtest_score}}">
+                  <input type="text" id="aid-{{assessment.id}}-ct-score" class="score-inp" data-marks={{assessment.meta.classtest_marks}} data-aid="{{assessment.id}}" value="{{assessment.get_classtest_score}}">
                   {% else %}
-                  <input type="text" id="aid-{{assessment.id}}-ct-score" class="score-inp empty" data-marks="{{assessment.meta.classtest_marks}}">
+                  <input type="text" id="aid-{{assessment.id}}-ct-score" class="score-inp empty" data-marks={{assessment.meta.classtest_marks}} data-aid="{{assessment.id}}">
                   {% endif %}
                 </td>
                 {% if assessment.group_task_score != None%} 
@@ -136,3 +136,12 @@
 {% endif %}
 {% endblock content %}
 
+{% block script %}
+{% comment %} <script>
+  const classroom_id = "{{ classroom.id }}"
+  const post_create_url = "{% url 'classroom:post_to_classroom' classroom.id %}"
+  const weekly_create_url = "{% url 'weeklies:create_weekly' classroom.id %}"
+
+</script> {% endcomment %}
+<script src="{% static 'classroom/scripts/assessment.js' %}"></script>
+{% endblock script %}
