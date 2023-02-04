@@ -154,3 +154,17 @@ def update_assessments(request, cls_pk):
             assessment.save()
         return Response(status=status.HTTP_200_OK)
     
+
+@api_view(['DELETE'])
+@permission_classes([IsAuthenticated])
+def delete_assessment_meta(request, cls_pk):
+    classroom = get_object_or_404(Classroom, pk=cls_pk)
+    if request.user in classroom.teachers.all():
+        if hasattr(classroom, 'assessmentmeta'):
+            classroom.assessmentmeta.delete()
+            return Response(status=status.HTTP_200_OK)
+        else:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+    else:
+        return Response(status=status.HTTP_403_FORBIDDEN)
+    

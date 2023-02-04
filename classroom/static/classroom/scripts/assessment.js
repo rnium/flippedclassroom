@@ -91,7 +91,10 @@ function post_data(data) {
         data: payload,
         cache: false,
         success: function(response){
-            alert('Data saved')
+            let confirmation = confirm("Score saved successfully! reload page?")
+            if (confirmation) {
+                location.reload()
+            }
         },
         error: function(xhr,status,error){
             alert('something went wrong')
@@ -103,6 +106,25 @@ function post_data(data) {
 }
 
 
+function delete_meta(){
+    $.ajax({
+        url: delete_assessment_url,
+        type: "DELETE",
+        beforeSend: function(xhr){
+            $("#rst-assessment-btn").attr("disabled", true)
+            xhr.setRequestHeader("X-CSRFToken", csrftoken)
+        },
+        cache: false,
+        success: function(response){
+            location.reload()
+        },
+        error: function(xhr,status,error){
+            alert('something went wrong');
+            $("#rst-assessment-btn").attr("disabled", false);
+        }
+    })
+}
+
 $(document).ready(function () {
     activate_score_box()
     $("#a-save-btn").on('click', function(){
@@ -113,6 +135,11 @@ $(document).ready(function () {
             let data = processData()
             post_data(data)
         }
-        
+    })
+    $("#rst-assessment-btn").on('click', function(){
+        let confirmation = confirm('Are you sure to perform this action? This will reset the current assessment state and metadata!')
+        if (confirmation) {
+            delete_meta()
+        }
     })
 });
