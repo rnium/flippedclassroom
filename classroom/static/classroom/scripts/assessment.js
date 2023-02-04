@@ -32,15 +32,7 @@ let activate_score_box = function(){
     
 }
 
-let check_existing_score_box = function(){
-    let inp_fields = $(".score-inp");
-    $.each(inp_fields, function (indexInArray, valueOfElement) { 
-        check_input(valueOfElement.id)
-    });
-    
-}
 
 $(document).ready(function () {
     activate_score_box()
-    check_existing_score_box()
 });
