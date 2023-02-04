@@ -47,7 +47,7 @@
               {% for assessment in meta.assessments %}
               <tr>
                 <td>{{assessment.student.account.user_full_name}}</td>
-                <td>{{assessment.student.account.institutional_id}}</td>
+                <td><a href="{% url 'classroom:view_student_assessment' classroom.id assessment.id %}">{{assessment.student.account.institutional_id}}</a></td>
                 <td class="inp-con">
                     {% if assessment.attendance_score != None %}
                     <input type="text" id="aid-{{assessment.id}}-attendance-score" class="score-inp attendance-score" data-marks={{assessment.meta.attendance_marks}} data-aid="{{assessment.id}}" value="{{assessment.get_attendance_score}}">

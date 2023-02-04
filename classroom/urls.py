@@ -11,6 +11,7 @@ urlpatterns = [
     path('classroom/<str:pk>/connections', ClassroomConnections.as_view(), name="classroom_connections"),
     path('classroom/<str:pk>/assessment/create', create_assessment, name="create_assessment"),
     path('classroom/<str:pk>/assessment', view_assessment, name="view_assessment"),
+    path('classroom/<str:cls_pk>/assessment/<int:pk>', view_student_assessment, name="view_student_assessment"),
     path('classroom/<str:pk>/assessment/printf', view_assessment_printf, name="view_assessment_printf"),
     path('classroom/<str:cls_pk>/assessments/download/excel', download_assessment_excel, name="download_assessment_excel"),
     path('classroom/<str:pk>/about', ClassroomAbout.as_view(), name="classroom_about"),

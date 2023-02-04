@@ -144,6 +144,17 @@ def view_assessment(request, pk):
 
 
 @login_required
+def view_student_assessment(request, cls_pk, pk):
+    classroom = get_object_or_404(Classroom, pk=cls_pk)
+    context = {}
+    context['classroom'] = classroom
+    if request.user in classroom.teachers.all():
+        assessment = get_object_or_404(Assessment, pk=pk, meta__classroom=classroom)
+        context['assessment'] = assessment
+        return render(request, 'classroom/assessment_student.html', context=context)
+    
+
+@login_required
 def download_assessment_excel(request, cls_pk):
     classroom = get_object_or_404(Classroom, pk=cls_pk)
     if request.user in classroom.teachers.all():

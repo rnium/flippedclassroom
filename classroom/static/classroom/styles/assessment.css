@@ -272,6 +272,17 @@ body .main .assessment-list .assessment-table table tbody tr td:last-of-type {
   background-color: #eff3f1;
 }
 
+body .main .assessment-list .assessment-table table tbody tr td a {
+  text-decoration: none;
+  color: inherit;
+  font-family: 'Gemunu Libre', sans-serif;
+  font-size: 1.1rem;
+}
+
+body .main .assessment-list .assessment-table table tbody tr td a:hover {
+  color: #358484;
+}
+
 body .main .assessment-list .assessment-table table tbody tr td.pending {
   background-color: #ffff3f;
 }
@@ -730,7 +741,7 @@ input.score-inp.error:focus {
     margin-top: 10px !important;
   }
   body .main .assessment-con {
-    padding: 0 10px !important;
+    padding: 0 !important;
   }
   body .main .assessment-con .heading {
     margin-bottom: 2rem !important;
@@ -774,7 +785,7 @@ input.score-inp.error:focus {
     font-size: 0.8rem !important;
   }
   body .main .assessment-con .table-con table .score-row-total td, body .main .assessment-con .table-con table .score-row-total th {
-    font-size: 0.7rem !important;
+    font-size: 0.9rem !important;
     text-align: center !important;
   }
   body .main .assessment-con .no-assessment i {
