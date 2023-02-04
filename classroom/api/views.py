@@ -124,11 +124,26 @@ def update_post_des_and_rm_files(request, pk):
 
 
 @api_view(['DELETE'])
-@permission_classes([IsAuthenticated ])
+@permission_classes([IsAuthenticated])
 def delete_post(request, pk):
     post = get_object_or_404(ClassroomPost, pk=pk)
     if request.user not in post.classroom.teachers.all():
         return Response(status=status.HTTP_403_FORBIDDEN)
     post.delete()
     return Response(data={"status":"deleted"}, status=status.HTTP_204_NO_CONTENT)
+
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def update_assessments(request, cls_pk):
+    classroom = get_object_or_404(Classroom, pk=cls_pk)
+    if request.user not in classroom.teachers.all():
+        return Response(status=status.HTTP_403_FORBIDDEN)
+    else:
+        print(request.data)
+        data = {
+            {'aid':2, 'attendance_score':9, 'classtest_score':10},
+            {'aid':3, 'attendance_score':7, 'classtest_score':10},
+        }
+        return Response(status=status.HTTP_200_OK)
     

@@ -22,7 +22,7 @@ function check_input(inp_id) {
     }
 }
 
-let activate_score_box = function(){
+function activate_score_box(){
     let inp_fields = $(".score-inp");
     $.each(inp_fields, function (indexInArray, valueOfElement) { 
         $(`#${valueOfElement.id}`).keyup(function(){
@@ -32,7 +32,36 @@ let activate_score_box = function(){
     
 }
 
+function processData() {
+    let inp_fields = $(".score-inp");
+    let dataset = {}
+    $.each(inp_fields, function (indexInArray, valueOfElement) { 
+        let elem_selector = `#${valueOfElement.id}`
+        let aid = $(elem_selector).data('aid')
+        let value = $(elem_selector).val()
+        if (value.length > 0) {
+            let score = Number(value);
+            if (!isNaN(score)) {
+                let is_attendance = $(elem_selector).hasClass('attendance-score');
+                let is_classtest = $(elem_selector).hasClass('classtest-score');
+                if (!(aid in dataset)) {
+                    dataset[aid] = {}
+                }
+                if (is_attendance) {
+                    dataset[aid]['attendance_score'] = score;
+                } else if (is_classtest) {
+                    dataset[aid]['classtest_score'] = score;
+                }
+            }
+        }
+    });
+    return dataset
+}
+
 
 $(document).ready(function () {
     activate_score_box()
+    $("#a-save-btn").on('click', function(){
+        console.log(processData());
+    })
 });
