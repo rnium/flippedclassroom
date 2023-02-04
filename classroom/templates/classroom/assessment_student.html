@@ -61,15 +61,15 @@
       
       <tr>
         <th>Individual tasks completed</th>
-        <td>1<span class="outof">(<span class="marks me-1">20</span>assigned)</span></td>
+        <td>{{assessment.num_indiv_works}}<span class="outof">(<span class="marks me-1">{{assessment.meta.classroom.num_indiv_tasks}}</span>assigned)</span></td>
       </tr>
       <tr>
         <th>Individual work points</th>
-        <td>140<span class="outof">(out of<span class="marks ms-1">150</span> )</span></td>
+        <td>{{assessment.indiv_task_points}}<span class="outof">(out of<span class="marks ms-1">{{assessment.meta.classroom.indiv_tasks_total_marks}}</span> )</span></td>
       </tr>
       <tr class="score-row">
         <th>Individual work score</th>
-        <td>10<span class="outof">(out of<span class="marks ms-1">20</span> )</span></td>
+        <td>{{assessment.indiv_task_score}}<span class="outof">(out of<span class="marks ms-1">{{assessment.meta.get_indiv_task_marks}}</span> )</span></td>
       </tr>
       
       <tr>

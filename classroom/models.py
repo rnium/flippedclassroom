@@ -384,6 +384,11 @@ class Assessment(models.Model):
         return prettify_marks(obtained_score)
     
     @property
+    def indiv_task_points(self):
+        points = self.student.account.indiv_task_total_points(self.meta.classroom)
+        return prettify_marks(points)
+    
+    @property
     def indiv_task_score(self):
         students_iw_total_score = self.student.account.indiv_task_total_points(self.meta.classroom)
         if students_iw_total_score == None:
@@ -421,3 +426,7 @@ class Assessment(models.Model):
     @property
     def num_group_work(self):
         return self.student.account.group_works(self.meta.classroom).count()
+    
+    @property
+    def num_indiv_works(self):
+        return self.student.account.indiv_works(self.meta.classroom).count()
