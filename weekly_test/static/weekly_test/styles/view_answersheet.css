@@ -530,7 +530,6 @@ body .main .view-submission-container .bottom-pane .submitted-contents .answers-
 
 body .main .view-submission-container .bottom-pane .submitted-contents .answers-container .q .content .meta .user-score-info {
   min-width: 7rem;
-  max-width: 7rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -629,8 +628,10 @@ body .main .view-submission-container .bottom-pane .submitted-contents .answers-
 body .main .view-submission-container .bottom-pane .submitted-contents .answers-container .qtype-mcq .choice-container label {
   display: inline-block;
   font-size: 0.8rem;
-  width: 1.5rem;
-  height: 1.5rem;
+  min-width: 1.5rem;
+  max-width: 1.5rem;
+  min-height: 1.5rem;
+  max-height: 1.5rem;
   font-weight: 500;
   border: 2px solid rgba(128, 128, 128, 0.4);
   color: gray;
@@ -815,7 +816,150 @@ body .main .view-submission-container .bottom-pane .submitting-student .user .dp
 
 body .main .view-submission-container .bottom-pane .submitting-student .user .name {
   margin-top: 10px;
-  color: #50b291;
-  text-shadow: 0 0 5px #ceded9;
+  color: #60a890;
+  font-size: 1.2rem;
+  font-weight: 500;
+  text-shadow: 0 0 5px #eaf0ef;
+  text-align: center;
+}
+
+body .main .view-submission-container .bottom-pane .submitting-student .user .inst-id {
+  color: #4f957e;
+  font-family: 'Gemunu Libre', sans-serif;
+  text-align: center;
+}
+
+body .main .view-submission-container .bottom-pane .submitting-student .user .inst {
+  color: #467878;
+  text-align: center;
+}
+
+@media screen and (max-width: 576px) {
+  .main .view-submission-container .info {
+    padding: 2rem 10px !important;
+  }
+  .main .view-submission-container .info .home-links a {
+    font-size: 0.7rem !important;
+  }
+  .main .view-submission-container .info .score-card .obtained-points .score-con i {
+    font-size: 1rem !important;
+  }
+  .main .view-submission-container .info .score-card .obtained-points .score-con .points {
+    font-size: 0.9rem !important;
+  }
+  .main .view-submission-container .info .score-card .obtained-points .score-none i {
+    font-size: 1rem !important;
+  }
+  .main .view-submission-container .info .score-card .obtained-points .score-none span {
+    font-size: 0.7rem !important;
+  }
+  .main .view-submission-container .info .score-card .task-points::before {
+    font-size: 1rem !important;
+  }
+  .main .view-submission-container .info .score-card .task-points .num-points {
+    font-size: 0.9rem !important;
+  }
+  .main .view-submission-container .info .task-title {
+    font-size: 1rem !important;
+    margin-bottom: 10px;
+  }
+  .main .view-submission-container .info .test-time {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: column !important;
+            flex-direction: column !important;
+    -webkit-box-pack: start !important;
+        -ms-flex-pack: start !important;
+            justify-content: flex-start !important;
+  }
+  .main .view-submission-container .info .test-time .time-info {
+    -webkit-box-align: center !important;
+        -ms-flex-align: center !important;
+            align-items: center !important;
+  }
+  .main .view-submission-container .bottom-pane {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: column !important;
+            flex-direction: column !important;
+    padding: 20px 10px !important;
+  }
+  .main .view-submission-container .bottom-pane .submitting-student {
+    -webkit-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+            order: 1;
+    width: 100% !important;
+    margin-bottom: 2rem !important;
+  }
+  .main .view-submission-container .bottom-pane .submitted-contents {
+    -webkit-box-ordinal-group: 3;
+        -ms-flex-order: 2;
+            order: 2;
+    width: 100% !important;
+  }
+  .main .view-submission-container .bottom-pane .submitted-contents .answers-container .q .content {
+    padding: 15px !important;
+  }
+  .main .view-submission-container .bottom-pane .submitted-contents .answers-container .q .content .meta {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: column !important;
+            flex-direction: column !important;
+  }
+  .main .view-submission-container .bottom-pane .submitted-contents .answers-container .q .content .meta .q-title {
+    font-size: 0.9rem !important;
+  }
+  .main .view-submission-container .bottom-pane .submitted-contents .answers-container .q .content .meta .q-title .label {
+    font-size: 1rem !important;
+  }
+  .main .view-submission-container .bottom-pane .submitted-contents .answers-container .q .content .meta .user-score-info {
+    width: 100% !important;
+    -webkit-box-pack: center !important;
+        -ms-flex-pack: center !important;
+            justify-content: center !important;
+  }
+  .main .view-submission-container .bottom-pane .submitted-contents .answers-container .q .content .meta .score-container {
+    text-align: center;
+    border: 1px solid gainsboro;
+    border-radius: 5px;
+  }
+  .main .view-submission-container .bottom-pane .submitted-contents .answers-container .q .content .meta .a-score {
+    margin-left: 0 !important;
+  }
+  .main .view-submission-container .bottom-pane .submitted-contents .answers-container .qtype-text .content .ans-text {
+    font-size: 0.7rem !important;
+  }
+  .main .view-submission-container .bottom-pane .submitted-contents .answers-container .qtype-mcq .choice-container {
+    margin-bottom: 0.5rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  .main .view-submission-container .bottom-pane .submitted-contents .answers-container .qtype-mcq .choice-container input {
+    display: none;
+  }
+  .main .view-submission-container .bottom-pane .submitted-contents .answers-container .qtype-mcq .choice-container label {
+    font-size: 0.6rem !important;
+    min-width: 1.2rem !important;
+    max-width: 1.2rem !important;
+    min-height: 1.2rem !important;
+    max-height: 1.2rem !important;
+    font-weight: 500;
+  }
+  .main .view-submission-container .bottom-pane .submitted-contents .answers-container .qtype-mcq .choice-container .choice-text {
+    font-size: 0.8rem !important;
+    margin-left: 0.5rem;
+    -webkit-transition: 0.3s all;
+    transition: 0.3s all;
+    cursor: default;
+  }
+  .main .view-submission-container .bottom-pane .submitted-contents .answers-container .submit-container button {
+    padding: 7px 20px !important;
+    font-size: 0.9rem !important;
+  }
 }
 /*# sourceMappingURL=view_answersheet.css.map */
