@@ -28,6 +28,51 @@ function removeUser(btn_id, user_id, container_id){
 
 }
 
+function addTeacher() {
+    let new_email = $("#add-t-email").val()
+    if (new_email.length > 0) {
+        let payload = {
+            "email" :new_email
+        }
+        $.ajax({
+            type: "post",
+            url: add_teacher_url,
+            contentType: "application/json",
+            beforeSend: function(xhr){
+                $("#add-teacher-btn").attr("disabled", true)
+                xhr.setRequestHeader("X-CSRFToken", csrftoken)
+            },
+            data: JSON.stringify(payload),
+            cache: false,
+            complete: function() {
+                $("#add-teacher-btn").removeAttr("disabled");
+            },
+            statusCode: {
+                404: function() {
+                  alert( "User not found" );
+                },
+                208: function() {
+                    alert("User already a teacher of this classroom")
+                },
+                403: function() {
+                    alert("You have no permission to perform this action")
+                },
+                406: function() {
+                    alert("Cannot add student as teacher")
+                },
+                200: function() {
+                    let confirmation = confirm("Teacher added. Reload page?")
+                    if (confirmation) {
+                        location.reload()
+                    }
+                },
+              }
+        });
+    } else {
+        $("#add-t-email").focus()
+    }
+}
+
 $.each(btns, function (indexInArray, valueOfElement) { 
     $(`#${valueOfElement.id}`).on('click', ()=>{
         let btn_id = $(this).id
@@ -40,3 +85,7 @@ $.each(btns, function (indexInArray, valueOfElement) {
         }
     })
 });
+
+$("#add-teacher-btn").on('click', function(){
+    addTeacher()
+})

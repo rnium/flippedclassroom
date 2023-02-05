@@ -168,3 +168,23 @@ def delete_assessment_meta(request, cls_pk):
     else:
         return Response(status=status.HTTP_403_FORBIDDEN)
     
+    
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def add_teacher(request, pk):
+    classroom = get_object_or_404(Classroom, pk=pk)
+    if request.user in classroom.teachers.all():
+        user_qs = User.objects.filter(email=request.data['email'])
+        if len(user_qs) > 0:
+            user = user_qs[0]
+            if user in classroom.teachers.all():
+                return Response(status=status.HTTP_208_ALREADY_REPORTED)
+            elif user in classroom.students.all():
+                return Response(status=status.HTTP_406_NOT_ACCEPTABLE)
+            else:
+                classroom.teachers.add(user)
+                return Response(status=status.HTTP_200_OK)
+        else:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+    else:
+        return Response(status=status.HTTP_403_FORBIDDEN)

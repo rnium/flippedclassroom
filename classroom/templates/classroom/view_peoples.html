@@ -77,9 +77,9 @@
       {% endfor %}
       <div class="add-teacher mt-3">
         <div class="inp-con">
-          <input type="email" class="email-inp" placeholder="Email">
+          <input type="email" class="email-inp" id="add-t-email" placeholder="Email">
         </div>
-        <button class="btn-1 ms-1 shadow-sm">Add Teacher</button>
+        <button class="btn-1 ms-1 shadow-sm" id="add-teacher-btn">Add Teacher</button>
       </div>
       {% else %}
       {% for teacher in classroom.teachers.all %}
@@ -94,9 +94,6 @@
       </div>
       {% endfor %}
       {% endif %}
-      
-      
-      
     </div>
   
     <div class="classroom-students my-3 p-3 bg-body rounded shadow-lg">
@@ -137,6 +134,7 @@
     crossorigin="anonymous"></script>
   {% if request.user in classroom.teachers.all %}
   <script>
+    const add_teacher_url = "{% url 'classroom:add_teacher' classroom.id %}"
     const remove_student_url = "{% url 'classroom:remove_student' classroom.id %}"
     const csrftoken = "{{csrf_token}}"
   </script>
