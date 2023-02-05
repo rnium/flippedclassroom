@@ -214,22 +214,19 @@ body .main .table-container .inner table tr td.user {
           align-items: center;
 }
 
-body .main .table-container .inner table tr td.user .avatar {
-  min-width: 40px;
-  min-height: 40px;
-  max-width: 40px;
-  max-height: 40px;
+body .main .table-container .inner table tr td.user .dp {
   overflow: hidden;
-  border-radius: 180px;
   margin-right: 10px;
-  -webkit-box-shadow: 0 0 2px #b6b6b6;
-          box-shadow: 0 0 2px #b6b6b6;
-}
-
-body .main .table-container .inner table tr td.user .avatar img {
-  width: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  min-width: 40px;
+  max-width: 40px;
+  min-height: 40px;
+  max-height: 40px;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  -webkit-box-shadow: 0 0 2px #88aa9f;
+          box-shadow: 0 0 2px #88aa9f;
 }
 
 body .main .table-container .inner table tr td.sheet-id a {
