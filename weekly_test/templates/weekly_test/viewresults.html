@@ -8,6 +8,7 @@
     <link rel="stylesheet" href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'>
     <link rel="stylesheet" href="{% static 'weekly_test/styles/viewresult.css' %}">
     <link rel="stylesheet" href="{% static 'classroom/styles/navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'classroom/styles/loaders.css' %}">
     <title>Test detail</title>
 </head>
 <body>
@@ -77,7 +78,9 @@
             <div class="heading">Answer Sheets</div>
             <div class="inner" id="table-content">
             </div>
-            <div class="loader" id="loader"><i class='bx bx-loader-circle'></i><span>Loading</span></div>
+            <div class="loader" id="loader">
+              <div class="lds-ripple"><div></div><div></div></div>
+            </div>
         </div>
         
     </div>
