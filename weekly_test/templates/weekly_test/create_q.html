@@ -24,7 +24,7 @@
                 <a href="{% url 'weeklies:weeklydetail' weekly.classroom.id weekly.weeknum %}" class="weekly">Week {{ weekly.weeknum }}</a>
             </div>
             <div class="create-test-header">
-                <div class="title">Create Test for <span class='week'>Week {{ weekly.weeknum }}</span> {% if section %}<span class="section">{{ section }}</span>{% endif %}</div>
+                <div class="title create-test-title "><span>Create Test</span> <span class='week'>Week {{ weekly.weeknum }}</span> {% if section %}<span class="section"><span class="badge">{{ section }}</span></span>{% endif %}</div>
             </div>
             <div id="id_create-q-form-container">
                 {% csrf_token %}
@@ -37,11 +37,11 @@
                         </div>
                         <div class="info-input">
                             <input type="text" class="textinput" id="id_test-desc" name="name_test-desc" placeholder=" ">
-                            <label for="id_test-title" class="textinput__label">Test Description or Instructions</label>
+                            <label for="id_test-desc" class="textinput__label">Test Instructions</label>
                         </div>
                         <div class="info-input time-input">
                             <input type="text" class="textinput" id="id_test-time" name="name_test-time" placeholder=" ">
-                            <label for="id_test-title" class="textinput__label">Test Time (in minutes)</label>
+                            <label for="id_test-time" class="textinput__label">Test Time (in minutes)</label>
                             <div id="id_time-error_info" class="time-error_info"><i class='bx bx-error-circle'></i><span>positive integer required</span></div>
                         </div>
                         <div class="inp-group">
