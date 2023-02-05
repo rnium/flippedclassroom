@@ -1,0 +1,50 @@
+body header {
+  margin-top: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+body header h1, body header h2, body header h4 {
+  text-align: center;
+}
+
+body header small {
+  display: block;
+  text-align: center;
+}
+
+body header small span {
+  font-size: 1rem;
+}
+
+body main {
+  margin: 1rem;
+}
+
+body main table, body main th, body main td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+body main th, body main td {
+  padding: 2px 5px;
+  text-align: center;
+}
+
+body main table {
+  width: 100%;
+}
+
+body main table th {
+  background-color: #e7e7e7;
+}
+
+@media print {
+  main table, main td, main th {
+    font-size: 10px;
+  }
+}
+
+@page {
+  margin: 1rem !important;
+}
+/*# sourceMappingURL=assessment_print.css.map */

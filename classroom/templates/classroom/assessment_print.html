@@ -3,49 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body header {
-            margin-top: 2rem;
-            margin-bottom: 1.5rem;
-          }
-          
-          body header h2 {
-            text-align: center;
-            margin-bottom: 10px;
-          }
-          
-          body header small {
-            display: block;
-            text-align: center;
-          }
-          
-          body header small span {
-            font-size: 1rem;
-          }
-          
-          body main {
-            margin: 1rem;
-          }
-          
-          body main table, body main th, body main td {
-            border: 1px solid black;
-            border-collapse: collapse;
-          }
-          
-          body main th, body main td {
-            padding: 2px 5px;
-            text-align: center;
-          }
-          
-          body main table {
-            width: 100%;
-          }
-          
-          body main table th {
-            background-color: #e7e7e7;
-          }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> {% load static %}
+    <link rel="stylesheet" href="{% static 'classroom/styles/assessment_print.css' %}">
     <title>Document</title>
 </head>
 <body>

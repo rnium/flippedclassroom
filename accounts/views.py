@@ -19,6 +19,7 @@ class LoginView(View):
         else:
             return render(request=request, template_name='accounts/login.html')
 
+
 class SignupView(View):
     def get(self, request, *args, **kwargs):
         if request.user.is_authenticated:
