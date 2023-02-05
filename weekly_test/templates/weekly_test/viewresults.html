@@ -1,97 +1,63 @@
-<!DOCTYPE html>
-<html lang="en">
-<head> {% load static %}
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-    <link rel="stylesheet" href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'>
-    <link rel="stylesheet" href="{% static 'weekly_test/styles/viewresult.css' %}">
-    <link rel="stylesheet" href="{% static 'classroom/styles/navbar.css' %}">
-    <link rel="stylesheet" href="{% static 'classroom/styles/loaders.css' %}">
-    <title>Test detail</title>
-</head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-lg bg-light">
-            <div class="container-fluid">
-              <a class="navbar-brand flexer-row ms-4" href="{% url 'classroom:homepage' %}">
-                  <div class="site-title">OpenClassroom</div>
-              </a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-5 me-auto mb-2 mb-lg-0">
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{% url 'classroom:classroom_detail' weeklytest.weekly.classroom.id %}">Dashboard</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="{% url 'classroom:classroom_tests' weeklytest.weekly.classroom.id %}">Tests</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="{% url 'classroom:view_classroom_assignment' weeklytest.weekly.classroom.id %}">Assignments</a>
-                  </li>
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Student
-                    </a>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="{% url 'classroom:classroom_students' weeklytest.weekly.classroom.id %}">Student list</a></li>
-                      <li><a class="dropdown-item" href="{% url 'classroom:classroom_groups' weeklytest.weekly.classroom.id %}">Student groups</a></li>
-                    </ul>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="{% url 'classroom:classroom_files' weeklytest.weekly.classroom.id %}">Files</a>
-                  </li>
-                </ul>
-                <div class="user ms-auto me-4">
-                  <div class="avatar">
-                    <img src="{{ request.user.account.avatar_url }}" alt="avatar">
-                  </div>
-                  <span class="name">{{ request.user.account.user_first_name }}</span>
-                  <a href="{% url 'accounts:user_logout' %}" class="btn-1-outlined">Logout</a>
-                </div>
-              </div>
-            </div>
-          </nav>
-    </header>
-    <div class="main">
-        <div class="info">
-          <div class="home-links">
-            <a href="{% url 'classroom:classroom_detail' weeklytest.weekly.classroom.id %}">{{weeklytest.weekly.classroom.name}}</a>
-            <i class='bx bxs-chevron-right' ></i>
-            <a href="{% url 'weeklies:weeklydetail' weeklytest.weekly.classroom.id weeklytest.weekly.weeknum %}">Week 1</a>
-            <i class='bx bxs-chevron-right' ></i>
-            <span class="current">{{weeklytest.weekly_section}}</span>
-          </div>
-        </div>
-        <div class="test">
-          <div class="test-title">{{ weeklytest.title }}<a href="{% url 'weekly_test:edit_test' weeklytest.id %}" class="edit"><i class='bx bxs-edit'></i></a> </div>
-          <div class="info">
-            <div class="num-ques"><span class="label">Number of questions:&nbsp;</span><span class="value">{{ weeklytest.num_questions }}</span></div>
-            <div class="total-marks"><span class="label">Total marks:&nbsp;</span><span class="value">{{ weeklytest.total_marks }}</span></div>
-          </div>
-          {% comment %} <div class="created"><span class="time">10/23/2022, 10:34:32 pm</span></div>  {% endcomment %}
-        </div>
-        <div class="table-container">
-            <div class="heading">Answer Sheets</div>
-            <div class="inner" id="table-content">
-            </div>
-            <div class="loader" id="loader">
-              <div class="lds-ripple"><div></div><div></div></div>
-            </div>
-        </div>
-        
+{% extends 'classroom/base.html' %}
+{% block style %} {% load static %}
+<link rel="stylesheet" href="{% static 'weekly_test/styles/viewresult.css' %}">
+<link rel="stylesheet" href="{% static 'classroom/styles/navbar.css' %}">
+<link rel="stylesheet" href="{% static 'classroom/styles/loaders.css' %}">
+{% endblock style %}
+{% block title %}<title>{{weeklytest.weekly.classroom.name}} Week-{{weeklytest.weekly.weeknum}}</title>{% endblock title %}
+{% block nav %}
+<ul class="navbar-nav mb-2 mb-lg-0">
+  <li class="nav-item">
+    <a class="nav-link" aria-current="page" href="{% url 'classroom:classroom_detail' weeklytest.weekly.classroom.id %}">Dashboard</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Weeklies</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Students</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Assessment</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">About</a>
+  </li>
+</ul>
+{% endblock nav %}
+
+{% block content %}
+<div class="info">
+  <div class="home-links">
+    <a href="{% url 'classroom:classroom_detail' weeklytest.weekly.classroom.id %}">{{weeklytest.weekly.classroom.name}}</a>
+    <i class='bx bxs-chevron-right' ></i>
+    <a href="{% url 'weeklies:weeklydetail' weeklytest.weekly.classroom.id weeklytest.weekly.weeknum %}">Week 1</a>
+    <i class='bx bxs-chevron-right' ></i>
+    <span class="current">{{weeklytest.weekly_section}}</span>
+  </div>
+</div>
+<div class="test">
+  <div class="test-title">{{ weeklytest.title }}<a href="{% url 'weekly_test:edit_test' weeklytest.id %}" class="edit"><i class='bx bxs-edit'></i></a> </div>
+  <div class="info">
+    <div class="num-ques"><span class="label">Number of questions:&nbsp;</span><span class="value">{{ weeklytest.num_questions }}</span></div>
+    <div class="total-marks"><span class="label">Total marks:&nbsp;</span><span class="value">{{ weeklytest.total_marks }}</span></div>
+  </div>
+  {% comment %} <div class="created"><span class="time">10/23/2022, 10:34:32 pm</span></div>  {% endcomment %}
+</div>
+<div class="table-container">
+    <div class="heading">Answer Sheets</div>
+    <div class="inner" id="table-content">
     </div>
-    
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script> 
+    <div class="loader" id="loader">
+      <div class="lds-ripple"><div></div><div></div></div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block script %}
 <script src="{% static 'weekly_test/scripts/test_detail.js' %}"></script>
 <script>
   const api_url = "{% url 'weekly_test_api:test_answersheets' weeklytest.id %}"
   const test_id = "{{ weeklytest.id }}"
   let csrftoken = "{{ csrf_token }}"
 </script>
-</body>
-</html>
-
+{% endblock script %}
