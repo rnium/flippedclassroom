@@ -88,6 +88,34 @@
     -webkit-box-direction: normal !important;
         -ms-flex-direction: column !important;
             flex-direction: column !important;
+    margin-left: 5px !important;
+    margin-right: 5px !important;
+  }
+  body .main .left-col .classroom-info {
+    padding: 1rem 1.5rem !important;
+  }
+  body .main .left-col .classroom-info .title {
+    font-size: 1.2rem !important;
+  }
+  body .main .left-col .classroom-info .num-students {
+    font-size: 0.9rem;
+  }
+  body .main .left-col .classroom-info .share-link button {
+    font-size: 0.8rem !important;
+  }
+  body .main .left-col .classroom-info .share-link i {
+    font-size: 0.9rem !important;
+  }
+  body .main .left-col .postbox .inset-float-textinput textarea {
+    height: 7rem !important;
+    padding: 1.5rem 1rem 0.5rem !important;
+    font-size: 0.9rem !important;
+  }
+  body .main .left-col .postbox .inset-float-textinput label {
+    font-size: 0.7rem !important;
+  }
+  body .main .left-col .postbox .inset-float-textinput .topic-input input {
+    font-size: 0.6rem !important;
   }
   body .main .left-col .postbox .form-actions {
     -webkit-box-orient: vertical !important;
@@ -114,10 +142,23 @@
   body .main .left-col .postbox .form-actions .submit-container .loader {
     display: none !important;
   }
-  body .main .left-col .recent-posts .post-item .icon {
+  body .main .left-col .recent-posts .post-container .post-item {
+    padding: 0.9rem 1rem !important;
+  }
+  body .main .left-col .recent-posts .post-container .post-item .icon {
     display: none !important;
   }
-  body .main .left-col .recent-posts .post-item .contents .info {
+  body .main .left-col .recent-posts .post-container .post-item .contents {
+    margin-left: 0 !important;
+  }
+  body .main .left-col .recent-posts .post-container .post-item .contents .title {
+    font-size: 0.9rem !important;
+  }
+  body .main .left-col .recent-posts .post-container .post-item .contents .post-time {
+    color: #8aaca3;
+    font-size: 0.6rem !important;
+  }
+  body .main .left-col .recent-posts .post-container .post-item .contents .info {
     -webkit-box-orient: vertical !important;
     -webkit-box-direction: normal !important;
         -ms-flex-direction: column !important;
@@ -128,6 +169,121 @@
     border-radius: 10px;
     -webkit-box-shadow: 0 0 5px #dfdede;
             box-shadow: 0 0 5px #dfdede;
+  }
+  body .main .right-col .weeklies .content {
+    margin: 0.5rem !important;
+  }
+  body .main .right-col .weeklies .content ul li a .week .week-no .weektext, body .main .right-col .weeklies .content ul li a .week .week-no .num {
+    font-size: 1.5rem !important;
+  }
+  body .main .right-col .weeklies .content ul li a .week .icon i {
+    font-size: 4rem !important;
+  }
+  body .main .right-col .weeklies .content .create-weekly .weekly-topic-inp-con input {
+    font-size: 0.9rem !important;
+  }
+  body .main .right-col .weeklies .content .create-weekly #create-weekly-btns-con button {
+    font-size: 0.8rem !important;
+    font-weight: 400 !important;
+  }
+  body .main .right-col .live-tests .content {
+    margin: 1rem 0.5rem !important;
+  }
+  body .main .right-col .live-tests .content ul li .test-item .info .label-title {
+    font-size: 0.9rem !important;
+  }
+  body .main .right-col .live-tests .content ul li .test-item .info .stat .issued i, body .main .right-col .live-tests .content ul li .test-item .info .stat .submitted i {
+    font-size: 1rem !important;
+  }
+  body .main .right-col .live-tests .content ul li .test-item .info .stat .issued span, body .main .right-col .live-tests .content ul li .test-item .info .stat .submitted span {
+    font-size: 0.8rem !important;
+  }
+  body .main .right-col .weekly-tasks .content ul li .list-item .sub-title, body .main .right-col .weekly-tests .content ul li .list-item .sub-title {
+    font-size: 0.8rem !important;
+  }
+  body .main .right-col .weekly-tasks .content ul li .list-item .time, body .main .right-col .weekly-tests .content ul li .list-item .time {
+    font-size: 0.6rem !important;
+  }
+  body .main .right-col .weekly-tasks .content ul li .list-item i.ico, body .main .right-col .weekly-tests .content ul li .list-item i.ico {
+    font-size: 1.2rem !important;
+    margin-right: 5px !important;
+  }
+  body .main .right-col .weekly-tasks .content ul li .list-item .info .label-title, body .main .right-col .weekly-tests .content ul li .list-item .info .label-title {
+    font-size: 0.9rem !important;
+  }
+  body .main .right-col .weekly-tasks .content ul li .list-item .info .label-title .w-info-con .week-badge .w-num, body .main .right-col .weekly-tests .content ul li .list-item .info .label-title .w-info-con .week-badge .w-num {
+    font-size: 0.7rem !important;
+  }
+  body .main .right-col .weekly-tasks .content ul li .list-item .info .label-title .w-info-con .week-badge i, body .main .right-col .weekly-tests .content ul li .list-item .info .label-title .w-info-con .week-badge i {
+    font-size: 0.7rem !important;
+  }
+  body .main .create-assignment-container {
+    padding: 0 !important;
+  }
+  body .main .create-assignment-container form .task-type {
+    padding: 1rem !important;
+  }
+  body .main .create-assignment-container form .task-type .inputs {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: column !important;
+            flex-direction: column !important;
+  }
+  body .main .create-assignment-container form .task-type .inputs .inp-inner {
+    margin: 0 !important;
+    margin-bottom: 10px !important;
+    width: 100%;
+  }
+  body .main .create-assignment-container form .task-type .inputs .inp-inner label {
+    width: 100% !important;
+    -webkit-box-pack: center !important;
+        -ms-flex-pack: center !important;
+            justify-content: center !important;
+  }
+  body .main .create-assignment-container form .task-type .inputs .inp-inner input[type="text"] {
+    width: 100%;
+  }
+  body .main .create-assignment-container form .task-type .inputs .inp-inner:last-of-type {
+    margin-bottom: 0 !important;
+  }
+  body .main .create-assignment-container form .other-fields {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: column !important;
+            flex-direction: column !important;
+  }
+  body .main .create-assignment-container form .other-fields .deadline {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: column !important;
+            flex-direction: column !important;
+    margin-bottom: 3rem !important;
+  }
+  body .main .create-assignment-container form .other-fields .deadline label {
+    font-size: 0.9rem !important;
+  }
+  body .main .create-assignment-container form .other-fields .deadline .input-container {
+    width: 100%;
+  }
+  body .main .create-assignment-container form .other-fields .deadline .input-container input {
+    width: 100% !important;
+  }
+  body .main .create-assignment-container form .other-fields .attachement-container .selected-file {
+    -webkit-box-ordinal-group: 3;
+        -ms-flex-order: 2;
+            order: 2;
+    margin-left: 5px;
+    font-size: 0.8rem !important;
+  }
+  body .main .create-assignment-container form .other-fields .attachement-container label {
+    margin-left: 0 !important;
+    font-size: 0.8rem !important;
+  }
+  body .main .create-assignment-container form .other-fields .attachement-container label i {
+    display: none !important;
+  }
+  .title-box .title {
+    font-size: 1rem !important;
   }
 }
 
@@ -744,6 +900,23 @@ body .main .left-col .recent-posts .no-posts span {
   color: #5092b1;
 }
 
+body .main .left-col .recent-posts .loader {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 4rem 0;
+}
+
 body .main .right-col {
   padding: 0 1rem;
   -webkit-transition: all 100ms;
@@ -1200,29 +1373,160 @@ body .main .right-col .live-tests .content ul li .test-item .info .action a {
   display: block;
   text-align: center;
   text-decoration: none;
+  font-family: 'Gemunu Libre', sans-serif;
   padding: 3px;
   margin-top: 0.5rem;
   border-radius: 20px;
-  background-color: inherit;
+  color: #ffffff;
+  background-color: #96beb1;
   border: 2px solid #96beb1;
   -webkit-box-shadow: 0 0 5px rgba(200, 233, 222, 0.5);
           box-shadow: 0 0 5px rgba(200, 233, 222, 0.5);
   width: 100%;
-  color: #05ac45;
   -webkit-transition: all 300ms;
   transition: all 300ms;
 }
 
 body .main .right-col .live-tests .content ul li .test-item .info .action a:hover {
-  color: #ffffff;
-  background-color: #96beb1;
+  color: #05ac45;
+  background-color: inherit;
 }
 
-body .main .right-col .links {
-  background-color: rgba(202, 224, 214, 0.2);
+body .main .right-col .weekly-tasks .content ul, body .main .right-col .weekly-tests .content ul {
+  padding: 0;
+  list-style-type: none;
 }
 
-body .main .right-col .links a {
+body .main .right-col .weekly-tasks .content ul li, body .main .right-col .weekly-tests .content ul li {
+  margin-bottom: 2px;
+}
+
+body .main .right-col .weekly-tasks .content ul li a, body .main .right-col .weekly-tests .content ul li a {
+  text-decoration: none;
+  color: inherit;
+}
+
+body .main .right-col .weekly-tasks .content ul li .list-item .sub-title, body .main .right-col .weekly-tests .content ul li .list-item .sub-title {
+  font-size: 1rem;
+  margin-right: 5px;
+  font-family: 'Gemunu Libre', sans-serif;
+  color: #719899;
+  text-shadow: 0 0 2px #dce7e3;
+}
+
+body .main .right-col .weekly-tasks .content ul li:last-of-type, body .main .right-col .weekly-tests .content ul li:last-of-type {
+  margin-bottom: 0;
+}
+
+body .main .right-col .weekly-tasks .content ul li .list-item, body .main .right-col .weekly-tests .content ul li .list-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 2px 5px;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
+}
+
+body .main .right-col .weekly-tasks .content ul li .list-item i.ico, body .main .right-col .weekly-tests .content ul li .list-item i.ico {
+  font-size: 1.5rem;
+  margin-right: 0.5rem;
+  padding: 0.3rem;
+  border-radius: 5px;
+}
+
+body .main .right-col .weekly-tasks .content ul li .list-item .info, body .main .right-col .weekly-tests .content ul li .list-item .info {
+  color: #4b6d63;
+}
+
+body .main .right-col .weekly-tasks .content ul li .list-item .info .label-title, body .main .right-col .weekly-tests .content ul li .list-item .info .label-title {
+  color: inherit;
+  text-decoration: none;
+}
+
+body .main .right-col .weekly-tasks .content ul li .list-item .info .label-title .w-info-con, body .main .right-col .weekly-tests .content ul li .list-item .info .label-title .w-info-con {
+  display: inline-block;
+}
+
+body .main .right-col .weekly-tasks .content ul li .list-item .info .label-title .w-info-con span.week-badge, body .main .right-col .weekly-tests .content ul li .list-item .info .label-title .w-info-con span.week-badge {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-left: 5px;
+  padding: 0 3px;
+  border-radius: 3px;
+  border: 1px solid #30ca97;
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
+  cursor: default;
+}
+
+body .main .right-col .weekly-tasks .content ul li .list-item .info .label-title .w-info-con span.week-badge .w-num, body .main .right-col .weekly-tests .content ul li .list-item .info .label-title .w-info-con span.week-badge .w-num {
+  color: #66b399;
+  font-family: 'Gemunu Libre', sans-serif;
+  font-size: 0.8rem;
+}
+
+body .main .right-col .weekly-tasks .content ul li .list-item .info .label-title .w-info-con span.week-badge i, body .main .right-col .weekly-tests .content ul li .list-item .info .label-title .w-info-con span.week-badge i {
+  margin-left: 2px;
+  font-size: 0.8rem;
+  color: #97caae;
+  background-color: inherit;
+}
+
+body .main .right-col .weekly-tasks .content ul li .list-item .info a.label-title, body .main .right-col .weekly-tests .content ul li .list-item .info a.label-title {
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
+}
+
+body .main .right-col .weekly-tasks .content ul li .list-item .info a.label-title:hover, body .main .right-col .weekly-tests .content ul li .list-item .info a.label-title:hover {
+  text-shadow: 0 0 5px rgba(207, 223, 223, 0.6);
+}
+
+body .main .right-col .weekly-tasks .content ul li .list-item .info .time, body .main .right-col .weekly-tests .content ul li .list-item .info .time {
+  font-size: 0.7rem;
+}
+
+body .main .right-col .weekly-tasks .content ul li .test i, body .main .right-col .weekly-tests .content ul li .test i {
+  background-color: #c7e0d8;
+  color: #50967e;
+}
+
+body .main .right-col .weekly-tasks .content ul li .test:hover, body .main .right-col .weekly-tests .content ul li .test:hover {
+  background-color: rgba(147, 179, 160, 0.1);
+}
+
+body .main .right-col .weekly-tasks .content ul li .assignment .info .deadline, body .main .right-col .weekly-tests .content ul li .assignment .info .deadline {
+  font-size: 0.7rem;
+}
+
+body .main .right-col .weekly-tasks .content ul li .assignment i, body .main .right-col .weekly-tests .content ul li .assignment i {
+  background-color: rgba(199, 206, 224, 0.678);
+  color: #507196;
+}
+
+body .main .right-col .weekly-tasks .content ul li .assignment:hover, body .main .right-col .weekly-tests .content ul li .assignment:hover {
+  background-color: rgba(147, 157, 179, 0.1);
+}
+
+body .main .right-col .weekly-tasks .content .no-content, body .main .right-col .weekly-tests .content .no-content {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1237,45 +1541,44 @@ body .main .right-col .links a {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  text-decoration: none;
-  padding: 0.5rem 1rem;
-  border-radius: 10px;
-  -webkit-transition: all 300ms;
-  transition: all 300ms;
+  padding: 2rem 0;
 }
 
-body .main .right-col .links a i {
-  font-size: 1.2rem;
-  margin-right: 0.5rem;
+body .main .right-col .weekly-tasks .content .no-content i, body .main .right-col .weekly-tests .content .no-content i {
+  margin-right: 5px;
+  font-size: 1.5rem;
+  color: #87ac95;
 }
 
-body .main .right-col .links a.create-test {
+body .main .right-col .weekly-tasks .content .no-content span, body .main .right-col .weekly-tests .content .no-content span {
+  color: #87ac95;
+  text-shadow: 0 0 5px #f0f0f0;
+}
+
+body .main .right-col .weekly-tests .title {
+  color: #10a051;
+}
+
+body .main .right-col .weekly-tests .content ul li .test-upcoming {
+  background-color: rgba(168, 190, 196, 0.2);
+}
+
+body .main .right-col .weekly-tests .content ul li .test-upcoming i {
+  color: white;
   background-color: #31b48b;
-  -webkit-box-shadow: 0 0 5px #cacaca;
-          box-shadow: 0 0 5px #cacaca;
-  margin-bottom: 0.5rem;
 }
 
-body .main .right-col .links a.create-test i, body .main .right-col .links a.create-test span {
-  color: #e8fff7;
+body .main .right-col .weekly-tasks .content ul li .assignment.due {
+  background-color: #e9f2f3;
 }
 
-body .main .right-col .links a.create-test:hover {
-  background-color: #128863;
-}
-
-body .main .right-col .links a.create-work {
+body .main .right-col .weekly-tasks .content ul li .assignment.due i {
   background-color: #3577b1;
-  -webkit-box-shadow: 0 0 5px #919aa3;
-          box-shadow: 0 0 5px #919aa3;
+  color: white;
 }
 
-body .main .right-col .links a.create-work i, body .main .right-col .links a.create-work span {
-  color: #eef2ff;
-}
-
-body .main .right-col .links a.create-work:hover {
-  background-color: #285d8b;
+body .main .right-col .weekly-tasks .content ul li .assignment:hover {
+  background-color: rgba(147, 179, 160, 0.1);
 }
 
 body .main .create-assignment-container {

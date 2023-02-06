@@ -236,6 +236,18 @@ class Weekly(models.Model):
         total_marks = sum([test.total_marks for test in self.tests])
         return total_marks
     
+    @property
+    def all_upcoming_tests(self):
+        timenow = timezone.now()
+        up_tests = self.weeklytest_set.filter(schedule__gt=timenow)
+        return up_tests
+    
+    @property
+    def all_prev_tests(self):
+        timenow = timezone.now()
+        prev_tests = self.weeklytest_set.filter(expiration__lt=timenow)
+        return prev_tests
+    
      
 class PreClassFile(models.Model):
     def filepath(self, filename):

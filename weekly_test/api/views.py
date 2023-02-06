@@ -43,8 +43,6 @@ def create_test(request, pk):
             question_data = question['meta']
             question_data['test'] = test.id
             questionserializer = QuestionSerializer(data=question_data)
-            print(f"test id: {test.id}")
-            print(questionserializer.initial_data)
             if questionserializer.is_valid():
                 question_obj = questionserializer.save()
             else:

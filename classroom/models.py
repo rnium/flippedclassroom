@@ -59,15 +59,27 @@ class Classroom(models.Model):
             return post.posted
         else:
             return False
-    
+
     @property
-    def upcoming_events(self):
-        timenow = timezone.now()
-        exams = self.test_set.filter(schedule__gt=timenow).order_by("schedule")
-        assignments = self.task_set.filter(deadline__gt=timenow).order_by('deadline')
-        num_events = len(exams) + len(assignments)
-        hasevents = bool(num_events)
-        return {'hasevents':hasevents, 'num_events':num_events, 'exams':exams, 'assignments':assignments}
+    def upcoming_tests(self):
+        test_qs = [w.all_upcoming_tests for w in self.weeklies]
+        if len(test_qs) > 1:
+            t_qs_0 = test_qs[0]
+            t_qs_others = test_qs[1:]
+            final_qs = t_qs_0.union(*t_qs_others)
+            return final_qs.order_by("schedule")
+        else:
+            return test_qs.order_by("schedule")
+    
+    # @property
+    # def upcoming_and_prev_tests(self):
+    #     timenow = timezone.now()
+    #     up_tests = self.all_tests.filter(schedule__gt=timenow).order_by("schedule")
+    #     return up_tests
+    #     # assignments = self.task_set.filter(deadline__gt=timenow).order_by('deadline')
+    #     # num_events = len(exams) + len(assignments)
+    #     # hasevents = bool(num_events)
+    #     # return {'hasevents':hasevents, 'num_events':num_events, 'exams':exams, 'assignments':assignments}
     
     @property
     def ongoing_tests(self):
@@ -147,6 +159,7 @@ class Classroom(models.Model):
         weeklies = self.weekly_set.all()
         all_tests_marks = sum([weekly.tests_total_marks for weekly in weeklies])
         return all_tests_marks
+    
         
 
 class PostTopic(models.Model):

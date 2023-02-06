@@ -2342,5 +2342,33 @@ body .main .view-file-container .bottom-pane .other-files .no-files i {
     font-size: 0.8rem !important;
     padding-left: 10px !important;
   }
+  .main .view-file-container .info {
+    padding: 1.5rem 10px !important;
+  }
+  .main .view-file-container .info .home-links a {
+    font-size: 0.7rem !important;
+  }
+  .main .view-file-container .info .task-title {
+    font-size: 1rem !important;
+  }
+  .main .view-file-container .bottom-pane {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: column !important;
+            flex-direction: column !important;
+    padding: 20px 10px !important;
+  }
+  .main .view-file-container .bottom-pane .other-files {
+    width: 100% !important;
+  }
+  .main .view-file-container .bottom-pane .file-content {
+    width: 100% !important;
+    margin-bottom: 2rem;
+  }
+  .main .view-file-container .bottom-pane .file-content .accordion .accordion-item .accordion-button {
+    overflow: hidden;
+    font-size: 0.8rem !important;
+    padding-left: 10px !important;
+  }
 }
 /*# sourceMappingURL=viewtask.css.map */

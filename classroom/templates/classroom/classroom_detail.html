@@ -2,6 +2,7 @@
 {% block style %} {% load static %}
 <link rel="stylesheet" href="{% static 'classroom/styles/style.css' %}">
 <link rel="stylesheet" href="{% static 'classroom/styles/navbar.css' %}">
+<link rel="stylesheet" href="{% static 'classroom/styles/loaders.css' %}">
 {% endblock style %}
 {% block title %}<title>{{classroom.name}}</title>{% endblock title %}
 {% block nav %}
@@ -56,8 +57,11 @@
     </div>
   </div>
   {% endif %}
-  <div class="recent-posts" id="recent-posts" style="display: none;">
-    
+  <div class="recent-posts" id="recent-posts">
+    <div class="loader">
+      <div class="lds-ripple"><div></div><div></div></div>
+      <div class="info text-muted">Loading Posts</div>
+    </div>
   </div>
 
 </div>
@@ -147,44 +151,84 @@
       {% endif %}
     </div>
   </div>
-  <div class="upcoming title-box">
-    <div class="title">Upcoming</div>
+
+  <div class="weekly-tests title-box">
+    <div class="title">Weekly Test</div>
     <div class="content">
-      {% if classroom.upcoming_events.hasevents %}
-      <ul>{% for exam in classroom.upcoming_events.exams %}
+      <ul>
+
         <li>
-          <div class="test list-item">
-            <i class='bx bx-edit-alt'></i>
+          <div class="test test-upcoming list-item">
+            <i class='ico bx bxs-edit-alt'></i>
             <div class="info">
-              <div class="label-title">{{ exam.title }}</div>
-              <div class="time" id="{{exam.id}}_time">{{ exam.schedule|date:'c' }}</div>
+              <div class="label-title">Test on electrical circuits 2 <div class="w-info-con"><span class="week-badge shadow-sm"><span class="w-num">week 1</span><i class='bx bxs-left-arrow'></i></span></div> </div>
+              <div class="held-on"><span class="sub-title">Schedule:</span><span class="time">7:00PM, 17 Oct 2022</span></div>
             </div>
           </div>
-        </li>{% endfor %}
-        {% for assignment in classroom.upcoming_events.assignments %}
+        </li>
+
         <li>
-          <div class="assignment list-item">
-            <i class='bx bx-briefcase' ></i>
-            <div class="info">
-              <a href="{% url 'classroom:tasks:view_task' classroom.id assignment.id %}" class="label-title">{{ assignment.title }}</a>
-              <div class="deadline">Due: <span class="time" id="{{assignment.id}}_time">{{ assignment.deadline|date:'c' }}</span></div>
+          <a href="">
+            <div class="test list-item">
+              <i class='ico bx bx-edit-alt'></i>
+              <div class="info">
+                <div class="label-title">Test on electrical circuits 1 <div class="w-info-con"><span class="week-badge shadow-sm"><span class="w-num">week 1</span><i class='bx bxs-right-arrow'></i></span></div> </div>
+                <div class="held-on"><span class="sub-title">held on:</span><span class="time">7:00PM, 17 Oct 2022</span></div>
+              </div>
             </div>
-          </div>
-        </li>{% endfor %}
-      </ul>
-      {% else %}
-      <div class="no-content"><i class='bx bx-info-circle'></i><span>No upcoming events</span></div>
-      {% endif %}
+          </a>
+        </li>
+
+        <li>
+          <a href="">
+            <div class="test list-item">
+              <i class='ico bx bx-edit-alt'></i>
+              <div class="info">
+                <div class="label-title">Test on electrical circuits 1 <div class="w-info-con"><span class="week-badge"><span class="w-num">week 1</span><i class='bx bxs-square'></i></span></div> </div>
+                <div class="held-on"><span class="sub-title">held on:</span><span class="time">7:00PM, 17 Oct 2022</span></div>
+              </div>
+            </div>
+          </a>
+        </li>
+          
+          
+        </ul>
+      <!-- <div class="no-content"><i class='bx bx-info-circle'></i><span>No Tests</span></div> -->
     </div>
   </div>
-  {% if request.user in classroom.teachers.all %}
-  <div class="links title-box">
+
+  <div class="weekly-tasks title-box">
+    <div class="title">Assigned Task</div>
     <div class="content">
-      <a class="create-test" href="{% url 'exam:create_question' classroom.id %}"><i class='bx bx-edit-alt'></i><span>Create New Test</span></a>
-      <a class="create-work" href="{% url 'classroom:tasks:create_task' classroom.id  %}"><i class='bx bx-briefcase'></i><span>Assign a Work</span></a>
+      <ul>
+          <li>
+            <a href="">
+              <div class="assignment due list-item">
+                <i class='ico bx bxs-briefcase'></i>
+                <div class="info">
+                  <div class="label-title">assignment title</div>
+                  <div class="deadline"><span class="sub-title">Due:</span><span class="time">7:00PM, 17 Oct 2022</span></div>
+                </div>
+              </div>
+            </a>
+          </li>
+
+          <li>
+            <a href="">
+              <div class="assignment list-item">
+                <i class='ico bx bx-briefcase' ></i>
+                <div class="info">
+                  <div class="label-title">assignment title</div>
+                  <div class="deadline"><span class="sub-title">Sumitted:</span><span class="time">7:00PM, 17 Oct 2022</span></div>
+                </div>
+              </div>
+            </a>
+          </li>
+        </ul>
+      <!-- <div class="no-content"><i class='bx bx-info-circle'></i><span>No upcoming events</span></div> -->
     </div>
   </div>
-  {% endif %}
+
 </div>
 {% csrf_token %}
 {% endblock content %}
