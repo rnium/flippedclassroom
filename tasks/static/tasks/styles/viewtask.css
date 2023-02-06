@@ -1535,6 +1535,10 @@ body .main .view-submission-container .bottom-pane .submitted-contents .accordio
   padding: 1rem 10px;
 }
 
+body .main .view-submission-container .bottom-pane .submitted-contents .accordion .accordion-item .accordion-button {
+  overflow: hidden !important;
+}
+
 body .main .view-submission-container .bottom-pane .submitted-contents .accordion .accordion-item .accordion-button:focus {
   -webkit-box-shadow: none;
           box-shadow: none;
@@ -1645,8 +1649,22 @@ body .main .view-submission-container .bottom-pane .group-members .user .dp, bod
 
 body .main .view-submission-container .bottom-pane .group-members .user .name, body .main .view-submission-container .bottom-pane .submitting-student .user .name {
   margin-top: 10px;
-  color: #50b291;
-  text-shadow: 0 0 5px #ceded9;
+  color: #60a890;
+  font-size: 1.2rem;
+  font-weight: 500;
+  text-shadow: 0 0 5px #eaf0ef;
+  text-align: center;
+}
+
+body .main .view-submission-container .bottom-pane .group-members .user .inst-id, body .main .view-submission-container .bottom-pane .submitting-student .user .inst-id {
+  color: #4f957e;
+  font-family: 'Gemunu Libre', sans-serif;
+  text-align: center;
+}
+
+body .main .view-submission-container .bottom-pane .group-members .user .inst, body .main .view-submission-container .bottom-pane .submitting-student .user .inst {
+  color: #467878;
+  text-align: center;
 }
 
 body .main .view-file-container {
@@ -2063,6 +2081,16 @@ body .main .view-file-container .bottom-pane .other-files .no-files i {
     -ms-grid-columns: 1fr !important;
         grid-template-columns: 1fr !important;
   }
+  .main .view-submission-container .info .time-and-action {
+    margin-top: 1.5rem;
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: column !important;
+            flex-direction: column !important;
+  }
+  .main .view-submission-container .info .time-and-action .submission-time {
+    margin-bottom: 10px;
+  }
 }
 
 @media screen and (max-width: 576px) {
@@ -2222,6 +2250,97 @@ body .main .view-file-container .bottom-pane .other-files .no-files i {
   }
   .main .view-task-container.teacher .right-col .submissions .contents .unsubmitting .user .name {
     font-size: 0.8rem !important;
+  }
+  .main .view-submission-container .info {
+    padding: 1.5rem 10px !important;
+  }
+  .main .view-submission-container .info .home-links a {
+    font-size: 0.7rem !important;
+  }
+  .main .view-submission-container .info .score-card .obtained-points .score-con i {
+    font-size: 1rem !important;
+  }
+  .main .view-submission-container .info .score-card .obtained-points .score-con .points {
+    font-size: 0.9rem !important;
+    padding: 2px 10px 2px 5px !important;
+  }
+  .main .view-submission-container .info .score-card .obtained-points .score-none i {
+    font-size: 1rem !important;
+    margin-right: 5px !important;
+  }
+  .main .view-submission-container .info .score-card .obtained-points .score-none span {
+    font-size: 0.8rem !important;
+  }
+  .main .view-submission-container .info .score-card .task-points {
+    font-size: 0.9rem !important;
+  }
+  .main .view-submission-container .info .score-card .task-points::before {
+    font-size: 0.9rem !important;
+  }
+  .main .view-submission-container .info .task-type-capsule .individual-task {
+    margin-top: 1rem !important;
+  }
+  .main .view-submission-container .info .task-type-capsule .individual-task .task-type-indiv {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    justify-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .main .view-submission-container .info .task-type-capsule .individual-task .task-type-indiv i, .main .view-submission-container .info .task-type-capsule .individual-task .task-type-indiv span {
+    color: #2ccdcd;
+  }
+  .main .view-submission-container .info .task-type-capsule .individual-task .task-type-indiv i {
+    font-size: 1.2rem;
+    margin-right: 5px;
+  }
+  .main .view-submission-container .bottom-pane {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: column !important;
+            flex-direction: column !important;
+    padding: 20px 10px !important;
+  }
+  .main .view-submission-container .bottom-pane .submitting-student {
+    -webkit-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+            order: 1;
+    width: 100% !important;
+    margin-bottom: 2rem !important;
+  }
+  .main .view-submission-container .bottom-pane .group-members {
+    width: 100% !important;
+    margin-bottom: 2rem !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+  .main .view-submission-container .bottom-pane .group-members ul {
+    margin-top: 10px !important;
+  }
+  .main .view-submission-container .bottom-pane .group-members ul li {
+    margin-bottom: 5px !important;
+  }
+  .main .view-submission-container .bottom-pane .group-members ul li .name {
+    font-size: 0.8rem !important;
+  }
+  .main .view-submission-container .bottom-pane .submitted-contents {
+    -webkit-box-ordinal-group: 3;
+        -ms-flex-order: 2;
+            order: 2;
+    width: 100% !important;
+  }
+  .main .view-submission-container .bottom-pane .submitted-contents .accordion .accordion-item .accordion-button {
+    font-size: 0.8rem !important;
+    padding-left: 10px !important;
   }
 }
 /*# sourceMappingURL=viewtask.css.map */
