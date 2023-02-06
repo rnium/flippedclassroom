@@ -7,73 +7,6 @@
   color: #276363;
 }
 
-body header nav {
-  padding: 1rem 0 !important;
-}
-
-body header nav .navbar-brand img {
-  opacity: 0.65;
-  width: 50px;
-  height: auto;
-  margin-right: 0.5rem;
-}
-
-body header nav .navbar-brand .site-title {
-  font-weight: 600;
-  color: #94a7ac;
-  font-family: 'Gemunu Libre', sans-serif;
-  font-size: 1.6rem;
-  text-shadow: 0 0 5px rgba(150, 190, 150, 0.3);
-}
-
-body header nav ul li.nav-item {
-  margin-left: 0.5rem;
-}
-
-body header nav ul li.nav-item .nav-link.active {
-  font-weight: 500;
-  color: gray;
-}
-
-body header nav .user {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  justify-items: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-body header nav .user .avatar {
-  width: 40px;
-  height: 40px;
-  -o-object-fit: contain;
-     object-fit: contain;
-  overflow: hidden;
-  margin-right: 5px;
-  border-radius: 180px;
-  -webkit-box-shadow: 0 0 5px #e6e6e6;
-          box-shadow: 0 0 5px #e6e6e6;
-  border: 1px solid #d4d3d3;
-}
-
-body header nav .user .avatar img {
-  width: 100%;
-}
-
-body header nav .user .name {
-  text-shadow: 0 0 5px rgba(214, 214, 214, 0.993);
-}
-
-body header nav .user a {
-  margin-left: 15px;
-}
-
 body .main .view-task-container {
   margin-top: 3rem;
   width: 100%;
@@ -198,7 +131,7 @@ body .main .view-task-container .left-col .task-info .task-instruction .attachme
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 14rem;
+  min-width: 14rem;
   position: relative;
   background-color: rgba(233, 237, 241, 0.5);
   border-radius: 10px 20px 10px 10px;
@@ -369,6 +302,7 @@ body .main .view-task-container .right-col .my-work {
           box-shadow: 0 0 10px #e9e9e9;
   margin-left: 2rem;
   margin-bottom: 5rem;
+  z-index: 9999;
 }
 
 body .main .view-task-container .right-col .my-work .title {
@@ -1214,6 +1148,10 @@ body .main .view-task-container.student .left-col .task-info .task-instruction .
       grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
+body .main .view-task-container.student .left-col .task-info .task-instruction .attachments a {
+  width: 23%;
+}
+
 body .main .view-task-container.student .right-col {
   width: 30%;
 }
@@ -1990,25 +1928,300 @@ body .main .view-file-container .bottom-pane .other-files .no-files i {
           animation-iteration-count: infinite;
 }
 
-.btn-1-outlined {
-  display: inline-block;
-  border: 2px solid #76919e;
-  padding: 0.2rem 1rem;
-  border-radius: 10px;
-  background-color: inherit;
-  color: #76919e;
-  cursor: pointer;
-  font-size: 1rem;
-  -webkit-transition: all 300ms;
-  transition: all 300ms;
-  text-decoration: none;
-  font-weight: 500;
+@media screen and (max-width: 1400px) {
+  .main .view-task-container .task-info .attachments a i {
+    font-size: 4rem !important;
+    padding: 20px 0 40px;
+  }
+  .main .view-task-container .task-info .attachments a .filename {
+    margin: 0;
+    opacity: 0.9;
+    font-size: 0.7rem;
+    position: absolute;
+    bottom: 0;
+    background-color: #d7e5e7;
+    font-weight: 500;
+    color: #578581;
+    padding: 5px 15px;
+    width: 100%;
+  }
+  .main .view-task-container.student .left-col {
+    width: 60% !important;
+    padding-right: 1rem !important;
+  }
+  .main .view-task-container.student .left-col .task-info .task-instruction .attachments {
+    -ms-grid-columns: 1fr 1fr 1fr !important;
+        grid-template-columns: 1fr 1fr 1fr !important;
+  }
+  .main .view-task-container.student .left-col .task-info .task-instruction .attachments a {
+    width: 30% !important;
+  }
+  .main .view-task-container.student .right-col {
+    width: 40% !important;
+  }
+  .main .view-task-container.student .right-col .my-work {
+    margin-left: 0 !important;
+  }
+  .main .view-task-container.teacher .left-col .task-info .task-instruction .attachments {
+    -ms-grid-columns: 1fr 1fr 1fr 1fr !important;
+        grid-template-columns: 1fr 1fr 1fr 1fr !important;
+  }
+  .main .view-task-container.teacher .right-col .submissions .contents {
+    -ms-grid-columns: 1fr 1fr 1fr !important;
+        grid-template-columns: 1fr 1fr 1fr !important;
+  }
 }
 
-.btn-1-outlined:hover {
-  background-color: #76919e;
-  color: white;
-  -webkit-box-shadow: 3px 3px 5px #d8d8d8;
-          box-shadow: 3px 3px 5px #d8d8d8;
+@media screen and (max-width: 1200px) {
+  .main .view-task-container.student .left-col {
+    width: 50% !important;
+    padding-right: 1rem !important;
+  }
+  .main .view-task-container.student .left-col .task-info .task-instruction .attachments {
+    -ms-grid-columns: 1fr 1fr !important;
+        grid-template-columns: 1fr 1fr !important;
+    width: 45% !important;
+  }
+  .main .view-task-container.student .left-col .task-meta-info .task-type {
+    padding: 3px 5px !important;
+  }
+  .main .view-task-container.student .left-col .task-meta-info .task-type i {
+    font-size: 0.9rem !important;
+  }
+  .main .view-task-container.student .left-col .task-meta-info .task-type span {
+    padding: 0 5px 0 3px !important;
+    font-size: 0.7rem !important;
+  }
+  .main .view-task-container.student .left-col .task-meta-info .points {
+    padding: 3px 5px !important;
+  }
+  .main .view-task-container.student .left-col .task-meta-info .points i {
+    font-size: 0.9rem !important;
+    margin-right: 3px !important;
+  }
+  .main .view-task-container.student .left-col .task-meta-info .points .point {
+    font-size: 0.7rem !important;
+  }
+  .main .view-task-container.student .left-col .task-meta-info .points .label {
+    font-size: 0.7rem !important;
+  }
+  .main .view-task-container.student .left-col .task-meta-info .deadline {
+    margin-left: 10px !important;
+    border-radius: 180px;
+    border: 1px dashed #c78385 !important;
+    overflow: hidden;
+    padding: 3px 4px !important;
+  }
+  .main .view-task-container.student .left-col .task-meta-info .deadline i {
+    font-size: 0.9rem !important;
+    padding: 0 !important;
+    border-radius: 180px;
+    color: #e65390 !important;
+    background-color: transparent !important;
+  }
+  .main .view-task-container.student .left-col .task-meta-info .deadline span {
+    padding: 0 10px 0 5px !important;
+    color: #d26565 !important;
+    font-size: 0.7rem !important;
+  }
+  .main .view-task-container.student .right-col {
+    width: 50% !important;
+  }
+  .main .view-task-container.teacher .left-col .task-info .task-instruction .attachments {
+    -ms-grid-columns: 1fr 1fr 1fr !important;
+        grid-template-columns: 1fr 1fr 1fr !important;
+  }
+  .main .view-task-container.teacher .right-col .submissions .contents {
+    -ms-grid-columns: 1fr 1fr !important;
+        grid-template-columns: 1fr 1fr !important;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .main .view-task-container.student {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: column !important;
+            flex-direction: column !important;
+  }
+  .main .view-task-container.student .left-col {
+    width: 100% !important;
+    padding-right: 0 !important;
+  }
+  .main .view-task-container.student .left-col .task-info .task-instruction .attachments {
+    -ms-grid-columns: 1fr 1fr !important;
+        grid-template-columns: 1fr 1fr !important;
+  }
+  .main .view-task-container.student .right-col {
+    width: 100% !important;
+  }
+  .main .view-task-container.teacher .left-col .task-info .task-instruction .attachments {
+    -ms-grid-columns: 1fr 1fr !important;
+        grid-template-columns: 1fr 1fr !important;
+  }
+  .main .view-task-container.teacher .right-col .submissions .contents {
+    -ms-grid-columns: 1fr !important;
+        grid-template-columns: 1fr !important;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .main .view-task-container .home-links a {
+    font-size: 0.7rem !important;
+  }
+  .main .view-task-container.student .left-col .task-info .task-instruction .attachments {
+    width: 100% !important;
+    -ms-grid-columns: 1fr !important;
+        grid-template-columns: 1fr !important;
+  }
+  .main .view-task-container.student .left-col .task-info .task-instruction .attachments a {
+    width: 100% !important;
+  }
+  .main .view-task-container.student .left-col .task-meta-info .points {
+    display: none !important;
+  }
+  .main .view-task-container.student .left-col .task-meta-info .deadline {
+    display: none !important;
+  }
+  .main .view-task-container.student .right-col .my-work {
+    padding: 15px 10px;
+  }
+  .main .view-task-container.student .right-col .my-work .title {
+    font-size: 1rem !important;
+  }
+  .main .view-task-container.student .right-col .my-work .info {
+    padding: 10px;
+    border-radius: 10px;
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: column !important;
+            flex-direction: column !important;
+  }
+  .main .view-task-container.student .right-col .my-work .form .attachement-container label {
+    margin: 0;
+    width: 100%;
+    font-size: 0.9rem !important;
+  }
+  .main .view-task-container.student .right-col .my-work .uploaded-work ul li a i {
+    font-size: 2rem !important;
+  }
+  .main .view-task-container.student .right-col .my-work .uploaded-work ul li a .filename {
+    font-size: 0.7rem !important;
+    padding-left: 5px !important;
+  }
+  .main .view-task-container.student .right-col .my-work .uploaded-work .submitted-by {
+    font-size: 0.8rem !important;
+  }
+  .main .view-task-container.student .right-col .my-work .uploaded-work .submitted-by::before {
+    font-size: 0.8rem !important;
+    padding: 2px 5px !important;
+  }
+  .main .view-task-container.student .right-col .my-work .uploaded-work .buttons-container .action-btn {
+    font-size: 0.9rem !important;
+  }
+  .main .view-task-container.student .right-col .my-work .uploaded-work .buttons-container .del-btn i {
+    font-size: 1rem !important;
+  }
+  .main .view-task-container.student .right-col .my-work .teammates {
+    padding: 10px 5px !important;
+  }
+  .main .view-task-container.student .right-col .my-work .teammates ul li .dp {
+    margin-right: 5px;
+    min-width: 30px;
+    max-width: 30px;
+    min-height: 30px;
+    max-width: 30px;
+  }
+  .main .view-task-container.student .right-col .my-work .teammates ul li .name {
+    font-size: 0.7rem !important;
+  }
+  .main .view-task-container.teacher {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    margin-top: 2rem !important;
+  }
+  .main .view-task-container.teacher .left-col .task-info .task-instruction .attachments {
+    -ms-grid-columns: 1fr !important;
+        grid-template-columns: 1fr !important;
+  }
+  .main .view-task-container.teacher .left-col .task-info .task-meta-info {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: column !important;
+            flex-direction: column !important;
+    -webkit-box-pack: start !important;
+        -ms-flex-pack: start !important;
+            justify-content: flex-start !important;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+  }
+  .main .view-task-container.teacher .left-col .task-info .task-meta-info div {
+    margin-left: 0 !important;
+  }
+  .main .view-task-container.teacher .right-col .submissions {
+    padding: 10px !important;
+  }
+  .main .view-task-container.teacher .right-col .submissions .contents .submission {
+    padding: 10px !important;
+  }
+  .main .view-task-container.teacher .right-col .submissions .contents .submission .info .score .score-con i {
+    font-size: 1rem !important;
+  }
+  .main .view-task-container.teacher .right-col .submissions .contents .submission .info .score .score-con .points {
+    font-size: 0.8rem !important;
+  }
+  .main .view-task-container.teacher .right-col .submissions .contents .submission .info .submit-time .time {
+    font-size: 0.7rem !important;
+  }
+  .main .view-task-container.teacher .right-col .submissions .contents .submission .group-members {
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+    padding-bottom: 0 !important;
+  }
+  .main .view-task-container.teacher .right-col .submissions .contents .submission .group-members ul li .dp {
+    min-width: 30px;
+    max-width: 30px;
+    min-height: 30px;
+    max-height: 30px;
+  }
+  .main .view-task-container.teacher .right-col .submissions .contents .submission .group-members ul li .name {
+    font-size: 0.8rem !important;
+  }
+  .main .view-task-container.teacher .right-col .submissions .contents .submission .user .dp {
+    min-width: 35px;
+    max-width: 35px;
+    min-height: 35px;
+    max-height: 35px;
+  }
+  .main .view-task-container.teacher .right-col .submissions .contents .submission .user .name {
+    font-size: 0.8rem !important;
+  }
+  .main .view-task-container.teacher .right-col .submissions .contents .unsubmitting {
+    padding: 10px !important;
+  }
+  .main .view-task-container.teacher .right-col .submissions .contents .unsubmitting .group-members {
+    padding-left: 7px !important;
+    padding-right: 7px !important;
+    padding-bottom: 0 !important;
+  }
+  .main .view-task-container.teacher .right-col .submissions .contents .unsubmitting .group-members ul li .dp {
+    min-width: 30px;
+    max-width: 30px;
+    min-height: 30px;
+    max-height: 30px;
+  }
+  .main .view-task-container.teacher .right-col .submissions .contents .unsubmitting .group-members ul li .name {
+    font-size: 0.8rem !important;
+  }
+  .main .view-task-container.teacher .right-col .submissions .contents .unsubmitting .user .dp {
+    min-width: 35px;
+    max-width: 35px;
+    min-height: 35px;
+    max-height: 35px;
+  }
+  .main .view-task-container.teacher .right-col .submissions .contents .unsubmitting .user .name {
+    font-size: 0.8rem !important;
+  }
 }
 /*# sourceMappingURL=viewtask.css.map */
