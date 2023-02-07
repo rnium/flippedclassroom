@@ -77,6 +77,21 @@ class WeeklyTest(models.Model):
             return "PostClass"
         else:
             return "Weekly General"
+    
+    @property
+    def section_icon_css(self):
+        if self.preclass:
+            return "bx bxs-left-arrow"
+        elif self.inclass:
+            return "bx bxs-square"
+        elif self.postclass:
+            return "bx bxs-right-arrow"
+        else:
+            return "bx bx-question-mark"
+        
+    @property
+    def weeknum_str(self):
+        return f"week {self.weekly.weeknum}"
 
 
 class Question(models.Model):

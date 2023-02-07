@@ -155,45 +155,36 @@
   <div class="weekly-tests title-box">
     <div class="title">Weekly Test</div>
     <div class="content">
+      {% if classroom.non_live_tests.has_nl_tests %}
       <ul>
-
+        {% for up_test in classroom.non_live_tests.up_tests %}
         <li>
           <div class="test test-upcoming list-item">
             <i class='ico bx bxs-edit-alt'></i>
             <div class="info">
-              <div class="label-title">Test on electrical circuits 2 <div class="w-info-con"><span class="week-badge shadow-sm"><span class="w-num">week 1</span><i class='bx bxs-left-arrow'></i></span></div> </div>
-              <div class="held-on"><span class="sub-title">Schedule:</span><span class="time">7:00PM, 17 Oct 2022</span></div>
+              <div class="label-title">{{up_test.title}}<div class="w-info-con"><span class="week-badge shadow-sm"><span class="w-num">{{up_test.weeknum_str}}</span><i class='{{up_test.section_icon_css}}'></i></span></div> </div>
+              <div class="held-on"><span class="sub-title">Schedule:</span><span class="time">{{up_test.schedule|date:"c"}}</span></div>
             </div>
           </div>
         </li>
-
+        {% endfor %}
+        {% for prev_test in classroom.non_live_tests.prev_tests %}
         <li>
-          <a href="">
+          <a href="{% url 'weekly_test:view_test' prev_test.id %}">
             <div class="test list-item">
               <i class='ico bx bx-edit-alt'></i>
               <div class="info">
-                <div class="label-title">Test on electrical circuits 1 <div class="w-info-con"><span class="week-badge shadow-sm"><span class="w-num">week 1</span><i class='bx bxs-right-arrow'></i></span></div> </div>
-                <div class="held-on"><span class="sub-title">held on:</span><span class="time">7:00PM, 17 Oct 2022</span></div>
+                <div class="label-title">{{prev_test.title}}<div class="w-info-con"><span class="week-badge shadow-sm"><span class="w-num">{{prev_test.weeknum_str}}</span><i class='{{prev_test.section_icon_css}}'></i></span></div> </div>
+                <div class="held-on"><span class="sub-title">held on:</span><span class="time">{{prev_test.schedule|date:"c"}}</span></div>
               </div>
             </div>
           </a>
         </li>
-
-        <li>
-          <a href="">
-            <div class="test list-item">
-              <i class='ico bx bx-edit-alt'></i>
-              <div class="info">
-                <div class="label-title">Test on electrical circuits 1 <div class="w-info-con"><span class="week-badge"><span class="w-num">week 1</span><i class='bx bxs-square'></i></span></div> </div>
-                <div class="held-on"><span class="sub-title">held on:</span><span class="time">7:00PM, 17 Oct 2022</span></div>
-              </div>
-            </div>
-          </a>
-        </li>
-          
-          
+        {% endfor %}   
         </ul>
-      <!-- <div class="no-content"><i class='bx bx-info-circle'></i><span>No Tests</span></div> -->
+      {% else %}
+      <div class="no-content"><i class='bx bx-info-circle'></i><span>No Tests</span></div>
+      {% endif %}
     </div>
   </div>
 

@@ -70,16 +70,25 @@ class Classroom(models.Model):
             return final_qs.order_by("schedule")
         else:
             return test_qs.order_by("schedule")
+        
+    @property
+    def previous_tests(self):
+        test_qs = [w.all_prev_tests for w in self.weeklies]
+        if len(test_qs) > 1:
+            t_qs_0 = test_qs[0]
+            t_qs_others = test_qs[1:]
+            final_qs = t_qs_0.union(*t_qs_others)
+            return final_qs.order_by("schedule")
+        else:
+            return test_qs.order_by("schedule")
     
-    # @property
-    # def upcoming_and_prev_tests(self):
-    #     timenow = timezone.now()
-    #     up_tests = self.all_tests.filter(schedule__gt=timenow).order_by("schedule")
-    #     return up_tests
-    #     # assignments = self.task_set.filter(deadline__gt=timenow).order_by('deadline')
-    #     # num_events = len(exams) + len(assignments)
-    #     # hasevents = bool(num_events)
-    #     # return {'hasevents':hasevents, 'num_events':num_events, 'exams':exams, 'assignments':assignments}
+    @property
+    def non_live_tests(self):
+        up_tests = self.upcoming_tests
+        prev_tests = self.previous_tests
+        num_tests = len(up_tests) + len(prev_tests)
+        has_nl_tests = bool(num_tests)
+        return {'has_nl_tests':has_nl_tests, 'num_tests':num_tests, 'up_tests':up_tests, 'prev_tests':prev_tests}
     
     @property
     def ongoing_tests(self):
