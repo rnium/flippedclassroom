@@ -562,7 +562,7 @@
               <div class="bottom-panel">
                 <div class="user">
                   <div class="username">{{ post.author.account.user_full_name }}</div>
-                  {% if post.author in post.weekly.classroom.teachers.all %}<div class="teacher-badge"></div>{% else %}<div class="registration">Reg. No.</div>{% endif %}
+                  {% if post.author in post.weekly.classroom.teachers.all %}<div class="teacher-badge"></div>{% else %}<div class="registration">{{post.author.account.institutional_id}}</div>{% endif %}
                   <div class="avatar"><img src="{{ post.author.account.avatar_url }}" alt=""></div>
                 </div>
                 <div class="post-body">{{ post.postcontent }}</div>
