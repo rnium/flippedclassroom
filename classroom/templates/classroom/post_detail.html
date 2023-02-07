@@ -5,27 +5,18 @@
 {% endblock style %}
 {% block title %}<title>Post - {{ classroompost.description }}</title>{% endblock title %}
 {% block nav %}
-<ul class="navbar-nav ms-5 me-auto mb-2 mb-lg-0">
+<ul class="navbar-nav mb-2 mb-lg-0">
   <li class="nav-item">
     <a class="nav-link" aria-current="page" href="{% url 'classroom:classroom_detail' classroompost.classroom.id %}">Dashboard</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="{% url 'classroom:classroom_tests' classroompost.classroom.id %}">Tests</a>
+    <a class="nav-link" href="{% url 'classroom:classroom_connections' classroompost.classroom.id %}">Connections</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="{% url 'classroom:view_classroom_assignment' classroompost.classroom.id %}">Assignments</a>
-  </li>
-  <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-      Student
-    </a>
-    <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="{% url 'classroom:classroom_students' classroompost.classroom.id %}">Student list</a></li>
-      <li><a class="dropdown-item" href="{% url 'classroom:classroom_groups' classroompost.classroom.id %}">Student groups</a></li>
-    </ul>
+    <a class="nav-link" href="{% url 'classroom:view_assessment' classroompost.classroom.id %}">Assessment</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="{% url 'classroom:classroom_files' classroompost.classroom.id %}">Files</a>
+    <a class="nav-link" href="{% url 'classroom:classroom_about' classroompost.classroom.id %}">About</a>
   </li>
 </ul>
 {% endblock nav %}
@@ -53,7 +44,7 @@
                         </span>
                         <span>{{ attachemnt.filename }}</span>
                       </div>
-                      <a href="{{ attachemnt.attached_file.url }}"><i class='bx bxs-download'></i>Download</a>
+                      <a href="{{ attachemnt.attached_file.url }}" download=""><i class='bx bxs-download'></i>Download</a>
                     </div>
                     <embed class="file-embed" src="{{ attachemnt.attached_file.url }}">
                 </div>

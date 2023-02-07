@@ -7,16 +7,16 @@
 {% block nav %}
 <ul class="navbar-nav mb-2 mb-lg-0">
   <li class="nav-item">
-    <a class="nav-link" aria-current="page" href="#">Dashboard</a>
+    <a class="nav-link" aria-current="page" href="{% url 'classroom:classroom_detail' classroom.id %}">Dashboard</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="{% url 'classroom:classroom_connections' classroom.id %}">Connections</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">Assessment</a>
+    <a class="nav-link" href="{% url 'classroom:view_assessment' classroom.id %}">Assessment</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link active" href="#">About</a>
+    <a class="nav-link" href="{% url 'classroom:classroom_about' classroom.id %}">About</a>
   </li>
 </ul>
 {% endblock nav %}
