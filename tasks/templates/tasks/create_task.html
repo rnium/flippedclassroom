@@ -4,23 +4,20 @@
 <link rel="stylesheet" href="{% static 'classroom/styles/navbar.css' %}">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 {% endblock style %}
-{% block title %}<title>Create assignment</title>{% endblock title %}
+{% block title %}<title>Create task</title>{% endblock title %}
 {% block nav %}
 <ul class="navbar-nav mb-2 mb-lg-0">
   <li class="nav-item">
     <a class="nav-link" aria-current="page" href="{% url 'classroom:classroom_detail' classroom.id %}">Dashboard</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">Weeklies</a>
+    <a class="nav-link" href="{% url 'classroom:classroom_connections' classroom.id %}">Connections</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">Students</a>
+    <a class="nav-link" href="{% url 'classroom:view_assessment' classroom.id %}">Assessment</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">Assessment</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">About</a>
+    <a class="nav-link" href="{% url 'classroom:classroom_about' classroom.id %}">About</a>
   </li>
 </ul>
 {% endblock nav %}

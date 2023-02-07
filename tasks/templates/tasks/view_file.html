@@ -5,27 +5,37 @@
 {% endblock style %}
 {% block title %}<title>View Task</title>{% endblock title %}
 {% block nav %}
+{% if task_file %}
 <ul class="navbar-nav mb-2 mb-lg-0">
   <li class="nav-item">
-    {% if task_file %}
     <a class="nav-link" aria-current="page" href="{% url 'classroom:classroom_detail' current_file.task.classroom.id %}">Dashboard</a>
-    {% else %}
-    <a class="nav-link" aria-current="page" href="{% url 'classroom:classroom_detail' current_file.work.task.classroom.id %}">Dashboard</a>
-    {% endif %}
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">Weeklies</a>
+    <a class="nav-link" href="{% url 'classroom:classroom_connections' current_file.task.classroom.id %}">Connections</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">Students</a>
+    <a class="nav-link" href="{% url 'classroom:view_assessment' current_file.task.classroom.id %}">Assessment</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">Assessment</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">About</a>
+    <a class="nav-link" href="{% url 'classroom:classroom_about' current_file.task.classroom.id %}">About</a>
   </li>
 </ul>
+{% else %}
+<ul class="navbar-nav mb-2 mb-lg-0">
+  <li class="nav-item">
+    <a class="nav-link" aria-current="page" href="{% url 'classroom:classroom_detail' current_file.work.task.classroom.id %}">Dashboard</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'classroom:classroom_connections' current_file.work.task.classroom.id %}">Connections</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'classroom:view_assessment' current_file.work.task.classroom.id %}">Assessment</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'classroom:classroom_about' current_file.work.task.classroom.id %}">About</a>
+  </li>
+</ul>
+{% endif %}
 {% endblock nav %}
 
 {% block content %}
