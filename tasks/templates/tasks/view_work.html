@@ -104,8 +104,7 @@
       <ul>
         {% for member in work.group.members.all %}
         <li>
-          <div class="dp">
-            <img src="{{member.account.avatar_url}}" alt="">
+          <div class="dp" style="background-image: url('{{member.account.avatar_url}}');">
           </div>
           <div class="name">{{member.account.user_full_name}}</div>
         </li>
