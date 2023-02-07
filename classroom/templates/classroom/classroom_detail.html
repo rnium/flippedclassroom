@@ -163,7 +163,7 @@
             <i class='ico bx bxs-edit-alt'></i>
             <div class="info">
               <div class="label-title">{{up_test.title}}<div class="w-info-con"><span class="week-badge shadow-sm"><span class="w-num">{{up_test.weeknum_str}}</span><i class='{{up_test.section_icon_css}}'></i></span></div> </div>
-              <div class="held-on"><span class="sub-title">Schedule:</span><span class="time">{{up_test.schedule|date:"c"}}</span></div>
+              <div class="held-on"><span class="sub-title">Schedule:</span><span class="time" id="{{up_test.id}}">{{up_test.schedule|date:"c"}}</span></div>
             </div>
           </div>
         </li>
@@ -175,7 +175,7 @@
               <i class='ico bx bx-edit-alt'></i>
               <div class="info">
                 <div class="label-title">{{prev_test.title}}<div class="w-info-con"><span class="week-badge shadow-sm"><span class="w-num">{{prev_test.weeknum_str}}</span><i class='{{prev_test.section_icon_css}}'></i></span></div> </div>
-                <div class="held-on"><span class="sub-title">held on:</span><span class="time">{{prev_test.schedule|date:"c"}}</span></div>
+                <div class="held-on"><span class="sub-title">held on:</span><span class="time" id="testid-{{prev_test.id}}">{{prev_test.schedule|date:"c"}}</span></div>
               </div>
             </div>
           </a>
@@ -191,32 +191,40 @@
   <div class="weekly-tasks title-box">
     <div class="title">Assigned Task</div>
     <div class="content">
+      {% if classroom.all_tasks.has_tasks %}
       <ul>
-          <li>
-            <a href="">
-              <div class="assignment due list-item">
-                <i class='ico bx bxs-briefcase'></i>
-                <div class="info">
-                  <div class="label-title">assignment title</div>
-                  <div class="deadline"><span class="sub-title">Due:</span><span class="time">7:00PM, 17 Oct 2022</span></div>
-                </div>
+        {% for on_task in classroom.all_tasks.ongoing_task %}
+        <li>
+          <a href="">
+            <div class="assignment due list-item">
+              <i class='ico {{on_task.task_type_ico_css}}'></i>
+              <div class="info">
+                <div class="label-title">{{on_task.title}}<div class="w-info-con"><span class="week-badge shadow-sm"><span class="w-num">{{on_task.weeknum_str}}</span><i class='{{on_task.section_icon_css}}'></i></span></div></div>
+                <div class="deadline"><span class="sub-title">Ending:</span><span class="time" id="taskid-{{on_task.id}}">{{on_task.deadline|date:"c"}}</span></div>
               </div>
-            </a>
-          </li>
-
-          <li>
-            <a href="">
-              <div class="assignment list-item">
-                <i class='ico bx bx-briefcase' ></i>
-                <div class="info">
-                  <div class="label-title">assignment title</div>
-                  <div class="deadline"><span class="sub-title">Sumitted:</span><span class="time">7:00PM, 17 Oct 2022</span></div>
-                </div>
+            </div>
+          </a>
+        </li>
+        {% endfor %}
+        {% for p_task in classroom.all_tasks.prev_task %}
+        <li>
+          <a href="">
+            <div class="assignment list-item">
+              <i class='ico {{p_task.task_type_ico_css}}'></i>
+              <div class="info">
+                <div class="label-title">{{p_task.title}}<div class="w-info-con"><span class="week-badge shadow-sm"><span class="w-num">{{p_task.weeknum_str}}</span><i class='{{p_task.section_icon_css}}'></i></span></div></div>
+                <div class="deadline"><span class="sub-title">Ended:</span><span class="time" id="taskid-{{p_task.id}}">{{p_task.deadline|date:"c"}}</span></div>
               </div>
-            </a>
-          </li>
-        </ul>
-      <!-- <div class="no-content"><i class='bx bx-info-circle'></i><span>No upcoming events</span></div> -->
+            </div>
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+      {% else %}
+      <div class="no-content"><i class='bx bx-info-circle'></i><span>No Tasks</span></div>
+      {% endif %}
+      
+      
     </div>
   </div>
 

@@ -24,11 +24,10 @@ def createWeekly(request, cls_pk):
         return Response({'status':'post not found'}, status=status.HTTP_404_NOT_FOUND)
     serializer = WeeklySerializer(data=request.data)   
     classroom_weeklies = classroom.weekly_set.all().order_by('-weeknum')
+    latest_weeknum = 0
     if len(classroom_weeklies) > 0:
         latest_wk = classroom_weeklies[0]
         latest_weeknum = latest_wk.weeknum
-    else:
-        latest_weeknum == 0
     serializer.initial_data['classroom'] = classroom.id
     serializer.initial_data['weeknum'] = latest_weeknum + 1
     if serializer.is_valid():

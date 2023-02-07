@@ -56,6 +56,28 @@ class Task(models.Model):
                 return "Weekly General"
         else:
             return "General"
+        
+    @property
+    def section_icon_css(self):
+        if self.preclass:
+            return "bx bxs-left-arrow"
+        elif self.inclass:
+            return "bx bxs-square"
+        elif self.postclass:
+            return "bx bxs-right-arrow"
+        else:
+            return "bx bx-question-mark"
+        
+    @property
+    def weeknum_str(self):
+        return f"week {self.weekly.weeknum}"
+    
+    @property
+    def task_type_ico_css(self):
+        if self.is_group_task:
+            return 'bx bx-group'
+        else:
+            return 'bx bx-briefcase'
 
 
 class TaskAttachment(models.Model):

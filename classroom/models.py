@@ -68,8 +68,10 @@ class Classroom(models.Model):
             t_qs_others = test_qs[1:]
             final_qs = t_qs_0.union(*t_qs_others)
             return final_qs.order_by("schedule")
+        elif len(test_qs) == 1:
+            return test_qs[0].order_by("schedule")
         else:
-            return test_qs.order_by("schedule")
+            return self.weekly_set.none()
         
     @property
     def previous_tests(self):
@@ -79,8 +81,10 @@ class Classroom(models.Model):
             t_qs_others = test_qs[1:]
             final_qs = t_qs_0.union(*t_qs_others)
             return final_qs.order_by("schedule")
+        elif len(test_qs) == 1:
+            return test_qs[0].order_by("schedule")
         else:
-            return test_qs.order_by("schedule")
+            return self.weekly_set.none()
     
     @property
     def non_live_tests(self):
@@ -116,6 +120,26 @@ class Classroom(models.Model):
     @property
     def assigned_tasks(self):
         return self.task_set.all()
+    
+    @property
+    def current_tasks(self):
+        timenow = timezone.now()
+        qs = self.assigned_tasks.filter(deadline__gte=timenow)
+        return qs
+
+    @property
+    def prev_tasks(self):
+        timenow = timezone.now()
+        qs = self.assigned_tasks.filter(deadline__lt=timenow)
+        return qs
+    
+    @property
+    def all_tasks(self):
+        ongoing_task = self.current_tasks
+        prev_task = self.prev_tasks
+        num_tasks = len(ongoing_task) + len(prev_task)
+        has_tasks = bool(num_tasks)
+        return {'has_tasks':has_tasks, 'num_tasks':num_tasks, 'ongoing_task':ongoing_task, 'prev_task':prev_task}
     
     @property
     def assigned_group_tasks_list(self):
