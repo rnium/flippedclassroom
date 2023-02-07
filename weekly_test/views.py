@@ -92,8 +92,9 @@ def view_answersheet(request, pk):
 
 
 @login_required
-def edit_test(request, pk):
-    return render_underDev(request)
+def delete_test_get(request, pk):
+    test = get_object_or_404(WeeklyTest, pk=pk)
+    return render(request, 'weekly_test/exam_delete.html', context={'weeklytest':test})
 
 @login_required
 def take_test(request, pk):

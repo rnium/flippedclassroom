@@ -33,7 +33,7 @@
   </div>
 </div>
 <div class="test">
-  <div class="test-title">{{ weeklytest.title }}<a href="{% url 'weekly_test:edit_test' weeklytest.id %}" class="edit"><i class='bx bxs-edit'></i></a> </div>
+  <div class="test-title">{{ weeklytest.title }}<a href="{% url 'weekly_test:delete_test_get' weeklytest.id %}" class="edit"><i class='bx bx-trash-alt'></i></a> </div>
   <div class="info">
     <div class="num-ques"><span class="label">Number of questions:&nbsp;</span><span class="value">{{ weeklytest.num_questions }}</span></div>
     <div class="total-marks"><span class="label">Total marks:&nbsp;</span><span class="value">{{ weeklytest.total_marks }}</span></div>

@@ -101,8 +101,9 @@ body .main .test .test-title .edit {
 }
 
 body .main .test .test-title .edit i {
-  background-color: #e9f1ef;
-  color: #14aa78;
+  background-color: #f1e9ee;
+  color: #dd4a52;
+  text-shadow: 0 0 5px #f0baba;
   padding: 5px;
   border-radius: 180px;
 }
