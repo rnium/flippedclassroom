@@ -30,6 +30,46 @@
       <button id="share-link">copy join link <i class='bx bx-copy'></i><div id="copy-info" class="copy-info" style="display: none;">copied</div></button>
     </div>
   </div>
+  <div class="weeklies title-box">
+    <div class="title">Weeklies</div>
+    <div class="content">
+      {% if classroom.has_weeklies %}
+      <ul>
+        {% for weekly in classroom.weeklies %}
+        <li>
+          <a href="{% url 'weeklies:weeklydetail' weekly.classroom.id weekly.weeknum %}">
+            <div class="week">
+              <div class="week-no">
+                <span class="weektext">Week</span>
+                <span class="num">{{ weekly.weeknum }}</span>
+              </div>
+              <div class="icon">
+                <i class='bx bxs-calendar-week'></i>
+              </div>
+            </div>
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+      {% else %}
+      <div class="no-content">
+        <div class="icon-rotated"><i class='bx bx-calendar-week'></i></div>
+        <div class="info">No Weeklies</div>
+      </div>
+      {% endif %}
+      {% if request.user in classroom.teachers.all %}
+      <div class="create-weekly">
+        <div class="weekly-topic-inp-con" id="weekly-topic-inp-con" style="display: none;">
+          <input type="text" placeholder="Weekly Topic (optional)" id="weekly-topic-input">
+        </div>
+        <div class="btns" id="create-weekly-btns-con">
+          <button class="create" id="create-weekly-btn">Create Weekly</button>
+          <button class="cancel" id="create-weekly-cancel-btn" style="display: none;">Cancel</button>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  </div>
   {% if request.user in classroom.teachers.all %}
   <div class="postbox" id="id_postbox" href="#">
     <div class="form">
@@ -125,46 +165,6 @@
     </div>
   </div>
   {% endif %}
-  <div class="weeklies title-box">
-    <div class="title">Weeklies</div>
-    <div class="content">
-      {% if classroom.has_weeklies %}
-      <ul>
-        {% for weekly in classroom.weeklies %}
-        <li>
-          <a href="{% url 'weeklies:weeklydetail' weekly.classroom.id weekly.weeknum %}">
-            <div class="week">
-              <div class="week-no">
-                <span class="weektext">Week</span>
-                <span class="num">{{ weekly.weeknum }}</span>
-              </div>
-              <div class="icon">
-                <i class='bx bxs-calendar-week'></i>
-              </div>
-            </div>
-          </a>
-        </li>
-        {% endfor %}
-      </ul>
-      {% else %}
-      <div class="no-content">
-        <div class="icon-rotated"><i class='bx bx-calendar-week'></i></div>
-        <div class="info">No Weeklies</div>
-      </div>
-      {% endif %}
-      {% if request.user in classroom.teachers.all %}
-      <div class="create-weekly">
-        <div class="weekly-topic-inp-con" id="weekly-topic-inp-con" style="display: none;">
-          <input type="text" placeholder="Weekly Topic (optional)" id="weekly-topic-input">
-        </div>
-        <div class="btns" id="create-weekly-btns-con">
-          <button class="create" id="create-weekly-btn">Create Weekly</button>
-          <button class="cancel" id="create-weekly-cancel-btn" style="display: none;">Cancel</button>
-        </div>
-      </div>
-      {% endif %}
-    </div>
-  </div>
 
   <div class="weekly-tests title-box">
     <div class="title">Weekly Test</div>

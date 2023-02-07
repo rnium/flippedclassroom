@@ -170,19 +170,19 @@
     -webkit-box-shadow: 0 0 5px #dfdede;
             box-shadow: 0 0 5px #dfdede;
   }
-  body .main .right-col .weeklies .content {
+  body .main .left-col .weeklies .content {
     margin: 0.5rem !important;
   }
-  body .main .right-col .weeklies .content ul li a .week .week-no .weektext, body .main .right-col .weeklies .content ul li a .week .week-no .num {
+  body .main .left-col .weeklies .content ul li a .week .week-no .weektext, body .main .left-col .weeklies .content ul li a .week .week-no .num {
     font-size: 1.5rem !important;
   }
-  body .main .right-col .weeklies .content ul li a .week .icon i {
+  body .main .left-col .weeklies .content ul li a .week .icon i {
     font-size: 4rem !important;
   }
-  body .main .right-col .weeklies .content .create-weekly .weekly-topic-inp-con input {
+  body .main .left-col .weeklies .content .create-weekly .weekly-topic-inp-con input {
     font-size: 0.9rem !important;
   }
-  body .main .right-col .weeklies .content .create-weekly #create-weekly-btns-con button {
+  body .main .left-col .weeklies .content .create-weekly #create-weekly-btns-con button {
     font-size: 0.8rem !important;
     font-weight: 400 !important;
   }
@@ -917,27 +917,21 @@ body .main .left-col .recent-posts .loader {
   margin: 4rem 0;
 }
 
-body .main .right-col {
-  padding: 0 1rem;
-  -webkit-transition: all 100ms;
-  transition: all 100ms;
-}
-
-body .main .right-col .weeklies .content ul {
+body .main .left-col .weeklies .content ul {
   list-style-type: none;
   padding: 0;
   margin: 0;
 }
 
-body .main .right-col .weeklies .content ul li {
+body .main .left-col .weeklies .content ul li {
   margin-bottom: 7px;
 }
 
-body .main .right-col .weeklies .content ul li a {
+body .main .left-col .weeklies .content ul li a {
   text-decoration: none;
 }
 
-body .main .right-col .weeklies .content ul li a .week {
+body .main .left-col .weeklies .content ul li a .week {
   background-color: #d9eee7;
   border-radius: 5px;
   position: relative;
@@ -949,7 +943,7 @@ body .main .right-col .weeklies .content ul li a .week {
   transition: all 300ms;
 }
 
-body .main .right-col .weeklies .content ul li a .week .week-no {
+body .main .left-col .weeklies .content ul li a .week .week-no {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -966,7 +960,7 @@ body .main .right-col .weeklies .content ul li a .week .week-no {
           justify-content: center;
 }
 
-body .main .right-col .weeklies .content ul li a .week .week-no .weektext {
+body .main .left-col .weeklies .content ul li a .week .week-no .weektext {
   font-family: 'Gemunu Libre', sans-serif;
   font-size: 1.7rem;
   margin-right: 10px;
@@ -975,7 +969,7 @@ body .main .right-col .weeklies .content ul li a .week .week-no .weektext {
   text-shadow: 0 0 5px #c7e0d3;
 }
 
-body .main .right-col .weeklies .content ul li a .week .week-no .num {
+body .main .left-col .weeklies .content ul li a .week .week-no .num {
   font-size: 1.7rem;
   font-weight: 500;
   color: #039967;
@@ -983,13 +977,13 @@ body .main .right-col .weeklies .content ul li a .week .week-no .num {
   transition: all 300ms;
 }
 
-body .main .right-col .weeklies .content ul li a .week .icon {
+body .main .left-col .weeklies .content ul li a .week .icon {
   position: absolute;
   right: -10px;
   bottom: -15px;
 }
 
-body .main .right-col .weeklies .content ul li a .week .icon i {
+body .main .left-col .weeklies .content ul li a .week .icon i {
   font-size: 5rem;
   color: #1f8372cb;
   opacity: 0.7;
@@ -998,23 +992,23 @@ body .main .right-col .weeklies .content ul li a .week .icon i {
   transition: all 300ms;
 }
 
-body .main .right-col .weeklies .content ul li a:hover .week {
+body .main .left-col .weeklies .content ul li a:hover .week {
   background-color: #cce7de;
 }
 
-body .main .right-col .weeklies .content ul li a:hover .week .week-no .num {
+body .main .left-col .weeklies .content ul li a:hover .week .week-no .num {
   color: #02c26f;
 }
 
-body .main .right-col .weeklies .content ul li a:hover .week .icon i {
+body .main .left-col .weeklies .content ul li a:hover .week .icon i {
   color: #2ea57d;
 }
 
-body .main .right-col .weeklies .content ul li:last-of-type {
+body .main .left-col .weeklies .content ul li:last-of-type {
   margin-bottom: 0;
 }
 
-body .main .right-col .weeklies .content .no-content {
+body .main .left-col .weeklies .content .no-content {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1031,7 +1025,7 @@ body .main .right-col .weeklies .content .no-content {
           justify-content: center;
 }
 
-body .main .right-col .weeklies .content .no-content .icon-rotated {
+body .main .left-col .weeklies .content .no-content .icon-rotated {
   margin-right: 10px;
   -webkit-animation-name: rotate45degacc;
           animation-name: rotate45degacc;
@@ -1041,29 +1035,29 @@ body .main .right-col .weeklies .content .no-content .icon-rotated {
           animation-iteration-count: infinite;
 }
 
-body .main .right-col .weeklies .content .no-content .icon-rotated i {
+body .main .left-col .weeklies .content .no-content .icon-rotated i {
   font-size: 3rem;
   color: #adbeb5;
   text-shadow: 0 0 5px #eff3f1;
   opacity: 0.8;
 }
 
-body .main .right-col .weeklies .content .no-content .info {
+body .main .left-col .weeklies .content .no-content .info {
   font-family: 'Gemunu Libre', sans-serif;
   font-size: 1.5rem;
   color: #adbeb5;
 }
 
-body .main .right-col .weeklies .content .create-weekly {
+body .main .left-col .weeklies .content .create-weekly {
   margin-top: 1.5rem;
 }
 
-body .main .right-col .weeklies .content .create-weekly .weekly-topic-inp-con {
+body .main .left-col .weeklies .content .create-weekly .weekly-topic-inp-con {
   width: 100%;
   margin-bottom: 0.7rem;
 }
 
-body .main .right-col .weeklies .content .create-weekly .weekly-topic-inp-con input[type='text'] {
+body .main .left-col .weeklies .content .create-weekly .weekly-topic-inp-con input[type='text'] {
   width: 100%;
   color: #00806b;
   border-radius: 10px;
@@ -1071,40 +1065,40 @@ body .main .right-col .weeklies .content .create-weekly .weekly-topic-inp-con in
   border: 1px solid #aed3c7;
 }
 
-body .main .right-col .weeklies .content .create-weekly .weekly-topic-inp-con input[type='text']:focus {
+body .main .left-col .weeklies .content .create-weekly .weekly-topic-inp-con input[type='text']:focus {
   outline: 2px solid #01a16c;
   border-color: #01a16c;
   -webkit-box-shadow: 0 0 5px #a1a1a1;
           box-shadow: 0 0 5px #a1a1a1;
 }
 
-body .main .right-col .weeklies .content .create-weekly .weekly-topic-inp-con input[type='text']::-moz-selection {
+body .main .left-col .weeklies .content .create-weekly .weekly-topic-inp-con input[type='text']::-moz-selection {
   background-color: #24ce95;
   color: white;
 }
 
-body .main .right-col .weeklies .content .create-weekly .weekly-topic-inp-con input[type='text']::selection {
+body .main .left-col .weeklies .content .create-weekly .weekly-topic-inp-con input[type='text']::selection {
   background-color: #24ce95;
   color: white;
 }
 
-body .main .right-col .weeklies .content .create-weekly .weekly-topic-inp-con input[type='text']::-webkit-input-placeholder {
+body .main .left-col .weeklies .content .create-weekly .weekly-topic-inp-con input[type='text']::-webkit-input-placeholder {
   color: #6aa17f;
 }
 
-body .main .right-col .weeklies .content .create-weekly .weekly-topic-inp-con input[type='text']:-ms-input-placeholder {
+body .main .left-col .weeklies .content .create-weekly .weekly-topic-inp-con input[type='text']:-ms-input-placeholder {
   color: #6aa17f;
 }
 
-body .main .right-col .weeklies .content .create-weekly .weekly-topic-inp-con input[type='text']::-ms-input-placeholder {
+body .main .left-col .weeklies .content .create-weekly .weekly-topic-inp-con input[type='text']::-ms-input-placeholder {
   color: #6aa17f;
 }
 
-body .main .right-col .weeklies .content .create-weekly .weekly-topic-inp-con input[type='text']::placeholder {
+body .main .left-col .weeklies .content .create-weekly .weekly-topic-inp-con input[type='text']::placeholder {
   color: #6aa17f;
 }
 
-body .main .right-col .weeklies .content .create-weekly .btns {
+body .main .left-col .weeklies .content .create-weekly .btns {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1118,12 +1112,12 @@ body .main .right-col .weeklies .content .create-weekly .btns {
           align-items: center;
 }
 
-body .main .right-col .weeklies .content .create-weekly .btns button {
+body .main .left-col .weeklies .content .create-weekly .btns button {
   -webkit-transition: all 300ms;
   transition: all 300ms;
 }
 
-body .main .right-col .weeklies .content .create-weekly .btns button.create {
+body .main .left-col .weeklies .content .create-weekly .btns button.create {
   color: white;
   background-color: #57c488;
   -webkit-box-shadow: 0 0 5px #c4dbd0;
@@ -1135,20 +1129,20 @@ body .main .right-col .weeklies .content .create-weekly .btns button.create {
   width: 100%;
 }
 
-body .main .right-col .weeklies .content .create-weekly .btns button.create:hover {
+body .main .left-col .weeklies .content .create-weekly .btns button.create:hover {
   background-color: #8dc0ab;
   border-color: #8dc0ab;
   color: white;
 }
 
-body .main .right-col .weeklies .content .create-weekly .btns.double button.create {
+body .main .left-col .weeklies .content .create-weekly .btns.double button.create {
   width: 68%;
   margin-right: 2%;
   background-color: #07a570;
   border-color: #07a570;
 }
 
-body .main .right-col .weeklies .content .create-weekly .btns.double button.cancel {
+body .main .left-col .weeklies .content .create-weekly .btns.double button.cancel {
   width: 30%;
   color: #8fc5b0;
   background-color: white;
@@ -1158,9 +1152,15 @@ body .main .right-col .weeklies .content .create-weekly .btns.double button.canc
   border-radius: 180px;
 }
 
-body .main .right-col .weeklies .content .create-weekly .btns.double button.cancel:hover {
+body .main .left-col .weeklies .content .create-weekly .btns.double button.cancel:hover {
   background-color: #8fc5b0;
   color: white;
+}
+
+body .main .right-col {
+  padding: 0 1rem;
+  -webkit-transition: all 100ms;
+  transition: all 100ms;
 }
 
 body .main .right-col .upcoming .content ul {
