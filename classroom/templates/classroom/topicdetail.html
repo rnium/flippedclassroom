@@ -42,7 +42,7 @@
         <div class="post-item">
             <div class="contents">
                 <a href="{% url 'classroom:post_detail' post.id %}" class="title">{{ post.description }}</a>
-                <div class="post-time">{{ post.posted }}</div>
+                <div class="post-time time" id="post-{{post.id}}-time">{{ post.posted|date:"c" }}</div>
                 {% if post.has_topics %}
                 <div class="topics">
                     {% for post_topic in post.topics.all %}
@@ -55,16 +55,12 @@
                     <div class="info-item"><i class='bx bx-comment'></i><span>{{ post.num_comments }} comments</span></div>
                 </div>
             </div>
-            <div class="options">
-                <div class="options-container" id="post0-op-con" style="display: none;">
-                    <a href="">Edit</a>
-                    <a href="">Delete</a>
-                </div>
-                <button class="option-toggle" id="post0-option-toggle" data-op_con="post0-op-con"><i
-                        class='bx bx-dots-horizontal-rounded'></i></button>
-            </div>
         </div>
         {% endfor %}
     </div>
 </div>
 {% endblock content %}
+
+{% block script %}
+<script src="{% static 'classroom/scripts/localtimes.js' %}"></script>
+{% endblock script %}
