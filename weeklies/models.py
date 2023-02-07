@@ -248,6 +248,11 @@ class Weekly(models.Model):
         prev_tests = self.weeklytest_set.filter(expiration__lt=timenow)
         return prev_tests
     
+    @property
+    def ongoing_test(self):
+        timenow = timezone.now()
+        return self.weeklytest_set.filter(schedule__lte=timenow, expiration__gt=timenow)
+    
      
 class PreClassFile(models.Model):
     def filepath(self, filename):

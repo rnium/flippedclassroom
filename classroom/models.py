@@ -96,9 +96,28 @@ class Classroom(models.Model):
     
     @property
     def ongoing_tests(self):
-        timenow = timezone.now()
-        tests = self.test_set.filter(schedule__lte=timenow, expired=False).order_by("-created")
-        return tests
+        test_qs = [w.ongoing_test for w in self.weeklies]
+        if len(test_qs) > 1:
+            t_qs_0 = test_qs[0]
+            t_qs_others = test_qs[1:]
+            final_qs = t_qs_0.union(*t_qs_others)
+            return final_qs.order_by("schedule")
+        elif len(test_qs) == 1:
+            return test_qs[0].order_by("schedule")
+        else:
+            return self.weekly_set.none()
+    
+    def students_non_participating_ongoing_tests(self, student):
+       test_qs = [w.ongoing_test.exclude(answersheet__user=student) for w in self.weeklies]
+       if len(test_qs) > 1:
+           t_qs_0 = test_qs[0]
+           t_qs_others = test_qs[1:]
+           final_qs = t_qs_0.union(*t_qs_others)
+           return final_qs.order_by("schedule")
+       elif len(test_qs) == 1:
+           return test_qs[0].order_by("schedule")
+       else:
+           return self.weekly_set.none()
 
     @property
     def weeklies(self):

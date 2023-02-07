@@ -62,7 +62,7 @@ class ClassroomDetail(LoginRequiredMixin, DetailView):
             if query_set.count() > 0:
                 context['teacher_tests'] = query_set
         elif self.request.user in classroom.students.all():
-            query_set = classroom.ongoing_tests.exclude(answersheet__user=self.request.user)
+            query_set = classroom.students_non_participating_ongoing_tests(student=self.request.user)
             if query_set.count() > 0:
                 context['student_tests'] = query_set
         return context

@@ -1322,6 +1322,60 @@ body .main .right-col .live-tests .content ul li .test-item .info a.label-title:
   color: #68c094;
 }
 
+body .main .right-col .live-tests .content ul li .test-item .info .ending-time {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 5px;
+}
+
+body .main .right-col .live-tests .content ul li .test-item .info .ending-time i {
+  color: #1bc396;
+  text-shadow: 0 0 3px #d6e7e1;
+  background-color: inherit;
+  padding: 0;
+  font-size: 1.1rem !important;
+  margin: 0;
+  margin-right: 3px;
+}
+
+body .main .right-col .live-tests .content ul li .test-item .info .ending-time .time-con {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 0.7rem;
+}
+
+body .main .right-col .live-tests .content ul li .test-item .info .ending-time .time-con .label {
+  font-weight: 500;
+  text-shadow: 0 0 3px #d6e7e1;
+  margin-right: 3px;
+  font-family: 'Gemunu Libre', sans-serif;
+}
+
+body .main .right-col .live-tests .content ul li .test-item .info .ending-time .time-con span {
+  color: #50af96;
+}
+
 body .main .right-col .live-tests .content ul li .test-item .info .stat {
   display: -webkit-box;
   display: -ms-flexbox;

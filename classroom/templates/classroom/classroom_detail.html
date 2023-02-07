@@ -76,7 +76,14 @@
           <div class="test-item">
             <i class='bx bx-edit-alt'></i>
             <div class="info">
-              <a href="{% url 'exam:view_test' test.id %}" class="label-title">{{ test.title }}</a>
+              <a href="{% url 'weekly_test:view_test' test.id %}" class="label-title">{{ test.title }}</a>
+              <div class="ending-time">
+                <i class='bx bx-timer'></i>
+                <div class="time-con">
+                  <span class="label">Ending in:</span>
+                  <span class="time" id="testid-{{test.id}}">{{test.expiration|date:"c"}}</span>
+                </div>
+              </div>
               <div class="stat">
                 <div class="issued"><i class='bx bx-user-check'></i><span>Issued:&nbsp;</span><span class="value" id="{{test.id}}-issued">{{ test.num_answer_sheets }}</span></div>
                 <div class="submitted"><i class='bx bx-check-double'></i><span>Submitted:&nbsp;</span><span class="value" id="{{test.id}}-submitted">{{ test.num_submitted_answer_sheets }}</span></div>
@@ -100,8 +107,15 @@
             <i class='bx bx-edit-alt'></i>
             <div class="info">
               <div class="label-title">{{ test.title }}</div>
+              <div class="ending-time">
+                <i class='bx bx-timer'></i>
+                <div class="time-con">
+                  <span class="label">Ending in:</span>
+                  <span class="time" id="testid-{{test.id}}">{{test.expiration|date:"c"}}</span>
+                </div>
+              </div>
               <div class="action">
-                <a href="{% url 'exam:take_test' test.id %}">Take the test</a>
+                <a href="{% url 'weekly_test:take_test' test.id %}">Take the test</a>
               </div>
             </div>
           </div>
@@ -195,7 +209,7 @@
       <ul>
         {% for on_task in classroom.all_tasks.ongoing_task %}
         <li>
-          <a href="">
+          <a href="{% url 'classroom:tasks:view_task' on_task.classroom.id on_task.id %}">
             <div class="assignment due list-item">
               <i class='ico {{on_task.task_type_ico_css}}'></i>
               <div class="info">
@@ -208,7 +222,7 @@
         {% endfor %}
         {% for p_task in classroom.all_tasks.prev_task %}
         <li>
-          <a href="">
+          <a href="{% url 'classroom:tasks:view_task' p_task.classroom.id p_task.id %}">
             <div class="assignment list-item">
               <i class='ico {{p_task.task_type_ico_css}}'></i>
               <div class="info">
