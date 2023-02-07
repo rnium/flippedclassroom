@@ -189,6 +189,13 @@
                       <i class='bx bx-edit-alt'></i>
                       <div class="info">
                         <a href="{% url 'weekly_test:view_test' test.id %}" class="label-title">{{ test.title }}</a>
+                        <div class="ending-time">
+                          <i class='bx bx-timer'></i>
+                          <div class="time-con">
+                            <span class="label">Ending in:</span>
+                            <span class="time" id="testid-{{test.id}}">{{test.expiration|date:"c"}}</span>
+                          </div>
+                        </div>
                         <div class="stat">
                           <div class="issued"><i class='bx bx-user-check'></i><span>Issued:&nbsp;</span><span class="value"
                               id="test0-issued">{{ test.issued_answer_sheets.count }}</span></div>
@@ -420,6 +427,13 @@
                       <i class='bx bx-edit-alt'></i>
                       <div class="info">
                         <a href="{% url 'weekly_test:view_test' test.id %}" class="label-title">{{ test.title }}</a>
+                        <div class="ending-time">
+                          <i class='bx bx-timer'></i>
+                          <div class="time-con">
+                            <span class="label">Ending in:</span>
+                            <span class="time" id="testid-{{test.id}}">{{test.expiration|date:"c"}}</span>
+                          </div>
+                        </div>
                         <div class="stat">
                           <div class="issued"><i class='bx bx-user-check'></i><span>Issued:&nbsp;</span><span class="value"
                               id="test0-issued">{{ test.issued_answer_sheets.count }}</span></div>
@@ -653,6 +667,13 @@
                       <i class='bx bx-edit-alt'></i>
                       <div class="info">
                         <a href="{% url 'weekly_test:view_test' test.id %}" class="label-title">{{ test.title }}</a>
+                        <div class="ending-time">
+                          <i class='bx bx-timer'></i>
+                          <div class="time-con">
+                            <span class="label">Ending in:</span>
+                            <span class="time" id="testid-{{test.id}}">{{test.expiration|date:"c"}}</span>
+                          </div>
+                        </div>
                         <div class="stat">
                           <div class="issued"><i class='bx bx-user-check'></i><span>Issued:&nbsp;</span><span class="value"
                               id="test0-issued">{{ test.issued_answer_sheets.count }}</span></div>

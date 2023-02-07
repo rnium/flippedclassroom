@@ -130,6 +130,13 @@
                       <i class='bx bx-edit-alt'></i>
                       <div class="info">
                         <div class="label-title">{{ test.title }}</div>
+                        <div class="ending-time">
+                          <i class='bx bx-timer'></i>
+                          <div class="time-con">
+                            <span class="label">Ending in:</span>
+                            <span class="time" id="testid-{{test.id}}">{{test.expiration|date:"c"}}</span>
+                          </div>
+                        </div>
                         <div class="action">
                           <a href="{% url 'weekly_test:take_test' test.id %}">Participate</a>
                         </div>
@@ -297,6 +304,13 @@
                       <i class='bx bx-edit-alt'></i>
                       <div class="info">
                         <div class="label-title">{{ test.title }}</div>
+                        <div class="ending-time">
+                          <i class='bx bx-timer'></i>
+                          <div class="time-con">
+                            <span class="label">Ending in:</span>
+                            <span class="time" id="testid-{{test.id}}">{{test.expiration|date:"c"}}</span>
+                          </div>
+                        </div>
                         <div class="action">
                           <a href="{% url 'weekly_test:take_test' test.id %}">Participate</a>
                         </div>
@@ -464,6 +478,13 @@
                       <i class='bx bx-edit-alt'></i>
                       <div class="info">
                         <div class="label-title">{{ test.title }}</div>
+                        <div class="ending-time">
+                          <i class='bx bx-timer'></i>
+                          <div class="time-con">
+                            <span class="label">Ending in:</span>
+                            <span class="time" id="testid-{{test.id}}">{{test.expiration|date:"c"}}</span>
+                          </div>
+                        </div>
                         <div class="action">
                           <a href="{% url 'weekly_test:take_test' test.id %}">Participate</a>
                         </div>
