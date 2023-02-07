@@ -23,7 +23,7 @@
               <i class='bx bx-group'></i><span>{{ classroom.num_students }} Students</span>
             </div>
             <div class="event-info i-item">
-              <i class='bx bx-calendar-event'></i><span>{{classroom.upcoming_events.num_events}} upcoming events</span>
+              <i class='bx bx-calendar-event'></i><span>{{classroom.num_weeklies}} Weeklies</span>
             </div>
           </div>
         </a>
@@ -48,7 +48,7 @@
               <i class='bx bx-history'></i><span>last posted: {% if classroom.last_post_time %}{{ classroom.last_post_time|date:'j M, Y' }}{% else %}Never{% endif %}</span>
             </div>
             <div class="event-info i-item">
-              <i class='bx bx-calendar-event'></i><span>{{classroom.upcoming_events.num_events}} upcoming events</span>
+              <i class='bx bx-calendar-event'></i><span>{{classroom.num_weeklies}} weeklies</span>
             </div>
           </div>
         </a>
