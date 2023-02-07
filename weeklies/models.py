@@ -17,7 +17,7 @@ class Weekly(models.Model):
         default = get_uuid,
         editable = False,
     )
-    weeknum = models.IntegerField(unique=True)
+    weeknum = models.IntegerField()
     topic = models.CharField(max_length=100, blank=True, null=True)
     classroom = models.ForeignKey(Classroom, on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True)
