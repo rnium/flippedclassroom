@@ -1,4 +1,4 @@
-function deletePost(btn_id, success_callback){
+function deleteTest(btn_id, success_callback){
     $.ajax({
         type: "delete",
         url: delete_test_api_url,
@@ -22,7 +22,7 @@ $(document).ready(function () {
     $("#test-del-btn").on('click', ()=>{
         let confirmation = confirm("Confirm action?")
         if (confirmation) {
-            deletePost('test-del-btn', ()=>{
+            deleteTest('test-del-btn', ()=>{
                 window.location.href = clssroom_url
             })
         }
