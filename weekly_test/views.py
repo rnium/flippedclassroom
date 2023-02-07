@@ -94,7 +94,10 @@ def view_answersheet(request, pk):
 @login_required
 def delete_test_get(request, pk):
     test = get_object_or_404(WeeklyTest, pk=pk)
-    return render(request, 'weekly_test/exam_delete.html', context={'weeklytest':test})
+    if request.user in test.weekly.classroom.teachers.all():
+        return render(request, 'weekly_test/exam_delete.html', context={'weeklytest':test})
+    else:
+        return render_info_or_error(request, "Unauthorized", "You have no permission to perform this action!", "error")
 
 @login_required
 def take_test(request, pk):

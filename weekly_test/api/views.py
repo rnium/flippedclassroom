@@ -77,6 +77,16 @@ def issue_answer_sheet(request):
         return Response(data={'pk': answer_sheet_pk, 'duration':duration_seconds, 'endtime':endtime})
 
 
+@api_view(["DELETE"])
+@permission_classes([IsAuthenticated])
+def delete_test(request, pk):
+    test = get_object_or_404(WeeklyTest, pk=pk)
+    if request.user in test.weekly.classroom.teachers.all():
+        test.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+    else:
+        return Response(status=status.HTTP_403_FORBIDDEN)
+
 
 @api_view(["POST"])
 @permission_classes([IsAuthenticated])
