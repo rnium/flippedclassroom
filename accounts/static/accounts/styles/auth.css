@@ -13,7 +13,7 @@ body {
 
 body .container {
   margin-top: 1rem;
-  min-height: 97vh;
+  min-height: 70vh;
 }
 
 body .container .form {
@@ -156,7 +156,6 @@ body .container .form .login-info a:hover {
 
 body .container .login-form {
   padding: 1.5rem 2rem 1rem;
-  width: 30rem;
 }
 
 body .container.login {
@@ -174,10 +173,10 @@ body .container.login {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  width: 96%;
 }
 
 body footer {
-  height: 3vh;
   margin: 1rem 0;
   text-align: center;
   font-family: 'Gemunu Libre', sans-serif;

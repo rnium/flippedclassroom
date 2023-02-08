@@ -57,6 +57,15 @@ def view_test(request, pk):
         return redirect("weekly_test:view_answersheet", pk=answersheet.id) 
 
 
+@login_required
+def view_ques(request, pk):
+    test = get_object_or_404(WeeklyTest, pk=pk)
+    if request.user in test.weekly.classroom.teachers.all():
+        return render(request, "weekly_test/view_q.html", context={"weeklytest":test})
+    else:
+        return render_info_or_error(request, "Unauthorized", "You have no permission to view this page", "error")
+
+
 class AnswersheetView(LoginRequiredMixin, DetailView):
     template_name = "weekly_test/view_answersheet.html"
     model = AnswerSheet

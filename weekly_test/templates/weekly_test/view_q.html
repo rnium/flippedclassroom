@@ -1,0 +1,129 @@
+{% extends 'classroom/base.html' %}
+{% block style %} {% load static %}
+<link rel="stylesheet" href="{% static 'weekly_test/styles/view_q.css' %}">
+<link rel="stylesheet" href="{% static 'classroom/styles/navbar.css' %}">
+{% endblock style %}
+{% block title %}<title>Test report</title>{% endblock title %}
+{% block nav %}
+<ul class="navbar-nav mb-2 mb-lg-0">
+  <li class="nav-item">
+    <a class="nav-link" aria-current="page" href="{% url 'classroom:classroom_detail' weeklytest.weekly.classroom.id %}">Dashboard</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'classroom:classroom_connections' weeklytest.weekly.classroom.id %}">Connections</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'classroom:view_assessment' weeklytest.weekly.classroom.id %}">Assessment</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'classroom:classroom_about' weeklytest.weekly.classroom.id %}">About</a>
+  </li>
+</ul>
+{% endblock nav %}
+
+{% block content %}
+<div class="container">
+    <div class="home-links">
+        <a href="{% url 'classroom:classroom_detail' weeklytest.weekly.classroom.id %}">{{weeklytest.weekly.classroom.name|truncatechars:12}}</a>
+        <i class='bx bxs-chevron-right' ></i>
+        <a href="{% url 'weeklies:weeklydetail' weeklytest.weekly.classroom.id weeklytest.weekly.weeknum %}">Week {{weeklytest.weekly.weeknum}}</a>
+        <i class='bx bxs-chevron-right' ></i>
+        <span class="current">{{weeklytest.weekly_section}}</span>
+    </div>
+    <div class="exam-header">
+        <div class="title">
+            <div class="heading">{{weeklytest.title}} <a href="{% url 'weekly_test:delete_test_get' weeklytest.id %}" class="edit"><i class='bx bx-trash-alt'></i></a> </div>
+            <div class="times">
+                <div class="schedule-time">
+                    <i class='bx bx-time-five' ></i>
+                    <span class="time" id="test-schedule-time">{{weeklytest.schedule|date:"c"}}</span>
+                </div>
+                <div class="expiration-time">
+                    <i class='bx bx-timer'></i>
+                    <span class="time" id="test-expiration-time">{{weeklytest.expiration|date:"c"}}</span>
+                </div>
+            </div>
+            <div class="description">{{weeklytest.info}}</div>
+        </div>
+        <div class="exam-info">
+            <div class="marks info-item">
+                <span class="label">Total Marks:</span>
+                <span class="value">{{weeklytest.total_marks}}</span>
+            </div>
+            <div class="time-info info-item">
+                <span class="label">Time:</span>
+                <span id="duration-hr-container"><span class="value" id="duration-hr">--</span><span class="timeunit">hr</span></span>&nbsp;<span class="value"  id="duration-min">--</span><span class="timeunit">min</span>
+            </div>
+        </div>
+    </div>
+    <div id="id_ans-q-form-container">
+        {% for question in weeklytest.question_set.all %}
+        {% if question.is_descriptive %}
+        {% if question.ans_as_img %}
+        <div class="q qtype-image shadow-sm" id="qid_0">
+            <div class="qno-count-container">
+                <div class="qno-count-inner">
+                    <div class="label">Question number:&nbsp;</div>
+                    <div class="qno-count" id="qid_{{question.id}}-count">-</div>
+                </div>
+                <div class="qtype-info">{{question.get_mark}}</div>
+            </div>
+            <div class="content">
+                <div class="q-title">{{question.statement}}</div>
+                <div class="q-info">
+                    <i class='bx bxs-cube-alt'></i>
+                    <div class="info-main">Descriptive answer as image</div>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <div class="q qtype-text" id="qid_2">
+            <div class="qno-count-container">
+                <div class="qno-count-inner">
+                    <div class="label">Question number:&nbsp;</div>
+                    <div class="qno-count" id="qid_{{question.id}}-count">-</div>
+                </div>
+                <div class="qtype-info">{{question.get_mark}}</div>
+            </div>
+            <div class="content">
+                <div class="q-title" id="qid_2-title">{{question.statement}}</div>
+                <div class="q-info">
+                    <i class='bx bx-detail'></i>
+                    <div class="info-main">Descriptive answer</div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        {% else %}
+        <div class="q qtype-mcq" id="qid_{{question.id}}">
+            <div class="qno-count-container">
+                <div class="qno-count-inner">
+                    <div class="label">Question number:&nbsp;</div>
+                    <div class="qno-count" id="qid_{{question.id}}-count">-</div>
+                </div>
+                <div class="qtype-info">{{question.get_mark}}</div>
+            </div>
+            <div class="content">
+                <div class="q-title" id="qid_{{question.id}}-title">{{question.statement}}</div>
+                {% for option in question.mcqoption_set.all %}
+                <div class="choice-container">
+                    <input type="radio" id="op{{ option.id }}" name="mcq-{{ question.id }}" disabled="" {% if option.is_correct %}checked="checked"{% endif %}>
+                    <label for="op{{ option.id }}" id="op{{ option.id }}-label" class='op-label'>-</label>
+                    <div class="choice-text">{{ option.option_text }}</div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}
+
+{% block script %}
+<script src="{% static 'classroom/scripts/localtimes.js' %}"></script>
+<script src="{% static 'weekly_test/scripts/view_q.js' %}"></script>
+<script>
+    const duration = {{weeklytest.duration_seconds}}
+</script>
+{% endblock script %}
