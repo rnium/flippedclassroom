@@ -214,13 +214,15 @@
                 <ul>
                   {% for upcoming_test in weekly.preClassUpcomingTest %}
                   <li>
-                    <div class="test test-upcoming list-item">
-                      <i class='bx bxs-edit-alt'></i>
-                      <div class="info">
-                        <div class="label-title">{{ upcoming_test.title }}</div>
-                        <div class="held-on"><span class="sub-title">Schedule:</span><span class="time" id="test-{{upcoming_test.id}}">{{ upcoming_test.schedule|date:"c" }}</span></div>
+                    <a href="{% url 'weekly_test:view_ques' upcoming_test.id %}">
+                      <div class="test test-upcoming list-item">
+                        <i class='bx bxs-edit-alt'></i>
+                        <div class="info">
+                          <div class="label-title">{{ upcoming_test.title }}</div>
+                          <div class="held-on"><span class="sub-title">Schedule:</span><span class="time" id="test-{{upcoming_test.id}}">{{ upcoming_test.schedule|date:"c" }}</span></div>
+                        </div>
                       </div>
-                    </div>
+                    </a>
                   </li>
                   {% endfor %}
                   {% for prev_test in weekly.preClassPreviousTest %}
@@ -452,13 +454,15 @@
                 <ul>
                   {% for upcoming_test in weekly.inClassUpcomingTest %}
                   <li>
-                    <div class="test test-upcoming list-item">
-                      <i class='bx bxs-edit-alt'></i>
-                      <div class="info">
-                        <div class="label-title">{{ upcoming_test.title }}</div>
-                        <div class="held-on"><span class="sub-title">Schedule:</span><span class="time" id="test-{{upcoming_test.id}}">{{ upcoming_test.schedule|date:"c" }}</span></div>
+                    <a href="{% url 'weekly_test:view_ques' upcoming_test.id %}">
+                      <div class="test test-upcoming list-item">
+                        <i class='bx bxs-edit-alt'></i>
+                        <div class="info">
+                          <div class="label-title">{{ upcoming_test.title }}</div>
+                          <div class="held-on"><span class="sub-title">Schedule:</span><span class="time" id="test-{{upcoming_test.id}}">{{ upcoming_test.schedule|date:"c" }}</span></div>
+                        </div>
                       </div>
-                    </div>
+                    </a>
                   </li>
                   {% endfor %}
                   {% for prev_test in weekly.inClassPreviousTest %}
@@ -692,13 +696,15 @@
                 <ul>
                   {% for upcoming_test in weekly.postClassUpcomingTest %}
                   <li>
-                    <div class="test test-upcoming list-item">
-                      <i class='bx bxs-edit-alt'></i>
-                      <div class="info">
-                        <div class="label-title">{{ upcoming_test.title }}</div>
-                        <div class="held-on"><span class="sub-title">Schedule:</span><span class="time"  id="test-{{upcoming_test.id}}">{{ upcoming_test.schedule|date:"c" }}</span></div>
+                    <a href="{% url 'weekly_test:view_ques' upcoming_test.id %}">
+                      <div class="test test-upcoming list-item">
+                        <i class='bx bxs-edit-alt'></i>
+                        <div class="info">
+                          <div class="label-title">{{ upcoming_test.title }}</div>
+                          <div class="held-on"><span class="sub-title">Schedule:</span><span class="time" id="test-{{upcoming_test.id}}">{{ upcoming_test.schedule|date:"c" }}</span></div>
+                        </div>
                       </div>
-                    </div>
+                    </a>
                   </li>
                   {% endfor %}
                   {% for prev_test in weekly.postClassPreviousTest %}
