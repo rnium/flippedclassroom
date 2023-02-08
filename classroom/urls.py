@@ -1,6 +1,5 @@
 from django.urls import path, include
 from .views import *
-from exam.views import classroom_tests
 app_name = 'classroom'
 
 urlpatterns = [
@@ -34,8 +33,6 @@ urlpatterns = [
     path('classroom/<str:pk>/groups', classroom_groups, name="classroom_groups"),
     # files
     path('classroom/<str:pk>/files', classroom_files, name="classroom_files"),
-    # tests
-    path('classroom/<str:pk>/tests', classroom_tests, name="classroom_tests"),
     # tasks
     path('classroom/<str:cls_pk>/task/', include("tasks.urls")),
 ]
