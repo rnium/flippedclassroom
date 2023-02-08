@@ -171,6 +171,21 @@
     <div class="content">
       {% if classroom.non_live_tests.has_nl_tests %}
       <ul>
+        {% if request.user in classroom.teachers.all %}
+        {% for up_test in classroom.non_live_tests.up_tests %}
+        <li>
+          <a href="{% url 'weekly_test:view_ques' up_test.id %}">
+            <div class="test test-upcoming list-item">
+              <i class='ico bx bxs-edit-alt'></i>
+              <div class="info">
+                <div class="label-title">{{up_test.title}}<div class="w-info-con"><span class="week-badge shadow-sm"><span class="w-num">{{up_test.weeknum_str}}</span><i class='{{up_test.section_icon_css}}'></i></span></div> </div>
+                <div class="held-on"><span class="sub-title">Schedule:</span><span class="time" id="{{up_test.id}}">{{up_test.schedule|date:"c"}}</span></div>
+              </div>
+            </div>
+          </a>
+        </li>
+        {% endfor %}
+        {% else %}
         {% for up_test in classroom.non_live_tests.up_tests %}
         <li>
           <div class="test test-upcoming list-item">
@@ -182,6 +197,7 @@
           </div>
         </li>
         {% endfor %}
+        {% endif %}
         {% for prev_test in classroom.non_live_tests.prev_tests %}
         <li>
           <a href="{% url 'weekly_test:view_test' prev_test.id %}">
