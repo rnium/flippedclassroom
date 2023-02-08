@@ -32,7 +32,7 @@
     <div class="info-text">You're about to delete this test and all the data associated with it!</div>
   </div>
   <div class="action">
-    <a href="{% url 'classroom:classroom_detail' weeklytest.weekly.classroom.id %}" class="ico-btn btn btn-secondary"><i class='bx bx-chevrons-left'></i><span>Go Back</span></a>
+    <a href="{% url 'weekly_test:view_test' weeklytest.id %}" class="ico-btn btn btn-secondary"><i class='bx bx-chevrons-left'></i><span>Go Back</span></a>
     <button href="#" class="ico-btn btn btn-danger" id="test-del-btn"><i class='bx bx-trash-alt'></i><span>Delete</span></button>
   </div>
 </div>
