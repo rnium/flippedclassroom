@@ -88,6 +88,14 @@ class ClassroomAbout(LoginRequiredMixin, DetailView):
             return classroom
         else:
             raise Http404
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        classroom = context['classroom']
+        context["join_link"] = self.request.build_absolute_uri(reverse("classroom:join_classroom", args=(classroom.id,)))
+        return context
+        
+        
         
 
 class PostDetail(LoginRequiredMixin, DetailView):

@@ -82,7 +82,7 @@
 <script src="{% static 'classroom/scripts/localtimes.js' %}"></script>
 <script src="{% static 'classroom/scripts/about_classroom.js' %}"></script>
 <script>
-  var qrcode = new QRCode("join-code", "{% url 'classroom:join_classroom' classroom.id %}");
+  var qrcode = new QRCode("join-code", "{{join_link}}");
   const classroom_update_url = "{% url 'classroom:update_classroom' classroom.id  %}";
   const remove_student_url = "{% url 'classroom:remove_student' classroom.id %}";
   const csrftoken = "{{csrf_token}}"
