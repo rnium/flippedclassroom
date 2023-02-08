@@ -10,8 +10,20 @@
 }
 
 @media screen and (max-width: 576px) {
+  body .countdown-container {
+    width: 5rem !important;
+  }
+  body .countdown-container .time span {
+    font-size: 1rem !important;
+  }
+  body .main .container .exam-header {
+    padding: 1rem !important;
+  }
   body .main .container .exam-header .title .heading {
-    font-size: 1.2rem !important;
+    font-size: 1rem !important;
+  }
+  body .main .container .exam-header .title .description {
+    font-size: 0.7rem !important;
   }
   body .main .container .exam-header .create-test-title {
     display: -webkit-box;
@@ -34,13 +46,16 @@
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
-    padding-top: 2rem;
+    padding-top: 1rem !important;
   }
   body .main .container .exam-header .exam-info div {
     text-align: center;
   }
+  body .main .container .exam-header .exam-info div span {
+    font-size: 0.8rem !important;
+  }
   body .main .container .exam-header .exam-info .time {
-    margin-top: 5px;
+    margin-top: 0 !important;
   }
   body .main .container .create-test-header {
     padding: 10px !important;
@@ -168,7 +183,10 @@
     padding: 0.5rem 1rem 1.5rem !important;
   }
   body .main .container #id_ans-q-form-container .q .content .q-title {
-    font-size: 1rem !important;
+    font-size: 0.9rem !important;
+  }
+  body .main .container #id_ans-q-form-container .q .content input.textinput {
+    font-size: 0.9rem !important;
   }
   body .main .container #id_ans-q-form-container .qtype-image .content .q-files {
     -webkit-box-shadow: 0 0 5px #e9e9e9;
@@ -186,6 +204,24 @@
     display: none;
   }
   body .main .container #id_ans-q-form-container .qtype-image .content .q-files .selected-file {
+    font-size: 0.8rem !important;
+  }
+  body .main .container #id_ans-q-form-container .qtype-mcq .choice-container {
+    margin-bottom: 0.5rem !important;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  body .main .container #id_ans-q-form-container .qtype-mcq .choice-container label {
+    display: inline-block;
+    font-size: 0.6rem !important;
+    min-width: 1.2rem !important;
+    max-width: 1.2rem !important;
+    min-height: 1.2rem !important;
+    max-height: 1.2rem !important;
+  }
+  body .main .container #id_ans-q-form-container .qtype-mcq .choice-container .choice-text {
+    margin-left: 0.3rem !important;
     font-size: 0.8rem !important;
   }
 }
