@@ -55,28 +55,6 @@ function refresh_q_numbers(){
 }
 
 
-function activate_options() {
-    mcq_q = $('.qtype-mcq')
-    $.each(mcq_q, function (indexInArray, valueOfElement) { 
-         q_id = valueOfElement.id
-         radio_inputs = $(`#${q_id} input[type="radio"]`)
-         $.each(radio_inputs, function (indexInArray, valueOfElement) { 
-              input_id = valueOfElement.id
-              $(`#${input_id}`).on('click', function(event){
-                  q_id_inner = $(this).parent().parent().parent().attr('id')
-                  radio_inputs_inner = $(`#${q_id_inner} input[type="radio"]`)
-                  $.each(radio_inputs_inner, function (indexInArray, valueOfElement) { 
-                       radio_id = valueOfElement.id
-                       if (! $(`#${radio_id}`).is(':checked')) {
-                           $(`#${radio_id}`).attr('disabled', true)
-                       }
-                  });
-              })
-         });
-    });
-
-}
-
 function refresh_label_leters() {
     mcq_q = $('.qtype-mcq')
     $.each(mcq_q, function (indexInArray1, valueOfElement) {
@@ -109,7 +87,6 @@ function getCookie(name) {
 
 refresh_q_numbers()
 refresh_label_leters()
-activate_options()
 
 $(document).ready(function() {
     const csrftoken = getCookie('csrftoken'); 
