@@ -88,8 +88,8 @@
     -webkit-box-direction: normal !important;
         -ms-flex-direction: column !important;
             flex-direction: column !important;
-    margin-left: 5px !important;
-    margin-right: 5px !important;
+    margin-left: 8px !important;
+    margin-right: 8px !important;
   }
   body .main .left-col .classroom-info {
     padding: 1rem 1.5rem !important;
@@ -281,6 +281,27 @@
   }
   body .main .create-assignment-container form .other-fields .attachement-container label i {
     display: none !important;
+  }
+  body .main .classrooms-dashboard .classrooms-container .classroom .classroom-heading {
+    padding: 1.5rem 1rem !important;
+  }
+  body .main .classrooms-dashboard .classrooms-container .classroom .classroom-heading i.bg {
+    font-size: 4rem !important;
+  }
+  body .main .classrooms-dashboard .classrooms-container .classroom .classroom-heading .title {
+    font-size: 1.2rem !important;
+  }
+  body .main .classrooms-dashboard .classrooms-container .classroom .classroom-heading .course {
+    font-size: 0.9rem !important;
+  }
+  body .main .classrooms-dashboard .classrooms-container .classroom .classroom-heading .owner span {
+    font-size: 0.8rem !important;
+  }
+  body .main .classrooms-dashboard .classrooms-container .classroom .info .i-item i {
+    font-size: 1.3rem !important;
+  }
+  body .main .classrooms-dashboard .classrooms-container .classroom .info .i-item span {
+    font-size: 0.8rem !important;
   }
   .title-box .title {
     font-size: 1rem !important;
