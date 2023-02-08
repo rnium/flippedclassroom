@@ -136,7 +136,7 @@
     </div>
   </div>
   {% endif %}
-  {% if student_tests %}
+  {% if has_student_tests %}
   <div class="live-tests title-box" id="live_tests">
     <div class="title">Ongoing Tests</div>
     <div class="content">
@@ -156,6 +156,26 @@
               </div>
               <div class="action">
                 <a href="{% url 'weekly_test:take_test' test.id %}">Participate</a>
+              </div>
+            </div>
+          </div>
+        </li>
+        {% endfor %}
+        {% for test in unsubmitted_tests %}
+        <li>
+          <div class="test-item">
+            <i class='bx bx-edit-alt'></i>
+            <div class="info">
+              <div class="label-title">{{ test.title }}</div>
+              <div class="ending-time">
+                <i class='bx bx-timer'></i>
+                <div class="time-con">
+                  <span class="label">Ending in:</span>
+                  <span class="time" id="testid-{{test.id}}">{{test.expiration|date:"c"}}</span>
+                </div>
+              </div>
+              <div class="action">
+                <a href="{% url 'weekly_test:take_test' test.id %}">Resume</a>
               </div>
             </div>
           </div>

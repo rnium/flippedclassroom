@@ -1,9 +1,10 @@
 from django.db import models
+from django.utils import timezone
 from django.contrib.auth.models import User
 from django.templatetags.static import static
 from classroom.models import Classroom
 from tasks.models import Group, Work
-from weekly_test.models import AnswerSheet
+from weekly_test.models import AnswerSheet, WeeklyTest
 from itertools import chain
 
 
@@ -60,6 +61,11 @@ class Account(models.Model):
     def classroom_test_answersheets(self, classroom):
         sheets = AnswerSheet.objects.filter(user=self.user, test__weekly__classroom=classroom)
         return sheets
+    
+    def classroom_unsubmitted_tests(self, classroom):
+        timenow = timezone.now()
+        qs =  WeeklyTest.objects.filter(weekly__classroom=classroom, answersheet__user=self.user, expiration__gte=timenow, answersheet__submit_time=None)
+        return qs
     
     
     def indiv_works(self, classroom):

@@ -101,6 +101,7 @@ def create_post(request, cls_pk, pk):
     response = {
         "id": post.id,
         "author_name": post.author.account.user_full_name,
+        "inst_id": post.author.account.institutional_id,
         "is_teacher": post.author in post.weekly.classroom.teachers.all(),
         "avatar_url": post.author.account.avatar_url,
         "postcontent": post.postcontent,

@@ -29,7 +29,7 @@ function append_post(response) {
     if (response['is_teacher']) {
         user_designation_div = `<div class="teacher-badge"></div>`
     } else {
-        user_designation_div = `<div class="registration">Reg. No.</div>`
+        user_designation_div = `<div class="registration">${response['inst_id']}</div>`
     }
     let post_elem = `<div class="post" id="${post_elem_id}" style="display:none;">
                         <div class="post-inner">
