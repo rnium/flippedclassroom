@@ -138,7 +138,6 @@ function submitForm(){
     if (!form_is_valid) {
         return false
     }
-    console.log("proceeding")
     let data = {
         "first_name":$("#first_name").val(),
         "last_name":$("#last_name").val(),
@@ -162,7 +161,6 @@ function submitForm(){
         statusCode: {
             201: function() {
                 // window.location = success_url
-                console.log('created')
                 avatar_files = $("#dp")[0].files
                 if (avatar_files.length > 0) {
                     setupAvatar(avatar_files[0])
