@@ -88,6 +88,34 @@
     -webkit-box-direction: normal !important;
         -ms-flex-direction: column !important;
             flex-direction: column !important;
+    margin-left: 8px !important;
+    margin-right: 8px !important;
+  }
+  body .main .left-col .classroom-info {
+    padding: 1rem 1.5rem !important;
+  }
+  body .main .left-col .classroom-info .title {
+    font-size: 1.2rem !important;
+  }
+  body .main .left-col .classroom-info .num-students {
+    font-size: 0.9rem;
+  }
+  body .main .left-col .classroom-info .share-link button {
+    font-size: 0.8rem !important;
+  }
+  body .main .left-col .classroom-info .share-link i {
+    font-size: 0.9rem !important;
+  }
+  body .main .left-col .postbox .inset-float-textinput textarea {
+    height: 7rem !important;
+    padding: 1.5rem 1rem 0.5rem !important;
+    font-size: 0.9rem !important;
+  }
+  body .main .left-col .postbox .inset-float-textinput label {
+    font-size: 0.7rem !important;
+  }
+  body .main .left-col .postbox .inset-float-textinput .topic-input input {
+    font-size: 0.6rem !important;
   }
   body .main .left-col .postbox .form-actions {
     -webkit-box-orient: vertical !important;
@@ -114,10 +142,23 @@
   body .main .left-col .postbox .form-actions .submit-container .loader {
     display: none !important;
   }
-  body .main .left-col .recent-posts .post-item .icon {
+  body .main .left-col .recent-posts .post-container .post-item {
+    padding: 0.9rem 1rem !important;
+  }
+  body .main .left-col .recent-posts .post-container .post-item .icon {
     display: none !important;
   }
-  body .main .left-col .recent-posts .post-item .contents .info {
+  body .main .left-col .recent-posts .post-container .post-item .contents {
+    margin-left: 0 !important;
+  }
+  body .main .left-col .recent-posts .post-container .post-item .contents .title {
+    font-size: 0.9rem !important;
+  }
+  body .main .left-col .recent-posts .post-container .post-item .contents .post-time {
+    color: #8aaca3;
+    font-size: 0.6rem !important;
+  }
+  body .main .left-col .recent-posts .post-container .post-item .contents .info {
     -webkit-box-orient: vertical !important;
     -webkit-box-direction: normal !important;
         -ms-flex-direction: column !important;
@@ -128,6 +169,142 @@
     border-radius: 10px;
     -webkit-box-shadow: 0 0 5px #dfdede;
             box-shadow: 0 0 5px #dfdede;
+  }
+  body .main .left-col .weeklies .content {
+    margin: 0.5rem !important;
+  }
+  body .main .left-col .weeklies .content ul li a .week .week-no .weektext, body .main .left-col .weeklies .content ul li a .week .week-no .num {
+    font-size: 1.5rem !important;
+  }
+  body .main .left-col .weeklies .content ul li a .week .icon i {
+    font-size: 4rem !important;
+  }
+  body .main .left-col .weeklies .content .create-weekly .weekly-topic-inp-con input {
+    font-size: 0.9rem !important;
+  }
+  body .main .left-col .weeklies .content .create-weekly #create-weekly-btns-con button {
+    font-size: 0.8rem !important;
+    font-weight: 400 !important;
+  }
+  body .main .right-col .live-tests .content {
+    margin: 1rem 0.5rem !important;
+  }
+  body .main .right-col .live-tests .content ul li .test-item .info .label-title {
+    font-size: 0.9rem !important;
+  }
+  body .main .right-col .live-tests .content ul li .test-item .info .stat .issued i, body .main .right-col .live-tests .content ul li .test-item .info .stat .submitted i {
+    font-size: 1rem !important;
+  }
+  body .main .right-col .live-tests .content ul li .test-item .info .stat .issued span, body .main .right-col .live-tests .content ul li .test-item .info .stat .submitted span {
+    font-size: 0.8rem !important;
+  }
+  body .main .right-col .weekly-tasks .content ul li .list-item .sub-title, body .main .right-col .weekly-tests .content ul li .list-item .sub-title {
+    font-size: 0.8rem !important;
+  }
+  body .main .right-col .weekly-tasks .content ul li .list-item .time, body .main .right-col .weekly-tests .content ul li .list-item .time {
+    font-size: 0.6rem !important;
+  }
+  body .main .right-col .weekly-tasks .content ul li .list-item i.ico, body .main .right-col .weekly-tests .content ul li .list-item i.ico {
+    font-size: 1.2rem !important;
+    margin-right: 5px !important;
+  }
+  body .main .right-col .weekly-tasks .content ul li .list-item .info .label-title, body .main .right-col .weekly-tests .content ul li .list-item .info .label-title {
+    font-size: 0.9rem !important;
+  }
+  body .main .right-col .weekly-tasks .content ul li .list-item .info .label-title .w-info-con .week-badge .w-num, body .main .right-col .weekly-tests .content ul li .list-item .info .label-title .w-info-con .week-badge .w-num {
+    font-size: 0.7rem !important;
+  }
+  body .main .right-col .weekly-tasks .content ul li .list-item .info .label-title .w-info-con .week-badge i, body .main .right-col .weekly-tests .content ul li .list-item .info .label-title .w-info-con .week-badge i {
+    font-size: 0.7rem !important;
+  }
+  body .main .create-assignment-container {
+    padding: 0 !important;
+  }
+  body .main .create-assignment-container form .task-type {
+    padding: 1rem !important;
+  }
+  body .main .create-assignment-container form .task-type .inputs {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: column !important;
+            flex-direction: column !important;
+  }
+  body .main .create-assignment-container form .task-type .inputs .inp-inner {
+    margin: 0 !important;
+    margin-bottom: 10px !important;
+    width: 100%;
+  }
+  body .main .create-assignment-container form .task-type .inputs .inp-inner label {
+    width: 100% !important;
+    -webkit-box-pack: center !important;
+        -ms-flex-pack: center !important;
+            justify-content: center !important;
+  }
+  body .main .create-assignment-container form .task-type .inputs .inp-inner input[type="text"] {
+    width: 100%;
+  }
+  body .main .create-assignment-container form .task-type .inputs .inp-inner:last-of-type {
+    margin-bottom: 0 !important;
+  }
+  body .main .create-assignment-container form .other-fields {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: column !important;
+            flex-direction: column !important;
+  }
+  body .main .create-assignment-container form .other-fields .deadline {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: column !important;
+            flex-direction: column !important;
+    margin-bottom: 3rem !important;
+  }
+  body .main .create-assignment-container form .other-fields .deadline label {
+    font-size: 0.9rem !important;
+  }
+  body .main .create-assignment-container form .other-fields .deadline .input-container {
+    width: 100%;
+  }
+  body .main .create-assignment-container form .other-fields .deadline .input-container input {
+    width: 100% !important;
+  }
+  body .main .create-assignment-container form .other-fields .attachement-container .selected-file {
+    -webkit-box-ordinal-group: 3;
+        -ms-flex-order: 2;
+            order: 2;
+    margin-left: 5px;
+    font-size: 0.8rem !important;
+  }
+  body .main .create-assignment-container form .other-fields .attachement-container label {
+    margin-left: 0 !important;
+    font-size: 0.8rem !important;
+  }
+  body .main .create-assignment-container form .other-fields .attachement-container label i {
+    display: none !important;
+  }
+  body .main .classrooms-dashboard .classrooms-container .classroom .classroom-heading {
+    padding: 1.5rem 1rem !important;
+  }
+  body .main .classrooms-dashboard .classrooms-container .classroom .classroom-heading i.bg {
+    font-size: 4rem !important;
+  }
+  body .main .classrooms-dashboard .classrooms-container .classroom .classroom-heading .title {
+    font-size: 1.2rem !important;
+  }
+  body .main .classrooms-dashboard .classrooms-container .classroom .classroom-heading .course {
+    font-size: 0.9rem !important;
+  }
+  body .main .classrooms-dashboard .classrooms-container .classroom .classroom-heading .owner span {
+    font-size: 0.8rem !important;
+  }
+  body .main .classrooms-dashboard .classrooms-container .classroom .info .i-item i {
+    font-size: 1.3rem !important;
+  }
+  body .main .classrooms-dashboard .classrooms-container .classroom .info .i-item span {
+    font-size: 0.8rem !important;
+  }
+  .title-box .title {
+    font-size: 1rem !important;
   }
 }
 
@@ -374,6 +551,19 @@
   top: 0.6rem;
   font-size: 0.7rem;
   color: #3b8f65;
+}
+
+.inset-float-textinput.error input {
+  outline: 3px solid red;
+  border-bottom: none;
+}
+
+.inset-float-textinput.error input:focus ~ label {
+  color: red !important;
+}
+
+.inset-float-textinput.error label {
+  color: red !important;
 }
 
 .input-file {

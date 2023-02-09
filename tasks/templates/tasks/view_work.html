@@ -91,6 +91,9 @@
           </h2>
           <div id="collapse-{{file.id}}" class="accordion-collapse collapse" aria-labelledby="heading{{file.id}}" data-bs-parent="#accordion-{{work.id}}">
             <div class="accordion-body">
+              <div class="download-btn-con">
+                <a href="{{file.attached_file.url}}" download=""><i class='bx bx-download'></i><span>Download</span></a>
+              </div>
               <embed src="{{file.attached_file.url}}" type="">
             </div>
           </div>
