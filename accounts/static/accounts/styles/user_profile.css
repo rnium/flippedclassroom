@@ -434,11 +434,58 @@
           box-shadow: 0 0 2px #88aa9f;
 }
 
-.main .edit-profile-con .info .heading {
+.main .edit-profile-con .info .heading-con {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-left: 1rem;
+}
+
+.main .edit-profile-con .info .heading-con .heading {
   font-family: 'Gemunu Libre', sans-serif;
-  font-size: 2rem;
+  font-size: 1.8rem;
   text-shadow: 0 0 5px #e6efe9;
   color: #89b4a5;
+}
+
+.main .edit-profile-con .info .heading-con .update-pass-con {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.main .edit-profile-con .info .heading-con .update-pass-con i {
+  font-size: 1.3rem;
+  -webkit-transition: all 200ms;
+  transition: all 200ms;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.main .edit-profile-con .info .heading-con .update-pass-con a {
+  text-decoration: none;
+  font-size: 0.8rem;
+}
+
+.main .edit-profile-con .info .heading-con .update-pass-con i, .main .edit-profile-con .info .heading-con .update-pass-con a {
+  color: #46aca0;
+}
+
+.main .edit-profile-con .info .heading-con .update-pass-con:hover i {
+  -webkit-transform: rotate(135deg);
+          transform: rotate(135deg);
 }
 
 .main .edit-profile-con .inp-con .submit {

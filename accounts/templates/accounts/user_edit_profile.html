@@ -9,7 +9,13 @@
 <div class="edit-profile-con container mt-4 shadow-lg p-4">
     <div class="info mt-2 mb-3">
         <div class="dp" style="background-image: url('{{account.avatar_url}}');"></div>
-        <div class="heading ms-4">Edit Your Profile</div>
+        <div class="heading-con">
+            <div class="heading">Edit Your Profile</div>
+            <div class="update-pass-con">
+                <i class='bx bx-key'></i>
+                <a href="{% url 'accounts:update_password_get' %}">Update Password</a>
+            </div>
+        </div>
     </div>
     <div class="inp-con">
         <div class="first_name inset-float-textinput mb-3">
