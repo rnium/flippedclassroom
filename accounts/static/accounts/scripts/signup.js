@@ -128,6 +128,12 @@ function setupAvatar(image_file) {
         processData: false,
         complete: function(){
             window.location = success_url
+        },
+        error: function() {
+            let confirmation = confirm("Avatar upload failed! Please try again later")
+            if (confirmation) {
+                location.reload()
+            }
         }
     });
 
