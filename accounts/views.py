@@ -2,6 +2,7 @@ from django.shortcuts import redirect, render, get_object_or_404
 from django.http import JsonResponse
 from django.views.generic import TemplateView
 from django.contrib.auth.models import User
+from django.contrib.auth import authenticate
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework import status
@@ -119,3 +120,19 @@ def set_avatar(request):
             account.profile_picture = request.FILES.get('dp')
             account.save()
             return JsonResponse({'status':'profile picture set'})
+        
+        
+@api_view(["POST"])
+@permission_classes([IsAuthenticated])
+def update_password_api(request):
+    username = request.user.username
+    try:
+        current_pass = request.data['current_password']
+        new_pass = request.data['new_password']
+    except KeyError:
+        return Response(status=status.HTTP_400_BAD_REQUEST)
+    user_obj = authenticate(request, username, current_pass)
+    print(user_obj)
+    return Response(status=status.HTTP_202_ACCEPTED)
+    
+    
