@@ -2,7 +2,7 @@ from django.shortcuts import redirect, render, get_object_or_404
 from django.http import JsonResponse
 from django.views.generic import TemplateView
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, logout
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework import status
@@ -131,8 +131,13 @@ def update_password_api(request):
         new_pass = request.data['new_password']
     except KeyError:
         return Response(status=status.HTTP_400_BAD_REQUEST)
-    user_obj = authenticate(request, username, current_pass)
-    print(user_obj)
-    return Response(status=status.HTTP_202_ACCEPTED)
+    user_obj = authenticate(username=username, password=current_pass)
+    if user_obj != None and user_obj==request.user:
+        user_obj.set_password(new_pass)
+        user_obj.save()
+        logout(request)
+        return Response(status=status.HTTP_202_ACCEPTED)
+    else:
+        return Response(status=status.HTTP_401_UNAUTHORIZED)
     
     
