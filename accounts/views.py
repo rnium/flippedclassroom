@@ -44,6 +44,9 @@ def edit_profile(request):
     account = request.user.account
     return render(request, 'accounts/user_edit_profile.html', context={'account':account})
 
+@login_required
+def update_password_get(request):
+    return render(request, 'accounts/user_update_password.html')
 
 @api_view(['POST'])
 def api_login(request):
