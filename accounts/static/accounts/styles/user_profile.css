@@ -745,8 +745,7 @@
     max-height: 50px;
   }
   .main .edit-profile-con .info .heading {
-    font-size: 1.5rem;
-    margin-left: 15px !important;
+    font-size: 1.5rem !important;
   }
   .main .edit-profile-con .input-file label {
     padding: 3px 5px;
