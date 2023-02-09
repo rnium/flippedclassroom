@@ -7,6 +7,30 @@
   color: #276363;
 }
 
+@-webkit-keyframes opacity1 {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes opacity1 {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 body {
   background-color: #c4d6cc;
 }
@@ -108,6 +132,17 @@ body .container .form .submit {
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
+}
+
+body .container .form .submit .signup-info {
+  font-size: 0.8rem;
+  margin-right: 10px;
+  -webkit-animation-name: opacity1;
+          animation-name: opacity1;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
 }
 
 body .container .form .submit .error-info {

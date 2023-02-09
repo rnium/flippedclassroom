@@ -128,12 +128,10 @@ function setupAvatar(image_file) {
         processData: false,
         complete: function(){
             window.location = success_url
+            $("#signup-info").text("Avatar set!")
         },
         error: function() {
-            let confirmation = confirm("Avatar upload failed! Please try again later")
-            if (confirmation) {
-                location.reload()
-            }
+            location.reload()
         }
     });
 
@@ -159,26 +157,36 @@ function submitForm(){
         dataType: "json",
         contentType: "application/json",
         beforeSend: function(xhr){
-            // $("#submit).attr("disabled", true)
-            xhr.setRequestHeader("X-CSRFToken", csrftoken)
+            xhr.setRequestHeader("X-CSRFToken", csrftoken);
+            $("#submit").attr('disabled', true);
+            $("#signup-info").text("Creating account")
+            $("#signup-info").show()
         },
         data: payload,
         cache: false,
         statusCode: {
             201: function() {
                 // window.location = success_url
+                $("#signup-info").text("Account created")
                 avatar_files = $("#dp")[0].files
                 if (avatar_files.length > 0) {
+                    $("#signup-info").text("Uploading avatar..")
                     setupAvatar(avatar_files[0])
                 } else {
                     window.location = success_url
                 }
             },
             400: function() {
-                showError("Email already used")
+                $("#signup-info").hide(0, ()=>{
+                    $("#submit").attr('disabled', false);
+                    showError("Email already used")
+                }) 
             },
             406: function() {
-                showError("Something went wrong")
+                $("#signup-info").hide(0, ()=>{
+                    $("#submit").attr('disabled', false);
+                    showError("Something went wrong")
+                }) 
             }
         }
     });
