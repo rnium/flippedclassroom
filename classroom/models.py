@@ -448,6 +448,8 @@ class Assessment(models.Model):
         if students_gw_total_score == None:
             return None
         group_tasks_total_marks = self.meta.classroom.group_tasks_total_marks
+        if group_tasks_total_marks <= 0:
+            return 0
         score_per_mark = students_gw_total_score/group_tasks_total_marks
         obtained_score = score_per_mark*self.meta.group_task_marks
         return prettify_marks(obtained_score)
@@ -463,6 +465,8 @@ class Assessment(models.Model):
         if students_iw_total_score == None:
             return None
         indiv_tasks_total_marks = self.meta.classroom.indiv_tasks_total_marks
+        if indiv_tasks_total_marks <= 0:
+            return 0
         score_per_mark = students_iw_total_score/indiv_tasks_total_marks
         obtained_score = score_per_mark*self.meta.indiv_task_marks
         return prettify_marks(obtained_score)
@@ -478,6 +482,8 @@ class Assessment(models.Model):
         if students_points == None:
             return None
         classroom_tests_total_marks = self.meta.classroom.classroom_tests_total_marks
+        if classroom_tests_total_marks <= 0:
+            return 0
         score_per_mark = students_points/classroom_tests_total_marks
         obtained_score = score_per_mark*self.meta.weekly_test_marks
         return prettify_marks(obtained_score)
@@ -515,6 +521,8 @@ class Assessment(models.Model):
         total_marks = self.meta.total_marks
         if total_marks==None or total_score==None:
             return None
+        if total_marks <= 0:
+            return 0
         score_per_mark = total_score/total_marks
         percentage_score = score_per_mark * 100
         return prettify_marks(percentage_score)
