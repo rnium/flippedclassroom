@@ -143,13 +143,13 @@ class Classroom(models.Model):
     @property
     def current_tasks(self):
         timenow = timezone.now()
-        qs = self.assigned_tasks.filter(deadline__gte=timenow)
+        qs = self.assigned_tasks.filter(deadline__gte=timenow).order_by("deadline")
         return qs
 
     @property
     def prev_tasks(self):
         timenow = timezone.now()
-        qs = self.assigned_tasks.filter(deadline__lt=timenow)
+        qs = self.assigned_tasks.filter(deadline__lt=timenow).order_by("deadline")
         return qs
     
     @property
