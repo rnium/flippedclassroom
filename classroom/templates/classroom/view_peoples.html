@@ -41,7 +41,7 @@
           <div class="user">
             <div class="avatar" style="background-image: url('{{request.user.account.avatar_url}}');">
             </div>
-            <span class="name">{{ request.user.account.user_first_name }}</span>
+            <a href="{% url 'accounts:view_profile' request.user.account.id %}" class="name">{{ request.user.account.user_first_name }}</a>
             <a href="{% url 'accounts:user_logout' %}" class="btn-1-outlined">Logout</a>
           </div>
         </div>
