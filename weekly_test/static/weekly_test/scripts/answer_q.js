@@ -9,7 +9,7 @@ for (let i=0;i<fileinputs.length;i++){
 }
 
 function intialize_stopwatch(endtime) {
-    setInterval(function(){
+    let interval = setInterval(function(){
         starttime = new Date().getTime()
         endtime = new Date(endtime).getTime()
         let duration = endtime - starttime
@@ -21,6 +21,7 @@ function intialize_stopwatch(endtime) {
             $("#time_min").text('00')
             $("#time_sec").text('00')
             $('#id_ans-sheet-form').submit()
+            clearInterval(interval)
         } else {
             if (hour<10) {
                 hour = `0${hour}`
