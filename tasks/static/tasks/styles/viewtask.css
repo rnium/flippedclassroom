@@ -1126,6 +1126,23 @@ body .main .view-task-container.teacher {
           flex-direction: column;
 }
 
+body .main .view-task-container.teacher .left-col .task-info .task-title a {
+  text-decoration: none;
+  color: inherit;
+}
+
+body .main .view-task-container.teacher .left-col .task-info .task-title a i {
+  font-size: 1.3rem;
+  color: red;
+  background-color: #ffe6e6;
+  border-radius: 180px;
+  padding: 3px;
+}
+
+body .main .view-task-container.teacher .left-col .task-info .task-title a:hover i {
+  outline: 1px solid #e2a4a4;
+}
+
 body .main .view-task-container.teacher .left-col .task-info .task-instruction .attachments {
   -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr;
       grid-template-columns: 1fr 1fr 1fr 1fr 1fr;

@@ -12,6 +12,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework import status
 from classroom.models import Classroom
+from classroom.views import render_info_or_error
 from weeklies.models import Weekly
 from tasks.models import Task, TaskAttachment, Group, Work, WorkAttachment
 from tasks.utils import random_subsets
@@ -118,6 +119,15 @@ def view_work_file(request, cls_pk, pk):
     context['current_file'] = attachment
     context['other_files'] = WorkAttachment.objects.filter(work=attachment.work).exclude(id=attachment.id)
     return render(request, "tasks/view_file.html", context=context)
+
+
+def delete_task_get(request, cls_pk, pk):
+    task = get_object_or_404(Task, classroom__id=cls_pk, pk=pk)
+    if request.user in task.classroom.teachers.all():
+        return render(request, "tasks/delete_task.html", context={'task':task})
+    else:
+        return render_info_or_error(request, 'Unauthorized', 'You have no permission to perform this action', "error")
+    
 
 #CBV
 class TaskDetail(LoginRequiredMixin, DetailView):
@@ -260,6 +270,16 @@ def delete_work(request, cls_pk, pk):
     work.delete()
     return Response(data={'info': 'deleted', 'is_deleted':True}, status=status.HTTP_204_NO_CONTENT)
 
+
+@api_view(["DELETE"])
+@permission_classes([IsAuthenticated])
+def delete_task(request, cls_pk, pk):
+    task =  get_object_or_404(Task, classroom__id=cls_pk, pk=pk)
+    if request.user in task.classroom.teachers.all():
+        task.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+    else:
+        return Response(status=status.HTTP_401_UNAUTHORIZED)
 
 
 @api_view(["POST"])

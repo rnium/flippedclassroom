@@ -33,7 +33,7 @@
     </div>
     {% endif %}
     <div class="task-info">
-      <div class="task-title">{{ task.title }}</div>
+      <div class="task-title">{{ task.title }} {% if is_teacher %}<a href="{% url 'classroom:tasks:delete_task_get' task.classroom.id task.id %}"><i class='bx bx-trash-alt'></i></a>{% endif %} </div>
       <div class="task-meta-info">
         {% if task.is_group_task %}
         <div class="task-type-group task-type">
