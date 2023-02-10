@@ -94,29 +94,29 @@
     </div>
   
     <div class="classroom-students my-3 p-3 bg-body rounded shadow-lg">
-      <h6 class="border-bottom pb-2 mb-0">Students</h6>
+      <h6 class="border-bottom pb-2 mb-0">Students (<span id="student-count">{{classroom.students.count}}</span>)</h6>
       {% if request.user in classroom.teachers.all %}
       {% for student in classroom.students.all %}
-      <div class="student d-flex text-muted pt-3" id="student-{{student.id}}-con">
+      <div class="student text-muted" id="student-{{student.id}}-con">
         <div class="dp me-2" style="background-image: url('{{student.account.avatar_url}}');"></div>
-        <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
-          <div class="d-flex justify-content-between">
-            <strong class="text-gray-dark"><a class="user-profile" href="{% url 'accounts:view_profile' student.account.id %}">{{student.account.user_full_name}}</a></strong>
-            <button class="remove-btn" id="usr-{{student.id}}-remove-btn" data-std-id="{{student.id}}" data-con="student-{{student.id}}-con">remove</button>
-          </div>
-          <span class="d-block">{{student.account.institutional_id}}</span>
+        <div class="small lh-sm border-bottom py-2 w-100">
+          <strong class="text-gray-dark"><a class="user-profile" href="{% url 'accounts:view_profile' student.account.id %}">{{student.account.user_full_name}}</a></strong>
+          <span class="d-block inst-id">{{student.account.institutional_id}}</span>
+          <span class="d-block inst">{{student.account.institution}}</span>
+        </div>
+        <div class="btn-con">
+          <button class="remove-btn" id="usr-{{student.id}}-remove-btn" data-std-id="{{student.id}}" data-con="student-{{student.id}}-con">remove</button>
         </div>
       </div>
       {% endfor %}
       {% else %}
       {% for student in classroom.students.all %}
-      <div class="student d-flex text-muted pt-3">
+      <div class="student text-muted" id="student-{{student.id}}-con">
         <div class="dp me-2" style="background-image: url('{{student.account.avatar_url}}');"></div>
-        <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
-          <div class="d-flex justify-content-between">
-            <strong class="text-gray-dark"><a class="user-profile" href="{% url 'accounts:view_profile' student.account.id %}">{{student.account.user_full_name}}</a></strong>
-          </div>
-          <span class="d-block">{{student.email}}</span>
+        <div class="small lh-sm border-bottom py-2 w-100">
+          <strong class="text-gray-dark"><a class="user-profile" href="{% url 'accounts:view_profile' student.account.id %}">{{student.account.user_full_name}}</a></strong>
+          <span class="d-block inst-id">{{student.account.institutional_id}}</span>
+          <span class="d-block inst">{{student.account.institution}}</span>
         </div>
       </div>
       {% endfor %}

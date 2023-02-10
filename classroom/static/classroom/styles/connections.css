@@ -33,9 +33,32 @@ main .classroom-teachers .add-teacher {
           justify-content: flex-end;
 }
 
+main .student {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main .student .inst-id {
+  font-size: 0.7rem;
+  color: #689191;
+  text-shadow: 0 0 5px #ebebeb;
+}
+
+main .student .inst {
+  font-size: 0.7rem;
+}
+
 main .student .remove-btn {
   font-family: 'Gemunu Libre', sans-serif;
-  font-size: 1.1rem;
+  font-size: 1rem;
   background-color: #faebd7;
   border: 1px solid #d0a66f;
   border-radius: 5px;

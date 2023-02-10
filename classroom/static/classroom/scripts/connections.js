@@ -17,7 +17,10 @@ function removeUser(btn_id, user_id, container_id){
         cache: false,
         success: function(response) {
             $(`#${container_id}`).hide(100, ()=>{
-                $(`#${container_id}`).remove()
+                $(`#${container_id}`).remove();
+                let prev_count = $("#student-count").text();
+                let new_count = Number(prev_count) - 1;
+                $("#student-count").text(new_count)
             })
         },
         error: function() {
