@@ -113,9 +113,9 @@ class Classroom(models.Model):
            t_qs_0 = test_qs[0]
            t_qs_others = test_qs[1:]
            final_qs = t_qs_0.union(*t_qs_others)
-           return final_qs.order_by("schedule")
+           return final_qs.order_by("expiration")
        elif len(test_qs) == 1:
-           return test_qs[0].order_by("schedule")
+           return test_qs[0].order_by("expiration")
        else:
            return self.weekly_set.none()
 
