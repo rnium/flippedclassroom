@@ -208,17 +208,18 @@ body .container.login {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  width: 96%;
+  width: 100%;
 }
 
 body footer {
   margin: 1rem 0;
   text-align: center;
+  font-size: 0.7rem;
   font-family: 'Gemunu Libre', sans-serif;
 }
 
 body footer a {
-  margin-left: 5px;
+  margin-left: 3px;
   text-decoration: none;
   color: #5b8175;
   font-family: 'Gemunu Libre', sans-serif;
