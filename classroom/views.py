@@ -58,7 +58,7 @@ class ClassroomDetail(LoginRequiredMixin, DetailView):
         classroom = self.get_object()
         context["join_link"] = self.request.build_absolute_uri(reverse("classroom:join_classroom", args=(classroom.id,)))
         if self.request.user in classroom.teachers.all():
-            query_set = classroom.ongoing_tests
+            query_set = classroom.ongoing_tests.order_by('expiration')
             if query_set.count() > 0:
                 context['teacher_tests'] = query_set
         elif self.request.user in classroom.students.all():
