@@ -150,21 +150,6 @@ def verify_user(request, uidb64, token):
         return render_info_or_error(request, "Error", "Invalid verification link", "error")
 
 
-def forgot_password_get(request):
-    return render(request, 'accounts/forgot.html')
-
-  
-def reset_password_get(request,  uidb64, token):
-    try :
-        user_id = force_str(urlsafe_base64_decode(uidb64))
-        user = User.objects.get(pk=user_id)
-    except Exception as e:
-        user = None
-    
-    if user and default_token_generator.check_token(user, token):
-        render(request, 'accounts/user_update_password.html')
-    else:
-        return render_info_or_error(request, "Error", "Invalid verification link", "error")
     
 
 @api_view(["POST"])
@@ -214,6 +199,29 @@ def send_email_verification_email_api(request):
     except Exception as e:
         return Response(data={"error":"cannot send email"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)        
 
+     
+@api_view(["POST"])
+@permission_classes([IsAuthenticated])
+def update_password_api(request):
+    username = request.user.username
+    try:
+        current_pass = request.data['current_password']
+        new_pass = request.data['new_password']
+    except KeyError:
+        return Response(status=status.HTTP_400_BAD_REQUEST)
+    user_obj = authenticate(username=username, password=current_pass)
+    if user_obj != None and user_obj==request.user:
+        user_obj.set_password(new_pass)
+        user_obj.save()
+        logout(request)
+        return Response(status=status.HTTP_202_ACCEPTED)
+    else:
+        return Response(status=status.HTTP_401_UNAUTHORIZED)
+    
+
+def forgot_password_get(request):
+    return render(request, 'accounts/forgot.html')
+
 
 @api_view(["POST"])
 def send_recovery_email_api(request):
@@ -235,24 +243,20 @@ def send_recovery_email_api(request):
     })
     send_html_email(user.email, email_subject, email_body)
 
-     
-@api_view(["POST"])
-@permission_classes([IsAuthenticated])
-def update_password_api(request):
-    username = request.user.username
-    try:
-        current_pass = request.data['current_password']
-        new_pass = request.data['new_password']
-    except KeyError:
-        return Response(status=status.HTTP_400_BAD_REQUEST)
-    user_obj = authenticate(username=username, password=current_pass)
-    if user_obj != None and user_obj==request.user:
-        user_obj.set_password(new_pass)
-        user_obj.save()
-        logout(request)
-        return Response(status=status.HTTP_202_ACCEPTED)
+def reset_password_get(request,  uidb64, token):
+    try :
+        user_id = force_str(urlsafe_base64_decode(uidb64))
+        user = User.objects.get(pk=user_id)
+    except Exception as e:
+        user = None
+    
+    if user and default_token_generator.check_token(user, token):
+        uid = uidb64
+        emaildb64 = force_str(urlsafe_base64_decode(user.email))
+        reset_password_api_url = reverse("accounts:reset_password_api", args=(uid, emaildb64))
+        render(request, 'accounts/user_update_password.html', context={'reset_password_api_url':reset_password_api_url})
     else:
-        return Response(status=status.HTTP_401_UNAUTHORIZED)
+        return render_info_or_error(request, "Error", "Invalid verification link", "error")
     
 
 @api_view(["POST"])

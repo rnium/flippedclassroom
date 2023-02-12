@@ -2,7 +2,7 @@ from django.urls import path
 from .views import (LoginView, SignupView, LogoutView, 
                     api_login, api_signup, set_avatar, view_profile, 
                     edit_profile, update_profile, update_password_get, update_password_api, verify_user,
-                    send_recovery_email_api, reset_password_get, forgot_password_get)
+                    send_recovery_email_api, reset_password_get, forgot_password_get, reset_password_api)
 
 app_name = 'accounts'
 
@@ -13,8 +13,9 @@ urlpatterns = [
     path('signup/', SignupView.as_view(), name="user_signup_get"),
     path('verify/<uidb64>/<token>', verify_user, name="verify_user"),
     path('recovery', forgot_password_get, name="forgot_password_get"),
+    path('api/recovery/sendmail', send_recovery_email_api, name="send_recovery_email_api"),
     path('recovery/<uidb64>/<token>', reset_password_get, name="reset_password_get"),
-    path('api/recovery', send_recovery_email_api, name="send_recovery_email_api"),
+    path('api/recovery/setpassword/<uidb64>/<emailb64>', reset_password_api, name="reset_password_api"),
     path('profile/<int:pk>', view_profile, name="view_profile"),
     path('profile/update', update_profile, name="update_profile_api"),
     path('profile/update/password', update_password_get, name="update_password_get"),
