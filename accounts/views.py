@@ -44,8 +44,8 @@ def send_verification_email(request, user):
     em['From'] = sender
     em['To'] = receiver
     em['Subject'] = email_subject
-    em.set_content(email_body)
-
+    em.set_content(email_body, subtype='html')
+    
     context = ssl.create_default_context()
 
     with smtplib.SMTP_SSL(host, port, context=context) as smtp:
