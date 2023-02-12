@@ -236,12 +236,17 @@ def send_recovery_email_api(request):
     user = user_qs[0]
     uid = urlsafe_base64_encode(force_bytes(user.id))
     token = default_token_generator.make_token(user)
-    recovery_url = request.build_absolute_uri(reverse("accounts:recover_password_get", args=(uid, token)))
-    email_body = render_to_string('accounts/verification_mail.html', context={
+    recovery_url = request.build_absolute_uri(reverse("accounts:reset_password_get", args=(uid, token)))
+    email_body = render_to_string('accounts/recovery_mail.html', context={
         "user": user,
         "recovery_url": recovery_url
     })
-    send_html_email(user.email, email_subject, email_body)
+    try:
+        send_html_email(user.email, email_subject, email_body)
+    except Exception as e:
+        return Response(data={'info':'cannot send email'}, status=status.HTTP_503_SERVICE_UNAVAILABLE)
+    return Response(data={"info":"email sent"}, status=status.HTTP_200_OK)
+
 
 def reset_password_get(request,  uidb64, token):
     try :
