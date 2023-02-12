@@ -31,8 +31,9 @@
                 </div>
                 <button class="btn-1" id="submit">Login</button>
             </div>
-            <div class="login-info">
-                <span>Don't have an account?</span><a href="{% url 'accounts:user_signup_get' %}">Sign up here</a>
+            <div class="links">
+                <div><a href="{% url 'accounts:user_signup_get' %}">Sign up</a></div>
+                <div><a href="{% url 'accounts:forgot_password_get' %}">Forgot password?</a></div>
             </div>
         </div>
     </div>

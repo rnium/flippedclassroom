@@ -170,27 +170,40 @@ body .container .form .submit .error-info span {
   color: red;
 }
 
-body .container .form .login-info {
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
+body .container .login-form {
+  padding: 1.5rem 2rem 1rem;
+  width: 30rem;
 }
 
-body .container .form .login-info span {
+body .container .login-form .links {
+  width: 100%;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+body .container .login-form .links div {
   color: #7a9c9c;
 }
 
-body .container .form .login-info a {
+body .container .login-form .links div a {
   text-decoration: none;
-  color: #2494f7;
+  color: #648aaa;
   margin-left: 5px;
+  font-size: 0.8rem;
 }
 
-body .container .form .login-info a:hover {
+body .container .login-form .links div a:hover {
   text-decoration: underline;
-}
-
-body .container .login-form {
-  padding: 1.5rem 2rem 1rem;
 }
 
 body .container.login {
@@ -468,6 +481,12 @@ body footer a:hover {
   }
   body .container .form .login-info span, body .container .form .login-info a {
     font-size: 0.8rem;
+  }
+  body .container .login-form {
+    width: 100% !important;
+  }
+  body .container.login .form {
+    padding: 20px 10px 10px !important;
   }
 }
 /*# sourceMappingURL=auth.css.map */
