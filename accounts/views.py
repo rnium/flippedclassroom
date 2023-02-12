@@ -257,9 +257,9 @@ def reset_password_get(request,  uidb64, token):
     
     if user and default_token_generator.check_token(user, token):
         uid = uidb64
-        emaildb64 = force_str(urlsafe_base64_decode(user.email))
+        emaildb64 = urlsafe_base64_encode(force_bytes(user.email))
         reset_password_api_url = reverse("accounts:reset_password_api", args=(uid, emaildb64))
-        render(request, 'accounts/user_update_password.html', context={'reset_password_api_url':reset_password_api_url})
+        return render(request, 'accounts/setup_new_pass.html', context={'reset_password_api_url':reset_password_api_url})
     else:
         return render_info_or_error(request, "Error", "Invalid verification link", "error")
     
@@ -276,14 +276,14 @@ def reset_password_api(request, uidb64, emailb64):
     try:
         new_pass = request.data['new_password']
     except KeyError:
-        return Response(status=status.HTTP_400_BAD_REQUEST)
+        return Response(data={"info":"required data not provided"}, status=status.HTTP_400_BAD_REQUEST)
     
     if user != None:
         user.set_password(new_pass)
         user.save()
         logout(request)
-        return Response(status=status.HTTP_202_ACCEPTED)
+        return Response(data={"info":"password reset successful"},status=status.HTTP_200_OK)
     else:
-        return Response(status=status.HTTP_404_NOT_FOUND)
+        return Response(data={"info":"User not found"}, status=status.HTTP_404_NOT_FOUND)
     
     
