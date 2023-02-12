@@ -167,13 +167,16 @@ def update_profile(request):
     
     user = request.user
     account = user.account
-
+    previous_mail = user.email
+    
     try:
         for attr, val in user_data.items():
             setattr(user, attr, val)
         user.save()
         for attr, val in account_data.items():
             setattr(account, attr, val)
+        if previous_mail != user.email:
+            account.is_email_verified = False
         account.save()
     except Exception:
         return Response(status=status.HTTP_406_NOT_ACCEPTABLE)
