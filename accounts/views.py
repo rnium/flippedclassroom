@@ -25,32 +25,37 @@ import smtplib
 from classroom.views import render_info_or_error
 
 
-
-def send_verification_email(request, user):
-    current_site = get_current_site(request)
-    email_subject = "WeeklyClassroom: Verify Your Email"
-    sender = settings.EMAIL_FROM_USER
-    receiver = user.email
+def send_html_email(receiver, subject, body):
+    sender = settings.EMAIL_HOST_USER
     password = settings.EMAIL_HOST_PASSWORD
     host = settings.EMAIL_HOST
     port = settings.EMAIL_PORT
-    email_body = render_to_string('accounts/verification_mail.html', context={
-        "user": user,
-        "current_site": current_site,
-        "uid": urlsafe_base64_encode(force_bytes(user.id)),
-        "token": default_token_generator.make_token(user)
-    })
+    
     em = EmailMessage()
     em['From'] = sender
     em['To'] = receiver
-    em['Subject'] = email_subject
-    em.set_content(email_body, subtype='html')
+    em['Subject'] = subject
+    em.set_content(body, subtype='html')
     
     context = ssl.create_default_context()
 
     with smtplib.SMTP_SSL(host, port, context=context) as smtp:
         smtp.login(sender, password)
         smtp.sendmail(sender, receiver, em.as_string())
+    
+
+def send_verification_email(request, user):
+    current_site = get_current_site(request)
+    email_subject = "WeeklyClassroom: Verify Your Email"
+    receiver = user.email
+    email_body = render_to_string('accounts/verification_mail.html', context={
+        "user": user,
+        "current_site": current_site,
+        "uid": urlsafe_base64_encode(force_bytes(user.id)),
+        "token": default_token_generator.make_token(user)
+    })
+    send_html_email(receiver, email_subject, email_body)
+    
 
     
 
