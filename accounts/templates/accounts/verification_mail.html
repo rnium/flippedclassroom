@@ -1,5 +1,5 @@
 {% autoescape off %}
 Hi {{user.account.user_first_name}}, Welcome to WeeklyClassroom.
 Please click the link below to verify your email
-http://{current_site}{% url 'accounts:verify_user' {{uid}} {{token}} %}
+http://{current_site}{% url 'accounts:verify_user' uid token %}
 {% endautoescape %}
