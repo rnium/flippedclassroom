@@ -12,6 +12,7 @@ class Account(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     institution = models.CharField(max_length=200)
     institutional_id = models.CharField(max_length=200, null=True)
+    is_email_verified = models.BooleanField(default=False)
     profile_picture = models.ImageField(upload_to="profiles/dp/", null=True, blank=True)
 
     def __str__(self):

@@ -26,6 +26,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env('SECRET_KEY')
 
+# Email configuration
+EMAIL_FROM_USER = env('EMAIL_FROM_USER')
+EMAIL_HOST = env('EMAIL_HOST')
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 

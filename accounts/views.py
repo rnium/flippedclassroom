@@ -11,7 +11,36 @@ from django.contrib.auth import authenticate, login, logout
 from django.views.decorators.csrf import csrf_exempt
 from django.views import View
 from django.contrib.auth.decorators import login_required
+from django.contrib.sites.shortcuts import get_current_site
+from django.contrib.auth.tokens import default_token_generator
+from django.template.loader import render_to_string
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from django.utils.encoding import force_bytes, force_str
+from django.core.mail import EmailMessage
+from django.conf import settings
 from .models import Account
+from classroom.views import render_info_or_error
+
+
+
+def send_verification_email(request, user):
+    current_site = get_current_site(request)
+    email_subject = "WeeklyClassroom: Verify Your Email"
+    email_body = render_to_string('accounts/verification_mail.html', context={
+        "user": user,
+        "current_site": current_site,
+        "uid": urlsafe_base64_encode(force_bytes(user.id)),
+        "token": default_token_generator.make_token()
+    })
+    email = EmailMessage(
+        subject=email_subject,
+        body=email_body,
+        from_email=settings.EMAIL_FROM_USER,
+        to=[user.email]
+    )
+    email.send(fail_silently=False)
+    
+
 
 class LoginView(View):
     def get(self, request, *args, **kwargs):
@@ -84,6 +113,26 @@ def api_signup(request):
         return Response({'status':'email used'}, status=status.HTTP_406_NOT_ACCEPTABLE)
     login(request, user=user)
     return Response({'status':"complete"}, status=status.HTTP_201_CREATED)
+
+
+
+@login_required
+def verify_user(request, uidb64, token):
+    try :
+        user_id = force_str(urlsafe_base64_decode(uidb64))
+        user = User.objects.get(pk=user_id)
+    except Exception as e:
+        user = None
+    
+    if user and default_token_generator.check_token(user, token):
+        user.account.is_email_verified = True
+        user.save()
+        return render_info_or_error(request, "Verified", "Your email is successfully verified. You can return to dashboard")
+    else:
+        return render_info_or_error(request, "Error", "Invalid verification link", "error")
+    
+
+
 
 
 @api_view(["POST"])
