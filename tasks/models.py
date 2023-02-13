@@ -140,6 +140,7 @@ class Work(models.Model):
     is_submitted = models.BooleanField(default=False)
     group = models.ForeignKey(Group, null=True, blank=True, on_delete=models.CASCADE)
     score = models.IntegerField(null=True, blank=True)
+    remarks = models.CharField(max_length=1000, null=True, blank=True)
     submission_time = models.DateTimeField(null=True, blank=True)
     
     @property
