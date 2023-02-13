@@ -49,11 +49,12 @@ def send_verification_email(request, user):
     current_site = get_current_site(request)
     email_subject = "WeeklyClassroom: Verify Your Email"
     receiver = user.email
+    uid = urlsafe_base64_encode(force_bytes(user.id))
+    token = default_token_generator.make_token(user)
+    verification_url = request.build_absolute_uri(reverse("accounts:verify_user", args=(uid, token)))
     email_body = render_to_string('accounts/verification_mail.html', context={
         "user": user,
-        "current_site": current_site,
-        "uid": urlsafe_base64_encode(force_bytes(user.id)),
-        "token": default_token_generator.make_token(user)
+        "verification_url": verification_url,
     })
     send_html_email(receiver, email_subject, email_body)
     
