@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import (LoginView, SignupView, LogoutView, 
-                    api_login, api_signup, set_avatar, view_profile, 
+                    api_login, api_signup, set_avatar, view_profile, send_verification_email_api, 
                     edit_profile, update_profile, update_password_get, update_password_api, verify_user,
                     send_recovery_email_api, reset_password_get, forgot_password_get, reset_password_api)
 
@@ -11,6 +11,7 @@ urlpatterns = [
     path('api/login', api_login, name="user_login_post"),
     path('logout/', LogoutView.as_view(), name="user_logout"),
     path('signup/', SignupView.as_view(), name="user_signup_get"),
+    path('api/verify/sendmail', send_verification_email_api, name="send_verification_email_api"),
     path('verify/<uidb64>/<token>', verify_user, name="verify_user"),
     path('recovery', forgot_password_get, name="forgot_password_get"),
     path('api/recovery/sendmail', send_recovery_email_api, name="send_recovery_email_api"),

@@ -143,8 +143,9 @@ def verify_user(request, uidb64, token):
         user = None
     
     if user and default_token_generator.check_token(user, token):
-        user.account.is_email_verified = True
-        user.save()
+        account = user.account
+        account.is_email_verified = True
+        account.save()
         return render_info_or_error(request, "Verified", "Your email is successfully verified. You can return to dashboard")
     else:
         return render_info_or_error(request, "Error", "Invalid verification link", "error")
@@ -191,13 +192,14 @@ def set_avatar(request):
             return JsonResponse({'status':'profile picture set'})
         
 
-@api_view(["POST"])
+@api_view(["GET"])
 @permission_classes([IsAuthenticated])
-def send_email_verification_email_api(request):
+def send_verification_email_api(request):
     try:
         send_verification_email(request, request.user)
+        return Response(status=status.HTTP_200_OK)
     except Exception as e:
-        return Response(data={"error":"cannot send email"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)        
+        return Response(status=status.HTTP_503_SERVICE_UNAVAILABLE)        
 
      
 @api_view(["POST"])
