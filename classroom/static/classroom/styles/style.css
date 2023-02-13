@@ -303,6 +303,31 @@
   body .main .classrooms-dashboard .classrooms-container .classroom .info .i-item span {
     font-size: 0.8rem !important;
   }
+  body .main .classrooms-dashboard .email-unverified {
+    right: 10px !important;
+    padding: 1rem 10px !important;
+    border-radius: 5px;
+    width: 12rem !important;
+  }
+  body .main .classrooms-dashboard .email-unverified .info-con .info {
+    margin-top: 5px;
+    font-size: 0.8rem !important;
+    text-align: center;
+  }
+  body .main .classrooms-dashboard .email-unverified .btn-con {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: column !important;
+            flex-direction: column !important;
+  }
+  body .main .classrooms-dashboard .email-unverified .btn-con button {
+    font-size: 0.7rem !important;
+    width: 100%;
+  }
+  body .main .classrooms-dashboard .email-unverified .btn-con .close-btn {
+    margin: 0 !important;
+    margin-top: 3px !important;
+  }
   .title-box .title {
     font-size: 1rem !important;
   }
@@ -2784,6 +2809,63 @@ body .main .classrooms-dashboard .my-learnings .heading span {
 
 body .main .classrooms-dashboard .my-learnings .classrooms-container a.classroom .classroom-heading {
   background-color: rgba(163, 183, 206, 0.2);
+}
+
+body .main .classrooms-dashboard .email-unverified {
+  position: fixed;
+  top: 6rem;
+  right: 1rem;
+  z-index: 9999;
+  background-color: white;
+  padding: 1rem;
+  border-radius: 5px;
+  width: 20rem;
+}
+
+body .main .classrooms-dashboard .email-unverified .info-con {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body .main .classrooms-dashboard .email-unverified .info-con i {
+  font-size: 2rem;
+}
+
+body .main .classrooms-dashboard .email-unverified .info-con .info {
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+body .main .classrooms-dashboard .email-unverified .btn-con {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+body .main .classrooms-dashboard .email-unverified .btn-con button {
+  font-size: 0.8rem;
 }
 
 body .main .classrooms-dashboard .create-classroom-link {
