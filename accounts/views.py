@@ -266,7 +266,7 @@ def reset_password_get(request,  uidb64, token):
         reset_password_api_url = reverse("accounts:reset_password_api", args=(uid, emaildb64))
         return render(request, 'accounts/setup_new_pass.html', context={'reset_password_api_url':reset_password_api_url})
     else:
-        return render_info_or_error(request, "Error", "Invalid verification link", "error")
+        return render_info_or_error(request, "Error", "Invalid or expired recovery link", "error")
     
 
 @api_view(["POST"])
