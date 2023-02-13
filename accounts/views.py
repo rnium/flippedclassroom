@@ -235,6 +235,8 @@ def send_recovery_email_api(request):
     if len(user_qs) == 0:
         return Response(data={'info':'no user found with this email'}, status=status.HTTP_404_NOT_FOUND)
     user = user_qs[0]
+    if not hasattr(user, 'account'):
+        return Response(data={"info":"user has no account"}, status=status.HTTP_409_CONFLICT)
     if not user.account.is_email_verified:
         return Response(data={'info':'email not verified'}, status=status.HTTP_406_NOT_ACCEPTABLE)
     uid = urlsafe_base64_encode(force_bytes(user.id))

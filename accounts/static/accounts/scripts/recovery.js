@@ -51,7 +51,12 @@ function send_mail(btn_id, data) {
                 $(`#${btn_id}`).attr("disabled", false)
             },
             406: function() {
-                showError("Email unverified")
+                showError("Email not verified")
+                $(`#${btn_id}`).text("Submit");
+                $(`#${btn_id}`).attr("disabled", false)
+            },
+            409: function() {
+                showError("User has no account")
                 $(`#${btn_id}`).text("Submit");
                 $(`#${btn_id}`).attr("disabled", false)
             },
