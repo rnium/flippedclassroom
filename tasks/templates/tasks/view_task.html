@@ -198,6 +198,15 @@
         {% if group %}<div class="submitted-by">{{ work.submission_by.account.user_full_name }}</div>{% endif %}
         {% if work.score %}
         <div class="obtained-score"><i class='bx bx-trophy'></i><span class="point">{{work.score}}</span>Points</div>
+        {% if work.remarks %}
+        <div class="remarks-con">
+          <div class="title">
+            <i class='bx bx-list-check'></i>
+            <span>Remarks</span>
+          </div>
+          <div class="content py-2">{{work.remarks}}</div>
+        </div>
+        {% endif %}
         {% else %}
         {% if work.is_submitted %}
         <div class="buttons-container">

@@ -527,6 +527,151 @@ body .main .view-task-container .right-col .my-work .uploaded-work .obtained-sco
   margin: 0 3px 0 10px;
 }
 
+body .main .view-task-container .right-col .my-work .uploaded-work .remarks-con {
+  border-radius: 5px;
+  overflow: hidden;
+  margin: 1.5rem 0 0;
+  background-color: #eff8f8;
+}
+
+body .main .view-task-container .right-col .my-work .uploaded-work .remarks-con .title {
+  background-color: teal;
+  padding: 0.3rem 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+body .main .view-task-container .right-col .my-work .uploaded-work .remarks-con .title i {
+  font-size: 1.4rem;
+  margin-right: 3px;
+  color: white;
+  text-shadow: none;
+}
+
+body .main .view-task-container .right-col .my-work .uploaded-work .remarks-con .title span {
+  color: white;
+  text-shadow: none;
+  font-size: 1rem;
+  font-family: 'Gemunu Libre', sans-serif;
+}
+
+body .main .view-task-container .right-col .my-work .uploaded-work .remarks-con .content {
+  margin: 1rem;
+}
+
+body .main .view-task-container .right-col .my-work .uploaded-work .remarks-con .content .remarks-text button.edit {
+  margin-left: 0.5rem;
+  display: inline-block;
+  background-color: #c0dfcc;
+  border-radius: 180px;
+  border: 0;
+  padding: 5px 5px 0;
+}
+
+body .main .view-task-container .right-col .my-work .uploaded-work .remarks-con .content .remarks-text button.edit i {
+  font-size: 1.3rem;
+  color: #02b455;
+}
+
+body .main .view-task-container .right-col .my-work .uploaded-work .remarks-con .content .descr_adder_btn_con {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 2rem 0;
+}
+
+body .main .view-task-container .right-col .my-work .uploaded-work .remarks-con .content .descr_adder_btn_con button {
+  background-color: #30bd93;
+  border-radius: 10px;
+  border: 2px solid #3fc49c;
+  -webkit-box-shadow: 2px 2px 5px #c6dfd6;
+          box-shadow: 2px 2px 5px #c6dfd6;
+  padding: 0.6rem 2rem;
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
+}
+
+body .main .view-task-container .right-col .my-work .uploaded-work .remarks-con .content .descr_adder_btn_con button i, body .main .view-task-container .right-col .my-work .uploaded-work .remarks-con .content .descr_adder_btn_con button span {
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
+}
+
+body .main .view-task-container .right-col .my-work .uploaded-work .remarks-con .content .descr_adder_btn_con button:hover {
+  background-color: white;
+}
+
+body .main .view-task-container .right-col .my-work .uploaded-work .remarks-con .content .descr_adder_btn_con button:hover i, body .main .view-task-container .right-col .my-work .uploaded-work .remarks-con .content .descr_adder_btn_con button:hover span {
+  color: #3fc49c;
+}
+
+body .main .view-task-container .right-col .my-work .uploaded-work .remarks-con .content .description-editor {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 7px;
+  margin-bottom: 1rem;
+}
+
+body .main .view-task-container .right-col .my-work .uploaded-work .remarks-con .content .description-editor .inset-float-textinput {
+  width: 100%;
+}
+
+body .main .view-task-container .right-col .my-work .uploaded-work .remarks-con .content .description-editor .submit-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+  margin-top: 5px;
+}
+
+body .main .view-task-container .right-col .my-work .uploaded-work .remarks-con .content .description-editor .close-btn {
+  background-color: inherit;
+}
+
+body .main .view-task-container .right-col .my-work .uploaded-work .remarks-con .content .description-editor .close-btn i {
+  color: #69a0a0;
+}
+
 body .main .view-task-container .right-col .my-work .uploaded-work .buttons-container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2548,6 +2693,9 @@ body .main .view-file-container .bottom-pane .other-files .no-files i {
   .main .view-task-container.student .right-col .my-work .uploaded-work .submitted-by::before {
     font-size: 0.8rem !important;
     padding: 2px 5px !important;
+  }
+  .main .view-task-container.student .right-col .my-work .uploaded-work .remarks-con .content {
+    font-size: 0.8rem !important;
   }
   .main .view-task-container.student .right-col .my-work .uploaded-work .buttons-container .action-btn {
     font-size: 0.9rem !important;
