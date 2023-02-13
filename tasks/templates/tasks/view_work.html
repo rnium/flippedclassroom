@@ -70,7 +70,7 @@
     <div class="time-and-action">
       <div class="submission-time">
         <span class="label">Submitted at:</span>
-        <span class="time" id="{{work.id}}-st">{{work.submission_time|date:"c"}}</span>
+        <span class="time {{work.time_css}}" id="{{work.id}}-st">{{work.submission_time|date:"c"}}</span>
       </div>
       <div class="scoring-form">
         <input type="text" placeholder="score" id="work_score_inp">
@@ -101,30 +101,57 @@
         {% endfor %}
       </div>
     </div>
-    {% if work.group %}
-    <div class="group-members">
-      <div class="title">Group Members</div>
-      <ul>
-        {% for member in work.group.members.all %}
-        <li>
-          <div class="dp" style="background-image: url('{{member.account.avatar_url}}');">
+    <div class="right-col">
+      {% if work.group %}
+      <div class="group-members">
+        <div class="title">Group Members</div>
+        <ul>
+          {% for member in work.group.members.all %}
+          <li>
+            <div class="dp" style="background-image: url('{{member.account.avatar_url}}');">
+            </div>
+            <div class="name">{{member.account.user_full_name}}</div>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% else %}
+      <div class="submitting-student">
+        <div class="title">Submitted By</div>
+        <div class="user">
+          <div class="dp" style="background-image: url('{{work.submission_by.account.avatar_url}}');"></div>
+          <div class="name">{{work.submission_by.account.user_full_name}}</div>
+          <div class="inst-id">{{work.submission_by.account.institutional_id}}</div>
+          <div class="inst">{{work.submission_by.account.institution}}</div>
+        </div>
+      </div>
+      {% endif %}
+
+      <div class="remarks-con shadow-sm">
+        <div class="title">
+          <i class='bx bx-list-check'></i>
+          <span>Remarks</span>
+        </div>
+        <div class="content">
+          <!-- <div class="remarks-text">Lorem ipsum dolor sitiusto officiis inventore earum qui et voluptatibus deserunt. <button class="des-edit edit" id="pre-class-info-edit"><i class='bx bx-pencil'></i></button></div> -->
+          <!-- <div class="descr_adder_btn_con" id="remarks_adder_btn_con">
+            <button class="btn-iconized des-adder" id="remarks_adder" data-editorId="pre_cls-description-editor"><i class='bx bxs-message-square-add'></i><span>Add Remarks</span></button>
+          </div> -->
+          <div class="description-editor" id="pre_cls-description-editor">
+            <div class="inset-float-textinput">
+              <textarea class="editor-textarea" name="description" id="pre-descr"></textarea>
+              <label for="post-descr">Write remarks</label>
+              <div class="submit-container">
+                <button class="submit-btn" id="">Save</button>
+                <button class="editor-close-btn close-btn" id="close-description-editor" data-infoTextId="pre-class-info-text" data-adderId="pre_cls_descr_adder_btn_con"><i class='bx bx-window-close'></i></button>
+              </div>
+            </div>
           </div>
-          <div class="name">{{member.account.user_full_name}}</div>
-        </li>
-        {% endfor %}
-      </ul>
-    </div>
-    {% else %}
-    <div class="submitting-student">
-      <div class="title">Submitted By</div>
-      <div class="user">
-        <div class="dp" style="background-image: url('{{work.submission_by.account.avatar_url}}');"></div>
-        <div class="name">{{work.submission_by.account.user_full_name}}</div>
-        <div class="inst-id">{{work.submission_by.account.institutional_id}}</div>
-        <div class="inst">{{work.submission_by.account.institution}}</div>
+
+        </div>
       </div>
     </div>
-    {% endif %}
+    
     
   </div>
 </div>

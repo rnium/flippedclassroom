@@ -157,6 +157,13 @@ class Work(models.Model):
     def num_attachments(self):
         return self.attachments.count()
     
+    @property
+    def time_css(self):
+        if self.is_late:
+            return "late"
+        else:
+            return ""
+    
 
 class WorkAttachment(models.Model):
     def filepath(self, filename):
