@@ -149,7 +149,7 @@
               <textarea class="editor-textarea" name="description" id="pre-descr"></textarea>
               <label for="post-descr">Write remarks</label>
               <div class="submit-container">
-                <button class="submit-btn" id="">Save</button>
+                <button class="submit-btn" id="save-remarks-btn">Save</button>
                 <button class="editor-close-btn close-btn" id="close-remarks-editor"><i class='bx bx-window-close'></i></button>
               </div>
             </div>
@@ -169,6 +169,7 @@
 <script type="text/javascript" src="{% static 'tasks/scripts/view_work.js' %}"></script>
 <script>
   const update_work_score_api = "{% url 'classroom:tasks:update_work_score' work.task.classroom.id work.id %}"
+  const update_work_remarks_api = "{% url 'classroom:tasks:update_work_remarks' work.task.classroom.id work.id %}"
   let csrftoken = "{{ csrf_token }}"
   let marks = {{ work.task.marks }}
 </script>

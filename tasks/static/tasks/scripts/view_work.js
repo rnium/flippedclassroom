@@ -43,6 +43,32 @@ function update_test_score() {
     })
 }
 
+function update_remarks(data) {
+    $.ajax({
+        url: update_work_remarks_api,
+        contentType: "application/json",
+        type: "POST",
+        beforeSend: function(xhr){
+            xhr.setRequestHeader("X-CSRFToken", csrftoken)
+            $("#save-remarks-btn").attr('disabled', true)
+        },
+        data: JSON.stringify(data),
+        cache: false,
+        success: function(response){
+            $("#remarks-adder-editor").hide(0, ()=>{
+                $("#remarks-text-raw").text(data['remarks'])
+                $("#remarks-text-con").show()
+            })
+        },
+        complete: function(){
+            $("#save-remarks-btn").attr('disabled', false)
+        },
+        error: function(){
+            alert("Something went wrong")
+        }
+    })
+}
+
 
 function activate_edit_des_btn() {
     $(`#remarks-info-edit`).on('click', ()=>{
@@ -57,7 +83,6 @@ function activate_edit_des_btn() {
         })
     })
 }
-
 
 
 function activate_remarks_adder() {
@@ -94,4 +119,16 @@ $(document).ready(function () {
     activate_edit_des_btn()
     activate_remarks_adder()
     activate_close_editor()
+    $("#save-remarks-btn").on('click', ()=>{
+        let value = $("#pre-descr").val();
+        if (value.length < 1) {
+            $("#pre-descr").focus()
+            return false
+        }
+        let data = {
+            remarks: value,
+        }
+        update_remarks(data)
+
+    })
 });

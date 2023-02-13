@@ -299,3 +299,24 @@ def update_work_score(request, cls_pk, pk):
     work.score = score
     work.save()
     return Response(data={'info': 'success', 'score':work.score}, status=status.HTTP_200_OK)
+
+
+@api_view(["POST"])
+@permission_classes([IsAuthenticated])
+def update_work_remarks(request, cls_pk, pk):
+    try:
+        work = Work.objects.get(pk=pk, task__classroom__id=cls_pk, )
+    except Work.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    if not work.is_submitted:
+        return Response(status=status.HTTP_400_BAD_REQUEST)
+    if request.user not in work.task.classroom.teachers.all():
+        return Response(status=status.HTTP_403_FORBIDDEN)
+    try:
+        remarks = request.data['remarks']
+    except Exception as e:
+        return Response(status=status.HTTP_400_BAD_REQUEST)
+
+    work.remarks = remarks
+    work.save()
+    return Response(status=status.HTTP_200_OK)

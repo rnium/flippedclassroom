@@ -16,5 +16,6 @@ urlpatterns = [
     path('work/<str:pk>/changesubmission', views.change_work_submission_status, name="change_work_submission_status"),
     path('work/<str:pk>/delete', views.delete_work, name="delete_work"),
     path('work/<str:pk>/marking', views.update_work_score, name="update_work_score"),
+    path('work/<str:pk>/remarks', views.update_work_remarks, name="update_work_remarks"),
 ]
    
