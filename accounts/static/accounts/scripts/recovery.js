@@ -50,6 +50,11 @@ function send_mail(btn_id, data) {
                 $(`#${btn_id}`).text("Submit");
                 $(`#${btn_id}`).attr("disabled", false)
             },
+            406: function() {
+                showError("Email unverified")
+                $(`#${btn_id}`).text("Submit");
+                $(`#${btn_id}`).attr("disabled", false)
+            },
             503: function() {
                 showError("Cannot send email")
                 $(`#${btn_id}`).text("Submit");

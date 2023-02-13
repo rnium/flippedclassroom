@@ -24,7 +24,9 @@ function send_mail() {
             })
         },
         error: function() {
-            alert("Something went wrong!")
+            alert("Something went wrong!");
+            $(`#send-verification-btn`).text("Send verification");
+            $(`#send-verification-btn`).attr("disabled", false);
         }
     })
 }
