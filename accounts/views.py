@@ -129,7 +129,6 @@ def api_signup(request):
     except Exception as e:
         return Response({'status':'email used'}, status=status.HTTP_406_NOT_ACCEPTABLE)
     login(request, user=user)
-    send_verification_email(request, user)
     return Response({'status':"complete"}, status=status.HTTP_201_CREATED)
 
 

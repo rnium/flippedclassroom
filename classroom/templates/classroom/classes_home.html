@@ -80,6 +80,18 @@
       <a href="{% url 'classroom:create_classroom' %}" class="btn btn-primary btn-lg" type="button">Create Classroom</a>
     </div>
   </div>
+  {% if not request.user.account.is_email_verified %}
+    <div class="email-unverified shadow-lg" id="email-unv-con" style="display: none;">
+      <div class="info-con" id="verification-info-con">
+        <i class='bx bx-message-square-error'></i>
+        <div class="info">Your email is not verified yet! Please verify now to enable recovery option</div>
+      </div>
+      <div class="btn-con mt-2" id="verification-btn-con">
+        <button class="btn btn-primary" id="send-verification-btn">Send verification</button>
+        <button class="btn btn-outline-secondary ms-1 close-btn" id="close-verification-con-btn">Close</button>
+      </div>
+    </div>
+    {% endif %}
   {% endif %}
   
 </div>
