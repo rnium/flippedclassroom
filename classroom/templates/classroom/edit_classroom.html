@@ -25,7 +25,7 @@
   <div class="heading mb-5">
     <div class="title">Edit classroom information</div>
   </div>
-
+  <div class="btn-con"><button class="btn activate"><i class='bx bx-play-circle' ></i><span>Activate Classroom</span></button></div>        
   <div class="form" id="form-container">
     <div class="field-container inset-float-textinput mb-4">
       <input class="inp_input" type="text" id="classname" placeholder=" ">
@@ -35,7 +35,18 @@
       <input class="inp_input" type="text" id="course" placeholder=" ">
       <label class="inp_label" for="course">Course Code or Batch</label>
     </div>
+    <div class="field-container inset-float-textinput">
+      <input class="inp_input" type="text" id="quote" placeholder=" ">
+      <label class="inp_label" for="quote">Quote</label>
+    </div>
+    <div class="field-container input-file">
+      <input type="file" class="input-img" id="dp">
+      <label for="dp"><i class='bx bx-image-add' ></i><span>New Banner</span></label>
+      <div class="selected-file ms-2" id="selected-file">No file selected</div>
+      <button class="restore-btn" id="restore_to_default_btn"><i class='bx bx-refresh'></i><span>Set to default</span></button>
+    </div>
     <div class="submit mt-5">
+      <div class="lds-ellipsis" id="posting-loader" style="display: none;"><div></div><div></div><div></div><div></div></div>
       <button class="btn-1 shadow-sm" id="update-btn">Update</button>
     </div>
   </div>
