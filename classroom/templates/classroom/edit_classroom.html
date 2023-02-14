@@ -71,6 +71,7 @@
 <script src="{% static 'classroom/scripts/edit_classroom.js' %}"></script> 
 <script>
   const update_clssroom_api = "{% url 'classroom:update_classroom' classroom.id %}"
+  const set_banner_api = "{% url 'classroom:set_banner' classroom.id %}"
   const csrftoken = "{{ csrf_token }}"
   $(document).ready(function(){
     $('#classname').val("{{classroom.name}}");

@@ -34,6 +34,32 @@ function updateClassroom(btn_id, payload){
 
 }
 
+
+function setupBanner(image_file) {
+    let image_form = new FormData
+    image_form.append("dp", image_file)
+    $.ajax({
+        type: "post",
+        url: set_banner_api,
+        data: image_form,
+        contentType: false,
+        processData: false,
+        success: function(){
+            $("#posting-loader").hide()
+            $("#form-container").hide(100, ()=>{
+                $("#success-container").show(100)
+            })
+        },
+        error: function() {
+            $("#posting-loader").hide()
+            $(`#update-btn`).removeAttr("disabled");
+            alert("Cannot upload banner!")
+        }
+    });
+
+}
+
+
 function get_payload() {
     let raw_data = {
         name: $("#classname").val(),
@@ -44,6 +70,17 @@ function get_payload() {
     payload = JSON.stringify(raw_data)
     return payload
 }
+
+
+let inputfield = document.getElementsByClassName("input-img")[0]
+inputfield.addEventListener("change", function(){
+    let filename = inputfield.files.item(0).name
+    if (filename.length > 12) {
+        filename = filename.slice(0, 12) + "..."
+    }
+    let filename_container = document.getElementById(`selected-file`)
+    filename_container.innerText = filename
+})
 
 
 $("#update-btn").on("click", function(){
@@ -59,17 +96,26 @@ $("#update-btn").on("click", function(){
         contentType: "application/json",
         beforeSend: function(xhr){
             $(`#update-btn`).attr("disabled", true)
+            $("#posting-loader").show()
             xhr.setRequestHeader("X-CSRFToken", csrftoken)
         },
         data: payload,
         cache: false,
         success: function(response) {
             $("#new-classroom-name").text(response['name'])
-            $("#form-container").hide(100, ()=>{
-                $("#success-container").show(100)
-            })
+            avatar_files = $("#dp")[0].files
+            if (avatar_files.length > 0) {
+                console.log('up avatar');
+                setupBanner(avatar_files[0])
+            } else {
+                $("#posting-loader").hide()
+                $("#form-container").hide(100, ()=>{
+                    $("#success-container").show(100)
+                })
+            }
         },
         error: function() {
+            $("#posting-loader").hide()
             alert("Something went wrong")
             $(`#update-btn`).removeAttr("disabled");
         },

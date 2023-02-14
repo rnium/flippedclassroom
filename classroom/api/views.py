@@ -3,9 +3,12 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework import status
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
 from django.urls import reverse
+from django.views.decorators.csrf import csrf_exempt
 from classroom.models import ClassroomPost, PostAttachment, Classroom, Comment, AssessmentMeta, Assessment
 from .serializer import PostSerializer, ClassroomSerializer
 from .permission import IsUserPartOfClassroom, IsUserTeacher
@@ -34,6 +37,22 @@ class UpdateClassroomAV(UpdateAPIView):
     def get_queryset(self):
         print(self.request.data)
         return Classroom.objects.filter(pk=self.kwargs.get('pk'))
+
+
+@csrf_exempt
+@login_required
+def set_banner(request, pk):
+    if request.method == "POST":
+        if len(request.FILES) > 0:
+            classroom = Classroom.objects.get(pk=pk)
+            if request.user not in classroom.teachers.all():
+                return JsonResponse({'status':'Unauhtorized'})
+            classroom.banner = request.FILES.get('dp')
+            classroom.save()
+            return JsonResponse({'status':'profile picture set'})
+        
+
+
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated & IsUserPartOfClassroom])
@@ -69,6 +88,7 @@ def post_comment(request, pk):
     }
 
     return Response(response, status=status.HTTP_201_CREATED)
+
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
