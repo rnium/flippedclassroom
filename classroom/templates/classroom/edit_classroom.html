@@ -69,6 +69,10 @@
   $(document).ready(function(){
     $('#classname').val("{{classroom.name}}");
     $('#course').val("{{classroom.course}}");
+    {% if classroom.quote %}
+    $('#quote').val("{{classroom.quote}}");
+    
+    {% endif %}
   })
 </script>
 {% endblock script %}
