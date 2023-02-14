@@ -49,7 +49,9 @@
       <input type="file" class="input-img" id="dp">
       <label for="dp"><i class='bx bx-image-add' ></i><span>New Banner</span></label>
       <div class="selected-file ms-2" id="selected-file">No file selected</div>
+      {% if classroom.banner %}
       <button class="restore-btn" id="restore_to_default_btn"><i class='bx bx-refresh'></i><span>Set to default</span></button>
+      {% endif %}
     </div>
     <div class="submit mt-5">
       <div class="lds-ellipsis" id="posting-loader" style="display: none;"><div></div><div></div><div></div><div></div></div>
@@ -72,6 +74,7 @@
 <script>
   const update_clssroom_api = "{% url 'classroom:update_classroom' classroom.id %}"
   const set_banner_api = "{% url 'classroom:set_banner' classroom.id %}"
+  const set_banner_to_default_api = "{% url 'classroom:set_banner_to_default' classroom.id %}"
   const csrftoken = "{{ csrf_token }}"
   $(document).ready(function(){
     $('#classname').val("{{classroom.name}}");

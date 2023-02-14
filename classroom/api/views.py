@@ -50,7 +50,20 @@ def set_banner(request, pk):
             classroom.banner = request.FILES.get('dp')
             classroom.save()
             return JsonResponse({'status':'profile picture set'})
-        
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def set_banner_to_default(request, pk):
+    try:
+        classroom = Classroom.objects.get(pk=pk)
+    except Classroom.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    if request.user not in classroom.teachers.all():
+        return Response(status=status.HTTP_401_UNAUTHORIZED)
+    if classroom.banner == None:
+        return Response(status=status.HTTP_400_BAD_REQUEST)
+    classroom.banner.delete(save=True)
+    return Response(status=status.HTTP_200_OK)     
 
 
 

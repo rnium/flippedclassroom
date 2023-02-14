@@ -6,6 +6,7 @@ urlpatterns = [
     path('<str:pk>/posts', views.ClassroomPostsView.as_view(), name="classroom_posts"),
     path('<str:pk>/update', views.UpdateClassroomAV.as_view(), name="update_classroom"),
     path('<str:pk>/update/banner', views.set_banner, name="set_banner"),
+    path('<str:pk>/update/banner/todefault', views.set_banner_to_default, name="set_banner_to_default"),
     path('<str:pk>/addteacher', views.add_teacher, name="add_teacher"),
     path('<str:cls_pk>/assessments/update', views.update_assessments, name="update_assessments"),
     path('<str:cls_pk>/assessments/delete', views.delete_assessment_meta, name="delete_assessment_meta"),

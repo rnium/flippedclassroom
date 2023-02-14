@@ -60,6 +60,33 @@ function setupBanner(image_file) {
 }
 
 
+function set_banner_to_default(btn_id) {
+    $.ajax({
+        type: "POST",
+        url: set_banner_to_default_api,
+        beforeSend: function(xhr){
+            $(`#${btn_id}`).attr("disabled", true)
+            xhr.setRequestHeader("X-CSRFToken", csrftoken)
+        },
+        cache: false,
+        success: function(response) {
+            $(`#${btn_id}`).hide()
+            alert("Classroom banner set to default")
+        },
+        statusCode: {
+            400: function() {
+              alert( "Bad request" );
+            },
+            401: function() {
+              alert( "You're not authorized to perform this action" );
+            },
+            404: function() {
+              alert( "classroom not found" );
+            },
+        }
+    });
+}
+
 function get_payload() {
     let raw_data = {
         name: $("#classname").val(),
@@ -131,3 +158,10 @@ $("#change_active_btn").on('click', ()=>{
         updateClassroom("change_active_btn", data);
     }
 })
+
+let restore_banner_btns = $(".restore-btn")
+if (restore_banner_btns.length > 0) {
+    $("#restore_to_default_btn").on('click', ()=>{
+        set_banner_to_default("restore_to_default_btn")
+    })
+}
