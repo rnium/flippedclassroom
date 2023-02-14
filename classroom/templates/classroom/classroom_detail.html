@@ -24,8 +24,15 @@
 {% block content %}
 <div class="left-col">
   <div class="classroom-info">
+    <img class="bg" src="{{classroom.banner_url}}">
     <div class="title">{{ classroom.name }}</div>
-    <div class="num-students">{{ classroom.course }}</div>
+    <div class="course">{{classroom.course}}</div>
+    {% if classroom.quote  %}
+    <div class="quote-con">
+      <i class='bx bxs-quote-single-left'></i>
+      <span class="quote">{{classroom.quote}}</span>
+    </div>
+    {% endif %}
     <div class="share-link">
       <button id="share-link">copy join link <i class='bx bx-copy'></i><div id="copy-info" class="copy-info" style="display: none;">copied</div></button>
     </div>

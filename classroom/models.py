@@ -2,6 +2,7 @@ from unicodedata import name
 from django.db import models
 from django.contrib.auth.models import User
 from django.http import FileResponse
+from django.templatetags.static import static
 import uuid
 from os.path import join, basename
 from django.utils import timezone
@@ -22,12 +23,21 @@ class Classroom(models.Model):
     course = models.CharField(max_length=20)
     teachers = models.ManyToManyField(User, related_name='teacher')
     students = models.ManyToManyField(User, related_name='student', blank=True)
+    banner = models.ImageField(upload_to="classrooms/banner/", null=True, blank=True)
+    quote = models.CharField(max_length=200, null=True, blank=True)
     active = models.BooleanField(default=True)
     created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return f"{self.name} - {self.id}"
-
+    
+    @property
+    def banner_url(self):
+        if bool(self.banner):
+            return self.banner.url
+        else:
+            return static('classroom/images/default_bg.svg')
+    
     @property
     def num_students(self):
         return self.students.count()
