@@ -27,7 +27,7 @@ function removeUser(btn_id, user_id){
     }
     $.ajax({
         type: "post",
-        url: remove_student_url,
+        url: remove_user_from_classroom_url,
         dataType: "json",
         contentType: "application/json",
         beforeSend: function(xhr){
@@ -39,10 +39,16 @@ function removeUser(btn_id, user_id){
         success: function(response) {
             window.location.href = "/"
         },
-        error: function() {
-            alert("Something went wrong")
-            $(`#${btn_id}`).removeAttr("disabled");
-        },
+        statusCode: {
+            401: function() {
+                $(`#${btn_id}`).attr("disabled", false)
+                alert( "Bad request" );
+            },
+            406: function() {
+                $(`#${btn_id}`).attr("disabled", false)
+                alert( "As you're the only teacher of this classroom, you cannot leave!" );
+            },
+        }
     });
 
 }

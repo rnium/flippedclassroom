@@ -120,19 +120,31 @@ def create_classroom(request):
 
  
 @api_view(['POST'])
-@permission_classes([IsAuthenticated & IsUserPartOfClassroom])
-def remove_student(request, pk):
+@permission_classes([IsAuthenticated])
+def remove_user_from_classroom(request, pk):
     classroom = get_object_or_404(Classroom, pk=pk)
     try:
         user_id = request.data['user_id']
     except KeyError:
         return Response(status=status.HTTP_400_BAD_REQUEST)
-    student = get_object_or_404(User, pk=user_id)
-    if (request.user in classroom.teachers.all()) or (request.user==student):
-        classroom.students.remove(student)
-        return Response({'status':"user removed"}, status=status.HTTP_200_OK)
+    user = get_object_or_404(User, pk=user_id)
+    if (user in classroom.teachers.all()) or (user in classroom.students.all()):
+        if (request.user in classroom.teachers.all()):
+            if request.user == user:
+                if classroom.teachers.count() < 2:
+                    return Response({'status':"user non-removable"}, status=status.HTTP_406_NOT_ACCEPTABLE)
+                else:
+                  classroom.teachers.remove(user)  
+            else:
+                classroom.students.remove(user)
+            return Response({'status':"user removed"}, status=status.HTTP_200_OK)
+        elif (request.user in classroom.students.all()) and (request.user == user):
+            classroom.students.remove(user)
+            return Response({'status':"user removed"}, status=status.HTTP_200_OK)
+        else:
+            return Response({'info':'Unauthorized'}, status=status.HTTP_401_UNAUTHORIZED)
     else:
-        return Response(status=status.HTTP_403_FORBIDDEN)
+        return Response({'info':'Unauthorized'}, status=status.HTTP_401_UNAUTHORIZED)
     
 
 @api_view(['POST'])

@@ -132,7 +132,7 @@
   {% if request.user in classroom.teachers.all %}
   <script>
     const add_teacher_url = "{% url 'classroom:add_teacher' classroom.id %}"
-    const remove_student_url = "{% url 'classroom:remove_student' classroom.id %}"
+    const remove_user_from_classroom_url = "{% url 'classroom:remove_user_from_classroom' classroom.id %}"
     const csrftoken = "{{csrf_token}}"
   </script>
   {% endif %}

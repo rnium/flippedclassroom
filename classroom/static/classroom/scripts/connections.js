@@ -6,7 +6,7 @@ function removeUser(btn_id, user_id, container_id){
     }
     $.ajax({
         type: "post",
-        url: remove_student_url,
+        url: remove_user_from_classroom_url,
         dataType: "json",
         contentType: "application/json",
         beforeSend: function(xhr){
