@@ -25,7 +25,13 @@
   <div class="heading mb-1">
     <div class="title">Edit classroom information</div>
   </div>
-  <div class="btn-con"><button class="btn activate"><i class='bx bx-play-circle' ></i><span>Activate Classroom</span></button></div>        
+  <div class="btn-con">
+    {% if classroom.active %}
+    <button class="btn deactivate" id="change_active_btn" data-active=true><i class='bx bx-stop-circle'></i><span>Deactivate Classroom</span></button>
+    {% else %}
+    <button class="btn activate" id="change_active_btn" data-active=false><i class='bx bx-play-circle'></i><span>Activate Classroom</span></button>
+    {% endif %}
+  </div>        
   <div class="form mt-2" id="form-container">
     <div class="field-container inset-float-textinput mb-4">
       <input class="inp_input inp_required" type="text" id="classname" placeholder=" ">

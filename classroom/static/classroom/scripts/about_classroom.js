@@ -47,15 +47,6 @@ function removeUser(btn_id, user_id){
 
 }
 
-$("#change_active_btn").on('click', ()=>{
-    let current_status = $("#change_active_btn").data('active');
-    let data = {"active":!current_status};
-    let confirmation = confirm("Confirm action?");
-    if (confirmation) {
-        updateClassroom("change_active_btn", data);
-    }
-})
-
 $("#leave-btn").on('click', ()=>{
     let user_id = $("#leave-btn").data("user-id");
     let confirmation = confirm("Confirm action?");
