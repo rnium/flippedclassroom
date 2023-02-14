@@ -23,9 +23,9 @@
 
 {% block content %}
 <div class="meta-info shadow-sm">
+  <img class="bg" src="{{classroom.banner_url}}">
   <div class="classroom-name">{{classroom.name}}</div>
   <div class="course">{{classroom.course}}</div>
-  <i class='bg bx bx-math'></i>
   {% if request.user in classroom.teachers.all %}
   <a href="{% url 'classroom:edit_classroom' classroom.id %}" class="edit-btn shadow"><i class='bx bx-pencil'></i><span>Edit</span></a>
   {% endif %}
