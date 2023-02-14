@@ -32,6 +32,7 @@ class UpdateClassroomAV(UpdateAPIView):
     permission_classes = [IsAuthenticated, IsUserTeacher]
 
     def get_queryset(self):
+        print(self.request.data)
         return Classroom.objects.filter(pk=self.kwargs.get('pk'))
 
 @api_view(['POST'])

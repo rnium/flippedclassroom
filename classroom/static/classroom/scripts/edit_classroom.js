@@ -1,5 +1,5 @@
 function validate_fields(){
-    let fields = $(".inp_input")
+    let fields = $(".inp_required")
     for (let field of fields) {
         let field_id = field.id
         let inp_value = $(`#${field_id}`).val()
@@ -15,8 +15,10 @@ function validate_fields(){
 function get_payload() {
     let raw_data = {
         name: $("#classname").val(),
-        course: $("#course").val()
+        course: $("#course").val(),
+        quote: $("#quote").val()
     }
+    console.log(raw_data['quote'].length);
     payload = JSON.stringify(raw_data)
     return payload
 }

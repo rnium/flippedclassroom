@@ -22,17 +22,17 @@
 {% endblock nav %}
 {% block content %}
 <div class="edit-classroom">
-  <div class="heading mb-5">
+  <div class="heading mb-1">
     <div class="title">Edit classroom information</div>
   </div>
   <div class="btn-con"><button class="btn activate"><i class='bx bx-play-circle' ></i><span>Activate Classroom</span></button></div>        
-  <div class="form" id="form-container">
+  <div class="form mt-2" id="form-container">
     <div class="field-container inset-float-textinput mb-4">
-      <input class="inp_input" type="text" id="classname" placeholder=" ">
+      <input class="inp_input inp_required" type="text" id="classname" placeholder=" ">
       <label class="inp_label" for="classname">Classroom Name</label>
     </div>
     <div class="field-container inset-float-textinput">
-      <input class="inp_input" type="text" id="course" placeholder=" ">
+      <input class="inp_input inp_required" type="text" id="course" placeholder=" ">
       <label class="inp_label" for="course">Course Code or Batch</label>
     </div>
     <div class="field-container inset-float-textinput">
@@ -50,7 +50,7 @@
       <button class="btn-1 shadow-sm" id="update-btn">Update</button>
     </div>
   </div>
-  <div class="success" id="success-container" style="display: none">
+  <div class="success mt-4" id="success-container" style="display: none">
     <i class='bx bx-message-square-check icon'></i>
     <div class="classroom-name" id="new-classroom-name"></div>
     <div class="share-link">
@@ -71,7 +71,7 @@
     $('#course').val("{{classroom.course}}");
     {% if classroom.quote %}
     $('#quote').val("{{classroom.quote}}");
-    
+
     {% endif %}
   })
 </script>
