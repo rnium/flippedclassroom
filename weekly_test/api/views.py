@@ -113,5 +113,6 @@ class TestAnswersheetsView(ListAPIView):
         return test
     def get_queryset(self):
         test = self.get_object()
-        answer_sheets = AnswerSheet.objects.filter(test=test, submit_time__isnull=False).order_by('-submit_time')
-        return answer_sheets
+        answer_sheets = AnswerSheet.objects.filter(test=test, submit_time__isnull=False).order_by('submit_time')
+        answer_sheets_sorted = sorted(answer_sheets, key=lambda o: o.time_taken)
+        return answer_sheets_sorted

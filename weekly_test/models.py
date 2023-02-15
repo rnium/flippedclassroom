@@ -135,6 +135,13 @@ class AnswerSheet(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='weekly_test_user')
     issue_time = models.DateTimeField(blank=True, null=True)
     submit_time = models.DateTimeField(blank=True, null=True)
+    
+    @property
+    def time_taken(self):
+        try:
+            return (self.submit_time - self.issue_time)
+        except Exception as e:
+            return None
 
     @property
     def num_mcq_answers(self):

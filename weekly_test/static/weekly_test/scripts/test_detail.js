@@ -28,7 +28,7 @@ function renderTable(row_data, hidden=false) {
                                 <span>${row['student_name']}</span>
                             </td>
                             <td class="sheet-id"><a href="${row['view_url']}">${row['id']}</a></td>
-                            <td>${issue_time}</td>
+                            <td>${row['time_taken']}</td>
                             <td>${row['answers_submitted']}</td>
                             <td>${row['answers_correct']}</td>
                             ${user_score}
@@ -39,7 +39,7 @@ function renderTable(row_data, hidden=false) {
                     <tr>
                         <th>Student</th>
                         <th>Sheet ID</th>
-                        <th>Issue Time</th>
+                        <th>Time Taken</th>
                         <th>Submitted Answers</th>
                         <th>Correct Answers</th>
                         <th>Score</th>

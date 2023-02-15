@@ -24,6 +24,7 @@ class AnswerSheetSerializer(serializers.ModelSerializer):
     student_name = serializers.SerializerMethodField(read_only=True)
     avatar_url = serializers.SerializerMethodField(read_only=True)
     view_url = serializers.SerializerMethodField(read_only=True)
+    time_taken = serializers.SerializerMethodField(read_only=True)
     answers_submitted = serializers.SerializerMethodField(read_only=True)
     answers_correct = serializers.SerializerMethodField(read_only=True)
     score = serializers.SerializerMethodField(read_only=True)
@@ -38,6 +39,8 @@ class AnswerSheetSerializer(serializers.ModelSerializer):
         return obj.user.account.avatar_url
     def get_view_url(self, obj):
         return reverse('weekly_test:view_answersheet', kwargs={'pk': obj.id})
+    def get_time_taken(self, obj):
+        return str(obj.time_taken)
     def get_answers_submitted(self, obj):
         return obj.num_mcq_answers + obj.num_des_answers   
     def get_answers_correct(self, obj):
