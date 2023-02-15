@@ -510,7 +510,7 @@ body .main .left-col .classroom-info .share-link button .copy-info {
 
 body .main .left-col .postbox {
   padding: 0.8rem 0.5rem 0.7rem;
-  background-color: #b2caca34;
+  background-color: #94baba34;
   border-radius: 10px;
 }
 
@@ -1025,6 +1025,10 @@ body .main .left-col .recent-posts .loader {
   margin: 4rem 0;
 }
 
+body .main .left-col .weeklies .content {
+  margin: 10px 5px;
+}
+
 body .main .left-col .weeklies .content ul {
   list-style-type: none;
   padding: 0;
@@ -1040,10 +1044,10 @@ body .main .left-col .weeklies .content ul li a {
 }
 
 body .main .left-col .weeklies .content ul li a .week {
-  background-color: #d9eee7;
+  background-color: #bee1d5;
   border-radius: 5px;
   position: relative;
-  padding: 1.2rem 1rem;
+  padding: 1.4rem 1rem;
   overflow: hidden;
   -webkit-box-shadow: 0 0 10px #f0f0f0;
           box-shadow: 0 0 10px #f0f0f0;
@@ -1072,7 +1076,7 @@ body .main .left-col .weeklies .content ul li a .week .week-no .weektext {
   font-family: 'Gemunu Libre', sans-serif;
   font-size: 1.7rem;
   margin-right: 10px;
-  color: #5d9b79;
+  color: #489572;
   font-weight: 500;
   text-shadow: 0 0 5px #c7e0d3;
 }
@@ -1271,108 +1275,12 @@ body .main .right-col {
   transition: all 100ms;
 }
 
-body .main .right-col .upcoming .content ul {
-  padding: 0;
-  list-style-type: none;
+body .main .right-col .live-tests {
+  background-color: #47616e;
 }
 
-body .main .right-col .upcoming .content ul li .list-item {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  justify-items: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  padding: 2px 5px;
-  border-radius: 5px;
-  border: 1px solid transparent;
-  -webkit-transition: all 300ms;
-  transition: all 300ms;
-}
-
-body .main .right-col .upcoming .content ul li .list-item i {
-  font-size: 1.5rem;
-  margin-right: 0.5rem;
-  padding: 0.3rem;
-  border-radius: 5px;
-}
-
-body .main .right-col .upcoming .content ul li .list-item .info {
-  color: #4b6d63;
-}
-
-body .main .right-col .upcoming .content ul li .list-item .info .label-title {
-  color: inherit;
-  text-decoration: none;
-}
-
-body .main .right-col .upcoming .content ul li .list-item .info a.label-title {
-  -webkit-transition: all 300ms;
-  transition: all 300ms;
-}
-
-body .main .right-col .upcoming .content ul li .list-item .info a.label-title:hover {
-  text-shadow: 0 0 5px rgba(207, 223, 223, 0.6);
-}
-
-body .main .right-col .upcoming .content ul li .list-item .info .time {
-  font-size: 0.7rem;
-}
-
-body .main .right-col .upcoming .content ul li .test i {
-  background-color: #c7e0d8;
-  color: #50967e;
-}
-
-body .main .right-col .upcoming .content ul li .test:hover {
-  background-color: rgba(147, 179, 160, 0.1);
-}
-
-body .main .right-col .upcoming .content ul li .assignment .info .deadline {
-  font-size: 0.7rem;
-}
-
-body .main .right-col .upcoming .content ul li .assignment i {
-  background-color: rgba(199, 206, 224, 0.678);
-  color: #507196;
-}
-
-body .main .right-col .upcoming .content ul li .assignment:hover {
-  background-color: rgba(147, 157, 179, 0.1);
-}
-
-body .main .right-col .upcoming .content .no-content {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  justify-items: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  padding: 2rem 0;
-}
-
-body .main .right-col .upcoming .content .no-content i {
-  margin-right: 5px;
-  font-size: 1.5rem;
-  color: #87ac95;
-}
-
-body .main .right-col .upcoming .content .no-content span {
-  color: #87ac95;
-  text-shadow: 0 0 5px #f0f0f0;
+body .main .right-col .live-tests .title {
+  color: white;
 }
 
 body .main .right-col .live-tests .content ul {
@@ -1403,8 +1311,8 @@ body .main .right-col .live-tests .content ul li .test-item i {
   margin-right: 0.5rem;
   padding: 0.3rem;
   border-radius: 5px;
-  background-color: #c7e0d8;
-  color: #50967e;
+  background-color: #0bf5aa;
+  color: #46846f;
 }
 
 body .main .right-col .live-tests .content ul li .test-item .info {
@@ -1418,7 +1326,7 @@ body .main .right-col .live-tests .content ul li .test-item .info .label-title {
   display: block;
   text-align: center;
   font-size: 1.1rem;
-  color: gray;
+  color: #d2e3de;
 }
 
 body .main .right-col .live-tests .content ul li .test-item .info a.label-title {
@@ -1427,7 +1335,7 @@ body .main .right-col .live-tests .content ul li .test-item .info a.label-title 
 }
 
 body .main .right-col .live-tests .content ul li .test-item .info a.label-title:hover {
-  color: #68c094;
+  color: #98ffcc;
 }
 
 body .main .right-col .live-tests .content ul li .test-item .info .ending-time {
@@ -1449,11 +1357,10 @@ body .main .right-col .live-tests .content ul li .test-item .info .ending-time {
 }
 
 body .main .right-col .live-tests .content ul li .test-item .info .ending-time i {
-  color: #1bc396;
-  text-shadow: 0 0 3px #d6e7e1;
+  color: #ff6b35;
   background-color: inherit;
   padding: 0;
-  font-size: 1.1rem !important;
+  font-size: 1.2rem;
   margin: 0;
   margin-right: 3px;
 }
@@ -1475,13 +1382,14 @@ body .main .right-col .live-tests .content ul li .test-item .info .ending-time .
 
 body .main .right-col .live-tests .content ul li .test-item .info .ending-time .time-con .label {
   font-weight: 500;
-  text-shadow: 0 0 3px #d6e7e1;
+  font-size: 0.8rem;
+  color: #ff6b35;
   margin-right: 3px;
   font-family: 'Gemunu Libre', sans-serif;
 }
 
 body .main .right-col .live-tests .content ul li .test-item .info .ending-time .time-con span {
-  color: #50af96;
+  color: #f7c59f;
 }
 
 body .main .right-col .live-tests .content ul li .test-item .info .stat {
@@ -1498,8 +1406,10 @@ body .main .right-col .live-tests .content ul li .test-item .info .stat {
   margin-top: 0.5rem;
   border-radius: 10px;
   width: 100%;
-  background-image: -webkit-gradient(linear, left top, right bottom, from(rgba(194, 191, 191, 0.2)), to(rgba(177, 237, 248, 0.384)));
-  background-image: linear-gradient(to bottom right, rgba(194, 191, 191, 0.2), rgba(177, 237, 248, 0.384));
+  -webkit-box-shadow: 0 0 10px #45606d;
+          box-shadow: 0 0 10px #45606d;
+  background-image: -webkit-gradient(linear, left top, right top, from(#1084d2), to(teal));
+  background-image: linear-gradient(to right, #1084d2, teal);
 }
 
 body .main .right-col .live-tests .content ul li .test-item .info .stat div {
@@ -1521,10 +1431,11 @@ body .main .right-col .live-tests .content ul li .test-item .info .stat div i {
   font-size: 1.2rem;
   background-color: transparent;
   margin-right: 0;
+  color: white;
 }
 
 body .main .right-col .live-tests .content ul li .test-item .info .stat div span {
-  color: #6390a5;
+  color: white;
 }
 
 body .main .right-col .live-tests .content ul li .test-item .info .stat div span.value {
@@ -1540,18 +1451,17 @@ body .main .right-col .live-tests .content ul li .test-item .info .action a {
   margin-top: 0.5rem;
   border-radius: 20px;
   color: #ffffff;
-  background-color: #96beb1;
-  border: 2px solid #96beb1;
-  -webkit-box-shadow: 0 0 5px rgba(200, 233, 222, 0.5);
-          box-shadow: 0 0 5px rgba(200, 233, 222, 0.5);
+  background-color: #1084d2;
+  -webkit-box-shadow: 0 0 10px #45606d;
+          box-shadow: 0 0 10px #45606d;
   width: 100%;
-  -webkit-transition: all 300ms;
-  transition: all 300ms;
+  -webkit-transition: background-color 300ms;
+  transition: background-color 300ms;
 }
 
 body .main .right-col .live-tests .content ul li .test-item .info .action a:hover {
-  color: #05ac45;
-  background-color: inherit;
+  background-color: #22577a;
+  outline: 1px solid white;
 }
 
 body .main .right-col .weekly-tasks .content ul, body .main .right-col .weekly-tests .content ul {
@@ -3224,9 +3134,10 @@ body .main .create-classroom .success .share-link button .copy-info {
 
 .title-box .title {
   background-color: #dfe9e65b;
+  font-family: 'Gemunu Libre', sans-serif;
   padding: 0.5rem 1rem;
   font-weight: 500;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   color: #6ea076;
   text-align: center;
 }
