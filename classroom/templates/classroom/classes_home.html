@@ -9,12 +9,16 @@
   {% if classrooms %}
     {% if classrooms.my_teachings %}
     <div class="my-teachings classes-section">
-      <div class="heading"><i class='bx bx-user-voice'></i><span>My Teachings</span></div>
+      <div class="heading">
+        <div class="content">
+          <i class='bx bx-user-voice'></i><span>My Teachings</span>
+        </div>
+      </div>
       <div class="classrooms-container">
         {% for classroom in classrooms.my_teachings %}
         <a class="classroom" href="{% url 'classroom:classroom_detail' classroom.id %}">
           <div class="classroom-heading">
-            <i class='bx bx-chalkboard bg'></i>
+            <img src="{{classroom.banner_url}}" class="bg">
             <div class="title">{{ classroom.name }}</div>
             <div class="course">{{ classroom.course }}</div>
           </div>
@@ -33,15 +37,18 @@
     {% endif %}
     {% if classrooms.my_learnings %}
     <div class="my-learnings classes-section">
-      <div class="heading"><i class='bx bx-book'></i><span>My Learnings</span></div>
+      <div class="heading">
+        <div class="content">
+          <i class='bx bx-book'></i><span>My Learnings</span>
+        </div>
+      </div>
       <div class="classrooms-container">
         {% for classroom in classrooms.my_learnings %}
         <a class="classroom" href="{% url 'classroom:classroom_detail' classroom.id %}">
           <div class="classroom-heading">
-            <i class='bx bxl-redux bg'></i>
+            <img src="{{classroom.banner_url}}" class="bg">
             <div class="title">{{ classroom.name }}</div>
             <div class="course">{{ classroom.course }}</div>
-            <div class="owner"><i class='bx bx-user-voice'></i><span>{{ classroom.teacher_name }}</span></div>
           </div>
           <div class="info">
             <div class="last-post-info i-item">
