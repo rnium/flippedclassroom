@@ -120,7 +120,7 @@
       <ul>
         {% for test in teacher_tests %}
         <li>
-          <div class="test-item">
+          <div class="test-item live_test" id="test-{{test.id}}" data-testid="{{test.id}}">
             <i class='bx bx-edit-alt'></i>
             <div class="info">
               <a href="{% url 'weekly_test:view_test' test.id %}" class="label-title">{{ test.title }}</a>
@@ -132,8 +132,8 @@
                 </div>
               </div>
               <div class="stat">
-                <div class="issued"><i class='bx bx-user-check'></i><span>Issued:&nbsp;</span><span class="value" id="{{test.id}}-issued">{{ test.num_answer_sheets }}</span></div>
-                <div class="submitted"><i class='bx bx-check-double'></i><span>Submitted:&nbsp;</span><span class="value" id="{{test.id}}-submitted">{{ test.num_submitted_answer_sheets }}</span></div>
+                <div class="issued"><i class='bx bx-user-check'></i><span>Issued:&nbsp;</span><span class="value" id="issued-{{test.id}}">{{ test.num_answer_sheets }}</span></div>
+                <div class="submitted"><i class='bx bx-check-double'></i><span>Submitted:&nbsp;</span><span class="value" id="submitted-{{test.id}}">{{ test.num_submitted_answer_sheets }}</span></div>
               </div>
             </div>
           </div>
@@ -294,7 +294,8 @@
   const classroom_id = "{{ classroom.id }}"
   const post_create_url = "{% url 'classroom:post_to_classroom' classroom.id %}"
   const weekly_create_url = "{% url 'weeklies:create_weekly' classroom.id %}"
-
+  const ping_url = "{% url 'weekly_test_api:live_test_stats' classroom.id %}"
 </script>
 <script src="{% static 'classroom/scripts/classroom_dash.js' %}"></script>
+<script src="{% static 'classroom/scripts/lping.js' %}"></script>
 {% endblock script %}

@@ -12,6 +12,7 @@ from rest_framework.permissions import IsAuthenticated
 from .permission import IsUserTeacherOfClassroom
 from rest_framework.generics import ListAPIView
 from weeklies.models import Weekly
+from classroom.models import Classroom
 
 @api_view(["POST"])
 def create_test(request, pk):
@@ -86,6 +87,39 @@ def delete_test(request, pk):
         return Response(status=status.HTTP_204_NO_CONTENT)
     else:
         return Response(status=status.HTTP_403_FORBIDDEN)
+
+
+
+@api_view(["POST"])
+@permission_classes([IsAuthenticated])
+def live_test_stats(request, cls_pk):
+    try:
+        classroom = Classroom.objects.get(pk=cls_pk)
+    except Classroom.DoesNotExist:
+        return Response(data={'info':'classroom not found'}, status=status.HTTP_404_NOT_FOUND)
+    if request.user not in classroom.teachers.all():
+        return Response(data={'info':'access denied'}, status=status.HTTP_403_FORBIDDEN)
+    live_tests = []
+    try:
+        test_pks = request.data['test_pks']
+    except Exception as e:
+        return Response(data={'info':'bad request'}, status=status.HTTP_400_BAD_REQUEST)
+    for test_pk in test_pks:
+        try:
+            test = WeeklyTest.objects.get(pk=test_pk)
+            live_tests.append(test)
+        except WeeklyTest.DoesNotExist:
+            return Response(data={'info':'test not found'}, status=status.HTTP_404_NOT_FOUND)
+    dataset = {}
+    for l_test in live_tests:
+        unit_data = {}
+        unit_data['issued'] = l_test.num_answer_sheets
+        unit_data['submitted'] = l_test.num_submitted_answer_sheets
+        dataset[l_test.id] = unit_data
+    live_test_data = {'lt_data':dataset}
+    return Response(data=live_test_data, status=status.HTTP_200_OK)
+    
+
 
 
 @api_view(["POST"])
