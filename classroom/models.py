@@ -21,6 +21,7 @@ class Classroom(models.Model):
     )
     name = models.CharField(max_length=50)
     course = models.CharField(max_length=20)
+    join_code = models.CharField(max_length=10)
     teachers = models.ManyToManyField(User, related_name='teacher')
     students = models.ManyToManyField(User, related_name='student', blank=True)
     banner = models.ImageField(upload_to="classrooms/banner/", null=True, blank=True)
