@@ -91,6 +91,25 @@ def set_banner_to_default(request, pk):
     return Response(status=status.HTTP_200_OK)     
 
 
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def change_join_code(request, pk):
+    try:
+        classroom = Classroom.objects.get(pk=pk)
+    except Classroom.DoesNotExist:
+        return Response(data={'status':'post not found'}, status=status.HTTP_404_NOT_FOUND)
+    if request.user not in classroom.teachers.all():
+        return Response(data={'status':'Unauthorized'},status=status.HTTP_401_UNAUTHORIZED)
+    cls_code = get_random_string(6)
+    classrooms_qs = Classroom.objects.filter(join_code=cls_code)
+    while len(classrooms_qs) > 1:
+        cls_code = get_random_string(6)
+        classrooms_qs = Classroom.objects.filter(join_code=cls_code)
+    classroom.join_code = cls_code
+    classroom.save()
+    return Response(data={'newcode':classroom.join_code}, status=status.HTTP_200_OK)     
+
+
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated & IsUserPartOfClassroom])
