@@ -290,7 +290,7 @@
 
 {% block script %}
 <script>
-  const join_link = "{{ join_link }}"
+  const invitation_text = `{{ invitation_text }}`
   const classroom_id = "{{ classroom.id }}"
   const post_create_url = "{% url 'classroom:post_to_classroom' classroom.id %}"
   const weekly_create_url = "{% url 'weeklies:create_weekly' classroom.id %}"

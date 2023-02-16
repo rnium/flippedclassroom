@@ -21,7 +21,7 @@ function activate_option_btns() {
 }
 
 $('#share-link').on('click', function(){
-    navigator.clipboard.writeText(join_link)
+    navigator.clipboard.writeText(invitation_text)
     $('#copy-info').show(200)
     setTimeout(function(){
         $('#copy-info').hide(200)

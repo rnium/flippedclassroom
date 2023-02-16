@@ -56,7 +56,9 @@ class ClassroomDetail(LoginRequiredMixin, DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         classroom = self.get_object()
-        context["join_link"] = self.request.build_absolute_uri(reverse("classroom:join_classroom", args=(classroom.join_code,)))
+        join_link = self.request.build_absolute_uri(reverse("classroom:join_classroom", args=(classroom.join_code,)))
+        invitation_text = f"""Join {classroom.name} by using this code: {classroom.join_code}\nor by using this url: {join_link}"""
+        context["invitation_text"] = invitation_text
         if self.request.user in classroom.teachers.all():
             query_set = classroom.ongoing_tests
             if query_set.count() > 0:
