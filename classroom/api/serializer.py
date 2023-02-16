@@ -66,4 +66,4 @@ class PostSerializer(serializers.ModelSerializer):
 class ClassroomSerializer(serializers.ModelSerializer):
     class Meta:
         model = Classroom
-        fields = ['name', 'course', 'quote', 'active']
+        fields = ['name', 'course', 'join_code', 'quote', 'active']

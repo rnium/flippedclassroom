@@ -9,6 +9,7 @@ from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
 from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
+from django.utils.crypto import get_random_string
 from classroom.models import ClassroomPost, PostAttachment, Classroom, Comment, AssessmentMeta, Assessment
 from .serializer import PostSerializer, ClassroomSerializer
 from .permission import IsUserPartOfClassroom, IsUserTeacher
@@ -107,6 +108,12 @@ def post_comment(request, pk):
 @permission_classes([IsAuthenticated])
 def create_classroom(request):
     serializer = ClassroomSerializer(data=request.data)
+    cls_code = get_random_string(6)
+    classrooms_qs = Classroom.objects.filter(join_code=cls_code)
+    while len(classrooms_qs) > 1:
+        cls_code = get_random_string(6)
+        classrooms_qs = Classroom.objects.filter(join_code=cls_code)
+    serializer.initial_data['join_code'] = cls_code
     if serializer.is_valid():
         classroom = serializer.save()
         classroom.teachers.add(request.user)
