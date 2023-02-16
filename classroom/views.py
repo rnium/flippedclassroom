@@ -56,7 +56,7 @@ class ClassroomDetail(LoginRequiredMixin, DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         classroom = self.get_object()
-        context["join_link"] = self.request.build_absolute_uri(reverse("classroom:join_classroom", args=(classroom.id,)))
+        context["join_link"] = self.request.build_absolute_uri(reverse("classroom:join_classroom", args=(classroom.join_code,)))
         if self.request.user in classroom.teachers.all():
             query_set = classroom.ongoing_tests
             if query_set.count() > 0:
@@ -97,7 +97,7 @@ class ClassroomAbout(LoginRequiredMixin, DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         classroom = context['classroom']
-        context["join_link"] = self.request.build_absolute_uri(reverse("classroom:join_classroom", args=(classroom.id,)))
+        context["join_link"] = self.request.build_absolute_uri(reverse("classroom:join_classroom", args=(classroom.join_code,)))
         return context
         
         
@@ -242,8 +242,11 @@ def edit_classroom(request, pk):
         return render_info_or_error(request, "Unauthorized", "You have no permission to perform this action", "error")
 
 @login_required
-def join_classroom(request, pk):
-    classroom = get_object_or_404(Classroom, pk=pk)
+def join_classroom(request, cls_code):
+    try:
+        classroom = Classroom.objects.get(join_code=cls_code)
+    except Classroom.DoesNotExist:
+        return render_info_or_error(request, "Invalid Link", "This not a valid invitatin link of any existing classroom", "error")
     if request.user in classroom.teachers.all():
         return redirect('classroom:classroom_detail', pk=classroom.id)
     elif request.user not in classroom.students.all():

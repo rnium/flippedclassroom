@@ -16,7 +16,7 @@ urlpatterns = [
     path('classroom/<str:pk>/about', ClassroomAbout.as_view(), name="classroom_about"),
     path('classroom/<str:pk>/assignment/new', create_assignment, name="create_assignment"),
     path('classroom/<str:pk>/edit', edit_classroom, name="edit_classroom"),
-    path('classroom/join/<str:pk>', join_classroom, name="join_classroom"),
+    path('classroom/join/<str:cls_code>', join_classroom, name="join_classroom"),
     # topics
     path('classroom/<str:pk>/topics/<str:topic_id>', topic_posts, name="topic_posts"),
     # posts
