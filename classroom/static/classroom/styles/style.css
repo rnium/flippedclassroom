@@ -352,6 +352,48 @@
     margin: 0 !important;
     margin-top: 3px !important;
   }
+  body .main .classrooms-dashboard .create-classroom-link {
+    right: 5px !important;
+    padding: 0 !important;
+  }
+  body .main .classrooms-dashboard .create-classroom-link .content {
+    background-color: inherit;
+  }
+  body .main .classrooms-dashboard .create-classroom-link .content i {
+    font-size: 3rem !important;
+    color: #00a896;
+    -webkit-transition: all 300ms;
+    transition: all 300ms;
+    cursor: pointer;
+  }
+  body .main .classrooms-dashboard .create-classroom-link .content i:hover {
+    color: #89b0ae;
+  }
+  body .main .classrooms-dashboard .create-classroom-link .content i.closing {
+    color: #89b0ae;
+    -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+  }
+  body .main .classrooms-dashboard .create-classroom-link .content .upper-content {
+    right: 5px !important;
+  }
+  body .main .classrooms-dashboard .create-classroom-link .content .upper-content .inp-con input {
+    border: 1px;
+    border-radius: 5px;
+    border: 1px solid #b6b6b6;
+    padding: 4px 10px !important;
+    font-size: 0.9rem !important;
+    width: 8rem !important;
+    margin-right: 5px;
+  }
+  body .main .classrooms-dashboard .create-classroom-link .content .upper-content .inp-con .btn {
+    padding: 4px 5px !important;
+    font-size: 0.9rem !important;
+  }
+  body .main .classrooms-dashboard .create-classroom-link .content .upper-content .create-url {
+    margin-top: 5px;
+    font-size: 0.9rem !important;
+  }
   .title-box .title {
     font-size: 1rem !important;
   }
@@ -2961,6 +3003,7 @@ body .main .classrooms-dashboard .create-classroom-link {
   right: 10px;
   background-color: transparent;
   padding: 5px;
+  z-index: 9999;
 }
 
 body .main .classrooms-dashboard .create-classroom-link .content {
@@ -3011,6 +3054,7 @@ body .main .classrooms-dashboard .create-classroom-link .content .upper-content 
 }
 
 body .main .classrooms-dashboard .create-classroom-link .content .upper-content .inp-con input {
+  font-family: 'Ubuntu', sans-serif;
   border: 1px;
   border-radius: 5px;
   border: 1px solid #b6b6b6;
@@ -3025,6 +3069,10 @@ body .main .classrooms-dashboard .create-classroom-link .content .upper-content 
   border-color: #01a16c;
 }
 
+body .main .classrooms-dashboard .create-classroom-link .content .upper-content .inp-con .btn {
+  font-family: 'Ubuntu', sans-serif;
+}
+
 body .main .classrooms-dashboard .create-classroom-link .content .upper-content .create-url {
   display: block;
   margin-top: 5px;
@@ -3035,6 +3083,7 @@ body .main .classrooms-dashboard .create-classroom-link .content .upper-content 
   text-decoration: none;
   background-color: #006d77;
   color: white;
+  font-family: 'Gemunu Libre', sans-serif;
 }
 
 body .main .create-classroom {
