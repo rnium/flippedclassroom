@@ -2656,6 +2656,7 @@ body .main .post-detail .comments .comments-container .comment-input button i {
 
 body .main .classrooms-dashboard {
   width: 100%;
+  min-height: 90vh;
   position: relative;
 }
 
@@ -2856,6 +2857,10 @@ body .main .classrooms-dashboard .classes-section .classrooms-container a.classr
   color: #029797 !important;
 }
 
+body .main .classrooms-dashboard .my-teachings {
+  margin-bottom: 2rem;
+}
+
 body .main .classrooms-dashboard .my-teachings .heading i {
   color: white;
   background-color: #52b69a;
@@ -2868,10 +2873,6 @@ body .main .classrooms-dashboard .my-teachings .heading span {
 
 body .main .classrooms-dashboard .my-teachings .classrooms-container a.classroom .info {
   background-color: #edede9;
-}
-
-body .main .classrooms-dashboard .my-learnings {
-  margin-top: 2rem;
 }
 
 body .main .classrooms-dashboard .my-learnings .heading i {
@@ -2956,7 +2957,7 @@ body .main .classrooms-dashboard .email-unverified .btn-con button {
 
 body .main .classrooms-dashboard .create-classroom-link {
   position: fixed;
-  top: 90vh;
+  bottom: 10vh;
   right: 10px;
   background-color: transparent;
   padding: 5px;
