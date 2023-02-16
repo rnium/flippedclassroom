@@ -2957,26 +2957,84 @@ body .main .classrooms-dashboard .email-unverified .btn-con button {
 
 body .main .classrooms-dashboard .create-classroom-link {
   position: fixed;
-  bottom: 10vh;
+  bottom: 2vh;
   right: 10px;
   background-color: transparent;
   padding: 5px;
 }
 
-body .main .classrooms-dashboard .create-classroom-link a {
-  text-decoration: none;
+body .main .classrooms-dashboard .create-classroom-link .content {
+  border: 0;
+  background-color: inherit;
 }
 
-body .main .classrooms-dashboard .create-classroom-link a i {
+body .main .classrooms-dashboard .create-classroom-link .content i {
   font-size: 3.5rem;
-  color: rgba(59, 140, 140, 0.8);
-  text-shadow: 2px 2px 5px rgba(156, 195, 201, 0.3);
+  color: #00a896;
   -webkit-transition: all 300ms;
   transition: all 300ms;
+  cursor: pointer;
 }
 
-body .main .classrooms-dashboard .create-classroom-link a:hover i {
-  text-shadow: 3px 3px 10px rgba(156, 195, 201, 0.7);
+body .main .classrooms-dashboard .create-classroom-link .content i:hover {
+  color: #89b0ae;
+}
+
+body .main .classrooms-dashboard .create-classroom-link .content i.closing {
+  color: #89b0ae;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+body .main .classrooms-dashboard .create-classroom-link .content .upper-content {
+  position: absolute;
+  display: block;
+  bottom: 100%;
+  right: 10px;
+  background-color: #edf2f4;
+  border-radius: 10px;
+  padding: 1rem 7px;
+}
+
+body .main .classrooms-dashboard .create-classroom-link .content .upper-content .inp-con {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body .main .classrooms-dashboard .create-classroom-link .content .upper-content .inp-con input {
+  border: 1px;
+  border-radius: 5px;
+  border: 1px solid #b6b6b6;
+  font-size: 1rem;
+  padding: 6px 10px;
+  width: 10rem;
+  margin-right: 5px;
+}
+
+body .main .classrooms-dashboard .create-classroom-link .content .upper-content .inp-con input:focus {
+  outline: 2px solid #01a16c;
+  border-color: #01a16c;
+}
+
+body .main .classrooms-dashboard .create-classroom-link .content .upper-content .create-url {
+  display: block;
+  margin-top: 5px;
+  padding: 5px;
+  border-radius: 5px;
+  width: 100%;
+  text-align: center;
+  text-decoration: none;
+  background-color: #006d77;
+  color: white;
 }
 
 body .main .create-classroom {

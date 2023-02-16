@@ -77,7 +77,16 @@
     </div>
     {% endif %}
     <div class="create-classroom-link">
-      <a href="{% url 'classroom:create_classroom' %}"><i class='bx bxs-plus-circle'></i></a>
+      <div class="content">
+        <i class='bx bxs-plus-circle' id="plus-i"></i>
+        <div class="upper-content" id="plus-content" style="display: none;">
+          <div class="inp-con">
+            <input type="text" placeholder="code" id="cls_code">
+            <button class="join-btn btn btn-primary">Join</button>
+          </div>
+          <a href="" class="create-url shadow-sm">Create New</a>
+        </div>
+      </div>
     </div>
   {% else %}
   <div class="p-5 mb-4 bg-light rounded-3">

@@ -49,3 +49,14 @@ if (email_unv_containers.length > 0) {
         $("#email-unv-con").show(200)
     },1000)
 }
+
+$("#plus-i").on('click', ()=>{
+    let is_closing = $("#plus-i").hasClass('closing');
+    if (is_closing) {
+        $("#plus-i").removeClass('closing');
+        $("#plus-content").hide(200)
+    } else {
+        $("#plus-i").addClass('closing');
+        $("#plus-content").show(200)
+    }
+})
