@@ -40,6 +40,25 @@ class UpdateClassroomAV(UpdateAPIView):
         return Classroom.objects.filter(pk=self.kwargs.get('pk'))
 
 
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def classroom_join_api(request, cls_code):
+    try:
+        classroom = Classroom.objects.get(join_code=cls_code)
+    except Classroom.DoesNotExist:
+        return Response(data={"info":"classroom not found"}, status=status.HTTP_404_NOT_FOUND)
+    if request.user in classroom.teachers.all():
+        return Response(data={"info":"You're already a teacher of this classroom"}, status=status.HTTP_406_NOT_ACCEPTABLE)
+    else:
+        if request.user in classroom.students.all():
+            return Response(data={"info": f"You're already joined in {classroom.name}"}, status=status.HTTP_400_BAD_REQUEST)
+        else:
+            classroom.students.add(request.user)
+            classroom_dashboard = reverse("classroom:classroom_detail", args=(classroom.id,))
+            return Response(data={"dashboard": classroom_dashboard}, status=status.HTTP_200_OK)
+    
+
+
 @csrf_exempt
 @login_required
 def set_banner(request, pk):
