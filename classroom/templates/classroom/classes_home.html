@@ -93,11 +93,23 @@
       </div>
     </div>
   {% else %}
-  <div class="p-5 mb-4 bg-light rounded-3">
-    <div class="container-fluid py-5">
-      <h1 class="display-6 fw-bold">Welcome</h1>
-      <p class="col-md-8 fs-4">Hmm.. Seems like you are not part of any active classroom! Create one or ask your teacher or any of your teammates for a join link.</p>
-      <a href="{% url 'classroom:create_classroom' %}" class="btn btn-primary btn-lg" type="button">Create Classroom</a>
+  <div class="no-classrooms">
+    <div class="p1">
+      <div class="info">
+        <div class="h2">Looks like you're not part of any active classroom!</div>
+        <div><a href="{% url 'classroom:create_classroom' %}" class="create-url">Create one</a>or ask your teacher or any existing members for a classroom code</div>
+      </div>
+      <div class="inp-con mt-4">
+        <input type="text" placeholder="classroom code" id="cls_code">
+        <button class="join-btn btn btn-primary shadow-sm" id="join_cls_btn">Join</button>
+      </div>
+      <div class="info-error-con" id="info-error-con" style="display: none;">
+        <i class='bx bx-info-circle'></i>
+        <span id="info-txt"></span>
+      </div>
+    </div>
+    <div class="p2">
+      <img src="{% static 'classroom/images/edbg1.jpg' %}" class="bg">
     </div>
   </div>
   {% if not request.user.account.is_email_verified %}
