@@ -3025,8 +3025,8 @@ body .main .classrooms-dashboard .create-classroom-link .content i:hover {
 
 body .main .classrooms-dashboard .create-classroom-link .content i.closing {
   color: #89b0ae;
-  -webkit-transform: rotate(45deg);
-          transform: rotate(45deg);
+  -webkit-transform: rotate(135deg);
+          transform: rotate(135deg);
 }
 
 body .main .classrooms-dashboard .create-classroom-link .content .upper-content {
@@ -3054,7 +3054,7 @@ body .main .classrooms-dashboard .create-classroom-link .content .upper-content 
 }
 
 body .main .classrooms-dashboard .create-classroom-link .content .upper-content .inp-con input {
-  font-family: 'Ubuntu', sans-serif;
+  font-family: "Lucida Console", "Courier New", monospace;
   border: 1px;
   border-radius: 5px;
   border: 1px solid #b6b6b6;
@@ -3069,8 +3069,66 @@ body .main .classrooms-dashboard .create-classroom-link .content .upper-content 
   border-color: #01a16c;
 }
 
+body .main .classrooms-dashboard .create-classroom-link .content .upper-content .inp-con input::-webkit-input-placeholder {
+  font-family: 'Ubuntu', sans-serif;
+}
+
+body .main .classrooms-dashboard .create-classroom-link .content .upper-content .inp-con input:-ms-input-placeholder {
+  font-family: 'Ubuntu', sans-serif;
+}
+
+body .main .classrooms-dashboard .create-classroom-link .content .upper-content .inp-con input::-ms-input-placeholder {
+  font-family: 'Ubuntu', sans-serif;
+}
+
+body .main .classrooms-dashboard .create-classroom-link .content .upper-content .inp-con input::placeholder {
+  font-family: 'Ubuntu', sans-serif;
+}
+
 body .main .classrooms-dashboard .create-classroom-link .content .upper-content .inp-con .btn {
   font-family: 'Ubuntu', sans-serif;
+}
+
+body .main .classrooms-dashboard .create-classroom-link .content .upper-content .info-error-con {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 5px;
+  border: 1px solid red;
+  margin: 5px 0;
+  border-radius: 5px;
+}
+
+body .main .classrooms-dashboard .create-classroom-link .content .upper-content .info-error-con i, body .main .classrooms-dashboard .create-classroom-link .content .upper-content .info-error-con span {
+  color: red;
+}
+
+body .main .classrooms-dashboard .create-classroom-link .content .upper-content .info-error-con i {
+  font-size: 1.2rem !important;
+}
+
+body .main .classrooms-dashboard .create-classroom-link .content .upper-content .info-error-con span {
+  font-size: 0.7rem;
+  text-align: center;
+}
+
+body .main .classrooms-dashboard .create-classroom-link .content .upper-content .success {
+  background-color: #0582ca;
+  -webkit-box-shadow: 0 0 5px #cdd9e0;
+          box-shadow: 0 0 5px #cdd9e0;
+  border-color: teal;
+}
+
+body .main .classrooms-dashboard .create-classroom-link .content .upper-content .success i, body .main .classrooms-dashboard .create-classroom-link .content .upper-content .success span {
+  color: white !important;
 }
 
 body .main .classrooms-dashboard .create-classroom-link .content .upper-content .create-url {

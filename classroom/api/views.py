@@ -50,11 +50,13 @@ def classroom_join_api(request):
         classroom = Classroom.objects.get(join_code=cls_code)
     except Classroom.DoesNotExist:
         return Response(data={"info":"Classroom not found"}, status=status.HTTP_404_NOT_FOUND)
+    if not classroom.active:
+        return Response(data={"info":"Classroom is not active"}, status=status.HTTP_403_FORBIDDEN)
     if request.user in classroom.teachers.all():
-        return Response(data={"info":"You're already a teacher of this classroom"}, status=status.HTTP_406_NOT_ACCEPTABLE)
+        return Response(data={"info":"You're a teacher of this classroom"}, status=status.HTTP_406_NOT_ACCEPTABLE)
     else:
         if request.user in classroom.students.all():
-            return Response(data={"info": f"You're already joined in {classroom.name}"}, status=status.HTTP_400_BAD_REQUEST)
+            return Response(data={"info": f"You've already joined {classroom.name}"}, status=status.HTTP_400_BAD_REQUEST)
         else:
             classroom.students.add(request.user)
             classroom_dashboard = reverse("classroom:classroom_detail", args=(classroom.id,))

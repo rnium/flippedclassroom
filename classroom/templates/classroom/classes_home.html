@@ -84,6 +84,10 @@
             <input type="text" placeholder="classroom code" id="cls_code">
             <button class="join-btn btn btn-primary shadow-sm" id="join_cls_btn">Join</button>
           </div>
+          <div class="info-error-con" id="info-error-con" style="display: none;">
+            <i class='bx bx-info-circle'></i>
+            <span id="info-txt"></span>
+          </div>
           <a href="{% url 'classroom:create_classroom' %}" class="create-url shadow-sm">Create New</a>
         </div>
       </div>

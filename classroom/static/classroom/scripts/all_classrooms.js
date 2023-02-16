@@ -37,16 +37,27 @@ function join_class(code) {
     $.ajax({
         url: join_api,
         type: "GET",
+        dataType: "json",
         beforeSend: function(xhr){
-            $(`#send-verification-btn`).text("Sending");
-            $(`#send-verification-btn`).attr("disabled", true);
+            $(`#join_cls_btn`).attr("disabled", true);
         },
         cache: false,
         success: function(response){
-            window.location.href = response['dashboard']
+            $("#info-error-con").addClass('success');
+            $("#info-txt").text("Joined Successfully");
+            $("#info-error-con").show(200, ()=>{
+                window.location.href = response['dashboard']
+            })
         },
         error: function(xhr, error, status) {
-            console.log(xhr['responseJSON']['info']);
+            $(`#join_cls_btn`).attr("disabled", false);
+            $("#info-error-con").removeClass('success');
+            $("#info-txt").text(xhr['responseJSON']['info'])
+            $("#info-error-con").show(200, ()=>{
+                setTimeout(()=>{
+                    $("#info-error-con").hide(200)
+                },3000)
+            })
         }
     })
 }
