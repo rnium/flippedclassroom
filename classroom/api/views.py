@@ -42,11 +42,14 @@ class UpdateClassroomAV(UpdateAPIView):
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
-def classroom_join_api(request, cls_code):
+def classroom_join_api(request):
+    cls_code = request.GET.get('code', None)
+    if cls_code == None:
+        return Response(data={"info":"Code not provided"}, status=status.HTTP_400_BAD_REQUEST)
     try:
         classroom = Classroom.objects.get(join_code=cls_code)
     except Classroom.DoesNotExist:
-        return Response(data={"info":"classroom not found"}, status=status.HTTP_404_NOT_FOUND)
+        return Response(data={"info":"Classroom not found"}, status=status.HTTP_404_NOT_FOUND)
     if request.user in classroom.teachers.all():
         return Response(data={"info":"You're already a teacher of this classroom"}, status=status.HTTP_406_NOT_ACCEPTABLE)
     else:

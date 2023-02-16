@@ -3,6 +3,7 @@ from . import views
 
 urlpatterns = [
     path('newclassroom', views.create_classroom, name="create_classroom_api"),
+    path('join', views.classroom_join_api, name="classroom_join_api"),
     path('<str:pk>/posts', views.ClassroomPostsView.as_view(), name="classroom_posts"),
     path('<str:pk>/update', views.UpdateClassroomAV.as_view(), name="update_classroom"),
     path('<str:pk>/update/banner', views.set_banner, name="set_banner"),

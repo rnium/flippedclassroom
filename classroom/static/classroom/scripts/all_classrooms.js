@@ -32,6 +32,29 @@ function send_mail() {
 }
 
 
+function join_class(code) {
+    let join_api = `${classroom_join_api_url}?code=${code}`
+    $.ajax({
+        url: join_api,
+        type: "GET",
+        beforeSend: function(xhr){
+            $(`#send-verification-btn`).text("Sending");
+            $(`#send-verification-btn`).attr("disabled", true);
+        },
+        cache: false,
+        success: function(response){
+            window.location.href = response['dashboard']
+        },
+        error: function(xhr, error, status) {
+            console.log(xhr['responseJSON']['info']);
+        }
+    })
+}
+
+
+
+
+
 
 function activate_btns() {
     $("#close-verification-con-btn").on('click', ()=>{
@@ -49,6 +72,11 @@ if (email_unv_containers.length > 0) {
         $("#email-unv-con").show(200)
     },1000)
 }
+
+$("#join_cls_btn").on('click', ()=>{
+    let cls_code = $("#cls_code").val()
+    join_class(cls_code)
+})
 
 $("#plus-i").on('click', ()=>{
     let is_closing = $("#plus-i").hasClass('closing');

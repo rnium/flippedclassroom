@@ -82,7 +82,7 @@
         <div class="upper-content" id="plus-content" style="display: none;">
           <div class="inp-con">
             <input type="text" placeholder="classroom code" id="cls_code">
-            <button class="join-btn btn btn-primary shadow-sm">Join</button>
+            <button class="join-btn btn btn-primary shadow-sm" id="join_cls_btn">Join</button>
           </div>
           <a href="{% url 'classroom:create_classroom' %}" class="create-url shadow-sm">Create New</a>
         </div>
@@ -117,5 +117,6 @@
 <script src="{% static 'classroom/scripts/all_classrooms.js' %}"></script>
 <script>
   const send_mail_api_url = "{% url 'accounts:send_verification_email_api'  %}";
+  const classroom_join_api_url = "{% url 'classroom:classroom_join_api' %}";
 </script>
 {% endblock script %}
