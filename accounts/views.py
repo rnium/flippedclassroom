@@ -21,6 +21,7 @@ from django.core.mail import EmailMessage
 from django.conf import settings
 from .models import Account
 from email.message import EmailMessage
+from email.utils import formataddr
 import ssl
 import smtplib
 from classroom.views import render_info_or_error
@@ -33,7 +34,7 @@ def send_html_email(receiver, subject, body):
     port = settings.EMAIL_PORT
     
     em = EmailMessage()
-    em['From'] = sender
+    em['From'] = formataddr(("WeeklyClassroom Team", sender))
     em['To'] = receiver
     em['Subject'] = subject
     em.set_content(body, subtype='html')
