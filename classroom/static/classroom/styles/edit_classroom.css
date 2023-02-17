@@ -1,4 +1,55 @@
-@import url("https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@300;400;500&family=Montserrat:wght@300;400;500&family=Roboto+Mono&family=Ubuntu&display=swap");
+@-webkit-keyframes wobble {
+  20% {
+    -webkit-transform: rotate(5deg);
+            transform: rotate(5deg);
+    outline: 1px solid #b97800;
+  }
+  40% {
+    -webkit-transform: rotate(-5deg);
+            transform: rotate(-5deg);
+  }
+  60% {
+    -webkit-transform: rotate(5deg);
+            transform: rotate(5deg);
+    -webkit-box-shadow: 0 0 5px #f07167;
+            box-shadow: 0 0 5px #f07167;
+  }
+  80% {
+    -webkit-transform: rotate(-5deg);
+            transform: rotate(-5deg);
+  }
+  60% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+}
+@keyframes wobble {
+  20% {
+    -webkit-transform: rotate(5deg);
+            transform: rotate(5deg);
+    outline: 1px solid #b97800;
+  }
+  40% {
+    -webkit-transform: rotate(-5deg);
+            transform: rotate(-5deg);
+  }
+  60% {
+    -webkit-transform: rotate(5deg);
+            transform: rotate(5deg);
+    -webkit-box-shadow: 0 0 5px #f07167;
+            box-shadow: 0 0 5px #f07167;
+  }
+  80% {
+    -webkit-transform: rotate(-5deg);
+            transform: rotate(-5deg);
+  }
+  60% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+}
+
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -30,7 +81,7 @@ body .main .edit-classroom .heading .title {
   text-shadow: 0 0 5px #e9e9e9;
 }
 
-body .main .edit-classroom .btn-con {
+body .main .edit-classroom .code-con {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -47,6 +98,83 @@ body .main .edit-classroom .btn-con {
           justify-content: flex-end;
 }
 
+body .main .edit-classroom .code-con .current-code {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body .main .edit-classroom .code-con .current-code i {
+  font-size: 2rem;
+  color: #00afb9;
+  margin-right: 5px;
+}
+
+body .main .edit-classroom .code-con .current-code .label {
+  margin-right: 5px;
+  color: #00afb9;
+  font-family: 'Gemunu Libre', sans-serif;
+}
+
+body .main .edit-classroom .code-con .current-code .code {
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 500;
+  padding: 1px 10px;
+  color: white;
+  background-color: #00afb9;
+}
+
+body .main .edit-classroom .code-con .regen-btn {
+  border: 0;
+  margin-left: 10px;
+  font-size: 0.9rem;
+  font-family: 'Gemunu Libre', sans-serif;
+  padding: 1px 10px;
+  border-radius: 180px;
+  background-color: white;
+  color: #f07167;
+  border: 1px solid #f07167;
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
+}
+
+body .main .edit-classroom .code-con .regen-btn:hover {
+  -webkit-animation: wobble 300ms;
+          animation: wobble 300ms;
+}
+
+body .main .edit-classroom .code-con .regen-btn:active {
+  background-color: #f07167;
+  color: #fdfcdc;
+}
+
+body .main .edit-classroom .btn-con {
+  width: 100%;
+  margin-top: 1.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify !important;
+      -ms-flex-pack: justify !important;
+          justify-content: space-between !important;
+}
+
 body .main .edit-classroom .btn-con .btn {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -59,7 +187,6 @@ body .main .edit-classroom .btn-con .btn {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin-top: 2rem;
   border: 0;
   padding: 0.5rem 1rem;
   border-radius: 5px;
@@ -81,6 +208,26 @@ body .main .edit-classroom .btn-con .btn i {
 }
 
 body .main .edit-classroom .btn-con .btn span, body .main .edit-classroom .btn-con .btn i {
+  color: white;
+}
+
+body .main .edit-classroom .btn-con .delete {
+  padding: 0.4rem 1rem;
+  border: 2px solid red;
+  background-color: white;
+}
+
+body .main .edit-classroom .btn-con .delete i, body .main .edit-classroom .btn-con .delete span {
+  color: red;
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
+}
+
+body .main .edit-classroom .btn-con .delete:hover {
+  background-color: red;
+}
+
+body .main .edit-classroom .btn-con .delete:hover i, body .main .edit-classroom .btn-con .delete:hover span {
   color: white;
 }
 
@@ -518,17 +665,39 @@ body .main .edit-classroom .success .share-link {
   .main .edit-classroom .heading .title {
     text-align: center;
   }
+  .main .edit-classroom .code-con {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: column !important;
+            flex-direction: column !important;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .main .edit-classroom .code-con .regen-btn {
+    margin-top: 5px;
+  }
   .main .edit-classroom .btn-con {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: column !important;
+            flex-direction: column !important;
+    margin: 0 !important;
+  }
+  .main .edit-classroom .btn-con button {
+    width: 90%;
     -webkit-box-pack: center !important;
         -ms-flex-pack: center !important;
             justify-content: center !important;
-    margin: 0 !important;
   }
   .main .edit-classroom .btn-con button i {
     font-size: 1.2rem !important;
   }
   .main .edit-classroom .btn-con button span {
     font-size: 0.8rem !important;
+  }
+  .main .edit-classroom .btn-con .delete {
+    margin-bottom: 10px;
   }
   .main .edit-classroom .input-file {
     -webkit-box-orient: vertical !important;

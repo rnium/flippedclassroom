@@ -25,13 +25,14 @@
   <div class="heading mb-1">
     <div class="title">Edit classroom information</div>
   </div>
-  <div class="btn-con">
-    {% if classroom.active %}
-    <button class="btn deactivate" id="change_active_btn" data-active=true><i class='bx bx-stop-circle'></i><span>Deactivate Classroom</span></button>
-    {% else %}
-    <button class="btn activate" id="change_active_btn" data-active=false><i class='bx bx-play-circle'></i><span>Activate Classroom</span></button>
-    {% endif %}
-  </div>        
+  <div class="code-con mb-3">
+    <div class="current-code">
+      <i class='bx bx-barcode-reader'></i>
+      <span class="label">Classroom Code:</span>
+      <span class="code shadow-sm">{{classroom.join_code}}</span>
+    </div>
+    <button class="regen-btn">Regenerate</button>
+  </div>       
   <div class="form mt-2" id="form-container">
     <div class="field-container inset-float-textinput mb-4">
       <input class="inp_input inp_required" type="text" id="classname" placeholder=" ">
@@ -57,6 +58,14 @@
       <div class="lds-ellipsis" id="posting-loader" style="display: none;"><div></div><div></div><div></div><div></div></div>
       <button class="btn-1 shadow-sm" id="update-btn">Update</button>
     </div>
+  </div>
+  <div class="btn-con">
+    <button class="btn delete shadow-sm"><i class='bx bx-trash-alt'></i><span>Delete Classroom</span></button>
+    {% if classroom.active %}
+    <button class="btn deactivate" id="change_active_btn" data-active=true><i class='bx bx-stop-circle'></i><span>Deactivate Classroom</span></button>
+    {% else %}
+    <button class="btn activate" id="change_active_btn" data-active=false><i class='bx bx-play-circle'></i><span>Activate Classroom</span></button>
+    {% endif %}
   </div>
   <div class="success mt-4" id="success-container" style="display: none">
     <i class='bx bx-message-square-check icon'></i>

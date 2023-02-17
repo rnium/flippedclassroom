@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@300;400;500&family=Montserrat:wght@300;400;500&family=Ubuntu&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@300;400;500&family=Montserrat:wght@300;400;500&family=Roboto+Mono&family=Ubuntu&display=swap");
 @media screen and (min-width: 1200px) {
   body .main .left-col {
     width: 70%;
@@ -517,6 +517,7 @@ body .main .left-col .classroom-info .quote-con span.quote {
 }
 
 body .main .left-col .classroom-info .share-link {
+  font-family: 'Roboto Mono', monospace;
   margin-top: 0.5rem;
 }
 
@@ -3057,7 +3058,7 @@ body .main .classrooms-dashboard .create-classroom-link .content .upper-content 
 }
 
 body .main .classrooms-dashboard .create-classroom-link .content .upper-content .inp-con input {
-  font-family: "Lucida Console", "Courier New", monospace;
+  font-family: 'Roboto Mono', monospace;
   border: 1px;
   border-radius: 5px;
   border: 1px solid #b6b6b6;
@@ -3085,10 +3086,6 @@ body .main .classrooms-dashboard .create-classroom-link .content .upper-content 
 }
 
 body .main .classrooms-dashboard .create-classroom-link .content .upper-content .inp-con input::placeholder {
-  font-family: 'Ubuntu', sans-serif;
-}
-
-body .main .classrooms-dashboard .create-classroom-link .content .upper-content .inp-con .btn {
   font-family: 'Ubuntu', sans-serif;
 }
 
@@ -3195,7 +3192,7 @@ body .main .classrooms-dashboard .no-classrooms .p1 .inp-con {
 }
 
 body .main .classrooms-dashboard .no-classrooms .p1 .inp-con input {
-  font-family: "Lucida Console", "Courier New", monospace;
+  font-family: 'Roboto Mono', monospace;
   border: 1px;
   border-radius: 5px;
   border: 1px solid #b6b6b6;
