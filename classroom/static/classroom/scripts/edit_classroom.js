@@ -89,8 +89,9 @@ function setupBanner(image_file) {
         processData: false,
         success: function(){
             $("#posting-loader").hide()
-            $("#form-container").hide(100, ()=>{
-                $("#success-container").show(100)
+            $("#btn-con").hide()
+            $("#form-container").hide(200, ()=>{
+                $("#success-container").show(200)
             })
         },
         error: function() {
@@ -179,8 +180,9 @@ $("#update-btn").on("click", function(){
                 setupBanner(avatar_files[0])
             } else {
                 $("#posting-loader").hide()
-                $("#form-container").hide(100, ()=>{
-                    $("#success-container").show(100)
+                $("#btn-con").hide()
+                $("#form-container").hide(200, ()=>{
+                    $("#success-container").show(200)
                 })
             }
         },
