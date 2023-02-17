@@ -33,7 +33,7 @@
     </div>
     <button class="regen-btn" id="code-regen-btn">Regenerate</button>
   </div>       
-  <div class="form mt-2" id="form-container">
+  <div class="form mt-2 mb-2" id="form-container">
     <div class="field-container inset-float-textinput mb-4">
       <input class="inp_input inp_required" type="text" id="classname" placeholder=" ">
       <label class="inp_label" for="classname">Classroom Name</label>
@@ -60,7 +60,7 @@
     </div>
   </div>
   <div class="btn-con">
-    <button class="btn delete shadow-sm"><i class='bx bx-trash-alt'></i><span>Delete Classroom</span></button>
+    <button class="btn delete shadow-sm" id="dlt-classroom-btn"><i class='bx bx-trash-alt'></i><span>Delete Classroom</span></button>
     {% if classroom.active %}
     <button class="btn deactivate" id="change_active_btn" data-active=true><i class='bx bx-stop-circle'></i><span>Deactivate Classroom</span></button>
     {% else %}
@@ -85,6 +85,7 @@
   const set_banner_api = "{% url 'classroom:set_banner' classroom.id %}"
   const set_banner_to_default_api = "{% url 'classroom:set_banner_to_default' classroom.id %}"
   const change_join_code_url = "{% url 'classroom:change_join_code' classroom.id %}";
+  const delete_classroom_api_url = "{% url 'classroom:delete_classroom_api' classroom.id %}";
   const csrftoken = "{{ csrf_token }}"
   $(document).ready(function(){
     $('#classname').val("{{classroom.name}}");

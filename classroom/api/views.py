@@ -163,11 +163,25 @@ def create_classroom(request):
         response_data = {}
         response_data['name'] = classroom.name
         response_data['classroom_url'] = reverse("classroom:classroom_detail", args=(classroom.id,))
-        response_data["join_link"] = request.build_absolute_uri(reverse("classroom:join_classroom", args=(classroom.id,)))
+        response_data["join_link"] = request.build_absolute_uri(reverse("classroom:join_classroom", args=(classroom.join_code,)))
         return Response(response_data, status=status.HTTP_201_CREATED)
     else:
         return Response(data={"status":"error"}, status=status.HTTP_400_BAD_REQUEST)
 
+
+@api_view(['DELETE'])
+@permission_classes([IsAuthenticated])
+def delete_classroom_api(request, pk):
+    try:
+        classroom = Classroom.objects.get(pk=pk)
+    except Classroom.DoesNotExist:
+        return Response(data={'status':'post not found'}, status=status.HTTP_404_NOT_FOUND)
+    if request.user not in classroom.teachers.all():
+        return Response(data={'status':'Unauthorized'},status=status.HTTP_401_UNAUTHORIZED)
+    classroom.delete()
+    homepage = reverse("classroom:homepage")
+    return Response(data={"homepage":homepage}, status=status.HTTP_200_OK)
+    
  
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])

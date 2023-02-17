@@ -32,6 +32,28 @@ function regenerate_join_code() {
 }
 
 
+function delete_classroom() {
+    $.ajax({
+        url: delete_classroom_api_url,
+        type: "DELETE",
+        dataType: "json",
+        beforeSend: function(xhr){
+            $(`#dlt-classroom-btn`).attr("disabled", true);
+            xhr.setRequestHeader("X-CSRFToken", csrftoken)
+        },
+        cache: false,
+        success: function(response){
+            window.location.href = response['homepage']
+            $(`#dlt-classroom-btn`).attr("disabled", false);
+        },
+        error: function(xhr, error, status) {
+            alert('something went wrong')
+            $(`#dlt-classroom-btn`).attr("disabled", false);
+        }
+    })
+}
+
+
 function updateClassroom(btn_id, payload){
     $.ajax({
         type: "PATCH",
@@ -171,6 +193,14 @@ $("#update-btn").on("click", function(){
 })
 
 $("#code-regen-btn").on('click', regenerate_join_code)
+
+
+$("#dlt-classroom-btn").on('click', ()=>{
+    let confirmation = confirm("Are you sure to delete this classroom and all the data associated with it?")
+    if (confirmation) {
+        delete_classroom()
+    }
+})
 
 $("#change_active_btn").on('click', ()=>{
     let current_status = $("#change_active_btn").data('active');
