@@ -77,7 +77,6 @@
   var qrcode = new QRCode("join-code", "{{join_link}}");
   const classroom_update_url = "{% url 'classroom:update_classroom' classroom.id  %}";
   const remove_user_from_classroom_url = "{% url 'classroom:remove_user_from_classroom' classroom.id %}";
-  const change_join_code_url = "{% url 'classroom:change_join_code' classroom.id %}";
   const csrftoken = "{{csrf_token}}"
 </script>
 {% endblock script %}

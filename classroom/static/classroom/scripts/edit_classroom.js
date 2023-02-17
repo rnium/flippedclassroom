@@ -11,6 +11,27 @@ function validate_fields(){
     return true
 }
 
+function regenerate_join_code() {
+    $.ajax({
+        url: change_join_code_url,
+        type: "GET",
+        dataType: "json",
+        beforeSend: function(xhr){
+            $(`#code-regen-btn`).attr("disabled", true);
+        },
+        cache: false,
+        success: function(response){
+            $("#cls-code-txt").text(response['newcode'])
+            $(`#code-regen-btn`).attr("disabled", false);
+        },
+        error: function(xhr, error, status) {
+            alert('something went wrong')
+            $(`#code-regen-btn`).attr("disabled", false);
+        }
+    })
+}
+
+
 function updateClassroom(btn_id, payload){
     $.ajax({
         type: "PATCH",
@@ -149,6 +170,7 @@ $("#update-btn").on("click", function(){
     });
 })
 
+$("#code-regen-btn").on('click', regenerate_join_code)
 
 $("#change_active_btn").on('click', ()=>{
     let current_status = $("#change_active_btn").data('active');
