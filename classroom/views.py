@@ -48,10 +48,14 @@ class ClassroomDetail(LoginRequiredMixin, DetailView):
     
     def get_object(self):
         classroom = super().get_object()
-        if (self.request.user in classroom.teachers.all()) or (self.request.user in classroom.students.all()):
+        if self.request.user in classroom.teachers.all():
             return classroom
         else:
-            raise Http404
+            if (self.request.user not in classroom.students.all()) or (not classroom.active):
+                raise Http404
+            else:
+                return classroom
+                
         
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
