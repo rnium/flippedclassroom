@@ -170,9 +170,9 @@ body .main .edit-classroom .btn-con {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: justify !important;
-      -ms-flex-pack: justify !important;
-          justify-content: space-between !important;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
 }
 
 body .main .edit-classroom .btn-con .btn {
@@ -212,6 +212,7 @@ body .main .edit-classroom .btn-con .btn span, body .main .edit-classroom .btn-c
 }
 
 body .main .edit-classroom .btn-con .delete {
+  margin-right: 10px;
   padding: 0.4rem 1rem;
   border: 2px solid red;
   background-color: white;
@@ -697,6 +698,7 @@ body .main .edit-classroom .success .share-link {
     font-size: 0.8rem !important;
   }
   .main .edit-classroom .btn-con .delete {
+    margin-right: 0 !important;
     margin-bottom: 10px;
   }
   .main .edit-classroom .input-file {
