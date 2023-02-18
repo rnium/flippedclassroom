@@ -81,7 +81,7 @@ class LogoutView(View):
     def get(self, request, *args, **kwargs):
         if request.user.is_authenticated:
             logout(request)
-        return redirect("accounts:user_login_get")
+        return redirect("classroom:starter")
     
 @login_required
 def view_profile(request, pk):

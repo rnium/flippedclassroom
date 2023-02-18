@@ -3,7 +3,8 @@ from .views import *
 app_name = 'classroom'
 
 urlpatterns = [
-    path('', ClassesDashboard.as_view(), name="homepage"),
+    path('', starter_homepage, name='starter'),
+    path('classes', ClassesDashboard.as_view(), name="homepage"), # it's actually classes homepage, requires authentication
     path('classroom/new', create_classroom, name="create_classroom"),
     path('classroom/api/', include("classroom.api.urls")),
     path('classroom/<str:pk>', ClassroomDetail.as_view(), name="classroom_detail"),

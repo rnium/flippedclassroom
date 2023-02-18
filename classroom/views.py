@@ -26,6 +26,13 @@ def render_info_or_error(request, heading, description, css_class="info"):
     return render(request, 'classroom/infoerror.html', context=context)
 
 
+def starter_homepage(request):
+    if request.user.is_authenticated:
+        return redirect('classroom:homepage')
+    else:
+        return render(request, "classroom/homepage.html")
+
+
 class ClassesDashboard(LoginRequiredMixin, TemplateView):
     template_name = 'classroom/classes_home.html'
     def get_context_data(self, **kwargs):
