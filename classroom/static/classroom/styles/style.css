@@ -1507,8 +1507,7 @@ body .main .right-col .live-tests .content ul li .test-item .info .stat {
   width: 100%;
   -webkit-box-shadow: 0 0 10px #45606d;
           box-shadow: 0 0 10px #45606d;
-  background-image: -webkit-gradient(linear, left top, right top, from(#1084d2), to(teal));
-  background-image: linear-gradient(to right, #1084d2, teal);
+  background-color: #1084d2;
 }
 
 body .main .right-col .live-tests .content ul li .test-item .info .stat div {
