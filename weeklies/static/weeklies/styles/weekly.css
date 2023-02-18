@@ -873,6 +873,12 @@ body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-conte
   padding: 2rem 0;
 }
 
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tasks .content .no-content i, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tests .content .no-content i, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tasks .content .no-content i, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tests .content .no-content i, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tasks .content .no-content i, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tests .content .no-content i {
+  font-size: 1.5rem !important;
+  color: #87ac95;
+  margin-bottom: 5px;
+}
+
 body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tasks .content .no-content img, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tests .content .no-content img, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tasks .content .no-content img, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tests .content .no-content img, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tasks .content .no-content img, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tests .content .no-content img {
   width: 70px;
 }
@@ -880,10 +886,6 @@ body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-conte
 body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tasks .content .no-content span, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tests .content .no-content span, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tasks .content .no-content span, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tests .content .no-content span, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tasks .content .no-content span, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tests .content .no-content span {
   color: #87ac95;
   text-shadow: 0 0 5px #f0f0f0;
-}
-
-body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tests .title, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tests .title, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tests .title {
-  color: #10a051;
 }
 
 body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tests .content ul li .test-upcoming, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tests .content ul li .test-upcoming, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tests .content ul li .test-upcoming {
