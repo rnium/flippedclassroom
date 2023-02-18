@@ -200,4 +200,3 @@ $("#password2").on('keyup', function (e) {
     }
  })
 
-$("#footer").html(`Developed by <a href="https://github.com/rnium">MSI Rony</a>`);
