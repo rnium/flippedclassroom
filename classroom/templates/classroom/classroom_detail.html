@@ -241,7 +241,7 @@
         {% endfor %}   
         </ul>
       {% else %}
-      <div class="no-content"><i class='bx bx-info-circle'></i><span>No Tests</span></div>
+      <div class="no-content"><img src="{% static 'classroom/images/exam.png' %}"><span>No upcoming or previous tests</span></div>
       {% endif %}
     </div>
   </div>
@@ -279,7 +279,7 @@
         {% endfor %}
       </ul>
       {% else %}
-      <div class="no-content"><i class='bx bx-info-circle'></i><span>No Tasks</span></div>
+      <div class="no-content"><img src="{% static 'classroom/images/task.png' %}"><span>No Tasks Assigned</span></div>
       {% endif %}
       
       
