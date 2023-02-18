@@ -147,7 +147,7 @@ body footer .content::after {
   text-shadow: 0 0 5px gainsboro;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 768px) {
   body .container .content {
     margin: 12rem 1rem 15rem !important;
   }
@@ -161,6 +161,9 @@ body footer .content::after {
     font-size: 0.8rem;
     padding: 5px 10px !important;
     border-radius: 5px !important;
+  }
+  body .container .content .top .btn-con .login-btn {
+    padding: 5px 15px !important;
   }
   body footer {
     position: relative;
