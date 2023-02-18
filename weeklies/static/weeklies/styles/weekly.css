@@ -859,10 +859,10 @@ body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-conte
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
+  -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+      -ms-flex-direction: column;
+          flex-direction: column;
   justify-items: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -873,10 +873,8 @@ body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-conte
   padding: 2rem 0;
 }
 
-body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tasks .content .no-content i, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tests .content .no-content i, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tasks .content .no-content i, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tests .content .no-content i, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tasks .content .no-content i, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tests .content .no-content i {
-  margin-right: 5px;
-  font-size: 1.5rem;
-  color: #87ac95;
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tasks .content .no-content img, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tests .content .no-content img, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tasks .content .no-content img, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tests .content .no-content img, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tasks .content .no-content img, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tests .content .no-content img {
+  width: 70px;
 }
 
 body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tasks .content .no-content span, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tests .content .no-content span, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tasks .content .no-content span, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tests .content .no-content span, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tasks .content .no-content span, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tests .content .no-content span {
@@ -1779,10 +1777,10 @@ body .main .edit-weekly .action .ico-btn i {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
+  -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+      -ms-flex-direction: column;
+          flex-direction: column;
   justify-items: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -1790,17 +1788,16 @@ body .main .edit-weekly .action .ico-btn i {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  margin-top: 0.5rem;
-  margin-bottom: 2rem;
+  padding: 2rem 0;
 }
 
-.content-card .no-content i {
-  font-size: 2rem;
-  margin-right: 1rem;
+.content-card .no-content img {
+  width: 70px;
+  margin-bottom: 5px;
 }
 
 .content-card .no-content .info {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
 }
 
 .content-card .add-content {
@@ -2291,9 +2288,8 @@ body .main .edit-weekly .action .ico-btn i {
     font-size: 0.6rem !important;
     padding: 2px 3px !important;
   }
-  body .main .bottom-panel #tab1 .tab-content .left-col .pre-class-files .no-content i, body .main .bottom-panel #tab1 .tab-content .left-col .in-class-files .no-content i, body .main .bottom-panel #tab1 .tab-content .left-col .post-class-files .no-content i, body .main .bottom-panel #tab2 .tab-content .left-col .pre-class-files .no-content i, body .main .bottom-panel #tab2 .tab-content .left-col .in-class-files .no-content i, body .main .bottom-panel #tab2 .tab-content .left-col .post-class-files .no-content i, body .main .bottom-panel #tab3 .tab-content .left-col .pre-class-files .no-content i, body .main .bottom-panel #tab3 .tab-content .left-col .in-class-files .no-content i, body .main .bottom-panel #tab3 .tab-content .left-col .post-class-files .no-content i {
-    font-size: 1.5rem !important;
-    margin-right: 5px !important;
+  body .main .bottom-panel #tab1 .tab-content .left-col .pre-class-files .no-content img, body .main .bottom-panel #tab1 .tab-content .left-col .in-class-files .no-content img, body .main .bottom-panel #tab1 .tab-content .left-col .post-class-files .no-content img, body .main .bottom-panel #tab2 .tab-content .left-col .pre-class-files .no-content img, body .main .bottom-panel #tab2 .tab-content .left-col .in-class-files .no-content img, body .main .bottom-panel #tab2 .tab-content .left-col .post-class-files .no-content img, body .main .bottom-panel #tab3 .tab-content .left-col .pre-class-files .no-content img, body .main .bottom-panel #tab3 .tab-content .left-col .in-class-files .no-content img, body .main .bottom-panel #tab3 .tab-content .left-col .post-class-files .no-content img {
+    width: 50px;
   }
   body .main .bottom-panel #tab1 .tab-content .left-col .pre-class-files .no-content .info, body .main .bottom-panel #tab1 .tab-content .left-col .in-class-files .no-content .info, body .main .bottom-panel #tab1 .tab-content .left-col .post-class-files .no-content .info, body .main .bottom-panel #tab2 .tab-content .left-col .pre-class-files .no-content .info, body .main .bottom-panel #tab2 .tab-content .left-col .in-class-files .no-content .info, body .main .bottom-panel #tab2 .tab-content .left-col .post-class-files .no-content .info, body .main .bottom-panel #tab3 .tab-content .left-col .pre-class-files .no-content .info, body .main .bottom-panel #tab3 .tab-content .left-col .in-class-files .no-content .info, body .main .bottom-panel #tab3 .tab-content .left-col .post-class-files .no-content .info {
     font-size: 1rem !important;
@@ -2391,9 +2387,8 @@ body .main .edit-weekly .action .ico-btn i {
   body .main .bottom-panel #tab1 .tab-content .left-col .pre-class-tutorials .no-content, body .main .bottom-panel #tab1 .tab-content .left-col .in-class-tutorials .no-content, body .main .bottom-panel #tab1 .tab-content .left-col .post-class-tutorials .no-content, body .main .bottom-panel #tab2 .tab-content .left-col .pre-class-tutorials .no-content, body .main .bottom-panel #tab2 .tab-content .left-col .in-class-tutorials .no-content, body .main .bottom-panel #tab2 .tab-content .left-col .post-class-tutorials .no-content, body .main .bottom-panel #tab3 .tab-content .left-col .pre-class-tutorials .no-content, body .main .bottom-panel #tab3 .tab-content .left-col .in-class-tutorials .no-content, body .main .bottom-panel #tab3 .tab-content .left-col .post-class-tutorials .no-content {
     margin-top: 1rem;
   }
-  body .main .bottom-panel #tab1 .tab-content .left-col .pre-class-tutorials .no-content i, body .main .bottom-panel #tab1 .tab-content .left-col .in-class-tutorials .no-content i, body .main .bottom-panel #tab1 .tab-content .left-col .post-class-tutorials .no-content i, body .main .bottom-panel #tab2 .tab-content .left-col .pre-class-tutorials .no-content i, body .main .bottom-panel #tab2 .tab-content .left-col .in-class-tutorials .no-content i, body .main .bottom-panel #tab2 .tab-content .left-col .post-class-tutorials .no-content i, body .main .bottom-panel #tab3 .tab-content .left-col .pre-class-tutorials .no-content i, body .main .bottom-panel #tab3 .tab-content .left-col .in-class-tutorials .no-content i, body .main .bottom-panel #tab3 .tab-content .left-col .post-class-tutorials .no-content i {
-    font-size: 1.5rem !important;
-    margin-right: 5px !important;
+  body .main .bottom-panel #tab1 .tab-content .left-col .pre-class-tutorials .no-content img, body .main .bottom-panel #tab1 .tab-content .left-col .in-class-tutorials .no-content img, body .main .bottom-panel #tab1 .tab-content .left-col .post-class-tutorials .no-content img, body .main .bottom-panel #tab2 .tab-content .left-col .pre-class-tutorials .no-content img, body .main .bottom-panel #tab2 .tab-content .left-col .in-class-tutorials .no-content img, body .main .bottom-panel #tab2 .tab-content .left-col .post-class-tutorials .no-content img, body .main .bottom-panel #tab3 .tab-content .left-col .pre-class-tutorials .no-content img, body .main .bottom-panel #tab3 .tab-content .left-col .in-class-tutorials .no-content img, body .main .bottom-panel #tab3 .tab-content .left-col .post-class-tutorials .no-content img {
+    width: 50px;
   }
   body .main .bottom-panel #tab1 .tab-content .left-col .pre-class-tutorials .no-content .info, body .main .bottom-panel #tab1 .tab-content .left-col .in-class-tutorials .no-content .info, body .main .bottom-panel #tab1 .tab-content .left-col .post-class-tutorials .no-content .info, body .main .bottom-panel #tab2 .tab-content .left-col .pre-class-tutorials .no-content .info, body .main .bottom-panel #tab2 .tab-content .left-col .in-class-tutorials .no-content .info, body .main .bottom-panel #tab2 .tab-content .left-col .post-class-tutorials .no-content .info, body .main .bottom-panel #tab3 .tab-content .left-col .pre-class-tutorials .no-content .info, body .main .bottom-panel #tab3 .tab-content .left-col .in-class-tutorials .no-content .info, body .main .bottom-panel #tab3 .tab-content .left-col .post-class-tutorials .no-content .info {
     font-size: 1rem !important;
