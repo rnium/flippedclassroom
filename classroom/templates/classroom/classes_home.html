@@ -23,6 +23,7 @@
             <div class="course">{{ classroom.course }}</div>
           </div>
           <div class="info">
+            {% if not classroom.active %}<div class="inactive-b shadow"><i class='bx bx-stop-circle'></i><span>Inactive</span></div>{% endif %}
             <div class="num-students i-item">
               <i class='bx bx-group'></i><span>{{ classroom.num_students }} Students</span>
             </div>
