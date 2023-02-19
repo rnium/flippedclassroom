@@ -32,8 +32,35 @@
     <input type="text" class="textinput" id="weekly_topic_inp" placeholder=" ">
     <label for="weekly_topic_inp" class="textinput__label">Weekly Topic</label>
   </div>
+
+  <div class="weekly-files">
+    <div class="pre-cls title-box-2">
+      <div class="title">Pre Class files</div>
+      <div class="files-con content">
+        <div class="file-content must-study shadow-sm">
+          <i class='file-ico bx bxs-file-pdf'></i>
+          <div class="filename">sample filefilefilefilefile.pdf</div>
+          <button class="del-btn"><i class='bx bx-no-entry'></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="weekly-tutorials">
+    <div class="pre-cls title-box-2">
+      <div class="title">Pre Class Tutorials</div>
+      <div class="tuto-con content">
+        <div class="file-content shadow-sm">
+          <img src="{% static 'weeklies/images/video.png' %}">
+          <div class="filename"><a href="">https://www.youtube.com/watch?v=TYPFenJQciw</a></div>
+          <button class="del-btn"><i class='bx bx-no-entry'></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="action">
-    <button class="btn btn-primary" id="update_weekly_btn">Update</button>
+    <button id="update_weekly_btn">Update</button>
     <a href="{% url 'weeklies:delete_weekly' weekly.id %}" class="btn btn-danger">Delete Weekly</a>
   </div>
 </div>

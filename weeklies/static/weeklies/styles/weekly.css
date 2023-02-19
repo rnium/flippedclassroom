@@ -1658,6 +1658,99 @@ body .main .edit-weekly .info-con i.bg {
   opacity: 0.3;
 }
 
+body .main .edit-weekly .weekly-files .title-box-2 .files-con, body .main .edit-weekly .weekly-files .title-box-2 .tuto-con, body .main .edit-weekly .weekly-tutorials .title-box-2 .files-con, body .main .edit-weekly .weekly-tutorials .title-box-2 .tuto-con {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  gap: 1rem;
+}
+
+body .main .edit-weekly .weekly-files .title-box-2 .files-con .file-content, body .main .edit-weekly .weekly-files .title-box-2 .tuto-con .file-content, body .main .edit-weekly .weekly-tutorials .title-box-2 .files-con .file-content, body .main .edit-weekly .weekly-tutorials .title-box-2 .tuto-con .file-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #e3e9ee;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  word-wrap: break-word;
+  -webkit-transition: all 50ms;
+  transition: all 50ms;
+}
+
+body .main .edit-weekly .weekly-files .title-box-2 .files-con .file-content i.file-ico, body .main .edit-weekly .weekly-files .title-box-2 .tuto-con .file-content i.file-ico, body .main .edit-weekly .weekly-tutorials .title-box-2 .files-con .file-content i.file-ico, body .main .edit-weekly .weekly-tutorials .title-box-2 .tuto-con .file-content i.file-ico {
+  font-size: 3rem;
+  padding: 1rem 0.5rem;
+  background-color: #739696;
+  color: aquamarine;
+}
+
+body .main .edit-weekly .weekly-files .title-box-2 .files-con .file-content img, body .main .edit-weekly .weekly-files .title-box-2 .tuto-con .file-content img, body .main .edit-weekly .weekly-tutorials .title-box-2 .files-con .file-content img, body .main .edit-weekly .weekly-tutorials .title-box-2 .tuto-con .file-content img {
+  width: 50px;
+}
+
+body .main .edit-weekly .weekly-files .title-box-2 .files-con .file-content .filename, body .main .edit-weekly .weekly-files .title-box-2 .tuto-con .file-content .filename, body .main .edit-weekly .weekly-tutorials .title-box-2 .files-con .file-content .filename, body .main .edit-weekly .weekly-tutorials .title-box-2 .tuto-con .file-content .filename {
+  padding: 0 10px;
+  font-size: 0.9rem;
+  word-wrap: break-word;
+}
+
+body .main .edit-weekly .weekly-files .title-box-2 .files-con .file-content .del-btn, body .main .edit-weekly .weekly-files .title-box-2 .tuto-con .file-content .del-btn, body .main .edit-weekly .weekly-tutorials .title-box-2 .files-con .file-content .del-btn, body .main .edit-weekly .weekly-tutorials .title-box-2 .tuto-con .file-content .del-btn {
+  position: absolute;
+  top: 5px;
+  right: 3px;
+  background-color: inherit;
+  border: 0;
+  padding: 0;
+}
+
+body .main .edit-weekly .weekly-files .title-box-2 .files-con .file-content .del-btn i, body .main .edit-weekly .weekly-files .title-box-2 .tuto-con .file-content .del-btn i, body .main .edit-weekly .weekly-tutorials .title-box-2 .files-con .file-content .del-btn i, body .main .edit-weekly .weekly-tutorials .title-box-2 .tuto-con .file-content .del-btn i {
+  font-size: 1.5rem;
+  color: #e51f72;
+  text-shadow: 0 0 5px #dfbfbf;
+}
+
+body .main .edit-weekly .weekly-files .title-box-2 .files-con .file-content:hover, body .main .edit-weekly .weekly-files .title-box-2 .tuto-con .file-content:hover, body .main .edit-weekly .weekly-tutorials .title-box-2 .files-con .file-content:hover, body .main .edit-weekly .weekly-tutorials .title-box-2 .tuto-con .file-content:hover {
+  outline: 2px solid #2ed9a0;
+}
+
+body .main .edit-weekly .weekly-files .title-box-2 .files-con .file-content.must-study i.file-ico, body .main .edit-weekly .weekly-files .title-box-2 .tuto-con .file-content.must-study i.file-ico, body .main .edit-weekly .weekly-tutorials .title-box-2 .files-con .file-content.must-study i.file-ico, body .main .edit-weekly .weekly-tutorials .title-box-2 .tuto-con .file-content.must-study i.file-ico {
+  color: #2f90bd;
+  background-color: #c6d8e1;
+}
+
+body .main .edit-weekly .weekly-files .title-box-2 .files-con .file-content.must-study:hover, body .main .edit-weekly .weekly-files .title-box-2 .tuto-con .file-content.must-study:hover, body .main .edit-weekly .weekly-tutorials .title-box-2 .files-con .file-content.must-study:hover, body .main .edit-weekly .weekly-tutorials .title-box-2 .tuto-con .file-content.must-study:hover {
+  outline-color: #2f90bd;
+}
+
+body .main .edit-weekly .weekly-files .title-box-2 .tuto-con .file-content, body .main .edit-weekly .weekly-tutorials .title-box-2 .tuto-con .file-content {
+  padding: 15px 10px;
+  background-color: wheat;
+}
+
+body .main .edit-weekly .weekly-files .title-box-2 .tuto-con .file-content a, body .main .edit-weekly .weekly-tutorials .title-box-2 .tuto-con .file-content a {
+  text-decoration: none;
+  color: #276363;
+  font-size: 0.8rem;
+}
+
+body .main .edit-weekly .weekly-files .title-box-2 .tuto-con .file-content .del-btn i, body .main .edit-weekly .weekly-tutorials .title-box-2 .tuto-con .file-content .del-btn i {
+  color: #dc3b43;
+}
+
+body .main .edit-weekly .weekly-files .title-box-2 .tuto-con .file-content:hover, body .main .edit-weekly .weekly-tutorials .title-box-2 .tuto-con .file-content:hover {
+  outline-color: #dcb160;
+}
+
 body .main .edit-weekly .action {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1699,6 +1792,25 @@ body .main .edit-weekly .action .ico-btn i {
   margin-right: 5px;
 }
 
+body .main .edit-weekly .action button {
+  margin-top: 0.5rem;
+  border-radius: 5px;
+  background-color: #649292;
+  color: white;
+  padding: 0.7rem 2rem;
+  border: 0;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+body .main .edit-weekly .action button:hover {
+  background-color: #7aa5a5;
+}
+
+body .main .edit-weekly .action a {
+  padding: 0.7rem 2rem;
+}
+
 .title-box {
   border-radius: 10px;
   overflow: hidden;
@@ -1729,6 +1841,40 @@ body .main .edit-weekly .action .ico-btn i {
 }
 
 .title-box .content .no-content .info {
+  font-size: 1.2rem;
+  color: gray;
+}
+
+.title-box-2 {
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 2rem;
+  border: 2px solid rgba(153, 153, 153, 0.2);
+}
+
+.title-box-2 .title {
+  background-color: #dfe9e65b;
+  padding: 0.5rem 1rem;
+  font-family: 'Gemunu Libre', sans-serif;
+  font-size: 1.1rem;
+  color: #6ea076;
+  text-align: left;
+}
+
+.title-box-2 .content {
+  margin: 1rem;
+}
+
+.title-box-2 .content .no-content {
+  padding: 1rem 0;
+}
+
+.title-box-2 .content .no-content .icon i {
+  font-size: 3rem;
+  color: gray;
+}
+
+.title-box-2 .content .no-content .info {
   font-size: 1.2rem;
   color: gray;
 }
@@ -2134,6 +2280,13 @@ body .main .edit-weekly .action .ico-btn i {
   font-size: 1.2rem;
 }
 
+@media screen and (max-width: 1300px) {
+  .main .edit-weekly .weekly-files .title-box-2 .files-con, .main .edit-weekly .weekly-files .title-box-2 .tuto-con, .main .edit-weekly .weekly-tutorials .title-box-2 .files-con, .main .edit-weekly .weekly-tutorials .title-box-2 .tuto-con {
+    -ms-grid-columns: 1fr 1fr 1fr 1fr !important;
+        grid-template-columns: 1fr 1fr 1fr 1fr !important;
+  }
+}
+
 @media screen and (min-width: 1200px) {
   body .main .bottom-panel .tab-contents-container #tab1 .tab-content .left-col, body .main .bottom-panel .tab-contents-container #tab2 .tab-content .left-col, body .main .bottom-panel .tab-contents-container #tab3 .tab-content .left-col {
     width: 65%;
@@ -2156,6 +2309,17 @@ body .main .edit-weekly .action .ico-btn i {
   body .main .bottom-panel .tab-contents-container #tab1 .tab-content .right-col, body .main .bottom-panel .tab-contents-container #tab2 .tab-content .right-col, body .main .bottom-panel .tab-contents-container #tab3 .tab-content .right-col {
     width: 50%;
   }
+  body .main .edit-weekly .weekly-files .title-box-2 .files-con, body .main .edit-weekly .weekly-files .title-box-2 .tuto-con, body .main .edit-weekly .weekly-tutorials .title-box-2 .files-con, body .main .edit-weekly .weekly-tutorials .title-box-2 .tuto-con {
+    -ms-grid-columns: 1fr 1fr 1fr !important;
+        grid-template-columns: 1fr 1fr 1fr !important;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  body .main .edit-weekly .weekly-files .title-box-2 .files-con, body .main .edit-weekly .weekly-files .title-box-2 .tuto-con, body .main .edit-weekly .weekly-tutorials .title-box-2 .files-con, body .main .edit-weekly .weekly-tutorials .title-box-2 .tuto-con {
+    -ms-grid-columns: 1fr 1fr !important;
+        grid-template-columns: 1fr 1fr !important;
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -2176,6 +2340,10 @@ body .main .edit-weekly .action .ico-btn i {
   }
   .main .edit-forum-container .bottom-pane {
     padding: 1rem 0 !important;
+  }
+  .main .edit-weekly .weekly-files .title-box-2 .files-con, .main .edit-weekly .weekly-files .title-box-2 .tuto-con, .main .edit-weekly .weekly-tutorials .title-box-2 .files-con, .main .edit-weekly .weekly-tutorials .title-box-2 .tuto-con {
+    -ms-grid-columns: 1fr !important;
+        grid-template-columns: 1fr !important;
   }
 }
 
@@ -2646,6 +2814,22 @@ body .main .edit-weekly .action .ico-btn i {
   }
   body .main .bottom-panel .add-content button span {
     font-size: 0.9rem !important;
+  }
+  body .main .edit-weekly .weekly-files .title-box-2 .files-con, body .main .edit-weekly .weekly-files .title-box-2 .tuto-con, body .main .edit-weekly .weekly-tutorials .title-box-2 .files-con, body .main .edit-weekly .weekly-tutorials .title-box-2 .tuto-con {
+    -ms-grid-columns: 1fr !important;
+        grid-template-columns: 1fr !important;
+  }
+  body .main .edit-weekly .action {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: column !important;
+            flex-direction: column !important;
+  }
+  body .main .edit-weekly .action a, body .main .edit-weekly .action button {
+    width: 90%;
+  }
+  body .main .edit-weekly .action button {
+    margin-bottom: 10px;
   }
   .title-box .title {
     font-size: 0.9rem !important;
