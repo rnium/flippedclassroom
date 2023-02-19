@@ -42,7 +42,7 @@
         <div class="file-content {% if file.must_study %}must-study{% endif %} shadow-sm" id="pre_f-{{file.id}}-con">
           <i class='file-ico {{file.css_class}}'></i>
           <div class="filename">{{file.filename|truncatechars:20}}</div>
-          <button class="del-btn pre-cls-file-btn" id="pre_f-{{file.id}}-del" data-con-id="pre_f-{{file.id}}-con"><i class='bx bx-no-entry'></i></button>
+          <button class="del-btn pre-cls-file-btn" id="pre_f-{{file.id}}-del" data-obj-id="{{file.id}}" data-con-id="pre_f-{{file.id}}-con"><i class='bx bx-no-entry'></i></button>
         </div>
         {% endfor %}
       </div>
@@ -56,7 +56,7 @@
         <div class="file-content {% if file.must_study %}must-study{% endif %} shadow-sm" id="in_f-{{file.id}}-con">
           <i class='file-ico {{file.css_class}}'></i>
           <div class="filename">{{file.filename|truncatechars:20}}</div>
-          <button class="del-btn in-cls-file-btn" id="in_f-{{file.id}}-del" data-con-id="in_f-{{file.id}}-con"><i class='bx bx-no-entry'></i></button>
+          <button class="del-btn in-cls-file-btn" id="in_f-{{file.id}}-del" data-obj-id="{{file.id}}" data-con-id="in_f-{{file.id}}-con"><i class='bx bx-no-entry'></i></button>
         </div>
         {% endfor %}
       </div>
@@ -70,7 +70,7 @@
         <div class="file-content {% if file.must_study %}must-study{% endif %} shadow-sm" id="post_f-{{file.id}}-con">
           <i class='file-ico {{file.css_class}}'></i>
           <div class="filename">{{file.filename|truncatechars:20}}</div>
-          <button class="del-btn post-cls-file-btn" id="post_f-{{file.id}}-del" data-con-id="post_f-{{file.id}}-con"><i class='bx bx-no-entry'></i></button>
+          <button class="del-btn post-cls-file-btn" id="post_f-{{file.id}}-del" data-obj-id="{{file.id}}" data-con-id="post_f-{{file.id}}-con"><i class='bx bx-no-entry'></i></button>
         </div>
         {% endfor %}
       </div>
@@ -115,7 +115,7 @@
         <div class="file-content shadow-sm" id="post_t-{{tuto.id}}">
           <img src="{% static 'weeklies/images/video.png' %}">
           <div class="filename"><a href="{{tuto.yt_url}}">{{tuto.yt_url}}</a></div>
-          <button class="del-btn in-tuto-del-btn" id="post_t-{{tuto.id}}" data-obj-id="{{tuto.id}}"  data-con-id="post_t-{{tuto.id}}"><i class='bx bx-no-entry'></i></button>
+          <button class="del-btn post-tuto-del-btn" id="post_t-{{tuto.id}}" data-obj-id="{{tuto.id}}"  data-con-id="post_t-{{tuto.id}}"><i class='bx bx-no-entry'></i></button>
         </div>
         {% endfor %}
       </div>

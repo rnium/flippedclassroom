@@ -1,3 +1,11 @@
+let rm_pre_cls_files = []
+let rm_in_cls_files = []
+let rm_post_cls_files = []
+let rm_pre_cls_tuto = []
+let rm_in_cls_tuto = []
+let rm_post_cls_tuto = []
+
+
 function updateWeekly(btn_id, data) {
     payload = JSON.stringify(data)
     $.ajax({
@@ -41,6 +49,52 @@ function deleteWeekly(btn_id) {
         }
     })
 }
+
+
+let del_btns = $(".del-btn")
+$.each(del_btns, function (indexInArray, valueOfElement) {
+    if ($(valueOfElement).hasClass('pre-cls-file-btn')) {
+        $(valueOfElement).on('click', ()=>{
+            rm_pre_cls_files.push($(this).data('obj-id'))
+            let container = $(this).data('con-id')
+            $(`#${container}`).hide()
+        })
+    } else if ($(valueOfElement).hasClass('in-cls-file-btn')) {
+        $(valueOfElement).on('click', ()=>{
+            rm_in_cls_files.push($(this).data('obj-id'))
+            let container = $(this).data('con-id')
+            $(`#${container}`).hide()
+        }) 
+    } else if ($(valueOfElement).hasClass('post-cls-file-btn')) {
+        $(valueOfElement).on('click', ()=>{
+            rm_post_cls_files.push($(this).data('obj-id'))
+            let container = $(this).data('con-id')
+            $(`#${container}`).hide()
+        }) 
+    } else if ($(valueOfElement).hasClass('pre-tuto-del-btn')) {
+        $(valueOfElement).on('click', ()=>{
+            rm_post_cls_files.push($(this).data('obj-id'))
+            let container = $(this).data('con-id')
+            $(`#${container}`).hide()
+        }) 
+    } else if ($(valueOfElement).hasClass('in-tuto-del-btn')) {
+        $(valueOfElement).on('click', ()=>{
+            rm_post_cls_files.push($(this).data('obj-id'))
+            let container = $(this).data('con-id')
+            $(`#${container}`).hide()
+        }) 
+    } else if ($(valueOfElement).hasClass('post-tuto-del-btn')) {
+        $(valueOfElement).on('click', ()=>{
+            rm_post_cls_files.push($(this).data('obj-id'))
+            let container = $(this).data('con-id')
+            $(`#${container}`).hide()
+        }) 
+    }
+    
+});
+
+
+
 
 $("#update_weekly_btn").on('click',()=>{
     let new_topic = $("#weekly_topic_inp").val()
