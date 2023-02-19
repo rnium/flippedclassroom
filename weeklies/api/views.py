@@ -45,6 +45,70 @@ class UpdateWeeklyAV(UpdateAPIView):
     def get_queryset(self):
         return Weekly.objects.filter(pk=self.kwargs.get('pk'))
 
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def update_weekly(request, cls_pk, pk):
+    weekly = get_object_or_404(Weekly, classroom_id=cls_pk, pk=pk)
+    if request.user in weekly.classroom.teachers.all():
+        new_topic = request.data.get('topic')
+        if new_topic:
+            try:
+                weekly.topic = new_topic
+                weekly.save()
+            except Exception as e:
+                return Response(data={'info':"cannot set the new topic"}, status=status.HTTP_400_BAD_REQUEST)
+            pre_cls_files_pk = request.data.get("pre_class_files")
+            if pre_cls_files_pk:
+                for i in pre_cls_files_pk:
+                    try:
+                        file = PreClassFile.objects.get(weekly=weekly, pk=i)
+                        file.delete()
+                    except Exception as e:
+                        return Response(data={"info":"some files cannot be deleted"}, status=status.HTTP_400_BAD_REQUEST)
+            in_cls_files_pk = request.data.get("in_class_files")
+            if in_cls_files_pk:
+                for i in in_cls_files_pk:
+                    try:
+                        file = InClassFile.objects.get(weekly=weekly, pk=i)
+                        file.delete()
+                    except Exception as e:
+                        return Response(data={"info":"some files cannot be deleted"}, status=status.HTTP_400_BAD_REQUEST)
+            post_cls_files_pk = request.data.get("post_class_files")
+            if post_cls_files_pk:
+                for i in post_cls_files_pk:
+                    try:
+                        file = PostClassFile.objects.get(weekly=weekly, pk=i)
+                        file.delete()
+                    except Exception as e:
+                        return Response(data={"info":"some files cannot be deleted"}, status=status.HTTP_400_BAD_REQUEST)
+            pre_cls_tutos_pk = request.data.get("pre_class_tuto")
+            if pre_cls_tutos_pk:
+                for i in pre_cls_tutos_pk:
+                    try:
+                        tuto = PreClassTutorial.objects.get(weekly=weekly, pk=i)
+                        tuto.delete()
+                    except Exception as e:
+                        return Response(data={"info":"some tutorials cannot be deleted"}, status=status.HTTP_400_BAD_REQUEST)
+            in_cls_tutos_pk = request.data.get("in_class_tuto")
+            if in_cls_tutos_pk:
+                for i in in_cls_tutos_pk:
+                    try:
+                        tuto = InClassTutorial.objects.get(weekly=weekly, pk=i)
+                        tuto.delete()
+                    except Exception as e:
+                        return Response(data={"info":"some tutorials cannot be deleted"}, status=status.HTTP_400_BAD_REQUEST)
+            post_cls_tutos_pk = request.data.get("post_class_tuto")
+            if post_cls_tutos_pk:
+                for i in post_cls_tutos_pk:
+                    try:
+                        tuto = PostClassTutorial.objects.get(weekly=weekly, pk=i)
+                        tuto.delete()
+                    except Exception as e:
+                        return Response(data={"info":"some tutorials cannot be deleted"}, status=status.HTTP_400_BAD_REQUEST)
+            
+            return Response(data={"info":"completed"}, status=status.HTTP_200_OK)
+    else:
+        return Response(data={'info':'Forbidded'}, status=status.HTTP_403_FORBIDDEN)
 
 @api_view(['DELETE'])
 def delete_weekly(request, cls_pk, pk):

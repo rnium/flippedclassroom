@@ -11,7 +11,7 @@ function updateWeekly(btn_id, data) {
     $.ajax({
         url: weekly_update_url,
         contentType: "application/json",
-        type: "PATCH",
+        type: "POST",
         beforeSend: function(xhr){
             $(`#${btn_id}`).attr("disabled", true)
             // $("#id_create_q_button").addClass("disabled-btn")
