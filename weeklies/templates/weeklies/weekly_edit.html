@@ -34,16 +34,21 @@
   </div>
 
   <div class="weekly-files">
+    {% if weekly.hasPreClassFiles %}
     <div class="pre-cls title-box-2">
       <div class="title">Pre Class files</div>
       <div class="files-con content">
-        <div class="file-content must-study shadow-sm">
-          <i class='file-ico bx bxs-file-pdf'></i>
-          <div class="filename">sample filefilefilefilefile.pdf</div>
-          <button class="del-btn"><i class='bx bx-no-entry'></i></button>
+        {% for file in weekly.preClassFiles %}
+        <div class="file-content {% if file.must_study %}must-study{% endif %} shadow-sm" id="pre_f-{{file.id}}-con">
+          <i class='file-ico {{file.css_class}}'></i>
+          <div class="filename">{{file.filename}}</div>
+          <button class="del-btn pre-cls-file" id="pre_f-{{file.id}}-del" data-con-id="pre_f-{{file.id}}-con"><i class='bx bx-no-entry'></i></button>
         </div>
+        {% endfor %}
       </div>
     </div>
+    {% endif %}
+    
   </div>
 
   <div class="weekly-tutorials">
