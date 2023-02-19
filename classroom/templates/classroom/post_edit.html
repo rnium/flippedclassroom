@@ -32,7 +32,7 @@
   <div class="files-con">
     {% for file in post.postattachment_set.all %}
     <div class="file-content shadow-sm" id="file-{{file.id}}-container">
-      <i class='file-ico bx bxs-file-pdf'></i>
+      <i class='file-ico {{file.css_class}}'></i>
       <div class="filename">{{file.filename|truncatechars:25}}</div>
       <button class="del-btn" id="file-{{file.id}}-rm-btn" data-fileid="{{file.id}}" data-container="file-{{file.id}}-container"><i class='bx bx-no-entry'></i></button>
     </div>
