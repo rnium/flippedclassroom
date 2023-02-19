@@ -98,11 +98,29 @@ $.each(del_btns, function (indexInArray, valueOfElement) {
 
 $("#update_weekly_btn").on('click',()=>{
     let new_topic = $("#weekly_topic_inp").val()
-    if (new_topic.length == 0 || new_topic==pre_topic) {
+    if (new_topic.length == 0) {
         $("#weekly_topic_inp").focus()
         return;
     }
     data = {'topic':new_topic}
+    if (rm_pre_cls_files.length > 0) {
+        data['pre_class_files'] = rm_pre_cls_files
+    }
+    if (rm_in_cls_files.length > 0) {
+        data['in_class_files'] = rm_in_cls_files
+    }
+    if (rm_post_cls_files.length > 0) {
+        data['post_class_files'] = rm_post_cls_files
+    }
+    if (rm_pre_cls_tuto.length > 0) {
+        data['pre_class_tuto'] = rm_pre_cls_tuto
+    }
+    if (rm_in_cls_tuto.length > 0) {
+        data['in_class_tuto'] = rm_in_cls_tuto
+    }
+    if (rm_post_cls_tuto.length > 0) {
+        data['post_class_tuto'] = rm_post_cls_tuto
+    }
     updateWeekly('update_weekly_btn', data)
 })
 
