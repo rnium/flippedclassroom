@@ -363,6 +363,7 @@ class PreClassTutorial(models.Model):
     @property
     def yt_url(self):
         url = f"https://www.youtube.com/watch?v={self.yt_id}"
+        return url
 
 
 class InClassTutorial(models.Model):
@@ -370,6 +371,11 @@ class InClassTutorial(models.Model):
     yt_id = models.CharField(max_length=20)
     description = models.CharField(max_length=1000, blank=True, null=True)
     added = models.DateTimeField(auto_now_add=True)
+    
+    @property
+    def yt_url(self):
+        url = f"https://www.youtube.com/watch?v={self.yt_id}"
+        return url
 
 
 class PostClassTutorial(models.Model):
@@ -378,6 +384,10 @@ class PostClassTutorial(models.Model):
     description = models.CharField(max_length=1000, blank=True, null=True)
     added = models.DateTimeField(auto_now_add=True)
 
+    @property
+    def yt_url(self):
+        url = f"https://www.youtube.com/watch?v={self.yt_id}"
+        return url
 
 class Forumpost(models.Model):
     weekly = models.ForeignKey(Weekly, on_delete=models.CASCADE)

@@ -84,14 +84,44 @@
       <div class="title">Pre Class Tutorials</div>
       <div class="tuto-con content">
         {% for tuto in weekly.preClassTuto  %}
-        <div class="file-content shadow-sm">
+        <div class="file-content shadow-sm" id="pre_t-{{tuto.id}}">
           <img src="{% static 'weeklies/images/video.png' %}">
           <div class="filename"><a href="{{tuto.yt_url}}">{{tuto.yt_url}}</a></div>
-          <button class="del-btn pre-tuto-del-btn" id="pre-t-{{tuto.id}}"><i class='bx bx-no-entry'></i></button>
+          <button class="del-btn pre-tuto-del-btn" id="pre_t-{{tuto.id}}" data-obj-id="{{tuto.id}}" data-con-id="pre_t-{{tuto.id}}"><i class='bx bx-no-entry'></i></button>
         </div>
         {% endfor %}
       </div>
     </div>
+    {% endif %}
+    {% if weekly.hasInClassTuto %}
+    <div class="in-cls-tuto title-box-2">
+      <div class="title">In Class Tutorials</div>
+      <div class="tuto-con content">
+        {% for tuto in weekly.inClassTuto  %}
+        <div class="file-content shadow-sm" id="in_t-{{tuto.id}}">
+          <img src="{% static 'weeklies/images/video.png' %}">
+          <div class="filename"><a href="{{tuto.yt_url}}">{{tuto.yt_url}}</a></div>
+          <button class="del-btn in-tuto-del-btn" id="in_t-{{tuto.id}}" data-obj-id="{{tuto.id}}"  data-con-id="in_t-{{tuto.id}}"><i class='bx bx-no-entry'></i></button>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+    {% if weekly.hasPostClassTuto %}
+    <div class="post-cls-tuto title-box-2">
+      <div class="title">Post Class Tutorials</div>
+      <div class="tuto-con content">
+        {% for tuto in weekly.postClassTuto  %}
+        <div class="file-content shadow-sm" id="post_t-{{tuto.id}}">
+          <img src="{% static 'weeklies/images/video.png' %}">
+          <div class="filename"><a href="{{tuto.yt_url}}">{{tuto.yt_url}}</a></div>
+          <button class="del-btn in-tuto-del-btn" id="post_t-{{tuto.id}}" data-obj-id="{{tuto.id}}"  data-con-id="post_t-{{tuto.id}}"><i class='bx bx-no-entry'></i></button>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+    
   </div>
 
   <div class="action">
