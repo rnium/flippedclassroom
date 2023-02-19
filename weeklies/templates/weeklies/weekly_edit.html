@@ -41,25 +41,55 @@
         {% for file in weekly.preClassFiles %}
         <div class="file-content {% if file.must_study %}must-study{% endif %} shadow-sm" id="pre_f-{{file.id}}-con">
           <i class='file-ico {{file.css_class}}'></i>
-          <div class="filename">{{file.filename}}</div>
-          <button class="del-btn pre-cls-file" id="pre_f-{{file.id}}-del" data-con-id="pre_f-{{file.id}}-con"><i class='bx bx-no-entry'></i></button>
+          <div class="filename">{{file.filename|truncatechars:20}}</div>
+          <button class="del-btn pre-cls-file-btn" id="pre_f-{{file.id}}-del" data-con-id="pre_f-{{file.id}}-con"><i class='bx bx-no-entry'></i></button>
         </div>
         {% endfor %}
       </div>
     </div>
     {% endif %}
-    
+    {% if weekly.hasInClassFiles %}
+    <div class="in-cls title-box-2">
+      <div class="title">In Class files</div>
+      <div class="files-con content">
+        {% for file in weekly.inClassFiles %}
+        <div class="file-content {% if file.must_study %}must-study{% endif %} shadow-sm" id="in_f-{{file.id}}-con">
+          <i class='file-ico {{file.css_class}}'></i>
+          <div class="filename">{{file.filename|truncatechars:20}}</div>
+          <button class="del-btn in-cls-file-btn" id="in_f-{{file.id}}-del" data-con-id="in_f-{{file.id}}-con"><i class='bx bx-no-entry'></i></button>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+    {% if weekly.hasPostClassFiles %}
+    <div class="post-cls title-box-2">
+      <div class="title">Post Class files</div>
+      <div class="files-con content">
+        {% for file in weekly.postClassFiles %}
+        <div class="file-content {% if file.must_study %}must-study{% endif %} shadow-sm" id="post_f-{{file.id}}-con">
+          <i class='file-ico {{file.css_class}}'></i>
+          <div class="filename">{{file.filename|truncatechars:20}}</div>
+          <button class="del-btn post-cls-file-btn" id="post_f-{{file.id}}-del" data-con-id="post_f-{{file.id}}-con"><i class='bx bx-no-entry'></i></button>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
   </div>
 
   <div class="weekly-tutorials">
-    <div class="pre-cls title-box-2">
+    {% if weekly.hasPreClassTuto %}
+    <div class="pre-cls-tuto title-box-2">
       <div class="title">Pre Class Tutorials</div>
       <div class="tuto-con content">
+        {% for tuto in weekly.preClassTuto  %}
         <div class="file-content shadow-sm">
           <img src="{% static 'weeklies/images/video.png' %}">
-          <div class="filename"><a href="">https://www.youtube.com/watch?v=TYPFenJQciw</a></div>
-          <button class="del-btn"><i class='bx bx-no-entry'></i></button>
+          <div class="filename"><a href="{{tuto.yt_url}}">{{tuto.yt_url}}</a></div>
+          <button class="del-btn pre-tuto-del-btn" id="pre-t-{{tuto.id}}"><i class='bx bx-no-entry'></i></button>
         </div>
+        {% endfor %}
       </div>
     </div>
   </div>

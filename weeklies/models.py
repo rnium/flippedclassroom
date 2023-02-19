@@ -55,12 +55,13 @@ class Weekly(models.Model):
     def hasPostClassFiles(self):
         return bool(len(self.postClassFiles))
 
+    # tutorial properties
+     
     @property
     def preClassTuto(self):
         qs = self.preclasstutorial_set.all().order_by('added')
         return qs
 
-    # tutorial properties
     @property
     def inClassTuto(self):
         qs = self.inclasstutorial_set.all().order_by('added')
@@ -358,6 +359,10 @@ class PreClassTutorial(models.Model):
     yt_id = models.CharField(max_length=20) # yt_id = YouTube ID
     description = models.CharField(max_length=1000, blank=True, null=True)
     added = models.DateTimeField(auto_now_add=True)
+    
+    @property
+    def yt_url(self):
+        url = f"https://www.youtube.com/watch?v={self.yt_id}"
 
 
 class InClassTutorial(models.Model):
