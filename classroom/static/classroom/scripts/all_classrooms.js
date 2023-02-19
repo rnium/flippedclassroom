@@ -1,3 +1,13 @@
+function showError(msg, timeout=3000) {
+    $("#info-error-con").removeClass('success');
+    $("#info-txt").text(msg)
+    $("#info-error-con").show(200, ()=>{
+        setTimeout(()=>{
+            $("#info-error-con").hide(200)
+        },timeout)
+    })
+}
+
 function send_mail() {
     $.ajax({
         url: send_mail_api_url,
@@ -86,6 +96,10 @@ if (email_unv_containers.length > 0) {
 
 $("#join_cls_btn").on('click', ()=>{
     let cls_code = $("#cls_code").val()
+    if (cls_code.length == 0) {
+        showError("Please enter a code")
+        return;
+    }
     join_class(cls_code)
 })
 
