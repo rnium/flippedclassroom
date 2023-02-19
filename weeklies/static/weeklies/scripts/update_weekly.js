@@ -73,19 +73,19 @@ $.each(del_btns, function (indexInArray, valueOfElement) {
         }) 
     } else if ($(valueOfElement).hasClass('pre-tuto-del-btn')) {
         $(valueOfElement).on('click', ()=>{
-            rm_post_cls_files.push($(this).data('obj-id'))
+            rm_pre_cls_tuto.push($(this).data('obj-id'))
             let container = $(this).data('con-id')
             $(`#${container}`).hide()
         }) 
     } else if ($(valueOfElement).hasClass('in-tuto-del-btn')) {
         $(valueOfElement).on('click', ()=>{
-            rm_post_cls_files.push($(this).data('obj-id'))
+            rm_in_cls_tuto.push($(this).data('obj-id'))
             let container = $(this).data('con-id')
             $(`#${container}`).hide()
         }) 
     } else if ($(valueOfElement).hasClass('post-tuto-del-btn')) {
         $(valueOfElement).on('click', ()=>{
-            rm_post_cls_files.push($(this).data('obj-id'))
+            rm_post_cls_tuto.push($(this).data('obj-id'))
             let container = $(this).data('con-id')
             $(`#${container}`).hide()
         }) 
