@@ -145,10 +145,15 @@ function submitForm(){
     let data = {
         "first_name":$("#first_name").val(),
         "last_name":$("#last_name").val(),
-        "institution":$("#institution").val(),
-        "institutional_id":$("#inst-id").val(),
         "email": $("#email").val(),
         "password": $("#password1").val()
+    }
+    if ($("#actype-student").is(':checked')) {
+        data["institution"] = $("#institution").val()
+        data['institutional_id'] = $("#inst-id").val()
+        data['is_student'] = true
+    } else {
+        data['is_student'] = false
     }
     let payload = JSON.stringify(data)
     $.ajax({

@@ -123,13 +123,16 @@ def api_signup(request):
         )
         user.set_password(request.data['password'])
         user.save()
-        Account.objects.create(
-            user = user,
-            institution = request.data['institution'],
-            institutional_id = request.data['institutional_id']
-        )
+        account_kwargs = {}
+        account_kwargs['user'] = user
+        is_student = request.data['is_student']
+        account_kwargs['is_student'] = is_student
+        if is_student:
+            account_kwargs['institution'] = request.data['institution']
+            account_kwargs['institutional_id'] = request.data['institutional_id'] 
+        Account.objects.create(**account_kwargs)
     except Exception as e:
-        return Response({'status':'email used'}, status=status.HTTP_406_NOT_ACCEPTABLE)
+        return Response({'status':str(e)}, status=status.HTTP_406_NOT_ACCEPTABLE)
     login(request, user=user)
     return Response({'status':"complete"}, status=status.HTTP_201_CREATED)
 
