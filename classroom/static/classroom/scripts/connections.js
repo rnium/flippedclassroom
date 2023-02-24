@@ -51,8 +51,11 @@ function addTeacher() {
                 $("#add-teacher-btn").removeAttr("disabled");
             },
             statusCode: {
+                400: function() {
+                  alert( "Student account cannot be added as classroom teacher" );
+                },
                 404: function() {
-                  alert( "User not found" );
+                    alert( "User not found" );
                 },
                 208: function() {
                     alert("User already a teacher of this classroom")

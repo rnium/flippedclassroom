@@ -50,6 +50,8 @@ def classroom_join_api(request):
         classroom = Classroom.objects.get(join_code=cls_code)
     except Classroom.DoesNotExist:
         return Response(data={"info":"Classroom not found"}, status=status.HTTP_404_NOT_FOUND)
+    if not request.user.account.is_student:
+        return Response(data={"status":"Teacher cannot join classroom as student"}, status=status.HTTP_400_BAD_REQUEST)
     if not classroom.active:
         return Response(data={"info":"Classroom is not active"}, status=status.HTTP_403_FORBIDDEN)
     if request.user in classroom.teachers.all():
@@ -284,6 +286,8 @@ def delete_assessment_meta(request, cls_pk):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def add_teacher(request, pk):
+    if request.user.account.is_student:
+        return Response(data={"status":"student cannot be added as teacher"}, status=status.HTTP_400_BAD_REQUEST)
     classroom = get_object_or_404(Classroom, pk=pk)
     if request.user in classroom.teachers.all():
         user_qs = User.objects.filter(email=request.data['email'])
