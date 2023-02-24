@@ -6,36 +6,7 @@
 {% block title %}<title>WeeklyClassroom</title>{% endblock title %}
 {% block content %} {% load static %}
 <div class="classrooms-dashboard">
-  {% if classrooms %}
-    {% if classrooms.my_teachings %}
-    <div class="my-teachings classes-section">
-      <div class="heading">
-        <div class="content">
-          <i class='bx bx-user-voice'></i><span>Instructor's Module</span>
-        </div>
-      </div>
-      <div class="classrooms-container">
-        {% for classroom in classrooms.my_teachings %}
-        <a class="classroom" href="{% url 'classroom:classroom_detail' classroom.id %}">
-          <div class="classroom-heading">
-            <img src="{{classroom.banner_url}}" class="bg">
-            <div class="title">{{ classroom.name }}</div>
-            <div class="course">{{ classroom.course }}</div>
-          </div>
-          <div class="info">
-            {% if not classroom.active %}<div class="inactive-b shadow"><i class='bx bx-stop-circle'></i><span>Inactive</span></div>{% endif %}
-            <div class="num-students i-item">
-              <i class='bx bx-group'></i><span>{{ classroom.num_students }} Students</span>
-            </div>
-            <div class="event-info i-item">
-              <i class='bx bx-calendar-event'></i><span>{{classroom.num_weeklies}} Weeklies</span>
-            </div>
-          </div>
-        </a>
-        {% endfor %}
-      </div>
-    </div>
-    {% endif %}
+  {% if request.user.account.is_student %}
     {% if classrooms.my_learnings %}
     <div class="my-learnings classes-section">
       <div class="heading">
@@ -64,19 +35,6 @@
         
       </div>
     </div>
-    {% endif %}
-    {% if not request.user.account.is_email_verified %}
-    <div class="email-unverified shadow-lg" id="email-unv-con" style="display: none;">
-      <div class="info-con" id="verification-info-con">
-        <i class='bx bx-message-square-error'></i>
-        <div class="info">Your email is not verified yet! Please verify now to enable recovery option</div>
-      </div>
-      <div class="btn-con mt-2" id="verification-btn-con">
-        <button class="btn btn-primary" id="send-verification-btn">Send verification</button>
-        <button class="btn btn-outline-secondary ms-1 close-btn" id="close-verification-con-btn">Close</button>
-      </div>
-    </div>
-    {% endif %}
     <div class="create-classroom-link">
       <div class="content">
         <i class='bx bxs-plus-circle' id="plus-i"></i>
@@ -89,44 +47,91 @@
             <i class='bx bx-info-circle'></i>
             <span id="info-txt"></span>
           </div>
-          <a href="{% url 'classroom:create_classroom' %}" class="create-url shadow-sm">Create New</a>
         </div>
       </div>
     </div>
+    {% else %}
+    <div class="no-classrooms">
+      <div class="p1">
+        <div class="info">
+          <div class="h2">Looks like you're not part of any active classroom!</div>
+          <div>Ask your teacher or any existing members for a classroom code</div>
+        </div>
+        <div class="inp-con mt-4">
+          <input type="text" placeholder="classroom code" id="cls_code">
+          <button class="join-btn btn btn-primary shadow-sm" id="join_cls_btn">Join</button>
+        </div>
+        <div class="info-error-con" id="info-error-con" style="display: none;">
+          <i class='bx bx-info-circle'></i>
+          <span id="info-txt"></span>
+        </div>
+      </div>
+      <div class="p2">
+        <img src="{% static 'classroom/images/ebg1.svg' %}" class="bg">
+      </div>
+    </div>
+    {% endif %}
   {% else %}
-  <div class="no-classrooms">
-    <div class="p1">
-      <div class="info">
-        <div class="h2">Looks like you're not part of any active classroom!</div>
-        <div><a href="{% url 'classroom:create_classroom' %}" class="create-url">Create one</a>or ask your teacher or any existing members for a classroom code</div>
+    {% if classrooms.my_teachings %}
+    <div class="my-teachings classes-section">
+      <div class="heading">
+        <div class="content">
+          <i class='bx bx-user-voice'></i><span>Instructor's Module</span>
+        </div>
       </div>
-      <div class="inp-con mt-4">
-        <input type="text" placeholder="classroom code" id="cls_code">
-        <button class="join-btn btn btn-primary shadow-sm" id="join_cls_btn">Join</button>
-      </div>
-      <div class="info-error-con" id="info-error-con" style="display: none;">
-        <i class='bx bx-info-circle'></i>
-        <span id="info-txt"></span>
+      <div class="classrooms-container">
+        {% for classroom in classrooms.my_teachings %}
+        <a class="classroom" href="{% url 'classroom:classroom_detail' classroom.id %}">
+          <div class="classroom-heading">
+            <img src="{{classroom.banner_url}}" class="bg">
+            <div class="title">{{ classroom.name }}</div>
+            <div class="course">{{ classroom.course }}</div>
+          </div>
+          <div class="info">
+            {% if not classroom.active %}<div class="inactive-b shadow"><i class='bx bx-stop-circle'></i><span>Inactive</span></div>{% endif %}
+            <div class="num-students i-item">
+              <i class='bx bx-group'></i><span>{{ classroom.num_students }} Students</span>
+            </div>
+            <div class="event-info i-item">
+              <i class='bx bx-calendar-event'></i><span>{{classroom.num_weeklies}} Weeklies</span>
+            </div>
+          </div>
+        </a>
+        {% endfor %}
       </div>
     </div>
-    <div class="p2">
-      <img src="{% static 'classroom/images/ebg1.svg' %}" class="bg">
-    </div>
-  </div>
-  {% if not request.user.account.is_email_verified %}
-    <div class="email-unverified shadow-lg" id="email-unv-con" style="display: none;">
-      <div class="info-con" id="verification-info-con">
-        <i class='bx bx-message-square-error'></i>
-        <div class="info">Your email is not verified yet! Please verify now to enable recovery option</div>
+    <div class="create-classroom-link">
+      <div class="content">
+        <a href="{% url 'classroom:create_classroom' %}" class="create-cls shadow mb-2 me-2"><i class='bx bx-list-plus'></i><span>Create New</span></a>
       </div>
-      <div class="btn-con mt-2" id="verification-btn-con">
-        <button class="btn btn-primary" id="send-verification-btn">Send verification</button>
-        <button class="btn btn-outline-secondary ms-1 close-btn" id="close-verification-con-btn">Close</button>
+    </div>
+    {% else %}
+    <div class="no-classrooms">
+      <div class="p1">
+        <div class="info">
+          <div class="h2">Looks like you're not a teacher of any classroom yet!</div>
+          <div>Create one or ask a teacher of any existing classroom to add you by using your email address</div>
+        </div>
+        <a href="{% url 'classroom:create_classroom' %}" class="create-cls shadow"><img src="{% static 'classroom/images/add.png' %}" alt=""><span>Create Classroom</span></a>
+      </div>
+      <div class="p2">
+        <img src="{% static 'classroom/images/ebg1.svg' %}" class="bg">
       </div>
     </div>
     {% endif %}
   {% endif %}
-  
+  {% if not request.user.account.is_email_verified %}
+  <div class="email-unverified shadow-lg" id="email-unv-con" style="display: none;">
+    <div class="info-con" id="verification-info-con">
+      <i class='bx bx-message-square-error'></i>
+      <div class="info">Your email is not verified yet! Please verify now to enable recovery option</div>
+    </div>
+    <div class="btn-con mt-2" id="verification-btn-con">
+      <button class="btn btn-primary" id="send-verification-btn">Send verification</button>
+      <button class="btn btn-outline-secondary ms-1 close-btn" id="close-verification-con-btn">Close</button>
+    </div>
+  </div>
+  {% endif %}
 </div>
 {% endblock content %}
 
