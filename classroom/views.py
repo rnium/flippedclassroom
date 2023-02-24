@@ -244,6 +244,8 @@ def create_assignment(request, pk):
 @login_required
 def create_classroom(request):
     if request.method == "GET":
+        if request.user.account.is_student:
+            return render_info_or_error(request, 'Bad Request', "You cannot create any classroom")
         return render(request, "classroom/create_classroom.html")
 
 @login_required

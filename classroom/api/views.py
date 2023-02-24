@@ -150,6 +150,8 @@ def post_comment(request, pk):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def create_classroom(request):
+    if request.user.account.is_student:
+        return Response(data={"status":"error"}, status=status.HTTP_400_BAD_REQUEST)
     serializer = ClassroomSerializer(data=request.data)
     cls_code = get_random_string(6)
     classrooms_qs = Classroom.objects.filter(join_code=cls_code)
