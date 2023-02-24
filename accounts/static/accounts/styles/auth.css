@@ -123,6 +123,18 @@ body .container .form .actype-info {
   background-color: #f1faee;
   border-radius: 10px;
   margin-bottom: 1rem;
+  position: relative;
+}
+
+body .container .form .actype-info .bg {
+  position: absolute;
+  top: 0;
+  right: 5px;
+  font-size: 4rem;
+  opacity: 0.8;
+  background: -webkit-linear-gradient(#b7d0de, #10a192);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 body .container .form .actype-con {
@@ -141,8 +153,7 @@ body .container .form .actype-con {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  margin-bottom: 1rem;
-  margin-top: 5px;
+  margin: 5px auto;
 }
 
 body .container .form .actype-con .inp-con {
@@ -569,6 +580,9 @@ body footer a:hover {
   }
   body .container .form .actype-info {
     padding: 20px 10px !important;
+  }
+  body .container .form .actype-info i.bg {
+    display: none !important;
   }
   body .container .form .actype-con .label {
     font-size: 0.7rem;
