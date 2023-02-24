@@ -192,6 +192,35 @@ function submitForm(){
     });
 }
 
+function toggle_inst_inp(show=true) {
+    if (show) {
+        $("#institution").addClass("inp_input");
+        $("#inst-id").addClass("inp_input");
+        $("#inst-name-con").show(50, ()=>{
+            $("#inst-id-con").show(50)
+        })
+    } else {
+        $("#institution").removeClass("inp_input");
+        $("#inst-id").removeClass("inp_input");
+        $("#inst-id-con").hide(50, ()=>{
+            $("#inst-name-con").hide(50)
+        })
+    }
+}
+
+$("#actype-student").on("click", ()=>{
+    if ($("#actype-student").is(':checked')) {
+        toggle_inst_inp(true)
+    }
+})
+
+$("#actype-teacher").on("click", ()=>{
+    if ($("#actype-teacher").is(':checked')) {
+        toggle_inst_inp(false)
+    }
+})
+
+
 
 $("#submit").on('click', submitForm)
 $("#password2").on('keyup', function (e) { 
@@ -200,3 +229,10 @@ $("#password2").on('keyup', function (e) {
     }
  })
 
+$(document).ready(function () {
+    if ($("#actype-student").is(':checked')) {
+        toggle_inst_inp(true)
+    } else {
+        toggle_inst_inp(false)
+    }
+});
