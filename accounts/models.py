@@ -10,8 +10,9 @@ from itertools import chain
 
 class Account(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    institution = models.CharField(max_length=200)
-    institutional_id = models.CharField(max_length=200, null=True)
+    institution = models.CharField(max_length=200, null=True, blank=True)
+    institutional_id = models.CharField(max_length=200, null=True, blank=True)
+    is_student = models.BooleanField(default=True)
     is_email_verified = models.BooleanField(default=False)
     profile_picture = models.ImageField(upload_to="profiles/dp/", null=True, blank=True)
 

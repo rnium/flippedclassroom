@@ -7,13 +7,13 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="{% static 'accounts/styles/auth.css' %}">
-    <title>WeeklyClassroom Signup</title>
+    <title>FlippedClassroom Signup</title>
 </head>
 <body>
     <div class="container signup">
         <div class="form">
             <div class="heading">
-                <div class="site-title">WeeklyClassroom</div>
+                <div class="site-title">FlippedClassroom</div>
             </div> {% csrf_token %}
             <div class="field-container name">
                 <div class="first_name inset-float-textinput">
@@ -25,14 +25,7 @@
                     <label class="inp_label" for="last_name">Last Name</label>
                 </div>
             </div>
-            <div class="field-container institution inset-float-textinput">
-                <input class="inp_input" type="text" id="institution" placeholder=" ">
-                <label class="inp_label" for="institution">Institution</label>
-            </div>
-            <div class="field-container institution inset-float-textinput">
-                <input class="inp_input" type="text" id="inst-id" placeholder=" ">
-                <label class="inp_label" for="inst-id">Institutional ID</label>
-            </div>
+            
             <div class="field-container inset-float-textinput email">
                 <input class="inp_input" type="email" id="email" placeholder=" ">
                 <label class="inp_label" for="email">Email</label>
@@ -46,6 +39,29 @@
                 <input class="inp_input" type="password" id="password2" placeholder=" ">
                 <label class="inp_label" for="password2">Retype Password</label>
                 <i class='bx bx-hide password-toggle' id="p2-toggle" data-inp="password2"></i>
+            </div>
+            <div class="actype-info">
+                <div class="actype-con">
+                    <div class="label me-2">I am a</div>
+                    <div class="inp-con">
+                        <div class="inp-inner me-2">
+                            <input type="radio" name="actype" id="actype-student" checked="">
+                            <label for="actype-student">Student</label>
+                        </div>
+                        <div class="inp-inner">
+                            <input type="radio" name="actype" id="actype-teacher">
+                            <label for="actype-teacher">Teacher</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="field-container institution inset-float-textinput-no-border">
+                    <input class="inp_input" type="text" id="institution" placeholder=" ">
+                    <label class="inp_label" for="institution">Institution</label>
+                </div>
+                <div class="field-container institution inset-float-textinput-no-border">
+                    <input class="inp_input" type="text" id="inst-id" placeholder=" ">
+                    <label class="inp_label" for="inst-id">Institutional ID</label>
+                </div>
             </div>
             <div class="field-container input-file">
                 <input type="file" class="input-img" id="dp">
