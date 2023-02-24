@@ -51,7 +51,7 @@ def classroom_join_api(request):
     except Classroom.DoesNotExist:
         return Response(data={"info":"Classroom not found"}, status=status.HTTP_404_NOT_FOUND)
     if not request.user.account.is_student:
-        return Response(data={"status":"Teacher cannot join classroom as student"}, status=status.HTTP_400_BAD_REQUEST)
+        return Response(data={"status":"Teacher cannot join classroom as a student"}, status=status.HTTP_400_BAD_REQUEST)
     if not classroom.active:
         return Response(data={"info":"Classroom is not active"}, status=status.HTTP_403_FORBIDDEN)
     if request.user in classroom.teachers.all():
