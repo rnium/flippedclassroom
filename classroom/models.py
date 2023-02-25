@@ -19,8 +19,8 @@ class Classroom(models.Model):
         default = get_uuid,
         editable = False,
     )
-    name = models.CharField(max_length=50)
-    course = models.CharField(max_length=20)
+    name = models.CharField(max_length=100)
+    course = models.CharField(max_length=100)
     join_code = models.CharField(max_length=10)
     teachers = models.ManyToManyField(User, related_name='teacher')
     students = models.ManyToManyField(User, related_name='student', blank=True)
