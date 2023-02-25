@@ -17,6 +17,8 @@
                 <div class="name mb-0 mt-0 h4">{{account.user_full_name}}</div>
                 {% if account.is_student %}
                 <div class="id-no-con"><span class="label me-2">ID:</span><span class="id-no">{{account.institutional_id}}</span></div>
+                {% else %}
+                <div class="teacher-badge"></div>
                 {% endif %}
                 {% if account.institution %}
                 <div class="instituition">{{account.institution}}</div>
