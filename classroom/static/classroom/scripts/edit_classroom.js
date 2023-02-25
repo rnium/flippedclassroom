@@ -153,6 +153,21 @@ inputfield.addEventListener("change", function(){
     filename_container.innerText = filename
 })
 
+let char_inputs = $(".inp_input")
+$.each(char_inputs, function (indexInArray, valueOfElement) { 
+    $(valueOfElement).on('keyup', ()=>{
+        let newval = $(this).val()
+        let charcounter_id = $(this).data('charcounter')
+        let maxlength = $(`#${charcounter_id}`).data('maxlength')
+        $(`#${charcounter_id}`).text(newval.length)
+        let counter_container = $(`#${charcounter_id}`).parent()
+        if (newval.length > maxlength) {
+            $(counter_container).addClass('error');
+        } else {
+            $(counter_container).removeClass('error');
+        }
+    })
+});
 
 $("#update-btn").on("click", function(){
     let field_is_valid = validate_fields()
