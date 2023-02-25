@@ -35,16 +35,16 @@
   </div>       
   <div class="form mt-2 mb-2" id="form-container">
     <div class="field-container inset-float-textinput mb-4">
-      <input class="inp_input inp_required" type="text" id="classname" placeholder=" ">
-      <label class="inp_label" for="classname">Classroom Name</label>
+      <input class="inp_input inp_required" type="text" id="classname" data-charcounter="cls_name_char_count" placeholder=" ">
+      <label class="inp_label" for="classname"><span class="labeltext">Classroom Name</span><span class="charcount">[<span class="numchars" id="cls_name_char_count">0</span>/<span class="outof">{{classroom.name_max_chars}}</span>]</span></label>
     </div>
     <div class="field-container inset-float-textinput">
-      <input class="inp_input inp_required" type="text" id="course" placeholder=" ">
-      <label class="inp_label" for="course">Course Name or Course Code</label>
+      <input class="inp_input inp_required" type="text" id="course" data-charcounter="cls_course_char_count" placeholder=" ">
+      <label class="inp_label" for="course"><span class="labeltext">Course Name or Course Code</span><span class="charcount">[<span class="numchars" id="cls_course_char_count">0</span>/<span class="outof">{{classroom.course_max_chars}}</span>]</span></label>
     </div>
     <div class="field-container inset-float-textinput">
-      <input class="inp_input" type="text" id="quote" placeholder=" ">
-      <label class="inp_label" for="quote">Quote</label>
+      <input class="inp_input" type="text" id="quote" data-charcounter="cls_quote_char_count" placeholder=" ">
+      <label class="inp_label" for="quote"><span class="labeltext">Quote</span><span class="charcount">[<span class="numchars" id="cls_quote_char_count">0</span>/<span class="outof">{{classroom.quote_max_chars}}</span>]</span></label>
     </div>
     <div class="field-container input-file">
       <input type="file" class="input-img" id="dp">
@@ -88,11 +88,16 @@
   const delete_classroom_api_url = "{% url 'classroom:delete_classroom_api' classroom.id %}";
   const csrftoken = "{{ csrf_token }}"
   $(document).ready(function(){
-    $('#classname').val("{{classroom.name}}");
-    $('#course').val("{{classroom.course}}");
+    let cls_name = "{{classroom.name}}"
+    let cls_course = "{{classroom.course}}"
+    let cls_quote = "{{classroom.quote}}"
+    $('#classname').val(cls_name);
+    $('#cls_name_char_count').text(cls_name.length);
+    $('#course').val(cls_course);
+    $('#cls_course_char_count').text(cls_course.length);
     {% if classroom.quote %}
-    $('#quote').val("{{classroom.quote}}");
-
+    $('#quote').val(cls_quote);
+    $('#cls_quote_char_count').text(cls_quote.length);
     {% endif %}
   })
 </script>

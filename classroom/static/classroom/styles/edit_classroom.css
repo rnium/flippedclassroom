@@ -305,7 +305,22 @@ body .main .edit-classroom .form .inset-float-textinput input::selection {
 }
 
 body .main .edit-classroom .form .inset-float-textinput label {
+  width: 98%;
   position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   font-size: 1rem;
   top: 50%;
   -webkit-transform: translateY(-50%);
@@ -313,6 +328,26 @@ body .main .edit-classroom .form .inset-float-textinput label {
   left: 1rem;
   -webkit-transition: all 200ms;
   transition: all 200ms;
+}
+
+body .main .edit-classroom .form .inset-float-textinput label .charcount {
+  font-size: 0.8rem;
+  font-family: 'Ubuntu', sans-serif;
+  color: #95c8b7;
+}
+
+body .main .edit-classroom .form .inset-float-textinput label .charcount .numchars, body .main .edit-classroom .form .inset-float-textinput label .charcount .outof {
+  padding: 0 3px;
+  color: #a6c9bd;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+body .main .edit-classroom .form .inset-float-textinput label .charcount.error {
+  color: #f69997;
+}
+
+body .main .edit-classroom .form .inset-float-textinput label .charcount.error .numchars, body .main .edit-classroom .form .inset-float-textinput label .charcount.error .outof {
+  color: red;
 }
 
 body .main .edit-classroom .form .inset-float-textinput .inp_input:focus ~ .inp_label,

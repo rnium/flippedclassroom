@@ -20,7 +20,7 @@ class Classroom(models.Model):
         editable = False,
     )
     name = models.CharField(max_length=100)
-    course = models.CharField(max_length=100)
+    course = models.CharField(max_length=50)
     join_code = models.CharField(max_length=10)
     teachers = models.ManyToManyField(User, related_name='teacher')
     students = models.ManyToManyField(User, related_name='student', blank=True)
@@ -31,6 +31,18 @@ class Classroom(models.Model):
 
     def __str__(self):
         return f"{self.name} - {self.id}"
+    
+    @property
+    def name_max_chars(self):
+        return self._meta.get_field('name').max_length
+    
+    @property
+    def course_max_chars(self):
+        return self._meta.get_field('course').max_length
+    
+    @property
+    def quote_max_chars(self):
+        return self._meta.get_field('quote').max_length
     
     @property
     def banner_url(self):
