@@ -30,10 +30,12 @@
             <input class="inp_input" type="text" id="institution" placeholder=" ">
             <label class="inp_label" for="institution">Institution</label>
         </div>
+        {% if account.is_student %}
         <div class="field-container inset-float-textinput inst-id mb-3">
             <input class="inp_input" type="text" id="inst-id" placeholder=" ">
             <label class="inp_label" for="inst-id">Institutional ID</label>
         </div>
+        {% endif %}
         <div class="field-container inset-float-textinput email mb-3">
             <input class="inp_input" type="email" id="email" placeholder=" ">
             <label class="inp_label" for="email">Email</label>
@@ -57,8 +59,14 @@
     function setPrevVal() {
         $("#first_name").val('{{ account.user.first_name }}');
         $("#last_name").val('{{ account.user.last_name }}');
+        {% if account.is_student %}
         $("#institution").val('{{ account.institution }}');
         $("#inst-id").val('{{ account.institutional_id }}');
+        {% else %}
+            {% if account.institution %}
+            $("#institution").val('{{ account.institution }}');
+            {% endif %}
+        {% endif %}
         $("#email").val('{{ account.user.email }}');
     }
     setTimeout(setPrevVal, 500);
