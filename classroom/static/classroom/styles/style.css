@@ -416,7 +416,7 @@
     font-size: 0.9rem;
   }
   body .main .post-detail {
-    padding: 0 10px !important;
+    padding: 0 !important;
   }
   body .main .post-detail .post-body .attachments .accordion .accordion-item .accordion-button {
     font-size: 0.8rem !important;
@@ -442,8 +442,27 @@
   body .main .post-detail .comments .comments-container ul.comments-list li .comment .comment-inner .comment-body .comment-text, body .main .post-detail .comments .comments-container ul.comments-list li .comment .reply .comment-body .comment-text {
     font-size: 0.7rem !important;
   }
-  body .main .post-detail .comments .comment-input {
+  body .main .post-detail .comments .comments-container .no-comments i {
+    font-size: 1rem !important;
+  }
+  body .main .post-detail .comments .comments-container .no-comments span {
+    font-size: 0.8rem !important;
+  }
+  body .main .post-detail .comments .comment-input, body .main .post-detail .comments .reply-input {
     padding: 0 10px !important;
+    -webkit-box-pack: center !important;
+        -ms-flex-pack: center !important;
+            justify-content: center !important;
+  }
+  body .main .post-detail .comments .comment-input input, body .main .post-detail .comments .reply-input input {
+    -webkit-box-flex: none !important;
+        -ms-flex-positive: none !important;
+            flex-grow: none !important;
+    font-size: 0.9rem !important;
+    width: 70% !important;
+  }
+  body .main .post-detail .comments .comment-input button i, body .main .post-detail .comments .reply-input button i {
+    font-size: 1.2rem !important;
   }
   .title-box .title {
     font-size: 1rem !important;
