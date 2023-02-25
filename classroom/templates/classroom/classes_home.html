@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="{% static 'classroom/styles/style.css' %}">
 <link rel="stylesheet" href="{% static 'classroom/styles/navbar.css' %}">
 {% endblock style %}
-{% block title %}<title>WeeklyClassroom</title>{% endblock title %}
+{% block title %}<title>FileppedClassroom</title>{% endblock title %}
 {% block content %} {% load static %}
 <div class="classrooms-dashboard">
   {% if request.user.account.is_student %}
@@ -11,7 +11,7 @@
     <div class="my-learnings classes-section mb-5">
       <div class="heading">
         <div class="content">
-          <i class='bx bx-book'></i><span>Student's Modules</span>
+          <i class='bx bx-book'></i><span>Learning Modules</span>
         </div>
       </div>
       <div class="classrooms-container">
