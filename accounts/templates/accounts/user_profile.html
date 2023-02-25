@@ -15,8 +15,12 @@
             <div class="avatar me-3" style="background-image: url('{{account.avatar_url}}');"></div>
             <div class="info ml-3 w-100 p-4">
                 <div class="name mb-0 mt-0 h4">{{account.user_full_name}}</div>
+                {% if account.is_student %}
                 <div class="id-no-con"><span class="label me-2">ID:</span><span class="id-no">{{account.institutional_id}}</span></div>
+                {% endif %}
+                {% if account.institution %}
                 <div class="instituition">{{account.institution}}</div>
+                {% endif %}
                 <div class="no-classrooms"><span class="label me-2">Classrooms:</span><span class="cls-no">{{account.num_classrooms}}</span></div>
             </div>
         </div>
