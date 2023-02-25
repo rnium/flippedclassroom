@@ -34,7 +34,7 @@ def send_html_email(receiver, subject, body):
     port = settings.EMAIL_PORT
     
     em = EmailMessage()
-    em['From'] = formataddr(("WeeklyClassroom Team", sender))
+    em['From'] = formataddr(("FlippedClassroom Team", sender))
     em['To'] = receiver
     em['Subject'] = subject
     em.set_content(body, subtype='html')
@@ -48,7 +48,7 @@ def send_html_email(receiver, subject, body):
 
 def send_verification_email(request, user):
     current_site = get_current_site(request)
-    email_subject = "WeeklyClassroom: Verify Your Email"
+    email_subject = "Verify Your Email"
     receiver = user.email
     uid = urlsafe_base64_encode(force_bytes(user.id))
     token = default_token_generator.make_token(user)
@@ -231,7 +231,7 @@ def forgot_password_get(request):
 
 @api_view(["POST"])
 def send_recovery_email_api(request):
-    email_subject = "WeeklyClassroom: Password Recovery"
+    email_subject = "Password Recovery"
     try:
         email = request.data['email']
     except Exception as e:
