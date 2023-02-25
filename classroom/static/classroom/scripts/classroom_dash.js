@@ -115,7 +115,7 @@ $("#create-weekly-cancel-btn").on('click', ()=>{
         $("#weekly-topic-inp-con").hide(100)
         $("#create-weekly-btns-con").removeClass("double");
         $("#create-weekly-cancel-btn").hide(100)
-        $("#create-weekly-btn").text("Create Weekly");
+        $("#create-weekly-btn").text("Create Weekly Module");
     }
 })
 
