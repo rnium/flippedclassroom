@@ -415,6 +415,36 @@
   body .main .classrooms-dashboard .no-classrooms .p1 .create-cls span {
     font-size: 0.9rem;
   }
+  body .main .post-detail {
+    padding: 0 10px !important;
+  }
+  body .main .post-detail .post-body .attachments .accordion .accordion-item .accordion-button {
+    font-size: 0.8rem !important;
+    padding-left: 10px !important;
+  }
+  body .main .post-detail .post-body .attachments .accordion .accordion-item .accordion-body .download-btn-con {
+    -webkit-box-pack: center !important;
+        -ms-flex-pack: center !important;
+            justify-content: center !important;
+  }
+  body .main .post-detail .comments .comments-container {
+    padding: 1rem 0.5rem !important;
+  }
+  body .main .post-detail .comments .comments-container ul.comments-list li .comment .comment-inner .comment-body .username, body .main .post-detail .comments .comments-container ul.comments-list li .comment .reply .comment-body .username {
+    font-size: 0.9rem !important;
+  }
+  body .main .post-detail .comments .comments-container ul.comments-list li .comment .comment-inner .comment-body .user-teacher::after, body .main .post-detail .comments .comments-container ul.comments-list li .comment .reply .comment-body .user-teacher::after {
+    font-size: 0.8rem !important;
+  }
+  body .main .post-detail .comments .comments-container ul.comments-list li .comment .comment-inner .comment-body .time, body .main .post-detail .comments .comments-container ul.comments-list li .comment .reply .comment-body .time {
+    font-size: 0.6rem !important;
+  }
+  body .main .post-detail .comments .comments-container ul.comments-list li .comment .comment-inner .comment-body .comment-text, body .main .post-detail .comments .comments-container ul.comments-list li .comment .reply .comment-body .comment-text {
+    font-size: 0.7rem !important;
+  }
+  body .main .post-detail .comments .comment-input {
+    padding: 0 10px !important;
+  }
   .title-box .title {
     font-size: 1rem !important;
   }
@@ -2284,23 +2314,19 @@ body .main .post-detail {
 
 body .main .post-detail .post-body .description {
   font-size: 1.2rem;
-  color: #276363;
+  color: #e7fbfb;
 }
 
 body .main .post-detail .post-body .attachments {
-  margin-top: 1.5rem;
+  margin-top: 1.5rem !important;
   border-radius: 10px;
-}
-
-body .main .post-detail .post-body .attachments ul {
-  list-style-type: none;
   margin: 0;
-  background-color: rgba(208, 221, 226, 0.2);
-  padding: 1rem 1rem 1.5rem;
+  padding: 1rem 0 1.5rem;
   border-radius: 10px;
+  background-color: #444654;
 }
 
-body .main .post-detail .post-body .attachments ul .label {
+body .main .post-detail .post-body .attachments .label {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2312,21 +2338,36 @@ body .main .post-detail .post-body .attachments ul .label {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin-bottom: 0.7rem;
 }
 
-body .main .post-detail .post-body .attachments ul .label i {
-  color: #438879;
+body .main .post-detail .post-body .attachments .label i {
+  color: #00ffc8;
   font-size: 1.5rem;
 }
 
-body .main .post-detail .post-body .attachments ul .label span {
-  color: #66977b;
+body .main .post-detail .post-body .attachments .label span {
+  color: #00ffc8;
   font-family: 'Gemunu Libre', sans-serif;
   font-size: 1.1rem;
 }
 
-body .main .post-detail .post-body .attachments ul li {
+body .main .post-detail .post-body .attachments .accordion {
+  padding: 1rem 0;
+}
+
+body .main .post-detail .post-body .attachments .accordion .accordion-item .accordion-button {
+  overflow: hidden !important;
+  background-color: #607b7d;
+  color: white !important;
+}
+
+body .main .post-detail .post-body .attachments .accordion .accordion-item .accordion-button:focus {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  border-color: rgba(0, 0, 0, 0.125);
+}
+
+body .main .post-detail .post-body .attachments .accordion .accordion-item .accordion-body .download-btn-con {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2338,49 +2379,13 @@ body .main .post-detail .post-body .attachments ul li {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  border-radius: 5px;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
   margin-bottom: 1rem;
 }
 
-body .main .post-detail .post-body .attachments ul li .file-item {
-  width: 100%;
-  padding: 1rem 1.5rem;
-  border-radius: 10px;
-  background-color: rgba(148, 188, 204, 0.2);
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  justify-items: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-body .main .post-detail .post-body .attachments ul li .file-item .meta {
-  width: 100%;
-  padding: 5px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  margin-bottom: 0.5rem;
-}
-
-body .main .post-detail .post-body .attachments ul li .file-item .meta .filename {
-  color: #276363;
-}
-
-body .main .post-detail .post-body .attachments ul li .file-item .meta .filename .attachment-count {
-  display: inline-block;
-}
-
-body .main .post-detail .post-body .attachments ul li .file-item .meta .filename .attachment-count .inner {
+body .main .post-detail .post-body .attachments .accordion .accordion-item .accordion-body .download-btn-con a {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2392,82 +2397,38 @@ body .main .post-detail .post-body .attachments ul li .file-item .meta .filename
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin-right: 10px;
-  background-color: rgba(208, 221, 226, 0.5);
-  -webkit-box-shadow: 2px 2px 5px #acbebe, -2px -2px 5px white;
-          box-shadow: 2px 2px 5px #acbebe, -2px -2px 5px white;
-  text-align: center;
-  padding: 2px 15px;
+  border: 2px solid #25bf8c;
   border-radius: 5px;
-}
-
-body .main .post-detail .post-body .attachments ul li .file-item .meta .filename .attachment-count .inner i {
-  font-size: 1.2rem;
-  margin-right: 5px;
-  opacity: 0.3;
-}
-
-body .main .post-detail .post-body .attachments ul li .file-item .meta .filename .attachment-count .inner .count {
-  font-weight: 600;
-  color: #69a788;
-}
-
-body .main .post-detail .post-body .attachments ul li .file-item .meta a {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  justify-items: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  color: white;
+  padding: 2px 10px;
   text-decoration: none;
-  margin-left: 1rem;
-  border-radius: 5px;
-  border: 2px solid #5ca7c4;
-  padding: 2px 7px;
-  color: #5ca7c4;
-  font-weight: 500;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
 }
 
-body .main .post-detail .post-body .attachments ul li .file-item .meta a i {
-  text-align: center;
-  color: white;
-  font-size: 1.2rem;
+body .main .post-detail .post-body .attachments .accordion .accordion-item .accordion-body .download-btn-con a i {
+  font-size: 1.3rem;
   margin-right: 5px;
-  color: #5ca7c4;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
+  color: #25bf8c;
 }
 
-body .main .post-detail .post-body .attachments ul li .file-item .meta a:hover {
-  background-color: #5ca7c4;
-  color: white;
+body .main .post-detail .post-body .attachments .accordion .accordion-item .accordion-body .download-btn-con a span {
+  color: #10ab78;
+  font-family: 'Gemunu Libre', sans-serif;
 }
 
-body .main .post-detail .post-body .attachments ul li .file-item .meta a:hover i {
-  color: white;
+body .main .post-detail .post-body .attachments .accordion .accordion-item .accordion-body .download-btn-con a:hover {
+  background-color: #e8f5f0;
 }
 
-body .main .post-detail .post-body .attachments ul li .file-item .file-embed {
-  border-radius: 5px;
-  -webkit-box-shadow: 0 0 5px #abb8b5;
-          box-shadow: 0 0 5px #abb8b5;
-  -o-object-fit: cover;
-     object-fit: cover;
-  background-color: white;
+body .main .post-detail .post-body .attachments .accordion .accordion-item .accordion-body embed {
   width: 100%;
-  height: 30rem;
+  height: 1000px;
+  border-radius: 10px;
 }
 
-body .main .post-detail .post-body .attachments ul li:last-child {
-  margin-bottom: 0;
+body .main .post-detail .post-body .attachments .accordion .accordion-button:not(.collapsed) {
+  color: #506d6d  !important;
+  background-color: #e4eaed !important;
 }
 
 body .main .post-detail .post-body .post-info {
@@ -2491,18 +2452,18 @@ body .main .post-detail .post-body .post-info .post-time {
 
 body .main .post-detail .post-body .post-info .post-time i {
   font-size: 1.2rem;
-  color: #9bb3c0;
+  color: #85d4ff;
   margin-right: 5px;
 }
 
 body .main .post-detail .post-body .post-info .post-time .time {
   font-size: 0.9rem;
   font-family: 'Gemunu Libre', sans-serif;
-  color: #a8b7c4;
+  color: #85d4ff;
 }
 
 body .main .post-detail .comments {
-  background-color: rgba(239, 248, 255, 0.3);
+  background-color: white;
   border-top: 5px solid rgba(194, 218, 218, 0.6);
   padding-top: 0.5rem;
   margin-top: 3rem;
@@ -2560,7 +2521,7 @@ body .main .post-detail .comments .comments-container ul.comments-list li .comme
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: rgba(228, 236, 236, 0.8);
+  background-color: #e4ecec;
   padding: 10px;
   border-radius: 10px;
 }
