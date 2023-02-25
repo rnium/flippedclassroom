@@ -28,7 +28,10 @@ def render_info_or_error(request, heading, description, css_class="info"):
 
 def starter_homepage(request):
     if request.user.is_authenticated:
-        return redirect('classroom:homepage')
+        if hasattr(request.user, 'account'):
+            return redirect('classroom:homepage')
+        else:
+            return render_info_or_error(request, "No Classroom Account", "This is an admin account. Please create a general account to access this section")
     else:
         return render(request, "classroom/homepage.html")
 
