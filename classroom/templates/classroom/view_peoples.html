@@ -9,7 +9,7 @@
   <link rel="stylesheet" href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'>
   <link rel="stylesheet" href="{% static 'classroom/styles/navbar.css' %}">
   <link rel="stylesheet" href="{% static 'classroom/styles/connections.css' %}">
-  <title>{{classroom.name}} Connections</title>
+  <title>{{classroom.name}} Participants</title>
 </head>
 
 <body>
@@ -29,7 +29,7 @@
               <a class="nav-link" aria-current="page" href="{% url 'classroom:classroom_detail' classroom.id %}">Dashboard</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="#">Connections</a>
+              <a class="nav-link active" href="#">Participants</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'classroom:view_assessment' classroom.id %}">Assessment</a>
@@ -53,8 +53,8 @@
     <div class="section-title d-flex align-items-center p-3 my-4 text-white bg-secondary rounded shadow-sm">
       <i class='bx bx-shape-circle me-2'></i>
       <div class="info lh-1">
-        <h1 class="mb-1 lh-1">Connections</h1>
-        <small>Peoples of {{classroom.name}}</small>
+        <h1 class="mb-1 lh-1">Participants</h1>
+        <small>participants of {{classroom.name}}</small>
       </div>
     </div>
   
