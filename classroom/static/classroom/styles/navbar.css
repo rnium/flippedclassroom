@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato:wght@400;700;900&display=swap");
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -11,6 +12,20 @@ body header nav {
   padding: 1rem 0 !important;
 }
 
+body header nav .navbar-brand {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 body header nav .navbar-brand img {
   opacity: 0.65;
   width: 50px;
@@ -19,9 +34,8 @@ body header nav .navbar-brand img {
 }
 
 body header nav .navbar-brand .site-title {
-  font-weight: 600;
   color: #94a7ac;
-  font-family: 'Gemunu Libre', sans-serif;
+  font-family: 'Bebas Neue', cursive;
   font-size: 1.6rem;
   text-shadow: 0 0 5px rgba(196, 213, 196, 0.3);
 }
@@ -123,6 +137,9 @@ body header nav .user a {
 @media screen and (max-width: 576px) {
   body header nav .navbar-brand {
     margin: 0 !important;
+  }
+  body header nav .navbar-brand img {
+    width: 40px;
   }
   body header nav .navbar-brand .site-title {
     font-size: 1.3rem !important;
