@@ -160,7 +160,11 @@ class TaskDetail(LoginRequiredMixin, DetailView):
                 
         elif self.request.user in task.classroom.students.all():
             if group_type:
-                group = Group.objects.filter(task=task, members=self.request.user)[0]
+                # fix this: A new student who just joined, have no group. If they click task detail show them that they were not assigned
+                groups = Group.objects.filter(task=task, members=self.request.user)
+                if len(groups)==0:
+                    raise Http404
+                group=groups[0]
                 context['group'] = group
                 if group.work:
                     context['work'] = group.work
