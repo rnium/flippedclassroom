@@ -2655,9 +2655,6 @@ body .main .view-file-container .bottom-pane .other-files .no-files i {
   .main .view-task-container.student .left-col .task-info .task-instruction .attachments a {
     width: 100% !important;
   }
-  .main .view-task-container.student .left-col .task-meta-info .points {
-    display: none !important;
-  }
   .main .view-task-container.student .left-col .task-meta-info .deadline {
     display: none !important;
   }
