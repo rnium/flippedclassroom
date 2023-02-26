@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@300;400;500&family=Montserrat:wght@300;400;500&family=Roboto+Mono:wght@400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato:wght@400;700;900&display=swap");
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -38,7 +39,7 @@ body .container img.bg {
 }
 
 body .container .content {
-  margin: 10rem 5rem;
+  margin: 5rem 5rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -53,6 +54,11 @@ body .container .content {
 
 body .container .content .top {
   width: 50%;
+}
+
+body .container .content .top img.hero {
+  width: 150px;
+  margin-bottom: 1rem;
 }
 
 body footer {
@@ -83,20 +89,6 @@ body footer .content {
 }
 
 body footer .content div.col {
-  width: 33%;
-  padding: 1rem;
-}
-
-body footer .content div.col img.logo {
-  width: 80px;
-}
-
-body footer .content .col-1 .site-name {
-  text-align: center;
-  font-size: 1.2rem;
-}
-
-body footer .content .col-2, body footer .content .col-3 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -108,22 +100,44 @@ body footer .content .col-2, body footer .content .col-3 {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  width: 33%;
+  padding: 1rem;
+}
+
+body footer .content div.col img.logo {
+  width: 80px;
+}
+
+body footer .content .col-1 img.site-logo {
+  width: 50px;
+}
+
+body footer .content .col-1 .site-name {
+  text-align: center;
+  font-size: 1.2rem;
 }
 
 body footer .content .col-2 .label, body footer .content .col-3 .label {
   text-align: center;
   font-size: 0.8rem;
   margin-bottom: 5px;
-  font-family: 'Roboto Mono', monospace;
+  font-family: 'Lato', sans-serif;
   color: #6ba3a3;
 }
 
 body footer .content .col-2 a, body footer .content .col-2 .info, body footer .content .col-3 a, body footer .content .col-3 .info {
+  font-family: 'Lato', sans-serif;
   margin-top: 0.5rem;
   text-align: center;
   text-decoration: none;
   color: inherit;
   font-size: 0.9rem;
+}
+
+body footer .content .col-2 .info-2, body footer .content .col-3 .info-2 {
+  text-align: center;
+  font-size: 0.9rem;
+  font-family: 'Lato', sans-serif;
 }
 
 body footer .content .col-3 img.eee {
@@ -142,7 +156,7 @@ body footer .content::after {
 }
 
 .site-name {
-  font-family: 'Gemunu Libre', sans-serif;
+  font-family: 'Bebas Neue', cursive;
   color: #4f7f7f;
   text-shadow: 0 0 5px gainsboro;
 }
@@ -153,6 +167,9 @@ body footer .content::after {
   }
   body .container .content .top {
     width: 70% !important;
+  }
+  body .container .content .top img.hero {
+    width: 90px !important;
   }
   body .container .content .top .intro {
     font-size: 0.7rem !important;
