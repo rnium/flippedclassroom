@@ -132,9 +132,7 @@ body .container .form .actype-info .bg {
   right: 5px;
   font-size: 4rem;
   opacity: 0.8;
-  background: -webkit-linear-gradient(#b7d0de, #10a192);
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #96c8ca;
 }
 
 body .container .form .actype-con {
