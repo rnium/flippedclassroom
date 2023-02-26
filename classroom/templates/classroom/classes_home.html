@@ -19,8 +19,8 @@
         <a class="classroom" href="{% url 'classroom:classroom_detail' classroom.id %}">
           <div class="classroom-heading">
             <img src="{{classroom.banner_url}}" class="bg">
-            <div class="title">{{ classroom.name }}</div>
-            <div class="course">{{ classroom.course }}</div>
+            <div class="title">{{ classroom.name|truncatechars:60 }}</div>
+            <div class="course">{{ classroom.course|truncatechars:30 }}</div>
           </div>
           <div class="info">
             <div class="last-post-info i-item">
@@ -87,8 +87,8 @@
         <a class="classroom" href="{% url 'classroom:classroom_detail' classroom.id %}">
           <div class="classroom-heading">
             <img src="{{classroom.banner_url}}" class="bg">
-            <div class="title">{{ classroom.name }}</div>
-            <div class="course">{{ classroom.course }}</div>
+            <div class="title">{{ classroom.name|truncatechars:60 }}</div>
+            <div class="course">{{ classroom.course|truncatechars:30 }}</div>
           </div>
           <div class="info">
             {% if not classroom.active %}<div class="inactive-b shadow"><i class='bx bx-stop-circle'></i><span>Inactive</span></div>{% endif %}
