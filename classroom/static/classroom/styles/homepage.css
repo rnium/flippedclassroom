@@ -172,8 +172,11 @@ body footer .content::after {
         -ms-flex-align: center;
             align-items: center;
   }
+  body .container {
+    margin: 10rem 1rem 5rem !important;
+  }
   body .container .content {
-    margin: 10rem 1rem 12rem !important;
+    padding-left: 1rem;
   }
   body .container .content .top {
     width: 70% !important;
