@@ -114,6 +114,12 @@ body footer .content .col-1 .site-name {
   font-size: 1.2rem;
 }
 
+body footer .content .col-1 .version {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.6rem;
+  color: #8699a6;
+}
+
 body footer .content .col-2 .label, body footer .content .col-3 .label {
   text-align: center;
   font-size: 0.8rem;
