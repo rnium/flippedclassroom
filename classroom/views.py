@@ -40,8 +40,8 @@ class ClassesDashboard(LoginRequiredMixin, TemplateView):
     template_name = 'classroom/classes_home.html'
     def get_context_data(self, **kwargs):
         context = super().get_context_data()
-        my_teachings = Classroom.objects.filter(teachers=self.request.user)
-        my_learnings = Classroom.objects.filter(students=self.request.user, active=True)
+        my_teachings = Classroom.objects.filter(teachers=self.request.user).order_by('created')
+        my_learnings = Classroom.objects.filter(students=self.request.user, active=True).order_by('created')
         classrooms = {}
         if len(my_teachings) > 0:
             classrooms['my_teachings'] = my_teachings
