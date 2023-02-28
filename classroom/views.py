@@ -139,9 +139,9 @@ def create_assessment(request, pk):
             assessmentmeta_data['classroom'] = classroom
             assessmentmeta_data['attendance_marks'] = get_float_or_none(request.POST.get("attendance"))
             assessmentmeta_data['classtest_marks'] = get_float_or_none(request.POST.get("classtest"))
-            assessmentmeta_data['group_task_marks'] = get_float_or_none(request.POST.get("tasks-group"))
-            assessmentmeta_data['indiv_task_marks'] = get_float_or_none(request.POST.get("tasks-indiv"))
-            assessmentmeta_data['weekly_test_marks'] = get_float_or_none(request.POST.get("weekly_tests"))
+            assessmentmeta_data['pre_class_marks'] = get_float_or_none(request.POST.get("pre-cls-marks"))
+            assessmentmeta_data['in_class_marks'] = get_float_or_none(request.POST.get("in-cls-marks"))
+            assessmentmeta_data['post_class_marks'] = get_float_or_none(request.POST.get("post-cls-marks"))
             if all([data!=None for data in assessmentmeta_data.values()]):
                 meta = AssessmentMeta.objects.create(**assessmentmeta_data)
                 for student in classroom.students.all():

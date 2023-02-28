@@ -37,7 +37,7 @@
                   <th>Registration No</th>
                   <th>Attendance ({{meta.get_attendance_marks}})</th>
                   <th>Class Test ({{meta.get_classtest_marks}})</th>
-                  <th>Group Tasks ({{meta.get_group_task_marks}})</th>
+                  <th>Pre Class ({{meta.get_preclass_marks}})</th>
                   <th>Individual Tasks ({{meta.get_indiv_task_marks}})</th>
                   <th>Tests ({{meta.get_weekly_test_marks}})</th>
                   <th>Total ({{meta.total_marks}})</th>
@@ -62,7 +62,7 @@
                   <input type="text" id="aid-{{assessment.id}}-ct-score" class="score-inp classtest-score empty" data-marks={{assessment.meta.classtest_marks}} data-aid="{{assessment.id}}">
                   {% endif %}
                 </td>
-                {% if assessment.group_task_score != None%} 
+                {% if assessment. != None%} 
                 <td>{{assessment.group_task_score}}</td>
                 {% else %}
                 <td>Pending</td>
@@ -113,18 +113,18 @@
             <label class="inp_label" for="classtest">Class Test</label>
         </div>
         <div class="auto-fields p-3 rounded">
-            <div class="fields-title mb-2"><i class='bx bx-refresh me-1'></i><span>Score to be generated from classroom activities</span></div>
+            <div class="fields-title mb-2"><i class='bx bx-refresh me-1'></i><span>Score to be generated from weekly activities</span></div>
             <div class="inset-float-textinput-fluid mb-2">
-                <input class="inp_input" type="text" name="tasks-group" id="tasks-group" placeholder=" " required="">
-                <label class="inp_label" for="tasks-group">Weekly Group Task</label>
+                <input class="inp_input" type="text" name="pre-cls-marks" id="pre-cls-marks" placeholder=" " required="">
+                <label class="inp_label" for="pre-cls-marks">Weekly PreClass marks</label>
             </div>
             <div class="inset-float-textinput-fluid mb-2">
-                <input class="inp_input" type="text" name="tasks-indiv" id="tasks-indiv" placeholder=" " required="">
-                <label class="inp_label" for="tasks-indiv">Weekly Individual Task</label>
+                <input class="inp_input" type="text" name="in-cls-marks" id="in-cls-marks" placeholder=" " required="">
+                <label class="inp_label" for="in-cls-marks">Weekly InClass marks</label>
             </div>
             <div class="inset-float-textinput-fluid">
-                <input class="inp_input" type="text" name="weekly_tests" id="weekly_tests" placeholder=" " required="">
-                <label class="inp_label" for="weekly_tests">Weekly Test</label>
+                <input class="inp_input" type="text" name="post-cls-marks" id="post-cls-marks" placeholder=" " required="">
+                <label class="inp_label" for="post-cls-marks">Weekly PostClass marks</label>
             </div>
         </div>
         <div class="submit-con mt-3">

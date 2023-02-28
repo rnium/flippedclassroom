@@ -223,6 +223,10 @@ class Classroom(models.Model):
         marks = sum([task.marks for task in tasks])
         return marks
     
+    # @property
+    # def pre_class_total_marks(self):
+    #     pass
+    
     @property
     def num_tests(self):
         weeklies = self.weekly_set.all()
@@ -338,7 +342,6 @@ class PostAttachment(models.Model):
         else:
             return "bx bxs-file-blank"
 
-
     
 class Comment(models.Model):
     def get_uuid():
@@ -420,10 +423,10 @@ class AssignmentAttachment(models.Model):
 class AssessmentMeta(models.Model):
     classroom = models.OneToOneField(Classroom, on_delete=models.CASCADE)
     attendance_marks = models.FloatField(default=10)
-    classtest_marks = models.FloatField(default=10)
-    group_task_marks = models.FloatField(default=5)
-    indiv_task_marks = models.FloatField(default=5)
-    weekly_test_marks = models.FloatField(default=10)
+    classtest_marks = models.FloatField(default=15)
+    pre_class_marks = models.FloatField(default=5)
+    in_class_marks = models.FloatField(default=5)
+    post_class_marks = models.FloatField(default=5)
     
     def __str__(self):
         return f"{self.classroom.id} - Assessment meta"
@@ -447,8 +450,8 @@ class AssessmentMeta(models.Model):
         return prettify_marks(self.classtest_marks)
     
     @property
-    def get_group_task_marks(self):
-        return prettify_marks(self.group_task_marks)
+    def get_preclass_marks(self):
+        return prettify_marks(self.pre_class_marks)
     
     @property
     def get_indiv_task_marks(self):
@@ -495,6 +498,18 @@ class Assessment(models.Model):
         score_per_mark = students_gw_total_score/group_tasks_total_marks
         obtained_score = score_per_mark*self.meta.group_task_marks
         return prettify_marks(obtained_score)
+    
+    # @property
+    # def pre_class_score(self):
+    #     students_preclass_total_score = self.student.account.pre_class_points(self.meta.classroom)
+    #     if students_preclass_total_score == None:
+    #         return None
+    #     group_tasks_total_marks = self.meta.classroom.
+    #     if group_tasks_total_marks <= 0:
+    #         return 0
+    #     score_per_mark = students_preclass_total_score/group_tasks_total_marks
+    #     obtained_score = score_per_mark*self.meta.group_task_marks
+    #     return prettify_marks(obtained_score)
     
     @property
     def indiv_task_points(self):

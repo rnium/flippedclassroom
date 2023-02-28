@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import Q
 from django.utils import timezone
 from django.contrib.auth.models import User
 from django.templatetags.static import static
@@ -59,6 +60,10 @@ class Account(models.Model):
         gw = Work.objects.filter(group__members=self.user, task__classroom=classroom)
         return gw
     
+    def pre_class_works(self, classroom):
+        works = Work.objects.filter( Q(group__members=self.user) | Q(group=None, submission_by=self.user), task__classroom=classroom)
+        return works
+    
     
     def classroom_test_answersheets(self, classroom):
         sheets = AnswerSheet.objects.filter(user=self.user, test__weekly__classroom=classroom)
@@ -104,3 +109,13 @@ class Account(models.Model):
             else:
                 return None
         return points
+    
+    def pre_class_points(self, classroom):
+        total_points = 0
+        works = self.pre_class_works(classroom)
+        for work in works:
+            if work.score != None:
+                total_points += work.score
+            else:
+                return None
+        return total_points
