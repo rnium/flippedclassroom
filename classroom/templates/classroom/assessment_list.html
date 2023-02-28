@@ -1,5 +1,5 @@
 {% extends 'classroom/base.html' %}
-{% block style %} {% load static %}
+{% block style %} {% load static %} {% load my_tags %}
 <link rel="stylesheet" href="{% static 'classroom/styles/assessment.css' %}">
 <link rel="stylesheet" href="{% static 'classroom/styles/navbar.css' %}">
 {% endblock style %}
@@ -62,26 +62,10 @@
                   <input type="text" id="aid-{{assessment.id}}-ct-score" class="score-inp classtest-score empty" data-marks={{assessment.meta.classtest_marks}} data-aid="{{assessment.id}}">
                   {% endif %}
                 </td>
-                {% if assessment.pre_class_score != None%} 
-                <td>{{assessment.pre_class_score}}</td>
-                {% else %}
-                <td>Pending</td>
-                {% endif %}
-                {% if assessment.in_class_score != None%} 
-                <td>{{assessment.in_class_score}}</td>
-                {% else %}
-                <td>Pending</td>
-                {% endif %}
-                {% if assessment.post_class_score != None%} 
-                <td>{{assessment.post_class_score}}</td>
-                {% else %}
-                <td>Pending</td>
-                {% endif %}
-                {% if assessment.total_score != None %}
-                <td>{{assessment.total_score}}</td>
-                {% else %}
-                <td class="pending">Pending</td>
-                {% endif %}
+                <td>{{assessment.pre_class_score|get_score_or_pending}}</td>
+                <td>{{assessment.in_class_score|get_score_or_pending}}</td>
+                <td>{{assessment.post_class_score|get_score_or_pending}}</td>
+                <td class="{{assessment.total_score|get_total_score_css_class}}">{{assessment.total_score|get_score_or_pending}}</td>
               </tr>
               {% endfor %}
           </tbody>
