@@ -229,6 +229,23 @@ class Classroom(models.Model):
         total_marks = 0
         for weekly in weeklies:
             total_marks += weekly.pre_cls_marks
+        return total_marks
+    
+    @property
+    def in_class_total_marks(self):
+        weeklies = self.weeklies
+        total_marks = 0
+        for weekly in weeklies:
+            total_marks += weekly.in_cls_marks
+        return total_marks
+    
+    @property
+    def post_class_total_marks(self):
+        weeklies = self.weeklies
+        total_marks = 0
+        for weekly in weeklies:
+            total_marks += weekly.post_cls_marks
+        return total_marks
     
     @property
     def num_tests(self):
@@ -440,8 +457,8 @@ class AssessmentMeta(models.Model):
     
     @property
     def total_marks(self):
-        marks = (self.attendance_marks + self.classtest_marks + self.group_task_marks 
-                + self.indiv_task_marks + self.weekly_test_marks)
+        marks = (self.attendance_marks + self.classtest_marks + self.pre_class_marks 
+                + self.in_class_marks + self.post_class_marks)
         return prettify_marks(marks)
     
     @property
@@ -457,16 +474,24 @@ class AssessmentMeta(models.Model):
         return prettify_marks(self.pre_class_marks)
     
     @property
-    def get_indiv_task_marks(self):
-        return prettify_marks(self.indiv_task_marks)
+    def get_inclass_marks(self):
+        return prettify_marks(self.in_class_marks)
+    
+    @property
+    def get_postclass_marks(self):
+        return prettify_marks(self.post_class_marks)
+    
+    # @property
+    # def get_indiv_task_marks(self):
+    #     return prettify_marks(self.indiv_task_marks)
     
     @property
     def num_weekly_tests(self):
         return sum([w.num_tests for w in self.weekly_set.all()])
     
-    @property
-    def get_weekly_test_marks(self):
-        return prettify_marks(self.weekly_test_marks)
+    # @property
+    # def get_weekly_test_marks(self):
+    #     return prettify_marks(self.weekly_test_marks)
     
 class Assessment(models.Model):
     meta = models.ForeignKey(AssessmentMeta, on_delete=models.CASCADE)
@@ -502,7 +527,7 @@ class Assessment(models.Model):
         obtained_score = score_per_mark*self.meta.group_task_marks
         return prettify_marks(obtained_score)
    
-    # sections total score
+    # \\ sections total score
     @property
     def pre_class_score(self):
         students_preclass_total_score = self.student.account.pre_class_points(self.meta.classroom)
@@ -515,6 +540,30 @@ class Assessment(models.Model):
         obtained_score = score_per_mark*self.meta.pre_class_marks
         return prettify_marks(obtained_score)
     
+    @property
+    def in_class_score(self):
+        students_inclass_total_score = self.student.account.in_class_points(self.meta.classroom)
+        if students_inclass_total_score == None:
+            return None
+        incls_total_marks = self.meta.classroom.pre_class_total_marks
+        if incls_total_marks <= 0:
+            return 0
+        score_per_mark = students_inclass_total_score/incls_total_marks
+        obtained_score = score_per_mark*self.meta.in_class_marks
+        return prettify_marks(obtained_score)
+    
+    @property
+    def post_class_score(self):
+        students_total_score = self.student.account.post_class_points(self.meta.classroom)
+        if students_total_score == None:
+            return None
+        total_marks = self.meta.classroom.pre_class_total_marks
+        if total_marks <= 0:
+            return 0
+        score_per_mark = students_total_score/total_marks
+        obtained_score = score_per_mark*self.meta.post_class_marks
+        return prettify_marks(obtained_score)
+    # //
     @property
     def indiv_task_points(self):
         points = self.student.account.indiv_task_total_points(self.meta.classroom)
@@ -554,9 +603,9 @@ class Assessment(models.Model):
         scores = [
             self.attendance_score,
             self.classtest_score,
-            self.group_task_score,
-            self.indiv_task_score,
-            self.weekly_tests_score
+            self.pre_class_score,
+            self.in_class_score,
+            self.post_class_score
         ]
         if all([score!=None for score in scores]):
             total = sum(scores)

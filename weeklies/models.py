@@ -260,7 +260,41 @@ class Weekly(models.Model):
         ongoing_tasks = self.preClassOngoingTask
         prev_tasks = self.preClassPreviousTask
         ongoing_tests = self.preClassOngoingTest
-        prev_tests = self.preClassOngoingTest
+        prev_tests = self.preClassPreviousTest
+        total_marks = 0
+        for on_task in ongoing_tasks:
+            total_marks += on_task.marks
+        for prev_task in prev_tasks:
+            total_marks += prev_task.marks
+        for on_test in ongoing_tests:
+            total_marks += on_test.total_marks
+        for prev_test in prev_tests:
+            total_marks += prev_test.total_marks
+        return total_marks
+    
+    @property
+    def in_cls_marks(self):
+        ongoing_tasks = self.inClassOngoingTask
+        prev_tasks = self.inClassPreviousTask
+        ongoing_tests = self.inClassOngoingTest
+        prev_tests = self.inClassPreviousTest
+        total_marks = 0
+        for on_task in ongoing_tasks:
+            total_marks += on_task.marks
+        for prev_task in prev_tasks:
+            total_marks += prev_task.marks
+        for on_test in ongoing_tests:
+            total_marks += on_test.total_marks
+        for prev_test in prev_tests:
+            total_marks += prev_test.total_marks
+        return total_marks
+    
+    @property
+    def post_cls_marks(self):
+        ongoing_tasks = self.postClassOngoingTask
+        prev_tasks = self.postClassPreviousTask
+        ongoing_tests = self.postClassOngoingTest
+        prev_tests = self.postClassPreviousTest
         total_marks = 0
         for on_task in ongoing_tasks:
             total_marks += on_task.marks

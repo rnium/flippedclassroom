@@ -38,8 +38,8 @@
                   <th>Attendance ({{meta.get_attendance_marks}})</th>
                   <th>Class Test ({{meta.get_classtest_marks}})</th>
                   <th>Pre Class ({{meta.get_preclass_marks}})</th>
-                  <th>Individual Tasks ({{meta.get_indiv_task_marks}})</th>
-                  <th>Tests ({{meta.get_weekly_test_marks}})</th>
+                  <th>In Class ({{meta.get_inclass_marks}})</th>
+                  <th>Post Class ({{meta.get_postclass_marks}})</th>
                   <th>Total ({{meta.total_marks}})</th>
               </tr>
           </thead>
@@ -62,18 +62,18 @@
                   <input type="text" id="aid-{{assessment.id}}-ct-score" class="score-inp classtest-score empty" data-marks={{assessment.meta.classtest_marks}} data-aid="{{assessment.id}}">
                   {% endif %}
                 </td>
-                {% if assessment. != None%} 
-                <td>{{assessment.group_task_score}}</td>
+                {% if assessment.pre_class_score != None%} 
+                <td>{{assessment.pre_class_score}}</td>
                 {% else %}
                 <td>Pending</td>
                 {% endif %}
-                {% if assessment.indiv_task_score != None%} 
-                <td>{{assessment.indiv_task_score}}</td>
+                {% if assessment.in_class_score != None%} 
+                <td>{{assessment.in_class_score}}</td>
                 {% else %}
                 <td>Pending</td>
                 {% endif %}
-                {% if assessment.weekly_tests_score != None%} 
-                <td>{{assessment.weekly_tests_score}}</td>
+                {% if assessment.post_class_score != None%} 
+                <td>{{assessment.post_class_score}}</td>
                 {% else %}
                 <td>Pending</td>
                 {% endif %}

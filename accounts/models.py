@@ -61,11 +61,27 @@ class Account(models.Model):
         return gw
     
     def pre_class_works(self, classroom):
-        works = Work.objects.filter( Q(group__members=self.user) | Q(group=None, submission_by=self.user), task__classroom=classroom)
+        works = Work.objects.filter( Q(group__members=self.user) | Q(group=None, submission_by=self.user), task__classroom=classroom, preclass=True)
         return works
     
     def pre_class_test_answersheets(self, classroom):
         sheets = AnswerSheet.objects.filter(user=self.user, test__weekly__classroom=classroom, test__preclass=True)
+        return sheets
+    
+    def in_class_works(self, classroom):
+        works = Work.objects.filter( Q(group__members=self.user) | Q(group=None, submission_by=self.user), task__classroom=classroom, inclass=True)
+        return works
+    
+    def in_class_test_answersheets(self, classroom):
+        sheets = AnswerSheet.objects.filter(user=self.user, test__weekly__classroom=classroom, test__inclass=True)
+        return sheets
+    
+    def post_class_works(self, classroom):
+        works = Work.objects.filter( Q(group__members=self.user) | Q(group=None, submission_by=self.user), task__classroom=classroom, postclass=True)
+        return works
+    
+    def post_class_test_answersheets(self, classroom):
+        sheets = AnswerSheet.objects.filter(user=self.user, test__weekly__classroom=classroom, test__postclass=True)
         return sheets
     
     
@@ -123,6 +139,38 @@ class Account(models.Model):
             else:
                 return None
         for test_sheet in self.pre_class_test_answersheets:
+            points = test_sheet.total_score
+            if points != None:
+                total_points += work.score
+            else:
+                return None
+        return total_points
+    
+    def in_class_points(self, classroom):
+        total_points = 0
+        works = self.in_class_works(classroom)
+        for work in works:
+            if work.score != None:
+                total_points += work.score
+            else:
+                return None
+        for test_sheet in self.in_class_test_answersheets:
+            points = test_sheet.total_score
+            if points != None:
+                total_points += work.score
+            else:
+                return None
+        return total_points
+    
+    def post_class_points(self, classroom):
+        total_points = 0
+        works = self.post_class_works(classroom)
+        for work in works:
+            if work.score != None:
+                total_points += work.score
+            else:
+                return None
+        for test_sheet in self.post_class_test_answersheets:
             points = test_sheet.total_score
             if points != None:
                 total_points += work.score
