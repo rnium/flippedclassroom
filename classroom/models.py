@@ -545,7 +545,7 @@ class Assessment(models.Model):
         students_inclass_total_score = self.student.account.in_class_points(self.meta.classroom)
         if students_inclass_total_score == None:
             return None
-        incls_total_marks = self.meta.classroom.pre_class_total_marks
+        incls_total_marks = self.meta.classroom.in_class_total_marks
         if incls_total_marks <= 0:
             return 0
         score_per_mark = students_inclass_total_score/incls_total_marks
@@ -557,7 +557,7 @@ class Assessment(models.Model):
         students_total_score = self.student.account.post_class_points(self.meta.classroom)
         if students_total_score == None:
             return None
-        total_marks = self.meta.classroom.pre_class_total_marks
+        total_marks = self.meta.classroom.post_class_total_marks
         if total_marks <= 0:
             return 0
         score_per_mark = students_total_score/total_marks

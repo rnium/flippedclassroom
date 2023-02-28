@@ -134,14 +134,15 @@ class Account(models.Model):
         total_points = 0
         works = self.pre_class_works(classroom)
         for work in works:
-            if work.score != None:
-                total_points += work.score
+            score = work.score
+            if score != None:
+                total_points += score
             else:
                 return None
         for test_sheet in self.pre_class_test_answersheets(classroom=classroom):
             points = test_sheet.total_score
             if points != None:
-                total_points += work.score
+                total_points += points
             else:
                 return None
         return total_points
@@ -150,14 +151,15 @@ class Account(models.Model):
         total_points = 0
         works = self.in_class_works(classroom)
         for work in works:
-            if work.score != None:
-                total_points += work.score
+            score = work.score
+            if score != None:
+                total_points += score
             else:
                 return None
         for test_sheet in self.in_class_test_answersheets(classroom=classroom):
             points = test_sheet.total_score
             if points != None:
-                total_points += work.score
+                total_points += points
             else:
                 return None
         return total_points
@@ -166,14 +168,15 @@ class Account(models.Model):
         total_points = 0
         works = self.post_class_works(classroom)
         for work in works:
-            if work.score != None:
-                total_points += work.score
+            score = work.score
+            if score != None:
+                total_points += score
             else:
                 return None
         for test_sheet in self.post_class_test_answersheets(classroom=classroom):
             points = test_sheet.total_score
             if points != None:
-                total_points += work.score
+                total_points += points
             else:
                 return None
         return total_points
