@@ -8,7 +8,14 @@ def get_score_or_pending(score):
         return "Pending"
     else:
         return score
-    
+
+
+@register.filter
+def get_score_or_asterisk(score):
+    if score == None:
+        return "**"
+    else:
+        return score
     
 @register.filter
 def get_total_score_css_class(score):

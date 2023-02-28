@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> {% load static %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> {% load static %} {% load my_tags %}
     <link rel="stylesheet" href="{% static 'classroom/styles/assessment_print.css' %}">
     <title>Document</title>
 </head>
 <body>
     <header>
-        <h2 class="title">{{meta.classroom.name}} Assessment Report</h2>
+        <h1 class="title" style="margin: 0; text-align: center;">Assessment Report</h1>
+        <h3 style="margin: 0; text-align: center;">{{meta.classroom.name}}</h3>
+        <h3 style="margin: 0 0 20px 0; text-align: center;">{{meta.classroom.course}}</h3>
     </header>
     <main>
         <table>
@@ -19,9 +21,9 @@
                     <th>Registration No.</th>
                     <th>Attendance ({{meta.get_attendance_marks}})</th>
                     <th>Class Test ({{meta.get_classtest_marks}})</th>
-                    <th>Group Tasks ({{meta.get_group_task_marks}})</th>
-                    <th>Individual Tasks ({{meta.get_indiv_task_marks}})</th>
-                    <th>Tests ({{meta.get_weekly_test_marks}})</th>
+                    <th>PreClass ({{meta.get_preclass_marks}})</th>
+                    <th>InClass ({{meta.get_inclass_marks}})</th>
+                    <th>PostClass ({{meta.get_postclass_marks}})</th>
                     <th>Total ({{meta.total_marks}})</th>
                 </tr>
             </thead>
@@ -30,36 +32,12 @@
                 <tr>
                     <td>{{forloop.counter}}</td>
                     <td>{{ a.student.account.institutional_id }}</td>
-                    {% if a.attendance_score != None %} 
-                    <td>{{a.get_attendance_score}}</td>
-                    {% else %}
-                    <td>**</td>
-                    {% endif %}
-                    {% if a.classtest_score != None%} 
-                    <td>{{a.get_classtest_score}}</td>
-                    {% else %}
-                    <td>**</td>
-                    {% endif %}
-                    {% if a.group_task_score != None%} 
-                    <td>{{a.group_task_score}}</td>
-                    {% else %}
-                    <td>**</td>
-                    {% endif %}
-                    {% if a.indiv_task_score != None%} 
-                    <td>{{a.indiv_task_score}}</td>
-                    {% else %}
-                    <td>**</td>
-                    {% endif %}
-                    {% if a.weekly_tests_score != None%} 
-                    <td>{{a.weekly_tests_score}}</td>
-                    {% else %}
-                    <td>**</td>
-                    {% endif %}
-                    {% if a.total_score != None%} 
-                    <td>{{a.total_score}}</td>
-                    {% else %}
-                    <td>**</td>
-                    {% endif %}
+                    <td>{{a.get_attendance_score|get_score_or_asterisk}}</td>
+                    <td>{{a.get_classtest_score|get_score_or_asterisk}}</td>
+                    <td>{{a.pre_class_score|get_score_or_asterisk}}</td>
+                    <td>{{a.in_class_score|get_score_or_asterisk}}</td>
+                    <td>{{a.post_class_score|get_score_or_asterisk}}</td>
+                    <td>{{a.total_score|get_score_or_asterisk}}</td>
                 </tr>
                 {% endfor %}
             </tbody>
