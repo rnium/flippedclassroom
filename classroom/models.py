@@ -529,16 +529,36 @@ class Assessment(models.Model):
    
     # \\ sections total score
     @property
+    def pre_cls_points(self):
+        points = self.student.account.pre_class_points(self.meta.classroom)
+        return points
+    
+    @property
+    def pre_cls_marks(self):
+        return self.meta.classroom.pre_class_total_marks
+        
+    @property
     def pre_class_score(self):
-        students_preclass_total_score = self.student.account.pre_class_points(self.meta.classroom)
+        students_preclass_total_score = self.pre_cls_points
         if students_preclass_total_score == None:
             return None
-        precls_total_marks = self.meta.classroom.pre_class_total_marks
+        precls_total_marks = self.pre_cls_marks
         if precls_total_marks <= 0:
             return 0
         score_per_mark = students_preclass_total_score/precls_total_marks
         obtained_score = score_per_mark*self.meta.pre_class_marks
         return prettify_marks(obtained_score)
+    
+    
+    @property
+    def in_cls_points(self):
+        points = self.student.account.in_class_points(self.meta.classroom)
+        return points
+    
+    @property
+    def in_cls_marks(self):
+        return self.meta.classroom.in_class_total_marks
+    
     
     @property
     def in_class_score(self):
@@ -551,6 +571,17 @@ class Assessment(models.Model):
         score_per_mark = students_inclass_total_score/incls_total_marks
         obtained_score = score_per_mark*self.meta.in_class_marks
         return prettify_marks(obtained_score)
+    
+    
+    @property
+    def post_cls_points(self):
+        points = self.student.account.post_class_points(self.meta.classroom)
+        return points
+    
+    @property
+    def post_cls_marks(self):
+        return self.meta.classroom.post_class_total_marks
+    
     
     @property
     def post_class_score(self):

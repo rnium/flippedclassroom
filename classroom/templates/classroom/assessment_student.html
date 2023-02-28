@@ -47,46 +47,32 @@
         <td>{{assessment.get_classtest_score}}<span class="outof">(out of<span class="marks ms-1">{{assessment.meta.get_classtest_marks}}</span> )</span></td>
       </tr>
       <tr>
-        <th>Group tasks completed</th>
-        <td>{{assessment.num_group_work}}<span class="outof">(<span class="marks me-1">{{assessment.meta.classroom.num_group_tasks}}</span>assigned)</span></td>
-      </tr>
-      <tr>
-        <th>Group work points</th>
-        <td>{{assessment.group_task_points}}<span class="outof">(out of<span class="marks ms-1">{{assessment.meta.classroom.group_tasks_total_marks}}</span> )</span></td>
+        <th>PreClass points</th>
+        <td>{{assessment.pre_cls_points}}<span class="outof">(out of<span class="marks ms-1">{{assessment.pre_cls_marks}}</span>)</span></td>
       </tr>
       <tr class="score-row">
-        <th>Group work score</th>
-        <td>{{assessment.group_task_score}}<span class="outof">(out of<span class="marks ms-1">{{assessment.meta.get_group_task_marks}}</span> )</span></td>
-      </tr>
-      
-      <tr>
-        <th>Individual tasks completed</th>
-        <td>{{assessment.num_indiv_works}}<span class="outof">(<span class="marks me-1">{{assessment.meta.classroom.num_indiv_tasks}}</span>assigned)</span></td>
+        <th>PreClass score</th>
+        <td>{{assessment.pre_class_score}}<span class="outof">(out of<span class="marks ms-1">{{assessment.meta.get_preclass_marks}}</span> )</span></td>
       </tr>
       <tr>
-        <th>Individual work points</th>
-        <td>{{assessment.indiv_task_points}}<span class="outof">(out of<span class="marks ms-1">{{assessment.meta.classroom.indiv_tasks_total_marks}}</span> )</span></td>
+        <th>InClass points</th>
+        <td>{{assessment.in_cls_points}}<span class="outof">(out of<span class="marks ms-1">{{assessment.in_cls_marks}}</span> )</span></td>
       </tr>
       <tr class="score-row">
-        <th>Individual work score</th>
-        <td>{{assessment.indiv_task_score}}<span class="outof">(out of<span class="marks ms-1">{{assessment.meta.get_indiv_task_marks}}</span> )</span></td>
-      </tr>
-      
-      <tr>
-        <th>Weekly Test participated</th>
-        <td>{{assessment.num_participated_tests}}<span class="outof">(<span class="marks me-1">{{assessment.meta.classroom.num_tests}}</span>Taken)</span></td>
+        <th>InClass score</th>
+        <td>{{assessment.in_class_score}}<span class="outof">(out of<span class="marks ms-1">{{assessment.meta.get_inclass_marks}}</span>)</span></td>
       </tr>
       <tr>
-        <th>Weekly Test points</th>
-        <td>{{assessment.weekly_tests_points}}<span class="outof">(out of<span class="marks ms-1">{{assessment.meta.classroom.classroom_tests_total_marks}}</span> )</span></td>
+        <th>PostClass points</th>
+        <td>{{assessment.post_cls_points}}<span class="outof">(out of<span class="marks ms-1">{{assessment.post_cls_marks}}</span>)</span></td>
       </tr>
       <tr class="score-row">
-        <th>Weekly Test score</th>
-        <td>{{assessment.weekly_tests_score}}<span class="outof">(out of<span class="marks ms-1">{{assessment.meta.get_weekly_test_marks}}</span> )</span></td>
+        <th>PostClass score</th>
+        <td>{{assessment.post_class_score}}<span class="outof">(out of<span class="marks ms-1">{{assessment.meta.get_postclass_marks}}</span>)</span></td>
       </tr>
       <tr class="score-row-total">
         <th>Total Score</th>
-        <td>{{assessment.total_score}}<span class="outof">(out of<span class="marks ms-1">{{assessment.meta.total_marks}}</span> )</span></td>
+        <td>{{assessment.total_score}}<span class="outof">(out of<span class="marks ms-1">{{assessment.meta.total_marks}}</span>)</span></td>
       </tr>
       <tr class="score-row-total">
         <th>Score (%)</th>
