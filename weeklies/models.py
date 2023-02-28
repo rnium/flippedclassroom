@@ -254,6 +254,25 @@ class Weekly(models.Model):
         timenow = timezone.now()
         return self.weeklytest_set.filter(schedule__lte=timenow, expiration__gt=timenow)
     
+    # sections total marks
+    @property
+    def pre_cls_marks(self):
+        ongoing_tasks = self.preClassOngoingTask
+        prev_tasks = self.preClassPreviousTask
+        ongoing_tests = self.preClassOngoingTest
+        prev_tests = self.preClassOngoingTest
+        total_marks = 0
+        for on_task in ongoing_tasks:
+            total_marks += on_task.marks
+        for prev_task in prev_tasks:
+            total_marks += prev_task.marks
+        for on_test in ongoing_tests:
+            total_marks += on_test.total_marks
+        for prev_test in prev_tests:
+            total_marks += prev_test.total_marks
+        return total_marks
+        
+    
      
 class PreClassFile(models.Model):
     def filepath(self, filename):

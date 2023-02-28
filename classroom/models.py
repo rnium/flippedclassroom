@@ -223,9 +223,12 @@ class Classroom(models.Model):
         marks = sum([task.marks for task in tasks])
         return marks
     
-    # @property
-    # def pre_class_total_marks(self):
-    #     pass
+    @property
+    def pre_class_total_marks(self):
+        weeklies = self.weeklies
+        total_marks = 0
+        for weekly in weeklies:
+            total_marks += weekly.pre_cls_marks
     
     @property
     def num_tests(self):
@@ -498,18 +501,19 @@ class Assessment(models.Model):
         score_per_mark = students_gw_total_score/group_tasks_total_marks
         obtained_score = score_per_mark*self.meta.group_task_marks
         return prettify_marks(obtained_score)
-    
-    # @property
-    # def pre_class_score(self):
-    #     students_preclass_total_score = self.student.account.pre_class_points(self.meta.classroom)
-    #     if students_preclass_total_score == None:
-    #         return None
-    #     group_tasks_total_marks = self.meta.classroom.
-    #     if group_tasks_total_marks <= 0:
-    #         return 0
-    #     score_per_mark = students_preclass_total_score/group_tasks_total_marks
-    #     obtained_score = score_per_mark*self.meta.group_task_marks
-    #     return prettify_marks(obtained_score)
+   
+    # sections total score
+    @property
+    def pre_class_score(self):
+        students_preclass_total_score = self.student.account.pre_class_points(self.meta.classroom)
+        if students_preclass_total_score == None:
+            return None
+        precls_total_marks = self.meta.classroom.pre_class_total_marks
+        if precls_total_marks <= 0:
+            return 0
+        score_per_mark = students_preclass_total_score/precls_total_marks
+        obtained_score = score_per_mark*self.meta.pre_class_marks
+        return prettify_marks(obtained_score)
     
     @property
     def indiv_task_points(self):

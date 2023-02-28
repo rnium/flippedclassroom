@@ -64,6 +64,10 @@ class Account(models.Model):
         works = Work.objects.filter( Q(group__members=self.user) | Q(group=None, submission_by=self.user), task__classroom=classroom)
         return works
     
+    def pre_class_test_answersheets(self, classroom):
+        sheets = AnswerSheet.objects.filter(user=self.user, test__weekly__classroom=classroom, test__preclass=True)
+        return sheets
+    
     
     def classroom_test_answersheets(self, classroom):
         sheets = AnswerSheet.objects.filter(user=self.user, test__weekly__classroom=classroom)
@@ -115,6 +119,12 @@ class Account(models.Model):
         works = self.pre_class_works(classroom)
         for work in works:
             if work.score != None:
+                total_points += work.score
+            else:
+                return None
+        for test_sheet in self.pre_class_test_answersheets:
+            points = test_sheet.total_score
+            if points != None:
                 total_points += work.score
             else:
                 return None
