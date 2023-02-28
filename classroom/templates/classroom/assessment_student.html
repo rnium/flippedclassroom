@@ -1,5 +1,5 @@
 {% extends 'classroom/base.html' %}
-{% block style %} {% load static %}
+{% block style %} {% load static %} {% load my_tags %}
 <link rel="stylesheet" href="{% static 'classroom/styles/assessment.css' %}">
 <link rel="stylesheet" href="{% static 'classroom/styles/navbar.css' %}">
 {% endblock style %}
@@ -40,43 +40,43 @@
     <table>
       <tr class="score-row">
         <th>Attendance</th>
-        <td>{{assessment.get_attendance_score}}<span class="outof">(out of<span class="marks ms-1">{{assessment.meta.get_attendance_marks}}</span> )</span></td>
+        <td>{{assessment.get_attendance_score|get_score_or_pending}}<span class="outof">(out of<span class="marks ms-1">{{assessment.meta.get_attendance_marks}}</span> )</span></td>
       </tr>
       <tr class="score-row">
         <th>Class test</th>
-        <td>{{assessment.get_classtest_score}}<span class="outof">(out of<span class="marks ms-1">{{assessment.meta.get_classtest_marks}}</span> )</span></td>
+        <td>{{assessment.get_classtest_score|get_score_or_pending}}<span class="outof">(out of<span class="marks ms-1">{{assessment.meta.get_classtest_marks}}</span> )</span></td>
       </tr>
       <tr>
         <th>PreClass points</th>
-        <td>{{assessment.pre_cls_points}}<span class="outof">(out of<span class="marks ms-1">{{assessment.pre_cls_marks}}</span>)</span></td>
+        <td>{{assessment.pre_cls_points|get_score_or_pending}}<span class="outof">(out of<span class="marks ms-1">{{assessment.pre_cls_marks}}</span>)</span></td>
       </tr>
       <tr class="score-row">
         <th>PreClass score</th>
-        <td>{{assessment.pre_class_score}}<span class="outof">(out of<span class="marks ms-1">{{assessment.meta.get_preclass_marks}}</span> )</span></td>
+        <td>{{assessment.pre_class_score|get_score_or_pending}}<span class="outof">(out of<span class="marks ms-1">{{assessment.meta.get_preclass_marks}}</span> )</span></td>
       </tr>
       <tr>
         <th>InClass points</th>
-        <td>{{assessment.in_cls_points}}<span class="outof">(out of<span class="marks ms-1">{{assessment.in_cls_marks}}</span> )</span></td>
+        <td>{{assessment.in_cls_points|get_score_or_pending}}<span class="outof">(out of<span class="marks ms-1">{{assessment.in_cls_marks}}</span> )</span></td>
       </tr>
       <tr class="score-row">
         <th>InClass score</th>
-        <td>{{assessment.in_class_score}}<span class="outof">(out of<span class="marks ms-1">{{assessment.meta.get_inclass_marks}}</span>)</span></td>
+        <td>{{assessment.in_class_score|get_score_or_pending}}<span class="outof">(out of<span class="marks ms-1">{{assessment.meta.get_inclass_marks}}</span>)</span></td>
       </tr>
       <tr>
         <th>PostClass points</th>
-        <td>{{assessment.post_cls_points}}<span class="outof">(out of<span class="marks ms-1">{{assessment.post_cls_marks}}</span>)</span></td>
+        <td>{{assessment.post_cls_points|get_score_or_pending}}<span class="outof">(out of<span class="marks ms-1">{{assessment.post_cls_marks}}</span>)</span></td>
       </tr>
       <tr class="score-row">
         <th>PostClass score</th>
-        <td>{{assessment.post_class_score}}<span class="outof">(out of<span class="marks ms-1">{{assessment.meta.get_postclass_marks}}</span>)</span></td>
+        <td>{{assessment.post_class_score|get_score_or_pending}}<span class="outof">(out of<span class="marks ms-1">{{assessment.meta.get_postclass_marks}}</span>)</span></td>
       </tr>
       <tr class="score-row-total">
         <th>Total Score</th>
-        <td>{{assessment.total_score}}<span class="outof">(out of<span class="marks ms-1">{{assessment.meta.total_marks}}</span>)</span></td>
+        <td>{{assessment.total_score|get_score_or_pending}}<span class="outof">(out of<span class="marks ms-1">{{assessment.meta.total_marks}}</span>)</span></td>
       </tr>
       <tr class="score-row-total">
         <th>Score (%)</th>
-        <td>{{assessment.score_percentage}}%</td>
+        <td>{{assessment.score_percentage|get_score_or_pending}}%</td>
       </tr>
     </table>
   </div>
