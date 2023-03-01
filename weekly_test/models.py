@@ -32,6 +32,13 @@ class WeeklyTest(models.Model):
         return f"Test Id: {self.id}"
 
     @property
+    def is_ongoing(self):
+        if self.expiration >= timezone.now():
+            return True
+        else:
+            return False
+    
+    @property
     def total_marks(self):
         questions = self.question_set.all()
         marks = sum([q.marks for q in questions])

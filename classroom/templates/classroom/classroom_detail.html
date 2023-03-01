@@ -1,5 +1,5 @@
 {% extends 'classroom/base.html' %}
-{% block style %} {% load static %}
+{% block style %} {% load static %} {% load my_tags %}
 <link rel="stylesheet" href="{% static 'classroom/styles/style.css' %}">
 <link rel="stylesheet" href="{% static 'classroom/styles/navbar.css' %}">
 <link rel="stylesheet" href="{% static 'classroom/styles/loaders.css' %}">
@@ -220,6 +220,77 @@
   </div>
   {% endif %}
   
+  {% if request.user.account.is_student %}
+  <div class="student-activity">
+    <div class="title">
+      <img src="{% static 'classroom/images/indiv.png' %}" alt="">
+      <div class="title-text">My Activities</div>
+    </div>
+    {% get_test_participations request.user classroom as answ_sheets %}
+    {% if answ_sheets %}
+    <div class="tests mt-2" >
+      <ul>
+        {% for sheet in answ_sheets %}
+        <li>
+          <a href="#">
+            <div class="test-item shadow">
+              <img src="{% static 'classroom/images/test.svg' %}">
+              <div class="info">
+                <div class="label-title">{{sheet.test.title}} <div class="w-info-con"><span class="week-badge shadow-sm"><span class="w-num">week {{sheet.test.weekly.weeknum}}</span><i class='{{sheet.test.section_icon_css}}'></i></span></div> </div>
+                <div class="complete-time"><span class="sub-title">Submitted on:</span><span class="time" id="test-{{sheet.test.id}}-sheet">{{sheet.submit_time|date:'c'}}</span></div>
+                <div class="score-con">
+                  <div class="score-inner">
+                    <div class="label">Score:</div>
+                    {% if sheet.test.is_ongoing %}
+                    <div class="test-ongoing"><i class='bx bx-info-circle'></i><div class="info">Test Ongoing</div></div>
+                    {% else %}
+                      {% if sheet.total_score %}
+                      <div class="points-con"><span class="point">{{sheet.get_score}} /</span><span>{{sheet.test.total_marks}}</span></div>
+                      {% else %}
+                      <div class="test-pending"><img src="{% static 'classroom/images/wait.svg' %}" alt=""><div class="info">Result pending</div></div>
+                      {% endif %}
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </a>
+        </li>
+        {% endfor %}
+        
+      </ul>
+    </div>
+    {% endif %}
+    
+    <div class="tasks">
+      <ul>
+        <li>
+          <a href="#">
+            <div class="task-item shadow">
+              <img src="/images/test_icons/grp.png">
+              <div class="info">
+                <div class="label-title">sample test title <div class="w-info-con"><span class="week-badge shadow-sm"><span class="w-num">week 1</span><i class='bx bxs-left-arrow'></i></span></div> </div>
+                <div class="complete-time"><span class="sub-title">Submitted on:</span><span class="time">7:00PM, 17 Oct 2022</span></div>
+                <div class="score-con">
+                  <div class="score-inner">
+                    <div class="label">Score:</div>
+                    <!-- <div class="points-con"><span class="point">80 /</span><span>100</span></div> -->
+                    <!-- <div class="test-ongoing"><i class='bx bx-info-circle'></i><div class="info">Test Ongoing</div></div> -->
+                    <div class="task-pending"><img src="/images/test_icons/excl.svg" alt=""><div class="info">Unchecked</div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="no-content mt-2 shadow rounded" style="display: none;">
+      <img src="/images/test_icons/panda.png" alt="">
+      <div class="info mt-3 text-muted">No activities</div>
+    </div>
+  </div>
+  {% endif %}
 
   <div class="weekly-tests title-box">
     <div class="title">Weekly Test</div>
@@ -295,8 +366,6 @@
       {% else %}
       <div class="no-content"><img src="{% static 'classroom/images/task.png' %}"><span>No Previous Tasks</span></div>
       {% endif %}
-      
-      
     </div>
   </div>
 

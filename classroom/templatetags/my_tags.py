@@ -1,4 +1,7 @@
 from django import template
+from classroom.models import Classroom
+from tasks.models import Task, Work
+from weekly_test.models import AnswerSheet
 
 register = template.Library()
 
@@ -23,3 +26,24 @@ def get_total_score_css_class(score):
         return "pending"
     else:
         return ""
+    
+@register.simple_tag
+def get_test_participations(user, classroom):
+    qs = AnswerSheet.objects.filter(user=user, 
+                                    test__weekly__classroom=classroom, 
+                                    issue_time__isnull=False, 
+                                    submit_time__isnull=False)
+    qs.order_by('test.created')
+    return qs    
+
+@register.simple_tag
+def get_task_participations(user, classroom):
+    qs = Work.objects.filter(user=user, 
+                            test__weekly__classroom=classroom, 
+                            issue_time__isnull=False, 
+                            submit_time__isnull=False)
+    qs.order_by('test.created')
+    return qs
+
+
+    
