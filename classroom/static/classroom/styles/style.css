@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@300;400;500&family=Montserrat:wght@300;400;500&family=Roboto+Mono&family=Ubuntu&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@300;400;500&family=Lato&family=Montserrat:wght@300;400;500&family=Roboto+Mono:wght@400;500&display=swap");
 @media screen and (min-width: 1200px) {
   body .main .left-col {
     width: 70%;
@@ -217,6 +217,9 @@
   body .main .right-col .live-tests .content ul li .test-item .info .stat .issued span, body .main .right-col .live-tests .content ul li .test-item .info .stat .submitted span {
     font-size: 0.8rem !important;
   }
+  body .main .right-col .live-tasks .tasks ul li a .list-item img {
+    width: 50px !important;
+  }
   body .main .right-col .weekly-tasks .content ul li .list-item .sub-title, body .main .right-col .weekly-tests .content ul li .list-item .sub-title {
     font-size: 0.8rem !important;
   }
@@ -235,6 +238,91 @@
   }
   body .main .right-col .weekly-tasks .content ul li .list-item .info .label-title .w-info-con .week-badge i, body .main .right-col .weekly-tests .content ul li .list-item .info .label-title .w-info-con .week-badge i {
     font-size: 0.7rem !important;
+  }
+  body .main .right-col .student-activity {
+    padding: 1rem 5px 8px !important;
+  }
+  body .main .right-col .student-activity .title .title-text {
+    font-size: 0.9rem !important;
+  }
+  body .main .right-col .student-activity .tests ul li a .test-item, body .main .right-col .student-activity .tests ul li a .task-item, body .main .right-col .student-activity .tasks ul li a .test-item, body .main .right-col .student-activity .tasks ul li a .task-item {
+    padding: 10px 5px;
+  }
+  body .main .right-col .student-activity .tests ul li a .test-item img, body .main .right-col .student-activity .tests ul li a .task-item img, body .main .right-col .student-activity .tasks ul li a .test-item img, body .main .right-col .student-activity .tasks ul li a .task-item img {
+    width: 40px !important;
+  }
+  body .main .right-col .student-activity .tests ul li a .test-item .info, body .main .right-col .student-activity .tests ul li a .task-item .info, body .main .right-col .student-activity .tasks ul li a .test-item .info, body .main .right-col .student-activity .tasks ul li a .task-item .info {
+    margin-left: 10px;
+  }
+  body .main .right-col .student-activity .tests ul li a .test-item .info .label-title, body .main .right-col .student-activity .tests ul li a .task-item .info .label-title, body .main .right-col .student-activity .tasks ul li a .test-item .info .label-title, body .main .right-col .student-activity .tasks ul li a .task-item .info .label-title {
+    font-size: 0.9rem !important;
+  }
+  body .main .right-col .student-activity .tests ul li a .test-item .info .score-con, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con {
+    display: inline-block;
+  }
+  body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .label, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .label, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .label, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .label {
+    font-size: 0.9rem !important;
+  }
+  body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .points-con, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .points-con, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .points-con, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .points-con {
+    margin-left: 10px;
+    font-size: 0.7rem !important;
+  }
+  body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .points-con span, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .points-con span, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .points-con span, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .points-con span {
+    font-size: 0.7rem;
+  }
+  body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .test-ongoing, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .test-ongoing, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .test-ongoing, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .test-ongoing {
+    padding: 1px 10px;
+    margin-left: 10px;
+  }
+  body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .test-ongoing i, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .test-ongoing i, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .test-ongoing i, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .test-ongoing i {
+    font-size: 1.2rem;
+    color: #ffe5ec;
+  }
+  body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .test-ongoing .info, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .test-ongoing .info, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .test-ongoing .info, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .test-ongoing .info {
+    font-family: 'Gemunu Libre', sans-serif;
+    font-size: 0.9rem;
+    margin-left: 5px;
+    color: #ffe5ec;
+  }
+  body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .test-pending, body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .task-pending, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .test-pending, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .task-pending, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .test-pending, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .task-pending, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .test-pending, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .task-pending {
+    margin-left: 10px;
+  }
+  body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .test-pending img, body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .task-pending img, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .test-pending img, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .task-pending img, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .test-pending img, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .task-pending img, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .test-pending img, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .task-pending img {
+    width: 1.2rem !important;
+  }
+  body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .test-pending .info, body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .task-pending .info, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .test-pending .info, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .task-pending .info, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .test-pending .info, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .task-pending .info, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .test-pending .info, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .task-pending .info {
+    padding: 1px 10px;
+    border-radius: 5px;
+    font-family: 'Gemunu Libre', sans-serif;
+    font-size: 0.9rem;
+    margin-left: 5px;
+    background-color: #ffc300;
+  }
+  body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .test-pending img, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .test-pending img, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .test-pending img, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .test-pending img {
+    -webkit-animation-name: hg_rotation;
+            animation-name: hg_rotation;
+    -webkit-animation-duration: 3s;
+            animation-duration: 3s;
+    -webkit-animation-iteration-count: infinite;
+            animation-iteration-count: infinite;
+  }
+  body .main .right-col .student-activity .tests ul li a .test-item .info .complete-time, body .main .right-col .student-activity .tests ul li a .task-item .info .complete-time, body .main .right-col .student-activity .tasks ul li a .test-item .info .complete-time, body .main .right-col .student-activity .tasks ul li a .task-item .info .complete-time {
+    font-size: 0.9rem !important;
+  }
+  body .main .right-col .student-activity .tests ul li a .test-item .info .complete-time .time, body .main .right-col .student-activity .tests ul li a .task-item .info .complete-time .time, body .main .right-col .student-activity .tasks ul li a .test-item .info .complete-time .time, body .main .right-col .student-activity .tasks ul li a .task-item .info .complete-time .time {
+    font-size: 0.7rem !important;
+  }
+  body .main .right-col .student-activity .tasks ul {
+    margin-top: 5px;
+  }
+  body .main .right-col .student-activity .no-content {
+    padding: 3rem 1rem;
+  }
+  body .main .right-col .student-activity .no-content img {
+    width: 60px !important;
+  }
+  body .main .right-col .student-activity .no-content .info {
+    font-size: 0.9rem !important;
   }
   body .main .create-assignment-container {
     padding: 0 !important;
@@ -496,6 +584,36 @@
   100% {
     -webkit-transform: rotate(45deg);
             transform: rotate(45deg);
+  }
+}
+
+@-webkit-keyframes hg_rotation {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  50% {
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes hg_rotation {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  50% {
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
   }
 }
 
@@ -1461,17 +1579,17 @@ body .main .right-col {
   transition: all 100ms;
 }
 
-body .main .right-col .live-tests {
+body .main .right-col .live-tests, body .main .right-col .live-tasks {
   background-color: #47616e;
   border: none;
 }
 
-body .main .right-col .live-tests .grad-top {
+body .main .right-col .live-tests .grad-top, body .main .right-col .live-tasks .grad-top {
   height: 7px;
   overflow: hidden;
 }
 
-body .main .right-col .live-tests .grad-top .grad-con {
+body .main .right-col .live-tests .grad-top .grad-con, body .main .right-col .live-tasks .grad-top .grad-con {
   background-image: -webkit-gradient(linear, left top, right top, from(#ef0c85), color-stop(#ff64b7), color-stop(#00b3ff), color-stop(aquamarine), to(cyan));
   background-image: linear-gradient(to right, #ef0c85, #ff64b7, #00b3ff, aquamarine, cyan);
   width: 100%;
@@ -1485,20 +1603,20 @@ body .main .right-col .live-tests .grad-top .grad-con {
           animation-iteration-count: infinite;
 }
 
-body .main .right-col .live-tests .title {
+body .main .right-col .live-tests .title, body .main .right-col .live-tasks .title {
   color: white;
 }
 
-body .main .right-col .live-tests .content ul {
+body .main .right-col .live-tests .tests ul, body .main .right-col .live-tasks .tests ul {
   list-style-type: none;
   padding: 0;
 }
 
-body .main .right-col .live-tests .content ul li {
+body .main .right-col .live-tests .tests ul li, body .main .right-col .live-tasks .tests ul li {
   margin-bottom: 1.5rem;
 }
 
-body .main .right-col .live-tests .content ul li .test-item {
+body .main .right-col .live-tests .tests ul li .test-item, body .main .right-col .live-tasks .tests ul li .test-item {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1512,7 +1630,7 @@ body .main .right-col .live-tests .content ul li .test-item {
           align-items: center;
 }
 
-body .main .right-col .live-tests .content ul li .test-item i {
+body .main .right-col .live-tests .tests ul li .test-item i, body .main .right-col .live-tasks .tests ul li .test-item i {
   font-size: 2rem;
   margin-right: 0.5rem;
   padding: 0.3rem;
@@ -1521,12 +1639,12 @@ body .main .right-col .live-tests .content ul li .test-item i {
   color: #46846f;
 }
 
-body .main .right-col .live-tests .content ul li .test-item .info {
+body .main .right-col .live-tests .tests ul li .test-item .info, body .main .right-col .live-tasks .tests ul li .test-item .info {
   width: 100%;
   margin-top: 5px;
 }
 
-body .main .right-col .live-tests .content ul li .test-item .info .label-title {
+body .main .right-col .live-tests .tests ul li .test-item .info .label-title, body .main .right-col .live-tasks .tests ul li .test-item .info .label-title {
   color: inherit;
   text-decoration: none;
   display: block;
@@ -1535,16 +1653,16 @@ body .main .right-col .live-tests .content ul li .test-item .info .label-title {
   color: #d2e3de;
 }
 
-body .main .right-col .live-tests .content ul li .test-item .info a.label-title {
+body .main .right-col .live-tests .tests ul li .test-item .info a.label-title, body .main .right-col .live-tasks .tests ul li .test-item .info a.label-title {
   -webkit-transition: all 300ms;
   transition: all 300ms;
 }
 
-body .main .right-col .live-tests .content ul li .test-item .info a.label-title:hover {
+body .main .right-col .live-tests .tests ul li .test-item .info a.label-title:hover, body .main .right-col .live-tasks .tests ul li .test-item .info a.label-title:hover {
   color: #98ffcc;
 }
 
-body .main .right-col .live-tests .content ul li .test-item .info .ending-time {
+body .main .right-col .live-tests .tests ul li .test-item .info .ending-time, body .main .right-col .live-tasks .tests ul li .test-item .info .ending-time {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1562,7 +1680,7 @@ body .main .right-col .live-tests .content ul li .test-item .info .ending-time {
   margin-top: 5px;
 }
 
-body .main .right-col .live-tests .content ul li .test-item .info .ending-time i {
+body .main .right-col .live-tests .tests ul li .test-item .info .ending-time i, body .main .right-col .live-tasks .tests ul li .test-item .info .ending-time i {
   color: #ff6b35;
   background-color: inherit;
   padding: 0;
@@ -1571,7 +1689,7 @@ body .main .right-col .live-tests .content ul li .test-item .info .ending-time i
   margin-right: 3px;
 }
 
-body .main .right-col .live-tests .content ul li .test-item .info .ending-time .time-con {
+body .main .right-col .live-tests .tests ul li .test-item .info .ending-time .time-con, body .main .right-col .live-tasks .tests ul li .test-item .info .ending-time .time-con {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1586,7 +1704,7 @@ body .main .right-col .live-tests .content ul li .test-item .info .ending-time .
   font-size: 0.7rem;
 }
 
-body .main .right-col .live-tests .content ul li .test-item .info .ending-time .time-con .label {
+body .main .right-col .live-tests .tests ul li .test-item .info .ending-time .time-con .label, body .main .right-col .live-tasks .tests ul li .test-item .info .ending-time .time-con .label {
   font-weight: 500;
   font-size: 0.8rem;
   color: #ff6b35;
@@ -1594,11 +1712,11 @@ body .main .right-col .live-tests .content ul li .test-item .info .ending-time .
   font-family: 'Gemunu Libre', sans-serif;
 }
 
-body .main .right-col .live-tests .content ul li .test-item .info .ending-time .time-con span {
+body .main .right-col .live-tests .tests ul li .test-item .info .ending-time .time-con span, body .main .right-col .live-tasks .tests ul li .test-item .info .ending-time .time-con span {
   color: #f7c59f;
 }
 
-body .main .right-col .live-tests .content ul li .test-item .info .stat {
+body .main .right-col .live-tests .tests ul li .test-item .info .stat, body .main .right-col .live-tasks .tests ul li .test-item .info .stat {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1617,7 +1735,7 @@ body .main .right-col .live-tests .content ul li .test-item .info .stat {
   background-color: #1084d2;
 }
 
-body .main .right-col .live-tests .content ul li .test-item .info .stat div {
+body .main .right-col .live-tests .tests ul li .test-item .info .stat div, body .main .right-col .live-tasks .tests ul li .test-item .info .stat div {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1632,22 +1750,22 @@ body .main .right-col .live-tests .content ul li .test-item .info .stat div {
   font-size: 0.9rem;
 }
 
-body .main .right-col .live-tests .content ul li .test-item .info .stat div i {
+body .main .right-col .live-tests .tests ul li .test-item .info .stat div i, body .main .right-col .live-tasks .tests ul li .test-item .info .stat div i {
   font-size: 1.2rem;
   background-color: transparent;
   margin-right: 0;
   color: white;
 }
 
-body .main .right-col .live-tests .content ul li .test-item .info .stat div span {
+body .main .right-col .live-tests .tests ul li .test-item .info .stat div span, body .main .right-col .live-tasks .tests ul li .test-item .info .stat div span {
   color: white;
 }
 
-body .main .right-col .live-tests .content ul li .test-item .info .stat div span.value {
+body .main .right-col .live-tests .tests ul li .test-item .info .stat div span.value, body .main .right-col .live-tasks .tests ul li .test-item .info .stat div span.value {
   font-weight: 500;
 }
 
-body .main .right-col .live-tests .content ul li .test-item .info .action a {
+body .main .right-col .live-tests .tests ul li .test-item .info .action a, body .main .right-col .live-tasks .tests ul li .test-item .info .action a {
   display: block;
   text-align: center;
   text-decoration: none;
@@ -1664,9 +1782,209 @@ body .main .right-col .live-tests .content ul li .test-item .info .action a {
   transition: background-color 300ms;
 }
 
-body .main .right-col .live-tests .content ul li .test-item .info .action a:hover {
+body .main .right-col .live-tests .tests ul li .test-item .info .action a:hover, body .main .right-col .live-tasks .tests ul li .test-item .info .action a:hover {
   background-color: #22577a;
   outline: 1px solid white;
+}
+
+body .main .right-col .live-tests .tasks, body .main .right-col .live-tasks .tasks {
+  margin: 0;
+}
+
+body .main .right-col .live-tests .tasks ul, body .main .right-col .live-tasks .tasks ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+body .main .right-col .live-tests .tasks ul li a, body .main .right-col .live-tasks .tasks ul li a {
+  text-decoration: none;
+}
+
+body .main .right-col .live-tests .tasks ul li a .list-item, body .main .right-col .live-tasks .tasks ul li a .list-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 10px 5px;
+  border-radius: 5px;
+  background-color: white;
+  border: 1px solid transparent;
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
+}
+
+body .main .right-col .live-tests .tasks ul li a .list-item .sub-title, body .main .right-col .live-tasks .tasks ul li a .list-item .sub-title {
+  font-size: 1rem;
+  margin-right: 5px;
+  font-family: 'Gemunu Libre', sans-serif;
+  color: #719899;
+  text-shadow: 0 0 2px #dce7e3;
+}
+
+body .main .right-col .live-tests .tasks ul li a .list-item .info .deadline .time, body .main .right-col .live-tasks .tasks ul li a .list-item .info .deadline .time {
+  font-family: 'Ubuntu', sans-serif;
+}
+
+body .main .right-col .live-tests .tasks ul li a .list-item img, body .main .right-col .live-tasks .tasks ul li a .list-item img {
+  width: 2.5rem;
+  margin-right: 5px;
+}
+
+body .main .right-col .live-tests .tasks ul li a .list-item .info, body .main .right-col .live-tasks .tasks ul li a .list-item .info {
+  color: #4b6d63;
+}
+
+body .main .right-col .live-tests .tasks ul li a .list-item .info .label-title, body .main .right-col .live-tasks .tasks ul li a .list-item .info .label-title {
+  color: inherit;
+  text-decoration: none;
+}
+
+body .main .right-col .live-tests .tasks ul li a .list-item .info .label-title .w-info-con, body .main .right-col .live-tasks .tasks ul li a .list-item .info .label-title .w-info-con {
+  display: inline-block;
+}
+
+body .main .right-col .live-tests .tasks ul li a .list-item .info .label-title .w-info-con span.week-badge, body .main .right-col .live-tasks .tasks ul li a .list-item .info .label-title .w-info-con span.week-badge {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-left: 5px;
+  padding: 0 3px;
+  border-radius: 3px;
+  border: 1px solid #30ca97;
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
+  cursor: default;
+}
+
+body .main .right-col .live-tests .tasks ul li a .list-item .info .label-title .w-info-con span.week-badge .w-num, body .main .right-col .live-tasks .tasks ul li a .list-item .info .label-title .w-info-con span.week-badge .w-num {
+  color: #66b399;
+  font-family: 'Gemunu Libre', sans-serif;
+  font-size: 0.8rem;
+}
+
+body .main .right-col .live-tests .tasks ul li a .list-item .info .label-title .w-info-con span.week-badge i, body .main .right-col .live-tasks .tasks ul li a .list-item .info .label-title .w-info-con span.week-badge i {
+  margin-left: 2px;
+  font-size: 0.8rem;
+  color: #97caae;
+  background-color: inherit;
+}
+
+body .main .right-col .live-tests .tasks ul li a .list-item .info a.label-title, body .main .right-col .live-tasks .tasks ul li a .list-item .info a.label-title {
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
+}
+
+body .main .right-col .live-tests .tasks ul li a .list-item .info a.label-title:hover, body .main .right-col .live-tasks .tasks ul li a .list-item .info a.label-title:hover {
+  text-shadow: 0 0 5px rgba(207, 223, 223, 0.6);
+}
+
+body .main .right-col .live-tests .tasks ul li a .list-item .info .time, body .main .right-col .live-tasks .tasks ul li a .list-item .info .time {
+  font-size: 0.7rem;
+}
+
+body .main .right-col .live-tests .tasks ul li a .assignment.due, body .main .right-col .live-tasks .tasks ul li a .assignment.due {
+  background-color: #264653;
+  padding: 10px 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+body .main .right-col .live-tests .tasks ul li a .assignment.due img, body .main .right-col .live-tasks .tasks ul li a .assignment.due img {
+  width: 70px;
+}
+
+body .main .right-col .live-tests .tasks ul li a .assignment.due .info, body .main .right-col .live-tasks .tasks ul li a .assignment.due .info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-left: 10px;
+}
+
+body .main .right-col .live-tests .tasks ul li a .assignment.due .info .label-title, body .main .right-col .live-tasks .tasks ul li a .assignment.due .info .label-title {
+  color: #e3f2fd;
+  font-size: 1rem;
+}
+
+body .main .right-col .live-tests .tasks ul li a .assignment.due .info .w-info-con .week-badge, body .main .right-col .live-tasks .tasks ul li a .assignment.due .info .w-info-con .week-badge {
+  border-color: cyan !important;
+}
+
+body .main .right-col .live-tests .tasks ul li a .assignment.due .info .w-info-con .week-badge .w-num, body .main .right-col .live-tasks .tasks ul li a .assignment.due .info .w-info-con .week-badge .w-num {
+  color: cyan !important;
+}
+
+body .main .right-col .live-tests .tasks ul li a .assignment.due .info .w-info-con .week-badge i, body .main .right-col .live-tasks .tasks ul li a .assignment.due .info .w-info-con .week-badge i {
+  color: cyan !important;
+}
+
+body .main .right-col .live-tests .tasks ul li a .assignment.due .info .points, body .main .right-col .live-tasks .tasks ul li a .assignment.due .info .points {
+  display: inline-block;
+  background-color: #1084d2;
+  padding: 0 10px;
+  border-radius: 180px;
+}
+
+body .main .right-col .live-tests .tasks ul li a .assignment.due .info .points .num-points, body .main .right-col .live-tasks .tasks ul li a .assignment.due .info .points .num-points {
+  font-weight: 500;
+  color: white;
+  margin-right: 3px;
+  font-family: 'Gemunu Libre', sans-serif;
+}
+
+body .main .right-col .live-tests .tasks ul li a .assignment.due .info .points .label, body .main .right-col .live-tasks .tasks ul li a .assignment.due .info .points .label {
+  font-family: 'Gemunu Libre', sans-serif;
+  color: #7fddff;
+}
+
+body .main .right-col .live-tests .tasks ul li a .assignment.due .info .deadline .sub-title, body .main .right-col .live-tasks .tasks ul li a .assignment.due .info .deadline .sub-title {
+  text-shadow: none;
+  color: #bbdefb;
+}
+
+body .main .right-col .live-tests .tasks ul li a .assignment.due .info .deadline .time, body .main .right-col .live-tasks .tasks ul li a .assignment.due .info .deadline .time {
+  color: #dfedff;
+}
+
+body .main .right-col .live-tests .tasks ul li a .assignment.due:hover, body .main .right-col .live-tasks .tasks ul li a .assignment.due:hover {
+  background-color: #3d5a80;
 }
 
 body .main .right-col .weekly-tasks, body .main .right-col .weekly-tests {
@@ -1985,6 +2303,330 @@ body .main .right-col .weekly-tasks .content ul li .assignment.due:hover {
 body .main .right-col .weekly-tasks .content ul li .assignment:hover {
   background-color: white;
   outline: 1px solid #bad2ca;
+}
+
+body .main .right-col .student-activity {
+  padding: 1rem 8px 10px;
+  background-color: #e5e5e5;
+  border-radius: 10px;
+}
+
+body .main .right-col .student-activity .title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 5px;
+}
+
+body .main .right-col .student-activity .title img {
+  width: 40px;
+}
+
+body .main .right-col .student-activity .title .title-text {
+  font-family: 'Lato', sans-serif;
+  color: #006d77;
+  text-shadow: 0 0 5px gainsboro;
+}
+
+body .main .right-col .student-activity .tests ul, body .main .right-col .student-activity .tasks ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+body .main .right-col .student-activity .tests ul li, body .main .right-col .student-activity .tasks ul li {
+  margin-bottom: 5px;
+}
+
+body .main .right-col .student-activity .tests ul li:last-of-type, body .main .right-col .student-activity .tasks ul li:last-of-type {
+  margin-bottom: 0;
+}
+
+body .main .right-col .student-activity .tests ul li a, body .main .right-col .student-activity .tasks ul li a {
+  text-decoration: none;
+}
+
+body .main .right-col .student-activity .tests ul li a .test-item, body .main .right-col .student-activity .tests ul li a .task-item, body .main .right-col .student-activity .tasks ul li a .test-item, body .main .right-col .student-activity .tasks ul li a .task-item {
+  padding: 10px 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  position: relative;
+  overflow: hidden;
+  border-radius: 5px;
+  -webkit-transition: all 200ms;
+  transition: all 200ms;
+}
+
+body .main .right-col .student-activity .tests ul li a .test-item img, body .main .right-col .student-activity .tests ul li a .task-item img, body .main .right-col .student-activity .tasks ul li a .test-item img, body .main .right-col .student-activity .tasks ul li a .task-item img {
+  width: 50px;
+}
+
+body .main .right-col .student-activity .tests ul li a .test-item .info, body .main .right-col .student-activity .tests ul li a .task-item .info, body .main .right-col .student-activity .tasks ul li a .test-item .info, body .main .right-col .student-activity .tasks ul li a .task-item .info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-left: 10px;
+}
+
+body .main .right-col .student-activity .tests ul li a .test-item .info .label-title, body .main .right-col .student-activity .tests ul li a .task-item .info .label-title, body .main .right-col .student-activity .tasks ul li a .test-item .info .label-title, body .main .right-col .student-activity .tasks ul li a .task-item .info .label-title {
+  color: #e3f2fd;
+  font-size: 1rem;
+}
+
+body .main .right-col .student-activity .tests ul li a .test-item .info .w-info-con, body .main .right-col .student-activity .tests ul li a .task-item .info .w-info-con, body .main .right-col .student-activity .tasks ul li a .test-item .info .w-info-con, body .main .right-col .student-activity .tasks ul li a .task-item .info .w-info-con {
+  display: inline-block;
+}
+
+body .main .right-col .student-activity .tests ul li a .test-item .info .w-info-con span.week-badge, body .main .right-col .student-activity .tests ul li a .task-item .info .w-info-con span.week-badge, body .main .right-col .student-activity .tasks ul li a .test-item .info .w-info-con span.week-badge, body .main .right-col .student-activity .tasks ul li a .task-item .info .w-info-con span.week-badge {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #006d77;
+  margin-left: 5px;
+  padding: 0 3px;
+  border-radius: 3px;
+  border: 1px solid #a1e1ff;
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
+  cursor: default;
+}
+
+body .main .right-col .student-activity .tests ul li a .test-item .info .w-info-con span.week-badge .w-num, body .main .right-col .student-activity .tests ul li a .task-item .info .w-info-con span.week-badge .w-num, body .main .right-col .student-activity .tasks ul li a .test-item .info .w-info-con span.week-badge .w-num, body .main .right-col .student-activity .tasks ul li a .task-item .info .w-info-con span.week-badge .w-num {
+  color: aquamarine;
+  font-family: 'Gemunu Libre', sans-serif;
+  font-size: 0.8rem;
+}
+
+body .main .right-col .student-activity .tests ul li a .test-item .info .w-info-con span.week-badge i, body .main .right-col .student-activity .tests ul li a .task-item .info .w-info-con span.week-badge i, body .main .right-col .student-activity .tasks ul li a .test-item .info .w-info-con span.week-badge i, body .main .right-col .student-activity .tasks ul li a .task-item .info .w-info-con span.week-badge i {
+  margin-left: 2px;
+  font-size: 0.8rem;
+  color: #29e46b;
+  background-color: inherit;
+}
+
+body .main .right-col .student-activity .tests ul li a .test-item .info .points, body .main .right-col .student-activity .tests ul li a .task-item .info .points, body .main .right-col .student-activity .tasks ul li a .test-item .info .points, body .main .right-col .student-activity .tasks ul li a .task-item .info .points {
+  display: inline-block;
+  background-color: #1084d2;
+  padding: 0 10px;
+  border-radius: 180px;
+}
+
+body .main .right-col .student-activity .tests ul li a .test-item .info .points .num-points, body .main .right-col .student-activity .tests ul li a .task-item .info .points .num-points, body .main .right-col .student-activity .tasks ul li a .test-item .info .points .num-points, body .main .right-col .student-activity .tasks ul li a .task-item .info .points .num-points {
+  font-weight: 500;
+  color: white;
+  margin-right: 3px;
+  font-family: 'Gemunu Libre', sans-serif;
+}
+
+body .main .right-col .student-activity .tests ul li a .test-item .info .points .label, body .main .right-col .student-activity .tests ul li a .task-item .info .points .label, body .main .right-col .student-activity .tasks ul li a .test-item .info .points .label, body .main .right-col .student-activity .tasks ul li a .task-item .info .points .label {
+  font-family: 'Gemunu Libre', sans-serif;
+  color: #7fddff;
+}
+
+body .main .right-col .student-activity .tests ul li a .test-item .info .score-con, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con {
+  display: inline-block;
+}
+
+body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .label, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .label, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .label, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .label {
+  font-family: 'Gemunu Libre', sans-serif;
+  color: white;
+}
+
+body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .points-con, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .points-con, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .points-con, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .points-con {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: wheat;
+  padding: 0 10px;
+  border: 2px solid wheat;
+  border-radius: 180px;
+  margin-left: 10px;
+  font-size: 0.8rem;
+}
+
+body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .points-con span, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .points-con span, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .points-con span, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .points-con span {
+  color: wheat;
+  font-size: 0.8rem;
+  font-family: 'Roboto Mono', monospace;
+  margin: 0 3px;
+}
+
+body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .test-ongoing, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .test-ongoing, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .test-ongoing, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .test-ongoing {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #f72585;
+  border-radius: 5px;
+  padding: 1px 10px;
+  margin-left: 10px;
+}
+
+body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .test-ongoing i, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .test-ongoing i, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .test-ongoing i, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .test-ongoing i {
+  font-size: 1.2rem;
+  color: #ffe5ec;
+}
+
+body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .test-ongoing .info, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .test-ongoing .info, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .test-ongoing .info, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .test-ongoing .info {
+  font-family: 'Gemunu Libre', sans-serif;
+  font-size: 0.9rem;
+  margin-left: 5px;
+  color: #ffe5ec;
+}
+
+body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .test-pending, body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .task-pending, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .test-pending, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .task-pending, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .test-pending, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .task-pending, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .test-pending, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .task-pending {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-left: 10px;
+}
+
+body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .test-pending img, body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .task-pending img, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .test-pending img, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .task-pending img, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .test-pending img, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .task-pending img, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .test-pending img, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .task-pending img {
+  width: 1.2rem;
+}
+
+body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .test-pending .info, body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .task-pending .info, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .test-pending .info, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .task-pending .info, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .test-pending .info, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .task-pending .info, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .test-pending .info, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .task-pending .info {
+  padding: 1px 10px;
+  border-radius: 5px;
+  font-family: 'Gemunu Libre', sans-serif;
+  font-size: 0.9rem;
+  margin-left: 5px;
+  background-color: #ffc300;
+}
+
+body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .test-pending img, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .test-pending img, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .test-pending img, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .test-pending img {
+  -webkit-animation-name: hg_rotation;
+          animation-name: hg_rotation;
+  -webkit-animation-duration: 3s;
+          animation-duration: 3s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+}
+
+body .main .right-col .student-activity .tests ul li a .test-item .info .complete-time, body .main .right-col .student-activity .tests ul li a .task-item .info .complete-time, body .main .right-col .student-activity .tasks ul li a .test-item .info .complete-time, body .main .right-col .student-activity .tasks ul li a .task-item .info .complete-time {
+  font-size: 0.9rem;
+}
+
+body .main .right-col .student-activity .tests ul li a .test-item .info .complete-time .sub-title, body .main .right-col .student-activity .tests ul li a .task-item .info .complete-time .sub-title, body .main .right-col .student-activity .tasks ul li a .test-item .info .complete-time .sub-title, body .main .right-col .student-activity .tasks ul li a .task-item .info .complete-time .sub-title {
+  text-shadow: none;
+  color: #bbdefb;
+  margin-right: 5px;
+  font-family: 'Gemunu Libre', sans-serif;
+}
+
+body .main .right-col .student-activity .tests ul li a .test-item .info .complete-time .time, body .main .right-col .student-activity .tests ul li a .task-item .info .complete-time .time, body .main .right-col .student-activity .tasks ul li a .test-item .info .complete-time .time, body .main .right-col .student-activity .tasks ul li a .task-item .info .complete-time .time {
+  color: #dfedff;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.7rem;
+}
+
+body .main .right-col .student-activity .tests ul li a .test-item:hover, body .main .right-col .student-activity .tests ul li a .task-item:hover, body .main .right-col .student-activity .tasks ul li a .test-item:hover, body .main .right-col .student-activity .tasks ul li a .task-item:hover {
+  background-color: #264653;
+}
+
+body .main .right-col .student-activity .tests ul li a .test-item, body .main .right-col .student-activity .tasks ul li a .test-item {
+  background-color: #5e548e;
+}
+
+body .main .right-col .student-activity .tests ul li a .task-item, body .main .right-col .student-activity .tasks ul li a .task-item {
+  background-color: #3a7396;
+}
+
+body .main .right-col .student-activity .tasks ul {
+  margin-top: 5px;
+}
+
+body .main .right-col .student-activity .no-content {
+  padding: 3rem 1rem;
+  background-color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body .main .right-col .student-activity .no-content img {
+  width: 70px;
+}
+
+body .main .right-col .student-activity .no-content .info {
+  font-family: 'Roboto Mono', monospace;
 }
 
 body .main .create-assignment-container {
