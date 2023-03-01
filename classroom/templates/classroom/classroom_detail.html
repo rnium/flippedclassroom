@@ -204,7 +204,7 @@
         <li>
           <a href="{% url 'weekly_test:view_ques' up_test.id %}">
             <div class="test test-upcoming list-item">
-              <i class='ico bx bxs-edit-alt'></i>
+              <img src="{% static 'classroom/images/test.svg' %}" alt="">
               <div class="info">
                 <div class="label-title">{{up_test.title}}<div class="w-info-con"><span class="week-badge shadow-sm"><span class="w-num">{{up_test.weeknum_str}}</span><i class='{{up_test.section_icon_css}}'></i></span></div> </div>
                 <div class="held-on"><span class="sub-title">Schedule:</span><span class="time" id="{{up_test.id}}">{{up_test.schedule|date:"c"}}</span></div>
@@ -217,7 +217,7 @@
         {% for up_test in classroom.non_live_tests.up_tests %}
         <li>
           <div class="test test-upcoming list-item">
-            <i class='ico bx bxs-edit-alt'></i>
+            <img src="{% static 'classroom/images/test.svg' %}" alt="">
             <div class="info">
               <div class="label-title">{{up_test.title}}<div class="w-info-con"><span class="week-badge shadow-sm"><span class="w-num">{{up_test.weeknum_str}}</span><i class='{{up_test.section_icon_css}}'></i></span></div> </div>
               <div class="held-on"><span class="sub-title">Schedule:</span><span class="time" id="{{up_test.id}}">{{up_test.schedule|date:"c"}}</span></div>
@@ -230,7 +230,7 @@
         <li>
           <a href="{% url 'weekly_test:view_test' prev_test.id %}">
             <div class="test list-item">
-              <i class='ico bx bx-edit-alt'></i>
+              <img src="{% static 'classroom/images/test.svg' %}" alt="">
               <div class="info">
                 <div class="label-title">{{prev_test.title}}<div class="w-info-con"><span class="week-badge shadow-sm"><span class="w-num">{{prev_test.weeknum_str}}</span><i class='{{prev_test.section_icon_css}}'></i></span></div> </div>
                 <div class="held-on"><span class="sub-title">held on:</span><span class="time" id="testid-{{prev_test.id}}">{{prev_test.schedule|date:"c"}}</span></div>
@@ -255,10 +255,11 @@
         <li>
           <a href="{% url 'classroom:tasks:view_task' on_task.classroom.id on_task.id %}">
             <div class="assignment due list-item">
-              <i class='ico {{on_task.task_type_ico_css}}'></i>
+              <img src="{% if on_task.is_group_task %}{% static 'classroom/images/grp.png' %}{% else %}{% static 'classroom/images/indiv.png' %}{% endif %}">
               <div class="info">
                 <div class="label-title">{{on_task.title}}<div class="w-info-con"><span class="week-badge shadow-sm"><span class="w-num">{{on_task.weeknum_str}}</span><i class='{{on_task.section_icon_css}}'></i></span></div></div>
-                <div class="deadline"><span class="sub-title">Ending:</span><span class="time" id="taskid-{{on_task.id}}">{{on_task.deadline|date:"c"}}</span></div>
+                <div class="points shadow mt-2 mb-1"><span class="num-points">{{on_task.marks}}</span><span class="label">Points</span></div>
+                <div class="deadline"><span class="sub-title">Ending in:</span><span class="time" id="taskid-{{on_task.id}}">{{on_task.deadline|date:"c"}}</span></div>
               </div>
             </div>
           </a>
@@ -268,10 +269,10 @@
         <li>
           <a href="{% url 'classroom:tasks:view_task' p_task.classroom.id p_task.id %}">
             <div class="assignment list-item">
-              <i class='ico {{p_task.task_type_ico_css}}'></i>
+              <img src="{% if p_task.is_group_task %}{% static 'classroom/images/grp.png' %}{% else %}{% static 'classroom/images/indiv.png' %}{% endif %}">
               <div class="info">
                 <div class="label-title">{{p_task.title}}<div class="w-info-con"><span class="week-badge shadow-sm"><span class="w-num">{{p_task.weeknum_str}}</span><i class='{{p_task.section_icon_css}}'></i></span></div></div>
-                <div class="deadline"><span class="sub-title">Ended:</span><span class="time" id="taskid-{{p_task.id}}">{{p_task.deadline|date:"c"}}</span></div>
+                <div class="deadline"><span class="sub-title">Closed:</span><span class="time" id="taskid-{{p_task.id}}">{{p_task.deadline|date:"c"}}</span></div>
               </div>
             </div>
           </a>

@@ -549,6 +549,24 @@
   }
 }
 
+@-webkit-keyframes rainbow-border-animation {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 100% 0;
+  }
+}
+
+@keyframes rainbow-border-animation {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 100% 0;
+  }
+}
+
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -1702,7 +1720,7 @@ body .main .right-col .weekly-tasks .content ul li .list-item, body .main .right
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 2px 5px;
+  padding: 10px 5px;
   border-radius: 5px;
   background-color: white;
   border: 1px solid transparent;
@@ -1715,6 +1733,11 @@ body .main .right-col .weekly-tasks .content ul li .list-item i.ico, body .main 
   margin-right: 0.5rem;
   padding: 0.3rem;
   border-radius: 5px;
+}
+
+body .main .right-col .weekly-tasks .content ul li .list-item img, body .main .right-col .weekly-tests .content ul li .list-item img {
+  width: 2.5rem;
+  margin-right: 5px;
 }
 
 body .main .right-col .weekly-tasks .content ul li .list-item .info, body .main .right-col .weekly-tests .content ul li .list-item .info {
@@ -1829,7 +1852,7 @@ body .main .right-col .weekly-tasks .content .no-content span, body .main .right
 }
 
 body .main .right-col .weekly-tests .content ul li .test-upcoming {
-  background-color: #588b8b;
+  background-color: #437474;
 }
 
 body .main .right-col .weekly-tests .content ul li .test-upcoming i {
@@ -1859,20 +1882,60 @@ body .main .right-col .weekly-tests .content ul li .test-upcoming .info .held-on
 }
 
 body .main .right-col .weekly-tests .content ul li .test-upcoming:hover {
-  background-color: #4a7e7e;
+  background-color: #336565;
+}
+
+body .main .right-col .weekly-tasks .content ul li {
+  margin-bottom: 5px;
+}
+
+body .main .right-col .weekly-tasks .content ul li:last-of-type {
+  margin-bottom: 0;
 }
 
 body .main .right-col .weekly-tasks .content ul li .assignment.due {
-  background-color: #137694;
+  background-color: #15627a;
+  padding: 10px 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: relative;
+  overflow: hidden;
 }
 
-body .main .right-col .weekly-tasks .content ul li .assignment.due i {
-  background-color: #499de7;
-  color: white;
+body .main .right-col .weekly-tasks .content ul li .assignment.due img {
+  width: 70px;
+}
+
+body .main .right-col .weekly-tasks .content ul li .assignment.due .info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-left: 10px;
 }
 
 body .main .right-col .weekly-tasks .content ul li .assignment.due .info .label-title {
   color: #e3f2fd;
+  font-size: 1rem;
 }
 
 body .main .right-col .weekly-tasks .content ul li .assignment.due .info .w-info-con .week-badge {
@@ -1887,6 +1950,25 @@ body .main .right-col .weekly-tasks .content ul li .assignment.due .info .w-info
   color: cyan !important;
 }
 
+body .main .right-col .weekly-tasks .content ul li .assignment.due .info .points {
+  display: inline-block;
+  background-color: #1084d2;
+  padding: 0 10px;
+  border-radius: 180px;
+}
+
+body .main .right-col .weekly-tasks .content ul li .assignment.due .info .points .num-points {
+  font-weight: 500;
+  color: white;
+  margin-right: 3px;
+  font-family: 'Gemunu Libre', sans-serif;
+}
+
+body .main .right-col .weekly-tasks .content ul li .assignment.due .info .points .label {
+  font-family: 'Gemunu Libre', sans-serif;
+  color: #7fddff;
+}
+
 body .main .right-col .weekly-tasks .content ul li .assignment.due .info .deadline .sub-title {
   text-shadow: none;
   color: #bbdefb;
@@ -1897,7 +1979,7 @@ body .main .right-col .weekly-tasks .content ul li .assignment.due .info .deadli
 }
 
 body .main .right-col .weekly-tasks .content ul li .assignment.due:hover {
-  background-color: #15627a;
+  background-color: #264653;
 }
 
 body .main .right-col .weekly-tasks .content ul li .assignment:hover {
