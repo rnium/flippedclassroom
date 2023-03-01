@@ -221,18 +221,21 @@
   {% endif %}
   
   {% if request.user.account.is_student %}
-  <div class="student-activity">
+  <div class="student-activity mb-4">
     <div class="title">
       <img src="{% static 'classroom/images/indiv.png' %}" alt="">
       <div class="title-text">My Activities</div>
     </div>
     {% get_test_participations request.user classroom as answ_sheets %}
+    {% get_task_participations request.user classroom as task_works %}
+
+    {% if answ_sheets or task_works  %}
     {% if answ_sheets %}
     <div class="tests mt-2" >
       <ul>
         {% for sheet in answ_sheets %}
         <li>
-          <a href="#">
+          <a href="{% url 'weekly_test:view_test' sheet.test.id %}">
             <div class="test-item shadow">
               <img src="{% static 'classroom/images/test.svg' %}">
               <div class="info">
@@ -261,34 +264,43 @@
       </ul>
     </div>
     {% endif %}
-    
+    {% if task_works %}
     <div class="tasks">
       <ul>
+        {% for work in task_works %}
         <li>
-          <a href="#">
+          <a href="{% url 'classroom:tasks:view_task' work.task.classroom.id work.task.id %}">
             <div class="task-item shadow">
-              <img src="/images/test_icons/grp.png">
+              <img src="{% if work.task.is_group_task %}{% static 'classroom/images/grp.png' %} {% else %} {% static 'classroom/images/indiv.png' %} {% endif %}">
               <div class="info">
-                <div class="label-title">sample test title <div class="w-info-con"><span class="week-badge shadow-sm"><span class="w-num">week 1</span><i class='bx bxs-left-arrow'></i></span></div> </div>
-                <div class="complete-time"><span class="sub-title">Submitted on:</span><span class="time">7:00PM, 17 Oct 2022</span></div>
+                <div class="label-title">{{work.task.title}} <div class="w-info-con"><span class="week-badge shadow-sm"><span class="w-num">week {{work.task.weekly.weeknum}}</span><i class='{{work.task.section_icon_css}}'></i></span></div> </div>
+                <div class="complete-time"><span class="sub-title">Submitted on:</span><span class="time" id="tw{{work.id}}">{{work.submission_time|date:'c'}}</span></div>
                 <div class="score-con">
                   <div class="score-inner">
                     <div class="label">Score:</div>
-                    <!-- <div class="points-con"><span class="point">80 /</span><span>100</span></div> -->
-                    <!-- <div class="test-ongoing"><i class='bx bx-info-circle'></i><div class="info">Test Ongoing</div></div> -->
-                    <div class="task-pending"><img src="/images/test_icons/excl.svg" alt=""><div class="info">Unchecked</div></div>
+                    {% if work.score %}
+                    <div class="points-con"><span class="point">{{work.score|prettify_marks}} /</span><span>{{work.task.marks|prettify_marks}}</span></div>
+                    {% else %}
+                    <div class="task-pending"><img src="{% static 'classroom/images/excl.svg' %}" alt=""><div class="info">Unchecked</div></div>
+                    {% endif %}
                   </div>
                 </div>
               </div>
             </div>
           </a>
         </li>
+        {% endfor %}
       </ul>
     </div>
-    <div class="no-content mt-2 shadow rounded" style="display: none;">
-      <img src="/images/test_icons/panda.png" alt="">
-      <div class="info mt-3 text-muted">No activities</div>
+    {% endif %}
+    {% else %}
+    <div class="no-content mt-2 shadow rounded bg-secondary">
+      <img src="{% static 'classroom/images/panda.png' %}" alt="">
+      <div class="info mt-3 text-light">No activities</div>
     </div>
+    {% endif %}
+    
+    
   </div>
   {% endif %}
 
