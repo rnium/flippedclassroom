@@ -64,12 +64,13 @@ def student_regularity_points(user:User, classroom:Classroom):
     return total_points
             
 
-def get_students_ranking_data(classroom:Classroom):
+def get_students_ranking_data(user, classroom:Classroom):
     students = classroom.students.all()
     data_raw = []
     for s in students:
         unit_data = {}
         unit_data['uid'] = s.id
+        unit_data['current_user'] = (user==s)
         unit_data['avatar_url'] = s.account.avatar_url
         unit_data['full_name'] = s.account.user_full_name
         unit_data['registration'] = s.account.institutional_id
