@@ -233,6 +233,19 @@
   color: red;
 }
 
+.main .edit-profile-con .inp-con .submit .loader {
+  background-color: red;
+  position: relative;
+}
+
+.main .edit-profile-con .inp-con .submit .loader .lds-ellipsis {
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  -webkit-transform: translateY(-75%);
+          transform: translateY(-75%);
+}
+
 .inset-float-textinput {
   position: relative;
 }
@@ -477,7 +490,8 @@
     margin-top: 10px !important;
   }
   .main .edit-profile-con .btn-1 {
-    font-size: 0.9rem;
+    font-size: 0.8rem !important;
+    padding: 10px !important;
   }
 }
 
@@ -485,7 +499,7 @@
   display: inline-block;
   position: relative;
   width: 80px;
-  height: 80px;
+  height: 50px;
 }
 
 .lds-ellipsis div {
