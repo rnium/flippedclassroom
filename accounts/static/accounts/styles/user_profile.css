@@ -73,6 +73,7 @@
 
 .main .profile-card .content .info {
   min-width: 20rem;
+  padding: 2rem 0 0;
 }
 
 .main .profile-card .content .info .id-no-con .label {
@@ -440,12 +441,12 @@
 }
 
 @media screen and (max-width: 576px) {
-  .main {
-    padding: 0 10px !important;
+  .main .profile-card {
+    padding: 20px 5px !important;
   }
   .main .profile-card .content .info {
-    margin: 2rem 0 !important;
-    padding: 0 10px !important;
+    margin: 2rem !important;
+    padding: 0 2.5rem !important;
   }
   .main .profile-card .content .info .name {
     font-size: 1.2rem;
@@ -498,6 +499,9 @@
   .main .edit-profile-con .btn-1 {
     font-size: 0.8rem !important;
     padding: 10px !important;
+  }
+  .profile-edit-main {
+    padding: 0 10px 0 8px;
   }
 }
 

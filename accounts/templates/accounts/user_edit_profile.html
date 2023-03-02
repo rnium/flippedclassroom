@@ -6,51 +6,53 @@
 {% block title %}<title>Edit profile</title>{% endblock title %}
 
 {% block content %}
-<div class="edit-profile-con container mt-4 shadow-lg p-4">
-    <div class="info mt-2 mb-3">
-        <div class="dp" style="background-image: url('{{account.avatar_url}}');"></div>
-        <div class="heading-con">
-            <div class="heading">Edit Your Profile</div>
-            <div class="update-pass-con">
-                <i class='bx bx-key'></i>
-                <a href="{% url 'accounts:update_password_get' %}">Update Password</a>
+<div class="profile-edit-main">
+    <div class="edit-profile-con container mt-4 shadow-lg p-4">
+        <div class="info mt-2 mb-3">
+            <div class="dp" style="background-image: url('{{account.avatar_url}}');"></div>
+            <div class="heading-con">
+                <div class="heading">Edit Your Profile</div>
+                <div class="update-pass-con">
+                    <i class='bx bx-key'></i>
+                    <a href="{% url 'accounts:update_password_get' %}">Update Password</a>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="inp-con">
-        <div class="first_name inset-float-textinput mb-3">
-            <input class="inp_input" type="text" id="first_name" placeholder=" ">
-            <label class="inp_label" for="first_name">First Name</label>
-        </div>
-        <div class="last_name inset-float-textinput mb-3">
-            <input class="inp_input" type="text" id="last_name" placeholder=" ">
-            <label class="inp_label" for="last_name">Last Name</label>
-        </div>
-        <div class="field-container institution inset-float-textinput mb-3">
-            <input class="inp_input" type="text" id="institution" placeholder=" ">
-            <label class="inp_label" for="institution">Institution</label>
-        </div>
-        {% if account.is_student %}
-        <div class="field-container inset-float-textinput inst-id mb-3">
-            <input class="inp_input" type="text" id="inst-id" placeholder=" ">
-            <label class="inp_label" for="inst-id">Institutional ID</label>
-        </div>
-        {% endif %}
-        <div class="field-container inset-float-textinput email mb-3">
-            <input class="inp_input" type="email" id="email" placeholder=" ">
-            <label class="inp_label" for="email">Email</label>
-        </div>
-        <div class="field-container input-file">
-            <input type="file" class="input-img" id="dp">
-            <label for="dp"><i class='bx bx-image-add' ></i><span>Select avatar</span></label>
-            <div class="selected-file" id="selected-file">No file selected</div>
-        </div>
-        <div class="field-container submit">
-            <div class="error-info" id="error-info-container" style="display: none;"><i class='bx bx-info-circle'></i><span id="error-info-text"></span></div>
-            <div class="loader" id="loader-con" style="display: none;">
-                <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+        <div class="inp-con">
+            <div class="first_name inset-float-textinput mb-3">
+                <input class="inp_input" type="text" id="first_name" placeholder=" ">
+                <label class="inp_label" for="first_name">First Name</label>
             </div>
-            <button class="btn-1 shadow-sm" id="submit-btn">Save Changes</button>
+            <div class="last_name inset-float-textinput mb-3">
+                <input class="inp_input" type="text" id="last_name" placeholder=" ">
+                <label class="inp_label" for="last_name">Last Name</label>
+            </div>
+            <div class="field-container institution inset-float-textinput mb-3">
+                <input class="inp_input" type="text" id="institution" placeholder=" ">
+                <label class="inp_label" for="institution">Institution</label>
+            </div>
+            {% if account.is_student %}
+            <div class="field-container inset-float-textinput inst-id mb-3">
+                <input class="inp_input" type="text" id="inst-id" placeholder=" ">
+                <label class="inp_label" for="inst-id">Institutional ID</label>
+            </div>
+            {% endif %}
+            <div class="field-container inset-float-textinput email mb-3">
+                <input class="inp_input" type="email" id="email" placeholder=" ">
+                <label class="inp_label" for="email">Email</label>
+            </div>
+            <div class="field-container input-file">
+                <input type="file" class="input-img" id="dp">
+                <label for="dp"><i class='bx bx-image-add' ></i><span>Select avatar</span></label>
+                <div class="selected-file" id="selected-file">No file selected</div>
+            </div>
+            <div class="field-container submit">
+                <div class="error-info" id="error-info-container" style="display: none;"><i class='bx bx-info-circle'></i><span id="error-info-text"></span></div>
+                <div class="loader" id="loader-con" style="display: none;">
+                    <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+                </div>
+                <button class="btn-1 shadow-sm" id="submit-btn">Save Changes</button>
+            </div>
         </div>
     </div>
 </div>
@@ -72,6 +74,7 @@
         {% endif %}
         $("#email").val('{{ account.user.email }}');
     }
+    $('main').addClass("")
     setTimeout(setPrevVal, 500);
     const update_profile_api = "{% url 'accounts:update_profile_api' %}";
     const avatar_set_url = "{% url 'accounts:set_avatar' %}"
