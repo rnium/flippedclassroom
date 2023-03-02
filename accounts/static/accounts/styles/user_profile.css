@@ -489,6 +489,12 @@
   .main .edit-profile-con .submit {
     margin-top: 10px !important;
   }
+  .main .edit-profile-con .submit .error-info i {
+    font-size: 1rem !important;
+  }
+  .main .edit-profile-con .submit .error-info #error-info-text {
+    font-size: 0.6rem !important;
+  }
   .main .edit-profile-con .btn-1 {
     font-size: 0.8rem !important;
     padding: 10px !important;

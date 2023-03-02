@@ -21,7 +21,7 @@ function checkForm() {
     return true
 }
 
-function setupAvatar(image_file) {
+function setupAvatar(image_file, btn_id) {
     let image_form = new FormData
     // fix csrftoken with formdata
     image_form.append("dp", image_file)
@@ -32,7 +32,8 @@ function setupAvatar(image_file) {
         contentType: false,
         processData: false,
         complete: function(){
-            alert("Profile updated")
+            $(`#${btn_id}`).attr("disabled", false)
+            location.reload()
         }
     });
 
@@ -47,6 +48,7 @@ function updateProfile(btn_id, data) {
         type: "POST",
         beforeSend: function(xhr){
             $(`#${btn_id}`).attr("disabled", true)
+            $("#loader-con").show()
             // $("#id_create_q_button").addClass("disabled-btn")
             xhr.setRequestHeader("X-CSRFToken", csrftoken)
         },
@@ -55,20 +57,23 @@ function updateProfile(btn_id, data) {
         success: function(response){
             avatar_files = $("#dp")[0].files
             if (avatar_files.length > 0) {
-                setupAvatar(avatar_files[0])
+                setupAvatar(avatar_files[0], btn_id)
             } else {
-                alert("Profile updated")
+                $(`#${btn_id}`).attr("disabled", false)
+                $("#loader-con").hide()
+                location.reload()
             }
-        },
-        complete: function(xhr,status,error){
-            $(`#${btn_id}`).attr("disabled", false)
         },
         statusCode: {
             400: function() {
               showError("Email Already Used");
+              $("#loader-con").hide()
+              $(`#${btn_id}`).attr("disabled", false)
             },
             406: function() {
                 showError("An Error Occurred");
+                $("#loader-con").hide()
+                $(`#${btn_id}`).attr("disabled", false)
             }
         }
     })
