@@ -56,7 +56,7 @@
       <i class='bx bx-shape-circle me-2'></i>
       <div class="info lh-1">
         <h1 class="mb-1 lh-1">Participants</h1>
-        <small>participants of {{classroom.name}}</small>
+        <small>Peoples connected with {{classroom.name}}</small>
       </div>
     </div>
   
@@ -64,13 +64,13 @@
       <h6 class="border-bottom pb-2 mb-0">Teachers</h6>
       {% if request.user in classroom.teachers.all %}
       {% for teacher in classroom.teachers.all %}
-      <div class="d-flex text-muted pt-3">
+      <div class="d-flex text-muted pt-2">
         <div class="dp me-2" style="background-image: url('{{teacher.account.avatar_url}}');"></div>
-        <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
+        <div class="pb-3 mb-0 my-auto small lh-sm border-bottom w-100">
           <div class="d-flex justify-content-between">
-            <strong class="text-gray-dark"><a class="user-profile" href="{% url 'accounts:view_profile' teacher.account.id %}">{{teacher.account.user_full_name}}</a></strong>
+            <strong class="text-gray-dark"><a class="user-profile name" href="{% url 'accounts:view_profile' teacher.account.id %}">{{teacher.account.user_full_name}}</a></strong>
           </div>
-          <span class="d-block">{{teacher.email}}</span>
+          <span class="d-block email">{{teacher.email}}</span>
         </div>
       </div>
       {% endfor %}
@@ -82,13 +82,13 @@
       </div>
       {% else %}
       {% for teacher in classroom.teachers.all %}
-      <div class="d-flex text-muted pt-3">
+      <div class="d-flex text-muted pt-2">
         <div class="dp me-2" style="background-image: url('{{teacher.account.avatar_url}}');"></div>
         <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
           <div class="d-flex justify-content-between">
-            <strong class="text-gray-dark">{{teacher.account.user_full_name}}</strong>
+            <strong class="text-gray-dark name">{{teacher.account.user_full_name}}</strong>
           </div>
-          <span class="d-block">{{teacher.email}}</span>
+          <span class="d-block email">{{teacher.email}}</span>
         </div>
       </div>
       {% endfor %}
@@ -102,7 +102,7 @@
       <div class="student text-muted" id="student-{{student.id}}-con">
         <div class="dp me-2" style="background-image: url('{{student.account.avatar_url}}');"></div>
         <div class="small lh-sm border-bottom py-2 w-100">
-          <strong class="text-gray-dark"><a class="user-profile" href="{% url 'accounts:view_profile' student.account.id %}">{{student.account.user_full_name}}</a></strong>
+          <strong class="text-gray-dark"><a class="user-profile name" href="{% url 'accounts:view_profile' student.account.id %}">{{student.account.user_full_name}}</a></strong>
           <span class="d-block inst-id">{{student.account.institutional_id}}</span>
           <span class="d-block inst">{{student.account.institution}}</span>
         </div>
@@ -116,7 +116,7 @@
       <div class="student text-muted" id="student-{{student.id}}-con">
         <div class="dp me-2" style="background-image: url('{{student.account.avatar_url}}');"></div>
         <div class="small lh-sm border-bottom py-2 w-100">
-          <strong class="text-gray-dark"><a class="user-profile" href="{% url 'accounts:view_profile' student.account.id %}">{{student.account.user_full_name}}</a></strong>
+          <strong class="text-gray-dark"><a class="user-profile name" href="{% url 'accounts:view_profile' student.account.id %}">{{student.account.user_full_name}}</a></strong>
           <span class="d-block inst-id">{{student.account.institutional_id}}</span>
           <span class="d-block inst">{{student.account.institution}}</span>
         </div>
