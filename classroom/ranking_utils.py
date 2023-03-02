@@ -1,7 +1,25 @@
 from django.contrib.auth.models import User
-from django.db.models import F
+from django.db.models import F, Q, Sum
 from classroom.models import Classroom
+from tasks.models import Work
 from weekly_test.models import WeeklyTest, AnswerSheet
+
+
+def student_classroom_points(user:User, classroom:Classroom):
+    total_points = 0
+    # work of task points
+    works = Work.objects.filter( Q(group__members=user) | Q(group=None, submission_by=user), task__classroom=classroom, score__is_null=False)
+    work_points = works.aggregate(total_score=Sum('score'))['total_score']
+    total_points += work_points
+    # tests points
+    answersheets = AnswerSheet.objects.filter(user=user, test__weekly__classroom=classroom, submit_time__is_null=False)
+    for sheet in answersheets:
+        score = sheet.total_score
+        if score != None:
+            total_points += score
+    
+    return total_points
+    
 
 
 def student_participation_percetage(user:User, classroom:Classroom):
@@ -44,6 +62,27 @@ def student_regularity_points(user:User, classroom:Classroom):
         total_points += points
     
             
+
+def get_students_ranking_data(classroom:Classroom):
+    students = classroom.students.all()
+    data_raw = []
+    for s in students:
+        unit_data = {}
+        unit_data['full_name'] = s.account.user_full_name
+        unit_data['registration'] = s.account.institutional_id
+        unit_data['classroom_points'] = student_classroom_points(s, classroom)
+        unit_data['participation'] = student_participation_percetage(s, classroom)
+        unit_data['regularity'] = student_regularity_points(s, classroom)
+        data_raw.append(unit_data)
+        
+    sorted_students = sorted(data_raw, key=lambda x: (x['classroom_points'], x['participation'], x['regularity']), reverse=True)
+    for i, student in enumerate(sorted_students):
+        student['rank'] = i + 1
+    return sorted_students
+
+    
+        
+        
         
     
     

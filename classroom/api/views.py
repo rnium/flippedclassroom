@@ -11,6 +11,7 @@ from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.crypto import get_random_string
 from classroom.models import ClassroomPost, PostAttachment, Classroom, Comment, AssessmentMeta, Assessment
+from classroom.ranking_utils import get_students_ranking_data
 from .serializer import PostSerializer, ClassroomSerializer
 from .permission import IsUserPartOfClassroom, IsUserTeacher
 from .pagination import PostsPagination
@@ -304,3 +305,13 @@ def add_teacher(request, pk):
             return Response(status=status.HTTP_404_NOT_FOUND)
     else:
         return Response(status=status.HTTP_403_FORBIDDEN)
+
+@api_view(['GET'])
+def get_ranking_api(request, cls_pk):
+    try:
+        classroom = get_object_or_404(Classroom, pk=cls_pk)
+    except Exception as e:
+        return Response(data={'info':'classroom not found'}, status=status.HTTP_404_NOT_FOUND)
+    data = get_students_ranking_data(classroom)
+    return Response(data=data, status=status.HTTP_200_OK)
+        
