@@ -247,7 +247,7 @@
                     {% if sheet.test.is_ongoing %}
                     <div class="test-ongoing"><i class='bx bx-info-circle'></i><div class="info">Test Ongoing</div></div>
                     {% else %}
-                      {% if sheet.total_score %}
+                      {% if sheet.total_score != None %}
                       <div class="points-con"><span class="point">{{sheet.get_score}} /</span><span>{{sheet.test.total_marks}}</span></div>
                       {% else %}
                       <div class="test-pending"><img src="{% static 'classroom/images/wait.svg' %}" alt=""><div class="info">Result pending</div></div>
