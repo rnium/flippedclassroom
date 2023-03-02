@@ -8,11 +8,12 @@ from weekly_test.models import WeeklyTest, AnswerSheet
 def student_classroom_points(user:User, classroom:Classroom):
     total_points = 0
     # work of task points
-    works = Work.objects.filter( Q(group__members=user) | Q(group=None, submission_by=user), task__classroom=classroom, score__is_null=False)
+    works = Work.objects.filter( Q(group__members=user) | Q(group=None, submission_by=user), task__classroom=classroom, score__isnull=False)
     work_points = works.aggregate(total_score=Sum('score'))['total_score']
-    total_points += work_points
+    if work_points != None:
+        total_points += work_points
     # tests points
-    answersheets = AnswerSheet.objects.filter(user=user, test__weekly__classroom=classroom, submit_time__is_null=False)
+    answersheets = AnswerSheet.objects.filter(user=user, test__weekly__classroom=classroom, submit_time__isnull=False)
     for sheet in answersheets:
         score = sheet.total_score
         if score != None:
@@ -28,7 +29,7 @@ def student_participation_percetage(user:User, classroom:Classroom):
     student_tasks = user.account.group_works(classroom).count() + user.account.indiv_works(classroom).count()
     student_tests = WeeklyTest.objects.filter(weekly__classroom=classroom, 
                                               answersheet__user=user, 
-                                              answersheet__submit_time__is_null=False).count()
+                                              answersheet__submit_time__isnull=False).count()
     num_classroom_activity = classroom_num_task + classroom_num_test
     num_student_activity = student_tasks + student_tests
     if num_classroom_activity == 0:
@@ -54,13 +55,13 @@ def student_regularity_points(user:User, classroom:Classroom):
     # test regularity
     answersheets = AnswerSheet.objects.filter(user=user, 
                                               test__weekly__classroom=classroom, 
-                                              answersheet__submit_time__is_null=False).annotate(elapsed_time=F('submit_time') - F('issue_time'))
+                                              submit_time__isnull=False).annotate(elapsed_time=F('submit_time') - F('issue_time'))
 
     for sheet in answersheets:
         time_taken_sec = sheet.elapsed_time.total_seconds()
         points = time_taken_sec / 1000
         total_points += points
-    
+    return total_points
             
 
 def get_students_ranking_data(classroom:Classroom):
@@ -68,6 +69,8 @@ def get_students_ranking_data(classroom:Classroom):
     data_raw = []
     for s in students:
         unit_data = {}
+        unit_data['uid'] = s.id
+        unit_data['avatar_url'] = s.account.avatar_url
         unit_data['full_name'] = s.account.user_full_name
         unit_data['registration'] = s.account.institutional_id
         unit_data['classroom_points'] = student_classroom_points(s, classroom)
