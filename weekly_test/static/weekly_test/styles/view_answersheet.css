@@ -583,7 +583,6 @@ body .main .view-submission-container .bottom-pane .submitted-contents .answers-
 body .main .view-submission-container .bottom-pane .submitted-contents .answers-container .qtype-mcq .meta .score-container .correct {
   font-weight: 500;
   color: #7cab9b;
-  text-shadow: 0 0 5px #cff1e6;
 }
 
 body .main .view-submission-container .bottom-pane .submitted-contents .answers-container .qtype-mcq .meta .score-container .correct .score {
@@ -598,7 +597,6 @@ body .main .view-submission-container .bottom-pane .submitted-contents .answers-
 body .main .view-submission-container .bottom-pane .submitted-contents .answers-container .qtype-mcq .meta .score-container .incorrect {
   font-weight: 500;
   color: #ab7ca1;
-  text-shadow: 0 0 5px #f1cfcf;
 }
 
 body .main .view-submission-container .bottom-pane .submitted-contents .answers-container .qtype-mcq .meta .score-container .incorrect .score {
