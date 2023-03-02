@@ -224,6 +224,10 @@
     margin-left: 0.3rem !important;
     font-size: 0.8rem !important;
   }
+  body .main .container #id_ans-q-form-container .submit-container button[type="submit"] {
+    padding: 0.5rem 1.5rem !important;
+    font-size: 0.9rem !important;
+  }
 }
 
 * {
@@ -633,6 +637,10 @@ body .main .container #id_ans-q-form-container .q .content .q-title {
   font-size: 1.2rem;
   margin-bottom: 1rem;
   color: #518378;
+}
+
+body .main .container #id_ans-q-form-container .q .content .textinput {
+  min-height: 10rem;
 }
 
 body .main .container #id_ans-q-form-container .qtype-mcq .choice-container {
@@ -1570,6 +1578,7 @@ body .main .container .success-info .redirect-info {
   padding: 1rem;
   border-radius: 5px;
   border: 1px solid #b6b6b6;
+  resize: none;
 }
 
 .textinput:focus {
