@@ -56,7 +56,7 @@ body .main-content {
 }
 
 body .main-content .container .row .col-sm-4 .leaderboard-card .leaderboard-card__body .text-center img.rank-icon {
-  width: 3rem;
+  width: 4rem;
 }
 
 body .main-content .container .row .col-sm-4 .leaderboard-card .leaderboard-card__body .text-center .stats .s-item .label, body .main-content .container .row .col-sm-4 .leaderboard-card .leaderboard-card__body .text-center .stats .s-item .value {

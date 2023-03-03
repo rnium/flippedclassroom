@@ -300,12 +300,12 @@ function render_ranking_table_rows(rows_data, unranked=false) {
                         </td>
                         <td>
                             <div class="d-flex align-items-baseline">
-                                <h4 class="mr-1">${roundedPoints}</h4>
+                                <h4 class="mr-1">${rankNum}</h4>
                             </div>
                         </td>
+                        <td>${roundedPoints}</td>
                         <td>${roundedParticipation}%</td>
                         <td>${roundedRegularity}</td>
-                        <td>${rankNum}</td>
                     </tr>`
         rows += row_elem
     }
@@ -320,10 +320,10 @@ function render_table(ranked_students, unranked_students) {
                             <thead>
                                 <tr>
                                     <th>Student</th>
+                                    <th>Rank</th>
                                     <th>Points</th>
                                     <th>Participation</th>
                                     <th>Regularity</th>
-                                    <th>Rank</th>
                                 </tr>
                             </thead>
                             <tbody>
