@@ -107,7 +107,7 @@ function render_first_rank_card(topper_data) {
                         </div>`
     }
     let card = `<div class="col-sm-4 first">
-                    <div class="leaderboard-card leaderboard-card--first">
+                    <div class="leaderboard-card leaderboard-card--first shadow">
                         <div class="leaderboard-card__top">
                             <h3 class="text-center text-white">${roundedPoints}</h3>
                         </div>
