@@ -85,13 +85,13 @@ class ClassroomRanking(LoginRequiredMixin, DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         static_images = {}
-        static_images['leaderboard'] = static('accounts/images/leaderboard.svg')
+        static_images['leaderboard'] = static('classroom/images/ranking/leaderboard.svg')
         static_images['blank_dp'] = static('accounts/images/blank-dp.svg')
-        static_images['blank_champion'] = static('accounts/images/trophy.png')
-        static_images['blank_medal'] = static('accounts/images/medals.png')
-        static_images['first_rank'] = static('accounts/images/first_rank.png')
-        static_images['second_rank'] = static('accounts/images/second-rank.png')
-        static_images['third_rank'] = static('accounts/images/third-rank.png')
+        static_images['blank_champion'] = static('classroom/images/ranking/trophy.png')
+        static_images['blank_medal'] = static('classroom/images/ranking/medals.png')
+        static_images['first_rank'] = static('classroom/images/ranking/first_rank.png')
+        static_images['second_rank'] = static('classroom/images/ranking/second-rank.png')
+        static_images['third_rank'] = static('classroom/images/ranking/third-rank.png')
         context['static_images'] = static_images
         return context
         

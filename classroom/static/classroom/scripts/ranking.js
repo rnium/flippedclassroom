@@ -130,16 +130,16 @@ function render_second_rank_card(topper_data) {
     
     let lb_action_elem
     if (topper_data['current_user']) {
-        lb_action_elem = `<div class="lb-action d-flex justify-content-center align-items-center mt-2">
+        lb_action_elem = `<div class="lb-action mt-2 d-flex justify-content-center align-items-center mt-2">
                                 <span class="leaderboard-info"><img class="lb-icon" src="${leaderboard}" alt=""><span class="txt">Second Rank</span></span>
                             </div>`
     } else {
-        lb_action_elem = `<div class="lb-action d-flex justify-content-between align-items-center">
+        lb_action_elem = `<div class="lb-action mt-2 d-flex justify-content-between align-items-center">
                             <span class="leaderboard-info"><img class="lb-icon" src="${leaderboard}" alt=""><span class="txt">Second Rank</span></span>
                             <button class="btn btn-outline-success btn-sm">Congratulate</button>
                         </div>`
     }
-    let card = `<div class="col-sm-4 second" style="display: none;">
+    let card = `<div class="col-sm-4 second">
                 <div class="leaderboard-card">
                     <div class="leaderboard-card__top">
                         <h3 class="text-center">${roundedPoints}</h3>
@@ -226,16 +226,18 @@ function render_toppers_section(toppers_data) {
     let first_rank_card
     let second_rank_card
     let third_rank_card
-
-    if (toppers_data.length == 1) {
+    let topper_dataset_length = Object.keys(toppers_data).length;
+    console.log(topper_dataset_length);
+    if (topper_dataset_length == 1) {
         first_rank_card = render_first_rank_card(toppers_data['first'])
         second_rank_card = empty_second_topper_card
         third_rank_card = empty_third_topper_card
-    } else if (toppers_data.length == 2) {
+    } else if (topper_dataset_length == 2) {
+        console.log('exc');
         first_rank_card = render_first_rank_card(toppers_data['first'])
         second_rank_card = render_second_rank_card(toppers_data['second'])
         third_rank_card = empty_third_topper_card
-    } else if (toppers_data.length == 3) {
+    } else if (topper_dataset_length == 3) {
         first_rank_card = render_first_rank_card(toppers_data['first'])
         second_rank_card = render_second_rank_card(toppers_data['second'])
         third_rank_card = render_third_rank_card(toppers_data['third'])
@@ -245,10 +247,11 @@ function render_toppers_section(toppers_data) {
         third_rank_card = empty_third_topper_card
     }
     let topper_section = `<div class="row">
-                                ${first_rank_card}
                                 ${second_rank_card}
+                                ${first_rank_card}
                                 ${third_rank_card}
                           </div>`
+    console.log(topper_section);
     return topper_section
 }
 
@@ -264,10 +267,10 @@ function render_ranking_table_rows(rows_data, unranked=false) {
         let rankNum
         let rankingClass = ''
         if (unranked) {
-            rankNum = row['rank']
+            rankNum = "--"
             rankingClass = 'unranked'
         } else {
-            rankNum = "--"
+            rankNum = row['rank']
         }
         
         row_elem = `<tr class="${rankingClass}">
@@ -314,9 +317,11 @@ function render_table(ranked_students, unranked_students) {
                         </table>`
     return ranking_table
 }
-
+var toppers
 function process_ranking_data(response) {
     let data = response['data']
+    console.log(data['toppers']);
+    toppers = data['toppers']
     let toppers_section = render_toppers_section(data['toppers'])
     let table = render_table(data['ranked_students'], data['unranked_students'])
     let container = `<div class="container">
@@ -325,7 +330,7 @@ function process_ranking_data(response) {
                     </div>`
     $("#leaderboard-container").html(container);
     $("#loader-con").hide(0, ()=>{
-        $("##leaderboard-container").show()
+        $("#leaderboard-container").show()
     });
 }
 
