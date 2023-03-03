@@ -48,7 +48,10 @@ def student_regularity_points(user:User, classroom:Classroom):
     for work in all_works:
         task_deadline_time = work.task.deadline
         submit_time = work.submission_time
-        time_elapsed = task_deadline_time - submit_time
+        try:
+            time_elapsed = task_deadline_time - submit_time
+        except TypeError:
+            continue
         te_seconds = time_elapsed.total_seconds()
         points = te_seconds/1000
         total_points += points

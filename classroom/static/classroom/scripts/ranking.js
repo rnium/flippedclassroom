@@ -1,4 +1,7 @@
 function convertFloat(number) {
+    if (number === null) {
+        return 0;
+    }
     if (Number.isInteger(number)) { // Check if the number is already an integer
       return number;
     } else {
@@ -27,7 +30,7 @@ const empty_second_topper_card = `<div class="col-sm-4 second empty">
                                                 <div class="info text-muted my-2">Excellence to be achieved</div>
                                                 <hr>
                                                 <div class="lb-action d-flex justify-content-center align-items-center mt-2">
-                                                    <span class="leaderboard-info"><img class="lb-icon" src="${leaderboard}" alt=""><span class="txt">Reserved Second Rank</span></span>
+                                                    <span class="leaderboard-info"><img class="lb-icon" src="${leaderboard}" alt=""><span class="txt">Reserved Second Place</span></span>
                                                 </div>
                                             </div>
                                         </div>
@@ -49,7 +52,7 @@ const empty_first_topper_card = `<div class="col-sm-4 first empty">
                                                 <div class="info text-muted my-2">Excellence to be achieved</div>
                                                 <hr>
                                                 <div class="lb-action d-flex justify-content-center align-items-center mt-2">
-                                                    <span class="leaderboard-info"><img class="lb-icon" src="${leaderboard}" alt=""><span class="txt">Reserved First Rank</span></span>
+                                                    <span class="leaderboard-info"><img class="lb-icon" src="${leaderboard}" alt=""><span class="txt">Reserved First Place</span></span>
                                                 </div>
                                             </div>
                                         </div>
@@ -70,7 +73,7 @@ const empty_third_topper_card = `<div class="col-sm-4 third empty">
                                             <div class="info text-muted my-2">Excellence to be achieved</div>
                                             <hr>
                                             <div class="lb-action d-flex justify-content-center align-items-center mt-2">
-                                                <span class="leaderboard-info"><img class="lb-icon" src="${leaderboard}" alt=""><span class="txt">Reserved Third Rank</span></span>
+                                                <span class="leaderboard-info"><img class="lb-icon" src="${leaderboard}" alt=""><span class="txt">Reserved Third Place</span></span>
                                             </div>
                                         </div>
                                     </div>
@@ -95,12 +98,12 @@ function render_first_rank_card(topper_data) {
     let lb_action_elem
     if (topper_data['current_user']) {
         lb_action_elem = `<div class="lb-action d-flex justify-content-center align-items-center mt-2">
-                                <span class="leaderboard-info"><img class="lb-icon" src="${leaderboard}" alt=""><span class="txt">First Rank</span></span>
+                                <span class="leaderboard-info"><img class="lb-icon" src="${leaderboard}" alt=""><span class="txt">Primus</span></span>
                             </div>`
     } else {
         lb_action_elem = `<div class="lb-action d-flex justify-content-between align-items-center mt-2">
-                            <span class="leaderboard-info"><img class="lb-icon" src="${leaderboard}" alt=""><span class="txt">First Rank</span></span>
-                            <button class="btn btn-outline-success btn-sm">Congratulate</button>
+                            <span class="leaderboard-info"><img class="lb-icon" src="${leaderboard}" alt=""><span class="txt">Primus</span></span>
+                            <button class="btn btn-outline-warning btn-sm">Congratulate</button>
                         </div>`
     }
     let card = `<div class="col-sm-4 first">
@@ -145,12 +148,12 @@ function render_second_rank_card(topper_data) {
     let lb_action_elem
     if (topper_data['current_user']) {
         lb_action_elem = `<div class="lb-action mt-2 d-flex justify-content-center align-items-center mt-2">
-                                <span class="leaderboard-info"><img class="lb-icon" src="${leaderboard}" alt=""><span class="txt">Second Rank</span></span>
+                                <span class="leaderboard-info"><img class="lb-icon" src="${leaderboard}" alt=""><span class="txt">Secundus</span></span>
                             </div>`
     } else {
         lb_action_elem = `<div class="lb-action mt-2 d-flex justify-content-between align-items-center">
-                            <span class="leaderboard-info"><img class="lb-icon" src="${leaderboard}" alt=""><span class="txt">Second Rank</span></span>
-                            <button class="btn btn-outline-success btn-sm">Congratulate</button>
+                            <span class="leaderboard-info"><img class="lb-icon" src="${leaderboard}" alt=""><span class="txt">Secundus</span></span>
+                            <button class="btn btn-outline-primary btn-sm">Congratulate</button>
                         </div>`
     }
     let card = `<div class="col-sm-4 second">
@@ -195,16 +198,16 @@ function render_third_rank_card(topper_data) {
     
     let lb_action_elem
     if (topper_data['current_user']) {
-        lb_action_elem = `<div class="lb-action d-flex justify-content-center align-items-center mt-2">
-                                <span class="leaderboard-info"><img class="lb-icon" src="${leaderboard}" alt=""><span class="txt">Third Rank</span></span>
+        lb_action_elem = `<div class="lb-action mt-2 d-flex justify-content-center align-items-center mt-2">
+                                <span class="leaderboard-info"><img class="lb-icon" src="${leaderboard}" alt=""><span class="txt">Tertius</span></span>
                             </div>`
     } else {
-        lb_action_elem = `<div class="lb-action d-flex justify-content-between align-items-center">
-                            <span class="leaderboard-info"><img class="lb-icon" src="${leaderboard}" alt=""><span class="txt">Third Rank</span></span>
-                            <button class="btn btn-outline-success btn-sm">Congratulate</button>
+        lb_action_elem = `<div class="lb-action mt-2 d-flex justify-content-between align-items-center">
+                            <span class="leaderboard-info"><img class="lb-icon" src="${leaderboard}" alt=""><span class="txt">Tertius</span></span>
+                            <button class="btn btn-outline-info btn-sm">Congratulate</button>
                         </div>`
     }
-    let card = `<div class="col-sm-4 third" style="display: none;">
+    let card = `<div class="col-sm-4 third">
                 <div class="leaderboard-card">
                     <div class="leaderboard-card__top">
                         <h3 class="text-center">${roundedPoints}</h3>
@@ -220,7 +223,7 @@ function render_third_rank_card(topper_data) {
                             <div class="stats d-flex justify-content-around align-items-center my-2">
                                 <div class="s-item">
                                     <span class="label">Participation:</span>
-                                    <span class="value">${roundedParticipation}%%</span>
+                                    <span class="value">${roundedParticipation}%</span>
                                 </div>
                                 <div class="s-item">
                                     <span class="label">Regularity:</span>
@@ -241,13 +244,11 @@ function render_toppers_section(toppers_data) {
     let second_rank_card
     let third_rank_card
     let topper_dataset_length = Object.keys(toppers_data).length;
-    console.log(topper_dataset_length);
     if (topper_dataset_length == 1) {
         first_rank_card = render_first_rank_card(toppers_data['first'])
         second_rank_card = empty_second_topper_card
         third_rank_card = empty_third_topper_card
     } else if (topper_dataset_length == 2) {
-        console.log('exc');
         first_rank_card = render_first_rank_card(toppers_data['first'])
         second_rank_card = render_second_rank_card(toppers_data['second'])
         third_rank_card = empty_third_topper_card
