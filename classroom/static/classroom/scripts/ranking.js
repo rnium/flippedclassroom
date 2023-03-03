@@ -252,6 +252,82 @@ function render_toppers_section(toppers_data) {
     return topper_section
 }
 
+function render_ranking_table_rows(rows_data, unranked=false) {
+    rows = ''
+    for (let row of rows_data) {
+        let points = row['classroom_points'];
+        let roundedPoints = points.toFixed(2);
+        let participation = row['participation'];
+        let roundedParticipation = participation.toFixed(2);
+        let regularity = row['regularity'];
+        let roundedRegularity = regularity.toFixed(2);
+        let rankNum
+        let rankingClass = ''
+        if (unranked) {
+            rankNum = row['rank']
+            rankingClass = 'unranked'
+        } else {
+            rankNum = "--"
+        }
+        
+        row_elem = `<tr class="${rankingClass}">
+                        <td>
+                            <div class="d-flex align-items-center">
+                                <img src="${row['avatar_url']}" class="circle-img circle-img--small mr-2" alt="User Img">
+                                <div class="user-info__basic">
+                                    <h5 class="mb-0">${row['full_name']}</h5>
+                                    <p class="text-muted mb-0">${row['registration']}</p>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="d-flex align-items-baseline">
+                                <h4 class="mr-1">${roundedPoints}</h4>
+                            </div>
+                        </td>
+                        <td>${roundedParticipation}%</td>
+                        <td>${roundedRegularity}</td>
+                        <td>${rankNum}</td>
+                    </tr>`
+        rows += row_elem
+    }
+    return rows
+}
+
+function render_table(ranked_students, unranked_students) {
+    let ranked_rows = render_ranking_table_rows(ranked_students)
+    let unranked_rows = render_ranking_table_rows(unranked_students, unranked=true)
+    let table_rows = ranked_rows + unranked_rows
+    let ranking_table = `<table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Student</th>
+                                    <th>Points</th>
+                                    <th>Participation</th>
+                                    <th>Regularity</th>
+                                    <th>Rank</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${table_rows} 
+                            </tbody>
+                        </table>`
+    return ranking_table
+}
+
+function process_ranking_data(response) {
+    let data = response['data']
+    let toppers_section = render_toppers_section(data['toppers'])
+    let table = render_table(data['ranked_students'], data['unranked_students'])
+    let container = `<div class="container">
+                        ${toppers_section}
+                        ${table}
+                    </div>`
+    $("#leaderboard-container").html(container);
+    $("#loader-con").hide(0, ()=>{
+        $("##leaderboard-container").show()
+    });
+}
 
 
 function get_ranking_data() {
@@ -261,7 +337,7 @@ function get_ranking_data() {
         dataType: "json",
         cache: false,
         success: function(response) {
-            console.log(response);
+            process_ranking_data(response)
         },
         error: function(error, xhr, status) {
             console.log(error);
