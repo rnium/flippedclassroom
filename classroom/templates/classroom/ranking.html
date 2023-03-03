@@ -65,6 +65,13 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script> 
 	<script>
 		const ranking_api_url = "{% url 'classroom:get_ranking_api' classroom.id  %}";
+		const leaderboard = "{{static_images.leaderboard}}"
+		const blank_dp = "{{static_images.blank_dp}}"
+		const blank_champion = "{{static_images.blank_champion}}"
+		const blank_medal = "{{static_images.blank_medal}}"
+		const first_rank = "{{static_images.first_rank}}"
+		const second_rank = "{{static_images.second_rank}}"
+		const third_rank = "{{static_images.third_rank}}"
 	</script>
 	<script src="{% static 'classroom/scripts/ranking.js' %}"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>

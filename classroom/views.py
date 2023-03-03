@@ -5,6 +5,7 @@ from django.shortcuts import redirect, render, get_object_or_404
 from django.http import HttpResponse, JsonResponse, Http404
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
+from django.templatetags.static import static
 from django.views.generic import TemplateView, DetailView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.decorators.csrf import csrf_exempt
@@ -70,7 +71,6 @@ class ClassroomDetail(LoginRequiredMixin, DetailView):
 class ClassroomRanking(LoginRequiredMixin, DetailView):
     template_name = 'classroom/ranking.html'
     model = Classroom
-    
     def get_object(self):
         classroom = super().get_object()
         if self.request.user in classroom.teachers.all():
@@ -84,24 +84,18 @@ class ClassroomRanking(LoginRequiredMixin, DetailView):
         
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        classroom = self.get_object()
-        join_link = self.request.build_absolute_uri(reverse("classroom:join_classroom", args=(classroom.join_code,)))
-        invitation_text = f"""Join {classroom.name} by using this code: {classroom.join_code}\nor by using this url: {join_link}"""
-        context["invitation_text"] = invitation_text
-        if self.request.user in classroom.teachers.all():
-            query_set = classroom.ongoing_tests
-            if query_set.count() > 0:
-                context['teacher_tests'] = query_set
-        elif self.request.user in classroom.students.all():
-            query_set = classroom.students_non_participating_ongoing_tests(student=self.request.user)
-            unsubmitted_tests = self.request.user.account.classroom_unsubmitted_tests(classroom)
-            if (query_set.count() + unsubmitted_tests.count()) > 0:
-                context['has_student_tests'] = True
-                if query_set.count() > 0:
-                    context['student_tests'] = query_set
-                if unsubmitted_tests.count() > 0:
-                    context['unsubmitted_tests'] = unsubmitted_tests
+        static_images = {}
+        static_images['leaderboard'] = static('accounts/images/leaderboard.svg')
+        static_images['blank_dp'] = static('accounts/images/blank-dp.svg')
+        static_images['blank_champion'] = static('accounts/images/trophy.png')
+        static_images['blank_medal'] = static('accounts/images/medals.png')
+        static_images['first_rank'] = static('accounts/images/first_rank.png')
+        static_images['second_rank'] = static('accounts/images/second-rank.png')
+        static_images['third_rank'] = static('accounts/images/third-rank.png')
+        context['static_images'] = static_images
         return context
+        
+        
 
 
 class ClassroomConnections(LoginRequiredMixin, DetailView):
