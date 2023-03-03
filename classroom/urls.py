@@ -9,6 +9,7 @@ urlpatterns = [
     path('classroom/api/', include("classroom.api.urls")),
     path('classroom/<str:pk>', ClassroomDetail.as_view(), name="classroom_detail"),
     path('classroom/<str:pk>/connections', ClassroomConnections.as_view(), name="classroom_connections"),
+    path('classroom/<str:pk>/rankings', ClassroomRanking.as_view(), name="classroom_ranking"),
     path('classroom/<str:pk>/assessment/create', create_assessment, name="create_assessment"),
     path('classroom/<str:pk>/assessment', view_assessment, name="view_assessment"),
     path('classroom/<str:cls_pk>/assessment/<int:pk>', view_student_assessment, name="view_student_assessment"),

@@ -65,6 +65,21 @@ class ClassroomDetail(LoginRequiredMixin, DetailView):
                 raise Http404
             else:
                 return classroom
+
+
+class ClassroomRanking(LoginRequiredMixin, DetailView):
+    template_name = 'classroom/ranking.html'
+    model = Classroom
+    
+    def get_object(self):
+        classroom = super().get_object()
+        if self.request.user in classroom.teachers.all():
+            return classroom
+        else:
+            if (self.request.user not in classroom.students.all()) or (not classroom.active):
+                raise Http404
+            else:
+                return classroom
                 
         
     def get_context_data(self, **kwargs):
