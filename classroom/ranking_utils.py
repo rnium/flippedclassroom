@@ -78,11 +78,18 @@ def get_students_ranking_data(user, classroom:Classroom):
         unit_data['participation'] = student_participation_percetage(s, classroom)
         unit_data['regularity'] = student_regularity_points(s, classroom)
         data_raw.append(unit_data)
-    rank_data_raw = [student for student in data_raw if student['classroom_points'] != 0]   
-    sorted_students = sorted(rank_data_raw, key=lambda x: (x['classroom_points'], x['participation'], x['regularity']), reverse=True)
-    for i, student in enumerate(sorted_students):
+    unranked_students = []
+    ranked_students = []
+    for student_data in data_raw:
+        if student_data['classroom_points'] == 0:
+            unranked_students.append(student_data)
+        else:
+            ranked_students.append(student_data)
+ 
+    sorted_ranks = sorted(ranked_students, key=lambda x: (x['classroom_points'], x['participation'], x['regularity']), reverse=True)
+    for i, student in enumerate(sorted_ranks):
         student['rank'] = i + 1
-    return sorted_students
+    return {'ranked_students':sorted_ranks, 'unranked_students':unranked_students}
 
     
         

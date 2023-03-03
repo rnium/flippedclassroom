@@ -316,7 +316,7 @@ def get_ranking_api(request, cls_pk):
     if (request.user not in classroom.teachers.all()) or (request.user not in classroom.students.all()):
         return Response(data={'info':'forbidden'}, status=status.HTTP_403_FORBIDDEN)
     rank_data = get_students_ranking_data(request.user, classroom)
-    num_rankig = len(rank_data)
+    num_rankig = len(rank_data['ranked_students'])
     has_ranking = bool(num_rankig)
     data = {
         'num_rankig':num_rankig,
