@@ -1,0 +1,273 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@300;400;500&family=Lato&family=Montserrat:wght@300;400;500&family=Roboto+Mono:wght@400;500&family=Ubuntu&display=swap");
+body header {
+  -webkit-box-shadow: 0 5px 10px #e6eceb;
+          box-shadow: 0 5px 10px #e6eceb;
+}
+
+body header nav .nav-link {
+  color: #919191;
+}
+
+body header nav .user a {
+  text-decoration: none;
+}
+
+body .section-container .loader-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  align-items: center;
+}
+
+body .section-container .loader-container .loader {
+  position: relative;
+  height: 80px;
+}
+
+body .section-container .loader-container .loader .lds-facebook {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+body .section-container .loader-container .info {
+  text-align: center;
+  font-family: 'Lato', sans-serif;
+  color: #98a8a2;
+  font-size: 1.2rem;
+}
+
+body .main-content {
+  padding-top: 4rem !important;
+}
+
+body .main-content .container .row .col-sm-4 .leaderboard-card .leaderboard-card__body .text-center img.rank-icon {
+  width: 3rem;
+}
+
+body .main-content .container .row .col-sm-4 .leaderboard-card .leaderboard-card__body .text-center .stats .s-item .label, body .main-content .container .row .col-sm-4 .leaderboard-card .leaderboard-card__body .text-center .stats .s-item .value {
+  font-size: 0.9rem;
+  font-family: 'Lato', sans-serif;
+}
+
+body .main-content .container .row .col-sm-4 .leaderboard-card .leaderboard-card__body .text-center .stats .s-item .label {
+  font-family: 'Lato', sans-serif;
+  color: gray;
+}
+
+body .main-content .container .row .col-sm-4 .leaderboard-card .leaderboard-card__body .text-center hr {
+  margin: 0 !important;
+}
+
+body .main-content .container .row .col-sm-4 .leaderboard-card .leaderboard-card__body .text-center .lb-action .leaderboard-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body .main-content .container .row .col-sm-4 .leaderboard-card .leaderboard-card__body .text-center .lb-action .leaderboard-info img.lb-icon {
+  display: inline-block;
+  width: 1.5rem !important;
+}
+
+body .main-content .container .row .col-sm-4 .leaderboard-card .leaderboard-card__body .text-center .lb-action .leaderboard-info .txt {
+  margin-left: 5px !important;
+  font-family: 'Ubuntu', sans-serif;
+  color: #aec5c7;
+}
+
+body .main-content .container .row .first .stats .s-item .value {
+  color: #ff972d;
+}
+
+body .main-content .container .row .second .leaderboard-card__top {
+  background-color: aliceblue !important;
+}
+
+body .main-content .container .row .second .stats .s-item .value {
+  color: #2196f3;
+}
+
+body .main-content .container .row .third .stats .s-item .value {
+  color: #009688;
+}
+
+body .main-content .container .row .empty .rank-icon {
+  width: 90px !important;
+}
+
+body .main-content .container .table tbody tr.unranked td {
+  background-color: #c5cfcc;
+}
+
+.lds-facebook {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+
+.lds-facebook div {
+  display: inline-block;
+  position: absolute;
+  left: 8px;
+  width: 16px;
+  background: #bdbdbd;
+  -webkit-animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+          animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+}
+
+.lds-facebook div:nth-child(1) {
+  left: 8px;
+  -webkit-animation-delay: -0.24s;
+          animation-delay: -0.24s;
+}
+
+.lds-facebook div:nth-child(2) {
+  left: 32px;
+  -webkit-animation-delay: -0.12s;
+          animation-delay: -0.12s;
+}
+
+.lds-facebook div:nth-child(3) {
+  left: 56px;
+  -webkit-animation-delay: 0;
+          animation-delay: 0;
+}
+
+@-webkit-keyframes lds-facebook {
+  0% {
+    top: 8px;
+    height: 64px;
+  }
+  50%, 100% {
+    top: 24px;
+    height: 32px;
+  }
+}
+
+@keyframes lds-facebook {
+  0% {
+    top: 8px;
+    height: 64px;
+  }
+  50%, 100% {
+    top: 24px;
+    height: 32px;
+  }
+}
+
+body {
+  background: #f9f9f9;
+  font-family: "Roboto", sans-serif;
+}
+
+.main-content {
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+.leaderboard-card {
+  background: #fff;
+  margin-bottom: 30px;
+  border-radius: 5px;
+  overflow: hidden;
+  -webkit-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.leaderboard-card.leaderboard-card--first {
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+}
+
+.leaderboard-card.leaderboard-card--first .leaderboard-card__top {
+  background: linear-gradient(45deg, #7e57c2, #ab47bc);
+  color: #fff;
+}
+
+.leaderboard-card__top {
+  background: #f9f6ff;
+  padding: 20px 0 30px 0;
+}
+
+.leaderboard-card__body {
+  padding: 15px;
+  margin-top: -40px;
+}
+
+img.circle-img {
+  height: 70px;
+  width: 70px;
+  border-radius: 70px;
+  border: 3px solid #fff;
+  -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+img.circle-img.circle-img--small {
+  height: 55px;
+  width: 55px;
+  border-radius: 55px;
+}
+
+.table {
+  border-spacing: 0 15px;
+  border-collapse: separate;
+}
+
+.table thead tr th,
+.table thead tr td,
+.table tbody tr th,
+.table tbody tr td {
+  vertical-align: middle;
+  border: none;
+}
+
+.table thead tr th:nth-last-child(1),
+.table thead tr td:nth-last-child(1),
+.table tbody tr th:nth-last-child(1),
+.table tbody tr td:nth-last-child(1) {
+  text-align: center;
+}
+
+.table tbody tr {
+  -webkit-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
+.table tbody tr td {
+  background: #fff;
+}
+
+.table tbody tr td:nth-child(1) {
+  border-radius: 5px 0 0 5px;
+}
+
+.table tbody tr td:nth-last-child(1) {
+  border-radius: 0 5px 5px 0;
+}
+/*# sourceMappingURL=ranking.css.map */
