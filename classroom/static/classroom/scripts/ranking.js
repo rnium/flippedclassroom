@@ -1,3 +1,17 @@
+function convertFloat(number) {
+    if (Number.isInteger(number)) { // Check if the number is already an integer
+      return number;
+    } else {
+      const decimal = number.toFixed(1); // Get the number rounded to one decimal place
+      const lastDigit = decimal.charAt(decimal.length - 1); // Get the last character of the decimal
+      if (lastDigit === "0") {
+        return parseInt(decimal); // If the last digit is 0, return the integer value
+      } else {
+        return number.toFixed(2); // Otherwise, return the original floating point number
+      }
+    }
+  }
+
 const empty_second_topper_card = `<div class="col-sm-4 second empty">
                                     <div class="leaderboard-card">
                                         <div class="leaderboard-card__top pt-5 pb-3">
@@ -72,11 +86,11 @@ const empty_topper_row = `<div class="row">
 
 function render_first_rank_card(topper_data) {
     let points = topper_data['classroom_points'];
-    let roundedPoints = points.toFixed(2);
+    let roundedPoints = convertFloat(points);
     let participation = topper_data['participation'];
-    let roundedParticipation = participation.toFixed(2);
+    let roundedParticipation = convertFloat(participation);
     let regularity = topper_data['regularity'];
-    let roundedRegularity = regularity.toFixed(2);
+    let roundedRegularity = convertFloat(regularity);
     
     let lb_action_elem
     if (topper_data['current_user']) {
@@ -92,7 +106,7 @@ function render_first_rank_card(topper_data) {
     let card = `<div class="col-sm-4 first">
                     <div class="leaderboard-card leaderboard-card--first">
                         <div class="leaderboard-card__top">
-                            <h3 class="text-center">${roundedPoints}</h3>
+                            <h3 class="text-center text-white">${roundedPoints}</h3>
                         </div>
                         <div class="leaderboard-card__body">
                             <div class="text-center">
@@ -122,11 +136,11 @@ function render_first_rank_card(topper_data) {
 
 function render_second_rank_card(topper_data) {
     let points = topper_data['classroom_points'];
-    let roundedPoints = points.toFixed(2);
+    let roundedPoints = convertFloat(points);
     let participation = topper_data['participation'];
-    let roundedParticipation = participation.toFixed(2);
+    let roundedParticipation = convertFloat(participation);
     let regularity = topper_data['regularity'];
-    let roundedRegularity = regularity.toFixed(2);
+    let roundedRegularity = convertFloat(regularity);
     
     let lb_action_elem
     if (topper_data['current_user']) {
@@ -155,7 +169,7 @@ function render_second_rank_card(topper_data) {
                             <div class="stats d-flex justify-content-around align-items-center my-2">
                                 <div class="s-item">
                                     <span class="label">Participation:</span>
-                                    <span class="value">${roundedParticipation}%%</span>
+                                    <span class="value">${roundedParticipation}%</span>
                                 </div>
                                 <div class="s-item">
                                     <span class="label">Regularity:</span>
@@ -173,11 +187,11 @@ function render_second_rank_card(topper_data) {
 
 function render_third_rank_card(topper_data) {
     let points = topper_data['classroom_points'];
-    let roundedPoints = points.toFixed(2);
+    let roundedPoints = convertFloat(points);
     let participation = topper_data['participation'];
-    let roundedParticipation = participation.toFixed(2);
+    let roundedParticipation = convertFloat(participation);
     let regularity = topper_data['regularity'];
-    let roundedRegularity = regularity.toFixed(2);
+    let roundedRegularity = convertFloat(regularity);
     
     let lb_action_elem
     if (topper_data['current_user']) {
@@ -259,11 +273,11 @@ function render_ranking_table_rows(rows_data, unranked=false) {
     rows = ''
     for (let row of rows_data) {
         let points = row['classroom_points'];
-        let roundedPoints = points.toFixed(2);
+        let roundedPoints = convertFloat(points);
         let participation = row['participation'];
-        let roundedParticipation = participation.toFixed(2);
+        let roundedParticipation = convertFloat(participation);
         let regularity = row['regularity'];
-        let roundedRegularity = regularity.toFixed(2);
+        let roundedRegularity = convertFloat(regularity);
         let rankNum
         let rankingClass = ''
         if (unranked) {
@@ -276,7 +290,7 @@ function render_ranking_table_rows(rows_data, unranked=false) {
         row_elem = `<tr class="${rankingClass}">
                         <td>
                             <div class="d-flex align-items-center">
-                                <img src="${row['avatar_url']}" class="circle-img circle-img--small mr-2" alt="User Img">
+                                <img src="${row['avatar_url']}" class="circle-img circle-img--small me-2" alt="User Img">
                                 <div class="user-info__basic">
                                     <h5 class="mb-0">${row['full_name']}</h5>
                                     <p class="text-muted mb-0">${row['registration']}</p>
