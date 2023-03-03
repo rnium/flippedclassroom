@@ -89,7 +89,18 @@ def get_students_ranking_data(user, classroom:Classroom):
     sorted_ranks = sorted(ranked_students, key=lambda x: (x['classroom_points'], x['participation'], x['regularity']), reverse=True)
     for i, student in enumerate(sorted_ranks):
         student['rank'] = i + 1
-    return {'ranked_students':sorted_ranks, 'unranked_students':unranked_students}
+    toppers_list = sorted_ranks[0:3]
+    toppers_data = {}
+    for topper in toppers_list:
+        if topper['rank'] == 1:
+            toppers_data['first'] = topper
+        elif topper['rank'] == 2:
+            toppers_data['second'] = topper
+        elif topper['rank'] == 3:
+            toppers_data['third'] = topper
+        
+        
+    return {'ranked_students':sorted_ranks, 'toppers':toppers_data, 'unranked_students':unranked_students}
 
     
         
