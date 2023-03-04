@@ -8,6 +8,7 @@ urlpatterns = [
     path('<str:pk>/posts', views.ClassroomPostsView.as_view(), name="classroom_posts"),
     path('<str:pk>/update', views.UpdateClassroomAV.as_view(), name="update_classroom"),
     path('<str:pk>/delete', views.delete_classroom_api, name="delete_classroom_api"),
+    path('<str:pk>/congratulate', views.congratulate_user, name="congratulate_user"),
     path('<str:pk>/update/banner', views.set_banner, name="set_banner"),
     path('<str:pk>/update/banner/todefault', views.set_banner_to_default, name="set_banner_to_default"),
     path('<str:pk>/addteacher', views.add_teacher, name="add_teacher"),

@@ -258,8 +258,7 @@ class Classroom(models.Model):
         weeklies = self.weekly_set.all()
         all_tests_marks = sum([weekly.tests_total_marks for weekly in weeklies])
         return all_tests_marks
-    
-        
+            
 
 class PostTopic(models.Model):
     name = models.CharField(max_length=100)
@@ -492,6 +491,7 @@ class AssessmentMeta(models.Model):
     # @property
     # def get_weekly_test_marks(self):
     #     return prettify_marks(self.weekly_test_marks)
+ 
     
 class Assessment(models.Model):
     meta = models.ForeignKey(AssessmentMeta, on_delete=models.CASCADE)
@@ -667,3 +667,9 @@ class Assessment(models.Model):
         score_per_mark = total_score/total_marks
         percentage_score = score_per_mark * 100
         return prettify_marks(percentage_score)
+    
+    
+class Congratulation(models.Model):
+    from_user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='from_user')
+    to_user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='to_user')
+    added = models.DateTimeField(auto_now_add=True)

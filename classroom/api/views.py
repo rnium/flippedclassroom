@@ -10,7 +10,7 @@ from django.shortcuts import get_object_or_404
 from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.crypto import get_random_string
-from classroom.models import ClassroomPost, PostAttachment, Classroom, Comment, AssessmentMeta, Assessment
+from classroom.models import ClassroomPost, PostAttachment, Classroom, Comment, AssessmentMeta, Assessment, Congratulation
 from classroom.ranking_utils import get_students_ranking_data
 from .serializer import PostSerializer, ClassroomSerializer
 from .permission import IsUserPartOfClassroom, IsUserTeacher
@@ -305,6 +305,26 @@ def add_teacher(request, pk):
             return Response(status=status.HTTP_404_NOT_FOUND)
     else:
         return Response(status=status.HTTP_403_FORBIDDEN)
+
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def congratulate_user(request, pk):
+    try:  
+        classroom = Classroom.objects.get(pk=pk)
+    except Classroom.DoesNotExist:
+        return Response(data={'info': "Classroom not found"}, status=status.HTTP_404_NOT_FOUND)
+    try:  
+        to_user = User.objects.get(pk=request.data['uid'])
+    except Classroom.DoesNotExist:
+        return Response(data={'info': "User not found"}, status=status.HTTP_404_NOT_FOUND)
+    
+    if not ((request.user in classroom.teachers.all()) or (request.user in classroom.students.all())):
+        return Response(data={'info': "Forbidden"}, status=status.HTTP_403_FORBIDDEN)
+    congrats = Congratulation.objects.create(from_user=request.user, to_user=to_user)
+    res_data = {'user_fullname':congrats.to_user.account.user_full_name}
+    return Response(data=res_data, status=status.HTTP_200_OK)
+    
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])

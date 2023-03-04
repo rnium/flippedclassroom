@@ -22,7 +22,6 @@ function notifyUser(text, alert_class='info', timeout=5000, img_url=null) {
     }
     let alertid = `notif-${notification_count}`
     notification_count += 1
-    console.log(notification_count);
     let component = `<li id="${alertid}" style="display: none;">
                         <div class="alert-con ${alert_class} shadow">
                             ${img}
@@ -49,20 +48,43 @@ function show_card_confetti(wrapperid) {
     confetti_button().then(() => container.removeChild(canvas));
 }
 
-function send_congrats(uid, name) {
-    let notification_text = `Your applause has been sent to ${name}`
-    notifyUser(notification_text, 'info', 5000, alert_icon_confetti)
+
+function congratulate_user(uid, btn){
+    let payload = {'uid':uid}
+    $.ajax({
+        type: "post",
+        url: congratulate_user_api_url,
+        dataType: "json",
+        contentType: "application/json",
+        beforeSend: function(xhr){
+            $(btn).attr("disabled", true)
+            xhr.setRequestHeader("X-CSRFToken", csrftoken)
+        },
+        data: JSON.stringify(payload),
+        cache: false,
+        success: function(response) {
+            let notification_text = `Your applause has been sent to ${response['user_fullname']}`
+            notifyUser(notification_text, 'info', 5000, alert_icon_confetti)
+        },
+        error: function(xhr, error, status) {
+            console.log(xhr);
+        },
+        complete: function() {
+            $(btn).attr("disabled", false)
+        }
+    });
+
 }
+
 
 function activate_congrats_btn() {
     let btns = $(".congrats-btn")
     $.each(btns, function (indexInArray, valueOfElement) { 
         $(valueOfElement).on('click', ()=>{
             let wrapperId = $(this).data('wrapper')
-            let user_fullname = $(this).data('fullname')
             let uid = $(this).data('uid')
             show_card_confetti(wrapperId)
-            send_congrats(uid, user_fullname)
+            congratulate_user(uid, this)
         })
     });
 }
@@ -421,6 +443,7 @@ function get_ranking_data() {
         },
     });
 }
+
 
 get_ranking_data()
 
