@@ -369,6 +369,9 @@ def get_congrats_api(request, pk):
         unit_data['sender_name'] = i.from_user.account.user_full_name
         unit_data['sender_avatar'] = i.from_user.account.avatar_url
         res_list.append(unit_data)
+        i.is_expired = True
+        i.save()
+        
     num_congrats = len(res_list)
     res_data = {"congrats":res_list,
                 "has_congrats": bool(num_congrats),
