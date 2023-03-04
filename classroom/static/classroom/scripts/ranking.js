@@ -15,6 +15,22 @@ function convertFloat(number) {
     }
   }
 
+function activate_congrats_btn() {
+    let btns = $(".congrats-btn")
+    $.each(btns, function (indexInArray, valueOfElement) { 
+        $(valueOfElement).on('click', ()=>{
+            let canvas = document.createElement("canvas");
+            let con_id = $(this).data('wrapper')
+            let container = document.getElementById(con_id);
+            canvas.width = 400;
+            canvas.height = 700;
+            container.appendChild(canvas);
+            let confetti_button = confetti.create(canvas);
+            confetti_button().then(() => container.removeChild(canvas));
+        })
+    });
+}
+
 const empty_second_topper_card = `<div class="col-sm-4 second empty">
                                     <div class="leaderboard-card">
                                         <div class="leaderboard-card__top pt-5 pb-3">
@@ -103,19 +119,19 @@ function render_first_rank_card(topper_data) {
     } else {
         lb_action_elem = `<div class="lb-action d-flex justify-content-between align-items-center mt-2">
                             <span class="leaderboard-info"><img class="lb-icon" src="${leaderboard}" alt=""><span class="txt">Primus</span></span>
-                            <button class="btn btn-outline-warning btn-sm">Congratulate</button>
+                            <button class="congrats-btn congr-btn-first" data-wrapper="first-place-wrapper">Congratulate</button>
                         </div>`
     }
-    let card = `<div class="col-sm-4 first">
+    let card = `<div class="col-sm-4 first" id="first-place-wrapper">
                     <div class="leaderboard-card leaderboard-card--first shadow">
                         <div class="leaderboard-card__top">
-                            <h3 class="text-center text-white">${roundedPoints}</h3>
+                            <h3 class="text-center points">${roundedPoints}</h3>
                         </div>
                         <div class="leaderboard-card__body">
-                            <div class="text-center">
-                                <img src="${topper_data['avatar_url']}" class="circle-img mb-2" alt="User Img">
-                                <h5 class="mb-0">${topper_data['full_name']}</h5>
-                                <p class="text-muted mb-0">${topper_data['registration']}</p>
+                            <div class="text-center content">
+                            <div class="dp shadow" style="background-image: url('${topper_data['avatar_url']}');"></div>
+                                <h5 class="mb-0 name">${topper_data['full_name']}</h5>
+                                <p class="text-muted mb-0 reg-no">${topper_data['registration']}</p>
                                 <img src="${first_rank}" alt="" class="rank-icon my-3">
                                 <hr>
                                 <div class="stats d-flex justify-content-around align-items-center my-2">
@@ -332,7 +348,7 @@ function render_table(ranked_students, unranked_students) {
                         </table>`
     return ranking_table
 }
-var toppers
+
 function process_ranking_data(response) {
     let data = response['data']
     console.log(data['toppers']);
@@ -346,6 +362,7 @@ function process_ranking_data(response) {
     $("#leaderboard-container").html(container);
     $("#loader-con").hide(0, ()=>{
         $("#leaderboard-container").show()
+        activate_congrats_btn()
     });
 }
 
