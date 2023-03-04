@@ -66,6 +66,27 @@ class ClassroomDetail(LoginRequiredMixin, DetailView):
                 raise Http404
             else:
                 return classroom
+            
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        classroom = self.get_object()
+        join_link = self.request.build_absolute_uri(reverse("classroom:join_classroom", args=(classroom.join_code,)))
+        invitation_text = f"""Join {classroom.name} by using this code: {classroom.join_code}\nor by using this url: {join_link}"""
+        context["invitation_text"] = invitation_text
+        if self.request.user in classroom.teachers.all():
+            query_set = classroom.ongoing_tests
+            if query_set.count() > 0:
+                context['teacher_tests'] = query_set
+        elif self.request.user in classroom.students.all():
+            query_set = classroom.students_non_participating_ongoing_tests(student=self.request.user)
+            unsubmitted_tests = self.request.user.account.classroom_unsubmitted_tests(classroom)
+            if (query_set.count() + unsubmitted_tests.count()) > 0:
+                context['has_student_tests'] = True
+                if query_set.count() > 0:
+                    context['student_tests'] = query_set
+                if unsubmitted_tests.count() > 0:
+                    context['unsubmitted_tests'] = unsubmitted_tests
+        return context
 
 
 class ClassroomRanking(LoginRequiredMixin, DetailView):
