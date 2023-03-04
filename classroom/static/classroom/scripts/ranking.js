@@ -59,8 +59,10 @@ function activate_congrats_btn() {
     $.each(btns, function (indexInArray, valueOfElement) { 
         $(valueOfElement).on('click', ()=>{
             let wrapperId = $(this).data('wrapper')
+            let user_fullname = $(this).data('fullname')
+            let uid = $(this).data('uid')
             show_card_confetti(wrapperId)
-            send_congrats(1, "Abdul_Azim")
+            send_congrats(uid, user_fullname)
         })
     });
 }
@@ -153,7 +155,7 @@ function render_first_rank_card(topper_data) {
     } else {
         lb_action_elem = `<div class="lb-action d-flex justify-content-between align-items-center mt-2">
                             <span class="leaderboard-info"><img class="lb-icon" src="${leaderboard}" alt=""><span class="txt">Primus</span></span>
-                            <button class="congrats-btn congr-btn-first" data-wrapper="first-place-wrapper">Congratulate</button>
+                            <button class="congrats-btn congr-btn-first" data-wrapper="first-place-wrapper" data-uid="${topper_data['uid']}" data-fullname="${topper_data['full_name']}">Congratulate</button>
                         </div>`
     }
     let card = `<div class="col-sm-4 first">
@@ -203,7 +205,7 @@ function render_second_rank_card(topper_data) {
     } else {
         lb_action_elem = `<div class="lb-action mt-2 d-flex justify-content-between align-items-center">
                             <span class="leaderboard-info"><img class="lb-icon" src="${leaderboard}" alt=""><span class="txt">Secundus</span></span>
-                            <button class="congrats-btn congr-btn-second" data-wrapper="second-place-wrapper">Congratulate</button>
+                            <button class="congrats-btn congr-btn-second" data-wrapper="second-place-wrapper" data-uid="${topper_data['uid']}" data-fullname="${topper_data['full_name']}">Congratulate</button>
                         </div>`
     }
     let card = `<div class="col-sm-4 second">
@@ -254,7 +256,7 @@ function render_third_rank_card(topper_data) {
     } else {
         lb_action_elem = `<div class="lb-action mt-2 d-flex justify-content-between align-items-center">
                             <span class="leaderboard-info"><img class="lb-icon" src="${leaderboard}" alt=""><span class="txt">Tertius</span></span>
-                            <button class="congrats-btn congr-btn-third" data-wrapper="third-place-wrapper">Congratulate</button>
+                            <button class="congrats-btn congr-btn-third" data-wrapper="third-place-wrapper" data-uid="${topper_data['uid']}" data-fullname="${topper_data['full_name']}">Congratulate</button>
                         </div>`
     }
     let card = `<div class="col-sm-4 third">
