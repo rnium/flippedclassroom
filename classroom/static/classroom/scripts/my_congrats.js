@@ -56,8 +56,12 @@ function showConfetti() {
 
 }
 
-function showConfetti2(counts=2) {
-    var end = Date.now() + (counts * 1000);
+function showConfetti2(counts=null) {
+    let factor = 2
+    if (counts != null) {
+        factor = 2*counts
+    }
+    var end = Date.now() + (factor * 1000);
     // go Buckeyes!
     var colors = ['#bb0000', '#ffffff'];
 
@@ -128,9 +132,9 @@ function request_and_process_congrats() {
                         let sender_fullname = congrats[i]['sender_name']
                         let sender_avatar = congrats[i]['sender_avatar']
                         congratsNotification(sender_fullname, sender_avatar)
-                    }, i * 200);
+                    }, i * 500);
                 }
-                show_full_confetti_sequence()
+                show_full_confetti_sequence(response['num_congrats'])
             }
         },
         error: function(error, xhr, status) {
