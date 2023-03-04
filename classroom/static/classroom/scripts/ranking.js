@@ -169,19 +169,19 @@ function render_second_rank_card(topper_data) {
     } else {
         lb_action_elem = `<div class="lb-action mt-2 d-flex justify-content-between align-items-center">
                             <span class="leaderboard-info"><img class="lb-icon" src="${leaderboard}" alt=""><span class="txt">Secundus</span></span>
-                            <button class="btn btn-outline-primary btn-sm">Congratulate</button>
+                            <button class="congrats-btn congr-btn-second" data-wrapper="second-place-wrapper">Congratulate</button>
                         </div>`
     }
-    let card = `<div class="col-sm-4 second">
+    let card = `<div class="col-sm-4 second" id="second-place-wrapper">
                 <div class="leaderboard-card">
                     <div class="leaderboard-card__top">
-                        <h3 class="text-center">${roundedPoints}</h3>
+                        <h3 class="text-center points">${roundedPoints}</h3>
                     </div>
                     <div class="leaderboard-card__body">
-                        <div class="text-center">
-                            <img src="${topper_data['avatar_url']}" class="circle-img mb-2" alt="User Img">
-                            <h5 class="mb-0">${topper_data['full_name']}</h5>
-                            <p class="text-muted mb-0">${topper_data['registration']}</p>
+                        <div class="text-center content">
+                            <div class="dp shadow" style="background-image: url('${topper_data['avatar_url']}');"></div>
+                            <h5 class="mb-0 name">${topper_data['full_name']}</h5>
+                            <p class="text-muted mb-0 reg-no">${topper_data['registration']}</p>
                             <img src="${second_rank}" alt="" class="rank-icon my-3">
                             
                             <hr>
@@ -220,19 +220,19 @@ function render_third_rank_card(topper_data) {
     } else {
         lb_action_elem = `<div class="lb-action mt-2 d-flex justify-content-between align-items-center">
                             <span class="leaderboard-info"><img class="lb-icon" src="${leaderboard}" alt=""><span class="txt">Tertius</span></span>
-                            <button class="btn btn-outline-info btn-sm">Congratulate</button>
+                            <button class="congrats-btn congr-btn-third" data-wrapper="third-place-wrapper">Congratulate</button>
                         </div>`
     }
-    let card = `<div class="col-sm-4 third">
+    let card = `<div class="col-sm-4 third" id="third-place-wrapper">
                 <div class="leaderboard-card">
                     <div class="leaderboard-card__top">
-                        <h3 class="text-center">${roundedPoints}</h3>
+                        <h3 class="text-center points">${roundedPoints}</h3>
                     </div>
                     <div class="leaderboard-card__body">
-                        <div class="text-center">
-                            <img src="${topper_data['avatar_url']}" class="circle-img mb-2" alt="User Img">
-                            <h5 class="mb-0">${topper_data['full_name']}</h5>
-                            <p class="text-muted mb-0">${topper_data['registration']}</p>
+                        <div class="text-center content">
+                            <div class="dp shadow" style="background-image: url('${topper_data['avatar_url']}');"></div>
+                            <h5 class="mb-0 name">${topper_data['full_name']}</h5>
+                            <p class="text-muted mb-0 reg-no">${topper_data['registration']}</p>
                             <img src="${third_rank}" alt="" class="rank-icon my-3">
                             
                             <hr>
@@ -254,6 +254,7 @@ function render_third_rank_card(topper_data) {
             </div>`
     return card
 }
+
 
 function render_toppers_section(toppers_data) {
     let first_rank_card
