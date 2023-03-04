@@ -1,3 +1,4 @@
+from datetime import timedelta
 from rest_framework.generics import ListAPIView, CreateAPIView, UpdateAPIView
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
@@ -8,6 +9,7 @@ from django.contrib.auth.models import User
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
 from django.urls import reverse
+from django.utils import timezone
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.crypto import get_random_string
 from classroom.models import ClassroomPost, PostAttachment, Classroom, Comment, AssessmentMeta, Assessment, Congratulation
@@ -318,8 +320,13 @@ def congratulate_user(request, pk):
         to_user = User.objects.get(pk=request.data['uid'])
     except Classroom.DoesNotExist:
         return Response(data={'info': "User not found"}, status=status.HTTP_404_NOT_FOUND)
-    
-    if not ((request.user in classroom.teachers.all()) or (request.user in classroom.students.all())):
+
+    min_time_gap = timedelta(days=7)
+    last_time = timezone.now() - min_time_gap
+    congrats_qs = Congratulation.objects.filter(from_user=request.user, to_user=to_user, added__gt=last_time)
+    if len(congrats_qs) > 0:
+        return Response(data={'info': f"You've already congratulated {to_user.account.user_full_name} for his rank in this week"}, status=status.HTTP_400_BAD_REQUEST)
+    if not ((request.user in classroom.teachers.all()) or (request.user in classroom.students.all()) or (to_user in classroom.students.all())):
         return Response(data={'info': "Forbidden"}, status=status.HTTP_403_FORBIDDEN)
     congrats = Congratulation.objects.create(from_user=request.user, to_user=to_user)
     res_data = {'user_fullname':congrats.to_user.account.user_full_name}

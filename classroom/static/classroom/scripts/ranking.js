@@ -67,7 +67,7 @@ function congratulate_user(uid, btn){
             notifyUser(notification_text, 'info', 5000, alert_icon_confetti)
         },
         error: function(xhr, error, status) {
-            console.log(xhr);
+            notifyUser(xhr['responseJSON']['info'], 'dark', 5000, alert_icon_alert)
         },
         complete: function() {
             $(btn).attr("disabled", false)
