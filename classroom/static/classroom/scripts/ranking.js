@@ -38,7 +38,7 @@ const empty_second_topper_card = `<div class="col-sm-4 second empty">
                                         </div>
                                         <div class="leaderboard-card__body">
                                             <div class="text-center">
-                                                <img src="${blank_dp}" class="circle-img mb-2" alt="User Img">
+                                                <div class="dp shadow" style="background-image: url('${blank_dp}');"></div>
                                                 <h5 class="mb-0"></h5>
                                                 <p class="text-muted mb-0"></p>
                                                 <img src="${blank_medal}" alt="" class="rank-icon my-3">
@@ -60,7 +60,7 @@ const empty_first_topper_card = `<div class="col-sm-4 first empty">
                                         </div>
                                         <div class="leaderboard-card__body">
                                             <div class="text-center">
-                                                <img src="${blank_dp}" class="circle-img mb-2" alt="User Img">
+                                                <div class="dp shadow" style="background-image: url('${blank_dp}');"></div>
                                                 <h5 class="mb-0"></h5>
                                                 <p class="text-muted mb-0"></p>
                                                 <img src="${blank_champion}" alt="" class="rank-icon my-3">
@@ -81,7 +81,7 @@ const empty_third_topper_card = `<div class="col-sm-4 third empty">
                                     </div>
                                     <div class="leaderboard-card__body">
                                         <div class="text-center">
-                                            <img src="${blank_dp}" class="circle-img mb-2" alt="User Img">
+                                            <div class="dp shadow" style="background-image: url('${blank_dp}');"></div>
                                             <h5 class="mb-0"></h5>
                                             <p class="text-muted mb-0"></p>
                                             <img src="${blank_medal}" alt="" class="rank-icon my-3">  
@@ -122,8 +122,8 @@ function render_first_rank_card(topper_data) {
                             <button class="congrats-btn congr-btn-first" data-wrapper="first-place-wrapper">Congratulate</button>
                         </div>`
     }
-    let card = `<div class="col-sm-4 first" id="first-place-wrapper">
-                    <div class="leaderboard-card leaderboard-card--first shadow">
+    let card = `<div class="col-sm-4 first">
+                    <div class="leaderboard-card leaderboard-card--first shadow" id="first-place-wrapper">
                         <div class="leaderboard-card__top">
                             <h3 class="text-center points">${roundedPoints}</h3>
                         </div>
@@ -172,8 +172,8 @@ function render_second_rank_card(topper_data) {
                             <button class="congrats-btn congr-btn-second" data-wrapper="second-place-wrapper">Congratulate</button>
                         </div>`
     }
-    let card = `<div class="col-sm-4 second" id="second-place-wrapper">
-                <div class="leaderboard-card">
+    let card = `<div class="col-sm-4 second">
+                <div class="leaderboard-card" id="second-place-wrapper">
                     <div class="leaderboard-card__top">
                         <h3 class="text-center points">${roundedPoints}</h3>
                     </div>
@@ -223,8 +223,8 @@ function render_third_rank_card(topper_data) {
                             <button class="congrats-btn congr-btn-third" data-wrapper="third-place-wrapper">Congratulate</button>
                         </div>`
     }
-    let card = `<div class="col-sm-4 third" id="third-place-wrapper">
-                <div class="leaderboard-card">
+    let card = `<div class="col-sm-4 third">
+                <div class="leaderboard-card" id="third-place-wrapper">
                     <div class="leaderboard-card__top">
                         <h3 class="text-center points">${roundedPoints}</h3>
                     </div>
@@ -283,7 +283,6 @@ function render_toppers_section(toppers_data) {
                                 ${first_rank_card}
                                 ${third_rank_card}
                           </div>`
-    console.log(topper_section);
     return topper_section
 }
 
@@ -308,7 +307,7 @@ function render_ranking_table_rows(rows_data, unranked=false) {
         row_elem = `<tr class="${rankingClass}">
                         <td>
                             <div class="d-flex align-items-center">
-                                <img src="${row['avatar_url']}" class="circle-img circle-img--small me-2" alt="User Img">
+                                <div class="dp" style="background-image: url('${row['avatar_url']}');"></div>
                                 <div class="user-info__basic">
                                     <h5 class="mb-0">${row['full_name']}</h5>
                                     <p class="text-muted mb-0">${row['registration']}</p>
@@ -333,26 +332,27 @@ function render_table(ranked_students, unranked_students) {
     let ranked_rows = render_ranking_table_rows(ranked_students)
     let unranked_rows = render_ranking_table_rows(unranked_students, unranked=true)
     let table_rows = ranked_rows + unranked_rows
-    let ranking_table = `<table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Student</th>
-                                    <th>Rank</th>
-                                    <th>Points</th>
-                                    <th>Participation</th>
-                                    <th>Regularity</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                ${table_rows} 
-                            </tbody>
-                        </table>`
+    let ranking_table = `<div class="table-con">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Student</th>
+                                        <th>Rank</th>
+                                        <th>Points</th>
+                                        <th>Participation</th>
+                                        <th>Regularity</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${table_rows} 
+                                </tbody>
+                            </table>
+                        </div>`
     return ranking_table
 }
 
 function process_ranking_data(response) {
     let data = response['data']
-    console.log(data['toppers']);
     toppers = data['toppers']
     let toppers_section = render_toppers_section(data['toppers'])
     let table = render_table(data['ranked_students'], data['unranked_students'])
