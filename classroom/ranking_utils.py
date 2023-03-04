@@ -62,7 +62,7 @@ def student_regularity_points(user:User, classroom:Classroom):
 
     for sheet in answersheets:
         time_taken_sec = sheet.elapsed_time.total_seconds()
-        points = time_taken_sec / 1000
+        points = (1/time_taken_sec) * 10000
         total_points += points
     return total_points
             
