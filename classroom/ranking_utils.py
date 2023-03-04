@@ -61,8 +61,9 @@ def student_regularity_points(user:User, classroom:Classroom):
                                               submit_time__isnull=False).annotate(elapsed_time=F('submit_time') - F('issue_time'))
 
     for sheet in answersheets:
+        test_duration = sheet.test.duration_seconds
         time_taken_sec = sheet.elapsed_time.total_seconds()
-        points = (1/time_taken_sec) * 10000
+        points = (test_duration-time_taken_sec) / 100
         total_points += points
     return total_points
             
