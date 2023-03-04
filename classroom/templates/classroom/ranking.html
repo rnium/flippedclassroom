@@ -50,6 +50,30 @@
 		  </div>
 		</nav>
 	</header>
+	<div class="alert-component">
+		<div class="alert-inner">
+			<ul id="notification-alert-list">
+				{% comment %} <li>
+					<div class="alert-con info shadow">
+						<img src="./img/confetti.svg" alt="">
+						<div class="alert-info ms-2">You've congratulated user for his first position</div>
+					</div>
+				</li>
+				<li>
+					<div class="alert-con dark shadow">
+						<img src="./img/alert.svg" alt="">
+						<div class="alert-info ms-2">You've already congratulated user for his rank in this week</div>
+					</div>
+				</li>
+				<li>
+					<div class="alert-con shadow with-dp">
+						<img src="./img/user1.jpg" class="shadow dp">
+						<div class="alert-info ms-2">User has congratulated you on your ranking</div>
+					</div>
+				</li> {% endcomment %}
+			</ul>
+		</div>
+	</div>
 	<div class="section-container">
 		<div class="loader-container mt-5" id="loader-con" >
 			<div class="loader">
@@ -74,6 +98,8 @@
 		const first_rank = "{{static_images.first_rank}}"
 		const second_rank = "{{static_images.second_rank}}"
 		const third_rank = "{{static_images.third_rank}}"
+		const alert_icon_alert = "{% static 'classroom/images/ranking/alert.svg' %}"
+		const alert_icon_confetti = "{% static 'classroom/images/ranking/confetti.svg' %}"
 	</script>
 	<script src="{% static 'classroom/scripts/ranking.js' %}"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>

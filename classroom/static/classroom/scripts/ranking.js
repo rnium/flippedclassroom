@@ -14,19 +14,53 @@ function convertFloat(number) {
       }
     }
   }
+let notification_count = 1
+function notifyUser(text, alert_class='info', timeout=5000, img_url=null) {
+    let img = ""
+    if (img_url) {
+        img = `<img src="${img_url}">`
+    }
+    let alertid = `notif-${notification_count}`
+    notification_count += 1
+    console.log(notification_count);
+    let component = `<li id="${alertid}" style="display: none;">
+                        <div class="alert-con ${alert_class} shadow">
+                            ${img}
+                            <div class="alert-info ms-2">${text}</div>
+                        </div>
+                    </li>`
+    $("#notification-alert-list").append(component)
+    $(`#${alertid}`).show(200, ()=>{
+        setTimeout(()=>{
+            $(`#${alertid}`).hide(200, ()=>{
+                $(`#${alertid}`).remove()
+            })
+        }, timeout)
+    })
+}
+
+function show_card_confetti(wrapperid) {
+    let canvas = document.createElement("canvas");
+    let container = document.getElementById(wrapperid);
+    canvas.width = 400;
+    canvas.height = 700;
+    container.appendChild(canvas);
+    let confetti_button = confetti.create(canvas);
+    confetti_button().then(() => container.removeChild(canvas));
+}
+
+function send_congrats(uid, name) {
+    let notification_text = `Your applause has been sent to ${name}`
+    notifyUser(notification_text, 'info', 5000, alert_icon_confetti)
+}
 
 function activate_congrats_btn() {
     let btns = $(".congrats-btn")
     $.each(btns, function (indexInArray, valueOfElement) { 
         $(valueOfElement).on('click', ()=>{
-            let canvas = document.createElement("canvas");
-            let con_id = $(this).data('wrapper')
-            let container = document.getElementById(con_id);
-            canvas.width = 400;
-            canvas.height = 700;
-            container.appendChild(canvas);
-            let confetti_button = confetti.create(canvas);
-            confetti_button().then(() => container.removeChild(canvas));
+            let wrapperId = $(this).data('wrapper')
+            show_card_confetti(wrapperId)
+            send_congrats(1, "Abdul_Azim")
         })
     });
 }
@@ -355,7 +389,11 @@ function process_ranking_data(response) {
     let data = response['data']
     toppers = data['toppers']
     let toppers_section = render_toppers_section(data['toppers'])
-    let table = render_table(data['ranked_students'], data['unranked_students'])
+    let table = ""
+    if (response['has_ranking']) {
+        table = render_table(data['ranked_students'], data['unranked_students'])
+    }
+    
     let container = `<div class="container">
                         ${toppers_section}
                         ${table}
@@ -366,7 +404,6 @@ function process_ranking_data(response) {
         activate_congrats_btn()
     });
 }
-
 
 function get_ranking_data() {
     $.ajax({
