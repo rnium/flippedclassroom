@@ -25,6 +25,30 @@
 </ul>
 {% endblock nav %}
 {% block content %}
+<div class="alert-component">
+  <div class="alert-inner">
+    <ul id="notification-alert-list">
+      {% comment %} <li>
+        <div class="alert-con info shadow">
+          <img src="./img/confetti.svg" alt="">
+          <div class="alert-info ms-2">You've congratulated user for his first position</div>
+        </div>
+      </li>
+      <li>
+        <div class="alert-con dark shadow">
+          <img src="./img/alert.svg" alt="">
+          <div class="alert-info ms-2">You've already congratulated user for his rank in this week</div>
+        </div>
+      </li>
+      <li>
+        <div class="alert-con shadow with-dp">
+          <img src="./img/user1.jpg" class="shadow dp">
+          <div class="alert-info ms-2">User has congratulated you on your ranking</div>
+        </div>
+      </li> {% endcomment %}
+    </ul>
+  </div>
+</div>
 <div class="left-col">
   <div class="classroom-info">
     <img class="bg" src="{{classroom.banner_url}}">
@@ -389,13 +413,18 @@
 {% endblock content %}
 
 {% block script %}
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 <script>
   const invitation_text = `{{ invitation_text }}`
   const classroom_id = "{{ classroom.id }}"
   const post_create_url = "{% url 'classroom:post_to_classroom' classroom.id %}"
+  const get_congrats_api_url = "{% url 'classroom:get_congrats_api' classroom.id %}"
   const weekly_create_url = "{% url 'weeklies:create_weekly' classroom.id %}"
   const ping_url = "{% url 'weekly_test_api:live_test_stats' classroom.id %}"
 </script>
+{% if request.user.account.is_student %}
+<script src="{% static 'classroom/scripts/my_congrats.js' %}"></script>
+{% endif %}
 <script src="{% static 'classroom/scripts/classroom_dash.js' %}"></script>
 <script src="{% static 'classroom/scripts/lping.js' %}"></script>
 {% endblock script %}

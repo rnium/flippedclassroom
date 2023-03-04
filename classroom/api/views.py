@@ -351,4 +351,28 @@ def get_ranking_api(request, cls_pk):
         'data':rank_data
     }
     return Response(data=data, status=status.HTTP_200_OK)
+
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def get_congrats_api(request, pk):
+    try:
+        classroom = get_object_or_404(Classroom, pk=pk)
+    except Exception as e:
+        return Response(data={'info':'classroom not found'}, status=status.HTTP_404_NOT_FOUND)
+    if not ((request.user in classroom.teachers.all()) or (request.user in classroom.students.all())):
+        return Response(data={'info':'forbidden'}, status=status.HTTP_403_FORBIDDEN)
+    congrats = Congratulation.objects.filter(to_user=request.user, is_expired=False)
+    res_list = []
+    for i in congrats:
+        unit_data = {}
+        unit_data['sender_name'] = i.from_user.account.user_full_name
+        unit_data['sender_avatar'] = i.from_user.account.avatar_url
+        res_list.append(unit_data)
+    num_congrats = len(res_list)
+    res_data = {"congrats":res_list,
+                "has_congrats": bool(num_congrats),
+                "num_congrats": num_congrats}
+    return Response(data=res_data, status=status.HTTP_200_OK)
+        
         

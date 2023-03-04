@@ -673,3 +673,4 @@ class Congratulation(models.Model):
     from_user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='from_user')
     to_user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='to_user')
     added = models.DateTimeField(auto_now_add=True)
+    is_expired = models.BooleanField(default=False)

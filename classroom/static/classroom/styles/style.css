@@ -4522,6 +4522,110 @@ body .main .create-classroom .success .share-link button .copy-info {
   color: #3b8f65;
 }
 
+.alert-component {
+  position: fixed;
+  top: 2rem;
+  right: 10px;
+  z-index: 999;
+}
+
+.alert-component .alert-inner {
+  width: 20rem;
+}
+
+.alert-component .alert-inner ul {
+  padding: 0;
+  padding: 5px;
+  list-style-type: none;
+}
+
+.alert-component .alert-inner ul li {
+  margin-bottom: 5px;
+}
+
+.alert-component .alert-inner ul li:last-of-type {
+  margin-bottom: 0;
+}
+
+.alert-component .alert-inner ul li .alert-con {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: -webkit-gradient(linear, left top, right top, from(#0496ff), to(#0378cc));
+  background: linear-gradient(to right, #0496ff, #0378cc);
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.alert-component .alert-inner ul li .alert-con img {
+  width: 3rem;
+  margin-right: 5px;
+  border-radius: 5px;
+}
+
+.alert-component .alert-inner ul li .alert-con i {
+  font-size: 2rem;
+  color: #44b38e;
+}
+
+.alert-component .alert-inner ul li .alert-con .alert-info {
+  font-size: 0.9rem;
+  color: white;
+}
+
+.alert-component .alert-inner ul li .info {
+  background: -webkit-gradient(linear, left top, right top, from(rgba(15, 163, 177, 0.925)), to(#2bd2ae));
+  background: linear-gradient(to right, rgba(15, 163, 177, 0.925), #2bd2ae);
+}
+
+.alert-component .alert-inner ul li .info .alert-info {
+  color: white;
+}
+
+.alert-component .alert-inner ul li .dark {
+  background: -webkit-gradient(linear, left top, right top, from(rgba(94, 84, 142, 0.925)), to(#c19bafee));
+  background: linear-gradient(to right, rgba(94, 84, 142, 0.925), #c19bafee);
+}
+
+.alert-component .alert-inner ul li .dark .alert-info {
+  color: white;
+}
+
+.alert-component .alert-inner ul li .with-dp .dp {
+  display: inline-block;
+  overflow: hidden;
+  border: 3px solid #87c1ff;
+  min-width: 55px;
+  max-width: 55px;
+  min-height: 55px;
+  max-height: 55px;
+  border-radius: 180px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+@media screen and (max-width: 576px) {
+  .alert-component .alert-inner {
+    width: 15rem !important;
+  }
+  .alert-component .alert-inner img {
+    width: 2.5rem !important;
+    margin-right: 0 !important;
+  }
+  .alert-component .alert-inner .alert-info {
+    font-size: 0.8rem !important;
+  }
+}
+
 .title-box {
   border-radius: 10px;
   overflow: hidden;
