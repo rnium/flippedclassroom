@@ -361,16 +361,9 @@ def classroom_performance_api(request, cls_pk):
         return Response(data={'info':'classroom not found'}, status=status.HTTP_404_NOT_FOUND)
     if not ((request.user in classroom.teachers.all()) or (request.user in classroom.students.all())):
         return Response(data={'info':'forbidden'}, status=status.HTTP_403_FORBIDDEN)
+    
     stats_data = get_students_performance_chart_data(classroom)
-    
-    num_stats = len(stats_data['studentData'])
-    has_stats = bool(num_stats)
-    
-    data = {
-        'has_stats':has_stats,
-        'data':stats_data
-    }
-    return Response(data=data, status=status.HTTP_200_OK)
+    return Response(data=stats_data, status=status.HTTP_200_OK)
 
 
 @api_view(['GET'])

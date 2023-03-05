@@ -104,6 +104,23 @@
       {% endif %}
     </div>
   </div>
+  <div class="stats-container title-box">
+    <div class="title">Student Performances</div>
+    <div class="content">
+      <canvas id="class_stats_chart" style="display: none;"></canvas>
+      <div class="loader-con" id="chart-loader">
+        <div class="loader">
+          <div class="lds-hourglass"></div>
+        </div>
+        <div class="info">Loading Statistics</div>
+      </div>
+      <div class="info-con" id="stat-info-con" style="display: none;">
+        <img src="{% static 'classroom/images/ranking/alert.svg' %}" alt="">
+        <div class="info"></div>
+      </div>
+    </div>
+
+  </div>
   {% if request.user in classroom.teachers.all %}
   <div class="postbox" id="id_postbox" href="#">
     <div class="form">
@@ -413,6 +430,7 @@
 {% endblock content %}
 
 {% block script %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 <script>
   const invitation_text = `{{ invitation_text }}`

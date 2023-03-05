@@ -145,14 +145,8 @@ def get_students_performance_chart_data(classroom:Classroom):
                 'raw': ['data', 'data'],
                 'scaled': ['data', 'data'],
             }
-            'studentData': [
-                { 
-                    name: "John", 
-                    points: 80, 
-                    participation: 90, 
-                    regularity: 95 
-                }
-            ]
+            'studentNames': []
+            'participation': []
         }
     }
     """
@@ -160,16 +154,18 @@ def get_students_performance_chart_data(classroom:Classroom):
         'points': {},
         'regularity':{},
     }
+    data['has_stats'] = True
     student_stats_data = get_students_stats_data(classroom)
     if len(student_stats_data) == 0:
+        data['has_stats'] = False
         return data
-    data['studentData'] = student_stats_data
+    data['studentNames'] = [student['full_name'] for student in student_stats_data]
     raw_points = [student['points'] for student in student_stats_data]
     scaled_points = scale_to_percent(raw_points)
     data['points'] = {'raw':raw_points, 'scaled':scaled_points}
-    
+    data['participation'] = [student['participation'] for student in student_stats_data]
     raw_regularity = [student['regularity'] for student in student_stats_data]
-    scaled_regularity = scale_to_percent(raw_points)
+    scaled_regularity = scale_to_percent(raw_regularity)
     data['regularity'] = {'raw':raw_regularity, 'scaled':scaled_regularity}
 
     return data

@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@300;400;500&family=Lato&family=Montserrat:wght@300;400;500&family=Roboto+Mono:wght@400;500&family=Ubuntu&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@300;400;500&family=Lato&family=Montserrat:wght@300;400;500&family=Roboto+Mono:wght@400;500&family=Silkscreen&family=Ubuntu&display=swap");
 @media screen and (min-width: 1200px) {
   body .main .left-col {
     width: 70%;
@@ -82,7 +82,7 @@
   }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 576px) {
   body .main {
     -webkit-box-orient: vertical !important;
     -webkit-box-direction: normal !important;
@@ -123,6 +123,15 @@
     font-size: 0.8rem !important;
   }
   body .main .left-col .classroom-info .share-link i {
+    font-size: 0.9rem !important;
+  }
+  body .main .left-col .stats-container .content {
+    height: 8rem !important;
+  }
+  body .main .left-col .stats-container .content .loader-con img, body .main .left-col .stats-container .content .info-con img {
+    width: 2.5rem !important;
+  }
+  body .main .left-col .stats-container .content .loader-con .info, body .main .left-col .stats-container .content .info-con .info {
     font-size: 0.9rem !important;
   }
   body .main .left-col .postbox .inset-float-textinput textarea {
@@ -997,6 +1006,53 @@ body .main .left-col .postbox .form .form-actions .attachement-container .select
   color: #649292;
 }
 
+body .main .left-col .stats-container {
+  background-color: #264653;
+}
+
+body .main .left-col .stats-container .title {
+  color: hwb(0 100% 0%);
+  text-shadow: none;
+}
+
+body .main .left-col .stats-container .content {
+  height: 14rem;
+}
+
+body .main .left-col .stats-container .content canvas {
+  height: 100%;
+}
+
+body .main .left-col .stats-container .content .loader-con, body .main .left-col .stats-container .content .info-con {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 1rem 0;
+  height: 100%;
+}
+
+body .main .left-col .stats-container .content .loader-con img, body .main .left-col .stats-container .content .info-con img {
+  width: 3rem;
+  margin-bottom: 1rem;
+}
+
+body .main .left-col .stats-container .content .loader-con .info, body .main .left-col .stats-container .content .info-con .info {
+  color: white;
+  font-size: 1.4rem;
+  font-family: 'Silkscreen', cursive;
+}
+
 body .main .left-col .recent-posts {
   margin-top: 2rem;
 }
@@ -1329,8 +1385,12 @@ body .main .left-col .recent-posts .loader {
   margin: 4rem 0;
 }
 
+body .main .left-col .weeklies {
+  background-color: #e5e5e5;
+}
+
 body .main .left-col .weeklies .content {
-  margin: 10px 5px;
+  margin: 10px;
 }
 
 body .main .left-col .weeklies .content ul {
@@ -1345,16 +1405,19 @@ body .main .left-col .weeklies .content ul li {
 
 body .main .left-col .weeklies .content ul li a {
   text-decoration: none;
+  display: block;
+  -webkit-transition: 100ms;
+  transition: 100ms;
+  border-radius: 5px;
 }
 
 body .main .left-col .weeklies .content ul li a .week {
-  background-color: #bee1d5;
+  background: -webkit-gradient(linear, left top, right top, from(#264653), to(#3a7396));
+  background: linear-gradient(to right, #264653, #3a7396);
   border-radius: 5px;
   position: relative;
-  padding: 1.4rem 1rem;
+  padding: 2rem 1rem;
   overflow: hidden;
-  -webkit-box-shadow: 0 0 10px #f0f0f0;
-          box-shadow: 0 0 10px #f0f0f0;
   -webkit-transition: all 300ms;
   transition: all 300ms;
 }
@@ -1377,18 +1440,20 @@ body .main .left-col .weeklies .content ul li a .week .week-no {
 }
 
 body .main .left-col .weeklies .content ul li a .week .week-no .weektext {
-  font-family: 'Gemunu Libre', sans-serif;
-  font-size: 1.7rem;
+  font-family: 'Silkscreen', cursive;
+  font-size: 1.8rem;
   margin-right: 10px;
-  color: #489572;
+  color: wheat;
   font-weight: 500;
-  text-shadow: 0 0 5px #c7e0d3;
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
 }
 
 body .main .left-col .weeklies .content ul li a .week .week-no .num {
   font-size: 1.7rem;
   font-weight: 500;
-  color: #039967;
+  font-family: 'Lato', sans-serif;
+  color: #c4b394;
   -webkit-transition: all 300ms;
   transition: all 300ms;
 }
@@ -1401,23 +1466,14 @@ body .main .left-col .weeklies .content ul li a .week .icon {
 
 body .main .left-col .weeklies .content ul li a .week .icon i {
   font-size: 5rem;
-  color: #1f8372cb;
-  opacity: 0.7;
-  text-shadow: 0 0 5px #a2d4ca;
+  color: #ffd78b;
+  opacity: 0.8;
   -webkit-transition: all 300ms;
   transition: all 300ms;
 }
 
-body .main .left-col .weeklies .content ul li a:hover .week {
-  background-color: #cce7de;
-}
-
-body .main .left-col .weeklies .content ul li a:hover .week .week-no .num {
-  color: #02c26f;
-}
-
-body .main .left-col .weeklies .content ul li a:hover .week .icon i {
-  color: #2ea57d;
+body .main .left-col .weeklies .content ul li a:hover {
+  opacity: 0.95;
 }
 
 body .main .left-col .weeklies .content ul li:last-of-type {
@@ -1531,45 +1587,46 @@ body .main .left-col .weeklies .content .create-weekly .btns {
 body .main .left-col .weeklies .content .create-weekly .btns button {
   -webkit-transition: all 300ms;
   transition: all 300ms;
+  font-family: 'Lato', sans-serif;
 }
 
 body .main .left-col .weeklies .content .create-weekly .btns button.create {
   color: white;
-  background-color: #57c488;
+  background-color: #0e69a5;
   -webkit-box-shadow: 0 0 5px #c4dbd0;
           box-shadow: 0 0 5px #c4dbd0;
   font-weight: 500;
   padding: 0.4rem 1rem;
-  border: 2px solid #57c488;
+  border: 2px solid #0e69a5;
   border-radius: 180px;
   width: 100%;
 }
 
 body .main .left-col .weeklies .content .create-weekly .btns button.create:hover {
-  background-color: #8dc0ab;
-  border-color: #8dc0ab;
+  background-color: #317cae;
+  border-color: #317cae;
   color: white;
 }
 
 body .main .left-col .weeklies .content .create-weekly .btns.double button.create {
   width: 68%;
   margin-right: 2%;
-  background-color: #07a570;
-  border-color: #07a570;
+  background-color: #1084d2;
+  border-color: #1084d2;
 }
 
 body .main .left-col .weeklies .content .create-weekly .btns.double button.cancel {
   width: 30%;
-  color: #8fc5b0;
+  color: #b18fc5;
   background-color: white;
   font-weight: 500;
   padding: 0.4rem 1rem;
-  border: 2px solid #8fc5b0;
+  border: 2px solid #b18fc5;
   border-radius: 180px;
 }
 
 body .main .left-col .weeklies .content .create-weekly .btns.double button.cancel:hover {
-  background-color: #8fc5b0;
+  background-color: #b18fc5;
   color: white;
 }
 
