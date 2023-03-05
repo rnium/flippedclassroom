@@ -70,9 +70,19 @@ def student_regularity_points(user:User, classroom:Classroom):
 
 def scale_to_percent(datalist:list):
     # Scale values to range 0-100
+    if len(datalist) == 0:
+        return 0
     min_val = min(datalist)
     max_val = max(datalist)
-    scaled_values = [(val - min_val) / (max_val - min_val) * 100 for val in datalist]  
+    scaled_values = [] 
+    for val in datalist:
+        numerator = val - min_val
+        denom = max_val - min_val
+        if denom == 0:
+            return 0
+        else:
+            scaled = (numerator/denom) * 100
+            scaled_values.append(scaled)
     return scaled_values
        
 
@@ -156,11 +166,12 @@ def get_students_performance_chart_data(classroom:Classroom):
     }
     data['has_stats'] = True
     student_stats_data = get_students_stats_data(classroom)
-    if len(student_stats_data) == 0:
+    raw_points = [student['points'] for student in student_stats_data]
+    print(raw_points)
+    if not any(raw_points):
         data['has_stats'] = False
         return data
     data['studentNames'] = [student['full_name'] for student in student_stats_data]
-    raw_points = [student['points'] for student in student_stats_data]
     scaled_points = scale_to_percent(raw_points)
     data['points'] = {'raw':raw_points, 'scaled':scaled_points}
     data['participation'] = [student['participation'] for student in student_stats_data]
