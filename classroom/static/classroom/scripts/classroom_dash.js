@@ -318,6 +318,26 @@ function adjust_times() {
     }
 }
 
+// function get_performance_chart_data() {
+//     $.ajax({
+//         type: "get",
+//         url: classroom_performance_api_url,
+//         dataType: "json",
+//         cache: false,
+//         success: function(response) {
+//             if (response['has_stats']) {
+                
+//             } else {
+
+//             }
+//         },
+//         error: function(error, xhr, status) {
+//             console.log(error);
+//         },
+//     });
+// }
+
+
 
 $(document).ready(function(){
     check_existing_input_files()

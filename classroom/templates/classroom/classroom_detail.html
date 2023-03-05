@@ -417,6 +417,7 @@
 <script>
   const invitation_text = `{{ invitation_text }}`
   const classroom_id = "{{ classroom.id }}"
+  const classroom_performance_api_url = "{% url 'classroom:classroom_performance_api' classroom.id %}"
   const post_create_url = "{% url 'classroom:post_to_classroom' classroom.id %}"
   const get_congrats_api_url = "{% url 'classroom:get_congrats_api' classroom.id %}"
   const weekly_create_url = "{% url 'weeklies:create_weekly' classroom.id %}"

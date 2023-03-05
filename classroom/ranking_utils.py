@@ -66,15 +66,25 @@ def student_regularity_points(user:User, classroom:Classroom):
         points = (test_duration-time_taken_sec) / 100
         total_points += points
     return total_points
-            
 
-def get_students_ranking_data(user, classroom:Classroom):
+
+def scale_to_percent(datalist:list):
+    # Scale values to range 0-100
+    min_val = min(datalist)
+    max_val = max(datalist)
+    scaled_values = [(val - min_val) / (max_val - min_val) * 100 for val in datalist]  
+    return scaled_values
+       
+
+def get_students_ranking_data(classroom:Classroom, user=None):
     students = classroom.students.all()
     data_raw = []
     for s in students:
         unit_data = {}
         unit_data['uid'] = s.id
-        unit_data['current_user'] = (user==s)
+        if user != None:
+            unit_data['current_user'] = (user==s)
+            
         unit_data['avatar_url'] = s.account.avatar_url
         unit_data['full_name'] = s.account.user_full_name
         unit_data['registration'] = s.account.institutional_id
@@ -106,6 +116,66 @@ def get_students_ranking_data(user, classroom:Classroom):
         
     return {'ranked_students':sorted_ranks, 'toppers':toppers_data, 'unranked_students':unranked_students}
 
+
+def get_students_stats_data(classroom):
+    students = classroom.students.all()
+    data_raw = []
+    for s in students:
+        unit_data = {}
+        unit_data['full_name'] = s.account.user_full_name
+        unit_data['registration'] = s.account.institutional_id
+        unit_data['points'] = student_classroom_points(s, classroom)
+        unit_data['participation'] = student_participation_percetage(s, classroom)
+        unit_data['regularity'] = student_regularity_points(s, classroom)
+        data_raw.append(unit_data)
+    sorted_students = sorted(data_raw, key=lambda x: (x['registration']), reverse=False)
+    return sorted_students
+    
+
+def get_students_performance_chart_data(classroom:Classroom):
+    """_summary_
+    output format will be;
+    {
+        "data": {
+            'points': {
+                'raw': ['data', 'data'],
+                'scaled': ['data', 'data'],
+            },
+            'regularity': {
+                'raw': ['data', 'data'],
+                'scaled': ['data', 'data'],
+            }
+            'studentData': [
+                { 
+                    name: "John", 
+                    points: 80, 
+                    participation: 90, 
+                    regularity: 95 
+                }
+            ]
+        }
+    }
+    """
+    data = {
+        'points': {},
+        'regularity':{},
+    }
+    student_stats_data = get_students_stats_data(classroom)
+    if len(student_stats_data) == 0:
+        return data
+    data['studentData'] = student_stats_data
+    raw_points = [student['points'] for student in student_stats_data]
+    scaled_points = scale_to_percent(raw_points)
+    data['points'] = {'raw':raw_points, 'scaled':scaled_points}
+    
+    raw_regularity = [student['regularity'] for student in student_stats_data]
+    scaled_regularity = scale_to_percent(raw_points)
+    data['regularity'] = {'raw':raw_regularity, 'scaled':scaled_regularity}
+
+    return data
+    
+    
+    
     
         
         

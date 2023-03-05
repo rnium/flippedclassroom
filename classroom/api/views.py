@@ -13,7 +13,7 @@ from django.utils import timezone
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.crypto import get_random_string
 from classroom.models import ClassroomPost, PostAttachment, Classroom, Comment, AssessmentMeta, Assessment, Congratulation
-from classroom.ranking_utils import get_students_ranking_data
+from classroom.ranking_utils import get_students_ranking_data, get_students_performance_chart_data
 from .serializer import PostSerializer, ClassroomSerializer
 from .permission import IsUserPartOfClassroom, IsUserTeacher
 from .pagination import PostsPagination
@@ -342,13 +342,33 @@ def get_ranking_api(request, cls_pk):
         return Response(data={'info':'classroom not found'}, status=status.HTTP_404_NOT_FOUND)
     if not ((request.user in classroom.teachers.all()) or (request.user in classroom.students.all())):
         return Response(data={'info':'forbidden'}, status=status.HTTP_403_FORBIDDEN)
-    rank_data = get_students_ranking_data(request.user, classroom)
+    rank_data = get_students_ranking_data(classroom, request.user)
     num_rankig = len(rank_data['ranked_students'])
     has_ranking = bool(num_rankig)
     data = {
         'num_rankig':num_rankig,
         'has_ranking':has_ranking,
         'data':rank_data
+    }
+    return Response(data=data, status=status.HTTP_200_OK)
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def classroom_performance_api(request, cls_pk):
+    try:
+        classroom = get_object_or_404(Classroom, pk=cls_pk)
+    except Exception as e:
+        return Response(data={'info':'classroom not found'}, status=status.HTTP_404_NOT_FOUND)
+    if not ((request.user in classroom.teachers.all()) or (request.user in classroom.students.all())):
+        return Response(data={'info':'forbidden'}, status=status.HTTP_403_FORBIDDEN)
+    stats_data = get_students_performance_chart_data(classroom)
+    
+    num_stats = len(stats_data['studentData'])
+    has_stats = bool(num_stats)
+    
+    data = {
+        'has_stats':has_stats,
+        'data':stats_data
     }
     return Response(data=data, status=status.HTTP_200_OK)
 
