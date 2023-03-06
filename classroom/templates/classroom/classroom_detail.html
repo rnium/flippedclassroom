@@ -250,7 +250,7 @@
             <div class="assignment due list-item shadow-sm">
               <img src="{% if on_task.is_group_task %}{% static 'classroom/images/grp.png' %}{% else %}{% static 'classroom/images/indiv.png' %}{% endif %}">
               <div class="info">
-                <div class="label-title">{{on_task.title}}<div class="w-info-con"><span class="week-badge shadow-sm"><span class="w-num">{{on_task.weeknum_str}}</span><i class='{{on_task.section_icon_css}}'></i></span></div></div>
+                <div class="label-title text-center">{{on_task.title}}<div class="w-info-con"><span class="week-badge shadow-sm"><span class="w-num">{{on_task.weeknum_str}}</span><i class='{{on_task.section_icon_css}}'></i></span></div></div>
                 <div class="points shadow mt-2 mb-1"><span class="num-points">{{on_task.marks}}</span><span class="label">Points</span></div>
                 <div class="deadline"><span class="sub-title">Ending in:</span><span class="time" id="taskid-{{on_task.id}}">{{on_task.deadline|date:"c"}}</span></div>
               </div>
@@ -396,7 +396,7 @@
         <li>
           <a href="{% url 'classroom:tasks:view_task' task.classroom.id task.id %}">
             <div class="task-item shadow">
-              <img src="{% static 'classroom/images/grp.png' %}">
+              <img src="{% if task.is_group_task %}{% static 'classroom/images/grp.png' %}{% else %}{% static 'classroom/images/indiv.png' %}{% endif %}">
               <div class="info">
                 <div class="label-title">{{task.title}} <div class="w-info-con"><span class="week-badge shadow-sm"><span class="w-num">{{task.weeknum_str}}</span><i class='{{task.section_icon_css}}'></i></span></div> </div>
                 <div class="complete-time mt-1">

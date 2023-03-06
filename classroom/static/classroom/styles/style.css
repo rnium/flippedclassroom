@@ -1962,7 +1962,6 @@ body .main .right-col .live-tests .tasks ul li a .list-item .info .deadline .tim
 
 body .main .right-col .live-tests .tasks ul li a .list-item img, body .main .right-col .live-tasks .tasks ul li a .list-item img {
   width: 2.5rem;
-  margin-right: 5px;
 }
 
 body .main .right-col .live-tests .tasks ul li a .list-item .info, body .main .right-col .live-tasks .tasks ul li a .list-item .info {
@@ -2047,7 +2046,8 @@ body .main .right-col .live-tests .tasks ul li a .assignment.due, body .main .ri
 }
 
 body .main .right-col .live-tests .tasks ul li a .assignment.due img, body .main .right-col .live-tasks .tasks ul li a .assignment.due img {
-  width: 70px;
+  width: 60px;
+  margin: 0;
 }
 
 body .main .right-col .live-tests .tasks ul li a .assignment.due .info, body .main .right-col .live-tasks .tasks ul li a .assignment.due .info {
@@ -2115,12 +2115,12 @@ body .main .right-col .live-tests .tasks ul li a .assignment.due:hover, body .ma
 }
 
 body .main .right-col .weekly-tasks, body .main .right-col .weekly-tests {
-  background-color: #e7ecef;
+  background-color: #e5e5e5;
 }
 
 body .main .right-col .weekly-tasks .title, body .main .right-col .weekly-tests .title {
   background-color: none;
-  color: #7492a4;
+  color: #276363;
 }
 
 body .main .right-col .weekly-tasks .content, body .main .right-col .weekly-tests .content {
