@@ -347,39 +347,45 @@
     
   </div>
   {% else %}
+  {% get_unchecked_tests classroom as pending_tests %}
   <div class="pendings-con mb-4">
     <div class="pendings-title">
       <img src="{% static 'classroom/images/hourglass.png' %}" alt="">
       <div class="title-text">Pending Checks</div>
     </div>
+    {% if pending_tests  %}
     <div class="tests mt-2" >
       <ul>
+        {% for processed_test in pending_tests %}
         <li>
           <a href="#">
             <div class="test-item shadow">
               <img src="{% static 'classroom/images/test.svg' %}">
               <div class="info">
-                <div class="label-title">sample test title <div class="w-info-con"><span class="week-badge shadow-sm"><span class="w-num">week 1</span><i class='bx bxs-left-arrow'></i></span></div> </div>
+                <div class="label-title">{{processed_test.test.title}} <div class="w-info-con"><span class="week-badge shadow-sm"><span class="w-num">{{processed_test.test.weeknum_str}}</span><i class='{{processed_test.test.section_icon_css}}'></i></span></div> </div>
                 <div class="complete-time mt-1">
-                  <span class="sub-title">Started at:</span><span class="time">7:00PM, 17 Oct 2022</span>
+                  <span class="sub-title">Started at:</span><span class="time">{{processed_test.test.schedule|date:'c'}}</span>
+                  {% if processed_test.test.is_ongoing %}
                   <span class="ongoing-badge">
                     <span class="inner">
                       <span class="indicator"></span><span class="text">Ongoing</span>
                     </span>
                   </span>
+                  {% endif %}
                 </div>
                 <div class="score-con">
                   <div class="score-inner">
-                    <div class="check-pending"><img src="{% static 'classroom/images/excl.svg' %}" alt=""><div class="info">7/10 sheets uncheked</div></div>
+                    <div class="check-pending"><img src="{% static 'classroom/images/excl.svg' %}" alt=""><div class="info">{{processed_test.pending_sheets}}/{{processed_test.total_sheets}} sheets uncheked</div></div>
                   </div>
                 </div>
               </div>
             </div>
           </a>
         </li>
-        
+        {% endfor %}
       </ul>
     </div>
+    {% endif %}
     <div class="tasks">
       <ul>
         <li>
