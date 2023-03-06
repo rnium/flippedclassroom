@@ -167,7 +167,6 @@ def get_students_performance_chart_data(classroom:Classroom):
     data['has_stats'] = True
     student_stats_data = get_students_stats_data(classroom)
     raw_points = [student['points'] for student in student_stats_data]
-    print(raw_points)
     if not any(raw_points):
         data['has_stats'] = False
         return data

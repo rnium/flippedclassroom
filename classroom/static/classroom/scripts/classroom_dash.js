@@ -414,7 +414,6 @@ function render_performance_chart(data, raw_points, raw_regularity) {
                   label: function (context) {
                     let label = context.dataset.label || '';
                      // get the raw value from the corresponding raw_data array
-                     console.log(context);
                     if (label === 'Points') {
                         let pointValue = convertFloat(raw_points[context.dataIndex]);
                         return `Points: ${pointValue}`;
@@ -422,7 +421,7 @@ function render_performance_chart(data, raw_points, raw_regularity) {
                         let regularityValue = convertFloat(raw_regularity[context.dataIndex]);
                         return `Regularity: ${regularityValue}`;
                       } else {
-                        return label + ': ' + convertFloat(context.raw);
+                        return label + ': ' + convertFloat(context.raw) + "%";
                       }
                   }
                 }
