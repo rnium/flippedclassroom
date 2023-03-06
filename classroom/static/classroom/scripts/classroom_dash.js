@@ -318,19 +318,19 @@ function adjust_times() {
     }
 }
 
-function convertFloat(number) {
-    if (number === null) {
-        return 0;
+function convertFloat(num) {
+    if (num === null || isNaN(num)) {
+        return '--';
     }
-    if (Number.isInteger(number)) { // Check if the number is already an integer
-      return number;
+    if (Number.isInteger(num)) { // Check if the number is already an integer
+      return num;
     } else {
-      const decimal = number.toFixed(1); // Get the number rounded to one decimal place
+      const decimal = num.toFixed(1); // Get the number rounded to one decimal place
       const lastDigit = decimal.charAt(decimal.length - 1); // Get the last character of the decimal
       if (lastDigit === "0") {
         return parseInt(decimal); // If the last digit is 0, return the integer value
       } else {
-        return number.toFixed(2); // Otherwise, return the original floating point number
+        return num.toFixed(2); // Otherwise, return the original floating point number
       }
     }
   }
@@ -414,14 +414,15 @@ function render_performance_chart(data, raw_points, raw_regularity) {
                   label: function (context) {
                     let label = context.dataset.label || '';
                      // get the raw value from the corresponding raw_data array
+                     console.log(context);
                     if (label === 'Points') {
                         let pointValue = convertFloat(raw_points[context.dataIndex]);
-                        return `Pointsdf: ${pointValue}`;
+                        return `Points: ${pointValue}`;
                       } else if (label === 'Regularity') {
                         let regularityValue = convertFloat(raw_regularity[context.dataIndex]);
                         return `Regularity: ${regularityValue}`;
                       } else {
-                        return label + ': ' + convertFloat(context.formattedValue);
+                        return label + ': ' + convertFloat(context.raw);
                       }
                   }
                 }

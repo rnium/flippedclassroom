@@ -174,7 +174,7 @@ def get_students_performance_chart_data(classroom:Classroom):
     data['studentNames'] = [student['full_name'] for student in student_stats_data]
     scaled_points = scale_to_percent(raw_points)
     data['points'] = {'raw':raw_points, 'scaled':scaled_points}
-    data['participation'] = [student['participation'] for student in student_stats_data]
+    data['participation'] = [student['participation'] if student['participation'] != None else 0  for student in student_stats_data]
     raw_regularity = [student['regularity'] for student in student_stats_data]
     scaled_regularity = scale_to_percent(raw_regularity)
     data['regularity'] = {'raw':raw_regularity, 'scaled':scaled_regularity}
