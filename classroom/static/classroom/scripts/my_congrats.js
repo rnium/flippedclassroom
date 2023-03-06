@@ -97,18 +97,14 @@ function showConfetti2(counts=null) {
 }
 
 function show_full_confetti_sequence(count_congrats) {
-    setTimeout(()=>{
-        showConfetti()
+    for (let i=0; i<4; i++){
         setTimeout(()=>{
             showConfetti()
-            setTimeout(()=>{
-                showConfetti()
-                setTimeout(()=>{
-                    showConfetti2(count_congrats)
-                }, 1200)
-            }, 200)
-        }, 200)
-    }, 300)
+        }, 300*i)
+    }
+    setTimeout(()=>{
+        showConfetti2(count_congrats)
+    }, 1500)
 }
 
 $("#tst-conf").on('click', ()=>{
@@ -120,11 +116,15 @@ $("#tst-conf").on('click', ()=>{
             setTimeout(()=>{
                 showConfetti()
                 setTimeout(()=>{
-                    showConfetti2(congrats_count)
-                }, 1200)
+                    showConfetti()
+                    setTimeout(()=>{
+                        showConfetti2(congrats_count)
+                    }, 1200)
+                })
             }, 200)
         }, 200)
     }, 300)
+
 })
 
 function request_and_process_congrats() {
@@ -141,7 +141,7 @@ function request_and_process_congrats() {
                         let sender_fullname = congrats[i]['sender_name']
                         let sender_avatar = congrats[i]['sender_avatar']
                         congratsNotification(sender_fullname, sender_avatar)
-                    }, i * 500);
+                    }, i * 1000);
                 }
                 show_full_confetti_sequence(response['num_congrats'])
             }
