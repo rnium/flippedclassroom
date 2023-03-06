@@ -325,7 +325,9 @@ def congratulate_user(request, pk):
     last_time = timezone.now() - min_time_gap
     congrats_qs = Congratulation.objects.filter(from_user=request.user, to_user=to_user, added__gt=last_time)
     if len(congrats_qs) > 0:
-        return Response(data={'info': f"You've already congratulated {to_user.account.user_full_name} for his rank in this week"}, status=status.HTTP_400_BAD_REQUEST)
+        next_time = (congrats_qs[0].added + min_time_gap).isoformat()
+        
+        return Response(data={'next_time':next_time, 'info': f"You've already congratulated {to_user.account.user_full_name} for his rank in this week"}, status=status.HTTP_400_BAD_REQUEST)
     if not ((request.user in classroom.teachers.all()) or (request.user in classroom.students.all()) or (to_user in classroom.students.all())):
         return Response(data={'info': "Forbidden"}, status=status.HTTP_403_FORBIDDEN)
     congrats = Congratulation.objects.create(from_user=request.user, to_user=to_user)

@@ -75,7 +75,10 @@ function congratulate_user(uid, btn){
             notifyUser(notification_text, 'info', 5000, alert_icon_confetti)
         },
         error: function(xhr, error, status) {
-            notifyUser(xhr['responseJSON']['info'], 'dark', 5000, alert_icon_alert)
+            let date_obj = new Date(xhr['responseJSON']['next_time'])
+            let next_time = date_obj.toLocaleString()
+            let notification_text = `${xhr['responseJSON']['info']}. Please try again after ${next_time}`
+            notifyUser(notification_text, 'dark', 5000, alert_icon_alert)
         },
         complete: function() {
             $(btn).attr("disabled", false)
