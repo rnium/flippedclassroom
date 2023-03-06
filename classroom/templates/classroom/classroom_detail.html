@@ -349,6 +349,8 @@
   {% else %}
   {% get_unchecked_tests classroom as pending_tests %}
   {% get_unchecked_tasks classroom as pending_tasks %}
+  {% comment %} pending items {% endcomment %}
+  {% if pending_tests or pending_tasks %}
   <div class="pendings-con mb-4">
     <div class="pendings-title">
       <img src="{% static 'classroom/images/hourglass.png' %}" alt="">
@@ -426,6 +428,7 @@
       <div class="info mt-3 text-muted">No activities</div>
     </div>
   </div>
+  {% endif %}
   {% endif %}
 
   <div class="weekly-tests title-box">
