@@ -84,7 +84,7 @@ def get_unchecked_tasks(classroom):
         if num_pending_scores == 0:
             continue
         task.total_works = works.count()
-        task.pending_works = works.count()
+        task.pending_works = num_pending_scores
         pending_tasks.append(task)
     
     return pending_tasks
