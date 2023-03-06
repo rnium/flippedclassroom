@@ -1,5 +1,5 @@
 let notification_count = 1
-function congratsNotification(sender_name, dp_url, timeout=2000) {
+function congratsNotification(sender_name, dp_url, timeout=10000) {
     let alertid = `notif-${notification_count}`
     notification_count += 1
     let component = `<li id="${alertid}" style="display: none;">
@@ -9,7 +9,6 @@ function congratsNotification(sender_name, dp_url, timeout=2000) {
                         </div>
                     </li>`
     $("#notification-alert-list").append(component)
-    console.log($("#alert-component-con").css("display"));
     if ($("#alert-component-con").css("display") == 'none') {
         $("#alert-component-con").show()
     }

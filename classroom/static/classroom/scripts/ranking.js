@@ -1,5 +1,5 @@
 function convertFloat(number) {
-    if (number === null) {
+    if (number === null || isNaN(number)) {
         return 0;
     }
     if (Number.isInteger(number)) { // Check if the number is already an integer
@@ -29,10 +29,18 @@ function notifyUser(text, alert_class='info', timeout=5000, img_url=null) {
                         </div>
                     </li>`
     $("#notification-alert-list").append(component)
+    if ($("#alert-component-con").css("display") == 'none') {
+        $("#alert-component-con").show()
+    }
     $(`#${alertid}`).show(200, ()=>{
         setTimeout(()=>{
             $(`#${alertid}`).hide(200, ()=>{
                 $(`#${alertid}`).remove()
+                let count = $("#notification-alert-list li").length;
+                console.log(count);
+                if (count == 0) {
+                    $("#alert-component-con").hide()
+                }
             })
         }, timeout)
     })
