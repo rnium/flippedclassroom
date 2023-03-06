@@ -59,20 +59,35 @@ def get_unchecked_tests(classroom):
     tests_qs = WeeklyTest.objects.filter(weekly__classroom=classroom).order_by("created")
     pending_tests = []
     for test in tests_qs:
-        unit_data = {}
         answersheets = test.submitted_answer_sheets
-        
         sheet_scores = [sheet.total_score for sheet in answersheets]
         pending_scores = [score for score in sheet_scores if score is None]
         num_pending_scores = len(pending_scores)
         if num_pending_scores == 0:
             continue
-        unit_data['test'] = test
-        unit_data['total_sheets'] = answersheets.count()
-        unit_data['pending_sheets'] = num_pending_scores
-        pending_tests.append(unit_data)
+        test.total_sheets = answersheets.count()
+        test.pending_sheets = num_pending_scores
+        pending_tests.append(test)
     
     return pending_tests
+            
+@register.simple_tag
+def get_unchecked_tasks(classroom):
+    tasks_qs = Task.objects.filter(classroom=classroom).order_by("addded")
+    pending_tasks = []
+    for task in tasks_qs:
+        works = Work.objects.filter(is_submitted=True, task=task)
+        
+        work_scores = [work.score for work in works]
+        pending_scores = [score for score in work_scores if score is None]
+        num_pending_scores = len(pending_scores)
+        if num_pending_scores == 0:
+            continue
+        task.total_works = works.count()
+        task.pending_works = works.count()
+        pending_tasks.append(task)
+    
+    return pending_tasks
             
         
         

@@ -24,8 +24,8 @@ urlpatterns = [
     path('', include('classroom.urls')),
     # weeklies
     path('weeklies/', include('weeklies.urls')),
-    path('test/weeklies/', include('weekly_test.urls')),
-    path('test/api/weeklies/', include('weekly_test.api.urls')),
+    path('weeklies/test/', include('weekly_test.urls')),
+    path('weeklies/test/api/', include('weekly_test.api.urls')),
     # auth
     path('account/', include('accounts.urls')),
 ]

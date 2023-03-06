@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils import timezone
 from os.path import join, basename
 from pathlib import Path
 import uuid
@@ -31,7 +32,13 @@ class Task(models.Model):
 
     def __str__(self):
         return f"{self.classroom.name} - Task"
-
+    @property
+    def is_ongoing(self):
+        if self.deadline >= timezone.now():
+            return True
+        else:
+            return False
+        
     @property
     def is_group_task(self):
         return bool(self.group_set.count())

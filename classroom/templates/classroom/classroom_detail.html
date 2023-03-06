@@ -348,6 +348,7 @@
   </div>
   {% else %}
   {% get_unchecked_tests classroom as pending_tests %}
+  {% get_unchecked_tasks classroom as pending_tasks %}
   <div class="pendings-con mb-4">
     <div class="pendings-title">
       <img src="{% static 'classroom/images/hourglass.png' %}" alt="">
@@ -356,16 +357,16 @@
     {% if pending_tests  %}
     <div class="tests mt-2" >
       <ul>
-        {% for processed_test in pending_tests %}
+        {% for test in pending_tests %}
         <li>
-          <a href="#">
+          <a href="{% url 'weekly_test:view_test' test.id %}">
             <div class="test-item shadow">
               <img src="{% static 'classroom/images/test.svg' %}">
               <div class="info">
-                <div class="label-title">{{processed_test.test.title}} <div class="w-info-con"><span class="week-badge shadow-sm"><span class="w-num">{{processed_test.test.weeknum_str}}</span><i class='{{processed_test.test.section_icon_css}}'></i></span></div> </div>
+                <div class="label-title">{{test.title}} <div class="w-info-con"><span class="week-badge shadow-sm"><span class="w-num">{{test.weeknum_str}}</span><i class='{{test.section_icon_css}}'></i></span></div> </div>
                 <div class="complete-time mt-1">
-                  <span class="sub-title">Started at:</span><span class="time">{{processed_test.test.schedule|date:'c'}}</span>
-                  {% if processed_test.test.is_ongoing %}
+                  <span class="sub-title">Started at:</span><span class="time" id="pending-test-{{test.id}}">{{test.schedule|date:'c'}}</span>
+                  {% if test.is_ongoing %}
                   <span class="ongoing-badge">
                     <span class="inner">
                       <span class="indicator"></span><span class="text">Ongoing</span>
@@ -375,7 +376,7 @@
                 </div>
                 <div class="score-con">
                   <div class="score-inner">
-                    <div class="check-pending"><img src="{% static 'classroom/images/excl.svg' %}" alt=""><div class="info">{{processed_test.pending_sheets}}/{{processed_test.total_sheets}} sheets uncheked</div></div>
+                    <div class="check-pending"><img src="{% static 'classroom/images/excl.svg' %}" alt=""><div class="info">{{test.pending_sheets}} of {{test.total_sheets}} sheets uncheked</div></div>
                   </div>
                 </div>
               </div>
@@ -386,33 +387,40 @@
       </ul>
     </div>
     {% endif %}
+    {% if pending_tasks %}
     <div class="tasks">
       <ul>
+        {% for task in pending_tasks %}
         <li>
-          <a href="#">
+          <a href="{% url 'classroom:tasks:view_task' task.classroom.id task.id %}">
             <div class="task-item shadow">
               <img src="{% static 'classroom/images/grp.png' %}">
               <div class="info">
-                <div class="label-title">sample test title <div class="w-info-con"><span class="week-badge shadow-sm"><span class="w-num">week 1</span><i class='bx bxs-left-arrow'></i></span></div> </div>
-                <div class="complete-time">
-                  <span class="sub-title">Assigned on:</span><span class="time">7:00PM, 17 Oct 2022</span>
+                <div class="label-title">{{task.title}} <div class="w-info-con"><span class="week-badge shadow-sm"><span class="w-num">{{task.weeknum_str}}</span><i class='{{task.section_icon_css}}'></i></span></div> </div>
+                <div class="complete-time mt-1">
+                  <span class="sub-title">Assigned on:</span><span class="time" id="pending-task-{{task.id}}">{{task.addded|date:'c'}}</span>
+                  {% if task.is_ongoing %}
                   <span class="ongoing-badge">
                     <span class="inner">
                       <span class="indicator"></span><span class="text">Ongoing</span>
                     </span>
                   </span>
+                  {% endif %}
                 </div>
                 <div class="score-con">
                   <div class="score-inner">
-                    <div class="check-pending"><img src="{% static 'classroom/images/excl.svg' %}" alt=""><div class="info">7/10 works uncheked</div></div>
+                    <div class="check-pending"><img src="{% static 'classroom/images/excl.svg' %}" alt=""><div class="info">{{task.pending_works}} of {{task.total_works}} works uncheked</div></div>
                   </div>
                 </div>
               </div>
             </div>
           </a>
         </li>
+        {% endfor %}
       </ul>
     </div>
+    {% endif %}
+    
     <div class="no-content mt-2 shadow rounded" style="display: none;">
       <img src="/images/test_icons/panda.png" alt="">
       <div class="info mt-3 text-muted">No activities</div>
