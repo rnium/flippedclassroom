@@ -248,58 +248,61 @@
   body .main .right-col .weekly-tasks .content ul li .list-item .info .label-title .w-info-con .week-badge i, body .main .right-col .weekly-tests .content ul li .list-item .info .label-title .w-info-con .week-badge i {
     font-size: 0.7rem !important;
   }
-  body .main .right-col .student-activity {
+  body .main .right-col .student-activity, body .main .right-col .pendings-con {
     padding: 1rem 5px 8px !important;
   }
-  body .main .right-col .student-activity .title .title-text {
+  body .main .right-col .student-activity .title .title-text, body .main .right-col .pendings-con .title .title-text {
     font-size: 0.9rem !important;
   }
-  body .main .right-col .student-activity .tests ul li a .test-item, body .main .right-col .student-activity .tests ul li a .task-item, body .main .right-col .student-activity .tasks ul li a .test-item, body .main .right-col .student-activity .tasks ul li a .task-item {
+  body .main .right-col .student-activity .tests ul li a .test-item, body .main .right-col .student-activity .tests ul li a .task-item, body .main .right-col .student-activity .tasks ul li a .test-item, body .main .right-col .student-activity .tasks ul li a .task-item, body .main .right-col .pendings-con .tests ul li a .test-item, body .main .right-col .pendings-con .tests ul li a .task-item, body .main .right-col .pendings-con .tasks ul li a .test-item, body .main .right-col .pendings-con .tasks ul li a .task-item {
     padding: 10px 5px;
   }
-  body .main .right-col .student-activity .tests ul li a .test-item img, body .main .right-col .student-activity .tests ul li a .task-item img, body .main .right-col .student-activity .tasks ul li a .test-item img, body .main .right-col .student-activity .tasks ul li a .task-item img {
+  body .main .right-col .student-activity .tests ul li a .test-item img, body .main .right-col .student-activity .tests ul li a .task-item img, body .main .right-col .student-activity .tasks ul li a .test-item img, body .main .right-col .student-activity .tasks ul li a .task-item img, body .main .right-col .pendings-con .tests ul li a .test-item img, body .main .right-col .pendings-con .tests ul li a .task-item img, body .main .right-col .pendings-con .tasks ul li a .test-item img, body .main .right-col .pendings-con .tasks ul li a .task-item img {
     width: 40px !important;
   }
-  body .main .right-col .student-activity .tests ul li a .test-item .info, body .main .right-col .student-activity .tests ul li a .task-item .info, body .main .right-col .student-activity .tasks ul li a .test-item .info, body .main .right-col .student-activity .tasks ul li a .task-item .info {
+  body .main .right-col .student-activity .tests ul li a .test-item .info, body .main .right-col .student-activity .tests ul li a .task-item .info, body .main .right-col .student-activity .tasks ul li a .test-item .info, body .main .right-col .student-activity .tasks ul li a .task-item .info, body .main .right-col .pendings-con .tests ul li a .test-item .info, body .main .right-col .pendings-con .tests ul li a .task-item .info, body .main .right-col .pendings-con .tasks ul li a .test-item .info, body .main .right-col .pendings-con .tasks ul li a .task-item .info {
     margin-left: 10px;
   }
-  body .main .right-col .student-activity .tests ul li a .test-item .info .label-title, body .main .right-col .student-activity .tests ul li a .task-item .info .label-title, body .main .right-col .student-activity .tasks ul li a .test-item .info .label-title, body .main .right-col .student-activity .tasks ul li a .task-item .info .label-title {
+  body .main .right-col .student-activity .tests ul li a .test-item .info .label-title, body .main .right-col .student-activity .tests ul li a .task-item .info .label-title, body .main .right-col .student-activity .tasks ul li a .test-item .info .label-title, body .main .right-col .student-activity .tasks ul li a .task-item .info .label-title, body .main .right-col .pendings-con .tests ul li a .test-item .info .label-title, body .main .right-col .pendings-con .tests ul li a .task-item .info .label-title, body .main .right-col .pendings-con .tasks ul li a .test-item .info .label-title, body .main .right-col .pendings-con .tasks ul li a .task-item .info .label-title {
     font-size: 0.9rem !important;
   }
-  body .main .right-col .student-activity .tests ul li a .test-item .info .score-con, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con {
+  body .main .right-col .student-activity .tests ul li a .test-item .info .score-con, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con, body .main .right-col .pendings-con .tests ul li a .test-item .info .score-con, body .main .right-col .pendings-con .tests ul li a .task-item .info .score-con, body .main .right-col .pendings-con .tasks ul li a .test-item .info .score-con, body .main .right-col .pendings-con .tasks ul li a .task-item .info .score-con {
     display: inline-block;
   }
-  body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .label, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .label, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .label, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .label {
+  body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner img, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner img, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner img, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner img, body .main .right-col .pendings-con .tests ul li a .test-item .info .score-con .score-inner img, body .main .right-col .pendings-con .tests ul li a .task-item .info .score-con .score-inner img, body .main .right-col .pendings-con .tasks ul li a .test-item .info .score-con .score-inner img, body .main .right-col .pendings-con .tasks ul li a .task-item .info .score-con .score-inner img {
+    width: 1.2rem !important;
+  }
+  body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .label, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .label, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .label, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .label, body .main .right-col .pendings-con .tests ul li a .test-item .info .score-con .score-inner .label, body .main .right-col .pendings-con .tests ul li a .task-item .info .score-con .score-inner .label, body .main .right-col .pendings-con .tasks ul li a .test-item .info .score-con .score-inner .label, body .main .right-col .pendings-con .tasks ul li a .task-item .info .score-con .score-inner .label {
     font-size: 0.9rem !important;
   }
-  body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .points-con, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .points-con, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .points-con, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .points-con {
+  body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .points-con, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .points-con, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .points-con, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .points-con, body .main .right-col .pendings-con .tests ul li a .test-item .info .score-con .score-inner .points-con, body .main .right-col .pendings-con .tests ul li a .task-item .info .score-con .score-inner .points-con, body .main .right-col .pendings-con .tasks ul li a .test-item .info .score-con .score-inner .points-con, body .main .right-col .pendings-con .tasks ul li a .task-item .info .score-con .score-inner .points-con {
     margin-left: 10px;
     font-size: 0.7rem !important;
   }
-  body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .points-con span, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .points-con span, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .points-con span, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .points-con span {
+  body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .points-con span, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .points-con span, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .points-con span, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .points-con span, body .main .right-col .pendings-con .tests ul li a .test-item .info .score-con .score-inner .points-con span, body .main .right-col .pendings-con .tests ul li a .task-item .info .score-con .score-inner .points-con span, body .main .right-col .pendings-con .tasks ul li a .test-item .info .score-con .score-inner .points-con span, body .main .right-col .pendings-con .tasks ul li a .task-item .info .score-con .score-inner .points-con span {
     font-size: 0.7rem;
   }
-  body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .test-ongoing, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .test-ongoing, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .test-ongoing, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .test-ongoing {
+  body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .test-ongoing, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .test-ongoing, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .test-ongoing, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .test-ongoing, body .main .right-col .pendings-con .tests ul li a .test-item .info .score-con .score-inner .test-ongoing, body .main .right-col .pendings-con .tests ul li a .task-item .info .score-con .score-inner .test-ongoing, body .main .right-col .pendings-con .tasks ul li a .test-item .info .score-con .score-inner .test-ongoing, body .main .right-col .pendings-con .tasks ul li a .task-item .info .score-con .score-inner .test-ongoing {
     padding: 1px 10px;
     margin-left: 10px;
   }
-  body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .test-ongoing i, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .test-ongoing i, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .test-ongoing i, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .test-ongoing i {
+  body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .test-ongoing i, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .test-ongoing i, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .test-ongoing i, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .test-ongoing i, body .main .right-col .pendings-con .tests ul li a .test-item .info .score-con .score-inner .test-ongoing i, body .main .right-col .pendings-con .tests ul li a .task-item .info .score-con .score-inner .test-ongoing i, body .main .right-col .pendings-con .tasks ul li a .test-item .info .score-con .score-inner .test-ongoing i, body .main .right-col .pendings-con .tasks ul li a .task-item .info .score-con .score-inner .test-ongoing i {
     font-size: 1.2rem;
     color: #ffe5ec;
   }
-  body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .test-ongoing .info, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .test-ongoing .info, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .test-ongoing .info, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .test-ongoing .info {
+  body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .test-ongoing .info, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .test-ongoing .info, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .test-ongoing .info, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .test-ongoing .info, body .main .right-col .pendings-con .tests ul li a .test-item .info .score-con .score-inner .test-ongoing .info, body .main .right-col .pendings-con .tests ul li a .task-item .info .score-con .score-inner .test-ongoing .info, body .main .right-col .pendings-con .tasks ul li a .test-item .info .score-con .score-inner .test-ongoing .info, body .main .right-col .pendings-con .tasks ul li a .task-item .info .score-con .score-inner .test-ongoing .info {
     font-family: 'Gemunu Libre', sans-serif;
     font-size: 0.9rem;
     margin-left: 5px;
     color: #ffe5ec;
   }
-  body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .test-pending, body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .task-pending, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .test-pending, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .task-pending, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .test-pending, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .task-pending, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .test-pending, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .task-pending {
+  body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .test-pending, body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .task-pending, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .test-pending, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .task-pending, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .test-pending, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .task-pending, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .test-pending, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .task-pending, body .main .right-col .pendings-con .tests ul li a .test-item .info .score-con .score-inner .test-pending, body .main .right-col .pendings-con .tests ul li a .test-item .info .score-con .score-inner .task-pending, body .main .right-col .pendings-con .tests ul li a .task-item .info .score-con .score-inner .test-pending, body .main .right-col .pendings-con .tests ul li a .task-item .info .score-con .score-inner .task-pending, body .main .right-col .pendings-con .tasks ul li a .test-item .info .score-con .score-inner .test-pending, body .main .right-col .pendings-con .tasks ul li a .test-item .info .score-con .score-inner .task-pending, body .main .right-col .pendings-con .tasks ul li a .task-item .info .score-con .score-inner .test-pending, body .main .right-col .pendings-con .tasks ul li a .task-item .info .score-con .score-inner .task-pending {
     margin-left: 10px;
   }
-  body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .test-pending img, body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .task-pending img, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .test-pending img, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .task-pending img, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .test-pending img, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .task-pending img, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .test-pending img, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .task-pending img {
+  body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .test-pending img, body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .task-pending img, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .test-pending img, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .task-pending img, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .test-pending img, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .task-pending img, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .test-pending img, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .task-pending img, body .main .right-col .pendings-con .tests ul li a .test-item .info .score-con .score-inner .test-pending img, body .main .right-col .pendings-con .tests ul li a .test-item .info .score-con .score-inner .task-pending img, body .main .right-col .pendings-con .tests ul li a .task-item .info .score-con .score-inner .test-pending img, body .main .right-col .pendings-con .tests ul li a .task-item .info .score-con .score-inner .task-pending img, body .main .right-col .pendings-con .tasks ul li a .test-item .info .score-con .score-inner .test-pending img, body .main .right-col .pendings-con .tasks ul li a .test-item .info .score-con .score-inner .task-pending img, body .main .right-col .pendings-con .tasks ul li a .task-item .info .score-con .score-inner .test-pending img, body .main .right-col .pendings-con .tasks ul li a .task-item .info .score-con .score-inner .task-pending img {
     width: 1.2rem !important;
   }
-  body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .test-pending .info, body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .task-pending .info, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .test-pending .info, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .task-pending .info, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .test-pending .info, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .task-pending .info, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .test-pending .info, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .task-pending .info {
+  body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .test-pending .info, body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .task-pending .info, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .test-pending .info, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .task-pending .info, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .test-pending .info, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .task-pending .info, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .test-pending .info, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .task-pending .info, body .main .right-col .pendings-con .tests ul li a .test-item .info .score-con .score-inner .test-pending .info, body .main .right-col .pendings-con .tests ul li a .test-item .info .score-con .score-inner .task-pending .info, body .main .right-col .pendings-con .tests ul li a .task-item .info .score-con .score-inner .test-pending .info, body .main .right-col .pendings-con .tests ul li a .task-item .info .score-con .score-inner .task-pending .info, body .main .right-col .pendings-con .tasks ul li a .test-item .info .score-con .score-inner .test-pending .info, body .main .right-col .pendings-con .tasks ul li a .test-item .info .score-con .score-inner .task-pending .info, body .main .right-col .pendings-con .tasks ul li a .task-item .info .score-con .score-inner .test-pending .info, body .main .right-col .pendings-con .tasks ul li a .task-item .info .score-con .score-inner .task-pending .info {
     padding: 1px 10px;
     border-radius: 5px;
     font-family: 'Gemunu Libre', sans-serif;
@@ -307,7 +310,7 @@
     margin-left: 5px;
     background-color: #ffc300;
   }
-  body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .test-pending img, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .test-pending img, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .test-pending img, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .test-pending img {
+  body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .test-pending img, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .test-pending img, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .test-pending img, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .test-pending img, body .main .right-col .pendings-con .tests ul li a .test-item .info .score-con .score-inner .test-pending img, body .main .right-col .pendings-con .tests ul li a .task-item .info .score-con .score-inner .test-pending img, body .main .right-col .pendings-con .tasks ul li a .test-item .info .score-con .score-inner .test-pending img, body .main .right-col .pendings-con .tasks ul li a .task-item .info .score-con .score-inner .test-pending img {
     -webkit-animation-name: hg_rotation;
             animation-name: hg_rotation;
     -webkit-animation-duration: 3s;
@@ -315,22 +318,35 @@
     -webkit-animation-iteration-count: infinite;
             animation-iteration-count: infinite;
   }
-  body .main .right-col .student-activity .tests ul li a .test-item .info .complete-time, body .main .right-col .student-activity .tests ul li a .task-item .info .complete-time, body .main .right-col .student-activity .tasks ul li a .test-item .info .complete-time, body .main .right-col .student-activity .tasks ul li a .task-item .info .complete-time {
+  body .main .right-col .student-activity .tests ul li a .test-item .info .complete-time, body .main .right-col .student-activity .tests ul li a .task-item .info .complete-time, body .main .right-col .student-activity .tasks ul li a .test-item .info .complete-time, body .main .right-col .student-activity .tasks ul li a .task-item .info .complete-time, body .main .right-col .pendings-con .tests ul li a .test-item .info .complete-time, body .main .right-col .pendings-con .tests ul li a .task-item .info .complete-time, body .main .right-col .pendings-con .tasks ul li a .test-item .info .complete-time, body .main .right-col .pendings-con .tasks ul li a .task-item .info .complete-time {
     font-size: 0.9rem !important;
   }
-  body .main .right-col .student-activity .tests ul li a .test-item .info .complete-time .time, body .main .right-col .student-activity .tests ul li a .task-item .info .complete-time .time, body .main .right-col .student-activity .tasks ul li a .test-item .info .complete-time .time, body .main .right-col .student-activity .tasks ul li a .task-item .info .complete-time .time {
+  body .main .right-col .student-activity .tests ul li a .test-item .info .complete-time .time, body .main .right-col .student-activity .tests ul li a .task-item .info .complete-time .time, body .main .right-col .student-activity .tasks ul li a .test-item .info .complete-time .time, body .main .right-col .student-activity .tasks ul li a .task-item .info .complete-time .time, body .main .right-col .pendings-con .tests ul li a .test-item .info .complete-time .time, body .main .right-col .pendings-con .tests ul li a .task-item .info .complete-time .time, body .main .right-col .pendings-con .tasks ul li a .test-item .info .complete-time .time, body .main .right-col .pendings-con .tasks ul li a .task-item .info .complete-time .time {
     font-size: 0.7rem !important;
   }
-  body .main .right-col .student-activity .tasks ul {
+  body .main .right-col .student-activity .tests ul li a .test-item .info .complete-time .ongoing-badge, body .main .right-col .student-activity .tests ul li a .task-item .info .complete-time .ongoing-badge, body .main .right-col .student-activity .tasks ul li a .test-item .info .complete-time .ongoing-badge, body .main .right-col .student-activity .tasks ul li a .task-item .info .complete-time .ongoing-badge, body .main .right-col .pendings-con .tests ul li a .test-item .info .complete-time .ongoing-badge, body .main .right-col .pendings-con .tests ul li a .task-item .info .complete-time .ongoing-badge, body .main .right-col .pendings-con .tasks ul li a .test-item .info .complete-time .ongoing-badge, body .main .right-col .pendings-con .tasks ul li a .task-item .info .complete-time .ongoing-badge {
+    border: none !important;
+    padding: 0 !important;
+    border-radius: 180px !important;
+    margin-left: 5px;
+  }
+  body .main .right-col .student-activity .tests ul li a .test-item .info .complete-time .ongoing-badge .inner .indicator, body .main .right-col .student-activity .tests ul li a .task-item .info .complete-time .ongoing-badge .inner .indicator, body .main .right-col .student-activity .tasks ul li a .test-item .info .complete-time .ongoing-badge .inner .indicator, body .main .right-col .student-activity .tasks ul li a .task-item .info .complete-time .ongoing-badge .inner .indicator, body .main .right-col .pendings-con .tests ul li a .test-item .info .complete-time .ongoing-badge .inner .indicator, body .main .right-col .pendings-con .tests ul li a .task-item .info .complete-time .ongoing-badge .inner .indicator, body .main .right-col .pendings-con .tasks ul li a .test-item .info .complete-time .ongoing-badge .inner .indicator, body .main .right-col .pendings-con .tasks ul li a .task-item .info .complete-time .ongoing-badge .inner .indicator {
+    width: 12px !important;
+    height: 12px !important;
+  }
+  body .main .right-col .student-activity .tests ul li a .test-item .info .complete-time .ongoing-badge .inner .text, body .main .right-col .student-activity .tests ul li a .task-item .info .complete-time .ongoing-badge .inner .text, body .main .right-col .student-activity .tasks ul li a .test-item .info .complete-time .ongoing-badge .inner .text, body .main .right-col .student-activity .tasks ul li a .task-item .info .complete-time .ongoing-badge .inner .text, body .main .right-col .pendings-con .tests ul li a .test-item .info .complete-time .ongoing-badge .inner .text, body .main .right-col .pendings-con .tests ul li a .task-item .info .complete-time .ongoing-badge .inner .text, body .main .right-col .pendings-con .tasks ul li a .test-item .info .complete-time .ongoing-badge .inner .text, body .main .right-col .pendings-con .tasks ul li a .task-item .info .complete-time .ongoing-badge .inner .text {
+    display: none !important;
+  }
+  body .main .right-col .student-activity .tasks ul, body .main .right-col .pendings-con .tasks ul {
     margin-top: 5px;
   }
-  body .main .right-col .student-activity .no-content {
+  body .main .right-col .student-activity .no-content, body .main .right-col .pendings-con .no-content {
     padding: 3rem 1rem;
   }
-  body .main .right-col .student-activity .no-content img {
+  body .main .right-col .student-activity .no-content img, body .main .right-col .pendings-con .no-content img {
     width: 60px !important;
   }
-  body .main .right-col .student-activity .no-content .info {
+  body .main .right-col .student-activity .no-content .info, body .main .right-col .pendings-con .no-content .info {
     font-size: 0.9rem !important;
   }
   body .main .create-assignment-container {
@@ -596,6 +612,30 @@
   }
 }
 
+@-webkit-keyframes opacity_1 {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes opacity_1 {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 @-webkit-keyframes hg_rotation {
   0% {
     -webkit-transform: rotate(0deg);
@@ -623,6 +663,36 @@
   100% {
     -webkit-transform: rotate(360deg);
             transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes hg_rotation2 {
+  0% {
+    -webkit-transform: rotate(135deg);
+            transform: rotate(135deg);
+  }
+  50% {
+    -webkit-transform: rotate(315deg);
+            transform: rotate(315deg);
+  }
+  100% {
+    -webkit-transform: rotate(495deg);
+            transform: rotate(495deg);
+  }
+}
+
+@keyframes hg_rotation2 {
+  0% {
+    -webkit-transform: rotate(135deg);
+            transform: rotate(135deg);
+  }
+  50% {
+    -webkit-transform: rotate(315deg);
+            transform: rotate(315deg);
+  }
+  100% {
+    -webkit-transform: rotate(495deg);
+            transform: rotate(495deg);
   }
 }
 
@@ -2362,13 +2432,13 @@ body .main .right-col .weekly-tasks .content ul li .assignment:hover {
   outline: 1px solid #bad2ca;
 }
 
-body .main .right-col .student-activity {
+body .main .right-col .student-activity, body .main .right-col .pendings-con {
   padding: 1rem 8px 10px;
   background-color: #e5e5e5;
   border-radius: 10px;
 }
 
-body .main .right-col .student-activity .title {
+body .main .right-col .student-activity .title, body .main .right-col .pendings-con .title {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2383,35 +2453,68 @@ body .main .right-col .student-activity .title {
   margin-bottom: 5px;
 }
 
-body .main .right-col .student-activity .title img {
+body .main .right-col .student-activity .title img, body .main .right-col .pendings-con .title img {
   width: 40px;
 }
 
-body .main .right-col .student-activity .title .title-text {
+body .main .right-col .student-activity .title .title-text, body .main .right-col .pendings-con .title .title-text {
   font-family: 'Lato', sans-serif;
   color: #006d77;
   text-shadow: 0 0 5px gainsboro;
 }
 
-body .main .right-col .student-activity .tests ul, body .main .right-col .student-activity .tasks ul {
+body .main .right-col .student-activity .pendings-title, body .main .right-col .pendings-con .pendings-title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+body .main .right-col .student-activity .pendings-title img, body .main .right-col .pendings-con .pendings-title img {
+  width: 1.7rem;
+  margin-right: 5px;
+  -webkit-animation-name: hg_rotation2;
+          animation-name: hg_rotation2;
+  -webkit-animation-duration: 3s;
+          animation-duration: 3s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+}
+
+body .main .right-col .student-activity .pendings-title .title-text, body .main .right-col .pendings-con .pendings-title .title-text {
+  font-family: 'Gemunu Libre', sans-serif;
+  font-size: 1.2rem;
+}
+
+body .main .right-col .student-activity .tests ul, body .main .right-col .student-activity .tasks ul, body .main .right-col .pendings-con .tests ul, body .main .right-col .pendings-con .tasks ul {
   padding: 0;
   margin: 0;
   list-style-type: none;
 }
 
-body .main .right-col .student-activity .tests ul li, body .main .right-col .student-activity .tasks ul li {
+body .main .right-col .student-activity .tests ul li, body .main .right-col .student-activity .tasks ul li, body .main .right-col .pendings-con .tests ul li, body .main .right-col .pendings-con .tasks ul li {
   margin-bottom: 5px;
 }
 
-body .main .right-col .student-activity .tests ul li:last-of-type, body .main .right-col .student-activity .tasks ul li:last-of-type {
+body .main .right-col .student-activity .tests ul li:last-of-type, body .main .right-col .student-activity .tasks ul li:last-of-type, body .main .right-col .pendings-con .tests ul li:last-of-type, body .main .right-col .pendings-con .tasks ul li:last-of-type {
   margin-bottom: 0;
 }
 
-body .main .right-col .student-activity .tests ul li a, body .main .right-col .student-activity .tasks ul li a {
+body .main .right-col .student-activity .tests ul li a, body .main .right-col .student-activity .tasks ul li a, body .main .right-col .pendings-con .tests ul li a, body .main .right-col .pendings-con .tasks ul li a {
   text-decoration: none;
 }
 
-body .main .right-col .student-activity .tests ul li a .test-item, body .main .right-col .student-activity .tests ul li a .task-item, body .main .right-col .student-activity .tasks ul li a .test-item, body .main .right-col .student-activity .tasks ul li a .task-item {
+body .main .right-col .student-activity .tests ul li a .test-item, body .main .right-col .student-activity .tests ul li a .task-item, body .main .right-col .student-activity .tasks ul li a .test-item, body .main .right-col .student-activity .tasks ul li a .task-item, body .main .right-col .pendings-con .tests ul li a .test-item, body .main .right-col .pendings-con .tests ul li a .task-item, body .main .right-col .pendings-con .tasks ul li a .test-item, body .main .right-col .pendings-con .tasks ul li a .task-item {
   padding: 10px 5px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2434,11 +2537,11 @@ body .main .right-col .student-activity .tests ul li a .test-item, body .main .r
   transition: all 200ms;
 }
 
-body .main .right-col .student-activity .tests ul li a .test-item img, body .main .right-col .student-activity .tests ul li a .task-item img, body .main .right-col .student-activity .tasks ul li a .test-item img, body .main .right-col .student-activity .tasks ul li a .task-item img {
+body .main .right-col .student-activity .tests ul li a .test-item img, body .main .right-col .student-activity .tests ul li a .task-item img, body .main .right-col .student-activity .tasks ul li a .test-item img, body .main .right-col .student-activity .tasks ul li a .task-item img, body .main .right-col .pendings-con .tests ul li a .test-item img, body .main .right-col .pendings-con .tests ul li a .task-item img, body .main .right-col .pendings-con .tasks ul li a .test-item img, body .main .right-col .pendings-con .tasks ul li a .task-item img {
   width: 50px;
 }
 
-body .main .right-col .student-activity .tests ul li a .test-item .info, body .main .right-col .student-activity .tests ul li a .task-item .info, body .main .right-col .student-activity .tasks ul li a .test-item .info, body .main .right-col .student-activity .tasks ul li a .task-item .info {
+body .main .right-col .student-activity .tests ul li a .test-item .info, body .main .right-col .student-activity .tests ul li a .task-item .info, body .main .right-col .student-activity .tasks ul li a .test-item .info, body .main .right-col .student-activity .tasks ul li a .task-item .info, body .main .right-col .pendings-con .tests ul li a .test-item .info, body .main .right-col .pendings-con .tests ul li a .task-item .info, body .main .right-col .pendings-con .tasks ul li a .test-item .info, body .main .right-col .pendings-con .tasks ul li a .task-item .info {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2449,16 +2552,16 @@ body .main .right-col .student-activity .tests ul li a .test-item .info, body .m
   margin-left: 10px;
 }
 
-body .main .right-col .student-activity .tests ul li a .test-item .info .label-title, body .main .right-col .student-activity .tests ul li a .task-item .info .label-title, body .main .right-col .student-activity .tasks ul li a .test-item .info .label-title, body .main .right-col .student-activity .tasks ul li a .task-item .info .label-title {
+body .main .right-col .student-activity .tests ul li a .test-item .info .label-title, body .main .right-col .student-activity .tests ul li a .task-item .info .label-title, body .main .right-col .student-activity .tasks ul li a .test-item .info .label-title, body .main .right-col .student-activity .tasks ul li a .task-item .info .label-title, body .main .right-col .pendings-con .tests ul li a .test-item .info .label-title, body .main .right-col .pendings-con .tests ul li a .task-item .info .label-title, body .main .right-col .pendings-con .tasks ul li a .test-item .info .label-title, body .main .right-col .pendings-con .tasks ul li a .task-item .info .label-title {
   color: #e3f2fd;
   font-size: 1rem;
 }
 
-body .main .right-col .student-activity .tests ul li a .test-item .info .w-info-con, body .main .right-col .student-activity .tests ul li a .task-item .info .w-info-con, body .main .right-col .student-activity .tasks ul li a .test-item .info .w-info-con, body .main .right-col .student-activity .tasks ul li a .task-item .info .w-info-con {
+body .main .right-col .student-activity .tests ul li a .test-item .info .w-info-con, body .main .right-col .student-activity .tests ul li a .task-item .info .w-info-con, body .main .right-col .student-activity .tasks ul li a .test-item .info .w-info-con, body .main .right-col .student-activity .tasks ul li a .task-item .info .w-info-con, body .main .right-col .pendings-con .tests ul li a .test-item .info .w-info-con, body .main .right-col .pendings-con .tests ul li a .task-item .info .w-info-con, body .main .right-col .pendings-con .tasks ul li a .test-item .info .w-info-con, body .main .right-col .pendings-con .tasks ul li a .task-item .info .w-info-con {
   display: inline-block;
 }
 
-body .main .right-col .student-activity .tests ul li a .test-item .info .w-info-con span.week-badge, body .main .right-col .student-activity .tests ul li a .task-item .info .w-info-con span.week-badge, body .main .right-col .student-activity .tasks ul li a .test-item .info .w-info-con span.week-badge, body .main .right-col .student-activity .tasks ul li a .task-item .info .w-info-con span.week-badge {
+body .main .right-col .student-activity .tests ul li a .test-item .info .w-info-con span.week-badge, body .main .right-col .student-activity .tests ul li a .task-item .info .w-info-con span.week-badge, body .main .right-col .student-activity .tasks ul li a .test-item .info .w-info-con span.week-badge, body .main .right-col .student-activity .tasks ul li a .task-item .info .w-info-con span.week-badge, body .main .right-col .pendings-con .tests ul li a .test-item .info .w-info-con span.week-badge, body .main .right-col .pendings-con .tests ul li a .task-item .info .w-info-con span.week-badge, body .main .right-col .pendings-con .tasks ul li a .test-item .info .w-info-con span.week-badge, body .main .right-col .pendings-con .tasks ul li a .task-item .info .w-info-con span.week-badge {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2480,43 +2583,43 @@ body .main .right-col .student-activity .tests ul li a .test-item .info .w-info-
   cursor: default;
 }
 
-body .main .right-col .student-activity .tests ul li a .test-item .info .w-info-con span.week-badge .w-num, body .main .right-col .student-activity .tests ul li a .task-item .info .w-info-con span.week-badge .w-num, body .main .right-col .student-activity .tasks ul li a .test-item .info .w-info-con span.week-badge .w-num, body .main .right-col .student-activity .tasks ul li a .task-item .info .w-info-con span.week-badge .w-num {
+body .main .right-col .student-activity .tests ul li a .test-item .info .w-info-con span.week-badge .w-num, body .main .right-col .student-activity .tests ul li a .task-item .info .w-info-con span.week-badge .w-num, body .main .right-col .student-activity .tasks ul li a .test-item .info .w-info-con span.week-badge .w-num, body .main .right-col .student-activity .tasks ul li a .task-item .info .w-info-con span.week-badge .w-num, body .main .right-col .pendings-con .tests ul li a .test-item .info .w-info-con span.week-badge .w-num, body .main .right-col .pendings-con .tests ul li a .task-item .info .w-info-con span.week-badge .w-num, body .main .right-col .pendings-con .tasks ul li a .test-item .info .w-info-con span.week-badge .w-num, body .main .right-col .pendings-con .tasks ul li a .task-item .info .w-info-con span.week-badge .w-num {
   color: aquamarine;
   font-family: 'Gemunu Libre', sans-serif;
   font-size: 0.8rem;
 }
 
-body .main .right-col .student-activity .tests ul li a .test-item .info .w-info-con span.week-badge i, body .main .right-col .student-activity .tests ul li a .task-item .info .w-info-con span.week-badge i, body .main .right-col .student-activity .tasks ul li a .test-item .info .w-info-con span.week-badge i, body .main .right-col .student-activity .tasks ul li a .task-item .info .w-info-con span.week-badge i {
+body .main .right-col .student-activity .tests ul li a .test-item .info .w-info-con span.week-badge i, body .main .right-col .student-activity .tests ul li a .task-item .info .w-info-con span.week-badge i, body .main .right-col .student-activity .tasks ul li a .test-item .info .w-info-con span.week-badge i, body .main .right-col .student-activity .tasks ul li a .task-item .info .w-info-con span.week-badge i, body .main .right-col .pendings-con .tests ul li a .test-item .info .w-info-con span.week-badge i, body .main .right-col .pendings-con .tests ul li a .task-item .info .w-info-con span.week-badge i, body .main .right-col .pendings-con .tasks ul li a .test-item .info .w-info-con span.week-badge i, body .main .right-col .pendings-con .tasks ul li a .task-item .info .w-info-con span.week-badge i {
   margin-left: 2px;
   font-size: 0.8rem;
   color: #29e46b;
   background-color: inherit;
 }
 
-body .main .right-col .student-activity .tests ul li a .test-item .info .points, body .main .right-col .student-activity .tests ul li a .task-item .info .points, body .main .right-col .student-activity .tasks ul li a .test-item .info .points, body .main .right-col .student-activity .tasks ul li a .task-item .info .points {
+body .main .right-col .student-activity .tests ul li a .test-item .info .points, body .main .right-col .student-activity .tests ul li a .task-item .info .points, body .main .right-col .student-activity .tasks ul li a .test-item .info .points, body .main .right-col .student-activity .tasks ul li a .task-item .info .points, body .main .right-col .pendings-con .tests ul li a .test-item .info .points, body .main .right-col .pendings-con .tests ul li a .task-item .info .points, body .main .right-col .pendings-con .tasks ul li a .test-item .info .points, body .main .right-col .pendings-con .tasks ul li a .task-item .info .points {
   display: inline-block;
   background-color: #1084d2;
   padding: 0 10px;
   border-radius: 180px;
 }
 
-body .main .right-col .student-activity .tests ul li a .test-item .info .points .num-points, body .main .right-col .student-activity .tests ul li a .task-item .info .points .num-points, body .main .right-col .student-activity .tasks ul li a .test-item .info .points .num-points, body .main .right-col .student-activity .tasks ul li a .task-item .info .points .num-points {
+body .main .right-col .student-activity .tests ul li a .test-item .info .points .num-points, body .main .right-col .student-activity .tests ul li a .task-item .info .points .num-points, body .main .right-col .student-activity .tasks ul li a .test-item .info .points .num-points, body .main .right-col .student-activity .tasks ul li a .task-item .info .points .num-points, body .main .right-col .pendings-con .tests ul li a .test-item .info .points .num-points, body .main .right-col .pendings-con .tests ul li a .task-item .info .points .num-points, body .main .right-col .pendings-con .tasks ul li a .test-item .info .points .num-points, body .main .right-col .pendings-con .tasks ul li a .task-item .info .points .num-points {
   font-weight: 500;
   color: white;
   margin-right: 3px;
   font-family: 'Gemunu Libre', sans-serif;
 }
 
-body .main .right-col .student-activity .tests ul li a .test-item .info .points .label, body .main .right-col .student-activity .tests ul li a .task-item .info .points .label, body .main .right-col .student-activity .tasks ul li a .test-item .info .points .label, body .main .right-col .student-activity .tasks ul li a .task-item .info .points .label {
+body .main .right-col .student-activity .tests ul li a .test-item .info .points .label, body .main .right-col .student-activity .tests ul li a .task-item .info .points .label, body .main .right-col .student-activity .tasks ul li a .test-item .info .points .label, body .main .right-col .student-activity .tasks ul li a .task-item .info .points .label, body .main .right-col .pendings-con .tests ul li a .test-item .info .points .label, body .main .right-col .pendings-con .tests ul li a .task-item .info .points .label, body .main .right-col .pendings-con .tasks ul li a .test-item .info .points .label, body .main .right-col .pendings-con .tasks ul li a .task-item .info .points .label {
   font-family: 'Gemunu Libre', sans-serif;
   color: #7fddff;
 }
 
-body .main .right-col .student-activity .tests ul li a .test-item .info .score-con, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con {
+body .main .right-col .student-activity .tests ul li a .test-item .info .score-con, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con, body .main .right-col .pendings-con .tests ul li a .test-item .info .score-con, body .main .right-col .pendings-con .tests ul li a .task-item .info .score-con, body .main .right-col .pendings-con .tasks ul li a .test-item .info .score-con, body .main .right-col .pendings-con .tasks ul li a .task-item .info .score-con {
   display: inline-block;
 }
 
-body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner {
+body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner, body .main .right-col .pendings-con .tests ul li a .test-item .info .score-con .score-inner, body .main .right-col .pendings-con .tests ul li a .task-item .info .score-con .score-inner, body .main .right-col .pendings-con .tasks ul li a .test-item .info .score-con .score-inner, body .main .right-col .pendings-con .tasks ul li a .task-item .info .score-con .score-inner {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2530,12 +2633,12 @@ body .main .right-col .student-activity .tests ul li a .test-item .info .score-c
           align-items: center;
 }
 
-body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .label, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .label, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .label, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .label {
+body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .label, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .label, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .label, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .label, body .main .right-col .pendings-con .tests ul li a .test-item .info .score-con .score-inner .label, body .main .right-col .pendings-con .tests ul li a .task-item .info .score-con .score-inner .label, body .main .right-col .pendings-con .tasks ul li a .test-item .info .score-con .score-inner .label, body .main .right-col .pendings-con .tasks ul li a .task-item .info .score-con .score-inner .label {
   font-family: 'Gemunu Libre', sans-serif;
   color: white;
 }
 
-body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .points-con, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .points-con, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .points-con, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .points-con {
+body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .points-con, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .points-con, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .points-con, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .points-con, body .main .right-col .pendings-con .tests ul li a .test-item .info .score-con .score-inner .points-con, body .main .right-col .pendings-con .tests ul li a .task-item .info .score-con .score-inner .points-con, body .main .right-col .pendings-con .tasks ul li a .test-item .info .score-con .score-inner .points-con, body .main .right-col .pendings-con .tasks ul li a .task-item .info .score-con .score-inner .points-con {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2555,14 +2658,14 @@ body .main .right-col .student-activity .tests ul li a .test-item .info .score-c
   font-size: 0.8rem;
 }
 
-body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .points-con span, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .points-con span, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .points-con span, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .points-con span {
+body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .points-con span, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .points-con span, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .points-con span, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .points-con span, body .main .right-col .pendings-con .tests ul li a .test-item .info .score-con .score-inner .points-con span, body .main .right-col .pendings-con .tests ul li a .task-item .info .score-con .score-inner .points-con span, body .main .right-col .pendings-con .tasks ul li a .test-item .info .score-con .score-inner .points-con span, body .main .right-col .pendings-con .tasks ul li a .task-item .info .score-con .score-inner .points-con span {
   color: wheat;
   font-size: 0.8rem;
   font-family: 'Roboto Mono', monospace;
   margin: 0 3px;
 }
 
-body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .test-ongoing, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .test-ongoing, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .test-ongoing, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .test-ongoing {
+body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .test-ongoing, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .test-ongoing, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .test-ongoing, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .test-ongoing, body .main .right-col .pendings-con .tests ul li a .test-item .info .score-con .score-inner .test-ongoing, body .main .right-col .pendings-con .tests ul li a .task-item .info .score-con .score-inner .test-ongoing, body .main .right-col .pendings-con .tasks ul li a .test-item .info .score-con .score-inner .test-ongoing, body .main .right-col .pendings-con .tasks ul li a .task-item .info .score-con .score-inner .test-ongoing {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2580,19 +2683,19 @@ body .main .right-col .student-activity .tests ul li a .test-item .info .score-c
   margin-left: 10px;
 }
 
-body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .test-ongoing i, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .test-ongoing i, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .test-ongoing i, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .test-ongoing i {
+body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .test-ongoing i, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .test-ongoing i, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .test-ongoing i, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .test-ongoing i, body .main .right-col .pendings-con .tests ul li a .test-item .info .score-con .score-inner .test-ongoing i, body .main .right-col .pendings-con .tests ul li a .task-item .info .score-con .score-inner .test-ongoing i, body .main .right-col .pendings-con .tasks ul li a .test-item .info .score-con .score-inner .test-ongoing i, body .main .right-col .pendings-con .tasks ul li a .task-item .info .score-con .score-inner .test-ongoing i {
   font-size: 1.2rem;
   color: #ffe5ec;
 }
 
-body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .test-ongoing .info, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .test-ongoing .info, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .test-ongoing .info, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .test-ongoing .info {
+body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .test-ongoing .info, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .test-ongoing .info, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .test-ongoing .info, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .test-ongoing .info, body .main .right-col .pendings-con .tests ul li a .test-item .info .score-con .score-inner .test-ongoing .info, body .main .right-col .pendings-con .tests ul li a .task-item .info .score-con .score-inner .test-ongoing .info, body .main .right-col .pendings-con .tasks ul li a .test-item .info .score-con .score-inner .test-ongoing .info, body .main .right-col .pendings-con .tasks ul li a .task-item .info .score-con .score-inner .test-ongoing .info {
   font-family: 'Gemunu Libre', sans-serif;
   font-size: 0.9rem;
   margin-left: 5px;
   color: #ffe5ec;
 }
 
-body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .test-pending, body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .task-pending, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .test-pending, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .task-pending, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .test-pending, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .task-pending, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .test-pending, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .task-pending {
+body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .test-pending, body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .task-pending, body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .check-pending, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .test-pending, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .task-pending, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .check-pending, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .test-pending, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .task-pending, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .check-pending, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .test-pending, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .task-pending, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .check-pending, body .main .right-col .pendings-con .tests ul li a .test-item .info .score-con .score-inner .test-pending, body .main .right-col .pendings-con .tests ul li a .test-item .info .score-con .score-inner .task-pending, body .main .right-col .pendings-con .tests ul li a .test-item .info .score-con .score-inner .check-pending, body .main .right-col .pendings-con .tests ul li a .task-item .info .score-con .score-inner .test-pending, body .main .right-col .pendings-con .tests ul li a .task-item .info .score-con .score-inner .task-pending, body .main .right-col .pendings-con .tests ul li a .task-item .info .score-con .score-inner .check-pending, body .main .right-col .pendings-con .tasks ul li a .test-item .info .score-con .score-inner .test-pending, body .main .right-col .pendings-con .tasks ul li a .test-item .info .score-con .score-inner .task-pending, body .main .right-col .pendings-con .tasks ul li a .test-item .info .score-con .score-inner .check-pending, body .main .right-col .pendings-con .tasks ul li a .task-item .info .score-con .score-inner .test-pending, body .main .right-col .pendings-con .tasks ul li a .task-item .info .score-con .score-inner .task-pending, body .main .right-col .pendings-con .tasks ul li a .task-item .info .score-con .score-inner .check-pending {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2607,11 +2710,11 @@ body .main .right-col .student-activity .tests ul li a .test-item .info .score-c
   margin-left: 10px;
 }
 
-body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .test-pending img, body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .task-pending img, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .test-pending img, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .task-pending img, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .test-pending img, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .task-pending img, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .test-pending img, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .task-pending img {
+body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .test-pending img, body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .task-pending img, body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .check-pending img, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .test-pending img, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .task-pending img, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .check-pending img, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .test-pending img, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .task-pending img, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .check-pending img, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .test-pending img, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .task-pending img, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .check-pending img, body .main .right-col .pendings-con .tests ul li a .test-item .info .score-con .score-inner .test-pending img, body .main .right-col .pendings-con .tests ul li a .test-item .info .score-con .score-inner .task-pending img, body .main .right-col .pendings-con .tests ul li a .test-item .info .score-con .score-inner .check-pending img, body .main .right-col .pendings-con .tests ul li a .task-item .info .score-con .score-inner .test-pending img, body .main .right-col .pendings-con .tests ul li a .task-item .info .score-con .score-inner .task-pending img, body .main .right-col .pendings-con .tests ul li a .task-item .info .score-con .score-inner .check-pending img, body .main .right-col .pendings-con .tasks ul li a .test-item .info .score-con .score-inner .test-pending img, body .main .right-col .pendings-con .tasks ul li a .test-item .info .score-con .score-inner .task-pending img, body .main .right-col .pendings-con .tasks ul li a .test-item .info .score-con .score-inner .check-pending img, body .main .right-col .pendings-con .tasks ul li a .task-item .info .score-con .score-inner .test-pending img, body .main .right-col .pendings-con .tasks ul li a .task-item .info .score-con .score-inner .task-pending img, body .main .right-col .pendings-con .tasks ul li a .task-item .info .score-con .score-inner .check-pending img {
   width: 1.2rem;
 }
 
-body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .test-pending .info, body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .task-pending .info, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .test-pending .info, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .task-pending .info, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .test-pending .info, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .task-pending .info, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .test-pending .info, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .task-pending .info {
+body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .test-pending .info, body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .task-pending .info, body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .check-pending .info, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .test-pending .info, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .task-pending .info, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .check-pending .info, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .test-pending .info, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .task-pending .info, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .check-pending .info, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .test-pending .info, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .task-pending .info, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .check-pending .info, body .main .right-col .pendings-con .tests ul li a .test-item .info .score-con .score-inner .test-pending .info, body .main .right-col .pendings-con .tests ul li a .test-item .info .score-con .score-inner .task-pending .info, body .main .right-col .pendings-con .tests ul li a .test-item .info .score-con .score-inner .check-pending .info, body .main .right-col .pendings-con .tests ul li a .task-item .info .score-con .score-inner .test-pending .info, body .main .right-col .pendings-con .tests ul li a .task-item .info .score-con .score-inner .task-pending .info, body .main .right-col .pendings-con .tests ul li a .task-item .info .score-con .score-inner .check-pending .info, body .main .right-col .pendings-con .tasks ul li a .test-item .info .score-con .score-inner .test-pending .info, body .main .right-col .pendings-con .tasks ul li a .test-item .info .score-con .score-inner .task-pending .info, body .main .right-col .pendings-con .tasks ul li a .test-item .info .score-con .score-inner .check-pending .info, body .main .right-col .pendings-con .tasks ul li a .task-item .info .score-con .score-inner .test-pending .info, body .main .right-col .pendings-con .tasks ul li a .task-item .info .score-con .score-inner .task-pending .info, body .main .right-col .pendings-con .tasks ul li a .task-item .info .score-con .score-inner .check-pending .info {
   padding: 1px 10px;
   border-radius: 5px;
   font-family: 'Gemunu Libre', sans-serif;
@@ -2620,7 +2723,11 @@ body .main .right-col .student-activity .tests ul li a .test-item .info .score-c
   background-color: #ffc300;
 }
 
-body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .test-pending img, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .test-pending img, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .test-pending img, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .test-pending img {
+body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .check-pending, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .check-pending, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .check-pending, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .check-pending, body .main .right-col .pendings-con .tests ul li a .test-item .info .score-con .score-inner .check-pending, body .main .right-col .pendings-con .tests ul li a .task-item .info .score-con .score-inner .check-pending, body .main .right-col .pendings-con .tasks ul li a .test-item .info .score-con .score-inner .check-pending, body .main .right-col .pendings-con .tasks ul li a .task-item .info .score-con .score-inner .check-pending {
+  margin: 0;
+}
+
+body .main .right-col .student-activity .tests ul li a .test-item .info .score-con .score-inner .test-pending img, body .main .right-col .student-activity .tests ul li a .task-item .info .score-con .score-inner .test-pending img, body .main .right-col .student-activity .tasks ul li a .test-item .info .score-con .score-inner .test-pending img, body .main .right-col .student-activity .tasks ul li a .task-item .info .score-con .score-inner .test-pending img, body .main .right-col .pendings-con .tests ul li a .test-item .info .score-con .score-inner .test-pending img, body .main .right-col .pendings-con .tests ul li a .task-item .info .score-con .score-inner .test-pending img, body .main .right-col .pendings-con .tasks ul li a .test-item .info .score-con .score-inner .test-pending img, body .main .right-col .pendings-con .tasks ul li a .task-item .info .score-con .score-inner .test-pending img {
   -webkit-animation-name: hg_rotation;
           animation-name: hg_rotation;
   -webkit-animation-duration: 3s;
@@ -2629,40 +2736,84 @@ body .main .right-col .student-activity .tests ul li a .test-item .info .score-c
           animation-iteration-count: infinite;
 }
 
-body .main .right-col .student-activity .tests ul li a .test-item .info .complete-time, body .main .right-col .student-activity .tests ul li a .task-item .info .complete-time, body .main .right-col .student-activity .tasks ul li a .test-item .info .complete-time, body .main .right-col .student-activity .tasks ul li a .task-item .info .complete-time {
+body .main .right-col .student-activity .tests ul li a .test-item .info .complete-time, body .main .right-col .student-activity .tests ul li a .task-item .info .complete-time, body .main .right-col .student-activity .tasks ul li a .test-item .info .complete-time, body .main .right-col .student-activity .tasks ul li a .task-item .info .complete-time, body .main .right-col .pendings-con .tests ul li a .test-item .info .complete-time, body .main .right-col .pendings-con .tests ul li a .task-item .info .complete-time, body .main .right-col .pendings-con .tasks ul li a .test-item .info .complete-time, body .main .right-col .pendings-con .tasks ul li a .task-item .info .complete-time {
   font-size: 0.9rem;
 }
 
-body .main .right-col .student-activity .tests ul li a .test-item .info .complete-time .sub-title, body .main .right-col .student-activity .tests ul li a .task-item .info .complete-time .sub-title, body .main .right-col .student-activity .tasks ul li a .test-item .info .complete-time .sub-title, body .main .right-col .student-activity .tasks ul li a .task-item .info .complete-time .sub-title {
+body .main .right-col .student-activity .tests ul li a .test-item .info .complete-time .sub-title, body .main .right-col .student-activity .tests ul li a .task-item .info .complete-time .sub-title, body .main .right-col .student-activity .tasks ul li a .test-item .info .complete-time .sub-title, body .main .right-col .student-activity .tasks ul li a .task-item .info .complete-time .sub-title, body .main .right-col .pendings-con .tests ul li a .test-item .info .complete-time .sub-title, body .main .right-col .pendings-con .tests ul li a .task-item .info .complete-time .sub-title, body .main .right-col .pendings-con .tasks ul li a .test-item .info .complete-time .sub-title, body .main .right-col .pendings-con .tasks ul li a .task-item .info .complete-time .sub-title {
   text-shadow: none;
   color: #bbdefb;
   margin-right: 5px;
   font-family: 'Gemunu Libre', sans-serif;
 }
 
-body .main .right-col .student-activity .tests ul li a .test-item .info .complete-time .time, body .main .right-col .student-activity .tests ul li a .task-item .info .complete-time .time, body .main .right-col .student-activity .tasks ul li a .test-item .info .complete-time .time, body .main .right-col .student-activity .tasks ul li a .task-item .info .complete-time .time {
+body .main .right-col .student-activity .tests ul li a .test-item .info .complete-time .time, body .main .right-col .student-activity .tests ul li a .task-item .info .complete-time .time, body .main .right-col .student-activity .tasks ul li a .test-item .info .complete-time .time, body .main .right-col .student-activity .tasks ul li a .task-item .info .complete-time .time, body .main .right-col .pendings-con .tests ul li a .test-item .info .complete-time .time, body .main .right-col .pendings-con .tests ul li a .task-item .info .complete-time .time, body .main .right-col .pendings-con .tasks ul li a .test-item .info .complete-time .time, body .main .right-col .pendings-con .tasks ul li a .task-item .info .complete-time .time {
   color: #dfedff;
   font-family: 'Roboto Mono', monospace;
   font-size: 0.7rem;
 }
 
-body .main .right-col .student-activity .tests ul li a .test-item:hover, body .main .right-col .student-activity .tests ul li a .task-item:hover, body .main .right-col .student-activity .tasks ul li a .test-item:hover, body .main .right-col .student-activity .tasks ul li a .task-item:hover {
+body .main .right-col .student-activity .tests ul li a .test-item .info .complete-time .ongoing-badge, body .main .right-col .student-activity .tests ul li a .task-item .info .complete-time .ongoing-badge, body .main .right-col .student-activity .tasks ul li a .test-item .info .complete-time .ongoing-badge, body .main .right-col .student-activity .tasks ul li a .task-item .info .complete-time .ongoing-badge, body .main .right-col .pendings-con .tests ul li a .test-item .info .complete-time .ongoing-badge, body .main .right-col .pendings-con .tests ul li a .task-item .info .complete-time .ongoing-badge, body .main .right-col .pendings-con .tasks ul li a .test-item .info .complete-time .ongoing-badge, body .main .right-col .pendings-con .tasks ul li a .task-item .info .complete-time .ongoing-badge {
+  display: inline-block;
+  background-color: inherit;
+  border: 2px solid #fe7575;
+  padding: 1px 5px;
+  border-radius: 5px;
+}
+
+body .main .right-col .student-activity .tests ul li a .test-item .info .complete-time .ongoing-badge .inner, body .main .right-col .student-activity .tests ul li a .task-item .info .complete-time .ongoing-badge .inner, body .main .right-col .student-activity .tasks ul li a .test-item .info .complete-time .ongoing-badge .inner, body .main .right-col .student-activity .tasks ul li a .task-item .info .complete-time .ongoing-badge .inner, body .main .right-col .pendings-con .tests ul li a .test-item .info .complete-time .ongoing-badge .inner, body .main .right-col .pendings-con .tests ul li a .task-item .info .complete-time .ongoing-badge .inner, body .main .right-col .pendings-con .tasks ul li a .test-item .info .complete-time .ongoing-badge .inner, body .main .right-col .pendings-con .tasks ul li a .task-item .info .complete-time .ongoing-badge .inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body .main .right-col .student-activity .tests ul li a .test-item .info .complete-time .ongoing-badge .inner .indicator, body .main .right-col .student-activity .tests ul li a .task-item .info .complete-time .ongoing-badge .inner .indicator, body .main .right-col .student-activity .tasks ul li a .test-item .info .complete-time .ongoing-badge .inner .indicator, body .main .right-col .student-activity .tasks ul li a .task-item .info .complete-time .ongoing-badge .inner .indicator, body .main .right-col .pendings-con .tests ul li a .test-item .info .complete-time .ongoing-badge .inner .indicator, body .main .right-col .pendings-con .tests ul li a .task-item .info .complete-time .ongoing-badge .inner .indicator, body .main .right-col .pendings-con .tasks ul li a .test-item .info .complete-time .ongoing-badge .inner .indicator, body .main .right-col .pendings-con .tasks ul li a .task-item .info .complete-time .ongoing-badge .inner .indicator {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #ff2f2f;
+  margin-right: 3px;
+  -webkit-animation-name: opacity_1;
+          animation-name: opacity_1;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+}
+
+body .main .right-col .student-activity .tests ul li a .test-item .info .complete-time .ongoing-badge .inner .text, body .main .right-col .student-activity .tests ul li a .task-item .info .complete-time .ongoing-badge .inner .text, body .main .right-col .student-activity .tasks ul li a .test-item .info .complete-time .ongoing-badge .inner .text, body .main .right-col .student-activity .tasks ul li a .task-item .info .complete-time .ongoing-badge .inner .text, body .main .right-col .pendings-con .tests ul li a .test-item .info .complete-time .ongoing-badge .inner .text, body .main .right-col .pendings-con .tests ul li a .task-item .info .complete-time .ongoing-badge .inner .text, body .main .right-col .pendings-con .tasks ul li a .test-item .info .complete-time .ongoing-badge .inner .text, body .main .right-col .pendings-con .tasks ul li a .task-item .info .complete-time .ongoing-badge .inner .text {
+  display: inline-block;
+  font-family: 'Ubuntu', sans-serif;
+  color: #fe7575;
+  font-size: 0.7rem;
+}
+
+body .main .right-col .student-activity .tests ul li a .test-item:hover, body .main .right-col .student-activity .tests ul li a .task-item:hover, body .main .right-col .student-activity .tasks ul li a .test-item:hover, body .main .right-col .student-activity .tasks ul li a .task-item:hover, body .main .right-col .pendings-con .tests ul li a .test-item:hover, body .main .right-col .pendings-con .tests ul li a .task-item:hover, body .main .right-col .pendings-con .tasks ul li a .test-item:hover, body .main .right-col .pendings-con .tasks ul li a .task-item:hover {
   background-color: #264653;
 }
 
-body .main .right-col .student-activity .tests ul li a .test-item, body .main .right-col .student-activity .tasks ul li a .test-item {
+body .main .right-col .student-activity .tests ul li a .test-item, body .main .right-col .student-activity .tasks ul li a .test-item, body .main .right-col .pendings-con .tests ul li a .test-item, body .main .right-col .pendings-con .tasks ul li a .test-item {
   background-color: #5e548e;
 }
 
-body .main .right-col .student-activity .tests ul li a .task-item, body .main .right-col .student-activity .tasks ul li a .task-item {
+body .main .right-col .student-activity .tests ul li a .task-item, body .main .right-col .student-activity .tasks ul li a .task-item, body .main .right-col .pendings-con .tests ul li a .task-item, body .main .right-col .pendings-con .tasks ul li a .task-item {
   background-color: #3a7396;
 }
 
-body .main .right-col .student-activity .tasks ul {
+body .main .right-col .student-activity .tasks ul, body .main .right-col .pendings-con .tasks ul {
   margin-top: 5px;
 }
 
-body .main .right-col .student-activity .no-content {
+body .main .right-col .student-activity .no-content, body .main .right-col .pendings-con .no-content {
   padding: 3rem 1rem;
   background-color: white;
   display: -webkit-box;
@@ -2678,11 +2829,11 @@ body .main .right-col .student-activity .no-content {
           align-items: center;
 }
 
-body .main .right-col .student-activity .no-content img {
+body .main .right-col .student-activity .no-content img, body .main .right-col .pendings-con .no-content img {
   width: 70px;
 }
 
-body .main .right-col .student-activity .no-content .info {
+body .main .right-col .student-activity .no-content .info, body .main .right-col .pendings-con .no-content .info {
   font-family: 'Roboto Mono', monospace;
 }
 

@@ -346,6 +346,72 @@
     
     
   </div>
+  {% else %}
+  <div class="pendings-con mb-4">
+    <div class="pendings-title">
+      <img src="{% static 'classroom/images/hourglass.png' %}" alt="">
+      <div class="title-text">Pending Checks</div>
+    </div>
+    <div class="tests mt-2" >
+      <ul>
+        <li>
+          <a href="#">
+            <div class="test-item shadow">
+              <img src="{% static 'classroom/images/test.svg' %}">
+              <div class="info">
+                <div class="label-title">sample test title <div class="w-info-con"><span class="week-badge shadow-sm"><span class="w-num">week 1</span><i class='bx bxs-left-arrow'></i></span></div> </div>
+                <div class="complete-time mt-1">
+                  <span class="sub-title">Started at:</span><span class="time">7:00PM, 17 Oct 2022</span>
+                  <span class="ongoing-badge">
+                    <span class="inner">
+                      <span class="indicator"></span><span class="text">Ongoing</span>
+                    </span>
+                  </span>
+                </div>
+                <div class="score-con">
+                  <div class="score-inner">
+                    <div class="check-pending"><img src="{% static 'classroom/images/excl.svg' %}" alt=""><div class="info">7/10 sheets uncheked</div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </a>
+        </li>
+        
+      </ul>
+    </div>
+    <div class="tasks">
+      <ul>
+        <li>
+          <a href="#">
+            <div class="task-item shadow">
+              <img src="{% static 'classroom/images/grp.png' %}">
+              <div class="info">
+                <div class="label-title">sample test title <div class="w-info-con"><span class="week-badge shadow-sm"><span class="w-num">week 1</span><i class='bx bxs-left-arrow'></i></span></div> </div>
+                <div class="complete-time">
+                  <span class="sub-title">Assigned on:</span><span class="time">7:00PM, 17 Oct 2022</span>
+                  <span class="ongoing-badge">
+                    <span class="inner">
+                      <span class="indicator"></span><span class="text">Ongoing</span>
+                    </span>
+                  </span>
+                </div>
+                <div class="score-con">
+                  <div class="score-inner">
+                    <div class="check-pending"><img src="{% static 'classroom/images/excl.svg' %}" alt=""><div class="info">7/10 works uncheked</div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="no-content mt-2 shadow rounded" style="display: none;">
+      <img src="/images/test_icons/panda.png" alt="">
+      <div class="info mt-3 text-muted">No activities</div>
+    </div>
+  </div>
   {% endif %}
 
   <div class="weekly-tests title-box">
