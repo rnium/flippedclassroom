@@ -31,9 +31,14 @@ function setupAvatar(image_file, btn_id) {
         data: image_form,
         contentType: false,
         processData: false,
-        complete: function(){
-            $(`#${btn_id}`).attr("disabled", false)
+        success: function(){
             location.reload()
+        },
+        error: function(xhr, error, status) {
+            $(`#${btn_id}`).attr("disabled", false)
+            $("#loader-con").hide(0 ,()=>{
+                showError(xhr['responseJSON']['info'])
+            })
         }
     });
 

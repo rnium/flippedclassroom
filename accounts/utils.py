@@ -3,17 +3,27 @@ from django.core.exceptions import ValidationError
 from django.core.files.base import ContentFile
 from django.core.files.uploadedfile import InMemoryUploadedFile
 from django.core.validators import FileExtensionValidator
+from pathlib import Path
 from PIL import Image
 from io import BytesIO
+
+def validate_image_extension(value):
+    valid_extensions = settings.ALLOWED_IMAGE_EXTENSIONS
+    ext = Path(value.name).suffix
+    if not ext.lower() in valid_extensions:
+        raise ValidationError('Invalid file type. Allowed file types are: {}'.format(', '.join(valid_extensions)))
+
+
+
 def compress_image(image):
-    image_validator = FileExtensionValidator(allowed_extensions=settings.ALLOWED_IMAGE_EXTENSIONS)
     try:
-        image_validator(image)
+        validate_image_extension(image)
     except ValidationError:
-        raise ValidationError("File Extension Not Allowed")
+        raise ValidationError("Invalid image file")
     img = Image.open(image)
+    img_format = img.format.lower()
     img_io = BytesIO()
-    img.save(img_io, format='JPEG', quality=50)
+    img.save(img_io, format=img_format, quality=50)
     img_file = ContentFile(img_io.getvalue())
 
     if hasattr(image, 'name') and image.name:

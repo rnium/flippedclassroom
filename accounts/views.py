@@ -193,14 +193,19 @@ def set_avatar(request):
         if len(request.FILES) > 0:
             user = request.user
             account = Account.objects.get(user=user)
+            try:
+                image_file = request.FILES.get('dp')
+                compressed_image = compress_image(image_file)
+            except ValidationError as e:
+                return JsonResponse(data={'info': e.message}, status=400)
             if account.profile_picture is not None:
                 account.profile_picture.delete(save=True)
             try:
-                compressed_image = compress_image(request.FILES.get('dp'))
-            except ValidationError as e:
-                return JsonResponse(data={'info': e.message}, status=400)
-            account.profile_picture = compressed_image
-            account.save()
+                account.profile_picture = compressed_image
+                account.save()
+            except Exception as e:
+                return JsonResponse(data={'info': 'Cannot save image'}, status=400)
+
             return JsonResponse({'status':'profile picture set'})
         
 
