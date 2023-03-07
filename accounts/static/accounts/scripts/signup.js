@@ -126,12 +126,15 @@ function setupAvatar(image_file) {
         data: image_form,
         contentType: false,
         processData: false,
-        complete: function(){
+        success: function(){
             window.location = success_url
             $("#signup-info").text("Avatar set!")
         },
-        error: function() {
-            location.reload()
+        error: function(xhr, error, status) {
+            $("#signup-info").text(xhr['responseJSON']['info'])
+            setTimeout(()=>{
+                window.location = success_url
+            }, 2000)
         }
     });
 

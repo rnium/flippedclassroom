@@ -10,7 +10,7 @@ def compress_image(image):
     try:
         image_validator(image)
     except ValidationError:
-        raise ValidationError("Extension Not Allowed")
+        raise ValidationError("File Extension Not Allowed")
     img = Image.open(image)
     img_io = BytesIO()
     img.save(img_io, format='JPEG', quality=50)
