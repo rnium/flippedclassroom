@@ -37,6 +37,7 @@ DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
 
+ALLOWED_IMAGE_EXTENSIONS = ['.jpg', '.jpeg', '.png']
 
 # Application definition
 

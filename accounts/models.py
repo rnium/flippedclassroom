@@ -1,3 +1,5 @@
+from django.core.validators import FileExtensionValidator
+from django.conf import settings
 from django.db import models
 from django.db.models import Q
 from django.utils import timezone
@@ -15,7 +17,10 @@ class Account(models.Model):
     institutional_id = models.CharField(max_length=200, null=True, blank=True)
     is_student = models.BooleanField(default=True)
     is_email_verified = models.BooleanField(default=False)
-    profile_picture = models.ImageField(upload_to="profiles/dp/", null=True, blank=True)
+    profile_picture = models.ImageField(upload_to="profiles/dp/",
+                                        null=True, 
+                                        blank=True,
+                                        validators=[FileExtensionValidator(allowed_extensions=settings.ALLOWED_IMAGE_EXTENSIONS)])
 
     def __str__(self):
         return self.user.username

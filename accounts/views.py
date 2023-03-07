@@ -1,3 +1,4 @@
+from django.core.exceptions import ValidationError
 from django.shortcuts import redirect, render, get_object_or_404
 from django.http import JsonResponse
 from django.views.generic import TemplateView
@@ -20,6 +21,7 @@ from django.urls import reverse
 from django.core.mail import EmailMessage
 from django.conf import settings
 from .models import Account
+from .utils import compress_image
 from email.message import EmailMessage
 from email.utils import formataddr
 import ssl
@@ -191,7 +193,13 @@ def set_avatar(request):
         if len(request.FILES) > 0:
             user = request.user
             account = Account.objects.get(user=user)
-            account.profile_picture = request.FILES.get('dp')
+            if account.profile_picture is not None:
+                account.profile_picture.delete(save=True)
+            try:
+                compressed_image = compress_image(request.FILES.get('dp'))
+            except ValidationError as e:
+                return JsonResponse(data={'info': e.message}, status=400)
+            account.profile_picture = compressed_image
             account.save()
             return JsonResponse({'status':'profile picture set'})
         
