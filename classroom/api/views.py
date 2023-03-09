@@ -1,9 +1,11 @@
+import jwt
 from datetime import timedelta
 from rest_framework.generics import ListAPIView, CreateAPIView, UpdateAPIView
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework import status
+from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.core.cache import cache
@@ -317,9 +319,15 @@ def congratulate_user(request, pk):
         classroom = Classroom.objects.get(pk=pk)
     except Classroom.DoesNotExist:
         return Response(data={'info': "Classroom not found"}, status=status.HTTP_404_NOT_FOUND)
+    # verifying jwt
+    try:
+        jwt_message = jwt.decode(request.data['jwt'], settings.SECRET_KEY, algorithms=['HS256'])
+        to_user_pk = jwt_message['uid']
+    except Exception as e:
+        return Response(data={'info': "Invalid Json Web Token"}, status=status.HTTP_400_BAD_REQUEST)
     try:  
-        to_user = User.objects.get(pk=request.data['uid'])
-    except Classroom.DoesNotExist:
+        to_user = User.objects.get(pk=to_user_pk)
+    except User.DoesNotExist:
         return Response(data={'info': "User not found"}, status=status.HTTP_404_NOT_FOUND)
 
     min_time_gap = timedelta(days=7)
@@ -327,7 +335,6 @@ def congratulate_user(request, pk):
     congrats_qs = Congratulation.objects.filter(from_user=request.user, to_user=to_user, added__gt=last_time)
     if len(congrats_qs) > 0:
         next_time = (congrats_qs[0].added + min_time_gap).isoformat()
-        
         return Response(data={'next_time':next_time, 'info': f"You've already congratulated {to_user.account.user_full_name} for his rank in this week"}, status=status.HTTP_400_BAD_REQUEST)
     if not ((request.user in classroom.teachers.all()) or (request.user in classroom.students.all()) or (to_user in classroom.students.all())):
         return Response(data={'info': "Forbidden"}, status=status.HTTP_403_FORBIDDEN)

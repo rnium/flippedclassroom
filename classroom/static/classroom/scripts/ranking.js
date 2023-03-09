@@ -80,9 +80,15 @@ function congratulate_user(user_jwt, btn){
             notifyUser(notification_text, 'info', 5000, alert_icon_confetti)
         },
         error: function(xhr, error, status) {
-            let date_obj = new Date(xhr['responseJSON']['next_time'])
-            let next_time = date_obj.toLocaleString()
-            let notification_text = `${xhr['responseJSON']['info']}. Please try again after ${next_time}`
+            let error_response = xhr['responseJSON']
+            let notification_text
+            if ("next_time" in error_response) {
+                let date_obj = new Date(xhr['responseJSON']['next_time'])
+                let next_time = date_obj.toLocaleString()
+                notification_text = `${error_response['info']}. Please try again after ${next_time}`
+            } else {
+                notification_text = error_response['info']
+            }
             notifyUser(notification_text, 'dark', 5000, alert_icon_alert)
         },
         complete: function() {
