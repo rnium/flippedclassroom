@@ -1,3 +1,8 @@
+// global variables
+var first_rank_jwt
+var second_rank_jwt
+var third_rank_jwt
+
 function convertFloat(number) {
     if (number === null || isNaN(number)) {
         return 0;
@@ -57,8 +62,8 @@ function show_card_confetti(wrapperid) {
 }
 
 
-function congratulate_user(uid, btn){
-    let payload = {'uid':uid}
+function congratulate_user(user_jwt, btn){
+    let payload = {'jwt':user_jwt}
     $.ajax({
         type: "post",
         url: congratulate_user_api_url,
@@ -93,9 +98,21 @@ function activate_congrats_btn() {
     $.each(btns, function (indexInArray, valueOfElement) { 
         $(valueOfElement).on('click', ()=>{
             let wrapperId = $(this).data('wrapper')
-            let uid = $(this).data('uid')
+            let rank = $(this).data('rank')
+            let user_jwt
+            if (rank==1) {
+                user_jwt = first_rank_jwt
+            } else if (rank==2) {
+                user_jwt = second_rank_jwt
+            } else if (rank==3) {
+                user_jwt = third_rank_jwt
+            } else {
+                let notification_text = "User rank must be between 1 to 3 to be congratulated"
+                notifyUser(notification_text, 'dark', 5000, alert_icon_alert)
+                return null
+            }
             show_card_confetti(wrapperId)
-            congratulate_user(uid, this)
+            congratulate_user(user_jwt, this)
         })
     });
 }
@@ -179,7 +196,7 @@ function render_first_rank_card(topper_data) {
     let roundedParticipation = convertFloat(participation);
     let regularity = topper_data['regularity'];
     let roundedRegularity = convertFloat(regularity);
-    
+    first_rank_jwt = topper_data['jwt']
     let lb_action_elem
     if (topper_data['current_user']) {
         lb_action_elem = `<div class="lb-action d-flex justify-content-center align-items-center mt-2">
@@ -188,7 +205,7 @@ function render_first_rank_card(topper_data) {
     } else {
         lb_action_elem = `<div class="lb-action d-flex justify-content-between align-items-center mt-2">
                             <span class="leaderboard-info"><img class="lb-icon" src="${leaderboard}" alt=""><span class="txt">Primus</span></span>
-                            <button class="congrats-btn congr-btn-first" data-wrapper="first-place-wrapper" data-uid="${topper_data['uid']}" data-fullname="${topper_data['full_name']}">Congratulate</button>
+                            <button class="congrats-btn congr-btn-first" data-wrapper="first-place-wrapper" data-rank="${topper_data['rank']}">Congratulate</button>
                         </div>`
     }
     let card = `<div class="col-sm-4 first">
@@ -229,6 +246,7 @@ function render_second_rank_card(topper_data) {
     let roundedParticipation = convertFloat(participation);
     let regularity = topper_data['regularity'];
     let roundedRegularity = convertFloat(regularity);
+    second_rank_jwt = topper_data['jwt']
     
     let lb_action_elem
     if (topper_data['current_user']) {
@@ -238,7 +256,7 @@ function render_second_rank_card(topper_data) {
     } else {
         lb_action_elem = `<div class="lb-action mt-2 d-flex justify-content-between align-items-center">
                             <span class="leaderboard-info"><img class="lb-icon" src="${leaderboard}" alt=""><span class="txt">Secundus</span></span>
-                            <button class="congrats-btn congr-btn-second" data-wrapper="second-place-wrapper" data-uid="${topper_data['uid']}" data-fullname="${topper_data['full_name']}">Congratulate</button>
+                            <button class="congrats-btn congr-btn-second" data-wrapper="second-place-wrapper" data-rank="${topper_data['rank']}">Congratulate</button>
                         </div>`
     }
     let card = `<div class="col-sm-4 second">
@@ -280,6 +298,7 @@ function render_third_rank_card(topper_data) {
     let roundedParticipation = convertFloat(participation);
     let regularity = topper_data['regularity'];
     let roundedRegularity = convertFloat(regularity);
+    third_rank_jwt = topper_data['jwt']
     
     let lb_action_elem
     if (topper_data['current_user']) {
@@ -289,7 +308,7 @@ function render_third_rank_card(topper_data) {
     } else {
         lb_action_elem = `<div class="lb-action mt-2 d-flex justify-content-between align-items-center">
                             <span class="leaderboard-info"><img class="lb-icon" src="${leaderboard}" alt=""><span class="txt">Tertius</span></span>
-                            <button class="congrats-btn congr-btn-third" data-wrapper="third-place-wrapper" data-uid="${topper_data['uid']}" data-fullname="${topper_data['full_name']}">Congratulate</button>
+                            <button class="congrats-btn congr-btn-third" data-wrapper="third-place-wrapper" data-rank="${topper_data['rank']}">Congratulate</button>
                         </div>`
     }
     let card = `<div class="col-sm-4 third">
