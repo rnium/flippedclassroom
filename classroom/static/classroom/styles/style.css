@@ -192,6 +192,7 @@
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
+    width: 100%;
     margin-left: 0 !important;
   }
   body .main .left-col .recent-posts .post-container .post-item .contents .title {
@@ -204,6 +205,7 @@
   }
   body .main .left-col .recent-posts .post-container .post-item .contents .topics {
     margin-top: 5px;
+    text-align: center;
   }
   body .main .left-col .recent-posts .post-container .post-item .contents .topics a.topic {
     padding: 2px 5px !important;
@@ -215,7 +217,7 @@
     font-size: 0.7rem !important;
   }
   body .main .left-col .recent-posts .post-container .post-item .contents .info {
-    width: 100%;
+    width: 100% !important;
     -ms-flex-pack: distribute !important;
         justify-content: space-around !important;
     margin-top: 1rem;
