@@ -368,8 +368,11 @@ def classroom_performance_api(request, cls_pk):
         return Response(data={'info':'classroom not found'}, status=status.HTTP_404_NOT_FOUND)
     if not ((request.user in classroom.teachers.all()) or (request.user in classroom.students.all())):
         return Response(data={'info':'forbidden'}, status=status.HTTP_403_FORBIDDEN)
-    
-    stats_data = get_students_performance_chart_data(classroom)
+    cache_name = f"{classroom.id}-performancedata"
+    stats_data = cache.get(cache_name)
+    if stats_data is None:
+        stats_data = get_students_performance_chart_data(classroom)
+        cache.set(cache_name, stats_data, timeout=3600)
     return Response(data=stats_data, status=status.HTTP_200_OK)
 
 
