@@ -177,7 +177,7 @@ function render_post_component(post_data, hidden=false) {
                         <button class="option-toggle" id="${post_data['id']}-option-toggle" data-op_con="${post_data['id']}-op-con"><i class='bx bx-dots-horizontal-rounded'></i></button>
                     </div>`
     }
-    post_comp = `<div class="post-item" ${inline_style}>
+    post_comp = `<div class="post-item shadow-sm" ${inline_style}>
                     <div class="icon"><i class='bx bx-file'></i></div>
                     <div class="contents">
                     <a href="${post_data['view_url']}" class="title">${description}</a>

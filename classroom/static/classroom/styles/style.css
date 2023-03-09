@@ -171,32 +171,111 @@
     display: none !important;
   }
   body .main .left-col .recent-posts .post-container .post-item {
-    padding: 0.9rem 1rem !important;
+    padding: 0.9rem 0.5rem !important;
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: column !important;
+            flex-direction: column !important;
   }
   body .main .left-col .recent-posts .post-container .post-item .icon {
-    display: none !important;
+    margin-bottom: 0.5rem !important;
   }
   body .main .left-col .recent-posts .post-container .post-item .contents {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    justify-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     margin-left: 0 !important;
   }
   body .main .left-col .recent-posts .post-container .post-item .contents .title {
+    text-align: center;
     font-size: 0.9rem !important;
   }
   body .main .left-col .recent-posts .post-container .post-item .contents .post-time {
     color: #8aaca3;
     font-size: 0.6rem !important;
   }
+  body .main .left-col .recent-posts .post-container .post-item .contents .topics {
+    margin-top: 5px;
+  }
+  body .main .left-col .recent-posts .post-container .post-item .contents .topics a.topic {
+    padding: 2px 5px !important;
+  }
+  body .main .left-col .recent-posts .post-container .post-item .contents .topics a.topic span.content i {
+    font-size: 0.9rem !important;
+  }
+  body .main .left-col .recent-posts .post-container .post-item .contents .topics a.topic span.content span {
+    font-size: 0.7rem !important;
+  }
   body .main .left-col .recent-posts .post-container .post-item .contents .info {
-    -webkit-box-orient: vertical !important;
-    -webkit-box-direction: normal !important;
-        -ms-flex-direction: column !important;
-            flex-direction: column !important;
+    width: 100%;
+    -ms-flex-pack: distribute !important;
+        justify-content: space-around !important;
     margin-top: 1rem;
-    background-color: white;
-    padding: 0.5rem;
+    background-color: #edede9;
+    padding: 0.5rem 0 !important;
     border-radius: 10px;
-    -webkit-box-shadow: 0 0 5px #dfdede;
-            box-shadow: 0 0 5px #dfdede;
+  }
+  body .main .left-col .recent-posts .post-container .post-item .contents .info .info-item {
+    margin: 0 !important;
+  }
+  body .main .left-col .recent-posts .post-container .post-item .contents .info .info-item i {
+    font-size: 0.9rem !important;
+  }
+  body .main .left-col .recent-posts .post-container .post-item .contents .info .info-item span {
+    font-size: 0.7rem !important;
+  }
+  body .main .left-col .recent-posts .post-container .post-item .contents .info .info-item i, body .main .left-col .recent-posts .post-container .post-item .contents .info .info-item span {
+    color: #457b9d !important;
+  }
+  body .main .left-col .recent-posts .post-container .post-item .options {
+    position: static !important;
+    width: 100%;
+  }
+  body .main .left-col .recent-posts .post-container .post-item .options .options-container {
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+    -webkit-box-orient: horizontal !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: row !important;
+            flex-direction: row !important;
+    margin-top: 5px;
+    position: static !important;
+    -webkit-transform: translateY(0%) !important;
+            transform: translateY(0%) !important;
+    background-color: white;
+  }
+  body .main .left-col .recent-posts .post-container .post-item .options .options-container a {
+    border-radius: 10px;
+    color: white !important;
+    font-family: 'Silkscreen', cursive;
+    text-align: center;
+    font-size: 0.9rem !important;
+  }
+  body .main .left-col .recent-posts .post-container .post-item .options .options-container a.edit {
+    margin-right: 3px;
+    background-color: #6183f5 !important;
+  }
+  body .main .left-col .recent-posts .post-container .post-item .options .options-container a.edit:hover {
+    background-color: rgba(97, 132, 245, 0.8) !important;
+  }
+  body .main .left-col .recent-posts .post-container .post-item .options .options-container a.delete {
+    margin-left: 3px;
+    background-color: #fb6f92 !important;
+  }
+  body .main .left-col .recent-posts .post-container .post-item .options .options-container a.delete:hover {
+    background-color: rgba(251, 111, 146, 0.8) !important;
+  }
+  body .main .left-col .recent-posts .post-container .post-item .options .option-toggle {
+    display: none;
   }
   body .main .left-col .weeklies .content {
     margin: 0.5rem !important;
@@ -1127,6 +1206,10 @@ body .main .left-col .recent-posts {
   margin-top: 2rem;
 }
 
+body .main .left-col .recent-posts .post-container {
+  padding: 0 5px;
+}
+
 body .main .left-col .recent-posts .post-container .post-item {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1142,8 +1225,10 @@ body .main .left-col .recent-posts .post-container .post-item {
   padding: 0.9rem 1.2rem;
   margin-bottom: 1rem;
   border-radius: 10px;
-  background-color: aliceblue;
+  background-color: #ffffff;
   border: 1px solid transparent;
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
 }
 
 body .main .left-col .recent-posts .post-container .post-item:hover {
@@ -1176,14 +1261,12 @@ body .main .left-col .recent-posts .post-container .post-item .contents a.title 
   font-size: 1.1rem;
   text-decoration: none;
   color: #868686;
-  -webkit-transition: all 0.5s;
-  transition: all 0.5s;
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
 }
 
 body .main .left-col .recent-posts .post-container .post-item .contents a.title:hover {
   color: #0066ff;
-  -webkit-text-decoration: dotted;
-          text-decoration: dotted;
 }
 
 body .main .left-col .recent-posts .post-container .post-item .contents .post-time {
@@ -1323,6 +1406,8 @@ body .main .left-col .recent-posts .post-container .post-item .options .options-
   background-color: #dde7ee;
   width: 100%;
   text-decoration: none;
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
 }
 
 body .main .left-col .recent-posts .post-container .post-item .options .options-container a:hover {
@@ -3265,7 +3350,6 @@ body .main .post-detail {
 
 body .main .post-detail .post-body .description {
   font-size: 1.2rem;
-  color: #e7fbfb;
 }
 
 body .main .post-detail .post-body .attachments {
@@ -3308,8 +3392,8 @@ body .main .post-detail .post-body .attachments .accordion {
 
 body .main .post-detail .post-body .attachments .accordion .accordion-item .accordion-button {
   overflow: hidden !important;
-  background-color: #607b7d;
-  color: white !important;
+  background-color: #f7f9f2;
+  color: #086375 !important;
 }
 
 body .main .post-detail .post-body .attachments .accordion .accordion-item .accordion-button:focus {
@@ -3402,15 +3486,14 @@ body .main .post-detail .post-body .post-info .post-time {
 }
 
 body .main .post-detail .post-body .post-info .post-time i {
-  font-size: 1.2rem;
-  color: #85d4ff;
+  font-size: 1.1rem;
+  color: #a3b5bf;
   margin-right: 5px;
 }
 
 body .main .post-detail .post-body .post-info .post-time .time {
-  font-size: 0.9rem;
-  font-family: 'Gemunu Libre', sans-serif;
-  color: #85d4ff;
+  font-size: 0.8rem;
+  color: #a3b5bf;
 }
 
 body .main .post-detail .comments {

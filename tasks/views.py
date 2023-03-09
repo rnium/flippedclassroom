@@ -146,7 +146,8 @@ class TaskDetail(LoginRequiredMixin, DetailView):
             context['is_teacher'] = True
             if task.is_group_task:
                 groups = Group.objects.filter(task=task)
-                context['group_submissions'] = [g for g in groups if g.work_submitted]
+                group_submissions = [g for g in groups if g.work_submitted]
+                context['group_submissions'] = sorted(group_submissions, key=lambda x: x.work.submission_time)
                 context['unsubmitting_groups'] = [g for g in groups if not g.work_submitted]
             else:
                 context['indiv_submissions'] = Work.objects.filter(task=task, is_submitted=True, group=None)
