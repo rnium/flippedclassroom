@@ -6,6 +6,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.core.cache import cache
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
 from django.urls import reverse
@@ -337,14 +338,18 @@ def congratulate_user(request, pk):
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
-def get_ranking_api(request, cls_pk):
+def rankings(request, cls_pk):
     try:
         classroom = get_object_or_404(Classroom, pk=cls_pk)
     except Exception as e:
         return Response(data={'info':'classroom not found'}, status=status.HTTP_404_NOT_FOUND)
     if not ((request.user in classroom.teachers.all()) or (request.user in classroom.students.all())):
         return Response(data={'info':'forbidden'}, status=status.HTTP_403_FORBIDDEN)
-    rank_data = get_students_ranking_data(classroom, request.user)
+    cache_name = f"{classroom.id}-ranking"
+    rank_data = cache.get(cache_name)
+    if rank_data is None:
+        rank_data = get_students_ranking_data(classroom, request.user)
+        cache.set(cache_name, rank_data, timeout=3600)
     num_rankig = len(rank_data['ranked_students'])
     has_ranking = bool(num_rankig)
     data = {

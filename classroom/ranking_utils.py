@@ -1,8 +1,10 @@
+from django.conf import settings
 from django.contrib.auth.models import User
 from django.db.models import F, Q, Sum
 from classroom.models import Classroom
 from tasks.models import Work
 from weekly_test.models import WeeklyTest, AnswerSheet
+import jwt
 
 
 def student_classroom_points(user:User, classroom:Classroom):
@@ -116,6 +118,10 @@ def get_students_ranking_data(classroom:Classroom, user=None):
     toppers_list = sorted_ranks[0:3]
     toppers_data = {}
     for topper in toppers_list:
+        # generating jwt for proper ranking congratulation
+        jwt_payload = {'uid':topper['uid'], 'rank':topper['rank']}
+        topper_jwt = jwt.encode(jwt_payload, settings.SECRET_KEY, algorithm='HS256')
+        topper['jwt'] = topper_jwt
         if topper['rank'] == 1:
             toppers_data['first'] = topper
         elif topper['rank'] == 2:
