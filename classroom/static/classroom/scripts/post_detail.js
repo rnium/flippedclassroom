@@ -49,7 +49,7 @@ function appendComment(response) {
         comment = `<li>
                     <div class="comment" id="comment-${response['id']}" style="display:none;">
                     <div class="comment-inner">
-                        <div class="avatar"><img src="${response['avatar_url']}" alt="avatar"></div>
+                        <div class="avatar"><div class="dp" style="background-image: url('${response['avatar_url']}');"></div></div>
                         <div class="comment-body">
                         <div class="${response['cssClass']}">${response['author_name']}</div>
                         <div class="time" id="${response['id']}_time">${locale_time}</div>
@@ -78,7 +78,7 @@ function appendComment(response) {
     } else {
         let comment = `<li>
                         <div class="reply" id="comment-${response['id']}" style="display:none;">
-                        <div class="avatar"><img src="${response['avatar_url']}" alt="avatar"></div>
+                        <div class="avatar"><div class="dp" style="background-image: url('${response['avatar_url']}');"></div></div>
                         <div class="comment-body">
                             <div class="${response['cssClass']}">${response['author_name']}</div>
                             <div class="time" id="${response['id']}_time">${locale_time}</div>
