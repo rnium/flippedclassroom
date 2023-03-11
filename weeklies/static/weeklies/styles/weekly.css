@@ -1,10 +1,14 @@
-@import url("https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@300;400;500&family=Montserrat:wght@300;400;500&family=Zen+Dots&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@300;400;500&family=Golos+Text&family=Lato&family=Montserrat:wght@300;400;500&family=Silkscreen&family=Ubuntu&display=swap");
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
   margin: 0;
   color: #276363;
+}
+
+body {
+  background-color: #f8f9fa;
 }
 
 body .main {
@@ -134,10 +138,12 @@ body .main .bottom-panel .week-info .text {
   margin-right: 1rem;
   -webkit-transition: all 100ms;
   transition: all 100ms;
+  font-family: 'Silkscreen', cursive;
 }
 
 body .main .bottom-panel .week-info .num {
   color: #76919e;
+  font-family: 'Golos Text', sans-serif;
   -webkit-transition: all 100ms;
   transition: all 100ms;
 }
@@ -146,6 +152,7 @@ body .main .bottom-panel .tab-container {
   margin-top: 1rem;
   border-radius: 10px;
   overflow: hidden;
+  background-color: white;
   -webkit-box-shadow: 5px 5px 10px #e5ece9;
           box-shadow: 5px 5px 10px #e5ece9;
   border: 2px solid #ecf2f7;
@@ -159,14 +166,51 @@ body .main .bottom-panel .tab-container .tab-buttons {
 }
 
 body .main .bottom-panel .tab-container .tab-buttons button {
-  padding: 0.4rem 1rem 0.2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 0.5rem 1rem 0.3rem;
   border: 0;
-  background-color: rgba(236, 241, 245, 0.3);
+  background-color: rgba(236, 241, 245, 0.5);
   -webkit-transition: all 300ms;
   transition: all 300ms;
   border-bottom: 3px solid transparent;
+}
+
+body .main .bottom-panel .tab-container .tab-buttons button i, body .main .bottom-panel .tab-container .tab-buttons button span {
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
+}
+
+body .main .bottom-panel .tab-container .tab-buttons button i {
+  font-size: 1rem;
+  margin-right: 5px;
+  color: #88ac98;
+}
+
+body .main .bottom-panel .tab-container .tab-buttons button span {
   font-family: 'Gemunu Libre', sans-serif;
-  font-weight: 500;
+  font-size: 1rem;
+}
+
+body .main .bottom-panel .tab-container .tab-buttons button .post-count {
+  display: inline-block;
+  margin-left: 5px;
+  padding: 0 7px;
+  border-radius: 5px;
+  background-color: #97bca8;
+  color: white;
 }
 
 body .main .bottom-panel .tab-container .tab-buttons button:hover {
@@ -174,9 +218,17 @@ body .main .bottom-panel .tab-container .tab-buttons button:hover {
 }
 
 body .main .bottom-panel .tab-container .tab-buttons button.active {
-  color: #00a078;
   background-color: rgba(202, 224, 214, 0.6);
   border-bottom-color: #3fc497;
+}
+
+body .main .bottom-panel .tab-container .tab-buttons button.active i, body .main .bottom-panel .tab-container .tab-buttons button.active span {
+  color: #00a078;
+}
+
+body .main .bottom-panel .tab-container .tab-buttons button.active .post-count {
+  color: white;
+  background-color: #10a051;
 }
 
 body .main .bottom-panel .tab-container .tab-contents-container {
@@ -323,7 +375,7 @@ body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-conte
 }
 
 body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .pre-class-files, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .in-class-files, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .post-class-files, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .pre-class-files, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .in-class-files, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .post-class-files, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .pre-class-files, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .in-class-files, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .post-class-files {
-  background-color: aliceblue;
+  background-color: #e5f3ff;
   border-color: #9eaedd;
 }
 
@@ -370,7 +422,7 @@ body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-conte
 }
 
 body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .pre-class-files .content ul li i, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .in-class-files .content ul li i, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .left-col .post-class-files .content ul li i, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .pre-class-files .content ul li i, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .in-class-files .content ul li i, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .left-col .post-class-files .content ul li i, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .pre-class-files .content ul li i, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .in-class-files .content ul li i, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .left-col .post-class-files .content ul li i {
-  font-size: 1.6rem;
+  font-size: 2.2rem;
   margin-right: 0.5rem;
   -webkit-transition: all 300ms;
   transition: all 300ms;
@@ -699,6 +751,56 @@ body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-conte
   padding: 1rem;
 }
 
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .stats-container, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .stats-container, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .stats-container {
+  background-color: #3f5373;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .stats-container .title, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .stats-container .title, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .stats-container .title {
+  color: hwb(0 100% 0%);
+  text-shadow: none;
+  font-size: 1rem;
+  font-family: 'Lato', sans-serif;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .stats-container .content, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .stats-container .content, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .stats-container .content {
+  margin: 5px;
+  height: 10rem;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .stats-container .content canvas, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .stats-container .content canvas, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .stats-container .content canvas {
+  height: 100%;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .stats-container .content .loader-con, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .stats-container .content .info-con, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .stats-container .content .loader-con, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .stats-container .content .info-con, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .stats-container .content .loader-con, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .stats-container .content .info-con {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 1rem 0;
+  height: 100%;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .stats-container .content .loader-con img, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .stats-container .content .info-con img, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .stats-container .content .loader-con img, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .stats-container .content .info-con img, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .stats-container .content .loader-con img, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .stats-container .content .info-con img {
+  width: 3rem;
+  margin-bottom: 1rem;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .stats-container .content .loader-con .info, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .stats-container .content .info-con .info, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .stats-container .content .loader-con .info, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .stats-container .content .info-con .info, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .stats-container .content .loader-con .info, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .stats-container .content .info-con .info {
+  color: white;
+  font-size: 1.4rem;
+  font-family: 'Silkscreen', cursive;
+}
+
 body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .links, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .links, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .links {
   background-color: rgba(202, 224, 214, 0.2);
 }
@@ -759,13 +861,229 @@ body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-conte
   background-color: #285d8b;
 }
 
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .live-tests, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .live-tests, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .live-tests {
+  background-color: #47616e;
+  border: none;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .live-tests .grad-top, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .live-tests .grad-top, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .live-tests .grad-top {
+  height: 7px;
+  overflow: hidden;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .live-tests .grad-top .grad-con, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .live-tests .grad-top .grad-con, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .live-tests .grad-top .grad-con {
+  background-image: -webkit-gradient(linear, left top, right top, from(#ef0c85), color-stop(#ff64b7), color-stop(#00b3ff), color-stop(aquamarine), to(cyan));
+  background-image: linear-gradient(to right, #ef0c85, #ff64b7, #00b3ff, aquamarine, cyan);
+  width: 100%;
+  height: 10px;
+  bottom: 0;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .live-tests .title, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .live-tests .title, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .live-tests .title {
+  color: white;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .live-tests .tests ul, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .live-tests .tests ul, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .live-tests .tests ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .live-tests .tests ul li, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .live-tests .tests ul li, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .live-tests .tests ul li {
+  margin-bottom: 1.5rem;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .live-tests .tests ul li .test-item, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .live-tests .tests ul li .test-item, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .live-tests .tests ul li .test-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .live-tests .tests ul li .test-item i, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .live-tests .tests ul li .test-item i, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .live-tests .tests ul li .test-item i {
+  font-size: 2rem;
+  margin-right: 0.5rem;
+  padding: 0.3rem;
+  border-radius: 5px;
+  background-color: #0bf5aa;
+  color: #46846f;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .live-tests .tests ul li .test-item .info, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .live-tests .tests ul li .test-item .info, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .live-tests .tests ul li .test-item .info {
+  width: 100%;
+  margin-top: 5px;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .live-tests .tests ul li .test-item .info .label-title, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .live-tests .tests ul li .test-item .info .label-title, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .live-tests .tests ul li .test-item .info .label-title {
+  color: inherit;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+  font-size: 1.1rem;
+  color: #d2e3de;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .live-tests .tests ul li .test-item .info a.label-title, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .live-tests .tests ul li .test-item .info a.label-title, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .live-tests .tests ul li .test-item .info a.label-title {
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .live-tests .tests ul li .test-item .info a.label-title:hover, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .live-tests .tests ul li .test-item .info a.label-title:hover, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .live-tests .tests ul li .test-item .info a.label-title:hover {
+  color: #98ffcc;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .live-tests .tests ul li .test-item .info .ending-time, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .live-tests .tests ul li .test-item .info .ending-time, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .live-tests .tests ul li .test-item .info .ending-time {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 5px;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .live-tests .tests ul li .test-item .info .ending-time i, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .live-tests .tests ul li .test-item .info .ending-time i, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .live-tests .tests ul li .test-item .info .ending-time i {
+  color: #ff6b35;
+  background-color: inherit;
+  padding: 0;
+  font-size: 1.2rem;
+  margin: 0;
+  margin-right: 3px;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .live-tests .tests ul li .test-item .info .ending-time .time-con, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .live-tests .tests ul li .test-item .info .ending-time .time-con, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .live-tests .tests ul li .test-item .info .ending-time .time-con {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 0.7rem;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .live-tests .tests ul li .test-item .info .ending-time .time-con .label, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .live-tests .tests ul li .test-item .info .ending-time .time-con .label, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .live-tests .tests ul li .test-item .info .ending-time .time-con .label {
+  font-weight: 500;
+  font-size: 0.8rem;
+  color: #ff6b35;
+  margin-right: 3px;
+  font-family: 'Gemunu Libre', sans-serif;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .live-tests .tests ul li .test-item .info .ending-time .time-con span, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .live-tests .tests ul li .test-item .info .ending-time .time-con span, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .live-tests .tests ul li .test-item .info .ending-time .time-con span {
+  color: #f7c59f;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .live-tests .tests ul li .test-item .info .stat, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .live-tests .tests ul li .test-item .info .stat, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .live-tests .tests ul li .test-item .info .stat {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  padding: 3px;
+  margin-top: 0.5rem;
+  border-radius: 10px;
+  width: 100%;
+  -webkit-box-shadow: 0 0 10px #45606d;
+          box-shadow: 0 0 10px #45606d;
+  background-color: #1084d2;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .live-tests .tests ul li .test-item .info .stat div, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .live-tests .tests ul li .test-item .info .stat div, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .live-tests .tests ul li .test-item .info .stat div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 0.9rem;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .live-tests .tests ul li .test-item .info .stat div i, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .live-tests .tests ul li .test-item .info .stat div i, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .live-tests .tests ul li .test-item .info .stat div i {
+  font-size: 1.2rem;
+  background-color: transparent;
+  margin-right: 0;
+  color: white;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .live-tests .tests ul li .test-item .info .stat div span, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .live-tests .tests ul li .test-item .info .stat div span, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .live-tests .tests ul li .test-item .info .stat div span {
+  color: white;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .live-tests .tests ul li .test-item .info .stat div span.value, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .live-tests .tests ul li .test-item .info .stat div span.value, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .live-tests .tests ul li .test-item .info .stat div span.value {
+  font-weight: 500;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .live-tests .tests ul li .test-item .info .action a, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .live-tests .tests ul li .test-item .info .action a, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .live-tests .tests ul li .test-item .info .action a {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  font-family: 'Gemunu Libre', sans-serif;
+  padding: 3px;
+  margin-top: 0.5rem;
+  border-radius: 20px;
+  color: #ffffff;
+  background-color: #1084d2;
+  -webkit-box-shadow: 0 0 10px #45606d;
+          box-shadow: 0 0 10px #45606d;
+  width: 100%;
+  -webkit-transition: background-color 300ms;
+  transition: background-color 300ms;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .live-tests .tests ul li .test-item .info .action a:hover, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .live-tests .tests ul li .test-item .info .action a:hover, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .live-tests .tests ul li .test-item .info .action a:hover {
+  background-color: #22577a;
+  outline: 1px solid white;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tasks, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tests, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tasks, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tests, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tasks, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tests {
+  background-color: #e5e5e5;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tasks .title, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tests .title, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tasks .title, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tests .title, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tasks .title, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tests .title {
+  font-family: 'Lato', sans-serif;
+  background-color: none;
+  color: #429090;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tasks .content, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tests .content, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tasks .content, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tests .content, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tasks .content, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tests .content {
+  margin: 0 7px 10px;
+}
+
 body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tasks .content ul, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tests .content ul, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tasks .content ul, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tests .content ul, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tasks .content ul, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tests .content ul {
   padding: 0;
   list-style-type: none;
 }
 
 body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tasks .content ul li, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tests .content ul li, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tasks .content ul li, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tests .content ul li, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tasks .content ul li, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tests .content ul li {
-  margin-bottom: 2px;
+  margin-bottom: 4px;
 }
 
 body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tasks .content ul li a, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tests .content ul li a, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tasks .content ul li a, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tests .content ul li a, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tasks .content ul li a, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tests .content ul li a {
@@ -797,18 +1115,24 @@ body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-conte
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 2px 5px;
+  padding: 10px 5px;
   border-radius: 5px;
+  background-color: white;
   border: 1px solid transparent;
   -webkit-transition: all 300ms;
   transition: all 300ms;
 }
 
-body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tasks .content ul li .list-item i, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tests .content ul li .list-item i, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tasks .content ul li .list-item i, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tests .content ul li .list-item i, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tasks .content ul li .list-item i, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tests .content ul li .list-item i {
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tasks .content ul li .list-item i.ico, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tests .content ul li .list-item i.ico, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tasks .content ul li .list-item i.ico, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tests .content ul li .list-item i.ico, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tasks .content ul li .list-item i.ico, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tests .content ul li .list-item i.ico {
   font-size: 1.5rem;
   margin-right: 0.5rem;
   padding: 0.3rem;
   border-radius: 5px;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tasks .content ul li .list-item img, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tests .content ul li .list-item img, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tasks .content ul li .list-item img, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tests .content ul li .list-item img, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tasks .content ul li .list-item img, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tests .content ul li .list-item img {
+  width: 2.5rem;
+  margin-right: 5px;
 }
 
 body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tasks .content ul li .list-item .info, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tests .content ul li .list-item .info, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tasks .content ul li .list-item .info, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tests .content ul li .list-item .info, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tasks .content ul li .list-item .info, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tests .content ul li .list-item .info {
@@ -818,6 +1142,31 @@ body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-conte
 body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tasks .content ul li .list-item .info .label-title, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tests .content ul li .list-item .info .label-title, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tasks .content ul li .list-item .info .label-title, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tests .content ul li .list-item .info .label-title, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tasks .content ul li .list-item .info .label-title, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tests .content ul li .list-item .info .label-title {
   color: inherit;
   text-decoration: none;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tasks .content ul li .list-item .info .label-title .points, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tests .content ul li .list-item .info .label-title .points, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tasks .content ul li .list-item .info .label-title .points, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tests .content ul li .list-item .info .label-title .points, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tasks .content ul li .list-item .info .label-title .points, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tests .content ul li .list-item .info .label-title .points {
+  display: inline-block;
+  margin-left: 5px;
+  padding: 0 5px;
+  border-radius: 5px;
+  border: 1px solid #53cae4;
+  background-color: rgba(83, 201, 228, 0.1);
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
+  cursor: default;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tasks .content ul li .list-item .info .label-title .points span.num-points, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tests .content ul li .list-item .info .label-title .points span.num-points, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tasks .content ul li .list-item .info .label-title .points span.num-points, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tests .content ul li .list-item .info .label-title .points span.num-points, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tasks .content ul li .list-item .info .label-title .points span.num-points, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tests .content ul li .list-item .info .label-title .points span.num-points {
+  color: #53cae4;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tasks .content ul li .list-item .info .label-title .points span.label, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tests .content ul li .list-item .info .label-title .points span.label, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tasks .content ul li .list-item .info .label-title .points span.label, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tests .content ul li .list-item .info .label-title .points span.label, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tasks .content ul li .list-item .info .label-title .points span.label, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tests .content ul li .list-item .info .label-title .points span.label {
+  color: #53cae4;
+  font-family: 'Gemunu Libre', sans-serif;
+  font-size: 0.8rem;
 }
 
 body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tasks .content ul li .list-item .info a.label-title, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tests .content ul li .list-item .info a.label-title, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tasks .content ul li .list-item .info a.label-title, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tests .content ul li .list-item .info a.label-title, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tasks .content ul li .list-item .info a.label-title, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tests .content ul li .list-item .info a.label-title {
@@ -839,7 +1188,7 @@ body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-conte
 }
 
 body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tasks .content ul li .test:hover, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tests .content ul li .test:hover, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tasks .content ul li .test:hover, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tests .content ul li .test:hover, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tasks .content ul li .test:hover, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tests .content ul li .test:hover {
-  background-color: rgba(147, 179, 160, 0.1);
+  outline: 1px solid #bad2ca;
 }
 
 body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tasks .content ul li .assignment .info .deadline, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tests .content ul li .assignment .info .deadline, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tasks .content ul li .assignment .info .deadline, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tests .content ul li .assignment .info .deadline, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tasks .content ul li .assignment .info .deadline, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tests .content ul li .assignment .info .deadline {
@@ -852,7 +1201,7 @@ body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-conte
 }
 
 body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tasks .content ul li .assignment:hover, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tests .content ul li .assignment:hover, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tasks .content ul li .assignment:hover, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tests .content ul li .assignment:hover, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tasks .content ul li .assignment:hover, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tests .content ul li .assignment:hover {
-  background-color: rgba(147, 157, 179, 0.1);
+  background-color: white;
 }
 
 body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tasks .content .no-content, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tests .content .no-content, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tasks .content .no-content, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tests .content .no-content, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tasks .content .no-content, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tests .content .no-content {
@@ -870,13 +1219,8 @@ body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-conte
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  padding: 2rem 0;
-}
-
-body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tasks .content .no-content i, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tests .content .no-content i, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tasks .content .no-content i, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tests .content .no-content i, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tasks .content .no-content i, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tests .content .no-content i {
-  font-size: 1.5rem !important;
-  color: #87ac95;
-  margin-bottom: 5px;
+  padding: 1.2rem 0;
+  margin-bottom: 1rem;
 }
 
 body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tasks .content .no-content img, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tests .content .no-content img, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tasks .content .no-content img, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tests .content .no-content img, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tasks .content .no-content img, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tests .content .no-content img {
@@ -884,220 +1228,77 @@ body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-conte
 }
 
 body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tasks .content .no-content span, body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tests .content .no-content span, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tasks .content .no-content span, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tests .content .no-content span, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tasks .content .no-content span, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tests .content .no-content span {
-  color: #87ac95;
+  color: #5c9191;
   text-shadow: 0 0 5px #f0f0f0;
+  margin-top: 10px;
 }
 
 body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tests .content ul li .test-upcoming, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tests .content ul li .test-upcoming, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tests .content ul li .test-upcoming {
-  background-color: rgba(168, 190, 196, 0.2);
+  background-color: #437474;
 }
 
 body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tests .content ul li .test-upcoming i, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tests .content ul li .test-upcoming i, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tests .content ul li .test-upcoming i {
   color: white;
-  background-color: #31b48b;
+  background-color: #25d09a;
 }
 
-body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tests .content ul li .test-upcoming .info .label-title::after, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tests .content ul li .test-upcoming .info .label-title::after, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tests .content ul li .test-upcoming .info .label-title::after {
-  content: "upcoming";
-  background-color: #85afaf;
-  font-family: 'Gemunu Libre', sans-serif;
-  padding: 3px 5px;
-  font-size: 0.9rem;
-  margin-left: 5px;
-  border-radius: 5px;
-  color: white;
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tests .content ul li .test-upcoming .info .label-title, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tests .content ul li .test-upcoming .info .label-title, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tests .content ul li .test-upcoming .info .label-title {
+  color: #eaebe2;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tests .content ul li .test-upcoming .info .w-info-con .w-num, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tests .content ul li .test-upcoming .info .w-info-con .w-num, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tests .content ul li .test-upcoming .info .w-info-con .w-num {
+  color: #5af299 !important;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tests .content ul li .test-upcoming .info .w-info-con i, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tests .content ul li .test-upcoming .info .w-info-con i, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tests .content ul li .test-upcoming .info .w-info-con i {
+  color: #11e955 !important;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tests .content ul li .test-upcoming .info .held-on .sub-title, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tests .content ul li .test-upcoming .info .held-on .sub-title, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tests .content ul li .test-upcoming .info .held-on .sub-title {
+  text-shadow: none;
+  color: #c2dfe3;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tests .content ul li .test-upcoming .info .held-on .time, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tests .content ul li .test-upcoming .info .held-on .time, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tests .content ul li .test-upcoming .info .held-on .time {
+  color: #e0fbfc;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tests .content ul li .test-upcoming:hover, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tests .content ul li .test-upcoming:hover, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tests .content ul li .test-upcoming:hover {
+  background-color: #336565;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tasks .content ul li, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tasks .content ul li, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tasks .content ul li {
+  margin-bottom: 5px;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tasks .content ul li:last-of-type, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tasks .content ul li:last-of-type, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tasks .content ul li:last-of-type {
+  margin-bottom: 0;
 }
 
 body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tasks .content ul li .assignment.due, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tasks .content ul li .assignment.due, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tasks .content ul li .assignment.due {
-  background-color: #e9f2f3;
+  background-color: #15627a;
 }
 
-body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tasks .content ul li .assignment.due i, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tasks .content ul li .assignment.due i, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tasks .content ul li .assignment.due i {
-  background-color: #3577b1;
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tasks .content ul li .assignment.due .info .label-title, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tasks .content ul li .assignment.due .info .label-title, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tasks .content ul li .assignment.due .info .label-title {
   color: white;
 }
 
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tasks .content ul li .assignment.due .info .deadline .sub-title, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tasks .content ul li .assignment.due .info .deadline .sub-title, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tasks .content ul li .assignment.due .info .deadline .sub-title {
+  color: gainsboro;
+  text-shadow: none;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tasks .content ul li .assignment.due .info .deadline .time, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tasks .content ul li .assignment.due .info .deadline .time, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tasks .content ul li .assignment.due .info .deadline .time {
+  color: gainsboro;
+}
+
+body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tasks .content ul li .assignment.due:hover, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tasks .content ul li .assignment.due:hover, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tasks .content ul li .assignment.due:hover {
+  background-color: #264653;
+}
+
 body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .weekly-tasks .content ul li .assignment:hover, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .weekly-tasks .content ul li .assignment:hover, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .weekly-tasks .content ul li .assignment:hover {
-  background-color: rgba(147, 179, 160, 0.1);
-}
-
-body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .live-tests .content ul, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .live-tests .content ul, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .live-tests .content ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .live-tests .content ul li, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .live-tests .content ul li, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .live-tests .content ul li {
-  margin-bottom: 1.5rem;
-}
-
-body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .live-tests .content ul li .test-item, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .live-tests .content ul li .test-item, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .live-tests .content ul li .test-item {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  justify-items: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .live-tests .content ul li .test-item i, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .live-tests .content ul li .test-item i, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .live-tests .content ul li .test-item i {
-  font-size: 2rem;
-  margin-right: 0.5rem;
-  padding: 0.3rem;
-  border-radius: 5px;
-  background-color: #c7e0d8;
-  color: #50967e;
-}
-
-body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .live-tests .content ul li .test-item .info, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .live-tests .content ul li .test-item .info, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .live-tests .content ul li .test-item .info {
-  width: 100%;
-  margin-top: 5px;
-}
-
-body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .live-tests .content ul li .test-item .info .label-title, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .live-tests .content ul li .test-item .info .label-title, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .live-tests .content ul li .test-item .info .label-title {
-  color: inherit;
-  text-decoration: none;
-  display: block;
-  text-align: center;
-  font-size: 1.1rem;
-  color: gray;
-}
-
-body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .live-tests .content ul li .test-item .info .ending-time, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .live-tests .content ul li .test-item .info .ending-time, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .live-tests .content ul li .test-item .info .ending-time {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  justify-items: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  margin-top: 5px;
-}
-
-body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .live-tests .content ul li .test-item .info .ending-time i, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .live-tests .content ul li .test-item .info .ending-time i, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .live-tests .content ul li .test-item .info .ending-time i {
-  color: #1bc396;
-  text-shadow: 0 0 3px #e2eeea;
-  background-color: inherit;
-  padding: 0;
-  font-size: 1.1rem !important;
-  margin: 0;
-  margin-right: 3px;
-}
-
-body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .live-tests .content ul li .test-item .info .ending-time .time-con, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .live-tests .content ul li .test-item .info .ending-time .time-con, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .live-tests .content ul li .test-item .info .ending-time .time-con {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  justify-items: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  font-size: 0.7rem;
-}
-
-body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .live-tests .content ul li .test-item .info .ending-time .time-con .label, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .live-tests .content ul li .test-item .info .ending-time .time-con .label, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .live-tests .content ul li .test-item .info .ending-time .time-con .label {
-  font-weight: 500;
-  text-shadow: 0 0 3px #e7f1ee;
-  margin-right: 3px;
-  font-family: 'Gemunu Libre', sans-serif;
-}
-
-body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .live-tests .content ul li .test-item .info .ending-time .time-con span, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .live-tests .content ul li .test-item .info .ending-time .time-con span, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .live-tests .content ul li .test-item .info .ending-time .time-con span {
-  color: #50af96;
-}
-
-body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .live-tests .content ul li .test-item .info a.label-title, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .live-tests .content ul li .test-item .info a.label-title, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .live-tests .content ul li .test-item .info a.label-title {
-  -webkit-transition: all 300ms;
-  transition: all 300ms;
-}
-
-body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .live-tests .content ul li .test-item .info a.label-title:hover, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .live-tests .content ul li .test-item .info a.label-title:hover, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .live-tests .content ul li .test-item .info a.label-title:hover {
-  color: #68c094;
-}
-
-body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .live-tests .content ul li .test-item .info .stat, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .live-tests .content ul li .test-item .info .stat, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .live-tests .content ul li .test-item .info .stat {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  padding: 3px;
-  margin-top: 0.5rem;
-  border-radius: 10px;
-  width: 100%;
-  background-image: -webkit-gradient(linear, left top, right bottom, from(rgba(194, 191, 191, 0.2)), to(rgba(177, 237, 248, 0.384)));
-  background-image: linear-gradient(to bottom right, rgba(194, 191, 191, 0.2), rgba(177, 237, 248, 0.384));
-}
-
-body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .live-tests .content ul li .test-item .info .stat div, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .live-tests .content ul li .test-item .info .stat div, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .live-tests .content ul li .test-item .info .stat div {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  justify-items: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  font-size: 0.9rem;
-}
-
-body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .live-tests .content ul li .test-item .info .stat div i, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .live-tests .content ul li .test-item .info .stat div i, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .live-tests .content ul li .test-item .info .stat div i {
-  font-size: 1.2rem;
-  background-color: transparent;
-  margin-right: 0;
-}
-
-body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .live-tests .content ul li .test-item .info .stat div span, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .live-tests .content ul li .test-item .info .stat div span, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .live-tests .content ul li .test-item .info .stat div span {
-  color: #6390a5;
-}
-
-body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .live-tests .content ul li .test-item .info .stat div span.value, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .live-tests .content ul li .test-item .info .stat div span.value, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .live-tests .content ul li .test-item .info .stat div span.value {
-  font-weight: 500;
-}
-
-body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .live-tests .content ul li .test-item .info .action a, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .live-tests .content ul li .test-item .info .action a, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .live-tests .content ul li .test-item .info .action a {
-  display: block;
-  text-align: center;
-  text-decoration: none;
-  padding: 3px;
-  margin-top: 0.5rem;
-  border-radius: 20px;
-  color: #ffffff;
-  background-color: #96beb1;
-  border: 2px solid #96beb1;
-  -webkit-box-shadow: 0 0 5px rgba(200, 233, 222, 0.5);
-          box-shadow: 0 0 5px rgba(200, 233, 222, 0.5);
-  width: 100%;
-  font-family: 'Gemunu Libre', sans-serif;
-  -webkit-transition: all 300ms;
-  transition: all 300ms;
-}
-
-body .main .bottom-panel .tab-container .tab-contents-container #tab1 .tab-content .right-col .live-tests .content ul li .test-item .info .action a:hover, body .main .bottom-panel .tab-container .tab-contents-container #tab2 .tab-content .right-col .live-tests .content ul li .test-item .info .action a:hover, body .main .bottom-panel .tab-container .tab-contents-container #tab3 .tab-content .right-col .live-tests .content ul li .test-item .info .action a:hover {
-  color: #70a082;
-  background-color: inherit;
+  background-color: white;
+  outline: 1px solid #bad2ca;
 }
 
 body .main .bottom-panel .tab-container .tab-contents-container #tab4 .posts-container {
@@ -1143,19 +1344,25 @@ body .main .bottom-panel .tab-container .tab-contents-container #tab4 .posts-con
       -ms-flex-pack: start;
           justify-content: flex-start;
   padding: 5px 1rem;
-  background-color: #d2e2e2;
+  background-color: teal;
   margin-bottom: 0;
 }
 
+body .main .bottom-panel .tab-container .tab-contents-container #tab4 .posts-container .post .post-inner .top-panel .post-time img {
+  width: 1.2rem;
+  display: inline-block;
+}
+
 body .main .bottom-panel .tab-container .tab-contents-container #tab4 .posts-container .post .post-inner .top-panel .post-time .sub-title {
-  margin-right: 10px;
-  color: #7cacb4;
-  font-size: 0.9rem;
+  margin-right: 5px;
+  color: gainsboro;
+  font-family: 'Gemunu Libre', sans-serif;
 }
 
 body .main .bottom-panel .tab-container .tab-contents-container #tab4 .posts-container .post .post-inner .top-panel .post-time .time {
-  font-family: 'Gemunu Libre', sans-serif;
-  color: #5d9776;
+  color: white;
+  font-size: 0.8rem;
+  font-family: 'Lato', sans-serif;
 }
 
 body .main .bottom-panel .tab-container .tab-contents-container #tab4 .posts-container .post .post-inner .bottom-panel {
@@ -1285,7 +1492,7 @@ body .main .bottom-panel .tab-container .tab-contents-container #tab4 .create-po
 
 body .main .bottom-panel .tab-container .tab-contents-container #tab4 .create-post .replyinput {
   width: 100%;
-  height: 20vh;
+  height: 10rem;
   padding: 1.3rem 1rem 0.5rem;
   border-radius: 10px;
   border: 1px solid white;
@@ -1809,6 +2016,108 @@ body .main .edit-weekly .action button:hover {
 
 body .main .edit-weekly .action a {
   padding: 0.7rem 2rem;
+}
+
+.filemodal {
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow-y: auto;
+  /* Enable scroll if needed */
+  background-color: rgba(0, 0, 0, 0.3);
+  /* Black background with opacity */
+}
+
+.filemodal .modal-content {
+  background-color: #fefefe;
+  margin: 5% auto 10%;
+  /* 10% from the top and centered */
+  padding: 15px 20px;
+  border: 1px solid #888;
+  width: 80%;
+  /* Could be more or less, depending on screen size */
+  border-radius: 5px;
+}
+
+.filemodal .modal-content .btn-con {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.filemodal .modal-content .btn-con .download-btn-con a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: 2px solid #0077b6;
+  background-color: #0077b6;
+  border-radius: 5px;
+  padding: 2px 10px;
+  text-decoration: none;
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
+}
+
+.filemodal .modal-content .btn-con .download-btn-con a i, .filemodal .modal-content .btn-con .download-btn-con a span {
+  color: white;
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
+}
+
+.filemodal .modal-content .btn-con .download-btn-con a i {
+  font-size: 1.3rem;
+  margin-right: 5px;
+}
+
+.filemodal .modal-content .btn-con .download-btn-con a span {
+  font-family: 'Gemunu Libre', sans-serif;
+}
+
+.filemodal .modal-content .btn-con .download-btn-con a:hover {
+  background-color: #026499;
+}
+
+.filemodal .modal-content .btn-con .download-btn-con a:hover i, .filemodal .modal-content .btn-con .download-btn-con a:hover span {
+  text-shadow: 0 0 5px #94daff;
+}
+
+.filemodal .modal-content .file-con {
+  width: 100%;
+}
+
+.filemodal .modal-content .file-con embed {
+  border-radius: 5px;
+  width: 100%;
+  height: 768px;
 }
 
 .title-box {
@@ -2335,6 +2644,37 @@ body .main .edit-weekly .action a {
   .main .bottom-panel #tab1 .tab-content .right-col, .main .bottom-panel #tab2 .tab-content .right-col, .main .bottom-panel #tab3 .tab-content .right-col {
     width: 100% !important;
   }
+  .main .bottom-panel #tab1 .tab-content .right-col .live-tests, .main .bottom-panel #tab2 .tab-content .right-col .live-tests, .main .bottom-panel #tab3 .tab-content .right-col .live-tests {
+    width: 100%;
+  }
+  .main .bottom-panel #tab1 .tab-content .right-col .live-tests .content ul li .test-item .info .label-title, .main .bottom-panel #tab2 .tab-content .right-col .live-tests .content ul li .test-item .info .label-title, .main .bottom-panel #tab3 .tab-content .right-col .live-tests .content ul li .test-item .info .label-title {
+    font-size: 0.9rem !important;
+  }
+  .main .bottom-panel #tab1 .tab-content .right-col .live-tests .content ul li .test-item .info .stat .issued i, .main .bottom-panel #tab1 .tab-content .right-col .live-tests .content ul li .test-item .info .stat .submitted i, .main .bottom-panel #tab2 .tab-content .right-col .live-tests .content ul li .test-item .info .stat .issued i, .main .bottom-panel #tab2 .tab-content .right-col .live-tests .content ul li .test-item .info .stat .submitted i, .main .bottom-panel #tab3 .tab-content .right-col .live-tests .content ul li .test-item .info .stat .issued i, .main .bottom-panel #tab3 .tab-content .right-col .live-tests .content ul li .test-item .info .stat .submitted i {
+    font-size: 1rem !important;
+  }
+  .main .bottom-panel #tab1 .tab-content .right-col .live-tests .content ul li .test-item .info .stat .issued span, .main .bottom-panel #tab1 .tab-content .right-col .live-tests .content ul li .test-item .info .stat .submitted span, .main .bottom-panel #tab2 .tab-content .right-col .live-tests .content ul li .test-item .info .stat .issued span, .main .bottom-panel #tab2 .tab-content .right-col .live-tests .content ul li .test-item .info .stat .submitted span, .main .bottom-panel #tab3 .tab-content .right-col .live-tests .content ul li .test-item .info .stat .issued span, .main .bottom-panel #tab3 .tab-content .right-col .live-tests .content ul li .test-item .info .stat .submitted span {
+    font-size: 0.8rem !important;
+  }
+  .main .bottom-panel #tab1 .tab-content .right-col .weekly-tasks .content ul li .list-item .sub-title, .main .bottom-panel #tab1 .tab-content .right-col .weekly-tests .content ul li .list-item .sub-title, .main .bottom-panel #tab2 .tab-content .right-col .weekly-tasks .content ul li .list-item .sub-title, .main .bottom-panel #tab2 .tab-content .right-col .weekly-tests .content ul li .list-item .sub-title, .main .bottom-panel #tab3 .tab-content .right-col .weekly-tasks .content ul li .list-item .sub-title, .main .bottom-panel #tab3 .tab-content .right-col .weekly-tests .content ul li .list-item .sub-title {
+    font-size: 0.8rem !important;
+  }
+  .main .bottom-panel #tab1 .tab-content .right-col .weekly-tasks .content ul li .list-item .time, .main .bottom-panel #tab1 .tab-content .right-col .weekly-tests .content ul li .list-item .time, .main .bottom-panel #tab2 .tab-content .right-col .weekly-tasks .content ul li .list-item .time, .main .bottom-panel #tab2 .tab-content .right-col .weekly-tests .content ul li .list-item .time, .main .bottom-panel #tab3 .tab-content .right-col .weekly-tasks .content ul li .list-item .time, .main .bottom-panel #tab3 .tab-content .right-col .weekly-tests .content ul li .list-item .time {
+    font-size: 0.6rem !important;
+  }
+  .main .bottom-panel #tab1 .tab-content .right-col .weekly-tasks .content ul li .list-item i.ico, .main .bottom-panel #tab1 .tab-content .right-col .weekly-tests .content ul li .list-item i.ico, .main .bottom-panel #tab2 .tab-content .right-col .weekly-tasks .content ul li .list-item i.ico, .main .bottom-panel #tab2 .tab-content .right-col .weekly-tests .content ul li .list-item i.ico, .main .bottom-panel #tab3 .tab-content .right-col .weekly-tasks .content ul li .list-item i.ico, .main .bottom-panel #tab3 .tab-content .right-col .weekly-tests .content ul li .list-item i.ico {
+    font-size: 1.2rem !important;
+    margin-right: 5px !important;
+  }
+  .main .bottom-panel #tab1 .tab-content .right-col .weekly-tasks .content ul li .list-item .info .label-title, .main .bottom-panel #tab1 .tab-content .right-col .weekly-tests .content ul li .list-item .info .label-title, .main .bottom-panel #tab2 .tab-content .right-col .weekly-tasks .content ul li .list-item .info .label-title, .main .bottom-panel #tab2 .tab-content .right-col .weekly-tests .content ul li .list-item .info .label-title, .main .bottom-panel #tab3 .tab-content .right-col .weekly-tasks .content ul li .list-item .info .label-title, .main .bottom-panel #tab3 .tab-content .right-col .weekly-tests .content ul li .list-item .info .label-title {
+    font-size: 0.9rem !important;
+  }
+  .main .bottom-panel #tab1 .tab-content .right-col .weekly-tasks .content ul li .list-item .info .label-title .w-info-con .week-badge .w-num, .main .bottom-panel #tab1 .tab-content .right-col .weekly-tests .content ul li .list-item .info .label-title .w-info-con .week-badge .w-num, .main .bottom-panel #tab2 .tab-content .right-col .weekly-tasks .content ul li .list-item .info .label-title .w-info-con .week-badge .w-num, .main .bottom-panel #tab2 .tab-content .right-col .weekly-tests .content ul li .list-item .info .label-title .w-info-con .week-badge .w-num, .main .bottom-panel #tab3 .tab-content .right-col .weekly-tasks .content ul li .list-item .info .label-title .w-info-con .week-badge .w-num, .main .bottom-panel #tab3 .tab-content .right-col .weekly-tests .content ul li .list-item .info .label-title .w-info-con .week-badge .w-num {
+    font-size: 0.7rem !important;
+  }
+  .main .bottom-panel #tab1 .tab-content .right-col .weekly-tasks .content ul li .list-item .info .label-title .w-info-con .week-badge i, .main .bottom-panel #tab1 .tab-content .right-col .weekly-tests .content ul li .list-item .info .label-title .w-info-con .week-badge i, .main .bottom-panel #tab2 .tab-content .right-col .weekly-tasks .content ul li .list-item .info .label-title .w-info-con .week-badge i, .main .bottom-panel #tab2 .tab-content .right-col .weekly-tests .content ul li .list-item .info .label-title .w-info-con .week-badge i, .main .bottom-panel #tab3 .tab-content .right-col .weekly-tasks .content ul li .list-item .info .label-title .w-info-con .week-badge i, .main .bottom-panel #tab3 .tab-content .right-col .weekly-tests .content ul li .list-item .info .label-title .w-info-con .week-badge i {
+    font-size: 0.7rem !important;
+  }
   .main .edit-forum-container .info .home-links a, .main .edit-forum-container .info .home-links span {
     font-size: 0.8rem !important;
   }
@@ -2406,8 +2746,13 @@ body .main .edit-weekly .action a {
     margin-right: 7px !important;
   }
   body .main .bottom-panel .tab-buttons button {
-    font-size: 0.7rem;
     padding: 0.4rem 0.3rem 0.2rem !important;
+  }
+  body .main .bottom-panel .tab-buttons button i {
+    display: none;
+  }
+  body .main .bottom-panel .tab-buttons button span {
+    font-size: 0.7rem !important;
   }
   body .main .bottom-panel #tab1, body .main .bottom-panel #tab2, body .main .bottom-panel #tab3 {
     padding: 10px !important;
@@ -2659,6 +3004,13 @@ body .main .edit-weekly .action a {
   body .main .bottom-panel #tab1 .tab-content .right-col .links a span, body .main .bottom-panel #tab2 .tab-content .right-col .links a span, body .main .bottom-panel #tab3 .tab-content .right-col .links a span {
     font-size: 0.8rem !important;
   }
+  body .main .bottom-panel #tab1 .tab-content .right-col .stats-container .content, body .main .bottom-panel #tab2 .tab-content .right-col .stats-container .content, body .main .bottom-panel #tab3 .tab-content .right-col .stats-container .content {
+    height: 7rem !important;
+  }
+  body .main .bottom-panel #tab1 .tab-content .right-col .stats-container .content canvas, body .main .bottom-panel #tab2 .tab-content .right-col .stats-container .content canvas, body .main .bottom-panel #tab3 .tab-content .right-col .stats-container .content canvas {
+    width: 100% !important;
+    height: 100%;
+  }
   body .main .bottom-panel #tab4 {
     padding: 10px 5px !important;
   }
@@ -2830,6 +3182,20 @@ body .main .edit-weekly .action a {
   }
   body .main .edit-weekly .action button {
     margin-bottom: 10px;
+  }
+  body .filemodal {
+    padding: 10px;
+  }
+  body .filemodal .modal-content {
+    width: 100%;
+    margin: 10px 0 !important;
+    padding: 10px 5px !important;
+  }
+  body .filemodal .modal-content .filename {
+    text-align: center;
+  }
+  body .filemodal .modal-content .file-con embed {
+    height: 400px !important;
   }
   .title-box .title {
     font-size: 0.9rem !important;

@@ -43,10 +43,10 @@
   </div>
   <div class="tab-container">
     <div class="tab-buttons">
-      <button class="active" data-tab_id="tab1" id="tab-btn1">Pre Class</button>
-      <button data-tab_id="tab2" id="tab-btn2">In Class</button>
-      <button data-tab_id="tab3" id="tab-btn3">Post Class</button>
-      <button data-tab_id="tab4" id="tab-btn4">Discussion</button>
+      <button class="active" data-tab_id="tab1" id="tab-btn1"><i class='bx bxs-left-arrow'></i><span>Pre Class</span></button>
+      <button data-tab_id="tab2" id="tab-btn2"><i class='bx bxs-square'></i><span>In Class</span></button>
+      <button data-tab_id="tab3" id="tab-btn3"><i class='bx bxs-right-arrow'></i><span>Post Class</span></button>
+      <button data-tab_id="tab4" id="tab-btn4"><span>Discussion</span> {% if weekly.has_forum_post %}<span class="post-count">{{weekly.forum_posts.count}}</span>{% endif %} </button>
     </div>
     <div class="tab-contents-container">
       
@@ -216,7 +216,7 @@
                   <li>
                     <a href="{% url 'weekly_test:view_ques' upcoming_test.id %}">
                       <div class="test test-upcoming list-item">
-                        <i class='bx bxs-edit-alt'></i>
+                        <img src="{% static 'classroom/images/test.svg' %}">
                         <div class="info">
                           <div class="label-title">{{ upcoming_test.title }}</div>
                           <div class="held-on"><span class="sub-title">Schedule:</span><span class="time" id="test-{{upcoming_test.id}}">{{ upcoming_test.schedule|date:"c" }}</span></div>
@@ -229,7 +229,7 @@
                   <li>
                     <a href="{% url 'weekly_test:view_test' prev_test.id %}">
                       <div class="test list-item">
-                        <i class='bx bx-edit-alt'></i>
+                        <img src="{% static 'classroom/images/test.svg' %}">
                         <div class="info">
                           <div class="label-title">{{ prev_test.title }}</div>
                           <div class="held-on"><span class="sub-title">held on:</span><span class="time" id="test-{{prev_test.id}}">{{ prev_test.schedule|date:"c" }}</span></div>
@@ -253,7 +253,7 @@
                   <li>
                     <a href="{% url 'classroom:tasks:view_task' task.classroom.id task.id %}">
                       <div class="assignment due list-item">
-                        <i class='bx bxs-briefcase'></i>
+                        <img src="{% if task.is_group_task %}{% static 'classroom/images/grp.png' %}{% else %}{% static 'classroom/images/indiv.png' %}{% endif %}">
                         <div class="info">
                           <div class="label-title">{{task.title}}</div>
                           <div class="deadline"><span class="sub-title">Deadline:</span><span class="time" id="task_deadline_{{task.id}}">{{task.deadline|date:"c"}}</span></div>
@@ -266,7 +266,7 @@
                   <li>
                     <a href="{% url 'classroom:tasks:view_task' task.classroom.id task.id %}">
                       <div class="assignment list-item">
-                        <i class='bx bx-briefcase' ></i>
+                        <img src="{% if task.is_group_task %}{% static 'classroom/images/grp.png' %}{% else %}{% static 'classroom/images/indiv.png' %}{% endif %}">
                         <div class="info">
                           <div class="label-title">{{task.title}}</div>
                           <div class="deadline"><span class="sub-title">Closed:</span><span class="time" id="task_deadline_{{task.id}}">{{task.deadline|date:"c"}}</span></div>
@@ -456,7 +456,7 @@
                   <li>
                     <a href="{% url 'weekly_test:view_ques' upcoming_test.id %}">
                       <div class="test test-upcoming list-item">
-                        <i class='bx bxs-edit-alt'></i>
+                        <img src="{% static 'classroom/images/test.svg' %}">
                         <div class="info">
                           <div class="label-title">{{ upcoming_test.title }}</div>
                           <div class="held-on"><span class="sub-title">Schedule:</span><span class="time" id="test-{{upcoming_test.id}}">{{ upcoming_test.schedule|date:"c" }}</span></div>
@@ -469,7 +469,7 @@
                   <li>
                     <a href="{% url 'weekly_test:view_test' prev_test.id %}">
                       <div class="test list-item">
-                        <i class='bx bx-edit-alt'></i>
+                        <img src="{% static 'classroom/images/test.svg' %}">
                         <div class="info">
                           <div class="label-title">{{ prev_test.title }}</div>
                           <div class="held-on"><span class="sub-title">held on:</span><span class="time" id="test-{{prev_test.id}}">{{ prev_test.schedule|date:"c" }}</span></div>
@@ -493,7 +493,7 @@
                   <li>
                     <a href="{% url 'classroom:tasks:view_task' task.classroom.id task.id %}">
                       <div class="assignment due list-item">
-                        <i class='bx bxs-briefcase'></i>
+                        <img src="{% if task.is_group_task %}{% static 'classroom/images/grp.png' %}{% else %}{% static 'classroom/images/indiv.png' %}{% endif %}">
                         <div class="info">
                           <div class="label-title">{{task.title}}</div>
                           <div class="deadline"><span class="sub-title">Deadline:</span><span class="time" id="task_deadline_{{task.id}}">{{task.deadline|date:"c"}}</span></div>
@@ -506,7 +506,7 @@
                   <li>
                     <a href="{% url 'classroom:tasks:view_task' task.classroom.id task.id %}">
                       <div class="assignment list-item">
-                        <i class='bx bx-briefcase' ></i>
+                        <img src="{% if task.is_group_task %}{% static 'classroom/images/grp.png' %}{% else %}{% static 'classroom/images/indiv.png' %}{% endif %}">
                         <div class="info">
                           <div class="label-title">{{task.title}}</div>
                           <div class="deadline"><span class="sub-title">Closed:</span><span class="time" id="task_deadline_{{task.id}}">{{task.deadline|date:"c"}}</span></div>
@@ -659,8 +659,9 @@
           <div class="right-col">
             {% if weekly.has_post_class_ongoing_test %}
             <div class="live-tests title-box">
+              <div class="grad-top"><div class="grad-con"></div></div>
               <div class="title">Ongoing Tests</div>
-              <div class="content">
+              <div class="content tests">
                 <ul>
                   {% for test in weekly.postClassOngoingTest %}
                   <li>
@@ -698,7 +699,7 @@
                   <li>
                     <a href="{% url 'weekly_test:view_ques' upcoming_test.id %}">
                       <div class="test test-upcoming list-item">
-                        <i class='bx bxs-edit-alt'></i>
+                        <img src="{% static 'classroom/images/test.svg' %}">
                         <div class="info">
                           <div class="label-title">{{ upcoming_test.title }}</div>
                           <div class="held-on"><span class="sub-title">Schedule:</span><span class="time" id="test-{{upcoming_test.id}}">{{ upcoming_test.schedule|date:"c" }}</span></div>
@@ -711,7 +712,7 @@
                   <li>
                     <a href="{% url 'weekly_test:view_test' prev_test.id %}">
                       <div class="test list-item">
-                        <i class='bx bx-edit-alt'></i>
+                        <img src="{% static 'classroom/images/test.svg' %}">
                         <div class="info">
                           <div class="label-title">{{ prev_test.title }}</div>
                           <div class="held-on"><span class="sub-title">held on:</span><span class="time" id="test-{{prev_test.id}}">{{ prev_test.schedule|date:"c" }}</span></div>
@@ -735,7 +736,7 @@
                   <li>
                     <a href="{% url 'classroom:tasks:view_task' task.classroom.id task.id %}">
                       <div class="assignment due list-item">
-                        <i class='bx bxs-briefcase'></i>
+                        <img src="{% if task.is_group_task %}{% static 'classroom/images/grp.png' %}{% else %}{% static 'classroom/images/indiv.png' %}{% endif %}">
                         <div class="info">
                           <div class="label-title">{{task.title}}</div>
                           <div class="deadline"><span class="sub-title">Deadline:</span><span class="time" id="deadline_{{task.id}}">{{task.deadline|date:"c"}}</span></div>
@@ -748,7 +749,7 @@
                   <li>
                     <a href="{% url 'classroom:tasks:view_task' task.classroom.id task.id %}">
                       <div class="assignment list-item">
-                        <i class='bx bx-briefcase' ></i>
+                        <img src="{% if task.is_group_task %}{% static 'classroom/images/grp.png' %}{% else %}{% static 'classroom/images/indiv.png' %}{% endif %}">
                         <div class="info">
                           <div class="label-title">{{task.title}}</div>
                           <div class="deadline"><span class="sub-title">Closed:</span><span class="time" id="deadline_{{task.id}}">{{task.deadline|date:"c"}}</span></div>
