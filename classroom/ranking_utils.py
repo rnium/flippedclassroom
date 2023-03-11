@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.contrib.auth.models import User
 from django.db.models import F, Q, Sum
+from django.utils import timezone
 from classroom.models import Classroom
 from tasks.models import Work
 from weekly_test.models import WeeklyTest, AnswerSheet
@@ -129,8 +130,8 @@ def get_students_ranking_data(classroom:Classroom, user=None):
         elif topper['rank'] == 3:
             toppers_data['third'] = topper
         
-        
-    return {'ranked_students':sorted_ranks, 'toppers':toppers_data, 'unranked_students':unranked_students}
+    timenow = timezone.now().isoformat()   
+    return {'ranked_students':sorted_ranks, 'toppers':toppers_data, 'unranked_students':unranked_students, 'update_time':timenow}
 
 
 def get_students_stats_data(classroom):

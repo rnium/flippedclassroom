@@ -448,15 +448,26 @@ function render_table(ranked_students, unranked_students) {
 function process_ranking_data(response) {
     let data = response['data']
     toppers = data['toppers']
+    let updated_date = new Date(response['data']['update_time']).toLocaleString()
     let toppers_section = render_toppers_section(data['toppers'])
     let table = ""
     if (response['has_ranking']) {
         table = render_table(data['ranked_students'], data['unranked_students'])
     }
+    let last_update_com = `<div class="info-con mt-2">
+                                <div class="last-updated">
+                                    <i class='bx bx-time-five me-1'></i>
+                                    <div class="info">
+                                        <span class="label">Last updated:</span>
+                                        <span class="value time">${updated_date}</span>
+                                    </div>
+                                </div>
+                            </div>`
     
     let container = `<div class="container">
                         ${toppers_section}
                         ${table}
+                        ${last_update_com}
                     </div>`
     $("#leaderboard-container").html(container);
     $("#loader-con").hide(0, ()=>{

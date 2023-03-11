@@ -1,10 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@300;400;500&family=Lato&family=Montserrat:wght@300;400;500&family=Roboto+Mono:wght@400;500&family=Ubuntu&display=swap");
-body header {
-  -webkit-box-shadow: 0 5px 10px #e6eceb;
-          box-shadow: 0 5px 10px #e6eceb;
-}
-
 body header nav .nav-link {
   color: #919191;
 }
@@ -52,7 +47,7 @@ body .section-container .loader-container .info {
 }
 
 body .main-content {
-  padding: 4rem 0;
+  padding: 3rem 0 4rem;
 }
 
 body .main-content .container .row .col-sm-4 .leaderboard-card .leaderboard-card__body .text-center img.rank-icon {
@@ -134,6 +129,31 @@ body .main-content .container .row .empty .rank-icon {
 
 body .main-content .container .table tbody tr.unranked td {
   background-color: #c5cfcc;
+}
+
+body .main-content .container .info-con .last-updated {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+body .main-content .container .info-con .last-updated i {
+  font-size: 1rem;
+}
+
+body .main-content .container .info-con .last-updated .info span {
+  font-size: 0.8rem;
 }
 
 .congrats-btn {
