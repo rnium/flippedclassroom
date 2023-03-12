@@ -23,7 +23,7 @@ class Task(models.Model):
     marks = models.IntegerField(default=100)
     instruction = models.CharField(max_length=1000, null=True, blank=True)
     classroom = models.ForeignKey(Classroom, on_delete=models.CASCADE)
-    weekly = models.ForeignKey(Weekly, null=True, blank=True, on_delete=models.SET_NULL)
+    weekly = models.ForeignKey(Weekly, null=True, blank=True, on_delete=models.CASCADE)
     preclass = models.BooleanField(default=False)
     inclass = models.BooleanField(default=False)
     postclass = models.BooleanField(default=False)
