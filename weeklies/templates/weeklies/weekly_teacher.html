@@ -2,6 +2,7 @@
 {% block style %} {% load static %}
 <link rel="stylesheet" href="{% static 'weeklies/styles/weekly.css' %}">
 <link rel="stylesheet" href="{% static 'classroom/styles/navbar.css' %}">
+<link rel="stylesheet" href="{% static 'classroom/styles/loaders.css' %}">
 {% endblock style %}
 {% block title %}<title>{{weekly.classroom.name}} Week-{{weekly.weeknum}}</title>{% endblock title %}
 {% block nav %}
@@ -692,6 +693,22 @@
               </div>
             </div>
             {% endif %}
+            <div class="stats-container title-box">
+              <div class="title">Week 1 Statistics</div>
+                <div class="content overall">
+                <canvas id="weekly_stats_chart" style="display: none;"></canvas>
+                <div class="loader-con" id="chart-loader" style="display: none;">
+                  <div class="loader">
+                    <div class="lds-hourglass"></div>
+                  </div>
+                  <div class="info">Loading Statistics</div>
+                </div>
+                <div class="info-con">
+                  <img src="{% static 'classroom/images/ranking/alert.svg' %}" alt="">
+                  <div class="info">No Statistics Available</div>
+                </div>
+              </div>
+            </div>
             <div class="weekly-tests title-box">
               <div class="title">Test</div>
               <div class="content">
