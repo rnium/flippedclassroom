@@ -3,6 +3,7 @@
 <link rel="stylesheet" href="{% static 'weeklies/styles/weekly.css' %}">
 <link rel="stylesheet" href="{% static 'classroom/styles/navbar.css' %}">
 <link rel="stylesheet" href="{% static 'classroom/styles/loaders.css' %}">
+<link rel="stylesheet" href="{% static 'classroom/styles/commons.css' %}">
 {% endblock style %}
 {% block title %}<title>{{weekly.classroom.name}} Week-{{weekly.weeknum}}</title>{% endblock title %}
 {% block nav %}
@@ -23,6 +24,20 @@
 {% endblock nav %}
 
 {% block content %}
+<div class="fileupload-info-con p-3 shadow-lg rounded bg-white" style="display: none;" id="fileupload-info-con">
+  <div class="content">
+    <div class="title text-center mb-1">Uploading File</div>
+    <div id="fileuploadprogress" class="progress" role="progressbar" aria-label="Animated striped example" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+      <div id="fileuploadprogress_bar" class="progress-bar progress-bar-striped progress-bar-animated" style="width: 0%"></div>
+    </div>
+    <div id="fileupload_percentage" class="percentage text-center">0%</div>
+  </div>
+  <div class="error-info" style="display: none;" id="fileuploaderror-info">
+    <i class='bx bx-info-circle'></i>
+    <div class="error-text">File upload failed</div>
+  </div>
+</div>
+
 <div class="top-panel">
   <div class="classroom">
     <div class="classroom-name"><a href="{% url 'classroom:classroom_detail' weekly.classroom.id %}">{{ weekly.classroom.name }}</a></div>
