@@ -2,6 +2,7 @@
 {% block style %} {% load static %}
 <link rel="stylesheet" href="{% static 'tasks/styles/viewtask.css' %}">
 <link rel="stylesheet" href="{% static 'classroom/styles/navbar.css' %}">
+<link rel="stylesheet" href="{% static 'classroom/styles/commons.css' %}">
 {% endblock style %}
 {% block title %}<title>View Task</title>{% endblock title %}
 {% block nav %}
@@ -179,6 +180,19 @@
       </div>
     </div>
     {% else %}
+    <div class="fileupload-info-con p-3 shadow-lg rounded bg-white" style="display: none;" id="fileupload-info-con">
+      <div class="content" id="ongoing-upload-status">
+        <div class="title text-center mb-1">Uploading File</div>
+        <div id="fileuploadprogress" class="progress" role="progressbar" aria-label="Animated striped example" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+          <div id="fileuploadprogress_bar" class="progress-bar progress-bar-striped progress-bar-animated" style="width: 0%"></div>
+        </div>
+        <div id="fileupload_percentage" class="percentage text-center">0%</div>
+      </div>
+      <div class="error-info" style="display: none;" id="fileuploaderror-info">
+        <i class='bx bx-info-circle'></i>
+        <div class="error-text">File upload failed</div>
+      </div>
+    </div>
     <div class="my-work">
       <div class="title">My Work</div>
       <div class="info">
