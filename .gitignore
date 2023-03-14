@@ -8,6 +8,7 @@ backup.json
 db.sqlite3
 db.sqlite3-journal
 media
+venv_celery
 media.zip
 venv.bat
 local_test.py

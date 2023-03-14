@@ -16,6 +16,7 @@ from classroom.views import render_info_or_error
 from weeklies.models import Weekly
 from tasks.models import Task, TaskAttachment, Group, Work, WorkAttachment
 from tasks.utils import random_subsets
+from .utils import send_newTaskEmailNotif
 
 
 # FBV
@@ -98,7 +99,7 @@ def create_task(request, cls_pk):
             for user_list in group_userlists:
                 group = Group.objects.create(task=task)
                 group.members.add(*user_list)
-        
+        send_newTaskEmailNotif(task)
         return redirect('classroom:tasks:view_task', cls_pk=cls_pk, pk=task.id)
 
 def view_task_file(request, cls_pk, pk):
