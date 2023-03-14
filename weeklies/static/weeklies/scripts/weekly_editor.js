@@ -158,7 +158,6 @@ $.each(uploadFileInputs, function (indexInArray, valueOfElement) {
     valueOfElement.addEventListener("change", function(){
         let file_nums = valueOfElement.files.length
         let filenums_label_id = $(this).attr('data-fileCountLabel')
-        console.log(filenums_label_id);
         let num_str
         if (file_nums > 1) {
             num_str = 'files'
@@ -194,18 +193,42 @@ function perform_file_upload(input_id, switch_id, upload_btn_id, data) {
         data: post_form,
         contentType: false,
         processData: false,
+        xhr: function() {
+            var xhr = new window.XMLHttpRequest();
+            xhr.upload.addEventListener("progress", function(evt) {
+                if (evt.lengthComputable) {
+                var percentComplete = evt.loaded / evt.total;
+                percentComplete = parseInt(percentComplete * 100);
+                $("#fileuploadprogress").attr('aria-valuenow', percentComplete);
+                $("#fileuploadprogress_bar").css('width', percentComplete + '%');
+                $("#fileupload_percentage").text(percentComplete + "%");
+                }
+            }, false);
+            return xhr;
+        },
         beforeSend: function(){
             $(`#${upload_btn_id}`).attr('disabled', true)
+            $("#fileupload-info-con").show()
         },
         success: function(){
+            $("#fileupload-info-con").hide()
             $(`#${input_id}`).val("");
             if ($(`#${switch_id}`).is(':checked')) {
                 $(`#${switch_id}`).prop( "checked", false )
             };
             location.reload()
         },
-        complete: function(){
+        error: function(){
             $(`#${upload_btn_id}`).removeAttr('disabled');
+            $("#ongoing-upload-status").hide(0, ()=>{
+                $("#fileuploaderror-info").show(0, ()=>{
+                    setTimeout(()=>{
+                        $("#fileupload-info-con").hide(0, ()=>{
+                            $("#fileuploaderror-info").hide()
+                        })
+                    }, 5000)
+                })
+            })
         }
     });
 }
