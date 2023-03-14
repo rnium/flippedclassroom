@@ -32,6 +32,10 @@ EMAIL_PORT = env('EMAIL_PORT')
 EMAIL_HOST_USER = env('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 
+# CELERY CONFIG
+CELERY_BROKER_URL = 'sqla+postgresql://postgres:7899@localhost:5432/moviedb'
+CELERY_RESULT_BACKEND = 'sqla+postgresql://postgres:7899@localhost:5432/moviedb'
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
