@@ -223,6 +223,7 @@ function perform_file_upload(input_id, switch_id, upload_btn_id, data) {
             $("#ongoing-upload-status").hide(0, ()=>{
                 $("#fileuploaderror-info").show(0, ()=>{
                     setTimeout(()=>{
+                        $("#ongoing-upload-status").show()
                         $("#fileupload-info-con").hide(0, ()=>{
                             $("#fileuploaderror-info").hide()
                         })

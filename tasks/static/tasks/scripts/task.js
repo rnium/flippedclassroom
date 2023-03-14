@@ -50,6 +50,7 @@ function upload_work() {
             $("#ongoing-upload-status").hide(0, ()=>{
                 $("#fileuploaderror-info").show(0, ()=>{
                     setTimeout(()=>{
+                        $("#ongoing-upload-status").show()
                         $("#fileupload-info-con").hide(0, ()=>{
                             $("#fileuploaderror-info").hide()
                         })
