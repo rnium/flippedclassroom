@@ -15,17 +15,47 @@ function upload_work() {
         data: post_form,
         contentType: false,
         processData: false,
+        xhr: function() {
+            var xhr = new window.XMLHttpRequest();
+            xhr.upload.addEventListener("progress", function(evt) {
+                if (evt.lengthComputable) {
+                var percentComplete = evt.loaded / evt.total;
+                percentComplete = parseInt(percentComplete * 100);
+                $("#fileuploadprogress").attr('aria-valuenow', percentComplete);
+                $("#fileuploadprogress_bar").css('width', percentComplete + '%');
+                $("#fileupload_percentage").text(percentComplete + "%");
+                }
+            }, false);
+            return xhr;
+        },
         beforeSend: function(){
             $("#post-files").attr('disabled', true)
-            $("#postfiles-file-status").text(`${file_nums} files uploading`);
+            let file_num_str
+            if (file_nums == 1) {
+                file_num_str = "file"
+            } else {
+                file_num_str = "files"
+            }
+            $("#postfiles-file-status").text(`${file_nums} ${file_num_str} uploading`);
             $("#postfiles-file-status").show();
+            $("#fileupload-info-con").show()
         },
         success: function(){
+            $("#fileupload-info-con").hide()
             location.reload()
         },
         error: function(){
             $("#postfiles-file-status").hide(100)
             $("#post-files").removeAttr('disabled');
+            $("#ongoing-upload-status").hide(0, ()=>{
+                $("#fileuploaderror-info").show(0, ()=>{
+                    setTimeout(()=>{
+                        $("#fileupload-info-con").hide(0, ()=>{
+                            $("#fileuploaderror-info").hide()
+                        })
+                    }, 5000)
+                })
+            })
         }
     });
 }
