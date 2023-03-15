@@ -21,6 +21,22 @@ $.each(tabBtns, function (indexInArray, valueOfElement) {
     })
 });
 
+// weekly viewfile modal
+let file_a_tags = $(".week-content-file")
+$.each(file_a_tags, function (indexInArray, valueOfElement) { 
+     $(valueOfElement).on('click', (event)=>{
+        event.preventDefault()
+        let fileurl = $(this).attr("href")
+        $("#filemodal-href").attr('href', fileurl);
+        $("#filemodal-embed").attr('src', fileurl);
+        $("#modal").show();
+     })
+});
+
+$("#closemodal").on('click', ()=>{
+    $("#modal").hide();
+})
+
 function append_post(response) {
     let post_time = new Date(response['post_time'])
     let locale_time = post_time.toLocaleString()

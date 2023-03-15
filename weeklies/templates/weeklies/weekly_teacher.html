@@ -37,6 +37,21 @@
     <div class="error-text">File upload failed</div>
   </div>
 </div>
+{% comment %} file modal {% endcomment %}
+<div id="modal" class="filemodal">
+  <div class="modal-content shadow-lg">
+    <div class="btn-con">
+      <div class="download-btn-con shadow-sm">
+        <a href="" id="filemodal-href" download><i class='bx bx-download'></i><span>Download</span></a>
+      </div>
+      <button class="btn btn-secondary btn-sm" id="closemodal">Close</button>
+    </div>
+    <div class="filename mb-2" id="filemodal-filename"></div>
+    <div class="file-con">
+      <embed src="" id="filemodal-embed" type="">
+    </div>
+  </div>
+</div>
 
 <div class="top-panel">
   <div class="classroom">
@@ -108,12 +123,12 @@
                   {% if preclassfile.must_study %}
                   <li class="muststudy">
                     <i class="{{ preclassfile.css_class }}"></i>
-                    <a href="{% url 'weeklies:downloadweeklyfile' preclassfile.weekly.id preclassfile.id  %}?contentcode=0" target="blank" download>{{ preclassfile.filename }}</a>
+                    <a class="week-content-file" href="{% url 'weeklies:downloadweeklyfile' preclassfile.weekly.id preclassfile.id  %}?contentcode=0" target="blank">{{ preclassfile.filename }}</a>
                   </li>
                   {% else %}
                   <li>
                     <i class="{{ preclassfile.css_class }}"></i>
-                    <a href="{% url 'weeklies:downloadweeklyfile' preclassfile.weekly.id preclassfile.id  %}?contentcode=0" target="blank" download>{{ preclassfile.filename }}</a>
+                    <a class="week-content-file" href="{% url 'weeklies:downloadweeklyfile' preclassfile.weekly.id preclassfile.id  %}?contentcode=0" target="blank">{{ preclassfile.filename }}</a>
                   </li>
                   {% endif %}
                   {% endfor %}
@@ -349,12 +364,12 @@
                   {% if inclassfile.must_study %}
                   <li class="muststudy">
                     <i class="{{ inclassfile.css_class }}"></i>
-                    <a href="{% url 'weeklies:downloadweeklyfile' inclassfile.weekly.id inclassfile.id  %}?contentcode=1" target="blank" download>{{ inclassfile.filename }}</a>
+                    <a class="week-content-file" href="{% url 'weeklies:downloadweeklyfile' inclassfile.weekly.id inclassfile.id  %}?contentcode=1" target="blank">{{ inclassfile.filename }}</a>
                   </li>
                   {% else %}
                   <li>
                     <i class="{{ inclassfile.css_class }}"></i>
-                    <a href="{% url 'weeklies:downloadweeklyfile' inclassfile.weekly.id inclassfile.id  %}?contentcode=1" target="blank" download>{{ inclassfile.filename }}</a>
+                    <a class="week-content-file" href="{% url 'weeklies:downloadweeklyfile' inclassfile.weekly.id inclassfile.id  %}?contentcode=1" target="blank">{{ inclassfile.filename }}</a>
                   </li>
                   {% endif %}
                   {% endfor %}
@@ -591,12 +606,12 @@
                   {% if postclassfile.must_study %}
                   <li class="muststudy">
                     <i class="{{ postclassfile.css_class }}"></i>
-                    <a href="{% url 'weeklies:downloadweeklyfile' postclassfile.weekly.id postclassfile.id  %}?contentcode=2" target="blank" download>{{ postclassfile.filename }}</a>
+                    <a class="week-content-file" href="{% url 'weeklies:downloadweeklyfile' postclassfile.weekly.id postclassfile.id  %}?contentcode=2" target="blank">{{ postclassfile.filename }}</a>
                   </li>
                   {% else %}
                   <li>
                     <i class="{{ postclassfile.css_class }}"></i>
-                    <a href="{% url 'weeklies:downloadweeklyfile' postclassfile.weekly.id postclassfile.id  %}?contentcode=2" target="blank" download>{{ postclassfile.filename }}</a>
+                    <a class="week-content-file" href="{% url 'weeklies:downloadweeklyfile' postclassfile.weekly.id postclassfile.id  %}?contentcode=2" target="blank">{{ postclassfile.filename }}</a>
                   </li>
                   {% endif %}
                   {% endfor %}
