@@ -36,7 +36,7 @@ def send_html_email(receiver, subject, body):
     port = settings.EMAIL_PORT
     
     em = EmailMessage()
-    em['From'] = formataddr(("FlippedClassroom Team", sender))
+    em['From'] = formataddr(("FlippedClassroom", sender))
     em['To'] = receiver
     em['Subject'] = subject
     em.set_content(body, subtype='html')
