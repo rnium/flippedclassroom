@@ -99,7 +99,7 @@ def create_task(request, cls_pk):
             for user_list in group_userlists:
                 group = Group.objects.create(task=task)
                 group.members.add(*user_list)
-        send_newTaskEmailNotif(task)
+        send_newTaskEmailNotif(task, request)
         return redirect('classroom:tasks:view_task', cls_pk=cls_pk, pk=task.id)
 
 def view_task_file(request, cls_pk, pk):

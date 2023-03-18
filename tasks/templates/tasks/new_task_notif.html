@@ -1,8 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-<body>
+<body style="margin: 0;">
     {% autoescape off %}
-    <h3>New Task has been assigned</h3>
+    <div class="pagetitle" style="background-color: #4cc2c2;color: #fff;font-size: 25px;margin: 0;width: 100%;padding: 32px 0;text-align: center;">
+        You've been assigned a new task in {{task.classroom.name}}
+    </div>
+    <div class="weekinfo" style="width: 100%;text-align: center;padding: 10px 0;color: #009acd;font-size: 20px;">
+        Week {{task.weekly.weeknum}} {% if task.preclass %}PreClass{% elif task.inclass %}InClass{% elif task.postclass %}PostClass{% endif %}
+    </div>
+    <div class="info" style="width: 100%;margin-top: 10px;">
+        <div class="title" style="font-size: 18px;">
+            <span>Task Title:</span>
+            <span>{{task.title}}</span>
+        </div>
+        <div class="type">
+            <span>Type:</span>
+            <span>{% if task.is_group_task %}Group Task{% else %}Individual Task{% endif %}</span>
+        </div>
+        <div class="points">
+            <span>Points:</span>
+            <span>{{task.marks}}</span>
+        </div>
+        <div class="deadline">
+            <span>Deadline:</span>
+            <span>{{task.deadline|date:"F j, Y H:i:s"}} UTC</span>
+        </div>
+        <div class="url-con" style="text-align: center;margin-top:20px;">
+            <a href="{{ task_uri }}" style="border-radius:5px;padding: 10px 40px; background-color: #4cc26f; text-decoration:none;color:#fff">View Task</a>
+        </div>
+    </div>
     {% endautoescape %}
 </body>
 </html>
