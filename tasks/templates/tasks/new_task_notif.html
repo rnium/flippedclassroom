@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+    @font-face {
+        font-family: 'Lato';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/lato/v23/S6uyw4BMUTPHjxAwXjeu.woff2) format('woff2');
+        unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+        }
+        /* latin */
+        @font-face {
+        font-family: 'Lato';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/lato/v23/S6uyw4BMUTPHjx4wXg.woff2) format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+        }
+        /* latin-ext */
+        @font-face {
+        font-family: 'Silkscreen';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/silkscreen/v1/m8JXjfVPf62XiF7kO-i9YL1la1OD.woff2) format('woff2');
+        unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+        }
+        /* latin */
+        @font-face {
+        font-family: 'Silkscreen';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/silkscreen/v1/m8JXjfVPf62XiF7kO-i9YLNlaw.woff2) format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body style="margin: 0;background-color: #f5f5f5;">
+    {% autoescape off %}
+    <div class="pagetitle" style="background-color: rgba(76, 194, 194, 0.1);
+    color: rgb(5, 176, 105);
+    font-size: 16px;
+    margin: 0;
+    width: 100%;
+    padding: 32px 0;
+    font-family: 'Lato', sans-serif;
+    text-align: center;">
+        You've been assigned a new task in <span class="cls-name" style="font-size: 20px;font-weight: 600;color: #4c8dc2;
+        text-shadow: 2px 3px 5px #d8d8e7;">{{task.weekly.classroom.name}}</span>
+    </div>
+    <div class="weekinfo" style="width: 100%;
+    text-align: center;
+    padding: 10px 0;
+    color: rgb(0, 154, 205);
+    font-size: 16px;
+    font-family: 'Silkscreen', Monospace;">
+        Week {{task.weekly.weeknum}} {% if task.preclass %}PreClass{% elif task.inclass %}InClass{% elif task.postclass %}PostClass{% endif %}
+    </div>
+    <div class="info" style="text-align: center;margin: 1rem 5%;padding: 2rem 10px;border-radius: 10px;font-family: 'Lato', sans-serif;
+    border-left: 5px solid #4c8dc2;background-color: white;">
+        <div class="title" style="padding: 3px 0;">
+            <span style="font-weight: 600;">Task Title:</span>
+            <span>{{task.title}}</span>
+        </div>
+        <div class="type" style="padding: 3px 0;">
+            <span style="font-weight: 600;">Type:</span>
+            <span>{% if task.is_group_task %}Group Task{% else %}Individual Task{% endif %}</span>
+        </div>
+        <div class="points" style="padding: 3px 0;">
+            <span style="font-weight: 600;">Points:</span>
+            <span style="padding: 3px 5px;background-color: gold;border-radius: 5px;">{{task.marks}}</span>
+        </div>
+        <div class="deadline" style="padding: 3px 0;">
+            <span style="font-weight: 600;">Deadline:</span>
+            <span style="font-family: 'Courier New', Courier, monospace;color: #80a0a2;">{{task.deadline}} UTC</span>
+        </div>
+        <div class="url-con" style="margin-top: 1.5rem;">
+            <a href="{{ task_uri }}" style="background-color: #48cae4;
+            font-family: 'Silkscreen', Monospace;
+            color: #fff;
+            padding: 0.5rem 2rem;
+            border-radius: 3px;
+            text-decoration: none;">View Task</a>
+        </div>
+    </div>
+    <div class="site-info" style="text-align: center;
+    font-family: 'Silkscreen', Monospace;
+    color: #80a0a2;padding-bottom:16px">FlippedClassroom</div>
+    {% endautoescape %}
+</body>
+</html>

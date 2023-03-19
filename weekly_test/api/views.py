@@ -6,6 +6,7 @@ from django.utils import timezone
 from django.shortcuts import get_object_or_404
 from datetime import timedelta
 from weekly_test.models import WeeklyTest, AnswerSheet, DescriptiveAnswer
+from weekly_test.utils import send_newTestEmailNotif
 from .serializer import TestSerializer, QuestionSerializer, OptionSerializer, AnswerSheetSerializer
 from .paginations import AnswerSheetPagination
 from rest_framework.permissions import IsAuthenticated
@@ -57,6 +58,10 @@ def create_test(request, pk):
                         option_serializer.save()
                     else:
                        return Response(status=status.HTTP_400_BAD_REQUEST, data={'error':option_serializer.errors})
+        try:
+            send_newTestEmailNotif(test, request)
+        except Exception as e:
+            print(e)
         return Response(data=testserializer.data,status=status.HTTP_201_CREATED)
 
 
