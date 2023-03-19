@@ -61,7 +61,7 @@
       </div>
       <div class="task-instruction">
         {% if task.instruction %}
-        <div class="instruction-text px-3 py-2 shadow-sm bg-white border rounded">{{ task.instruction }}</div>
+        <div class="instruction-text px-3 py-2 shadow-sm bg-white rounded">{{ task.instruction }}</div>
         {% endif %}
         <div class="attachments">
           {% for file in task.taskattachment_set.all %}
