@@ -92,6 +92,10 @@ def student_regularity_points(user:User, classroom:Classroom):
         te_seconds = time_elapsed.total_seconds()
         points = te_seconds/1000
         total_points += points
+        # extra points for group work submitting user
+        if work.group:
+            if work.submission_by == user:
+                total_points += 1
     # test regularity
     answersheets = AnswerSheet.objects.filter(user=user, 
                                               test__weekly__classroom=classroom, 
@@ -121,6 +125,10 @@ def student_weekly_regularity_points(user:User, weekly:Weekly):
         te_seconds = time_elapsed.total_seconds()
         points = te_seconds/1000
         total_points += points
+        # extra points for group work submitting user
+        if work.group:
+            if work.submission_by == user:
+                total_points += 1
     # test regularity
     answersheets = AnswerSheet.objects.filter(user=user, 
                                               test__weekly=weekly, 
@@ -175,8 +183,9 @@ def get_students_ranking_data(classroom:Classroom, user=None):
             unranked_students.append(student_data)
         else:
             ranked_students.append(student_data)
- 
-    sorted_ranks = sorted(ranked_students, key=lambda x: (x['classroom_points'], x['participation'], x['regularity']), reverse=True)
+    sorted_by_reg = sorted(ranked_students, key=lambda x: (x['registration']), reverse=False)
+    sorted_ranks = sorted(sorted_by_reg, key=lambda x: (x['classroom_points'], x['participation'], x['regularity']), reverse=True)
+     
     for i, student in enumerate(sorted_ranks):
         student['rank'] = i + 1
     toppers_list = sorted_ranks[0:3]

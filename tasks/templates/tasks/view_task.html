@@ -61,7 +61,7 @@
       </div>
       <div class="task-instruction">
         {% if task.instruction %}
-        <div class="instruction-text">{{ task.instruction }}</div>
+        <div class="instruction-text px-3 py-2 shadow-sm bg-white border rounded">{{ task.instruction }}</div>
         {% endif %}
         <div class="attachments">
           {% for file in task.taskattachment_set.all %}
@@ -193,7 +193,7 @@
         <div class="error-text">File upload failed</div>
       </div>
     </div>
-    <div class="my-work">
+    <div class="my-work bg-white">
       <div class="title">My Work</div>
       <div class="info">
         <div class="due-date">
