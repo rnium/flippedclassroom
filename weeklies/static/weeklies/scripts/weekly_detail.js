@@ -27,7 +27,9 @@ $.each(file_a_tags, function (indexInArray, valueOfElement) {
      $(valueOfElement).on('click', (event)=>{
         event.preventDefault()
         let fileurl = $(this).attr("href")
+        let filename = $(this).text()
         $("#filemodal-href").attr('href', fileurl);
+        $("#filemodal-filename").text(filename);
         $("#filemodal-embed").attr('src', fileurl);
         $("#modal").show();
      })

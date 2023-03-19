@@ -724,7 +724,7 @@
             </div>
             {% endif %}
             <div class="stats-container title-box">
-              <div class="title">Week 1 Statistics</div>
+              <div class="title">Week {{weekly.weeknum}} Statistics</div>
                 <div class="content overall">
                 <canvas id="weekly_stats_chart" style="display: none;"></canvas>
                 <div class="loader-con" id="chart-loader" style="display: none;">
@@ -735,7 +735,7 @@
                 </div>
                 <div class="info-con">
                   <img src="{% static 'classroom/images/ranking/alert.svg' %}" alt="">
-                  <div class="info">API Disabled</div>
+                  <div class="info">API Under Development</div>
                 </div>
               </div>
             </div>
