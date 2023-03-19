@@ -47,44 +47,40 @@
     {% autoescape off %}
     <div class="pagetitle" style="background-color: rgba(76, 194, 194, 0.1);
     color: rgb(5, 176, 105);
-    font-size: 25px;
+    font-size: 16px;
     margin: 0;
     width: 100%;
     padding: 32px 0;
     font-family: 'Lato', sans-serif;
     text-align: center;">
-        You've been assigned a new task in {{task.classroom.name}}
+        You've been assigned a new task in <span class="cls-name" style="font-size: 20px;font-weight: 600;color: #4c8dc2;
+        text-shadow: 2px 3px 5px #d8d8e7;">{{task.weekly.classroom.name}}</span>
     </div>
     <div class="weekinfo" style="width: 100%;
     text-align: center;
     padding: 10px 0;
     color: rgb(0, 154, 205);
-    font-size: 20px;
+    font-size: 16px;
     font-family: 'Silkscreen', Monospace;">
         Week {{task.weekly.weeknum}} {% if task.preclass %}PreClass{% elif task.inclass %}InClass{% elif task.postclass %}PostClass{% endif %}
     </div>
-    <div class="info" style="text-align: center;
-    margin: 1rem 7%;
-    padding: 2rem 0;
-    border-radius: 10px;
-    font-family: 'Lato', sans-serif;
-    background-color: white;
-    box-shadow: 5px 5px 10px gainsboro;">
-        <div class="title">
-            <span>Task Title:</span>
+    <div class="info" style="text-align: center;margin: 1rem 5%;padding: 2rem 10px;border-radius: 10px;font-family: 'Lato', sans-serif;
+    border-left: 5px solid #4c8dc2;background-color: white;">
+        <div class="title" style="padding: 3px 0;">
+            <span style="font-weight: 600;">Task Title:</span>
             <span>{{task.title}}</span>
         </div>
-        <div class="type">
-            <span>Type:</span>
+        <div class="type" style="padding: 3px 0;">
+            <span style="font-weight: 600;">Type:</span>
             <span>{% if task.is_group_task %}Group Task{% else %}Individual Task{% endif %}</span>
         </div>
-        <div class="points">
-            <span>Points:</span>
-            <span>{{task.marks}}</span>
+        <div class="points" style="padding: 3px 0;">
+            <span style="font-weight: 600;">Points:</span>
+            <span style="padding: 3px 5px;background-color: gold;border-radius: 5px;">{{task.marks}}</span>
         </div>
-        <div class="deadline">
-            <span>Deadline:</span>
-            <span>{{task.deadline|date:"F j, Y H:i:s"}} UTC</span>
+        <div class="deadline" style="padding: 3px 0;">
+            <span style="font-weight: 600;">Deadline:</span>
+            <span style="font-family: 'Courier New', Courier, monospace;color: #80a0a2;">{{task.deadline}} UTC</span>
         </div>
         <div class="url-con" style="margin-top: 1.5rem;">
             <a href="{{ task_uri }}" style="background-color: #48cae4;
