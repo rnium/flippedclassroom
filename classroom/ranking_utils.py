@@ -295,7 +295,46 @@ def get_students_weekly_performance_chart_data(weekly:Weekly):
 
     return data
     
-    
+
+def refactorize_cached_current_user(request, rank_data):
+    def set_others_to_false(position):
+        if position == "first":
+            try:
+                rank_data['toppers']['second']['current_user'] = False
+                rank_data['toppers']['third']['current_user'] = False
+            except:
+                pass
+        elif position == "second":
+            try:
+                rank_data['toppers']['first']['current_user'] = False
+                rank_data['toppers']['third']['current_user'] = False
+            except:
+                pass
+        elif position == "third":
+            try:
+                rank_data['toppers']['first']['current_user'] = False
+                rank_data['toppers']['second']['current_user'] = False
+            except:
+                pass
+            
+    toppers = rank_data['toppers'].values()
+    toppers_uid = [topper['uid'] for topper in toppers]
+    if toppers_uid:
+        if request.user.id not in toppers_uid:
+            for topper in rank_data['toppers'].keys():
+                rank_data['toppers'][topper]['current_user'] = False
+        else:
+            toppers_dict = rank_data['toppers']
+            if request.user.id == toppers_dict['first']['uid']:
+                rank_data['toppers']['first']['current_user'] = True
+                set_others_to_false('first')
+            elif request.user.id == toppers_dict['second']['uid']:
+                rank_data['toppers']['second']['current_user'] = True
+                set_others_to_false('second')
+            else:
+                rank_data['toppers']['third']['current_user'] = True
+                set_others_to_false('third')
+    return rank_data
     
     
         

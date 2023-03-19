@@ -16,7 +16,7 @@ from django.utils import timezone
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.crypto import get_random_string
 from classroom.models import ClassroomPost, PostAttachment, Classroom, Comment, AssessmentMeta, Assessment, Congratulation
-from classroom.ranking_utils import get_students_ranking_data, get_students_performance_chart_data
+from classroom.ranking_utils import get_students_ranking_data, get_students_performance_chart_data, refactorize_cached_current_user
 from .serializer import PostSerializer, ClassroomSerializer
 from .permission import IsUserPartOfClassroom, IsUserTeacher
 from .pagination import PostsPagination
@@ -354,7 +354,9 @@ def rankings(request, cls_pk):
         return Response(data={'info':'forbidden'}, status=status.HTTP_403_FORBIDDEN)
     cache_name = f"{classroom.id}-ranking"
     rank_data = cache.get(cache_name)
-    if rank_data is None:
+    if rank_data:
+        rank_data = refactorize_cached_current_user(request, rank_data)
+    else:
         rank_data = get_students_ranking_data(classroom, request.user)
         cache.set(cache_name, rank_data, timeout=3600)
     num_rankig = len(rank_data['ranked_students'])
