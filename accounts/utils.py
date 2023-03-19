@@ -13,7 +13,34 @@ def validate_image_extension(value):
     if not ext.lower() in valid_extensions:
         raise ValidationError('Invalid file type. Allowed file types are: {}'.format(', '.join(valid_extensions)))
 
+# this utility will check mendatory User object filed
+def check_user_data(user_data:dict):
+    try:
+        first_name = user_data['first_name']
+        last_name = user_data['last_name']
+        username = user_data['username']
+        email = user_data['email']
+    except:
+        raise ValidationError('Some user info not provided')
+    len_truths = [bool(len(info)) for info in [first_name, last_name, username, email]]
+    if not all(len_truths):
+        raise ValidationError('Some user fields left empty')
 
+# this utility will check mendatory Account object filed
+def check_account_data(ac_data:dict, request=None):
+    checking_fields = []
+    try:
+        institution = ac_data['institution']
+        checking_fields.append(institution)
+        if request:
+            if request.user.account.is_student:
+                institutional_id = ac_data['institutional_id']
+                checking_fields.append(institutional_id)
+    except:
+        raise ValidationError('Some account info not provided')
+    len_truths = [bool(len(info)) for info in checking_fields]
+    if not all(len_truths):
+        raise ValidationError('Some account fields left empty')
 
 def compress_image(image):
     try:

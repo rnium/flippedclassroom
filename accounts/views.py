@@ -21,12 +21,13 @@ from django.urls import reverse
 from django.core.mail import EmailMessage
 from django.conf import settings
 from .models import Account
-from .utils import compress_image
+from .utils import compress_image, check_account_data, check_user_data
 from email.message import EmailMessage
 from email.utils import formataddr
 import ssl
 import smtplib
 from classroom.views import render_info_or_error
+
 
 
 def send_html_email(receiver, subject, body):
@@ -175,6 +176,8 @@ def update_profile(request):
     previous_mail = user.email
     
     try:
+        check_user_data(user_data)
+        check_account_data(account_data, request)
         for attr, val in user_data.items():
             setattr(user, attr, val)
         user.save()
@@ -183,7 +186,7 @@ def update_profile(request):
         if previous_mail != user.email:
             account.is_email_verified = False
         account.save()
-    except Exception:
+    except Exception as e:
         return Response(status=status.HTTP_406_NOT_ACCEPTABLE)
     return Response(status=status.HTTP_200_OK)
 
