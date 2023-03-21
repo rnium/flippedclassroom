@@ -103,5 +103,40 @@ function create_post() {
     });
 }
 
-$("#create_post_btn").on('click', create_post)
+function get_performance_chart_data() {
+    $.ajax({
+        type: "get",
+        url: weekly_performance_api,
+        dataType: "json",
+        cache: false,
+        success: function(response) {
+            // if (response['has_stats']) {
+            //     $("#chart-loader").hide(0, ()=>{
+            //         $("#class_stats_chart").show()
+            //         let raw_points = response['points']['raw']
+            //         let raw_regularity = response['regularity']['raw']
+            //         render_performance_chart(response, raw_points, raw_regularity) 
+            //     })
+            // } else {
+            //     $("#chart-loader").hide(0, ()=>{
+            //         $("#stat-info-con .info").text('No Statistics Available')
+            //         $("#stat-info-con").show()
+            //     })
+            // }
+            console.log(response);
+        },
+        error: function(xhr, error, status) {
+            // $("#chart-loader").hide(0, ()=>{
+            //     $("#stat-info-con .info").text(xhr['responseJSON']['info'])
+            //     $("#stat-info-con").show()
+            // })
+            console.log(xhr);
+        },
+    });
+}
+
+$(document).ready(function () {
+    $("#create_post_btn").on('click', create_post)
+    get_performance_chart_data() 
+});
 
