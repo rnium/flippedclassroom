@@ -247,10 +247,16 @@ function get_performance_chart_data() {
             }
         },
         error: function(xhr, error, status) {
-            // $("#chart-loader").hide(0, ()=>{
-            //     $("#stat-info-con .info").text(xhr['responseJSON']['info'])
-            //     $("#stat-info-con").show()
-            // })
+            $("#chart-loader").hide(0, ()=>{
+                let error_msg
+                try {
+                    error_msg = xhr['responseJSON']['info']
+                } catch (error) {
+                    error_msg = "Error"
+                }
+                $("#stat-info-con .info").text(error_msg)
+                $("#stat-info-con").show()
+            })
             console.log(xhr);
         },
     });
