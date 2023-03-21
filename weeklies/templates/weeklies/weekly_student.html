@@ -514,6 +514,22 @@
               </div>
             </div>
             {% endif %}
+            <div class="stats-container title-box">
+              <div class="title">Week {{weekly.weeknum}} Statistics</div>
+                <div class="content overall">
+                <canvas id="weekly_stats_chart" style="display: none;"></canvas>
+                <div class="loader-con" id="chart-loader">
+                  <div class="loader">
+                    <div class="lds-hourglass"></div>
+                  </div>
+                  <div class="info">Loading Statistics</div>
+                </div>
+                <div class="info-con" id="stat-info-con" style="display: none;">
+                  <img src="{% static 'classroom/images/ranking/alert.svg' %}" alt="">
+                  <div class="info"></div>
+                </div>
+              </div>
+            </div>
             <div class="weekly-tests title-box">
               <div class="title">Test</div>
               <div class="content">
@@ -631,6 +647,7 @@
 {% endblock content %}
 
 {% block script %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
@@ -638,6 +655,7 @@
 <script>
   const weekly_create_post_url = "{% url 'weeklies:create_post'  weekly.classroom.id weekly.id  %}"
   const csrftoken = "{{csrf_token}}"
+  const weekly_performance_api = "{% url 'weeklies:weekly_performance_api'  weekly.classroom.id weekly.id  %}"
 </script>
 <script src="{% static 'weeklies/scripts/weekly_detail.js' %}"></script>
 <script src="{% static 'classroom/scripts/localtimes.js' %}"></script>

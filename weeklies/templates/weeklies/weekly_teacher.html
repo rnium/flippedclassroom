@@ -730,15 +730,15 @@
               <div class="title">Week {{weekly.weeknum}} Statistics</div>
                 <div class="content overall">
                 <canvas id="weekly_stats_chart" style="display: none;"></canvas>
-                <div class="loader-con" id="chart-loader" style="display: none;">
+                <div class="loader-con" id="chart-loader">
                   <div class="loader">
                     <div class="lds-hourglass"></div>
                   </div>
                   <div class="info">Loading Statistics</div>
                 </div>
-                <div class="info-con">
+                <div class="info-con" id="stat-info-con" style="display: none;">
                   <img src="{% static 'classroom/images/ranking/alert.svg' %}" alt="">
-                  <div class="info">API Under Development</div>
+                  <div class="info"></div>
                 </div>
               </div>
             </div>
@@ -868,6 +868,7 @@
 {% endblock content %}
 
 {% block script %}
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
   <script src="{% static 'weeklies/scripts/weekly_detail.js' %}"></script>
   <script src="{% static 'weeklies/scripts/weekly_editor.js' %}"></script>
   <script>

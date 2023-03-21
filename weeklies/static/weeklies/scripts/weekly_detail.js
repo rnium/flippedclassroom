@@ -103,6 +103,128 @@ function create_post() {
     });
 }
 
+function render_performance_chart(data, raw_points, raw_regularity) {
+    let studentNames = data['studentNames']
+    let scaled_points = data['points']['scaled']
+    let participation = data['participation']
+    let scaled_regularity = data['regularity']['scaled']
+    var ctx = document.getElementById('weekly_stats_chart').getContext('2d');
+    let gridlinecolor = "#073b4c";
+    let legendcolor = "#a5a58d"
+    var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: studentNames,
+        datasets: [
+        {
+            label: 'Points',
+            data: scaled_points,
+            borderColor: 'rgba(255, 99, 132, 1)',
+            borderWidth: 2,
+            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+            fill: true
+        },
+        {
+            label: 'Participation',
+            data: participation,
+            borderColor: 'rgba(54, 162, 235, 1)',
+            borderWidth: 2,
+            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+            fill: true
+        },
+        {
+            label: 'Regularity',
+            data: scaled_regularity,
+            borderColor: 'rgb(55, 224, 176)',
+            borderWidth: 2,
+            backgroundColor: 'rgba(55, 224, 176, 0.2)',
+            fill: true
+        }
+        ]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+        x: {
+            display: true,
+            ticks: {
+            display: false
+            },
+            grid: {
+            color: gridlinecolor
+            }
+        },
+        y: {
+            display: true,
+            ticks: {
+            display: false
+            },
+            grid: {
+            color: gridlinecolor
+            }
+        }
+        },
+        legend: {
+        labels: {
+            fontColor: 'white'
+        }
+        },
+        plugins: {
+            legend: {
+                display: true,
+                labels: {
+                    color: legendcolor
+                }
+            },
+            tooltip: {
+                callbacks: {
+                  label: function (context) {
+                    let label = context.dataset.label || '';
+                     // get the raw value from the corresponding raw_data array
+                    if (label === 'Points') {
+                        let pointValue = convertFloat(raw_points[context.dataIndex]);
+                        return `Points: ${pointValue}`;
+                      } else if (label === 'Regularity') {
+                        let regularityValue = convertFloat(raw_regularity[context.dataIndex]);
+                        return `Regularity: ${regularityValue}`;
+                      } else {
+                        return label + ': ' + convertFloat(context.raw) + "%";
+                      }
+                  }
+                }
+              }
+        },
+        animations: {
+        tension: {
+            duration: 2000,
+            easing: 'linear',
+            from: 1,
+            to: 0,
+            loop: false
+        }
+        },
+    }
+    });
+}
+
+function convertFloat(num) {
+    if (num === null || isNaN(num)) {
+        return '--';
+    }
+    if (Number.isInteger(num)) { // Check if the number is already an integer
+      return num;
+    } else {
+      const decimal = num.toFixed(1); // Get the number rounded to one decimal place
+      const lastDigit = decimal.charAt(decimal.length - 1); // Get the last character of the decimal
+      if (lastDigit === "0") {
+        return parseInt(decimal); // If the last digit is 0, return the integer value
+      } else {
+        return num.toFixed(2); // Otherwise, return the original floating point number
+      }
+    }
+  }
+
 function get_performance_chart_data() {
     $.ajax({
         type: "get",
@@ -110,20 +232,19 @@ function get_performance_chart_data() {
         dataType: "json",
         cache: false,
         success: function(response) {
-            // if (response['has_stats']) {
-            //     $("#chart-loader").hide(0, ()=>{
-            //         $("#class_stats_chart").show()
-            //         let raw_points = response['points']['raw']
-            //         let raw_regularity = response['regularity']['raw']
-            //         render_performance_chart(response, raw_points, raw_regularity) 
-            //     })
-            // } else {
-            //     $("#chart-loader").hide(0, ()=>{
-            //         $("#stat-info-con .info").text('No Statistics Available')
-            //         $("#stat-info-con").show()
-            //     })
-            // }
-            console.log(response);
+            if (response['has_stats']) {
+                $("#chart-loader").hide(0, ()=>{
+                    $("#weekly_stats_chart").show()
+                    let raw_points = response['points']['raw']
+                    let raw_regularity = response['regularity']['raw']
+                    render_performance_chart(response, raw_points, raw_regularity) 
+                })
+            } else {
+                $("#chart-loader").hide(0, ()=>{
+                    $("#stat-info-con .info").text('No Data Available')
+                    $("#stat-info-con").show()
+                })
+            }
         },
         error: function(xhr, error, status) {
             // $("#chart-loader").hide(0, ()=>{
