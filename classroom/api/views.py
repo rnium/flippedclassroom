@@ -329,7 +329,8 @@ def congratulate_user(request, pk):
         to_user = User.objects.get(pk=to_user_pk)
     except User.DoesNotExist:
         return Response(data={'info': "User not found"}, status=status.HTTP_404_NOT_FOUND)
-
+    if request.user == to_user:
+        return Response(data={'info': "You cannot congratulate yourself"}, status=status.HTTP_400_BAD_REQUEST) 
     min_time_gap = timedelta(days=7)
     last_time = timezone.now() - min_time_gap
     congrats_qs = Congratulation.objects.filter(from_user=request.user, to_user=to_user, added__gt=last_time)
