@@ -258,8 +258,7 @@ def send_recovery_email_api(request):
     user = user_qs[0]
     if not hasattr(user, 'account'):
         return Response(data={"info":"user has no account"}, status=status.HTTP_409_CONFLICT)
-    if not user.account.is_email_verified:
-        return Response(data={'info':'email not verified'}, status=status.HTTP_406_NOT_ACCEPTABLE)
+
     uid = urlsafe_base64_encode(force_bytes(user.id))
     token = default_token_generator.make_token(user)
     recovery_url = request.build_absolute_uri(reverse("accounts:reset_password_get", args=(uid, token)))

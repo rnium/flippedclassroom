@@ -66,6 +66,8 @@ def classroom_join_api(request):
         if request.user in classroom.students.all():
             return Response(data={"info": f"You've already joined {classroom.name}"}, status=status.HTTP_400_BAD_REQUEST)
         else:
+            if not request.user.account.is_email_verified:
+               return Response(data={"info": f"Your email is not verified yet!"}, status=status.HTTP_400_BAD_REQUEST) 
             classroom.students.add(request.user)
             classroom_dashboard = reverse("classroom:classroom_detail", args=(classroom.id,))
             return Response(data={"dashboard": classroom_dashboard}, status=status.HTTP_200_OK)
