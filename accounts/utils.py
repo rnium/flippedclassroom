@@ -48,9 +48,22 @@ def compress_image(image):
     except ValidationError:
         raise ValidationError("Invalid image file")
     img = Image.open(image)
+    width, height = img.size
+    # Calculate the dimensions of the center portion to be cropped
+    crop_width = crop_height = min(width, height)
+
+    # Calculate the left, upper, right, and lower coordinates of the center portion
+    left = (width - crop_width) // 2
+    upper = (height - crop_height) // 2
+    right = left + crop_width
+    lower = upper + crop_height
+
+    # Crop the center portion of the image
+    center_cropped_image = img.crop((left, upper, right, lower))
+    formatted_img = center_cropped_image.resize((500,500))
     img_format = img.format.lower()
     img_io = BytesIO()
-    img.save(img_io, format=img_format, quality=50)
+    formatted_img.save(img_io, format=img_format, quality=50)
     img_file = ContentFile(img_io.getvalue())
 
     if hasattr(image, 'name') and image.name:
