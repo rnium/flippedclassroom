@@ -677,8 +677,76 @@ body .main .view-submission-container .bottom-pane .submitted-contents .answers-
   overflow: hidden;
 }
 
-body .main .view-submission-container .bottom-pane .submitted-contents .answers-container .qtype-image .ans-img img {
+body .main .view-submission-container .bottom-pane .submitted-contents .answers-container .qtype-image .ans-img embed {
   width: 100%;
+}
+
+body .main .view-submission-container .bottom-pane .submitted-contents .answers-container .qtype-image .ans-img .invalid-file-format-info {
+  background-color: #d8e8e8;
+  border-radius: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body .main .view-submission-container .bottom-pane .submitted-contents .answers-container .qtype-image .ans-img .invalid-file-format-info .download-btn-con {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+body .main .view-submission-container .bottom-pane .submitted-contents .answers-container .qtype-image .ans-img .invalid-file-format-info .download-btn-con a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: 2px solid #25bf8c;
+  border-radius: 5px;
+  padding: 2px 10px;
+  text-decoration: none;
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
+}
+
+body .main .view-submission-container .bottom-pane .submitted-contents .answers-container .qtype-image .ans-img .invalid-file-format-info .download-btn-con a i {
+  font-size: 1.3rem;
+  margin-right: 5px;
+  color: #25bf8c;
+}
+
+body .main .view-submission-container .bottom-pane .submitted-contents .answers-container .qtype-image .ans-img .invalid-file-format-info .download-btn-con a span {
+  color: #10ab78;
+  font-family: 'Gemunu Libre', sans-serif;
+}
+
+body .main .view-submission-container .bottom-pane .submitted-contents .answers-container .qtype-image .ans-img .invalid-file-format-info .download-btn-con a:hover {
+  background-color: #e8f5f0;
 }
 
 body .main .view-submission-container .bottom-pane .submitted-contents .answers-container .submit-container {

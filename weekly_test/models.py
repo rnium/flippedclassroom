@@ -1,7 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.validators import MinValueValidator, MaxValueValidator
+from django.conf import settings
 from django.utils import timezone
+from os.path import basename
+from pathlib import Path
 import uuid
 from weeklies.models import Weekly
 
@@ -274,6 +277,24 @@ class DescriptiveAnswer(models.Model):
             return False
         else:
             return True
+    
+    @property
+    def filename(self):
+        name_str = basename(self.answer_img.name)
+        return name_str
+    
+    @property
+    def has_viewable_file(self):
+        if self.answer_img != None:
+            image_extensions = settings.ALLOWED_IMAGE_EXTENSIONS
+            file_extensions_viewable = settings.ALLOWED_VIEWABLE_FILE_EXTENSIONS
+            file_extention = Path(self.filename).suffix
+            if (file_extention in image_extensions) or (file_extention in file_extensions_viewable):
+                return True
+            else:
+                return False
+        else:
+            return False
 
 
 

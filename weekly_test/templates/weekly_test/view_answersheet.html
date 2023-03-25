@@ -87,7 +87,16 @@
                 </div>
               </div>
               <div class="ans-img">
-                  <img src="{{des_ans.answer_img.url}}" alt="">
+                {% if des_ans.has_viewable_file %}
+                <embed src="{{des_ans.answer_img.url}}" style="width: 100%; min-height:25rem;" type="">
+                {% else %}
+                <div class="invalid-file-format-info py-3">
+                  <div class="infotext mb-3">This file is not supported to view!</div>
+                  <div class="download-btn-con">
+                    <a href="{{des_ans.answer_img.url}}"><i class='bx bx-download'></i><span>Download</span></a>
+                  </div>
+                </div>
+                {% endif %}
               </div>
           </div>
         </div>
@@ -178,7 +187,16 @@
                 </div>
               </div>
               <div class="ans-img">
-                  <img src="{{des_ans.answer_img.url}}" alt="">
+                  {% if des_ans.has_viewable_file %}
+                  <embed src="{{des_ans.answer_img.url}}" style="width: 100%; min-height:25rem;" type="">
+                  {% else %}
+                  <div class="invalid-file-format-info py-3">
+                    <div class="infotext mb-3">This file is not supported to view!</div>
+                    <div class="download-btn-con">
+                      <a href="{{des_ans.answer_img.url}}"><i class='bx bx-download'></i><span>Download</span></a>
+                    </div>
+                  </div>
+                  {% endif %}
               </div>
           </div>
         </div>

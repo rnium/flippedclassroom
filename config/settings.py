@@ -39,6 +39,9 @@ DEBUG = False
 ALLOWED_HOSTS = ["*"]
 
 ALLOWED_IMAGE_EXTENSIONS = ['.jpg', '.jpeg', '.png']
+ALLOWED_FILE_EXTENSIONS = ['.pdf', 'docx']
+ALLOWED_VIEWABLE_FILE_EXTENSIONS = ['.pdf']
+
 
 # Application definition
 
