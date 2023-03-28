@@ -103,9 +103,9 @@ class Classroom(models.Model):
             t_qs_0 = test_qs[0]
             t_qs_others = test_qs[1:]
             final_qs = t_qs_0.union(*t_qs_others)
-            return final_qs.order_by("schedule")
+            return final_qs.order_by("-schedule")
         elif len(test_qs) == 1:
-            return test_qs[0].order_by("schedule")
+            return test_qs[0].order_by("-schedule")
         else:
             return self.weekly_set.none()
     
@@ -172,7 +172,7 @@ class Classroom(models.Model):
     @property
     def prev_tasks(self):
         timenow = timezone.now()
-        qs = self.assigned_tasks.filter(deadline__lt=timenow).order_by("deadline")
+        qs = self.assigned_tasks.filter(deadline__lt=timenow).order_by("-addded")
         return qs
     
     @property

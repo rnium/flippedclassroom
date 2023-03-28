@@ -43,14 +43,12 @@ def get_test_participations(user, classroom):
     qs = AnswerSheet.objects.filter(user=user, 
                                     test__weekly__classroom=classroom, 
                                     issue_time__isnull=False, 
-                                    submit_time__isnull=False)
-    qs.order_by('test.created')
+                                    submit_time__isnull=False).order_by('-test__created')
     return qs    
 
 @register.simple_tag
 def get_task_participations(user, classroom):
-    qs = Work.objects.filter( Q(group__members=user) | Q(group=None, submission_by=user), task__classroom=classroom)
-    qs.order_by('task.addded')
+    qs = Work.objects.filter( Q(group__members=user) | Q(group=None, submission_by=user), task__classroom=classroom).order_by('-task__addded')
     return qs
 
 # homepage: data for teachers
