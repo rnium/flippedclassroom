@@ -5064,6 +5064,45 @@ body .main .create-classroom .success .share-link button .copy-info {
           box-shadow: 3px 3px 5px #d8d8d8;
 }
 
+.view-more-btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: inherit;
+  border: 0;
+  -webkit-transition: all 500ms;
+  transition: all 500ms;
+}
+
+.view-more-btn i {
+  font-size: 1.3rem;
+  -webkit-transition: all 500ms;
+  transition: all 500ms;
+}
+
+.view-more-btn span {
+  font-family: 'Lato', sans-serif;
+  -webkit-transition: all 500ms;
+  transition: all 500ms;
+}
+
+.view-more-btn:hover {
+  background-color: initial;
+}
+
+.view-more-btn.expand i {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
 .lds-ellipsis {
   display: inline-block;
   position: relative;

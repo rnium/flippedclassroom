@@ -265,7 +265,7 @@
   {% endif %}
   
   {% if request.user.account.is_student %}
-  <div class="student-activity mb-4">
+  <div class="student-activity mb-4" id="student-activity-card">
     <div class="title">
       <img src="{% static 'classroom/images/indiv.png' %}" alt="">
       <div class="title-text">My Activities</div>
@@ -278,7 +278,7 @@
     <div class="tests mt-2" >
       <ul>
         {% for sheet in answ_sheets %}
-        <li>
+        <li {% if forloop.counter > 2 %}class="collapsible" style="display: none;"{% endif %} >
           <a href="{% url 'weekly_test:view_test' sheet.test.id %}">
             <div class="test-item shadow">
               <img src="{% static 'classroom/images/test.svg' %}">
@@ -312,7 +312,7 @@
     <div class="tasks">
       <ul>
         {% for work in task_works %}
-        <li>
+        <li {% if forloop.counter > 2 %}class="collapsible" style="display: none;"{% endif %} >
           <a href="{% url 'classroom:tasks:view_task' work.task.classroom.id work.task.id %}">
             <div class="task-item shadow">
               <img src="{% if work.task.is_group_task %}{% static 'classroom/images/grp.png' %} {% else %} {% static 'classroom/images/indiv.png' %} {% endif %}">
@@ -336,6 +336,14 @@
         {% endfor %}
       </ul>
     </div>
+    {% if task_works.count > 3 or answ_sheets.count > 3 %}
+    <div class="view-more-btn-con d-flex justify-content-center mt-2">
+      <button class="view-more-btn" data-cardId="student-activity-card">
+        <i class='bx bx-down-arrow me-1'></i>
+        <span class="info-text">view more</span>
+      </button>
+    </div>
+    {% endif %}
     {% endif %}
     {% else %}
     <div class="no-content mt-2 shadow rounded bg-secondary">

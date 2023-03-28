@@ -472,11 +472,33 @@ function get_performance_chart_data() {
     });
 }
 
+function activate_view_more_btns() {
+    let btns = $(".view-more-btn")
+    $.each(btns, function (indexInArray, valueOfElement) { 
+        $(valueOfElement).on('click', ()=>{
+            let is_expanded = $(this).hasClass('expand');
+            let textcon = $(this).find('.info-text')
+            let cardId = $(this).attr('data-cardId');
+            let collapsibles = $(`#${cardId} .collapsible`);
+            if (is_expanded) {
+                $(this).removeClass('expand');
+                $(textcon).text('view more');
+                collapsibles.hide(200)
+            } else {
+                $(this).addClass('expand');
+                $(textcon).text('view less');
+                collapsibles.show(200)
+            }
+        })
+    });
+}
+
 
 
 $(document).ready(function(){
     check_existing_input_files()
     adjust_times()
+    activate_view_more_btns()
     load_page_data()
     get_performance_chart_data()
 })
