@@ -27,9 +27,9 @@ def prepare_excel_file_data(meta):
               'Registration No', 
               f"Attendance ({meta.get_attendance_marks})",
               f"Class Test ({meta.get_classtest_marks})",
-              f"Group Tasks ({meta.get_group_task_marks})",
-              f"Individual Tasks ({meta.get_indiv_task_marks})",
-              f"Tests ({meta.get_weekly_test_marks})",
+              f"Pre Class ({meta.get_preclass_marks})",
+              f"In Class ({meta.get_inclass_marks})",
+              f"Post Class ({meta.get_postclass_marks})",
               f"Total ({meta.total_marks})"]
     data.append(header)
     for a in meta.assessments:
@@ -44,16 +44,16 @@ def prepare_excel_file_data(meta):
             unit.append(a.get_classtest_score)
         else:
             unit.append('pending')
-        if a.group_task_score != None:
-            unit.append(a.group_task_score)
+        if a.pre_class_score != None:
+            unit.append(a.pre_class_score)
         else:
             unit.append('pending')
-        if a.indiv_task_score != None:
-            unit.append(a.indiv_task_score)
+        if a.in_class_score != None:
+            unit.append(a.in_class_score)
         else:
             unit.append('pending')
-        if a.weekly_tests_score != None:
-            unit.append(a.weekly_tests_score)
+        if a.post_class_score != None:
+            unit.append(a.post_class_score)
         else:
             unit.append('pending')
         if a.total_score != None:
