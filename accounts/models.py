@@ -66,7 +66,7 @@ class Account(models.Model):
         return gw
     
     def pre_class_works(self, classroom):
-        works = Work.objects.filter( Q(group__members=self.user) | Q(group=None, submission_by=self.user), task__classroom=classroom, task__preclass=True)
+        works = Work.objects.filter( Q(group__members=self.user) | Q(group=None, submission_by=self.user), is_submitted=True, task__classroom=classroom, task__preclass=True)
         return works
     
     def pre_class_test_answersheets(self, classroom):
@@ -74,7 +74,7 @@ class Account(models.Model):
         return sheets
     
     def in_class_works(self, classroom):
-        works = Work.objects.filter( Q(group__members=self.user) | Q(group=None, submission_by=self.user), task__classroom=classroom, task__inclass=True)
+        works = Work.objects.filter( Q(group__members=self.user) | Q(group=None, submission_by=self.user), is_submitted=True, task__classroom=classroom, task__inclass=True)
         return works
     
     def in_class_test_answersheets(self, classroom):
@@ -82,7 +82,7 @@ class Account(models.Model):
         return sheets
     
     def post_class_works(self, classroom):
-        works = Work.objects.filter( Q(group__members=self.user) | Q(group=None, submission_by=self.user), task__classroom=classroom, task__postclass=True)
+        works = Work.objects.filter( Q(group__members=self.user) | Q(group=None, submission_by=self.user), is_submitted=True, task__classroom=classroom, task__postclass=True)
         return works
     
     def post_class_test_answersheets(self, classroom):
