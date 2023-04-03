@@ -26,6 +26,23 @@ function check_input(inp_id) {
     }
 }
 
+function convertFloat(number) {
+    if (number === null || isNaN(number)) {
+        return 0;
+    }
+    if (Number.isInteger(number)) { // Check if the number is already an integer
+      return number;
+    } else {
+      const decimal = number.toFixed(1); // Get the number rounded to one decimal place
+      const lastDigit = decimal.charAt(decimal.length - 1); // Get the last character of the decimal
+      if (lastDigit === "0") {
+        return parseInt(decimal); // If the last digit is 0, return the integer value
+      } else {
+        return number.toFixed(2); // Otherwise, return the original floating point number
+      }
+    }
+  }
+
 function activate_score_box(){
     let inp_fields = $(".score-inp");
     $.each(inp_fields, function (indexInArray, valueOfElement) { 
@@ -78,14 +95,84 @@ function processData() {
     return dataset
 }
 
+function convertFloat(number) {
+    if (number === null || isNaN(number)) {
+        return 0;
+    }
+    if (Number.isInteger(number)) { // Check if the number is already an integer
+      return number;
+    } else {
+      const decimal = number.toFixed(1); // Get the number rounded to one decimal place
+      const lastDigit = decimal.charAt(decimal.length - 1); // Get the last character of the decimal
+      if (lastDigit === "0") {
+        return parseInt(decimal); // If the last digit is 0, return the integer value
+      } else {
+        return number.toFixed(2); // Otherwise, return the original floating point number
+      }
+    }
+  }
+
+function processRow(assessment_data, meta) {
+    let assessment_id = assessment_data['id'];
+    let student_name = assessment_data['student_name'];
+    let registration = assessment_data['2020338501'];
+    let assessment_url = assessment_data['assessment_url'];
+    let classtest_score = assessment_data['classtest_score'];
+    let attendance_score = assessment_data['attendance_score'];
+    let pre_cls_points = assessment_data['pre_cls_points'];
+    let in_cls_points = assessment_data['in_cls_points'];
+    let post_cls_points = assessment_data['post_cls_points'];
+
+    let preClassScore = convertFloat((pre_cls_points/meta.pre_class_total_points) * meta.pre_class_marks);
+    let inClassScore = convertFloat((pre_cls_points/meta.pre_class_total_points) * meta.pre_class_marks);
+    let postClassScore = convertFloat((pre_cls_points/meta.pre_class_total_points) * meta.pre_class_marks);
+    
+    // todo: render the input fields of attendance and classtest fields
+    let row = `<tr id="row-aid${assessment_id}">
+                    <td>${student_name}</td>
+                    <td><a href="${assessment_url}">${registration}</a></td>
+                    <td class="inp-con">
+                        {% if assessment.attendance_score != None %}
+                        <input type="text" id="aid-{{assessment.id}}-attendance-score" class="score-inp attendance-score" data-marks={{assessment.meta.attendance_marks}} data-aid="{{assessment.id}}" value="{{assessment.get_attendance_score}}">
+                        {% else %}
+                        <input type="text" id="aid-{{assessment.id}}-attendance-score" class="score-inp attendance-score empty" data-marks={{assessment.meta.attendance_marks}} data-aid="{{assessment.id}}">
+                        {% endif %}
+                    </td>
+                    <td class="inp-con">
+                    {% if assessment.classtest_score != None %}
+                    <input type="text" id="aid-{{assessment.id}}-ct-score" class="score-inp classtest-score" data-marks={{assessment.meta.classtest_marks}} data-aid="{{assessment.id}}" value="{{assessment.get_classtest_score}}">
+                    {% else %}
+                    <input type="text" id="aid-{{assessment.id}}-ct-score" class="score-inp classtest-score empty" data-marks={{assessment.meta.classtest_marks}} data-aid="{{assessment.id}}">
+                    {% endif %}
+                    </td>
+                    <td>{{assessment.pre_class_score|get_score_or_pending}}</td>
+                    <td>{{assessment.in_class_score|get_score_or_pending}}</td>
+                    <td>{{assessment.post_class_score|get_score_or_pending}}</td>
+                    <td class="{{assessment.total_score|get_total_score_css_class}}">{{assessment.total_score|get_score_or_pending}}</td>
+            </tr>`
+}
+
+function processAssessmentsList(response) {
+    const meta = {
+        attendance_marks: response['attendance_marks'],
+        classtest_marks: response['classtest_marks'],
+        pre_class_marks: response['pre_class_marks'],
+        in_class_marks: response['in_class_marks'],
+        post_class_marks: response['post_class_marks'],
+        pre_class_total_points: response['pre_class_total_points'],
+        in_class_total_points: response['in_class_total_points'],
+        post_class_total_points: response['post_class_total_points'],
+    }
+}
+
 function fetch_assessments_data(data) {
     $.ajax({
         url: assessments_url,
-        contentType: "application/json",
+        dataType: "json",
         type: "GET",
         cache: false,
         success: function(response){
-            console.log("success")
+            processAssessmentsList(response[0])
         },
         error: function(xhr,status,error){
             alert('something went wrong')

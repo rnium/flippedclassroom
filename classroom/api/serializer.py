@@ -71,6 +71,7 @@ class ClassroomSerializer(serializers.ModelSerializer):
 class AssessmentSerializer(serializers.ModelSerializer):
     student_name = serializers.SerializerMethodField()
     registration = serializers.SerializerMethodField()
+    assessment_url = serializers.SerializerMethodField()
     pre_cls_points = serializers.SerializerMethodField()
     in_cls_points = serializers.SerializerMethodField()
     post_cls_points = serializers.SerializerMethodField()
@@ -81,6 +82,8 @@ class AssessmentSerializer(serializers.ModelSerializer):
         return obj.student.account.user_full_name
     def get_registration(self, obj):
         return obj.student.account.institutional_id
+    def get_assessment_url(self, obj):
+        return reverse('classroom:view_student_assessment', kwargs={'cls_pk':obj.meta.classroom.id, 'pk':obj.id})
     def get_pre_cls_points(self, obj):
         return obj.pre_cls_points
     def get_in_cls_points(self, obj):
@@ -90,8 +93,17 @@ class AssessmentSerializer(serializers.ModelSerializer):
 
 class AssessmentMetaSerializer(serializers.ModelSerializer):
     assessments = AssessmentSerializer(many=True, read_only=True)
+    pre_class_total_points = serializers.SerializerMethodField()
+    in_class_total_points = serializers.SerializerMethodField()
+    post_class_total_points = serializers.SerializerMethodField()
     class Meta:
         model = AssessmentMeta
         exclude = ['id', 'classroom']
+    def get_pre_class_total_points(self, obj):
+        return obj.classroom.pre_class_total_marks
+    def get_in_class_total_points(self, obj):
+        return obj.classroom.in_class_total_marks
+    def get_post_class_total_points(self, obj):
+        return obj.classroom.post_class_total_marks
 
         
