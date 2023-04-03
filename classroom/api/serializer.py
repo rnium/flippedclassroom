@@ -1,6 +1,6 @@
 from django.urls import reverse
 from rest_framework import serializers
-from classroom.models import ClassroomPost, Classroom, PostTopic, Assessment
+from classroom.models import ClassroomPost, Classroom, PostTopic, AssessmentMeta, Assessment
 
 
 class PostTopicSerializer(serializers.ModelSerializer):
@@ -69,9 +69,29 @@ class ClassroomSerializer(serializers.ModelSerializer):
         fields = ['name', 'course', 'join_code', 'quote', 'active']
 
 class AssessmentSerializer(serializers.ModelSerializer):
-    view_url = serializers.SerializerMethodField()
+    student_name = serializers.SerializerMethodField()
+    registration = serializers.SerializerMethodField()
+    pre_cls_points = serializers.SerializerMethodField()
+    in_cls_points = serializers.SerializerMethodField()
+    post_cls_points = serializers.SerializerMethodField()
     class Meta:
         model = Assessment
         exclude = ['meta', 'student']
+    def get_student_name(self, obj):
+        return obj.student.account.user_full_name
+    def get_registration(self, obj):
+        return obj.student.account.institutional_id
+    def get_pre_cls_points(self, obj):
+        return obj.pre_cls_points
+    def get_in_cls_points(self, obj):
+        return obj.in_cls_points
+    def get_post_cls_points(self, obj):
+        return obj.post_cls_points
+
+class AssessmentMetaSerializer(serializers.ModelSerializer):
+    assessments = AssessmentSerializer(many=True, read_only=True)
+    class Meta:
+        model = AssessmentMeta
+        exclude = ['id', 'classroom']
 
         

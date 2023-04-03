@@ -137,10 +137,10 @@
 
 {% block script %}
 <script>
+  const assessments_url = "{% url 'classroom:get_assessments_api' classroom.id %}";
   const update_assessment_url = "{% url 'classroom:update_assessments' classroom.id %}";
   const delete_assessment_url = "{% url 'classroom:delete_assessment_meta' classroom.id %}";
   const csrftoken = "{{csrf_token}}";
-
 </script>
 <script src="{% static 'classroom/scripts/assessment.js' %}"></script>
 {% endblock script %}

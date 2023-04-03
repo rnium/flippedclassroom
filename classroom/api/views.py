@@ -9,7 +9,7 @@ from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.core.cache import cache
-from django.http import JsonResponse
+from django.http import JsonResponse, Http404
 from django.shortcuts import get_object_or_404
 from django.urls import reverse
 from django.utils import timezone
@@ -17,7 +17,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.utils.crypto import get_random_string
 from classroom.models import ClassroomPost, PostAttachment, Classroom, Comment, AssessmentMeta, Assessment, Congratulation
 from classroom.ranking_utils import get_students_ranking_data, get_students_performance_chart_data, refactorize_cached_current_user
-from .serializer import PostSerializer, ClassroomSerializer
+from .serializer import PostSerializer, ClassroomSerializer, AssessmentMetaSerializer
 from .permission import IsUserPartOfClassroom, IsUserTeacher
 from .pagination import PostsPagination
 
@@ -35,6 +35,23 @@ class ClassroomPostsView(ListAPIView):
         classroom = self.get_object()
         posts = ClassroomPost.objects.filter(classroom=classroom).order_by('-posted')
         return posts
+    
+    
+class AssessmentsList(ListAPIView):
+    serializer_class = AssessmentMetaSerializer
+    permission_classes = [IsAuthenticated & IsUserPartOfClassroom]
+    def get_object(self):
+        cls_pk = self.kwargs.get('cls_pk')
+        classroom =  get_object_or_404(Classroom, pk=cls_pk) 
+        self.check_object_permissions(self.request, classroom)
+        try:
+            assessment = AssessmentMeta.objects.filter(classroom=classroom)[0]
+            return assessment
+        except Exception as e:
+            raise Http404
+    def get_queryset(self):
+        return AssessmentMeta.objects.filter(id=self.get_object().id)
+    
 
 
 class UpdateClassroomAV(UpdateAPIView):
@@ -44,6 +61,8 @@ class UpdateClassroomAV(UpdateAPIView):
     def get_queryset(self):
         print(self.request.data)
         return Classroom.objects.filter(pk=self.kwargs.get('pk'))
+
+
 
 
 @api_view(['GET'])
@@ -370,6 +389,7 @@ def rankings(request, cls_pk):
         'data':rank_data
     }
     return Response(data=data, status=status.HTTP_200_OK)
+ 
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])

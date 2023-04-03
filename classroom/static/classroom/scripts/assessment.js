@@ -78,6 +78,21 @@ function processData() {
     return dataset
 }
 
+function fetch_assessments_data(data) {
+    $.ajax({
+        url: assessments_url,
+        contentType: "application/json",
+        type: "GET",
+        cache: false,
+        success: function(response){
+            console.log("success")
+        },
+        error: function(xhr,status,error){
+            alert('something went wrong')
+        }
+    })
+}
+
 function post_data(data) {
     let payload = JSON.stringify(data)
     $.ajax({
@@ -126,20 +141,23 @@ function delete_meta(){
 }
 
 $(document).ready(function () {
-    activate_score_box()
-    $("#a-save-btn").on('click', function(){
-        let validated = validate_inputs()
-        if (!validated) {
-            return;
-        } else {
-            let data = processData()
-            post_data(data)
-        }
-    })
-    $("#rst-assessment-btn").on('click', function(){
-        let confirmation = confirm('Are you sure to perform this action? This will reset the current assessment state and metadata!')
-        if (confirmation) {
-            delete_meta()
-        }
-    })
+    fetch_assessments_data()
+    
+    // activate_score_box()
+    // $("#a-save-btn").on('click', function(){
+    //     let validated = validate_inputs()
+    //     if (!validated) {
+    //         return;
+    //     } else {
+    //         let data = processData()
+    //         post_data(data)
+    //     }
+    // })
+    // $("#rst-assessment-btn").on('click', function(){
+    //     let confirmation = confirm('Are you sure to perform this action? This will reset the current assessment state and metadata!')
+    //     if (confirmation) {
+    //         delete_meta()
+    //     }
+    // })
+
 });

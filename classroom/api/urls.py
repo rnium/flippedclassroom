@@ -17,6 +17,7 @@ urlpatterns = [
     path('<str:cls_pk>/assessments/delete', views.delete_assessment_meta, name="delete_assessment_meta"),
     path('<str:cls_pk>/performance', views.classroom_performance_api, name="classroom_performance_api"),
     path('<str:cls_pk>/rankings', views.rankings, name="get_ranking_api"),
+    path('<str:cls_pk>/assessmentslist', views.AssessmentsList.as_view(), name="get_assessments_api"),
     # path('<str:pk>/edit', views.update_classroom_info, name="update_classroom"),
     path('<str:pk>/removeuser', views.remove_user_from_classroom, name="remove_user_from_classroom"),
     path('post/<str:pk>/postcomment', views.post_comment, name="post_comment"),
