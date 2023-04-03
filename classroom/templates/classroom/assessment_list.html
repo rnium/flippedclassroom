@@ -2,6 +2,7 @@
 {% block style %} {% load static %} {% load my_tags %}
 <link rel="stylesheet" href="{% static 'classroom/styles/assessment.css' %}">
 <link rel="stylesheet" href="{% static 'classroom/styles/navbar.css' %}">
+<link rel="stylesheet" href="{% static 'classroom/styles/loaders.css' %}">
 {% endblock style %}
 {% block title %}<title>{{classroom.name}} Assessment</title>{% endblock title %}
 {% block nav %}
@@ -27,7 +28,16 @@
 {% block content %}
 
 {% if meta %}
-<div class="assessment-list container my-4">
+<!-- loader -->
+<div class="loader-container mt-5" id="loader-con" >
+  <div class="loader d-flex justify-content-center">
+    <div class="lds-facebook"><div></div><div></div><div></div></div>
+  </div>
+  <div class="infotext text-center">Loading Data</div>
+</div>
+
+<!-- list -->
+<div class="assessment-list container my-4" style="display: none;">
   <div class="heading mb-3">
     <i class='bx bx-stats'></i>
     <span class="title">{{classroom.name}} Assessment Table</span>
@@ -46,6 +56,7 @@
                   <th>Total ({{meta.total_marks}})</th>
               </tr>
           </thead>
+          {% comment %}
           <tbody>
               {% for assessment in meta.assessments %}
               <tr>
@@ -72,6 +83,7 @@
               </tr>
               {% endfor %}
           </tbody>
+          {% endcomment %}
       </table>
       <div class="submit mt-3">
         <button class="btn-1 shadow-sm" id="a-save-btn">Save</button>
