@@ -95,22 +95,6 @@ function processData() {
     return dataset
 }
 
-function convertFloat(number) {
-    if (number === null || isNaN(number)) {
-        return 0;
-    }
-    if (Number.isInteger(number)) { // Check if the number is already an integer
-      return number;
-    } else {
-      const decimal = number.toFixed(1); // Get the number rounded to one decimal place
-      const lastDigit = decimal.charAt(decimal.length - 1); // Get the last character of the decimal
-      if (lastDigit === "0") {
-        return parseInt(decimal); // If the last digit is 0, return the integer value
-      } else {
-        return number.toFixed(2); // Otherwise, return the original floating point number
-      }
-    }
-  }
 
 function processRow(assessment_data, meta) {
     let assessment = {
@@ -216,6 +200,7 @@ function processAssessmentsList(response) {
     }
     $("#loader-con").hide(0, ()=>{
         $("#assessment-list-con").show(0, ()=>{
+            $("#assessments-tbody").empty();
             for(assessment_data of response['assessments']) {
                 processRow(assessment_data, meta);
             }
@@ -239,7 +224,7 @@ function processAssessmentsList(response) {
     })
 }
 
-function fetch_assessments_data(data) {
+function fetch_assessments_data() {
     $.ajax({
         url: assessments_url,
         dataType: "json",
@@ -267,10 +252,7 @@ function post_data(data) {
         data: payload,
         cache: false,
         success: function(response){
-            let confirmation = confirm("Score saved successfully! reload page?")
-            if (confirmation) {
-                location.reload()
-            }
+            fetch_assessments_data()
         },
         error: function(xhr,status,error){
             alert('something went wrong')
