@@ -113,47 +113,82 @@ function convertFloat(number) {
   }
 
 function processRow(assessment_data, meta) {
-    let assessment_id = assessment_data['id'];
-    let student_name = assessment_data['student_name'];
-    let registration = assessment_data['registration'];
-    let assessment_url = assessment_data['assessment_url'];
-    let classtest_score = assessment_data['classtest_score'];
-    let attendance_score = assessment_data['attendance_score'];
-    let pre_cls_points = assessment_data['pre_cls_points'];
-    let in_cls_points = assessment_data['in_cls_points'];
-    let post_cls_points = assessment_data['post_cls_points'];
-
-    let preclassScoreRaw = (pre_cls_points/meta.pre_class_total_points) * meta.pre_class_marks;
-    let inclassScoreRaw = (in_cls_points/meta.in_class_total_points) * meta.in_class_marks;
-    let postclassScoreRaw = (post_cls_points/meta.post_class_total_points) * meta.post_class_marks;
-    let preClassScore = convertFloat(preclassScoreRaw);
-    let inClassScore = convertFloat(inclassScoreRaw);
-    let postClassScore = convertFloat(postclassScoreRaw);
+    let assessment = {
+        id: assessment_data['id'],
+        student_name: assessment_data['student_name'],
+        registration: assessment_data['registration'],
+        url: assessment_data['assessment_url'],
+        classtest_score: assessment_data['classtest_score'],
+        attendance_score: assessment_data['attendance_score'],
+        pre_cls_points: assessment_data['pre_cls_points'],
+        in_cls_points: assessment_data['in_cls_points'],
+        post_cls_points: assessment_data['post_cls_points']
+    }
     
+    let preclassScoreRaw = null;
+    let inclassScoreRaw = null;
+    let postclassScoreRaw = null;
+    let preClassScore;
+    let inClassScore;
+    let postClassScore;
+    // preclass
+    if (assessment.pre_cls_points != null) {
+        preclassScoreRaw = (assessment.pre_cls_points/meta.pre_class_total_points) * meta.pre_class_marks;
+        preClassScore = convertFloat(preclassScoreRaw);
+    } else {
+        preClassScore = "Pending";
+    }
+    // inclass
+    if (assessment.in_cls_points != null) {
+        inclassScoreRaw = (assessment.in_cls_points/meta.in_class_total_points) * meta.in_class_marks;
+        inClassScore = convertFloat(inclassScoreRaw);
+    } else {
+        inClassScore = "Pending";
+    }
+    // postclass
+    if (assessment.post_cls_points != null) {
+        postclassScoreRaw = (assessment.post_cls_points/meta.post_class_total_points) * meta.post_class_marks;
+        postClassScore = convertFloat(postclassScoreRaw);
+    } else {
+        postClassScore = "Pending"
+    }
     // total
-    let totalScoreRaw = attendance_score + classtest_score + preclassScoreRaw + inclassScoreRaw + postclassScoreRaw;
-    let totalScore = convertFloat(totalScoreRaw)
+    let parameters_array = [
+        assessment.attendance_score,
+        assessment.classtest_score,
+        assessment.pre_cls_points,
+        assessment.in_cls_points,
+        assessment.post_cls_points
+    ]
+    let all_okay = parameters_array.every((elem)=>{return elem != null})
+    let totalScore;
+    if (all_okay) {
+        let totalScoreRaw = assessment.attendance_score + assessment.classtest_score + preclassScoreRaw + inclassScoreRaw + postclassScoreRaw;
+        totalScore = convertFloat(totalScoreRaw)
+    } else {
+        totalScore = "Pending"
+    }
     
-    // todo: render the input fields of attendance and classtest fields
+    // inputs
     let atendance_inp = "";
     let total_css_class = "";
-    if (!totalScore) {
+    if (totalScore == "Pending") {
         total_css_class += "pending"
     }
-    if (attendance_score == null) {
-        atendance_inp += `<input type="text" id="aid-${assessment_id}-attendance-score" class="score-inp attendance-score empty" data-marks=${meta.attendance_marks} data-aid="${assessment_id}">`
+    if (assessment.attendance_score == null) {
+        atendance_inp += `<input type="text" id="aid-${assessment.id}-attendance-score" class="score-inp attendance-score empty" data-marks=${meta.attendance_marks} data-aid="${assessment.id}">`
     } else {
-        atendance_inp += `<input type="text" id="aid-${assessment_id}-attendance-score" class="score-inp attendance-score" data-marks=${meta.attendance_marks} data-aid="${assessment_id}" value="${attendance_score}">`
+        atendance_inp += `<input type="text" id="aid-${assessment.id}-attendance-score" class="score-inp attendance-score" data-marks=${meta.attendance_marks} data-aid="${assessment.id}" value="${assessment.attendance_score}">`
     }
     let classtest_inp = "";
-    if (classtest_score == null) {
-        classtest_inp += `<input type="text" id="aid-${assessment_id}-ct-score" class="score-inp classtest-score empty" data-marks=${meta.classtest_marks} data-aid="${assessment_id}">`
+    if (assessment.classtest_score == null) {
+        classtest_inp += `<input type="text" id="aid-${assessment.id}-ct-score" class="score-inp classtest-score empty" data-marks=${meta.classtest_marks} data-aid="${assessment.id}">`
     } else {
-        classtest_inp += `<input type="text" id="aid-${assessment_id}-ct-score" class="score-inp classtest-score" data-marks=${meta.classtest_marks} data-aid="${assessment_id}" value="${classtest_score}">`
+        classtest_inp += `<input type="text" id="aid-${assessment.id}-ct-score" class="score-inp classtest-score" data-marks=${meta.classtest_marks} data-aid="${assessment.id}" value="${assessment.classtest_score}">`
     }
     let row = `<tr>
-                    <td>${student_name}</td>
-                    <td><a href="${assessment_url}">${registration}</a></td>
+                    <td>${assessment.student_name}</td>
+                    <td><a href="${assessment.url}">${assessment.registration}</a></td>
                     <td class="inp-con">
                         ${atendance_inp}
                     </td>
