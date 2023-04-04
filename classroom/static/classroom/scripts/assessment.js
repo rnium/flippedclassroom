@@ -96,6 +96,38 @@ function processData() {
 }
 
 
+let notification_count = 1;
+function notifyUser(text, alert_class='info', timeout=5000, img_url=null) {
+    let img = ""
+    if (img_url) {
+        img = `<img src="${img_url}">`
+    }
+    let alertid = `notif-${notification_count}`
+    notification_count += 1
+    let component = `<li id="${alertid}" style="display: none;">
+                        <div class="alert-con ${alert_class} shadow">
+                            ${img}
+                            <div class="alert-info ms-2">${text}</div>
+                        </div>
+                    </li>`
+    $("#notification-alert-list").append(component)
+    if ($("#alert-component-con").css("display") == 'none') {
+        $("#alert-component-con").show()
+    }
+    $(`#${alertid}`).show(200, ()=>{
+        setTimeout(()=>{
+            $(`#${alertid}`).hide(200, ()=>{
+                $(`#${alertid}`).remove()
+                let count = $("#notification-alert-list li").length;
+                if (count == 0) {
+                    $("#alert-component-con").hide()
+                }
+            })
+        }, timeout)
+    })
+}
+
+
 function processRow(assessment_data, meta) {
     let assessment = {
         id: assessment_data['id'],
@@ -187,6 +219,7 @@ function processRow(assessment_data, meta) {
     $("#assessments-tbody").append(row);
 }
 
+let first_load = true;
 function processAssessmentsList(response) {
     const meta = {
         attendance_marks: response['attendance_marks'],
@@ -205,21 +238,24 @@ function processAssessmentsList(response) {
                 processRow(assessment_data, meta);
             }
             activate_score_box()
-            $("#a-save-btn").on('click', function(){
-                let validated = validate_inputs()
-                if (!validated) {
-                    return;
-                } else {
-                    let data = processData()
-                    post_data(data)
-                }
-            })
-            $("#rst-assessment-btn").on('click', function(){
-                let confirmation = confirm('Are you sure to perform this action? This will reset the current assessment state and metadata!')
-                if (confirmation) {
-                    delete_meta()
-                }
-            })
+            if (first_load) {
+                $("#a-save-btn").on('click', function(){
+                    let validated = validate_inputs()
+                    if (!validated) {
+                        return;
+                    } else {
+                        let data = processData()
+                        post_data(data)
+                    }
+                })
+                $("#rst-assessment-btn").on('click', function(){
+                    let confirmation = confirm('Are you sure to perform this action? This will reset the current assessment state and metadata!')
+                    if (confirmation) {
+                        delete_meta()
+                    }
+                })
+                first_load = false;
+            }
         })
     })
 }
@@ -252,7 +288,9 @@ function post_data(data) {
         data: payload,
         cache: false,
         success: function(response){
-            fetch_assessments_data()
+            console.log('Success!');
+            notifyUser("Data Updated Successfully!", 'info', 5000, check_svg);
+            fetch_assessments_data();
         },
         error: function(xhr,status,error){
             alert('something went wrong')

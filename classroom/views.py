@@ -192,6 +192,7 @@ def view_assessment(request, pk):
     if request.user in classroom.teachers.all():
         if hasattr(classroom, "assessmentmeta"):
             context['meta'] = classroom.assessmentmeta
+            context['check_svg'] = static('classroom/images/checked-tick.svg')
         return render(request, 'classroom/assessment_list.html', context=context)
     elif request.user in classroom.students.all():
         assessment_qs = Assessment.objects.filter(student=request.user, meta__classroom=classroom)
