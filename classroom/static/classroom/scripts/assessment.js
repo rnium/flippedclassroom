@@ -115,7 +115,7 @@ function convertFloat(number) {
 function processRow(assessment_data, meta) {
     let assessment_id = assessment_data['id'];
     let student_name = assessment_data['student_name'];
-    let registration = assessment_data['2020338501'];
+    let registration = assessment_data['registration'];
     let assessment_url = assessment_data['assessment_url'];
     let classtest_score = assessment_data['classtest_score'];
     let attendance_score = assessment_data['attendance_score'];
@@ -123,33 +123,49 @@ function processRow(assessment_data, meta) {
     let in_cls_points = assessment_data['in_cls_points'];
     let post_cls_points = assessment_data['post_cls_points'];
 
-    let preClassScore = convertFloat((pre_cls_points/meta.pre_class_total_points) * meta.pre_class_marks);
-    let inClassScore = convertFloat((pre_cls_points/meta.pre_class_total_points) * meta.pre_class_marks);
-    let postClassScore = convertFloat((pre_cls_points/meta.pre_class_total_points) * meta.pre_class_marks);
+    let preclassScoreRaw = (pre_cls_points/meta.pre_class_total_points) * meta.pre_class_marks;
+    let inclassScoreRaw = (in_cls_points/meta.in_class_total_points) * meta.in_class_marks;
+    let postclassScoreRaw = (post_cls_points/meta.post_class_total_points) * meta.post_class_marks;
+    let preClassScore = convertFloat(preclassScoreRaw);
+    let inClassScore = convertFloat(inclassScoreRaw);
+    let postClassScore = convertFloat(postclassScoreRaw);
+    
+    // total
+    let totalScoreRaw = attendance_score + classtest_score + preclassScoreRaw + inclassScoreRaw + postclassScoreRaw;
+    let totalScore = convertFloat(totalScoreRaw)
     
     // todo: render the input fields of attendance and classtest fields
-    let row = `<tr id="row-aid${assessment_id}">
+    let atendance_inp = "";
+    let total_css_class = "";
+    if (!totalScore) {
+        total_css_class += "pending"
+    }
+    if (attendance_score == null) {
+        atendance_inp += `<input type="text" id="aid-${assessment_id}-attendance-score" class="score-inp attendance-score empty" data-marks=${meta.attendance_marks} data-aid="${assessment_id}">`
+    } else {
+        atendance_inp += `<input type="text" id="aid-${assessment_id}-attendance-score" class="score-inp attendance-score" data-marks=${meta.attendance_marks} data-aid="${assessment_id}" value="${attendance_score}">`
+    }
+    let classtest_inp = "";
+    if (classtest_score == null) {
+        classtest_inp += `<input type="text" id="aid-${assessment_id}-ct-score" class="score-inp classtest-score empty" data-marks=${meta.classtest_marks} data-aid="${assessment_id}">`
+    } else {
+        classtest_inp += `<input type="text" id="aid-${assessment_id}-ct-score" class="score-inp classtest-score" data-marks=${meta.classtest_marks} data-aid="${assessment_id}" value="${classtest_score}">`
+    }
+    let row = `<tr>
                     <td>${student_name}</td>
                     <td><a href="${assessment_url}">${registration}</a></td>
                     <td class="inp-con">
-                        {% if assessment.attendance_score != None %}
-                        <input type="text" id="aid-{{assessment.id}}-attendance-score" class="score-inp attendance-score" data-marks={{assessment.meta.attendance_marks}} data-aid="{{assessment.id}}" value="{{assessment.get_attendance_score}}">
-                        {% else %}
-                        <input type="text" id="aid-{{assessment.id}}-attendance-score" class="score-inp attendance-score empty" data-marks={{assessment.meta.attendance_marks}} data-aid="{{assessment.id}}">
-                        {% endif %}
+                        ${atendance_inp}
                     </td>
                     <td class="inp-con">
-                    {% if assessment.classtest_score != None %}
-                    <input type="text" id="aid-{{assessment.id}}-ct-score" class="score-inp classtest-score" data-marks={{assessment.meta.classtest_marks}} data-aid="{{assessment.id}}" value="{{assessment.get_classtest_score}}">
-                    {% else %}
-                    <input type="text" id="aid-{{assessment.id}}-ct-score" class="score-inp classtest-score empty" data-marks={{assessment.meta.classtest_marks}} data-aid="{{assessment.id}}">
-                    {% endif %}
+                        ${classtest_inp}
                     </td>
-                    <td>{{assessment.pre_class_score|get_score_or_pending}}</td>
-                    <td>{{assessment.in_class_score|get_score_or_pending}}</td>
-                    <td>{{assessment.post_class_score|get_score_or_pending}}</td>
-                    <td class="{{assessment.total_score|get_total_score_css_class}}">{{assessment.total_score|get_score_or_pending}}</td>
+                    <td>${preClassScore}</td>
+                    <td>${inClassScore}</td>
+                    <td>${postClassScore}</td>
+                    <td class="${total_css_class}">${totalScore}</td>
             </tr>`
+    $("#assessments-tbody").append(row);
 }
 
 function processAssessmentsList(response) {
@@ -163,6 +179,29 @@ function processAssessmentsList(response) {
         in_class_total_points: response['in_class_total_points'],
         post_class_total_points: response['post_class_total_points'],
     }
+    $("#loader-con").hide(0, ()=>{
+        $("#assessment-list-con").show(0, ()=>{
+            for(assessment_data of response['assessments']) {
+                processRow(assessment_data, meta);
+            }
+            activate_score_box()
+            $("#a-save-btn").on('click', function(){
+                let validated = validate_inputs()
+                if (!validated) {
+                    return;
+                } else {
+                    let data = processData()
+                    post_data(data)
+                }
+            })
+            $("#rst-assessment-btn").on('click', function(){
+                let confirmation = confirm('Are you sure to perform this action? This will reset the current assessment state and metadata!')
+                if (confirmation) {
+                    delete_meta()
+                }
+            })
+        })
+    })
 }
 
 function fetch_assessments_data(data) {
@@ -228,23 +267,8 @@ function delete_meta(){
 }
 
 $(document).ready(function () {
-    fetch_assessments_data()
-    
-    // activate_score_box()
-    // $("#a-save-btn").on('click', function(){
-    //     let validated = validate_inputs()
-    //     if (!validated) {
-    //         return;
-    //     } else {
-    //         let data = processData()
-    //         post_data(data)
-    //     }
-    // })
-    // $("#rst-assessment-btn").on('click', function(){
-    //     let confirmation = confirm('Are you sure to perform this action? This will reset the current assessment state and metadata!')
-    //     if (confirmation) {
-    //         delete_meta()
-    //     }
-    // })
-
+    let assessment_list = $(".assessment-list");
+    if (assessment_list.length > 0) {
+        fetch_assessments_data()
+    }
 });

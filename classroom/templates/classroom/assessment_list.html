@@ -37,7 +37,7 @@
 </div>
 
 <!-- list -->
-<div class="assessment-list container my-4" style="display: none;">
+<div class="assessment-list container my-4" id="assessment-list-con" style="display: none;">
   <div class="heading mb-3">
     <i class='bx bx-stats'></i>
     <span class="title">{{classroom.name}} Assessment Table</span>
@@ -56,34 +56,8 @@
                   <th>Total ({{meta.total_marks}})</th>
               </tr>
           </thead>
-          {% comment %}
           <tbody id="assessments-tbody">
-              {% for assessment in meta.assessments %}
-              <tr>
-                <td>{{assessment.student.account.user_full_name}}</td>
-                <td><a href="{% url 'classroom:view_student_assessment' classroom.id assessment.id %}">{{assessment.student.account.institutional_id}}</a></td>
-                <td class="inp-con">
-                    {% if assessment.attendance_score != None %}
-                    <input type="text" id="aid-{{assessment.id}}-attendance-score" class="score-inp attendance-score" data-marks={{assessment.meta.attendance_marks}} data-aid="{{assessment.id}}" value="{{assessment.get_attendance_score}}">
-                    {% else %}
-                    <input type="text" id="aid-{{assessment.id}}-attendance-score" class="score-inp attendance-score empty" data-marks={{assessment.meta.attendance_marks}} data-aid="{{assessment.id}}">
-                    {% endif %}
-                </td>
-                <td class="inp-con">
-                  {% if assessment.classtest_score != None %}
-                  <input type="text" id="aid-{{assessment.id}}-ct-score" class="score-inp classtest-score" data-marks={{assessment.meta.classtest_marks}} data-aid="{{assessment.id}}" value="{{assessment.get_classtest_score}}">
-                  {% else %}
-                  <input type="text" id="aid-{{assessment.id}}-ct-score" class="score-inp classtest-score empty" data-marks={{assessment.meta.classtest_marks}} data-aid="{{assessment.id}}">
-                  {% endif %}
-                </td>
-                <td>{{assessment.pre_class_score|get_score_or_pending}}</td>
-                <td>{{assessment.in_class_score|get_score_or_pending}}</td>
-                <td>{{assessment.post_class_score|get_score_or_pending}}</td>
-                <td class="{{assessment.total_score|get_total_score_css_class}}">{{assessment.total_score|get_score_or_pending}}</td>
-              </tr>
-              {% endfor %}
           </tbody>
-          {% endcomment %}
       </table>
       <div class="submit mt-3">
         <button class="btn-1 shadow-sm" id="a-save-btn">Save</button>
