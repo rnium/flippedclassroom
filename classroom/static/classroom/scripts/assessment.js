@@ -150,6 +150,10 @@ function processRow(assessment_data, meta) {
     // preclass
     if (assessment.pre_cls_points != null) {
         preclassScoreRaw = (assessment.pre_cls_points/meta.pre_class_total_points) * meta.pre_class_marks;
+        // if the api returned value is zero then calculated raw will be NaN
+        if (isNaN(preclassScoreRaw)) {
+            preclassScoreRaw = 0;
+        }
         preClassScore = convertFloat(preclassScoreRaw);
     } else {
         preClassScore = "Pending";
@@ -157,6 +161,10 @@ function processRow(assessment_data, meta) {
     // inclass
     if (assessment.in_cls_points != null) {
         inclassScoreRaw = (assessment.in_cls_points/meta.in_class_total_points) * meta.in_class_marks;
+        if (isNaN(inclassScoreRaw)) {
+            inclassScoreRaw = 0;
+        }
+        
         inClassScore = convertFloat(inclassScoreRaw);
     } else {
         inClassScore = "Pending";
@@ -164,6 +172,9 @@ function processRow(assessment_data, meta) {
     // postclass
     if (assessment.post_cls_points != null) {
         postclassScoreRaw = (assessment.post_cls_points/meta.post_class_total_points) * meta.post_class_marks;
+        if (isNaN(postclassScoreRaw)) {
+            postclassScoreRaw = 0;
+        }
         postClassScore = convertFloat(postclassScoreRaw);
     } else {
         postClassScore = "Pending"
@@ -288,7 +299,6 @@ function post_data(data) {
         data: payload,
         cache: false,
         success: function(response){
-            console.log('Success!');
             notifyUser("Data Updated Successfully!", 'info', 5000, check_svg);
             fetch_assessments_data();
         },
