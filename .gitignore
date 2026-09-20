@@ -12,3 +12,7 @@ venv_celery
 media.zip
 venv.bat
 local_test.py
+dump*.json
+weekly_test.zip
+/static/
+/backups/

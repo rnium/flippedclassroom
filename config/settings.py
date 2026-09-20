@@ -34,9 +34,10 @@ EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = env.bool('DEBUG', default=False)
 
-ALLOWED_HOSTS = ["*"]
+# django-environ keeps the whitespace around commas, and a blank value yields [].
+ALLOWED_HOSTS = [h.strip() for h in env.list('ALLOWED_HOSTS', default=['*']) if h.strip()] or ['*']
 
 ALLOWED_IMAGE_EXTENSIONS = ['.jpg', '.jpeg', '.png']
 ALLOWED_FILE_EXTENSIONS = ['.pdf', 'docx']
@@ -96,8 +97,13 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': env('POSTGRES_DB'),
+        'USER': env('POSTGRES_USER'),
+        'PASSWORD': env('POSTGRES_PASSWORD'),
+        'HOST': env('POSTGRES_HOST', default='localhost'),
+        'PORT': env('POSTGRES_PORT', default='5432'),
+        'CONN_MAX_AGE': env.int('DB_CONN_MAX_AGE', default=60),
     }
 }
 
