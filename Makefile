@@ -1,17 +1,27 @@
 COMPOSE    := docker compose
+COMPOSE_BUILD := docker compose -f docker-compose.yml -f docker-compose.build.yml
 WEB        := $(COMPOSE) exec web
 DB         := $(COMPOSE) exec db
 BACKUP_DIR := backups
 STAMP      := $(shell date +%Y%m%d-%H%M%S)
 
-# Baked into the image so the container user owns the bind-mounted media/static.
+# Applied at run time so the container user owns the bind-mounted media/static.
 APP_UID ?= $(shell id -u)
 APP_GID ?= $(shell id -g)
 export APP_UID
 export APP_GID
 
+REGISTRY ?=
+IMAGE    ?= $(shell sed -n 's/^IMAGE=//p' .env 2>/dev/null)
+TAG      ?= $(or $(shell sed -n 's/^TAG=//p' .env 2>/dev/null),latest)
+PLATFORM ?= linux/amd64
+GIT_SHA  := $(shell git rev-parse --short HEAD 2>/dev/null || echo unknown)
+export IMAGE
+export TAG
+export PLATFORM
+
 .DEFAULT_GOAL := help
-.PHONY: help dirs env build up down restart ps logs logs-web logs-db logs-nginx \
+.PHONY: help dirs env build login release pull deploy up down restart ps logs logs-web logs-db logs-nginx \
         shell dbshell manage migrate makemigrations collectstatic createsuperuser \
         check backup loaddata pg-dump pg-restore fix-perms destroy
 
@@ -28,8 +38,29 @@ env:
 
 ##@ Docker
 
-build: dirs env ## Build the web image
-	$(COMPOSE) build
+build: dirs env ## Build the image locally (build machine only)
+	$(COMPOSE_BUILD) build web
+
+##@ Registry
+
+login: ## Log in to the registry
+	docker login $(REGISTRY)
+
+release: dirs env ## Build and push $(TAG) + the git sha (build machine only)
+	@test -n "$(IMAGE)" || { echo 'set IMAGE=<user>/<repo> in .env'; exit 1; }
+	$(COMPOSE_BUILD) build web
+	docker tag $(IMAGE):$(TAG) $(IMAGE):$(GIT_SHA)
+	docker push $(IMAGE):$(TAG)
+	docker push $(IMAGE):$(GIT_SHA)
+	@echo "pushed $(IMAGE):$(TAG) and $(IMAGE):$(GIT_SHA)"
+
+pull: ## Pull the image named in .env
+	$(COMPOSE) pull
+
+deploy: dirs env ## Pull the published image and restart (server side, never builds)
+	$(COMPOSE) pull
+	$(COMPOSE) up -d
+	@echo "deployed $(IMAGE):$(TAG)"
 
 up: dirs env ## Start the stack in the background
 	$(COMPOSE) up -d

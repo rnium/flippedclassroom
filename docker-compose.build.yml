@@ -1,0 +1,7 @@
+# Overlay for the build machine only; never copied to the server.
+services:
+  web:
+    build:
+      context: .
+      platforms:
+        - ${PLATFORM:-linux/amd64}

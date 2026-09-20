@@ -17,11 +17,10 @@ services:
       start_period: 30s
 
   web:
-    build:
-      context: .
-      args:
-        APP_UID: ${APP_UID:-1000}
-        APP_GID: ${APP_GID:-1000}
+    image: ${IMAGE:?set IMAGE in .env}:${TAG:-latest}
+    # Set at run time, not baked in: the image is built elsewhere and the
+    # uid that owns ./media and ./static differs per host.
+    user: "${APP_UID:-1000}:${APP_GID:-1000}"
     restart: unless-stopped
     env_file: .env
     environment:
